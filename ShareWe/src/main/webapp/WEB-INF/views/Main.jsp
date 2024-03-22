@@ -40,7 +40,7 @@
 	</head>
 
 	<body>
-	
+		
 		<!-- Spinner Start -->
 		<div id="spinner"
 			class="show w-100 vh-100 bg-white position-fixed translate-middle top-50 start-50  d-flex align-items-center justify-content-center">
@@ -183,7 +183,7 @@
 			</div>
 		</div>
 		<!-- 메인 이미지 슬라이드 div End -->
-	
+		<a href="goJoinSuccess"><button>goJoinSuccess</button></a>
 	
 		<!-- Share We 장점 Start -->
 		<div class="container-fluid featurs py-5">
