@@ -33,33 +33,6 @@ public class MemberController {
 //	// 인터페이스 불러오기 - Spring
 //	@Autowired
 //	private MemberMapper memberMapper;
-
-	// Main.jsp로 이동하는 메소드
-	@RequestMapping("/")
-	public String main() {
-		return "Main";
-	}
-
-	@RequestMapping("/goMain")
-	public String goMain() {
-		return "Main";
-	}
-
-	@RequestMapping("/goLogin")
-	public String goLogin() {
-		return "Login";
-	}
-
-	@RequestMapping("/goMemberType")
-	public String goMemberType() {
-		return "MemberType";
-	}
-
-	@RequestMapping("/goJoin")
-	public String goJoin(@RequestParam("type") String type, Model model) {
-		model.addAttribute("type", type);
-		return "Join";
-	}
 	
 	@RequestMapping("/goBoard1")
 	public String goBoard1() {
