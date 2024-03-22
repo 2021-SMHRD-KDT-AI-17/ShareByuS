@@ -12,6 +12,26 @@
 	opacity: 1;
 }
 
+#att_zone{
+	width: 660px;
+	min-height:150px;
+	padding:10px;
+	border:1px dotted #00f;
+}
+#att_zone:empty:before{
+	content : attr(data-placeholder);
+	color : green;
+	font-size:.9em;
+}
+
+.input-file-button{
+  padding: 6px 25px;
+  background-color:green ;
+  border-radius: 4px;
+  color: white;
+  cursor: pointer;
+}
+
 .back-to-top {
 	position: fixed;
 	right: 30px;
