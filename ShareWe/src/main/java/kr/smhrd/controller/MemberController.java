@@ -33,8 +33,11 @@ public class MemberController {
 //	// 인터페이스 불러오기 - Spring
 //	@Autowired
 //	private MemberMapper memberMapper;
-
 	
+	@RequestMapping("/goBoard1")
+	public String goBoard1() {
+		return "Shop-detail";
+	}
 
 	// 회원가입하는 메소드 /memberInsert
 //	@RequestMapping("/memberInsert")
