@@ -51,11 +51,10 @@
                         <small class="me-3"></small>
                         <small class="me-3"></small>
                     </div>
-                    <div class="top-link pe-2">
-                        <a href="#" class="text-white"><small class="text-white mx-2">Privacy Policy</small>/</a>
-                        <a href="#" class="text-white"><small class="text-white mx-2">Terms of Use</small>/</a>
-                        <a href="#" class="text-white"><small class="text-white ms-2">Sales and Refunds</small></a>
-                    </div>
+				<div class="top-link pe-2">
+					<a href="#" class="text-white"><small class="text-white mx-2">홈</small>|</a> 
+					<a href="#" class="text-white"><small class="text-white mx-2">로그인</small></a>
+				</div>
                 </div>
             </div>
             <div class="container px-0">
@@ -118,7 +117,7 @@
 
 
         <!-- Single Page Header start -->
-        <div class="container-fluid page-header py-5">
+        <div class="container-fluid page-header py-5" style="background-color: #81c408">
             <h1 class="text-center text-white display-6">회원가입</h1>
             <ol class="breadcrumb justify-content-center mb-0">
                 <li class="breadcrumb-item"><a href="goMain">Home</a></li>
@@ -171,10 +170,9 @@
 					<div class="col-lg-3 col-md-6">
 						<div class="footer-item">
 							<h4 class="text-light mb-3">Contact</h4>
-							<p>Address: 1429 Netus Rd, NY 48247</p>
-							<p>Email: Example@gmail.com</p>
-							<p>Phone: +0123 4567 8910</p>
-							<p>Payment Accepted</p>
+							<p>Address: Gwangju, Republic of Korea</p>
+							<p>Email: ShareByuS@gmail.com</p>
+							<p>Do you want to share it with us?</p>
 							<img src="img/payment.png" class="img-fluid" alt="">
 						</div>
 					</div>
