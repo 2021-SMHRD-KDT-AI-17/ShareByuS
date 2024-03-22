@@ -60,6 +60,11 @@ public class MemberController {
 		model.addAttribute("type", type);
 		return "Join";
 	}
+	
+	@RequestMapping("/goBoard1")
+	public String goBoard1() {
+		return "Shop-detail";
+	}
 
 	 // 회원가입하는 메소드 /memberInsert
 	@RequestMapping("/memberInsert")
