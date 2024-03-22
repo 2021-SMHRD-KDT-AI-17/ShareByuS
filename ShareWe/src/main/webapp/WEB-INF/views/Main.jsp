@@ -107,7 +107,7 @@
 		<!-- Navbar End -->
 	
 	
-		<!-- Modal Search Start -->
+		<!-- Search Start -->
 		<div class="modal fade" id="searchModal" tabindex="-1"
 			aria-labelledby="exampleModalLabel" aria-hidden="true">
 			<div class="modal-dialog modal-fullscreen">
@@ -142,12 +142,14 @@
 						<h1 class="mb-5 display-3 text-primary">Organic Veggies &
 							Fruits Foods</h1>
 						<div class="position-relative mx-auto">
-							<input
-								class="form-control border-2 border-secondary w-75 py-3 px-4 rounded-pill"
-								type="number" placeholder="Search">
-							<button type="submit"
-								class="btn btn-primary border-2 border-secondary py-3 px-4 position-absolute rounded-pill text-white h-100"
-								style="top: 0; right: 25%;">Submit Now</button>
+							<form action="Search">
+								<input
+									class="form-control border-2 border-secondary w-75 py-3 px-4 rounded-pill"
+									type="text" placeholder="Search" name="searchText">
+								<input type="submit" value="검색"
+									class="btn btn-primary border-2 border-secondary py-3 px-4 position-absolute rounded-pill text-white h-100"
+									style="top: 0; right: 25%;"></input>
+							</form>
 						</div>
 					</div>
 					<div class="col-md-12 col-lg-5">
