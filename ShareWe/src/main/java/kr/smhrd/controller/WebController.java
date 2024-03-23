@@ -38,5 +38,15 @@ public class WebController {
 		model.addAttribute("type", type);
 		return "Join";
 	}
+	
+	@RequestMapping("/goJoinSuccess")
+	public String goJoinSuccess() {
+		return "JoinSuccess";
+	}
+	
+	@RequestMapping("/gogBoard")
+	public String gogBoard() {
+		return "gBoard";
+	}
 
 }

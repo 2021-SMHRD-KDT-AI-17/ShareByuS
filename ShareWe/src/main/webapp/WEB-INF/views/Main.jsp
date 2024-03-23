@@ -64,7 +64,6 @@
 					</div>
 				</div>
 			</div>
-			
 				<div class="container px-0">
 					<nav class="navbar navbar-light bg-white navbar-expand-xl">
 						<a href="goMain" class="navbar-brand"><h1
@@ -77,7 +76,7 @@
 							<div class="navbar-nav mx-auto">
 								<a href="index.html" class="nav-item nav-link active">Home</a> <a
 									href="shop.html" class="nav-item nav-link">Shop</a> <a
-									href="goBoard1" class="nav-item nav-link">일반 게시물</a>
+									href="gogBoard" class="nav-item nav-link">일반 게시물</a>
 								<div class="nav-item dropdown">
 									<a href="#" class="nav-link dropdown-toggle"
 										data-bs-toggle="dropdown">Pages</a>

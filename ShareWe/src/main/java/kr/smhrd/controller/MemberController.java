@@ -33,13 +33,7 @@ public class MemberController {
 //	// 인터페이스 불러오기 - Spring
 	@Autowired
 	private MemberMapper memberMapper;
-
 	
-	@RequestMapping("/goBoard1")
-	public String goBoard1() {
-		return "Shop-detail";
-	}
-
 	 // 회원가입하는 메소드 /memberInsert
 	@RequestMapping("/memberInsert")
 	public String memberInsert(Member member, Model model) {
@@ -51,11 +45,6 @@ public class MemberController {
 		// 다음 페이지에서 불러올 때는 request 객체를 사용하여 불러온다!
 		model.addAttribute("email", member.getEmail());
 
-		return "JoinSuccess";
-	}
-	
-	@RequestMapping("/goJoinSuccess")
-	public String goJoinSuccess() {
 		return "JoinSuccess";
 	}
 //
