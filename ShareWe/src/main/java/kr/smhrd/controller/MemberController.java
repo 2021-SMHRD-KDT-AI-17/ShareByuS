@@ -44,9 +44,13 @@ public class MemberController {
 	@RequestMapping("/memberInsert")
 	public String memberInsert(Member member, Model model) {
 		// System.out.println(member.toString());
+//		if(member.getType() == 1) {
+//			memberMapper.approveInsert(member);
+//		}
+		
 		memberMapper.memberInsert(member);
 		// model 객체에 저장하여 다음 페이지에 넘긴다!
-
+		
 		// model에 저장한 데이터는 request안에 포함되므로
 		// 다음 페이지에서 불러올 때는 request 객체를 사용하여 불러온다!
 		model.addAttribute("email", member.getEmail());
