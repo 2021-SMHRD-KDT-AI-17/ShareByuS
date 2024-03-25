@@ -144,7 +144,6 @@
 	<div class="container-fluid page-header py-5">
 		<h1 class="text-center text-white display-6">로그인</h1>
 		<ol class="breadcrumb justify-content-center mb-0">
-			<li class="breadcrumb-item"><a href="goMain">Home</a></li>
 			<li class="breadcrumb-item active text-white">Login</li>
 		</ol>
 	</div>
@@ -155,19 +154,19 @@
 	<div class="container-fluid py-5">
 		<div class="container py-5">
 			<!-- <h1 class="mb-4 text-center">로그인</h1> -->
-			<form action="#">
+			<form action="memberCheck" method="post" >
 				<div class="row g-5 justify-content-center" id="loginDiv">
 					<div class="col-md-12 col-lg-6 col-xl-7" align="center">
 						<h4 class="form-label my-3">로그인</h4>
 						<div class="form-item">
 							<input type="text" class="form-control" placeholder="아이디를 입력해주세요"
-								id="id" style="width: 300px; margin-bottom: 10px;">
+								style="width: 300px; margin-bottom: 10px;" name="email">
 						</div>
 						<div class="form-item">
-							<input type="text" class="form-control"
-								placeholder="비밀번호를 입력해주세요" id="pw" style="width: 300px;">
+							<input type="password" class="form-control"
+								placeholder="비밀번호를 입력해주세요" style="width: 300px;" name="pw">
 						</div>
-						<button type="button" class="btn btn-outline-success"
+						<button type="submit" class="btn btn-outline-success"
 							style="width: 300px; height: 45px; margin-top: 50px; margin-bottom: 10px; color: #81c408; border-color: #81c408;"
 							id="submitBtn">로그인</button>
 						<br>

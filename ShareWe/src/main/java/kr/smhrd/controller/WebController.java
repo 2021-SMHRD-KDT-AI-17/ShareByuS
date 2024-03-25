@@ -39,10 +39,6 @@ public class WebController {
 		return "Join";
 	}
 	
-	@RequestMapping("/goJoinSuccess")
-	public String goJoinSuccess() {
-		return "JoinSuccess";
-	}
 	
 	@RequestMapping("/gogBoard")
 	public String gogBoard() {
