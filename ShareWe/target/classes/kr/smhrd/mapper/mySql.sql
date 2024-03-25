@@ -22,3 +22,11 @@ create table gBoard(
 	m_date datetime default now(),
 	primary key(num)
 );
+
+select * from g_board;
+
+select email from member;
+
+
+
+

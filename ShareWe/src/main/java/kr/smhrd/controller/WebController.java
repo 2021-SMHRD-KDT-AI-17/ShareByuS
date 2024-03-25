@@ -48,5 +48,9 @@ public class WebController {
 	public String gogBoard() {
 		return "gBoard";
 	}
+	@RequestMapping("/gocBoard")
+	public String gocBoard() {
+		return "cBoard";
+	}
 
 }

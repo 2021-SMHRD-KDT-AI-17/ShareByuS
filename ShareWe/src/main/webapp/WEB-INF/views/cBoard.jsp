@@ -137,9 +137,8 @@
 	<!-- Single Page Header start -->
 	<div class="container-fluid page-header py-5">
 		<h1 class="text-center text-white display-6"
-			style="margin-bottom: 20px">게시글 작성</h1>
+			style="margin-bottom: 20px">상품 등록</h1>
 		<ol class="breadcrumb justify-content-center mb-0">
-			<span class="breadcrumb-item" style="color: brown">* 필수항목</span>
 		</ol>
 	</div>
 	<!-- Single Page Header End -->
@@ -150,19 +149,87 @@
 		<div class="container py-5">
 			<form action="gBoardInsert" method="post"
 				enctype="multipart/form-data">
+				
+				
 				<div class="row g-5 justify-content-center" id="loginDiv">
-					<div class="col-md-12 col-lg-6 col-xl-7" align="left">
-						<h4 class="form-label my-3">* 상품 사진</h4>
+				
+				
+				<div class="col-md-12 col-lg-6 col-xl-7" align="left">
+						<h4 class="form-label my-3">* 상품 수령 방식</h4>
+						<br>
+						<div class="form-item">	
+						
+							<b style="font-size: 20px" >배송</b><input type="radio" name="get" class="border-0 border-bottom rounded me-5 py-3 mb-4" style="accent-color: green; margin-left:20px;">
+							<b style="font-size: 20px">포장</b><input type="radio" name="get" class="border-0 border-bottom rounded me-5 py-3 mb-4" style="accent-color: green; margin-left:20px;">
+						</div>
+						<hr>
+					</div>
+					
+				
+				
+				<div class="col-md-12 col-lg-6 col-xl-7" align="left">
+						<h4 class="form-label my-3">* 상품 가격</h4>
 						<br>
 						<div class="form-item">
 
-							<!-- <label class="input-file-button" for="btnAtt"> 업로드 </label> --> 
+							<input type="text" placeholder="숫자만 입력해주세요"
+							class="border-0 border-bottom rounded me-5 py-3 mb-4"
+								oninput=" this.value = this.value.replace(/[^0-9.]/g, '').replace(/(\..*)\./g, '$1');" 
+								onkeyup="inputNumberFormat(this);"/>
+								<span>원</span>
+								<hr>
+								
+								<script type="text/javascript">
+								function comma(str) {
+							        str = String(str);
+							        return str.replace(/(\d)(?=(?:\d{3})+(?!\d))/g, '$1,');
+							    }
+
+							    function uncomma(str) {
+							        str = String(str);
+							        return str.replace(/[^\d]+/g, '');
+							    } 
+							    
+							    function inputNumberFormat(obj) {
+							        obj.value = comma(uncomma(obj.value));
+							    }
+							    
+							    function inputOnlyNumberFormat(obj) {
+							        obj.value = onlynumber(uncomma(obj.value));
+							    }
+							    
+							    function onlynumber(str) {
+								    str = String(str);
+								    return str.replace(/(\d)(?=(?:\d{3})+(?!\d))/g,'$1');
+								}
+								</script>
+						</div>
+						
+					</div>
+				
+				
+				<div class="col-md-12 col-lg-6 col-xl-7" align="left">
+						<h4 class="form-label my-3">* 상품 명</h4>
+						<br>
+						<div class="form-item">
+							<input type="text" name="c_title" style="width: 600px"
+								class="border-0 border-bottom rounded me-5 py-3 mb-4"
+								placeholder="상품 명을 입력해주세요">
+						</div>
+						<hr>
+					</div>
+					
+					
+					<div class="col-md-12 col-lg-6 col-xl-7" align="left">
+						<h4 class="form-label my-3">* 대표 이미지</h4>
+						<br>
+						<div class="form-item">
+
+							<label class="input-file-button" for="btnAtt"> 업로드 </label>
 							
 								<input  type="file" name="g_img1"  id="btnAtt"
-								 accept="image/jpg, image/jpeg, image/png">
-								<!-- multiple="multiple" style="display: none" onchange="readURL(this);" -->
-							<!-- 이미피자일 name = filename -->
-
+								 accept="image/jpg, image/jpeg, image/png" multiple="multiple" style="display: none" onchange="readURL(this);">								
+				
 							<div id='image_preview'>
 								<div id='att_zone'
 									data-placeholder='파일을 첨부 하려면 파일 선택 버튼을 클릭하거나 파일을 드래그앤드롭 하세요'></div>
@@ -277,15 +344,7 @@
 						</div>
 						<hr>
 					</div>
-					<div class="col-md-12 col-lg-6 col-xl-7" align="left">
-						<h4 class="form-label my-3">* 상품 명</h4>
-						<br>
-						<div class="form-item">
-							<input type="text" name="g_title" style="width: 600px"
-								class="border-0 border-bottom rounded me-5 py-3 mb-4"
-								placeholder="상품 명을 입력해주세요">
-						</div>
-					</div>
+					
 
 					<div class="col-md-12 col-lg-6 col-xl-7" align="left">
 						<h4 class="form-label my-3">* 카테고리</h4>
@@ -304,40 +363,7 @@
 					</div>
 
 
-					<div class="col-md-12 col-lg-6 col-xl-7" align="left">
-						<h4 class="form-label my-3">* 참여인원</h4>
-						<br>
-						<div class="form-item">
-							<div class="col-sm-8">
-							
-								<button type="button" class="border-0 border-bottom rounded me-5 py-3 mb-4" style="width: 50px; font-size: 20px;" onclick="increase()">+</button>
-							
-								<b style="margin-right: 40px; font-size: 30px;" id="num" >2</b>
-	
-								<button type="button" class="border-0 border-bottom rounded me-5 py-3 mb-4" style="width: 50px; font-size: 20px;" onclick="decrease()">-</button>
-							
-								<script >
-								
-								const join = document.getElementById('num');
-						        
-						        const increase =()=>{
-						            num.innerText= parseInt(join.innerText)+1
-						        }
-						        const decrease =()=>{
-						            if(parseInt(join.innerText)!=2){
-						                num.innerText= parseInt(join.innerText)-1
-						
-						            }
-						        }
-								</script>
-								<br>
-								<b style="margin-right: 40px; font-size: 15px;" >최소인원은 2명 입니다.</b>
-							</div>
-						</div>
-						<hr>
-
-
-					</div>
+					
 					<div class="col-md-12 col-lg-6 col-xl-7" align="left">
 						<h4 class="form-label my-3">* 상품설명</h4>
 						<br>
