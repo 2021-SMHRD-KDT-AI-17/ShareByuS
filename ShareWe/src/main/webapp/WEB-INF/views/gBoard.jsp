@@ -148,20 +148,20 @@
 
 	<div class="container-fluid py-5">
 		<div class="container py-5">
-			<form action="BoardInsert" method="post"
+			<form action="gBoardInsert" method="post"
 				enctype="multipart/form-data">
 				<div class="row g-5 justify-content-center" id="loginDiv">
 					<div class="col-md-12 col-lg-6 col-xl-7" align="left">
-						<h4 class="form-label my-3">상품 사진</h4>
+						<h4 class="form-label my-3">* 상품 사진</h4>
 						<div class="form-item">
 
-							<label class="input-file-button" for="btnAtt"> 업로드 </label> <input
-								name="b_file" type="file" onchange="readURL(this);" id="btnAtt"
-								style="display: none" accept="image/jpg, image/jpeg, image/png"
-								multiple="multiple">
+							<!-- <label class="input-file-button" for="btnAtt"> 업로드 </label> --> <input
+								name="g_img1" type="file" onchange="readURL(this);" id="btnAtt"
+								 accept="image/jpg, image/jpeg, image/png"
+								multiple="multiple"><!-- style="display: none" -->
 							<!-- 이미피자일 name = filename -->
 
-							<div id='image_preview'>
+							<!-- <div id='image_preview'>
 								<div id='att_zone'
 									data-placeholder='파일을 첨부 하려면 파일 선택 버튼을 클릭하거나 파일을 드래그앤드롭 하세요'></div>
 							</div>
@@ -267,7 +267,7 @@
   }
 )('att_zone', 'btnAtt')
 
-</script>
+</script> -->
 
 
 
@@ -276,7 +276,7 @@
 						<hr>
 					</div>
 					<div class="col-md-12 col-lg-6 col-xl-7" align="left">
-						<h4 class="form-label my-3">상품 명</h4>
+						<h4 class="form-label my-3">* 상품 명</h4>
 						<div class="form-item">
 							<input type="text" name="b_title" style="width: 600px"
 								class="border-0 border-bottom rounded me-5 py-3 mb-4"
@@ -285,15 +285,14 @@
 					</div>
 
 					<div class="col-md-12 col-lg-6 col-xl-7" align="left">
-						<h4 class="form-label my-3">카테고리</h4>
+						<h4 class="form-label my-3">* 카테고리</h4>
 						<div class="form-item">
 							<div class="col-sm-8">
-								<select name="b_category" id="a4" class="form-control">
-									<option value="1">포션</option>
-									<option value="2">너클</option>
-									<option value="3">둔기</option>
-									<option value="3">검</option>
-									<option value="3">지팡이</option>
+								<select name="category" id="a4" class="form-control">
+									<option value="1">채소</option>
+									<option value="2">과일</option>
+									<option value="3">식품</option>
+									<option value="3">생필품</option>
 								</select>
 							</div>
 							<hr>
@@ -302,7 +301,7 @@
 
 
 					<div class="col-md-12 col-lg-6 col-xl-7" align="left">
-						<h4 class="form-label my-3">참여인원</h4>
+						<h4 class="form-label my-3">* 참여인원</h4>
 						<div class="form-item">
 							<div class="col-sm-8">
 								<div class="form-check-inline"></div>
@@ -327,9 +326,9 @@
 
 					</div>
 					<div class="col-md-12 col-lg-6 col-xl-7" align="left">
-						<h4 class="form-label my-3">상품설명</h4>
+						<h4 class="form-label my-3">* 상품설명</h4>
 						<div class="form-item">
-							<textarea name="b_content" rows="6" cols="80"
+							<textarea name="g_content" rows="6" cols="80"
 								style="border-radius: 5px" placeholder="상품 가격 및 거래방법 등 작성"></textarea>
 						</div>
 						<hr>

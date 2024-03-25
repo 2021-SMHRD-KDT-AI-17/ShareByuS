@@ -16,13 +16,35 @@ import lombok.ToString;
 @RequiredArgsConstructor
 public class gBoard {
 
-	private int num;
-	@NonNull private String title;
-	@NonNull private String writer;
-	@NonNull private String email;
-	@NonNull private String filename;
-	@NonNull private String content;
-	private String w_date;
-	@NonNull private String b_date;
-	@NonNull private String category;
+ // 게시글 고유번호 
+ private int g_num;
+
+ // 작성자 
+@NonNull private String g_writer;
+
+ // 이메일 
+ private String email;
+
+ // 이미지1 
+ @NonNull private String g_img1;
+
+ // 이미지2 
+// @NonNull private String g_img2;
+//
+// 이미지3 
+// @NonNull private String g_img3;
+
+ // 내용 
+ @NonNull private String g_content;
+
+ // 작성날짜 
+ private String g_w_date;
+
+ // 공동구매종료날짜 
+ private String g_b_date;
+
+ // 카테고리 
+ @NonNull private String category;
+
+ 
 }
