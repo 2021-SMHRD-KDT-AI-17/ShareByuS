@@ -161,15 +161,17 @@
                              <div class="actions vertical">
  							
 							
-<%-- 								<h1>환영합니다!</h1>
+ 								<%--<h1>환영합니다!</h1>
 								<br>
 								<h4>회원가입을 축하합니다.</h4>
 								<br>
 								<h5>가입된 이메일은 ${email}입니다.</h5>
 								<br><br> --%>
 								
-								<button class="btn border-secondary py-3 px-4 text-uppercase w-50 text-primary" onclick='location.href="goMain"' style="width: 200px !important; display: inline-block !important;">메인페이지로 이동</button>
-								<button class="btn border-secondary py-3 px-4 text-uppercase w-50 text-primary" onclick='location.href="gologin"' style="width: 200px !important; display: inline-block !important;">로그인</button>
+								<button type="button" onclick="location.href='goMain'" 
+									class="btn border-secondary py-3 px-4 text-uppercase w-50 text-primary" style="width: 200px !important; display: inline-block !important;">메인페이지로 이동</button></a>
+								<button type="button" onclick="location.href='goLogin'" 
+									class="btn border-secondary py-3 px-4 text-uppercase w-50 text-primary" style="width: 200px !important; display: inline-block !important;">로그인</button></a>
 							</div>
                         </div>
                     </div>

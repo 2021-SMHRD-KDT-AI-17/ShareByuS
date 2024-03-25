@@ -11,6 +11,9 @@ public interface MemberMapper {
 	public void memberInsert(member member);
 
 	@Select("select * from member where email=#{email}")
-	public member emailCheck(String inputE);
+	public member checkEmail(String inputEmail);
+
+	public member memberCheck(member member);
+
 	
 }

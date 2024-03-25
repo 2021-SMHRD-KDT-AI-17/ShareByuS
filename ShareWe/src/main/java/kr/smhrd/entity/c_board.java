@@ -49,7 +49,7 @@ public class c_board {
     private String place;
 
     // 상품가격 
-    private Integer price;
+    private int price;
 
     // 옵션1 
     private double c_opt1;

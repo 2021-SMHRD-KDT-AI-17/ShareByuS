@@ -20,7 +20,7 @@ public class review {
     private String email;
 
     // 평점 
-    private Double r_score;
+    private double r_score;
 
     // 내용 
     private String r_content;
