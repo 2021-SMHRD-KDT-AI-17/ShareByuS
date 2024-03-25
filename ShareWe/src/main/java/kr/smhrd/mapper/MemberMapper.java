@@ -1,6 +1,7 @@
 package kr.smhrd.mapper;
 
 import org.apache.ibatis.annotations.Mapper;
+import org.apache.ibatis.annotations.Select;
 
 import kr.smhrd.entity.member;
 
@@ -8,5 +9,8 @@ import kr.smhrd.entity.member;
 public interface MemberMapper {
 
 	public void memberInsert(member member);
+
+	@Select("select * from member where email=#{email}")
+	public member emailCheck(String inputE);
 	
 }

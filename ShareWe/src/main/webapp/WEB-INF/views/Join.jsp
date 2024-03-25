@@ -174,7 +174,8 @@
 						<div class="form-item">
 							<label class="form-label my-3">이메일<sup>*</sup></label> 
 							<br>
-							<input type="text" class="form-control" placeholder="Ex) example@sharwe.com" name="email">
+							<input type="text" class="form-control" placeholder="Ex) example@sharwe.com" name="email" style="width:280px">
+							<input type="button" value="Email 중복체크" onclick="checkE()">							
 						</div>
 						<div class="form-item">
 							<label class="form-label my-3">비밀번호<sup>*</sup></label> <input

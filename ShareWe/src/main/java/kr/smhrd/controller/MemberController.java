@@ -13,11 +13,13 @@ import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
+import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 
+import kr.smhrd.entity.Member;
 import kr.smhrd.entity.member;
 //import kr.smhrd.entity.Message;
 import kr.smhrd.mapper.MemberMapper;
@@ -50,6 +52,20 @@ public class MemberController {
 		model.addAttribute("email", member.getEmail());
 
 		return "JoinSuccess";
+	}
+	
+	// Email 중복체크 /emailCheck => 비동기방식
+	// @ResponseBody는 클래스 구문안에 넣어줘야함 => 동기,비동기 방식 모두 사용하는 컨트롤러 안에서는!
+	@RequestMapping("/emailCheck")
+	public int emailCheck(@RequestBody("inputE") String inputE) {
+		member member = memberMapper.emailCheck(inputE);
+		if(member == null) {
+			// 사용가능
+			return 1;
+		}else {
+			// 사용불가능
+			return 0;
+		}
 	}
 //
 //	// 로그인 메소드
