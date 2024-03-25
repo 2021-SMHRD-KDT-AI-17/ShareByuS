@@ -18,6 +18,9 @@ public class c_board {
 	// 게시글 고유번호 
     private int c_num;
 
+    // 게시글 제목
+    private String c_title;
+    
     // 작성자 
     private String c_writer;
 
