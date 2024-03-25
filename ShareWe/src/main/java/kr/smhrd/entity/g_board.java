@@ -18,6 +18,9 @@ public class g_board {
 	 // 게시글 고유번호 
     private int g_num;
 
+    // 게시글 제목
+    private String g_title;
+    
     // 작성자 
     private String g_writer;
 
