@@ -169,8 +169,8 @@
 								<h5>가입된 이메일은 ${email}입니다.</h5>
 								<br><br> --%>
 								
-								<button class="btn border-secondary py-3 px-4 text-uppercase w-50 text-primary" onclick='location.href="goMain"' style="width: 200px !important; display: inline-block !important;">메인페이지로 이동</button>
-								<button class="btn border-secondary py-3 px-4 text-uppercase w-50 text-primary" onclick='location.href="gologin"' style="width: 200px !important; display: inline-block !important;">로그인</button>
+								<button onclick='location.href="goMain"' class="btn border-secondary py-3 px-4 text-uppercase w-50 text-primary" style="width: 200px !important; display: inline !important;">메인페이지로 이동</button>
+								<button onclick='location.href="goLogin"' class="btn border-secondary py-3 px-4 text-uppercase w-50 text-primary" style="width: 200px !important; display: inline !important;">로그인</button>
 							</div>
                         </div>
                     </div>

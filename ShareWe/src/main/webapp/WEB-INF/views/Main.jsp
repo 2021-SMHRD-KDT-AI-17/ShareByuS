@@ -140,7 +140,7 @@
 						<h1 class="mb-5 display-3 text-primary">Organic Veggies &
 							Fruits Foods</h1>
 						<div class="position-relative mx-auto">
-							<form action="Search">
+							<form action="search">
 								<input
 									class="form-control border-2 border-secondary w-75 py-3 px-4 rounded-pill"
 									type="text" placeholder="Search" name="searchText">
@@ -182,7 +182,7 @@
 			</div>
 		</div>
 		<!-- 메인 이미지 슬라이드 div End -->
-		<a href="goJoinSuccess"><button>goJoinSuccess</button></a>
+		<button onclick='location.href="goJoinSuccess"'>goJoinSuccess</button>
 	
 		<!-- Share We 장점 Start -->
 		<div class="container-fluid featurs py-5">

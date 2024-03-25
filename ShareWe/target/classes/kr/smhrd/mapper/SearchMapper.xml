@@ -2,8 +2,8 @@
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="kr.smhrd.mapper.SearchMapper">
 
-	<select id="Search" parameterType="String" resultType="kr.smhrd.entity.g_board">
-		select * from g_board where title like %#{searchText}%;
+	<select id="search" parameterType="String" resultType="kr.smhrd.entity.g_board">
+		select * from g_board where g_title like %#{searchText}%;
 	</select>
-
+	
 </mapper>

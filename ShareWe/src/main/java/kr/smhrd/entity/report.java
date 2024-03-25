@@ -20,7 +20,7 @@ public class report {
     private String email;
 
     // 누적횟수 
-    private int rp_score;
+    private int rp_cnt;
 
     // 내용 
     private String rp_content;
