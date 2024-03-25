@@ -139,7 +139,6 @@
 	  	<div class="container-fluid page-header py-5" style="background-color: #FFFFFF !important">
 		<h1 class="text-center text-white display-6">환영합니다!</h1>
 		<ol class="breadcrumb justify-content-center mb-0">
-			<li class="breadcrumb-item "><a href="goMain" style="color:white">Home</a></li>
 			<li class="breadcrumb-item active text-white">Join Success!</li>
 		</ol>
 		<br>

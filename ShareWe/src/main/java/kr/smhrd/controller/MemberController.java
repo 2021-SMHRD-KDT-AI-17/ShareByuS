@@ -18,7 +18,7 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 
-import kr.smhrd.entity.Member;
+import kr.smhrd.entity.member;
 //import kr.smhrd.entity.Message;
 import kr.smhrd.mapper.MemberMapper;
 //import kr.smhrd.mapper.MessageMapper;
@@ -36,7 +36,7 @@ public class MemberController {
 	
 	 // 회원가입하는 메소드 /memberInsert
 	@RequestMapping("/memberInsert")
-	public String memberInsert(Member member, Model model) {
+	public String memberInsert(member member, Model model) {
 		// System.out.println(member.toString());
 //		if(member.getType() == 1) {
 //			memberMapper.approveInsert(member);
