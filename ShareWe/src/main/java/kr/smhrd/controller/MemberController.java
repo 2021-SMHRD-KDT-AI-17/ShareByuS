@@ -18,7 +18,7 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 
-import kr.smhrd.entity.Member;
+import kr.smhrd.entity.member;
 //import kr.smhrd.entity.Message;
 import kr.smhrd.mapper.MemberMapper;
 //import kr.smhrd.mapper.MessageMapper;
@@ -33,16 +33,10 @@ public class MemberController {
 //	// 인터페이스 불러오기 - Spring
 	@Autowired
 	private MemberMapper memberMapper;
-
 	
-	@RequestMapping("/goBoard1")
-	public String goBoard1() {
-		return "Shop-detail";
-	}
-
 	 // 회원가입하는 메소드 /memberInsert
 	@RequestMapping("/memberInsert")
-	public String memberInsert(Member member, Model model) {
+	public String memberInsert(member member, Model model) {
 		// System.out.println(member.toString());
 		memberMapper.memberInsert(member);
 		// model 객체에 저장하여 다음 페이지에 넘긴다!
@@ -51,11 +45,6 @@ public class MemberController {
 		// 다음 페이지에서 불러올 때는 request 객체를 사용하여 불러온다!
 		model.addAttribute("email", member.getEmail());
 
-		return "JoinSuccess";
-	}
-	
-	@RequestMapping("/goJoinSuccess")
-	public String goJoinSuccess() {
 		return "JoinSuccess";
 	}
 //
