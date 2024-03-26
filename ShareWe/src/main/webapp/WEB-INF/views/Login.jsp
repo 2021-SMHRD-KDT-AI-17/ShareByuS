@@ -1,5 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 
 <!DOCTYPE html>
 <html lang="en">
@@ -165,6 +166,7 @@
 						<div class="form-item">
 							<input type="password" class="form-control"
 								placeholder="비밀번호를 입력해주세요" style="width: 300px;" name="pw">
+							<c:if test="${fail eq 'fail'}"><br><p style= "color: red;"><small>💡 아이디와 비밀번호를 확인해주세요! 💡</small></p></c:if>
 						</div>
 						<button type="submit" class="btn btn-outline-success"
 							style="width: 300px; height: 45px; margin-top: 50px; margin-bottom: 10px; color: #81c408; border-color: #81c408;"
@@ -220,6 +222,9 @@
 	<script src="resources/asset/lib/waypoints/waypoints.min.js"></script>
 	<script src="resources/asset/lib/lightbox/js/lightbox.min.js"></script>
 	<script src="resources/asset/lib/owlcarousel/owl.carousel.min.js"></script>
+
+
+
 
 	<!-- 카카오 로그인 -->
 	<script src="https://developers.kakao.com/sdk/js/kakao.js"></script>
