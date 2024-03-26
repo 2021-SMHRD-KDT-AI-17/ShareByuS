@@ -88,8 +88,14 @@
 						<div class="collapse navbar-collapse bg-white" id="navbarCollapse">
 							<div class="navbar-nav mx-auto">
 								<a href="index.html" class="nav-item nav-link active">Home</a> <a
-									href="shop.html" class="nav-item nav-link">Shop</a> <a
-									href="gogBoard" class="nav-item nav-link">일반 게시물</a>
+									
+									href=goShop class="nav-item nav-link">Shop</a> <a
+									href="gogBoard" class="nav-item nav-link">게시글작성</a>
+									
+									<!-- 기업회원일때만 나오게 -->
+									<a href="gocBoard" class="nav-item nav-link">상품등록</a>
+								
+								
 								<div class="nav-item dropdown">
 									<a href="#" class="nav-link dropdown-toggle"
 										data-bs-toggle="dropdown">Pages</a>
