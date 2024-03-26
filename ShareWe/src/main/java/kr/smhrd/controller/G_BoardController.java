@@ -31,6 +31,11 @@ public class G_BoardController {
 	@Autowired
 	private MemberMapper memberMapper;
 	
+	@RequestMapping("/goShop")
+	public String gocBoard() {
+		return "Shop";
+	}
+	
 	//shop.jsp로 이동
 	@RequestMapping("/goGeneral")
 	public String goGeneral(Model model) {
