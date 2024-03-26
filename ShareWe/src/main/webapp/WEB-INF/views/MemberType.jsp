@@ -127,7 +127,6 @@
         <div class="container-fluid page-header py-5" style="background-color: #81c408">
             <h1 class="text-center text-white display-6">회원가입</h1>
             <ol class="breadcrumb justify-content-center mb-0">
-                <li class="breadcrumb-item"><a href="goMain">Home</a></li>
                 <li class="breadcrumb-item active text-white">Join</li>
             </ol>
         </div>
@@ -138,6 +137,20 @@
         <div class="container-fluid py-5">
             <div class="container py-5">
                 <div class="row g-4 justify-content-center">
+					<div class="col-md-6 col-lg-3">
+						<a href="goJoin?type=kakao">
+							<div class="featurs-item text-center rounded bg-light p-4">
+								<div
+									class="featurs-content">
+									<img src="resources/img/kakao_icon.png" style="height: 20px; width: 20px; ">
+									<!-- <i class="fa-solid fa-comment"></i> -->
+								</div>
+								<div class="featurs-content text-center">
+									<p class="mb-0">카카오 로그인</p>
+								</div>
+							</div>
+						</a>
+					</div>
 					<div class="col-md-6 col-lg-3">
 						<a href="goJoin?type=general">
 							<div class="featurs-item text-center rounded bg-light p-4">
