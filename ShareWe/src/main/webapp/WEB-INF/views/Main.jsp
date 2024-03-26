@@ -80,7 +80,7 @@
 				<div class="container px-0">
 					<nav class="navbar navbar-light bg-white navbar-expand-xl">
 						<a href="goMain" class="navbar-brand"><h1
-								class="text-primary display-6">Share We?</h1></a>
+								class="text-primary display-6" style="color:#009223 !important;">Share We?</h1></a>
 						<button class="navbar-toggler py-2 px-3" type="button"
 							data-bs-toggle="collapse" data-bs-target="#navbarCollapse">
 							<span class="fa fa-bars text-primary"></span>
@@ -89,7 +89,7 @@
 							<div class="navbar-nav mx-auto">
 								<a href="goGeneral" class="nav-item nav-link active">일반</a> <a
 									
-									href=goShop class="nav-item nav-link">기업</a> <a
+									href="goCompany" class="nav-item nav-link">기업</a> <a
 									href="gogBoard" class="nav-item nav-link">게시글작성</a>
 									
 									<!-- 기업회원일때만 나오게 -->
