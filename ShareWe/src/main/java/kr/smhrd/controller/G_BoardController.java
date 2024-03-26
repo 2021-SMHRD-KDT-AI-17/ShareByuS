@@ -1,6 +1,7 @@
 package kr.smhrd.controller;
 
 import java.io.IOException;
+import java.util.List;
 
 import javax.servlet.ServletRequest;
 import javax.servlet.http.HttpServletRequest;
@@ -9,6 +10,7 @@ import javax.servlet.http.HttpSession;
 import org.apache.ibatis.javassist.compiler.ast.Member;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
+import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 
@@ -30,13 +32,15 @@ public class G_BoardController {
 	private MemberMapper memberMapper;
 	
 	//shop.jsp로 이동
-	@RequestMapping("/goShop")
-	public String goShop() {
+	@RequestMapping("/goGeneral")
+	public String goGeneral(Model model) {
+		List<g_board> gboard_list = g_boardMapper.getGBoard();
+		model.addAttribute("gboard_list", gboard_list);
 		return "Shop";
 	}
 	
 	
-//	 게시글작성
+	//게시글작성
 	@RequestMapping("/gBoardInsert")
 		public String gBoardInsert(  g_board g_board, HttpSession session, HttpServletRequest request) {
 		String path = request.getRealPath("resources/g_Image");

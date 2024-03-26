@@ -136,17 +136,33 @@
 
 
 	<!-- Single Page Header start -->
+	<c:if test="${joinMember.type == 2}">
 	  	<div class="container-fluid page-header py-5" style="background-color: #FFFFFF !important">
-		<h1 class="text-center text-white display-6">환영합니다!</h1>
-		<ol class="breadcrumb justify-content-center mb-0">
-			<li class="breadcrumb-item active text-white">Join Success!</li>
-		</ol>
-		<br>
-		<h4 class="text-center text-white display-7" style="align-content: middle">회원가입을 축하합니다.</h4>
-		<br>
-		<h5 class="text-center text-white display-7">가입된 이메일은 ${email}입니다.</h5>
+			<h1 class="text-center text-white display-6">환영합니다!</h1>
+			<ol class="breadcrumb justify-content-center mb-0">
+				<li class="breadcrumb-item active text-white">Join Success!</li>
+			</ol>
+			<br>
+			<h4 class="text-center text-white display-7" style="align-content: middle">회원가입을 축하합니다.</h4>
+			<br>
+			<h5 class="text-center text-white display-7">가입된 이메일은 ${joinMember.email}입니다.</h5>
+		</div>
+	</c:if>
+	
+	<c:if test="${joinMember.type == 1}">
+		 <div class="container-fluid page-header py-5" style="background-color: #FFFFFF !important">
+			<h1 class="text-center text-white display-6">회원가입 승인 대기</h1>
+			<ol class="breadcrumb justify-content-center mb-0">
+				<li class="breadcrumb-item active text-white">Waiting for approval</li>
+			</ol>
+			<br>
+			<h4 class="text-center text-white display-7" style="align-content: middle">승인대기 중인 이메일은 ${joinMember.email}입니다.</h4>
+			<br>
+			<h5 class="text-center text-white display-7">승인은 2~3일정도 소요됩니다.</h5>
+		</div>
+	</c:if>
 		
-	</div>
+	
 	<!-- Single Page Header End -->
 
 

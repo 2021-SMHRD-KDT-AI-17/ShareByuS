@@ -48,5 +48,12 @@ public class WebController {
 	public String gocBoard() {
 		return "cBoard";
 	}
+	
+
+	
+//	@RequestMapping("/goMyPage")
+//	public String goMyPage() {
+//		return "MyPage";
+//	}
 
 }
