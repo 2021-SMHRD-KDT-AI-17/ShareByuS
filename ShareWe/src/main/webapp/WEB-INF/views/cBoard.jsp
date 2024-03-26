@@ -153,17 +153,6 @@
 				
 				<div class="row g-5 justify-content-center" id="loginDiv">
 				
-				
-				<div class="col-md-12 col-lg-6 col-xl-7" align="left">
-						<h4 class="form-label my-3">* 상품 수령 방식</h4>
-						<br>
-						<div class="form-item">	
-						
-							<b style="font-size: 20px" >배송</b><input type="radio" name="get" class="border-0 border-bottom rounded me-5 py-3 mb-4" style="accent-color: green; margin-left:20px;">
-							<b style="font-size: 20px">포장</b><input type="radio" name="get" class="border-0 border-bottom rounded me-5 py-3 mb-4" style="accent-color: green; margin-left:20px;">
-						</div>
-						<hr>
-					</div>
 					
 				<div class="col-md-12 col-lg-6 col-xl-7" align="left">
 						<h4 class="form-label my-3">* 상품 명</h4>
@@ -173,7 +162,7 @@
 								class="border-0 border-bottom rounded me-5 py-3 mb-4"
 								placeholder="상품 명을 입력해주세요">
 						</div>
-						<hr>
+						
 					</div>
 					
 					
@@ -397,8 +386,54 @@
 
 						</div>
 						<hr>
-					</div>					
-					
+					</div>
+
+					<div class="col-md-12 col-lg-6 col-xl-7" align="left">
+						<h4 class="form-label my-3">옵션</h4>
+						<br> <input type="text" id="opTitle" style="width: 300px"
+							class="border-0 border-bottom rounded me-5 py-3 mb-4"
+							placeholder="ex)제주 감귤 10 kg"> <input type="text"
+							id="price" name="price" style="width: 80px" placeholder="가격 입력"
+							class="border-0 border-bottom rounded me-5 py-3 mb-4"
+							oninput=" this.value = this.value.replace(/[^0-9.]/g, '').replace(/(\..*)\./g, '$1');"
+							onkeyup="inputNumberFormat(this);" /> <span>원 </span>
+						<button class="border-0 border-bottom rounded me-5 py-3 mb-4"
+							onclick="opAppend()" style="width: 100px; margin-left: 20px;"
+							type="button">옵션 추가</button>
+
+
+						<div class="form-item">
+							<div class="col-sm-8">
+								<label for="a4"> 추가된 옵션</label> <select name="" id="a4" size="6"
+									class="form-control">
+								</select>
+							</div>
+							<hr>
+						</div>
+					</div>
+					<script type="text/javascript">
+
+
+
+						function opAppend(){
+						    let opTitle = document.getElementById("opTitle");
+						    let price = document.getElementById("price");
+						    
+						    let selectAp = document.getElementById("a4");
+						    var objOption = document.createElement("option");
+						
+						    objOption.text = opTitle.value+"     " +price.value+" 원";
+						    objOption.value = opTitle.value;
+						    selectAp.options.add(objOption);
+						
+						
+						
+						}
+						
+						    
+						</script>
+
+
 					<div class="col-md-12 col-lg-6 col-xl-7" align="left">
 						<h4 class="form-label my-3">* 상품설명</h4>
 						<br>
