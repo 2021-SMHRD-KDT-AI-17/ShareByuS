@@ -51,6 +51,8 @@ public class G_BoardController {
 		DefaultFileRenamePolicy rename = new DefaultFileRenamePolicy();
 		member loginMember = (member)session.getAttribute("loginMember");
 		String email = loginMember.getEmail();
+		String g_writer = loginMember.getNick();
+		
 		
 		
 		try {
@@ -62,7 +64,7 @@ public class G_BoardController {
 			
 			
 			
-			g_board = new g_board(g_title, email, g_img1, g_content, category);
+			g_board = new g_board(g_title,g_writer, email, g_img1, g_content, category);
 			System.out.println(g_board.toString());
 		} catch (IOException e) {
 			e.printStackTrace();

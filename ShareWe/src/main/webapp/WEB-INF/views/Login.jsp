@@ -171,8 +171,10 @@
 							style="width: 300px; height: 45px; margin-top: 50px; margin-bottom: 10px; color: #81c408; border-color: #81c408;"
 							id="submitBtn">로그인</button>
 						<br>
-						<a href="javascript:kakaoLogin()"><img
-							src="resources/img/kakao_login_medium_wide.png"></a>
+						
+						<a href="javascript:kakaoLogin()">
+						<img src="resources/img/kakao_login_medium_wide.png">
+						</a>
 
 					</div>
 					<div
@@ -242,6 +244,22 @@
 	        	  console.log(response)
 	        	  const kakao_account = response.kakao_account;
                   console.log(kakao_account);
+                  
+                  var account_email = response.kakao_account.email;
+                  let f = document.createElement('form');
+	                let obj;
+	        		    obj = document.createElement('input');
+	        		    obj.setAttribute('type', 'hidden');
+	        		    obj.setAttribute('name', 'email');
+	        		    obj.setAttribute('value', account_email);
+	        		    
+	        		    f.appendChild(obj);
+	        		    f.setAttribute('method', 'post');
+	        		    f.setAttribute('action', 'memberCheck2');
+	        		    document.body.appendChild(f);
+	        		    f.submit();
+                  
+                  
 	          },
 	          fail: function (error) {
 	            console.log(error)
