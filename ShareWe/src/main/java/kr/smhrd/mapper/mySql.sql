@@ -19,6 +19,6 @@ alter table g_board drop g_img2;
 alter table g_board drop g_img3;
 
 select * from member;
-
+select * from g_board;
 
 select * from approve;

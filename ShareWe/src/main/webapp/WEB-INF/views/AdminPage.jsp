@@ -1,4 +1,3 @@
-<%@page import="java.util.List"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
@@ -42,10 +41,8 @@
 
 </head>
 
-
-
-
 <body>
+
 
 	<!-- Spinner Start -->
 	<div id="spinner"
@@ -139,159 +136,39 @@
 
 
 	<!-- Single Page Header start -->
-	<div class="container-fluid page-header py-5" style="background-color: #81c408">
-		<h1 class="text-center text-white display-6">회원가입</h1>
+	  	<div class="container-fluid page-header py-5" style="background-color: #FFFFFF !important">
+		<h1 class="text-center text-white display-6">환영합니다!</h1>
 		<ol class="breadcrumb justify-content-center mb-0">
-<!-- 			<li class="breadcrumb-item "><a href="goMain" style="color:white">Home</a></li> -->
-			<li class="breadcrumb-item active text-white">Join</li>
+			<li class="breadcrumb-item active text-white">Join Success!</li>
 		</ol>
+		<br>
+		<h4 class="text-center text-white display-7" style="align-content: middle">회원가입을 축하합니다.</h4>
+		<br>
+		<h5 class="text-center text-white display-7">가입된 이메일은 ${email}입니다.</h5>
+		
 	</div>
 	<!-- Single Page Header End -->
 
 
-	<!-- 회원가입 Start -->
-	<div class="container-fluid py-5">
-		<div class="container py-5">
-			<form action="memberInsert" method="post">
-				<div class="row g-5 justify-content-center">
-					<div class="col-md-12 col-lg-6 col-xl-7">
-						
-						
- 						<c:if test="${type eq 'company'}">
-							<div class="form-item">
-								<div class="form-item">
-									<input type="text" class="form-control" placeholder="기업회원" readonly >
-									<input type="hidden" value="1" name="type">
-								</div>
-							</div>
-						</c:if> 
+	<!-- 회원가입 완료 페이지 -->
 
-						<c:if test="${type eq 'general'}">
-							<div class="form-item">
-								<div class="form-item">
-									<input type="text" class="form-control" placeholder="일반회원" readonly >
-									<input type="hidden" value="2" name="type">
-								</div>
+<div class="container-fluid py-5">
+            <div class="container py-5">
+                <!-- <h1 class="mb-4 text-center">로그인</h1> -->
+                <form action="#">
+                    <div class="row g-5 justify-content-center"  id="loginDiv">
+                        <div class="col-md-12 col-lg-6 col-xl-7" align="center">
+                             <div class="actions vertical">
+								<button type="button" onclick="location.href='goMain'" 
+									class="btn border-secondary py-3 px-4 text-uppercase w-50 text-primary" style="width: 200px !important; display: inline-block !important;">메인페이지로 이동</button></a>
+								<button type="button" onclick="location.href='goLogin'" 
+									class="btn border-secondary py-3 px-4 text-uppercase w-50 text-primary" style="width: 200px !important; display: inline-block !important;">로그인</button></a>
 							</div>
-						</c:if>
-						
-						<c:if test="${type eq 'kakao'}">
-							<div class="form-item">
-								<div class="form-item">
-									<input type="text" class="form-control" placeholder="카카오회원" readonly >
-									<input type="hidden" value="3" name="type">
-								</div>
-							</div>
-						</c:if>
-						
-						<c:if test="${type eq 'company' || type eq 'general'}">
-						<div class="form-item">
-							<label class="form-label my-3">이메일<sup>*</sup></label> 
-							<br>
-							<div style="align-content: middle !important;">
-								<input type="text" class="form-control" placeholder="Ex) example@shareWe.com" name="email" id="inputEmail" 
-									style="width: 580px !important; display: inline !important;">
-								
-								<input type="button" value="Email 중복체크" onclick="checkEmail()" 
-									class="btn border-secondary py-2 px-2  text-primary"
-									style="width: 150px !important; height: 36px !important;  display: inline !important; padding:4px !important;">
-								<br>
-								<span id="resultCheck"></span>
-							</div>							
-						</div>
-						</c:if>
-						
-						<c:if test="${type eq 'kakao'}">
-						<div class="form-item">
-							<label class="form-label my-3">이메일<sup>*</sup></label> 
-							<br>
-							<div style="align-content: middle !important;">
-								<% String kakoInfo = request.getParameter("kakaoInfo");
-								   String[] info = kakoInfo.split(",");
-								%>
-							
-								<input type="text" class="form-control" placeholder="카카오회원" name="email" id="inputEmail" 
-									value="<%=info[2] %>"
-									style="width: 580px !important; display: inline !important;">
-								
-								<input type="button" value="Email 중복체크" onclick="checkEmail()" 
-									class="btn border-secondary py-2 px-2  text-primary"
-									style="width: 150px !important; height: 36px !important;  display: inline !important; padding:4px !important;">
-								<br>
-								<span id="resultCheck"></span>
-							</div>							
-						</div>
-						</c:if>
-						
-						
-						<c:if test="${type eq 'company' || type eq 'general'}">
-						<div class="form-item">
-							<label class="form-label my-3">비밀번호<sup>*</sup></label> <input
-								type="password" class="form-control" name="pw">
-						</div>
-						<div class="form-item">
-							<label class="form-label my-3">비밀번호 확인<sup>*</sup></label> 
-							<input type="password" class="form-control">
-						</div>
-						</c:if>
-						
-						<div class="form-item">
-							<label class="form-label my-3">이름<sup>*</sup></label> <input
-								type="text" class="form-control" name="name">
-						</div>
-						
-						
-						<c:if test="${type eq 'company'}">
-							<div class="form-item">
-								<label class="form-label my-3">기업이름<sup>*</sup></label> <input
-									type="text" class="form-control" name="nick">
-							</div>
-						</c:if>
-
-						<c:if test="${type eq 'general'}">
-							<div class="form-item">
-								<label class="form-label my-3">닉네임<sup>*</sup></label> <input
-									type="text" class="form-control" name="nick">
-							</div>
-						</c:if>	
-						
-						<c:if test="${type eq 'kakao'}">
-							<div class="form-item">
-								<label class="form-label my-3">닉네임<sup>*</sup></label>
-								<input type="text" class="form-control" name="nick" value="${account_email}">
-							</div>
-						</c:if>	
-						
-					
-						<div class="form-item">
-							<label class="form-label my-3">도로명 주소 <sup>*</sup></label> <input
-								type="text" class="form-control"
-								placeholder="Ex) 광주광역시 동구 예술길 31-15" name="address">
-						</div>
-						<div class="form-item">
-							<label class="form-label my-3">전화번호<sup>*</sup></label> <input
-								type="tel" class="form-control" name="tel">
-						</div>
-
-						<!-- 						<div class="form-check my-3">
-							<input type="checkbox" class="form-check-input" id="Account-1"
-								name="Accounts" value="Accounts"> <label
-								class="form-check-label" for="Account-1">Create an
-								account?</label>
-						</div> -->
-						<!-- <hr> -->
-
-						<div
-							class="row g-4 text-center align-items-center justify-content-center pt-4">
-							<input type="submit" value="회원가입" class="btn border-secondary py-3 px-4 text-uppercase w-50 text-primary" >
-						</div>
-					</div>
-				</div>
-			</form>
-		</div>
-	</div>
-	<!-- 회원가입 End -->
-
+                        </div>
+                    </div>
+                </form>
+            </div>
+        </div>
 
 	<!-- 메인 페이지 하단 -->
 	<div class="container-fluid bg-dark text-white-50 footer pt-5 mt-5">
@@ -329,43 +206,6 @@
 
 	<!-- Template Javascript -->
 	<script src="resources/asset/js/main.js"></script>
-	
-	<!-- script -->
-	
-	<script type="text/javascript">
-		function checkEmail(){
-			var inputEmail = $('#inputEmail').val();
-			console.log(inputEmail);
-			
-			$.ajax(
-			{
-				url : 'emailCheck',
-				// 요청 데이터 형태 -> JSON
-				data : {'inputEmail' : inputEmail},
-				// 요청방식 
-				type : 'get',
-				
-				success : function(data){
-					if(data == 1) {
-						$('#resultCheck').text('*사용가능한 이메일입니다.')
-					}else {
-						$('#resultCheck').text('*사용 불가능한 이메일입니다.')
-					}
-				},
-				error : function() {
-					alert("에러")
-				}
-			}
-			
-			)
-			
-			
-		}
-	</script>
-    		
-	
 </body>
-
-
 
 </html>
