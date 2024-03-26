@@ -24,7 +24,7 @@ public class g_board {
     @NonNull private String g_title;
     
 //     작성자 
-    private String g_writer;
+    @NonNull private String g_writer;
 
     // 이메일 
     @NonNull private String email;
