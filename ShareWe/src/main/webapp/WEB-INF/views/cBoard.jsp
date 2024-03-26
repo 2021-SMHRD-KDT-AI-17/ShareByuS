@@ -172,10 +172,10 @@
 						<div class="form-item">
 							<div class="col-sm-8">
 								<select name="category" id="a4" class="form-control">
-									<option value="1">채소</option>
-									<option value="2">과일</option>
-									<option value="3">식품</option>
-									<option value="3">생필품</option>
+									<option value="채소">채소</option>
+									<option value="과일">과일</option>
+									<option value="식품">식품</option>
+									<option value="생필품">생필품</option>
 								</select>
 							</div>
 							<hr>
@@ -273,7 +273,7 @@
 
 							<label class="input-file-button" for="btnAtt"> 업로드 </label>
 							
-								<input  type="file" name="g_img1"  id="btnAtt"
+								<input  type="file" name="c_img1"  id="btnAtt"
 								 accept="image/jpg, image/jpeg, image/png" multiple="multiple" style="display: none" onchange="readURL(this);">								
 				
 							<div id='image_preview'>
@@ -400,34 +400,33 @@
 						<button class="border-0 border-bottom rounded me-5 py-3 mb-4"
 							onclick="opAppend()" style="width: 100px; margin-left: 20px;"
 							type="button">옵션 추가</button>
-
-
-						<div class="form-item">
+	
+					<div class="form-item">
 							<div class="col-sm-8">
-								<label for="a4"> 추가된 옵션</label> <select name="" id="a4" size="6"
-									class="form-control">
+								<label for="a4"> 추가된 옵션</label>
+								 <select name="" id="option" size="5" class="form-control" style="width:300px">
 								</select>
 							</div>
 							<hr>
 						</div>
-					</div>
-					<script type="text/javascript">
 
-
-
-						function opAppend(){
-						    let opTitle = document.getElementById("opTitle");
-						    let price = document.getElementById("price");
-						    
-						    let selectAp = document.getElementById("a4");
-						    var objOption = document.createElement("option");
 						
-						    objOption.text = opTitle.value+"     " +price.value+" 원";
+					</div>
+					
+					<script>
+					
+						function opAppend(){
+						   	var opTitle = document.getElementById("opTitle");
+						    var price = document.getElementById("price");
+						    
+						    var selectAp = document.getElementById("option");
+						    var objOption = document.createElement("option");
+							
+						    objOption.text = opTitle.value +"-----"+ price.value+" 원";
 						    objOption.value = opTitle.value;
 						    selectAp.options.add(objOption);
-						
-						
-						
+						    objOption.name = 'c_opt1';
+						    
 						}
 						
 						    
@@ -438,14 +437,14 @@
 						<h4 class="form-label my-3">* 상품설명</h4>
 						<br>
 						<div class="form-item">
-							<textarea name="g_content" rows="6" cols="80"
+							<textarea name="c_content" rows="6" cols="80"
 								style="border-radius: 5px" placeholder="상품 가격 및 거래방법 등 작성"></textarea>
 						</div>
 						<hr>
 						
 					</div>
 					
-					<div class="col-md-12 col-lg-6 col-xl-7" align="left">
+					<!-- <div class="col-md-12 col-lg-6 col-xl-7" align="left">
 					<h4 class="form-label my-3">위치 설정</h4>
 					<input type="text" id="place" style="width: 300px"
 								class="border-0 border-bottom rounded me-5 py-3 mb-4"
@@ -495,10 +494,7 @@ function search(){
 	    } 
 	});
 }
-</script>
-<script type="text/javascript">
-
-</script>
+</script> -->
 
 <div class="col-md-12 col-lg-6 col-xl-7" align="right"
 							style="margin-left: 100px">
@@ -527,7 +523,7 @@ function search(){
 						<p>Email: Example@gmail.com</p>
 						<p>Phone: +0123 4567 8910</p>
 						<p>Payment Accepted</p>
-						<img src="img/payment.png" class="img-fluid" alt="">
+					<!-- <img src="img/payment.png" class="img-fluid" alt=""> -->
 					</div>
 				</div>
 			</div>
