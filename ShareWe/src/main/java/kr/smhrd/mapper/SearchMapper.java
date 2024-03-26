@@ -5,6 +5,6 @@ import org.apache.ibatis.annotations.Mapper;
 @Mapper
 public interface SearchMapper {
 
-	public void Search(String searchText);
+	public void search(String searchText);
 
 }

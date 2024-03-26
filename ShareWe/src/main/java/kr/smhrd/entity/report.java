@@ -16,11 +16,14 @@ public class report {
 	// 신고 고유번호 
     private int rp_num;
 
-    // 이메일 
+    // 신고자 이메일 
     private String email;
+    
+    // 신고 이메일
+    private String rp_email;
 
     // 누적횟수 
-    private int rp_score;
+    private int rp_cnt;
 
     // 내용 
     private String rp_content;

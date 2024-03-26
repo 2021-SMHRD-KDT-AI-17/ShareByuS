@@ -18,12 +18,12 @@ public class SearchController {
 	@Autowired
 	private SearchMapper searchMapper;
 	
-	@RequestMapping("/Search")
-	public void Search(HttpServletRequest request) {
+	@RequestMapping("/search")
+	public void search(HttpServletRequest request) {
 		String searchText = request.getParameter("searchText");
 		System.out.println(searchText);
 		
-		searchMapper.Search(searchText);
+		searchMapper.search(searchText);
 	}
 	
 }

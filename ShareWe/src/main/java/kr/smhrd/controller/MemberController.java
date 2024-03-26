@@ -51,13 +51,18 @@ public class MemberController {
 	
 	// 로그인 메소드
 	@RequestMapping("/memberCheck")
-	public String memberSelect(member member, HttpSession session) {
+	public String memberSelect(member member, HttpSession session, Model model) {
 		
 		member loginMember = memberMapper.memberCheck(member);
-		
-		session.setAttribute("loginMember", loginMember);
-		
-		return "Main";
+		if(loginMember == null) {
+			model.addAttribute("fail", "fail");
+			
+			return "Login";
+		}else {
+			session.setAttribute("loginMember", loginMember);
+			
+			return "Main";
+		}
 	}
 
 	// 로그아웃 메소드
