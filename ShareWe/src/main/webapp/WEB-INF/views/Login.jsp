@@ -64,9 +64,8 @@
 						<small class="me-3"></small> <small class="me-3"></small>
 					</div>
 					<div class="top-link pe-2">
-						<a href="goMain" class="text-white"><small
-							class="text-white mx-2">홈</small>|</a> <a href="goLogin"
-							class="text-white"><small class="text-white mx-2">로그인</small></a>
+						<a href="goMain" class="text-white"><small class="text-white mx-2">홈</small>|</a>
+						<a href="goMemberType" class="text-white"><small class="text-white mx-2">회원가입</small></a>
 					</div>
 				</div>
 			</div>

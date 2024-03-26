@@ -9,4 +9,10 @@
 	<select id="memberCheck" parameterType="kr.smhrd.entity.member" resultType="kr.smhrd.entity.member">
 		select * from member where email=#{email} and pw=#{pw}
 	</select>
+	
+	<insert id="approveInsert" parameterType="kr.smhrd.entity.member">
+		insert into approve values (#{type}, #{email}, #{pw}, #{name}, #{nick}, #{address}, #{tel})
+	</insert>
+	
+	
 </mapper>

@@ -13,10 +13,6 @@ create table gBoard(
 
 select * from g_board;
 
-select email from member;
+select * from member;
 
-
-
-
-=======
->>>>>>> branch 'main' of https://github.com/2021-SMHRD-KDT-AI-17/ShareByuS.git
+select * from approve;

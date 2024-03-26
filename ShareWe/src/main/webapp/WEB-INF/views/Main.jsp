@@ -87,14 +87,15 @@
 						</button>
 						<div class="collapse navbar-collapse bg-white" id="navbarCollapse">
 							<div class="navbar-nav mx-auto">
-								<a href="index.html" class="nav-item nav-link active">Home</a> <a
+								<a href="goGeneral" class="nav-item nav-link active">일반</a> <a
 									
-									href=goShop class="nav-item nav-link">Shop</a> <a
+									href=goShop class="nav-item nav-link">기업</a> <a
 									href="gogBoard" class="nav-item nav-link">게시글작성</a>
 									
 									<!-- 기업회원일때만 나오게 -->
-									<a href="gocBoard" class="nav-item nav-link">상품등록</a>
-								
+									<c:if test="${type eq 'company'}">
+										<a href="gocBoard" class="nav-item nav-link">상품등록</a>
+									</c:if>
 								
 								<div class="nav-item dropdown">
 									<a href="#" class="nav-link dropdown-toggle"
@@ -115,8 +116,8 @@
 									class="fa fa-shopping-bag fa-2x"></i> <span
 									class="position-absolute bg-secondary rounded-circle d-flex align-items-center justify-content-center text-dark px-1"
 									style="top: -5px; left: 15px; height: 20px; min-width: 20px;">3</span>
-								</a> <a href="#" class="my-auto"> <i class="fas fa-user fa-2x"></i>
-								</a>
+								</a> 
+								<a href="#" class="my-auto"> <i class="fas fa-user fa-2x"></i></a>
 							</div>
 						</div>
 					</nav>

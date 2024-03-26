@@ -6,7 +6,7 @@
 
     <head>
         <meta charset="utf-8">
-        <title>Fruitables - Vegetable Website Template</title>
+        <title>Share We?</title>
         <meta content="width=device-width, initial-scale=1.0" name="viewport">
         <meta content="" name="keywords">
         <meta content="" name="description">
@@ -49,9 +49,8 @@
 						<small class="me-3"></small> <small class="me-3"></small>
 					</div>
 					<div class="top-link pe-2">
-						<a href="goMain" class="text-white"><small
-							class="text-white mx-2">홈</small>|</a> <a href="goLogin"
-							class="text-white"><small class="text-white mx-2">로그인</small></a>
+							<a href="goMemberType" class="text-white"><small class="text-white mx-2">회원가입</small>|</a>
+							<a href="goLogin" class="text-white"><small class="text-white mx-2">로그인</small></a>
 					</div>
 				</div>
 			</div>
@@ -125,9 +124,7 @@
         <div class="container-fluid page-header py-5">
             <h1 class="text-center text-white display-6">Shop</h1>
             <ol class="breadcrumb justify-content-center mb-0">
-                <li class="breadcrumb-item"><a href="#">Home</a></li>
-                <li class="breadcrumb-item"><a href="#">Pages</a></li>
-                <li class="breadcrumb-item active text-white">Shop</li>
+                <li class="breadcrumb-item active text-white">general</li>
             </ol>
         </div>
         <!-- Single Page Header End -->
@@ -136,7 +133,7 @@
         <!-- Fruits Shop Start-->
         <div class="container-fluid fruite py-5">
             <div class="container py-5">
-                <h1 class="mb-4">Fresh fruits shop</h1>
+                <h1 class="mb-4">General Shop</h1>
                 <div class="row g-4">
                     <div class="col-lg-12">
                         <div class="row g-4">
@@ -478,12 +475,11 @@
 				<div class="row g-5">
 					<div class="col-lg-3 col-md-6">
 						<div class="footer-item">
-							<h4 class="text-light mb-3">Contact</h4>
-							<p>Address: 1429 Netus Rd, NY 48247</p>
-							<p>Email: Example@gmail.com</p>
-							<p>Phone: +0123 4567 8910</p>
-							<p>Payment Accepted</p>
-							<img src="img/payment.png" class="img-fluid" alt="">
+						<h4 class="text-light mb-3">Contact</h4>
+							<p>Address: Gwangju, Republic of Korea</p>
+							<p>Email: ShareByuS@gmail.com</p>
+							<p>Do you want to share it with us?</p>
+						<img src="img/payment.png" class="img-fluid" alt="">
 						</div>
 					</div>
 				</div>

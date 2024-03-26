@@ -15,6 +15,8 @@ public interface MemberMapper {
 
 	public member memberCheck(member member);
 
+	public void approveInsert(member member);
+
 
 
 	
