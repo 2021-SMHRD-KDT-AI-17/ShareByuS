@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="kr.smhrd.mapper.G_BoardMapper">
+
+	
+	<insert id="insertBoard" parameterType="kr.smhrd.entity.g_board">
+	INSERT INTO g_board VALUES
+	(1,#{g_title},'g_writer 1','email 1', #{g_img1}, 'g_img2 1', 'g_img3 1', #{g_content}, NOW(), NOW(), #{category})
+	</insert>
+	
+	
+	
+</mapper>
