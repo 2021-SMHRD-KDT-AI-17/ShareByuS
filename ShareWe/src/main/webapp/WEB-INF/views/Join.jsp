@@ -1,3 +1,4 @@
+<%@page import="java.util.List"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
@@ -173,7 +174,17 @@
 								</div>
 							</div>
 						</c:if>
-
+						
+						<c:if test="${type eq 'kakao'}">
+							<div class="form-item">
+								<div class="form-item">
+									<input type="text" class="form-control" placeholder="카카오회원" readonly >
+									<input type="hidden" value="3" name="type">
+								</div>
+							</div>
+						</c:if>
+						
+						<c:if test="${type eq 'company' || type eq 'general'}">
 						<div class="form-item">
 							<label class="form-label my-3">이메일<sup>*</sup></label> 
 							<br>
@@ -188,7 +199,32 @@
 								<span id="resultCheck"></span>
 							</div>							
 						</div>
+						</c:if>
 						
+						<c:if test="${type eq 'kakao'}">
+						<div class="form-item">
+							<label class="form-label my-3">이메일<sup>*</sup></label> 
+							<br>
+							<div style="align-content: middle !important;">
+								<% String kakoInfo = request.getParameter("kakaoInfo");
+								   String[] info = kakoInfo.split(",");
+								%>
+							
+								<input type="text" class="form-control" placeholder="카카오회원" name="email" id="inputEmail" 
+									value="<%=info[2] %>"
+									style="width: 580px !important; display: inline !important;">
+								
+								<input type="button" value="Email 중복체크" onclick="checkEmail()" 
+									class="btn border-secondary py-2 px-2  text-primary"
+									style="width: 150px !important; height: 36px !important;  display: inline !important; padding:4px !important;">
+								<br>
+								<span id="resultCheck"></span>
+							</div>							
+						</div>
+						</c:if>
+						
+						
+						<c:if test="${type eq 'company' || type eq 'general'}">
 						<div class="form-item">
 							<label class="form-label my-3">비밀번호<sup>*</sup></label> <input
 								type="password" class="form-control" name="pw">
@@ -197,11 +233,14 @@
 							<label class="form-label my-3">비밀번호 확인<sup>*</sup></label> 
 							<input type="password" class="form-control">
 						</div>
+						</c:if>
+						
 						<div class="form-item">
 							<label class="form-label my-3">이름<sup>*</sup></label> <input
 								type="text" class="form-control" name="name">
 						</div>
-
+						
+						
 						<c:if test="${type eq 'company'}">
 							<div class="form-item">
 								<label class="form-label my-3">기업이름<sup>*</sup></label> <input
@@ -215,6 +254,14 @@
 									type="text" class="form-control" name="nick">
 							</div>
 						</c:if>	
+						
+						<c:if test="${type eq 'kakao'}">
+							<div class="form-item">
+								<label class="form-label my-3">닉네임<sup>*</sup></label>
+								<input type="text" class="form-control" name="nick" value="${account_email}">
+							</div>
+						</c:if>	
+						
 					
 						<div class="form-item">
 							<label class="form-label my-3">도로명 주소 <sup>*</sup></label> <input
@@ -243,7 +290,7 @@
 			</form>
 		</div>
 	</div>
-	<!-- 로그인 End -->
+	<!-- 회원가입 End -->
 
 
 	<!-- 메인 페이지 하단 -->
@@ -314,12 +361,8 @@
 			
 			
 		}
-			
-	
-	
-	
 	</script>
-	
+    		
 	
 </body>
 

@@ -9,4 +9,8 @@
 	<select id="memberCheck" parameterType="kr.smhrd.entity.member" resultType="kr.smhrd.entity.member">
 		select * from member where email=#{email} and pw=#{pw}
 	</select>
+	
+	<select id="memberCheck2" parameterType="kr.smhrd.entity.member" resultType="kr.smhrd.entity.member">
+		select * from member where email=#{email} and pw is null
+	</select>
 </mapper>

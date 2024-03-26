@@ -15,7 +15,7 @@ select * from g_board;
 
 select email from member;
 
-
+select * from member;
 
 
 =======

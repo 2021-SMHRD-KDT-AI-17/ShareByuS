@@ -14,6 +14,8 @@ public interface MemberMapper {
 	public member checkEmail(String inputEmail);
 
 	public member memberCheck(member member);
+	
+	public member memberCheck2(member member);
 
 
 
