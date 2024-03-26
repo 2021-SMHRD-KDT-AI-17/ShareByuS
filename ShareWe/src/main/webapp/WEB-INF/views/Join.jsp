@@ -41,6 +41,9 @@
 
 </head>
 
+
+
+
 <body>
 
 	<!-- Spinner Start -->
@@ -174,8 +177,18 @@
 						<div class="form-item">
 							<label class="form-label my-3">이메일<sup>*</sup></label> 
 							<br>
-							<input type="text" class="form-control" placeholder="Ex) example@sharwe.com" name="email">
+							<div style="align-content: middle !important;">
+								<input type="text" class="form-control" placeholder="Ex) example@shareWe.com" name="email" id="inputEmail" 
+									style="width: 580px !important; display: inline !important;">
+								
+								<input type="button" value="Email 중복체크" onclick="checkEmail()" 
+									class="btn border-secondary py-2 px-2  text-primary"
+									style="width: 150px !important; height: 36px !important;  display: inline !important; padding:4px !important;">
+								<br>
+								<span id="resultCheck"></span>
+							</div>							
 						</div>
+						
 						<div class="form-item">
 							<label class="form-label my-3">비밀번호<sup>*</sup></label> <input
 								type="password" class="form-control" name="pw">
@@ -223,7 +236,7 @@
 
 						<div
 							class="row g-4 text-center align-items-center justify-content-center pt-4">
-							<input type="submit" value="회원가입" class="btn border-secondary py-3 px-4 text-uppercase w-50 text-primary">
+							<input type="submit" value="회원가입" class="btn border-secondary py-3 px-4 text-uppercase w-50 text-primary" >
 						</div>
 					</div>
 				</div>
@@ -269,6 +282,47 @@
 
 	<!-- Template Javascript -->
 	<script src="resources/asset/js/main.js"></script>
+	
+	<!-- script -->
+	
+	<script type="text/javascript">
+		function checkEmail(){
+			var inputEmail = $('#inputEmail').val();
+			console.log(inputEmail);
+			
+			$.ajax(
+			{
+				url : 'emailCheck',
+				// 요청 데이터 형태 -> JSON
+				data : {'inputEmail' : inputEmail},
+				// 요청방식 
+				type : 'get',
+				
+				success : function(data){
+					if(data == 1) {
+						$('#resultCheck').text('*사용가능한 이메일입니다.')
+					}else {
+						$('#resultCheck').text('*사용 불가능한 이메일입니다.')
+					}
+				},
+				error : function() {
+					alert("에러")
+				}
+			}
+			
+			)
+			
+			
+		}
+			
+	
+	
+	
+	</script>
+	
+	
 </body>
+
+
 
 </html>

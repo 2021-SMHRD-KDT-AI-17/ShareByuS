@@ -165,14 +165,40 @@
 						<hr>
 					</div>
 					
-				
+				<div class="col-md-12 col-lg-6 col-xl-7" align="left">
+						<h4 class="form-label my-3">* 상품 명</h4>
+						<br>
+						<div class="form-item">
+							<input type="text" name="c_title" style="width: 600px"
+								class="border-0 border-bottom rounded me-5 py-3 mb-4"
+								placeholder="상품 명을 입력해주세요">
+						</div>
+						<hr>
+					</div>
+					
+					
+					<div class="col-md-12 col-lg-6 col-xl-7" align="left">
+						<h4 class="form-label my-3">* 카테고리</h4>
+						<br>
+						<div class="form-item">
+							<div class="col-sm-8">
+								<select name="category" id="a4" class="form-control">
+									<option value="1">채소</option>
+									<option value="2">과일</option>
+									<option value="3">식품</option>
+									<option value="3">생필품</option>
+								</select>
+							</div>
+							<hr>
+						</div>
+					</div>
 				
 				<div class="col-md-12 col-lg-6 col-xl-7" align="left">
 						<h4 class="form-label my-3">* 상품 가격</h4>
 						<br>
 						<div class="form-item">
 
-							<input type="text" placeholder="숫자만 입력해주세요"
+							<input type="text" name="price" placeholder="숫자만 입력해주세요"
 							class="border-0 border-bottom rounded me-5 py-3 mb-4"
 								oninput=" this.value = this.value.replace(/[^0-9.]/g, '').replace(/(\..*)\./g, '$1');" 
 								onkeyup="inputNumberFormat(this);"/>
@@ -206,18 +232,49 @@
 						</div>
 						
 					</div>
-				
-				
-				<div class="col-md-12 col-lg-6 col-xl-7" align="left">
-						<h4 class="form-label my-3">* 상품 명</h4>
+					
+					<div class="col-md-12 col-lg-6 col-xl-7" align="left">
+						<h4 class="form-label my-3">* 재고 수량</h4>
 						<br>
 						<div class="form-item">
-							<input type="text" name="c_title" style="width: 600px"
-								class="border-0 border-bottom rounded me-5 py-3 mb-4"
-								placeholder="상품 명을 입력해주세요">
+
+							<input type="text" name="c_ea" placeholder="숫자만 입력해주세요"
+							class="border-0 border-bottom rounded me-5 py-3 mb-4"
+								oninput=" this.value = this.value.replace(/[^0-9.]/g, '').replace(/(\..*)\./g, '$1');" 
+								onkeyup="inputNumberFormat(this);"/>
+								<span>개</span>
+								<hr>
+								
+								<script type="text/javascript">
+								function comma(str) {
+							        str = String(str);
+							        return str.replace(/(\d)(?=(?:\d{3})+(?!\d))/g, '$1,');
+							    }
+
+							    function uncomma(str) {
+							        str = String(str);
+							        return str.replace(/[^\d]+/g, '');
+							    } 
+							    
+							    function inputNumberFormat(obj) {
+							        obj.value = comma(uncomma(obj.value));
+							    }
+							    
+							    function inputOnlyNumberFormat(obj) {
+							        obj.value = onlynumber(uncomma(obj.value));
+							    }
+							    
+							    function onlynumber(str) {
+								    str = String(str);
+								    return str.replace(/(\d)(?=(?:\d{3})+(?!\d))/g,'$1');
+								}
+								</script>
 						</div>
-						<hr>
+						
 					</div>
+				
+				
+				
 					
 					
 					<div class="col-md-12 col-lg-6 col-xl-7" align="left">
@@ -338,31 +395,9 @@
 
 </script>
 
-
-
-
 						</div>
 						<hr>
-					</div>
-					
-
-					<div class="col-md-12 col-lg-6 col-xl-7" align="left">
-						<h4 class="form-label my-3">* 카테고리</h4>
-						<br>
-						<div class="form-item">
-							<div class="col-sm-8">
-								<select name="category" id="a4" class="form-control">
-									<option value="1">채소</option>
-									<option value="2">과일</option>
-									<option value="3">식품</option>
-									<option value="3">생필품</option>
-								</select>
-							</div>
-							<hr>
-						</div>
-					</div>
-
-
+					</div>					
 					
 					<div class="col-md-12 col-lg-6 col-xl-7" align="left">
 						<h4 class="form-label my-3">* 상품설명</h4>
@@ -372,16 +407,73 @@
 								style="border-radius: 5px" placeholder="상품 가격 및 거래방법 등 작성"></textarea>
 						</div>
 						<hr>
+						
+					</div>
+					
+					<div class="col-md-12 col-lg-6 col-xl-7" align="left">
+					<h4 class="form-label my-3">위치 설정</h4>
+					<input type="text" id="place" style="width: 300px"
+								class="border-0 border-bottom rounded me-5 py-3 mb-4"
+								placeholder="주소를 입력해주세요"> 
+					<button class="border-0 border-bottom rounded me-5 py-3 mb-4" onclick="search()">검색</button>
+					<div id="map" style="width:100%;height:350px;"></div>
+					</div>
 
-						<div class="col-md-12 col-lg-6 col-xl-7" align="right"
+<script type="text/javascript" src="//dapi.kakao.com/v2/maps/sdk.js?appkey=db0a7dd04d902c908bc5aaa345eaa55c&libraries=services"></script>
+<script>
+
+var myPlace = document.getElementById('place').value
+var mapContainer = document.getElementById('map'), // 지도를 표시할 div 
+    mapOption = {
+        center: new kakao.maps.LatLng(33.450701, 126.570667), // 지도의 중심좌표
+        level: 3 // 지도의 확대 레벨
+    };  
+
+// 지도를 생성합니다    
+var map = new kakao.maps.Map(mapContainer, mapOption); 
+
+// 주소-좌표 변환 객체를 생성합니다
+var geocoder = new kakao.maps.services.Geocoder();
+
+function search(){
+	geocoder.addressSearch('myPlace', function(result, status) {
+
+	    // 정상적으로 검색이 완료됐으면 
+	     if (status === kakao.maps.services.Status.OK) {
+
+	        var coords = new kakao.maps.LatLng(result[0].y, result[0].x);
+
+	        // 결과값으로 받은 위치를 마커로 표시합니다
+	        var marker = new kakao.maps.Marker({
+	            map: map,
+	            position: coords
+	        });
+
+	        // 인포윈도우로 장소에 대한 설명을 표시합니다
+	        var infowindow = new kakao.maps.InfoWindow({
+	            content: '<div style="width:150px;text-align:center;padding:6px 0;">픽업장소</div>'
+	        });
+	        infowindow.open(map, marker);
+
+	        // 지도의 중심을 결과값으로 받은 위치로 이동시킵니다
+	        map.setCenter(coords);
+	    } 
+	});
+}
+</script>
+<script type="text/javascript">
+
+</script>
+
+<div class="col-md-12 col-lg-6 col-xl-7" align="right"
 							style="margin-left: 100px">
 							<input class="border-0 border-bottom rounded me-5 py-3 mb-4"
 								style="width: 100px" type="reset" value="초기화"> <input
 								class="border-0 border-bottom rounded me-5 py-3 mb-4"
 								style="width: 100px" type="submit" value="등록하기">
 						</div>
-
-					</div>
+					
+					
 				</div>
 		</div>
 	</div>

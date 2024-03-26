@@ -1,3 +1,4 @@
+<%@page import="kr.smhrd.entity.member"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
 
@@ -40,6 +41,10 @@
 	</head>
 
 	<body>
+	
+	<%
+		member loginMember = (member)session.getAttribute("loginMember");
+	%>
 		
 		<!-- Spinner Start -->
 		<div id="spinner"
@@ -58,9 +63,17 @@
                         <small class="me-3"></small>
                     </div>
 					<div class="top-link pe-2">
-						<a href="goLogin" class="text-white"><small class="text-white mx-2">로그인</small>/</a>
-						<a href="goMemberType" class="text-white"><small class="text-white mx-2">회원가입</small></a>
-						<a href="#" class="text-white">/<small class="text-white ms-2">회원관리</small></a>
+						<%if (loginMember == null) {%>
+							<a href="goLogin" class="text-white"><small class="text-white mx-2">로그인</small>/</a>
+							<a href="goMemberType" class="text-white"><small class="text-white mx-2">회원가입</small></a>
+						<%}else {%>
+							<span><small class="text-white mx-2"><%=loginMember.getNick() %>님 환영합니다.</small></span>
+							<%if(loginMember.getEmail().equals("admin")) {%>
+								<a href="#" class="text-white"><small class="text-white ms-2">회원관리</small></a>
+							<%} %>
+							<a href="memberLogout" class="text-white"><small class="text-white mx-2">로그아웃</small></a>
+						<%} %>
+						
 					</div>
 				</div>
 			</div>
@@ -86,6 +99,7 @@
 								<div class="nav-item dropdown">
 									<a href="#" class="nav-link dropdown-toggle"
 										data-bs-toggle="dropdown">Pages</a>
+									
 									<!-- 카테고리별 페이지 이동 -->
 									<div class="dropdown-menu m-0 bg-secondary rounded-0">
 										<a href="cart.html" class="dropdown-item">식품</a>
@@ -188,7 +202,6 @@
 			</div>
 		</div>
 		<!-- 메인 이미지 슬라이드 div End -->
-		<a href="goJoinSuccess"><button>goJoinSuccess</button></a>
 	
 		<!-- Share We 장점 Start -->
 		<div class="container-fluid featurs py-5">
