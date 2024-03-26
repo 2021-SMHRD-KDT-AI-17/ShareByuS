@@ -13,22 +13,23 @@ import lombok.ToString;
 @Setter
 @ToString
 @NoArgsConstructor
+@RequiredArgsConstructor
 public class c_board {
 
 	// 게시글 고유번호 
     private int c_num;
 
     // 게시글 제목
-    private String c_title;
+    @NonNull private String c_title;
     
     // 작성자 
-    private String c_writer;
+    @NonNull private String c_writer;
 
     // 이메일 
-    private String email;
+    @NonNull private String email;
 
     // 이미지1 
-    private String c_img1;
+    @NonNull private String c_img1;
 
     // 이미지2 
     private String c_img2;
@@ -37,7 +38,7 @@ public class c_board {
     private String c_img3;
 
     // 내용 
-    private String c_content;
+    @NonNull private String c_content;
 
     // 작성날짜 
     private String c_w_date;
@@ -46,26 +47,26 @@ public class c_board {
     private String c_f_date;
 
     // 카테고리 
-    private String category;
+    @NonNull private String category;
 
     // 픽업장소 
     private String place;
 
     // 상품가격 
-    private int price;
+    @NonNull private int price;
 
     // 옵션1 
-    private double c_opt1;
+    @NonNull private double c_opt1;
 
     // 옵션2 
-    private double c_opt2;
+    @NonNull private double c_opt2;
 
     // 옵션3 
-    private double c_opt3;
+    @NonNull private double c_opt3;
 
     // 옵션4 
     private double c_opt4;
 
     // 상품등록갯수 
-    private int c_ea;
+    @NonNull private int c_ea;
 }
