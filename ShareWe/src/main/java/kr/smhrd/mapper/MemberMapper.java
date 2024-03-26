@@ -15,5 +15,7 @@ public interface MemberMapper {
 
 	public member memberCheck(member member);
 
+
+
 	
 }
