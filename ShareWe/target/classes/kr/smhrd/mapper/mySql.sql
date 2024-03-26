@@ -18,7 +18,7 @@ select email from member;
 alter table g_board drop g_img2;
 alter table g_board drop g_img3;
 
-
+select * from member;
 
 
 =======

@@ -138,7 +138,7 @@
             <div class="container py-5">
                 <div class="row g-4 justify-content-center">
 					<div class="col-md-6 col-lg-3">
-						<a href="goJoin?type=kakao">
+						<a href="javascript:kakaoLogin()">
 							<div class="featurs-item text-center rounded bg-light p-4">
 								<div
 									class="featurs-content">
@@ -216,5 +216,76 @@
     <!-- Template Javascript -->
     <script src="resources/asset/js/main.js"></script>
     </body>
+    
+    <!-- 카카오 로그인 > 회원가입 -->
+	<script src="https://developers.kakao.com/sdk/js/kakao.js"></script>
+	<script>
+	Kakao.init('2bc6b3bd3fef80118728da5119ebd261');
+	console.log(Kakao.isInitialized()); // sdk초기화여부판단
+	
+	//카카오로그인
+	function kakaoLogin() {
+	    Kakao.Auth.loginForm({
+	      scope: "profile_nickname, account_email",
+	      success: function (response) {
+	        Kakao.API.request({
+	          url: '/v2/user/me',
+	          success: function (response) {
+	        	  console.log(response)
+	        	  
+	        	  const kakao_account = response.kakao_account;
+                  console.log(kakao_account);
+                  
+                  var id = response.id;
+	      	      var profile_nickname = response.kakao_account.profile.nickname;
+	      	      var account_email = response.kakao_account.email;
+	      	      localStorage.setItem("nickname", profile_nickname);
+	      	      localStorage.setItem("id", id);
+	      	      localStorage.setItem("email", account_email);
+	      	      
+	      	      let kakaoInfo = [];
+	      	      kakaoInfo.push(id, profile_nickname, account_email);
+	      	   	  //for(let i=0; i<kakaoInfo.length; i++){
+	      	      //       console.log(arr[i]);}
+	      	      
+		      	   	let f = document.createElement('form');
+	                let obj;
+	        		    obj = document.createElement('input');
+	        		    obj.setAttribute('type', 'hidden');
+	        		    obj.setAttribute('name', 'kakaoInfo');
+	        		    obj.setAttribute('value', kakaoInfo);
+	        		    
+	        		    f.appendChild(obj);
+	        		    f.setAttribute('method', 'post');
+	        		    f.setAttribute('action', 'goJoin?type=kakao');
+	        		    document.body.appendChild(f);
+	        		    f.submit();
+                  
+                  
+                 	//if(kakao_account.email != null){
+                	  //window.location.href = "goJoin?type=kakao"
+                  	//}
+                  
+	          },
+	          fail: function (error) {
+	            console.log(error)
+	          },
+	        })
+	      },
+	      fail: function (error) {
+	        console.log(error)
+	      },
+	    })
+	  }
+	
+	
+		    
+		    
+		    
+		
+
+
+    </script>
+    
 
 </html>

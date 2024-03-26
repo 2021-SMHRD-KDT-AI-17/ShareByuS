@@ -13,6 +13,7 @@ import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
+import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
@@ -48,6 +49,7 @@ public class MemberController {
 
 		return "JoinSuccess";
 	}
+
 	
 	// 로그인 메소드
 	@RequestMapping("/memberCheck")
@@ -64,7 +66,24 @@ public class MemberController {
 			return "Main";
 		}
 	}
+	
+	
+	// 카카오로그인 메소드
+		@RequestMapping("/memberCheck2")
+		public String memberSelect2(member member, HttpSession session, Model model) {
+			
+			member loginMember = memberMapper.memberCheck2(member);
+			if(loginMember == null) {
+				model.addAttribute("fail", "fail");
+				
+				return "Login";
+			}else {
+				session.setAttribute("loginMember", loginMember);
+				return "Main";
+		}
+	}
 
+		
 	// 로그아웃 메소드
 	@RequestMapping("/memberLogout")
 	public String memberLogout(HttpSession session) {

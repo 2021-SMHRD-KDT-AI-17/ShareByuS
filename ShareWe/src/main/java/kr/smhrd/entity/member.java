@@ -3,8 +3,6 @@ package kr.smhrd.entity;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
-import lombok.NonNull;
-import lombok.RequiredArgsConstructor;
 import lombok.Setter;
 import lombok.ToString;
 
@@ -13,7 +11,7 @@ import lombok.ToString;
 @Getter
 @Setter
 @ToString
-public class member {
+public class member{
 	
 	// 회원 식별번호 
     private int type;
