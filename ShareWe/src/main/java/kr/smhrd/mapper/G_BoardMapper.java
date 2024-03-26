@@ -11,6 +11,8 @@ public interface G_BoardMapper {
 
 	int insertBoard(g_board g_board);
 
+	List<g_board> getGBoard();
+
 	
 
 	

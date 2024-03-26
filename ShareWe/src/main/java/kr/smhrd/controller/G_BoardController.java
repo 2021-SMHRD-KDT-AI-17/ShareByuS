@@ -1,13 +1,18 @@
 package kr.smhrd.controller;
 
 import java.io.IOException;
+import java.util.List;
 
+import javax.servlet.ServletRequest;
 import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpSession;
 
 import org.apache.ibatis.javassist.compiler.ast.Member;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
+import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestParam;
 
 import com.oreilly.servlet.MultipartRequest;
 import com.oreilly.servlet.multipart.DefaultFileRenamePolicy;
@@ -27,21 +32,26 @@ public class G_BoardController {
 	private MemberMapper memberMapper;
 	
 	//shop.jsp로 이동
-	@RequestMapping("/goShop")
-	public String goShop() {
+	@RequestMapping("/goGeneral")
+	public String goGeneral(Model model) {
+		List<g_board> gboard_list = g_boardMapper.getGBoard();
+		model.addAttribute("gboard_list", gboard_list);
 		return "Shop";
 	}
 	
 	
-//	 게시글작성
+	//게시글작성
 	@RequestMapping("/gBoardInsert")
-		public String gBoardInsert( g_board g_board, HttpServletRequest request) {
+		public String gBoardInsert(  g_board g_board, HttpSession session, HttpServletRequest request) {
 		String path = request.getRealPath("resources/g_Image");
 		System.out.println(path);
 		int size = 1024*1024*10;
 		String encoding = "UTF-8";
 		
 		DefaultFileRenamePolicy rename = new DefaultFileRenamePolicy();
+		member loginMember = (member)session.getAttribute("loginMember");
+		String email = loginMember.getEmail();
+		
 		
 		try {
 			MultipartRequest multi= new MultipartRequest(request,path,size, encoding, rename);
@@ -51,7 +61,8 @@ public class G_BoardController {
 			String category = multi.getParameter("category");
 			
 			
-			g_board = new g_board(g_title, g_img1, g_content, category);
+			
+			g_board = new g_board(g_title, email, g_img1, g_content, category);
 			System.out.println(g_board.toString());
 		} catch (IOException e) {
 			e.printStackTrace();

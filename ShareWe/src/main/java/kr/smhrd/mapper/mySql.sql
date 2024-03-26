@@ -1,5 +1,4 @@
 select * from member;
-<<<<<<< HEAD
 select * from board
 
 create table gBoard(
@@ -14,5 +13,12 @@ create table gBoard(
 select * from g_board;
 
 select * from member;
+select email from member;
+
+alter table g_board drop g_img2;
+alter table g_board drop g_img3;
+
+
+
 
 select * from approve;
