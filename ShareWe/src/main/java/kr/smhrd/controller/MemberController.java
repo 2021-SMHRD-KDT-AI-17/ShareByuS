@@ -13,6 +13,7 @@ import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
+import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
@@ -38,16 +39,35 @@ public class MemberController {
 	@RequestMapping("/memberInsert")
 	public String memberInsert(member member, Model model) {
 		// System.out.println(member.toString());
+//		if(member.getType() == 1) {
+//			memberMapper.approveInsert(member);
+//		}
+		
 		memberMapper.memberInsert(member);
-		// model 객체에 저장하여 다음 페이지에 넘긴다!
-
-		// model에 저장한 데이터는 request안에 포함되므로
-		// 다음 페이지에서 불러올 때는 request 객체를 사용하여 불러온다!
 		model.addAttribute("email", member.getEmail());
 
 		return "JoinSuccess";
 	}
-//
+	
+	// 로그인 메소드
+	@RequestMapping("/memberCheck")
+	public String memberSelect(member member, HttpSession session) {
+		
+		member loginMember = memberMapper.memberCheck(member);
+		
+		session.setAttribute("loginMember", loginMember);
+		
+		return "Main";
+	}
+
+	// 로그아웃 메소드
+	@RequestMapping("/memberLogout")
+	public String memberLogout(HttpSession session) {
+		session.invalidate();
+		return "Main";
+	}
+	
+	
 //	// 로그인 메소드
 //	@RequestMapping("/memberSelect")
 //	public String memberSelect(Member member, HttpSession session) {
