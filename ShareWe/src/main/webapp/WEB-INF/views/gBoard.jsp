@@ -1,3 +1,4 @@
+<%@page import="kr.smhrd.entity.member"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
 
@@ -41,6 +42,10 @@
 
 <body>
 
+<%
+		member loginMember = (member)session.getAttribute("loginMember");
+	%>
+
 	<!-- Spinner Start -->
 	<div id="spinner"
 		class="show w-100 vh-100 bg-white position-fixed translate-middle top-50 start-50  d-flex align-items-center justify-content-center">
@@ -52,17 +57,26 @@
 	<!-- Navbar start -->
 	<div class="container-fluid fixed-top">
 		<div class="container topbar bg-primary d-none d-lg-block">
-			<div class="d-flex justify-content-between">
-				<div class="top-info ps-2">
-					<small class="me-3"></small> <small class="me-3"></small>
-				</div>
-				<div class="top-link pe-2">
-					<a href="goMain" class="text-white"><small
-						class="text-white mx-2">홈</small>|</a> <a href="goLogin"
-						class="text-white"><small class="text-white mx-2">로그인</small></a>
+				<div class="d-flex justify-content-between">
+					<div class="top-info ps-2">
+                        <small class="me-3"></small>
+                        <small class="me-3"></small>
+                    </div>
+					<div class="top-link pe-2">
+						<%if (loginMember == null) {%>
+							<a href="goLogin" class="text-white"><small class="text-white mx-2">로그인</small>/</a>
+							<a href="goMemberType" class="text-white"><small class="text-white mx-2">회원가입</small></a>
+						<%}else {%>
+							<span><small class="text-white mx-2"><%=loginMember.getNick() %>님 환영합니다.</small></span>
+							<%if(loginMember.getEmail().equals("admin")) {%>
+								<a href="#" class="text-white"><small class="text-white ms-2">회원관리</small></a>
+							<%} %>
+							<a href="memberLogout" class="text-white"><small class="text-white mx-2">로그아웃</small></a>
+						<%} %>
+						
+					</div>
 				</div>
 			</div>
-		</div>
 		<div class="container px-0">
 			<nav class="navbar navbar-light bg-white navbar-expand-xl">
 				<a href="goMain" class="navbar-brand"><h1

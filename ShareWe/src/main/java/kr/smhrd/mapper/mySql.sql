@@ -15,6 +15,9 @@ select * from g_board;
 
 select email from member;
 
+alter table g_board drop g_img2;
+alter table g_board drop g_img3;
+
 
 
 
