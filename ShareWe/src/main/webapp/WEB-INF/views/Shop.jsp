@@ -301,6 +301,8 @@
                                     </div>
                                 </div>
                             </div>
+                            
+                        <c:forEach item="${gboard_list}" var="g" varStatus="gb">   
                             <div class="col-lg-9">
                                 <div class="row g-4 justify-content-center">
                                     <div class="col-md-6 col-lg-6 col-xl-4">
@@ -310,16 +312,19 @@
                                             </div>
                                             <div class="text-white bg-secondary px-3 py-1 rounded position-absolute" style="top: 10px; left: 10px;">Fruits</div>
                                             <div class="p-4 border border-secondary border-top-0 rounded-bottom">
-                                                <h4 name="title"></h4>
-                                                <h2 name="writer"></h2>
-                                                <p name="content">Lorem ipsum dolor sit amet consectetur adipisicing elit sed do eiusmod te incididunt</p>
+                                                <h4>${gb.title}</h4>
+                                                <h2>${gb.writer}</h2>
+                                                <p>${gb.content}</p>
                                                 <div class="d-flex justify-content-between flex-lg-wrap">
-                                                    <p class="text-dark fs-5 fw-bold mb-0">$4.99 / kg</p>
-                                                    <a href="#" class="btn border border-secondary rounded-pill px-3 text-primary"><i class="fa fa-shopping-bag me-2 text-primary"></i> Add to cart</a>
+                                                	<!-- 찜버튼(하트) 기능 여기 아래에 -->
+                                                	
+                                                    <!-- <p class="text-dark fs-5 fw-bold mb-0">$4.99 / kg</p> -->
+                                                    <!-- <a href="#" class="btn border border-secondary rounded-pill px-3 text-primary"><i class="fa fa-shopping-bag me-2 text-primary"></i> Add to cart</a> -->
                                                 </div>
                                             </div>
                                         </div>
                                     </div>
+                                    
                                     <div class="col-md-6 col-lg-6 col-xl-4">
                                         <div class="rounded position-relative fruite-item">
                                             <div class="fruite-img">
