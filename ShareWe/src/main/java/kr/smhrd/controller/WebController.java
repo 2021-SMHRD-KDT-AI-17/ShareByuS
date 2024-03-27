@@ -93,17 +93,8 @@ public class WebController {
 //		return "reportSuccess";
 //	}
 
+	
 
-	
-//	@RequestMapping("/goMyPage")
-//	public String goMyPage() {
-//		return "MyPage";
-//	}
-	
-	@RequestMapping("/goMyPage")
-	public String goMyPage() {
-		return "myPage";
-	}
 	
 	
 
