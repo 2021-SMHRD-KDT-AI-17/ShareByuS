@@ -1,6 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
-
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <!DOCTYPE html>
 <html lang="en">
 
@@ -37,6 +37,39 @@
 
 <!-- Template Stylesheet -->
 <link href="resources/asset/css/sw_style.css" rel="stylesheet">
+
+<style>
+#topMenu {
+	height: 30px;
+	width: 850px;
+}
+
+#topMenu ul li {
+	list-style: none;
+	color: white;
+	background-color: #009223;
+	float: left;
+	line-height: 30px;
+	vertical-align: middle;
+	text-align: center;
+}
+
+#topMenu .menuLink {
+	text-decoration: none;
+	color: white;
+	display: block;
+	width: 150px;
+	font-size: 12px;
+	font-weight: bold;
+	font-family: "Trebuchet MS", Dotum, Arial;
+}
+
+#topMenu .menuLink:hover {
+	color: black;
+	background-color: #badc58;
+}
+</style>
+
 </head>
 
 <body>
@@ -134,6 +167,32 @@
 	<!-- Modal Search End -->
 
 
+	<!-- Modal Search Start -->
+	<div class="modal fade" id="searchModal" tabindex="-1"
+		aria-labelledby="exampleModalLabel" aria-hidden="true">
+		<div class="modal-dialog modal-fullscreen">
+			<div class="modal-content rounded-0">
+				<div class="modal-header">
+					<h5 class="modal-title" id="exampleModalLabel">Search by
+						keyword</h5>
+					<button type="button" class="btn-close" data-bs-dismiss="modal"
+						aria-label="Close"></button>
+				</div>
+				<div class="modal-body d-flex align-items-center">
+					<div class="input-group w-75 mx-auto d-flex">
+						<input type="search" class="form-control p-3"
+							placeholder="keywords" aria-describedby="search-icon-1">
+						<span id="search-icon-1" class="input-group-text p-3"><i
+							class="fa fa-search"></i></span>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+	<!-- Modal Search End -->
+
+
+
 	<!-- Single Page Header start -->
 	<div class="container-fluid page-header py-5">
 		<h1 class="text-center text-white display-6">Shop</h1>
@@ -150,13 +209,15 @@
 		<div class="row g-4 justify-content-center text-center">
 			<h2>Our Menu</h2>
 		</div>
-
+		
+		
+		<!-- 카테고리 -->
 		<ul class="filters_menu">
-			<li class="active" data-filter="*">All</li>
-			<li data-filter="*">Burger</li>
-			<li data-filter="*">Pizza</li>
-			<li data-filter="*">Pasta</li>
-			<li data-filter="*">Fries</li>
+			<a href="goMain"><li>All</li></a>
+			<a href="goMain"><li>Burger</li></a>
+			<a href="goMain"><li>Pizza</li></a>
+			<a href="goMain"><li>Pasta</li></a>
+			<a href="goMain"><li>Fries</li></a>
 		</ul>
 
 		<div class="col-lg-9">
@@ -187,8 +248,9 @@
 			</div>
 		</div>
 	</div>
-
 	<!-- end food section -->
+
+	<!-- Fruits Shop End-->
 
 
 	<!-- 메인 페이지 하단 -->

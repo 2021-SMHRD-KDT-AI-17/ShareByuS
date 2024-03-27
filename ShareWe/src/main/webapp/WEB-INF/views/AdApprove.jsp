@@ -125,49 +125,54 @@
 
         <!-- Single Page Header start -->
         <div class="container-fluid page-header py-5">
-            <h1 class="text-center text-white display-6">관리페이지</h1>
+            <h1 class="text-center text-white display-6">기업 회원 승인</h1>
             <ol class="breadcrumb justify-content-center mb-0">
-                <li class="breadcrumb-item active text-white">Management page</li>
+                <li class="breadcrumb-item active text-white">corporate membership approval</li>
             </ol>
         </div>
         <!-- Single Page Header End -->
 
 
-        <!-- 관리페이지 유형 선택 Start -->
-        <div class="container-fluid py-5">
-            <div class="container py-5">
-                <div class="row g-4 justify-content-center">
+        <!-- 기업회원 승인 table -->
+	<div class="container-fluid py-5">
+		<div class="row g-4 justify-content-center">
+			<div class="row g-4 justify-content-center" style="width: 1000px !important;" >
+
+
+			
+					<table class="text-center">
+						<div class="featurs-content">
+							<tr style="font-size:20px; background-color: #bdc3c7; ">
+								<th>기업명</th>
+								<th>대표자</th>
+								<th>이메일</th>
+								<th>주소</th>
+								<th>승인여부</th>
+							</tr>
+							
+						<c:forEach items="${adApprove}" var="a" >
+							<tr>
+								<td>${a.nick }</td>
+								<td>${a.name }</a></td>
+								<td>${a.email }</td>
+								<td>${a.address}</td>
+								<td><button type="button" onclick="location.href='approveComplete?email=${a.email}'">승인</button></td>
+								
+
+								<%-- <c:if test="${loginMember.email eq 'admin' }">
+										<td><a href="deleteBoard?num=${b.num }">삭제</a></td>
+								</c:if> --%>
+							</tr>
+						</c:forEach>
+						</div>
+					</table>
+			
+			</div>
+		</div>
+	</div>
 	
-					<div class="col-md-6 col-lg-3">
-						<a href="goAdReport">
-							<div class="featurs-item text-center rounded bg-light p-4">
-								<div
-									class="featurs-content">
-									<i class="bi bi-person-circle"></i>
-								</div>
-								<div class="featurs-content text-center">
-									<p class="mb-0">신고회원 관리</p>
-								</div>
-							</div>
-						</a>
-					</div>
-					<div class="col-md-6 col-lg-3">
-						<a href="goAdApprove">
-							<div class="featurs-item text-center rounded bg-light p-4">
-								<div
-									class="featurs-content">
-									<i class="bi bi-building"></i>
-								</div>
-								<div class="featurs-content text-center">
-									<p class="mb-0">기업회원승인</p>
-								</div>
-							</div>
-						</a>
-					</div>
-				</div>
-            </div>
-        </div>
-        <!-- 회원가입 유형 End -->
+	
+	<!-- 회원가입 유형 End -->
 
 
 		<!-- 메인 페이지 하단 -->

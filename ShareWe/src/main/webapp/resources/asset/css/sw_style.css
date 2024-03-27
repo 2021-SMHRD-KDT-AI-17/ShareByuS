@@ -1,4 +1,14 @@
 /*** Spinner Start ***/
+ table {
+    width: 100%;
+    border-top: 1px solid #444444;
+    border-collapse: collapse;
+  }
+  th, td {
+    border-bottom: 1px solid #444444;
+    padding: 10px;
+  }
+
 #spinner {
 	opacity: 0;
 	visibility: hidden;
@@ -712,15 +722,13 @@ body.is-menu-visible #menu .inner {
     unicode-bidi: isolate;
 }
 
-#categoryBox .filters_menu li.active {
-    background-color: #222831;
-    color: #ffffff;
-}
 
 #categoryBox .filters_menu li {
     padding: 7px 25px;
     cursor: pointer;
+    border: 1px solid #009223;
     border-radius: 25px;
+    margin-right: 10px;
 }
 
 #categoryBox .filters_menu {

@@ -11,6 +11,7 @@ create table gBoard(
 );
 
 select * from g_board;
+select * from c_board;
 
 select * from member;
 select email from member;
@@ -22,3 +23,5 @@ select * from member;
 select * from g_board;
 
 select * from approve;
+
+delete from member where email= 'tpwlsdl';
