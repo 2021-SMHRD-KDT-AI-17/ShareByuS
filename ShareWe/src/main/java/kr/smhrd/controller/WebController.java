@@ -64,9 +64,6 @@ public class WebController {
 
 	@RequestMapping("/gocBoard")
 	public String gocBoard() {
-		
-		
-		
 		return "cBoard";
 	}
 	
@@ -80,16 +77,17 @@ public class WebController {
 		return "AdReport";
 	}
 	
+	
 	// 임시) 신고하기
 	@RequestMapping("/goReport")
 	public String goReport() {
 		return "report";
 	}
 	
-	@RequestMapping("/goReportSuccess")
-	public String goReportSuccess() {
-		return "reportSuccess";
-	}
+//	@RequestMapping("/goReportSuccess")
+//	public String goReportSuccess() {
+//		return "reportSuccess";
+//	}
 
 
 	

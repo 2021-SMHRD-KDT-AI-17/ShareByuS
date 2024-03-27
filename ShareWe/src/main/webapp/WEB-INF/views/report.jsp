@@ -151,7 +151,6 @@
 
 
 	<!-- 신고 Start -->
-	<form action="goReport" method="post">
 	<div class="container-fluid py-5">
 		<div class="container py-5">
 			<!-- <h1 class="mb-4 text-center">신고</h1> -->
@@ -162,57 +161,60 @@
 						<br>
 						<br>
 		
-		<form action="goReportSuccess" method="post">
+		<form action="reportInsert" method="post">
 		<fieldset>
 			<legend>신고하려는 사유를 선택해 주세요</legend>
 			
 			<table id="report_re" width="500">
-				<tr height></tr>
-	
+				<tr>
+				<td colspan="2">
+				
+				</td>
+				</tr>
+					
 				<tr height="60px">
-					<td></td>
-					<td></td>
-					<td><input type="checkbox" name="reason" value="부적절한 게시글">부적절한 게시글/리뷰에요.</td>
+				
+					<td align="right"><input type="checkbox" name="reason" value="부적절한 게시글"></td>
+					
+					<td>부적절한 게시글/리뷰에요.</td>
 				</tr>
 
 				<tr height="60px">
-					<td></td>
-					<td></td>
-					<td><input type="checkbox" name="reason" value="거래금지 품목">거래금지/위험한 물품을 나누고 있어요.</td>
+					<td align="right"><input type="checkbox" name="reason" value="거래금지 품목"></td>
+					<td>거래금지/위험한 물품을 나누고 있어요. </td>
 				</tr>
 
 				<tr height="60px">
-					<td></td>
-					<td></td>
-					<td><input type="checkbox" name="reason" value="거래중 분쟁발생">거래 중 분쟁이 발생했어요.</td>
-								</tr>
+					<td align="right"><input type="checkbox" name="reason" value="거래중 분쟁발생"></td>
+					<td> 거래 중 분쟁이 발생했어요.</td>
+					</tr>
 				
 				<tr height="60px">
-					<td></td>
-					<td></td>
-					<td><input type="checkbox" name="reason" value="사기의심">사기인 것 같아요.</td>
+					<td align="right"><input type="checkbox" name="reason" value="사기의심"></td>
+					<td> 사기인 것 같아요.</td>
 				</tr>
 				
 				<tr height="120px">
-					<td></td>
-					<td></td>
-					<td>
-					<input type="checkbox" id="checkon" name="reason" value="기타사유">다른 문제가 있어요.
+					<td align="right"><input type="checkbox" id="checkon" name="reason" value="기타사유"></td>
+					<td> 다른 문제가 있어요.
 					<br>
 					<textarea name="reason" cols="50" rows="3"></textarea>				
 					</td>
-						
-				</tr>		
+				</tr>
+				
+				<tr>
+				<td colspan="2">
+				
+				</td>
+				</tr>	
 			
-			</table>	
+			</table>
+				<input type="submit" value="신고하기">
 		</fieldset>
+		<br>
 		
-		<input type="submit" value="신고하기">
 	</form>
-
-	
-	
-					
+			
 	<!-- 신고 End -->
 
 

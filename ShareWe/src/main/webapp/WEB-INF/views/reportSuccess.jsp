@@ -137,21 +137,21 @@
 
 	<!-- Single Page Header start -->
 	
-	  	<div class="container-fluid page-header py-5" style="background-color: #FFFFFF !important">
+	  	<div class="container-fluid page-header py-5" style="background-color: #009223 !important">
 			<h1 class="text-center text-white display-6">⚠신고 완료⚠</h1>
 			<ol class="breadcrumb justify-content-center mb-0">
 				<li class="breadcrumb-item active text-white">Report Complete</li>
 			</ol>
 		</div>
 		
-		<%
-			String[] report_reason = request.getParameterValues("reason");%>
+		<%--
+			String[] report_reason = request.getParameterValues("reason");--%>
 			<br>
 			<h4 align="center">아래와 같은 사유로 신고를 완료하였습니다.</h4>	
-			<%for(String re : report_reason){%>
-				<p align="center"> <%out.print(re + " ");%> </p> 
+			<%--for(String re : report_reason){--%>
+				<p align="center"> <%--out.print(re + " ");--%> </p> 
 				
-			<% }%>
+			<%-- }--%>
 		
 	
 	
@@ -171,8 +171,6 @@
                              <div class="actions vertical">
 								<button type="button" onclick="location.href='goMain'" 
 									class="btn border-secondary py-3 px-4 text-uppercase w-50 text-primary" style="width: 200px !important; display: inline-block !important;">메인페이지로 이동</button></a>
-								<button type="button" onclick="location.href='goLogin'" 
-									class="btn border-secondary py-3 px-4 text-uppercase w-50 text-primary" style="width: 200px !important; display: inline-block !important;">로그인</button></a>
 							</div>
                         </div>
                     </div>
