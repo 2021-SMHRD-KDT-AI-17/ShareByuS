@@ -152,10 +152,10 @@
 							
 						<c:forEach items="${}" var="re" >
 							<tr>
-								<td>${a.nick }</td>
-								<td>${a.name }</a></td>
-								<td>${a.email }</td>
-								<td>${a.address}</td>
+								<td>${re.rp_num }</td>
+								<td>${re.name }</a></td>
+								<td>${re.email }</td>
+								<td>${re.address}</td>
 								<td>
 								<button type="button" onclick="location.href='approveComplete?email=${re.email}'">탈퇴</button>
 								<button type="button" onclick="location.href='approveComplete?email=${re.email}'">정지</button>
