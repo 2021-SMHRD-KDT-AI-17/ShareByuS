@@ -160,6 +160,11 @@
 						<h4 class="mb-3 text-secondary">100% Organic Foods</h4>
 						<h1 class="mb-5 display-3 text-primary">Organic Veggies &
 							Fruits Foods</h1>
+						
+						<!-- 신고 임시 버튼 -->
+						<a href="goReport"><button>신고하기</button></a>
+						<!-- 신고 임시 버튼 -->
+						
 						<div class="position-relative mx-auto">
 							<form action="search">
 								<input
