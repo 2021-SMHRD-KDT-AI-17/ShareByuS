@@ -81,6 +81,7 @@ public class WebController {
 	}
 	
 	// 임시) 신고하기
+<<<<<<< HEAD
 			@RequestMapping("/goReport")
 			public String goReport() {
 				return "report";
@@ -89,6 +90,17 @@ public class WebController {
 			public String goReportSuccess() {
 				return "reportSuccess";
 			}
+=======
+	@RequestMapping("/goReport")
+	public String goReport() {
+		return "report";
+	}
+	
+	@RequestMapping("/goReportSuccess")
+	public String goReportSuccess() {
+		return "reportSuccess";
+	}
+>>>>>>> branch 'main' of https://github.com/2021-SMHRD-KDT-AI-17/ShareByuS.git
 
 	
 //	@RequestMapping("/goMyPage")
