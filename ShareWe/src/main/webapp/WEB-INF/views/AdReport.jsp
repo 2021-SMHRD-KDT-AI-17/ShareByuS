@@ -150,13 +150,17 @@
 								<th>관리</th>
 							</tr>
 							
-						<c:forEach items="${adApprove}" var="a" >
+						<c:forEach items="${}" var="re" >
 							<tr>
 								<td>${a.nick }</td>
 								<td>${a.name }</a></td>
 								<td>${a.email }</td>
 								<td>${a.address}</td>
-								<td><button type="button" onclick="location.href='approveComplete?email=${a.email}'">승인</button></td>
+								<td>
+								<button type="button" onclick="location.href='approveComplete?email=${re.email}'">탈퇴</button>
+								<button type="button" onclick="location.href='approveComplete?email=${re.email}'">정지</button>
+								<button type="button" onclick="location.href='approveComplete?email=${re.email}'">해제</button>
+								</td>
 								
 
 								<%-- <c:if test="${loginMember.email eq 'admin' }">
