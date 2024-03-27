@@ -32,7 +32,7 @@ public class G_BoardController {
 	private MemberMapper memberMapper;
 	
 	@RequestMapping("/goShop")
-	public String gocBoard() {
+	public String goShop() {
 		return "Shop";
 	}
 	

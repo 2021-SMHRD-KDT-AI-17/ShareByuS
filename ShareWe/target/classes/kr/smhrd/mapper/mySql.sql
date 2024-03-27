@@ -10,14 +10,17 @@ create table gBoard(
 	primary key(num)
 );
 
+<<<<<<< HEAD
+=======
 select * from g_board;
+>>>>>>> branch 'main' of https://github.com/2021-SMHRD-KDT-AI-17/ShareByuS.git
 select * from c_board;
 
 select * from member;
 select email from member;
 
-alter table g_board drop g_img2;
-alter table g_board drop g_img3;
+alter table c_board drop c_img2;
+alter table c_board drop c_img3;
 
 select * from member;
 select * from g_board;
