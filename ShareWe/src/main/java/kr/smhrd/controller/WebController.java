@@ -64,9 +64,6 @@ public class WebController {
 
 	@RequestMapping("/gocBoard")
 	public String gocBoard() {
-		
-		
-		
 		return "cBoard";
 	}
 	
@@ -80,6 +77,25 @@ public class WebController {
 		return "AdReport";
 	}
 	
+	@RequestMapping("/goMyPage")
+	public String goMyPage(HttpSession session) {
+		member loginMember = (member)session.getAttribute("loginMember");
+		if(loginMember !=null) {
+			return "myPage";
+		}else {
+			
+		}return "Login";
+	}
+	
+	@RequestMapping("/goUpdateMember")
+	public String goUpdateMember(HttpSession session) {
+		member loginMember = (member)session.getAttribute("loginMember");
+		if(loginMember !=null) {
+			return "UpdateMember";
+		}else {
+			
+		}return "Login";
+	}
 	
 	
 	// 임시) 신고하기
@@ -88,18 +104,22 @@ public class WebController {
 		return "report";
 	}
 	
-	@RequestMapping("/goReportSuccess")
-	public String goReportSuccess() {
-		return "reportSuccess";
-	}
+//	@RequestMapping("/goReportSuccess")
+//	public String goReportSuccess() {
+//		return "reportSuccess";
+//	}
 
 	
+<<<<<<< HEAD
 //	@RequestMapping("/goMyPage")
 //	public String goMyPage() {
 //		return "MyPage";
 //	}
 	
 	
+=======
+
+>>>>>>> branch 'main' of https://github.com/2021-SMHRD-KDT-AI-17/ShareByuS.git
 	
 	
 

@@ -33,4 +33,15 @@
 	<delete id="delApprove" parameterType="String">
 		delete from approve where email=#{email}
 	</delete>
+	
+	<update id="memberUpdate" parameterType="kr.smhrd.entity.member">
+		update member set pw=#{pw}, name=#{name}, nick=#{nick}, address=#{address}, tel=#{tel} where email=#{email}
+	</update>
+	
+	<update id="updateNick" parameterType="kr.smhrd.entity.member">
+		update member set nick=#{nick} where email=#{email}
+	</update>
+	
+	
+	
 </mapper>

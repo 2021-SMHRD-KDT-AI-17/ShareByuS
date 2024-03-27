@@ -1,7 +1,3 @@
-<<<<<<< HEAD
-<%@page import="kr.smhrd.entity.g_board"%>
-=======
->>>>>>> branch 'main' of https://github.com/2021-SMHRD-KDT-AI-17/ShareByuS.git
 <%@page import="kr.smhrd.entity.member"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
@@ -42,54 +38,12 @@
 
 <!-- Template Stylesheet -->
 <link href="resources/asset/css/sw_style.css" rel="stylesheet">
-
-
-<style>
-#topMenu {
-	height: 30px;
-	width: 850px;
-}
-
-#topMenu ul li {
-	list-style: none;
-	color: white;
-	background-color: #009223;
-	float: left;
-	line-height: 50px;
-	vertical-align: middle;
-	text-align: center;
-}
-
-#topMenu .menuLink {
-	text-decoration: none;
-	color: white;
-	display: block;
-	width: 150px;
-	font-size: 12px;
-	font-weight: bold;
-	font-family: "Trebuchet MS", Dotum, Arial;
-}
-
-#topMenu .menuLink:hover {
-	color: black;
-	background-color: #badc58;
-}
-
-.filters_menu {
-    display: list-item;
-    text-align: -webkit-match-parent;
-    unicode-bidi: isolate;
-}
-</style>
-
 </head>
 <body>
+
 <%
 		member loginMember = (member)session.getAttribute("loginMember");
-		g_board g_board = (g_board)session.getAttribute("g_board");
 	%>
-
-
 
 	<!-- Spinner Start -->
 	<div id="spinner"
@@ -191,153 +145,111 @@
 	<!-- Modal Search End -->
 
 
-	
-
-
-
 	<!-- Single Page Header start -->
 	<div class="container-fluid page-header py-5">
-		<h1 class="text-center text-white display-6">마이페이지</h1>
+		<h1 class="text-center text-white display-6">회원정보 수정</h1>
 		<ol class="breadcrumb justify-content-center mb-0">
-			<li class="breadcrumb-item active text-white">My Page</li>
+			<li class="breadcrumb-item active text-white">Update User Information</li>
 		</ol>
 	</div>
 	<!-- Single Page Header End -->
 
 
-	<!-- Fruits Shop Start-->
-
-
-	<div class="container-fluid fruite py-5" align="center">
-
-		<div class="card" style="width: 1000px" align="center">
-			<table width="1000px">
-			<tr>
-			<td>
-			<img src="resources/img/avatar.jpg" class="card-img-top"
-				style="width: 200px; height: 200px; margin: 50px;" align="left">
-			</td>
-			<td width="600px" border-top="0px">
-				<div class="sc-eKZiaR jfoJEs">
-					
-					<script type="text/javascript">
-						 function div_show() {  
-								document.getElementById("ReNick").style.display = "block"; 
-								document.getElementById("none").style.display = "none"; } 
-						 function div_hide() {  
-								document.getElementById("ReNick").style.display = "none";
-								document.getElementById("none").style.display = "block"; }
-					</script>
-					
-					<div> 
-						<h5>${loginMember.nick}</h5>
-						<input id="none" type="button" class="sc-kasBVs blcYdX" onclick="div_show();" value="닉네임 수정">
+	<!-- 회원정보 수정 시작-->
+	<div class="container-fluid py-5">
+		<div class="container py-5">
+			<form action="memberUpdate" method="post">
+				<div class="row g-5 justify-content-center">
+					<div class="col-md-12 col-lg-6 col-xl-7">
 						
-						<div id="ReNick" style="display:none">
-							<form action="UpdateNick">
-							<input type="hidden" value="${loginMember.email}" name="email">
-							<input type="text" value="${loginMember.nick}" name="nick">
-							<button type="submit" onclick="div_hide();">확인</button>
-							</form>
-						</div>
-							
-						<p><%=loginMember.getEmail() %></p>
+							<input type="hidden" value="${loginMember.type }" name="type">
+							<div class="form-item">
+								<div class="form-item">
+									<label class="form-label my-3">이메일</label>
+									<input type="text" class="form-control" value="${loginMember.email }" name="email" readonly >
+								</div>
+							</div>
+						 
 						
-					</div>
-			</td>
-			
-				<td>
-					<div class="card-body" style="width: 200px">
-						<a href="goUpdateMember" align="left" class="btn btn-primary" style="color: white">회원정보 수정</a>
-					</div>
-				</td>
-										
-			</div>	
-		
-			</table>
-		</div>
-
-
-		<br> <br> <br>
-		</div>
-
-	<div class="row g-4 justify-content-center" id="categoryBox"
-		style="width:auto;" >
-
-<<<<<<< HEAD
-
-		<ul class="filters_menu">
-			<li class="list-group-item">관심 카테고리</li>
-			<a onclick="getBoard()" id="clickVege"><li
-				class="list-group-item">My 게시글</li></a>
-			<li class="list-group-item">리뷰관리</li>
-			<li class="list-group-item">구독권</li>
-			<li class="list-group-item">Share 참여 내역</li>
-		</ul>
-
-
-		<script type="text/javascript">
-		function getBoard(){
-			document.getElementById("myBoard").style.display = "block"; 
-		}
-		</script>
-
-
-			<div class="col-lg-9" id="myBoard" style="display: none">
-				
-				<div class="row g-4 justify-content-center">
-						<div class="col-md-6 col-lg-6 col-xl-4" style="width: 1200px">
-							<div class="rounded position-relative fruite-item">
-								<c:forEach items="${gboard_list}" var="g">
-								<div class="fruite-img">						
-							<div align="justify" align="left">
-								<img alt="" src="resources/g_Image/${g.g_img1}" align="left" style="margin-right: 30px; width:100px; height:80px; object-fit:fill;">
-									<h3 style="text-align: center;">${g.g_title}</h3>
-									<strong>작성일 ${g.g_w_date }</strong>
-									<hr>
-							</div>
-
-					
-					
-							</div>
-							</c:forEach>
-						</div>
-			</div>
-		</div>
-	</div>
-
-
-
-	<!-- <div class="container py-5">
-			<div class="row g-4">
-				<div class="col-lg-12">
-					<div class="row g-4">
-						<div class="col-xl-3">
-						</div>
-						<div class="col-6"></div>
-					</div>
-					<div class="row g-4">
-						<div class="col-lg-3">
-							
-						</div>
-
-						<div class="col-lg-9">
-							<div class="row g-4 justify-content-center">
+					<!-- <div class="form-item">
+							<label class="form-label my-3">이메일</label> 
+							<br>
+							<div style="align-content: middle !important;">
+								<input type="text" class="form-control" placeholder="Ex) example@shareWe.com" name="email" id="inputEmail" 
+									style="width: 580px !important; display: inline !important;"
+									value="${loginMember.email}">
 								
-				
+								<input type="button" value="Email 중복체크" onclick="checkEmail()" 
+									class="btn border-secondary py-2 px-2  text-primary"
+									style="width: 150px !important; height: 36px !important;  display: inline !important; padding:4px !important;">
+								<br>
+								<span id="resultCheck"></span>
+							</div>							
+						</div>  -->
+												
+											
+						<c:if test="${loginMember.type == 1 || loginMember.type == 2}">
+						<div class="form-item">
+							<label class="form-label my-3">비밀번호</label>
+							<input type="password" class="form-control" name="pw" value="${loginMember.pw}">
+						</div>
+						<div class="form-item">
+							<label class="form-label my-3">비밀번호 확인</label> 
+							<input type="password" class="form-control">
+						</div>
+						</c:if>
+						
+						<div class="form-item">
+							<label class="form-label my-3">이름</label>
+							<input type="text" class="form-control" name="name" value="${loginMember.name}">
+						</div>
+						
+						
+						<c:if test="${loginMember.type == 1}">
+							<div class="form-item">
+								<label class="form-label my-3">기업이름</label>
+								<input	type="text" class="form-control" name="nick" value="${loginMember.nick}">
 							</div>
+						</c:if>
+
+						<c:if test="${loginMember.type == 2 || loginMember.type == 3}">
+							<div class="form-item">
+								<label class="form-label my-3">닉네임</label>
+								<input type="text" class="form-control" name="nick" value="${loginMember.nick}">
+							</div>
+						</c:if>	
+						
+					
+						<div class="form-item">
+							<label class="form-label my-3">도로명 주소</label>
+							<input type="text" class="form-control" placeholder="Ex) 광주광역시 동구 예술길 31-15" name="address"
+									value="${loginMember.address}">
+									
+						</div>
+						<div class="form-item">
+							<label class="form-label my-3">전화번호</label>
+							<input type="tel" class="form-control" name="tel" value="${loginMember.tel}">
 						</div>
 
 
+						<div
+							class="row g-4 text-center align-items-center justify-content-center pt-4">
+							<input type="submit" value="회원정보 수정" class="btn border-secondary py-3 px-4 text-uppercase w-50 text-primary" >
+						</div>
 					</div>
 				</div>
-			</div>
-		</div> -->
-=======
->>>>>>> branch 'main' of https://github.com/2021-SMHRD-KDT-AI-17/ShareByuS.git
+			</form>
+		</div>
 	</div>
-	</div>
-	<!-- Fruits Shop End-->
+	
+<!-- 회원정보 끗-->
+
+
+	
+
+
+
+		
 
 
 	<!-- 메인 페이지 하단 -->
@@ -378,6 +290,41 @@
 
 	<!-- Template Javascript -->
 	<script src="resources/asset/js/main.js"></script>
+	
+	
+	<script type="text/javascript">
+		function checkEmail(){
+			var inputEmail = $('#inputEmail').val();
+			console.log(inputEmail);
+			
+			$.ajax(
+			{
+				url : 'emailCheck',
+				// 요청 데이터 형태 -> JSON
+				data : {'inputEmail' : inputEmail},
+				// 요청방식 
+				type : 'get',
+				
+				success : function(data){
+					if(data == 1) {
+						$('#resultCheck').text('*사용가능한 이메일입니다.')
+					}else {
+						$('#resultCheck').text('*사용 불가능한 이메일입니다.')
+					}
+				},
+				error : function() {
+					alert("에러")
+				}
+			}
+			
+			)
+			
+			
+		}
+	</script>
+	
+	
+	
 </body>
 
 </html>
