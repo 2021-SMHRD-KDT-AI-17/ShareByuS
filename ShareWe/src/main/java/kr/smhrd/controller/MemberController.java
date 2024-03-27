@@ -84,6 +84,7 @@ public class MemberController {
 		return "Main";
 	}
 	
+	
 	// 기업회원 승인페이지 불러오는 메소드
 	@RequestMapping("/goAdApprove")
 	public String goAdApprove(Model model) {

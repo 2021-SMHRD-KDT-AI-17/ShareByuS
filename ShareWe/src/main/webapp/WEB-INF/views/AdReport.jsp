@@ -143,29 +143,27 @@
 					<table class="text-center">
 						<div class="featurs-content">
 							<tr style="font-size:20px; background-color: #bdc3c7; ">
-								<th>번호</th>
+								<th>No.</th>
 								<th>신고 게시글/리뷰</th>
 								<th>작성자</th>
 								<th>신고사유</th>
 								<th>관리</th>
 							</tr>
 							
-						<c:forEach items="${}" var="re" >
+						<c:forEach items="${report}" var="re" >
 							<tr>
 								<td>${re.rp_num }</td>
 								<td>${re.name }</a></td>
 								<td>${re.email }</td>
 								<td>${re.address}</td>
 								<td>
-								<button type="button" onclick="location.href='approveComplete?email=${re.email}'">탈퇴</button>
-								<button type="button" onclick="location.href='approveComplete?email=${re.email}'">정지</button>
-								<button type="button" onclick="location.href='approveComplete?email=${re.email}'">해제</button>
+								<button type="button" onclick="">탈퇴</button>
+								<button type="button" onclick="">정지</button>
+								<button type="button" onclick="">해제</button>
 								</td>
 								
 
-								<%-- <c:if test="${loginMember.email eq 'admin' }">
-										<td><a href="deleteBoard?num=${b.num }">삭제</a></td>
-								</c:if> --%>
+					
 							</tr>
 						</c:forEach>
 						</div>
@@ -212,6 +210,10 @@
     <!-- Template Javascript -->
     <script src="resources/asset/js/main.js"></script>
     </body>
+    
+    <script>
+    
+    </script>
     
 
 </html>

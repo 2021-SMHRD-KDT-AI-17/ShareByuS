@@ -162,7 +162,7 @@
 				<div class="row g-5 justify-content-center">
 					<div class="col-md-12 col-lg-6 col-xl-7">
 						
-							<input type="hidden" value="${loginMember.type }" name="type">
+							<input type="hidden" value="${loginMember.type}" name="type">
 							<div class="form-item">
 								<div class="form-item">
 									<label class="form-label my-3">이메일</label>
