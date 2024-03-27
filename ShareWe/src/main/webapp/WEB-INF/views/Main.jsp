@@ -88,33 +88,9 @@
 						<div class="collapse navbar-collapse bg-white" id="navbarCollapse">
 							<div class="navbar-nav mx-auto">
 								<a href="goGeneral" class="nav-item nav-link active">일반</a>
-<<<<<<< HEAD
-
-								<a href=goShop class="nav-item nav-link">기업</a>
-
-									
-<!-- <<<<<<< HEAD -->
-									 <a href=goShop class="nav-item nav-link">기업</a>
-
-									
-							
-									<a href="gogBoard" class="nav-item nav-link">게시글작성</a>
-
-
-									<a href="goCompany" class="nav-item nav-link">기업</a> <a
-									href="gogBoard" class="nav-item nav-link">게시글작성</a>
-
-									
-
 									 <a href="goCompany" class="nav-item nav-link">기업</a> 
 									<a href="gogBoard" class="nav-item nav-link">게시글작성</a>
-<!-- >>>>>>> branch 'main' of https://github.com/2021-SMHRD-KDT-AI-17/ShareByuS.git
-									 -->
-=======
-									<a href="goCompany" class="nav-item nav-link">기업</a> <a
-									href="gogBoard" class="nav-item nav-link">게시글작성</a>
-									
->>>>>>> branch 'main' of https://github.com/2021-SMHRD-KDT-AI-17/ShareByuS.git
+
 									<!-- 기업회원일때만 나오게 -->
 									<c:if test="${type eq 'company'}">
 										<a href="gocBoard" class="nav-item nav-link">상품등록</a>
@@ -139,8 +115,10 @@
 									class="fa fa-shopping-bag fa-2x"></i> <span
 									class="position-absolute bg-secondary rounded-circle d-flex align-items-center justify-content-center text-dark px-1"
 									style="top: -5px; left: 15px; height: 20px; min-width: 20px;">3</span>
-								</a> 
-								<a href="#" class="my-auto"> <i class="fas fa-user fa-2x"></i></a>
+								</a>
+								<!-- 마이페이지 -->
+								<a href="goMyPage" class="my-auto"> <i class="fas fa-user fa-2x"></i></a>
+								<!-- 마이페이지 -->
 							</div>
 						</div>
 					</nav>

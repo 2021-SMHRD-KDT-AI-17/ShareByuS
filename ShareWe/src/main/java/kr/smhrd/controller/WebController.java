@@ -77,6 +77,10 @@ public class WebController {
 		return "AdReport";
 	}
 	
+	@RequestMapping("/goMyPage")
+	public String goMyPage() {
+		return "MyPage";
+	}
 	
 	// 임시) 신고하기
 	@RequestMapping("/goReport")
