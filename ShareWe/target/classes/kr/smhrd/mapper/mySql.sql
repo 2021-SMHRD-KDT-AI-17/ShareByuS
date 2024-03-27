@@ -13,6 +13,7 @@ create table gBoard(
 <<<<<<< HEAD
 =======
 select * from g_board;
+select * from c_board;
 >>>>>>> branch 'main' of https://github.com/2021-SMHRD-KDT-AI-17/ShareByuS.git
 select * from c_board;
 

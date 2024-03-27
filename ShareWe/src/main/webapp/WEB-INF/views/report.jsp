@@ -160,6 +160,7 @@
 
 
 	<!-- 신고 Start -->
+	<form action="goReport" method="post">
 	<div class="container-fluid py-5">
 		<div class="container py-5">
 			<!-- <h1 class="mb-4 text-center">신고</h1> -->
