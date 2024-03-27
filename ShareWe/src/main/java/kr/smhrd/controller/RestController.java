@@ -31,12 +31,12 @@ public class RestController {
 		}
 	}
 	
-	// 일반 게시판 카테고리
-	@RequestMapping("/goVege")
-	public int goVege(@RequestParam("") String clickVege) {
-		List<g_board> g_boardList = g_boardMapper.getVege(clickVege);
-		
-	}
+//	// 일반 게시판 카테고리
+//	@RequestMapping("/goVege")
+//	public int goVege(@RequestParam("") String clickVege) {
+//		List<g_board> g_boardList = g_boardMapper.getVege(clickVege);
+//		
+//	}
 	
 	
 }

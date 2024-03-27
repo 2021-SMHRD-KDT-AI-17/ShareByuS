@@ -11,7 +11,9 @@
 		VALUES(#{g_title},#{g_writer},#{email},#{g_img1},#{g_content},NOW(),NOW(),#{category})
 	</insert>
 
-
-
+	
+	<select id="getCategory" parameterType="String" resultType="kr.smhrd.entity.g_board">
+		select * from g_board where category=#{category}
+	</select>
 
 </mapper>
