@@ -144,7 +144,41 @@
 
 
 	<!-- Fruits Shop Start-->
-	<div class="container-fluid fruite py-5">
+
+
+	<div class="container-fluid fruite py-5" align="center">
+
+		<div class="card" style="width: 1200px" align="center">
+			<img src="resources/img/avatar.jpg" class="card-img-top"
+				style="width: 200px; height: 200px; margin: 50px;" align="left">
+			<div class="sc-eKZiaR jfoJEs">
+				
+				<script type="text/javascript">
+					 function div_show() {  
+						document.getElementById("ReNick").style.display = "block"; 
+						document.getElementById("none").style.display = "none"; } 
+					 function div_hide() {  document.getElementById("ReNick").style.display = "none"; }
+				</script>
+				 
+				<div  class="container-fluid fruite py-5" id="ReNick" style="display: none">
+				<input  type="text" value="헿헤헤헤헿렐">
+				<button type="submit">확인</button>
+				</div>
+				<input id="none" type="button" class="sc-kasBVs blcYdX" onclick="div_show();" value="닉네임 수정">
+		
+				
+				
+			</div>
+			<div class="card-body" style="width: 1100px">
+				<h5 class="card-title">Card title</h5>
+				<p class="card-text">Some quick example text to build on the
+					card title and make up the bulk of the card's content.</p>
+				<a href="#" class="btn btn-primary" style="color: white">정보 수정</a>
+			</div>
+		</div>
+
+
+		<br> <br> <br>
 
 		<div class="accordion" id="accordionPanelsStayOpenExample">
 			<div class="accordion-item">
@@ -152,13 +186,11 @@
 					<button class="accordion-button" type="button"
 						data-bs-toggle="collapse"
 						data-bs-target="#panelsStayOpen-collapseOne" aria-expanded="true"
-						aria-controls="panelsStayOpen-collapseOne">게시물작성
-						</button>
+						aria-controls="panelsStayOpen-collapseOne">게시물작성</button>
 				</h2>
 				<div id="panelsStayOpen-collapseOne"
 					class="accordion-collapse collapse show">
-					<div class="accordion-body">
-					</div>
+					<div class="accordion-body"></div>
 				</div>
 			</div>
 			<div class="accordion-item">
@@ -166,13 +198,11 @@
 					<button class="accordion-button collapsed" type="button"
 						data-bs-toggle="collapse"
 						data-bs-target="#panelsStayOpen-collapseTwo" aria-expanded="false"
-						aria-controls="panelsStayOpen-collapseTwo">관심 카테고리 관리
-						</button>
+						aria-controls="panelsStayOpen-collapseTwo">관심 카테고리 관리</button>
 				</h2>
 				<div id="panelsStayOpen-collapseTwo"
 					class="accordion-collapse collapse">
-					<div class="accordion-body">
-					</div>
+					<div class="accordion-body"></div>
 				</div>
 			</div>
 			<div class="accordion-item">
@@ -185,8 +215,7 @@
 				</h2>
 				<div id="panelsStayOpen-collapseThree"
 					class="accordion-collapse collapse">
-					<div class="accordion-body">
-					</div>
+					<div class="accordion-body"></div>
 				</div>
 			</div>
 			<div class="accordion-item">
@@ -199,8 +228,7 @@
 				</h2>
 				<div id="panelsStayOpen-collapseFour"
 					class="accordion-collapse collapse">
-					<div class="accordion-body">
-					</div>
+					<div class="accordion-body"></div>
 				</div>
 			</div>
 			<div class="accordion-item">
@@ -213,11 +241,10 @@
 				</h2>
 				<div id="panelsStayOpen-collapseFive"
 					class="accordion-collapse collapse">
-					<div class="accordion-body">
-					</div>
+					<div class="accordion-body"></div>
 				</div>
 			</div>
-			
+
 		</div>
 
 
