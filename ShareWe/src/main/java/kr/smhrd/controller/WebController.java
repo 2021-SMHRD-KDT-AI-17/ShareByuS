@@ -78,9 +78,25 @@ public class WebController {
 	}
 	
 	@RequestMapping("/goMyPage")
-	public String goMyPage() {
-		return "myPage";
+	public String goMyPage(HttpSession session) {
+		member loginMember = (member)session.getAttribute("loginMember");
+		if(loginMember !=null) {
+			return "myPage";
+		}else {
+			
+		}return "Login";
 	}
+	
+	@RequestMapping("/goUpdateMember")
+	public String goUpdateMember(HttpSession session) {
+		member loginMember = (member)session.getAttribute("loginMember");
+		if(loginMember !=null) {
+			return "UpdateMember";
+		}else {
+			
+		}return "Login";
+	}
+	
 	
 	// 임시) 신고하기
 	@RequestMapping("/goReport")

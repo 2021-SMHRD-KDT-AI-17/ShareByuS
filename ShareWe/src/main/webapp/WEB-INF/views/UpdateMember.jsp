@@ -145,146 +145,111 @@
 	<!-- Modal Search End -->
 
 
-	
-
-
-
 	<!-- Single Page Header start -->
 	<div class="container-fluid page-header py-5">
-		<h1 class="text-center text-white display-6">마이페이지</h1>
+		<h1 class="text-center text-white display-6">회원정보 수정</h1>
 		<ol class="breadcrumb justify-content-center mb-0">
-			<li class="breadcrumb-item active text-white">My Page</li>
+			<li class="breadcrumb-item active text-white">Update User Information</li>
 		</ol>
 	</div>
 	<!-- Single Page Header End -->
 
 
-	<!-- Fruits Shop Start-->
-
-
-	<div class="container-fluid fruite py-5" align="center">
-
-		<div class="card" style="width: 1000px" align="center">
-			<table width="1000px">
-			<tr>
-			<td>
-			<img src="resources/img/avatar.jpg" class="card-img-top"
-				style="width: 200px; height: 200px; margin: 50px;" align="left">
-			</td>
-			<td width="600px" border-top="0px">
-				<div class="sc-eKZiaR jfoJEs">
-					
-					<script type="text/javascript">
-						 function div_show() {  
-								document.getElementById("ReNick").style.display = "block"; 
-								document.getElementById("none").style.display = "none"; } 
-						 function div_hide() {  
-								document.getElementById("ReNick").style.display = "none";
-								document.getElementById("none").style.display = "block"; }
-					</script>
-					
-					<div> 
-						<h5>${loginMember.nick}</h5>
-						<input id="none" type="button" class="sc-kasBVs blcYdX" onclick="div_show();" value="닉네임 수정">
+	<!-- 회원정보 수정 시작-->
+	<div class="container-fluid py-5">
+		<div class="container py-5">
+			<form action="memberUpdate" method="post">
+				<div class="row g-5 justify-content-center">
+					<div class="col-md-12 col-lg-6 col-xl-7">
 						
-						<div id="ReNick" style="display:none">
-							<form action="UpdateNick">
-							<input type="hidden" value="${loginMember.email}" name="email">
-							<input type="text" value="${loginMember.nick}" name="nick">
-							<button type="submit" onclick="div_hide();">확인</button>
-							</form>
+							<input type="hidden" value="${loginMember.type }" name="type">
+							<div class="form-item">
+								<div class="form-item">
+									<label class="form-label my-3">이메일</label>
+									<input type="text" class="form-control" value="${loginMember.email }" name="email" readonly >
+								</div>
+							</div>
+						 
+						
+					<!-- <div class="form-item">
+							<label class="form-label my-3">이메일</label> 
+							<br>
+							<div style="align-content: middle !important;">
+								<input type="text" class="form-control" placeholder="Ex) example@shareWe.com" name="email" id="inputEmail" 
+									style="width: 580px !important; display: inline !important;"
+									value="${loginMember.email}">
+								
+								<input type="button" value="Email 중복체크" onclick="checkEmail()" 
+									class="btn border-secondary py-2 px-2  text-primary"
+									style="width: 150px !important; height: 36px !important;  display: inline !important; padding:4px !important;">
+								<br>
+								<span id="resultCheck"></span>
+							</div>							
+						</div>  -->
+												
+											
+						<c:if test="${loginMember.type == 1 || loginMember.type == 2}">
+						<div class="form-item">
+							<label class="form-label my-3">비밀번호</label>
+							<input type="password" class="form-control" name="pw" value="${loginMember.pw}">
 						</div>
-							
-						<p><%=loginMember.getEmail() %></p>
+						<div class="form-item">
+							<label class="form-label my-3">비밀번호 확인</label> 
+							<input type="password" class="form-control">
+						</div>
+						</c:if>
 						
+						<div class="form-item">
+							<label class="form-label my-3">이름</label>
+							<input type="text" class="form-control" name="name" value="${loginMember.name}">
+						</div>
+						
+						
+						<c:if test="${loginMember.type == 1}">
+							<div class="form-item">
+								<label class="form-label my-3">기업이름</label>
+								<input	type="text" class="form-control" name="nick" value="${loginMember.nick}">
+							</div>
+						</c:if>
+
+						<c:if test="${loginMember.type == 2 || loginMember.type == 3}">
+							<div class="form-item">
+								<label class="form-label my-3">닉네임</label>
+								<input type="text" class="form-control" name="nick" value="${loginMember.nick}">
+							</div>
+						</c:if>	
+						
+					
+						<div class="form-item">
+							<label class="form-label my-3">도로명 주소</label>
+							<input type="text" class="form-control" placeholder="Ex) 광주광역시 동구 예술길 31-15" name="address"
+									value="${loginMember.address}">
+									
+						</div>
+						<div class="form-item">
+							<label class="form-label my-3">전화번호</label>
+							<input type="tel" class="form-control" name="tel" value="${loginMember.tel}">
+						</div>
+
+
+						<div
+							class="row g-4 text-center align-items-center justify-content-center pt-4">
+							<input type="submit" value="회원정보 수정" class="btn border-secondary py-3 px-4 text-uppercase w-50 text-primary" >
+						</div>
 					</div>
-			</td>
-			
-				<td>
-					<div class="card-body" style="width: 200px">
-						<a href="goUpdateMember" align="left" class="btn btn-primary" style="color: white">회원정보 수정</a>
-					</div>
-				</td>
-										
-			</div>	
+				</div>
+			</form>
+		</div>
+	</div>
+	
+<!-- 회원정보 끗-->
+
+
+	
+
+
+
 		
-			</table>
-		</div>
-
-
-		<br> <br> <br>
-
-		<div class="accordion" id="accordionPanelsStayOpenExample">
-			<div class="accordion-item">
-				<h2 class="accordion-header">
-					<button class="accordion-button" type="button"
-						data-bs-toggle="collapse"
-						data-bs-target="#panelsStayOpen-collapseOne" aria-expanded="true"
-						aria-controls="panelsStayOpen-collapseOne">게시물작성</button>
-				</h2>
-				<div id="panelsStayOpen-collapseOne"
-					class="accordion-collapse collapse show">
-					<div class="accordion-body"></div>
-				</div>
-			</div>
-			<div class="accordion-item">
-				<h2 class="accordion-header">
-					<button class="accordion-button collapsed" type="button"
-						data-bs-toggle="collapse"
-						data-bs-target="#panelsStayOpen-collapseTwo" aria-expanded="false"
-						aria-controls="panelsStayOpen-collapseTwo">관심 카테고리 관리</button>
-				</h2>
-				<div id="panelsStayOpen-collapseTwo"
-					class="accordion-collapse collapse">
-					<div class="accordion-body"></div>
-				</div>
-			</div>
-			<div class="accordion-item">
-				<h2 class="accordion-header">
-					<button class="accordion-button collapsed" type="button"
-						data-bs-toggle="collapse"
-						data-bs-target="#panelsStayOpen-collapseThree"
-						aria-expanded="false" aria-controls="panelsStayOpen-collapseThree">
-						리뷰관리</button>
-				</h2>
-				<div id="panelsStayOpen-collapseThree"
-					class="accordion-collapse collapse">
-					<div class="accordion-body"></div>
-				</div>
-			</div>
-			<div class="accordion-item">
-				<h2 class="accordion-header">
-					<button class="accordion-button collapsed" type="button"
-						data-bs-toggle="collapse"
-						data-bs-target="#panelsStayOpen-collapseFour"
-						aria-expanded="false" aria-controls="panelsStayOpen-collapseFour">
-						내 구독권 확인</button>
-				</h2>
-				<div id="panelsStayOpen-collapseFour"
-					class="accordion-collapse collapse">
-					<div class="accordion-body"></div>
-				</div>
-			</div>
-			<div class="accordion-item">
-				<h2 class="accordion-header">
-					<button class="accordion-button collapsed" type="button"
-						data-bs-toggle="collapse"
-						data-bs-target="#panelsStayOpen-collapseFive"
-						aria-expanded="false" aria-controls="panelsStayOpen-collapseFive">
-						Share 참여 내역</button>
-				</h2>
-				<div id="panelsStayOpen-collapseFive"
-					class="accordion-collapse collapse">
-					<div class="accordion-body"></div>
-				</div>
-			</div>
-
-		</div>
-
-
-	</div>
-	</div>
-	<!-- Fruits Shop End-->
 
 
 	<!-- 메인 페이지 하단 -->
@@ -325,6 +290,41 @@
 
 	<!-- Template Javascript -->
 	<script src="resources/asset/js/main.js"></script>
+	
+	
+	<script type="text/javascript">
+		function checkEmail(){
+			var inputEmail = $('#inputEmail').val();
+			console.log(inputEmail);
+			
+			$.ajax(
+			{
+				url : 'emailCheck',
+				// 요청 데이터 형태 -> JSON
+				data : {'inputEmail' : inputEmail},
+				// 요청방식 
+				type : 'get',
+				
+				success : function(data){
+					if(data == 1) {
+						$('#resultCheck').text('*사용가능한 이메일입니다.')
+					}else {
+						$('#resultCheck').text('*사용 불가능한 이메일입니다.')
+					}
+				},
+				error : function() {
+					alert("에러")
+				}
+			}
+			
+			)
+			
+			
+		}
+	</script>
+	
+	
+	
 </body>
 
 </html>
