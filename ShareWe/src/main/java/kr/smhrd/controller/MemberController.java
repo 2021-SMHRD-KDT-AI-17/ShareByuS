@@ -102,6 +102,25 @@ public class MemberController {
 	}
 	
 	
+	// 회원정보 수정 메소드 /memberUpdate
+	@RequestMapping("/memberUpdate")
+	public String memberUpdate(member member, HttpSession session) {
+		memberMapper.memberUpdate(member);
+		// 세션에 저장된 값도 업데이트
+		session.setAttribute("loginMember", member);
+		return "myPage";
+	}
+	
+	// 닉네임 수정 메소드
+	@RequestMapping("/UpdateNick")
+	public String updateNick(member member, HttpSession session) {
+		memberMapper.updateNick(member);
+		session.setAttribute("loginMember", member);
+		return "myPage";
+	}
+	
+	
+	
 //	// 로그인 메소드
 //	@RequestMapping("/memberSelect")
 //	public String memberSelect(Member member, HttpSession session) {
@@ -118,27 +137,7 @@ public class MemberController {
 //		return "Main";
 //	}
 //
-//	// 회원정보 수정하는 페이지로 이동 /showUpdate
-//	@RequestMapping("/showUpdate")
-//	public String showUpdate() {
-//		return "UpdateMember";
-//	}
 //
-//	// 회원정보 수정 메소드 /memberUpdate
-//	@RequestMapping("/memberUpdate")
-//	public String memberUpdate(Member member, HttpSession session) {
-//		memberMapper.memberUpdate(member);
-//		// 세션에 저장된 값도 업데이트
-//		session.setAttribute("loginMember", member);
-//		return "Main";
-//	}
-//
-//	// 로그아웃 메소드
-//	@RequestMapping("/memberLogout")
-//	public String memberLogout(HttpSession session) {
-//		session.invalidate();
-//		return "Main";
-//	}
 //
 //	// 회원정보 페이지로 이동하는 메소드 + 전체 회원정보 가져오기
 //	@RequestMapping("/goShowMember")

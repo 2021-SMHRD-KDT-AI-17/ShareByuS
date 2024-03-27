@@ -15,8 +15,9 @@ public interface G_BoardMapper {
 
 	public List<g_board> getCategory(String category);
 
-	
+	public List<g_board> getEmail(String email);
 
+	
 	
 
 

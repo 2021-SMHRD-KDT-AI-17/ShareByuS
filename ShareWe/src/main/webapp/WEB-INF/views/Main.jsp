@@ -88,9 +88,9 @@
 						<div class="collapse navbar-collapse bg-white" id="navbarCollapse">
 							<div class="navbar-nav mx-auto">
 								<a href="goGeneral" class="nav-item nav-link active">일반</a>
-									<a href="goCompany" class="nav-item nav-link">기업</a> <a
-									href="gogBoard" class="nav-item nav-link">게시글작성</a>
-									
+									 <a href="goCompany" class="nav-item nav-link">기업</a> 
+									<a href="gogBoard" class="nav-item nav-link">게시글작성</a>
+
 									<!-- 기업회원일때만 나오게 -->
 									<c:if test="${type eq 'company'}">
 										<a href="gocBoard" class="nav-item nav-link">상품등록</a>
@@ -115,8 +115,14 @@
 									class="fa fa-shopping-bag fa-2x"></i> <span
 									class="position-absolute bg-secondary rounded-circle d-flex align-items-center justify-content-center text-dark px-1"
 									style="top: -5px; left: 15px; height: 20px; min-width: 20px;">3</span>
+
 								</a> 
-								<a href="goMyPage" class="my-auto"> <i class="fas fa-user fa-2x"></i></a>
+								<a href="goMyPage" class="my-auto" > <i class="fas fa-user fa-2x"></i></a>
+
+
+								</a>
+							
+
 							</div>
 						</div>
 					</nav>
@@ -129,7 +135,7 @@
 		<div class="modal fade" id="searchModal" tabindex="-1"
 			aria-labelledby="exampleModalLabel" aria-hidden="true">
 			<div class="modal-dialog modal-fullscreen">
-				0
+				
 				<div class="modal-content rounded-0">
 					<div class="modal-header">
 						<h5 class="modal-title" id="exampleModalLabel">Search by
