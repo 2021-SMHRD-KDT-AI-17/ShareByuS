@@ -1,7 +1,6 @@
-<<<<<<< HEAD
+
 <%@page import="kr.smhrd.entity.g_board"%>
-=======
->>>>>>> branch 'main' of https://github.com/2021-SMHRD-KDT-AI-17/ShareByuS.git
+
 <%@page import="kr.smhrd.entity.member"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
@@ -231,7 +230,7 @@
 					
 					<div> 
 						<h5>${loginMember.nick}</h5>
-						<input id="none" type="button" class="sc-kasBVs blcYdX" onclick="div_show();" value="닉네임 수정">
+						<input style="color: white" id="none" type="button" class="btn btn-primary" onclick="div_show();" value="닉네임 수정">
 						
 						<div id="ReNick" style="display:none">
 							<form action="UpdateNick">
@@ -264,51 +263,154 @@
 	<div class="row g-4 justify-content-center" id="categoryBox"
 		style="width:auto;" >
 
-<<<<<<< HEAD
 
-		<ul class="filters_menu">
-			<li class="list-group-item">관심 카테고리</li>
-			<a onclick="getBoard()" id="clickVege"><li
-				class="list-group-item">My 게시글</li></a>
-			<li class="list-group-item">리뷰관리</li>
-			<li class="list-group-item">구독권</li>
-			<li class="list-group-item">Share 참여 내역</li>
+
+		<ul class="filters_menu" >
+
+
+			<a onclick="getCategory()" id="clickVege">
+			<li class="list-group-item">관심 카테고리</li></a>
+
+			<a onclick="getBoard()" id="clickVege">
+			<li class="list-group-item">My 게시글</li></a>
+
+			<a onclick="getReview()" id="clickVege">
+			<li class="list-group-item">리뷰관리</li></a>
+
+			<a onclick="getSub()" id="clickVege">
+			<li class="list-group-item">구독권</li></a>
+
+			<a onclick="getJoin()" id="clickVege">
+			<li class="list-group-item">Share 참여 내역</li></a>
+
+
+
+
 		</ul>
 
 
 		<script type="text/javascript">
-		function getBoard(){
-			document.getElementById("myBoard").style.display = "block"; 
-		}
+			function getBoard() {
+				document.getElementById("myCategory").style.display = "none";
+				document.getElementById("myBoard").style.display = "block";
+				document.getElementById("myReview").style.display = "none";
+				document.getElementById("mySub").style.display = "none";
+				document.getElementById("myJoin").style.display = "none";
+			}
+		</script>
+		<script type="text/javascript">
+			function getCategory() {
+				document.getElementById("myCategory").style.display = "block";
+				document.getElementById("myBoard").style.display = "none";
+				document.getElementById("myReview").style.display = "none";
+				document.getElementById("mySub").style.display = "none";
+				document.getElementById("myJoin").style.display = "none";
+				
+			}
+		</script>
+		<script type="text/javascript">
+			function getReview() {
+				document.getElementById("myCategory").style.display = "none";
+				document.getElementById("myBoard").style.display = "none";
+				document.getElementById("myReview").style.display = "block";
+				document.getElementById("mySub").style.display = "none";
+				document.getElementById("myJoin").style.display = "none";
+			}
+		</script>
+		<script type="text/javascript">
+			function getSub() {
+				document.getElementById("myCategory").style.display = "none";
+				document.getElementById("myBoard").style.display = "none";
+				document.getElementById("myReview").style.display = "none";
+				document.getElementById("mySub").style.display = "block";
+				document.getElementById("myJoin").style.display = "none";
+			}
+		</script>
+		<script type="text/javascript">
+			function getJoin() {
+				document.getElementById("myCategory").style.display = "none";
+				document.getElementById("myBoard").style.display = "none";
+				document.getElementById("myReview").style.display = "none";
+				document.getElementById("mySub").style.display = "none";
+				document.getElementById("myJoin").style.display = "block";				
+			}
 		</script>
 
+			<div class="col-lg-9"  id="myBoard" style="display: none">
 
-			<div class="col-lg-9" id="myBoard" style="display: none">
-				
-				<div class="row g-4 justify-content-center">
-						<div class="col-md-6 col-lg-6 col-xl-4" style="width: 1200px">
-							<div class="rounded position-relative fruite-item">
-								<c:forEach items="${gboard_list}" var="g">
-								<div class="fruite-img">						
-							<div align="justify" align="left">
-								<img alt="" src="resources/g_Image/${g.g_img1}" align="left" style="margin-right: 30px; width:100px; height:80px; object-fit:fill;">
-									<h3 style="text-align: center;">${g.g_title}</h3>
+			<div class="row g-4 justify-content-center">
+				<div class="col-md-6 col-lg-6 col-xl-4" style="width: 1200px">
+					<div class="rounded position-relative fruite-item">
+						<c:forEach items="${gboard_list}" var="g">
+							<div class="fruite-img">
+								<div align="justify" align="left">
+									<a href="goGDetail"> <img alt=""
+										src="resources/g_Image/${g.g_img1}" align="left"
+										style="margin-right: 30px; width: 100px; height: 80px; object-fit: fill;"></a>
+									<a href="goGDetail"><h3 style="text-align: center;">${g.g_title}</h3></a>
 									<strong>작성일 ${g.g_w_date }</strong>
 									<hr>
-							</div>
+								</div>
 
-					
-					
+
+
 							</div>
-							</c:forEach>
-						</div>
+						</c:forEach>
+					</div>
+				</div>
 			</div>
 		</div>
-	</div>
+
+		<div class="col-lg-9" id="myCategory" style="display: none">
+
+			<div class="row g-4 justify-content-center">
+				<div class="col-md-6 col-lg-6 col-xl-4" style="width: 1200px">
+					<div class="rounded position-relative fruite-item">
+						<h1>카테고리</h1>
+					</div>
+				</div>
+			</div>
+		</div>
+
+		<div class="col-lg-9" id="myReview" style="display: none">
+
+			<div class="row g-4 justify-content-center">
+				<div class="col-md-6 col-lg-6 col-xl-4" style="width: 1200px">
+					<div class="rounded position-relative fruite-item">
+						<h1>리뷰</h1>
+					</div>
+				</div>
+			</div>
+		</div>
+
+		<div class="col-lg-9" id="mySub" style="display: none">
+
+			<div class="row g-4 justify-content-center">
+				<div class="col-md-6 col-lg-6 col-xl-4" style="width: 1200px">
+					<div class="rounded position-relative fruite-item">
+						<h1>구독</h1>
+					</div>
+				</div>
+			</div>
+		</div>
+		<div class="col-lg-9" id="myJoin" style="display: none">
+
+			<div class="row g-4 justify-content-center">
+				<div class="col-md-6 col-lg-6 col-xl-4" style="width: 1200px">
+					<div class="rounded position-relative fruite-item">
+						<h1>참여내역</h1>
+					</div>
+				</div>
+			</div>
+		</div>
+	
+		
 
 
 
-	<!-- <div class="container py-5">
+
+
+		<!-- <div class="container py-5">
 			<div class="row g-4">
 				<div class="col-lg-12">
 					<div class="row g-4">
@@ -333,8 +435,7 @@
 				</div>
 			</div>
 		</div> -->
-=======
->>>>>>> branch 'main' of https://github.com/2021-SMHRD-KDT-AI-17/ShareByuS.git
+
 	</div>
 	</div>
 	<!-- Fruits Shop End-->

@@ -99,7 +99,11 @@ public class G_BoardController {
 		
 		List<g_board> gboard_list = g_boardMapper.getEmail(loginMember.getEmail());
 		model.addAttribute("gboard_list", gboard_list);
-		return "myPage";
+		if(loginMember !=null) {
+			return "myPage";
+		}else {
+			
+		}return "Login";
 	}
 	
 	
