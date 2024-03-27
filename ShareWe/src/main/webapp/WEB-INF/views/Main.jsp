@@ -37,7 +37,7 @@
 		<link href="resources/asset/css/bootstrap.min.css" rel="stylesheet">
 		
 		<!-- Template Stylesheet -->
-		<link href="resources/asset/css/style.css" rel="stylesheet">
+		<link href="resources/asset/css/sw_style.css" rel="stylesheet">
 	</head>
 
 	<body>
@@ -69,7 +69,7 @@
 						<%}else {%>
 							<span><small class="text-white mx-2"><%=loginMember.getNick() %>님 환영합니다.</small></span>
 							<%if(loginMember.getEmail().equals("admin")) {%>
-								<a href="#" class="text-white"><small class="text-white ms-2">회원관리</small></a>
+								<a href="goAdmin" class="text-white"><small class="text-white ms-2">회원관리</small></a>
 							<%} %>
 							<a href="memberLogout" class="text-white"><small class="text-white mx-2">로그아웃</small></a>
 						<%} %>

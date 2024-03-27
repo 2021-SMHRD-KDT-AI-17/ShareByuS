@@ -7,7 +7,7 @@
 
     <head>
         <meta charset="utf-8">
-        <title>Fruitables - Vegetable Website Template</title>
+        <title>Share We?</title>
         <meta content="width=device-width, initial-scale=1.0" name="viewport">
         <meta content="" name="keywords">
         <meta content="" name="description">
@@ -51,9 +51,9 @@
 						<small class="me-3"></small> <small class="me-3"></small>
 					</div>
 					<div class="top-link pe-2">
-						<a href="goMain" class="text-white"><small
+<!-- 						<a href="goMain" class="text-white"><small
 							class="text-white mx-2">홈</small>|</a> <a href="goLogin"
-							class="text-white"><small class="text-white mx-2">로그인</small></a>
+							class="text-white"><small class="text-white mx-2">로그인</small></a> -->
 					</div>
 				</div>
 			</div>
@@ -125,54 +125,41 @@
 
         <!-- Single Page Header start -->
         <div class="container-fluid page-header py-5">
-            <h1 class="text-center text-white display-6">회원가입</h1>
+            <h1 class="text-center text-white display-6">관리페이지</h1>
             <ol class="breadcrumb justify-content-center mb-0">
-                <li class="breadcrumb-item active text-white">Join</li>
+                <li class="breadcrumb-item active text-white">Management page</li>
             </ol>
         </div>
         <!-- Single Page Header End -->
 
 
-        <!-- 회원가입 유형 선택 Start -->
+        <!-- 관리페이지 유형 선택 Start -->
         <div class="container-fluid py-5">
             <div class="container py-5">
                 <div class="row g-4 justify-content-center">
+	
 					<div class="col-md-6 col-lg-3">
-						<a href="javascript:kakaoLogin()">
-							<div class="featurs-item text-center rounded bg-light p-4">
-								<div
-									class="featurs-content">
-									<img src="resources/img/kakao_icon.png" style="height: 20px; width: 20px; ">
-									<!-- <i class="fa-solid fa-comment"></i> -->
-								</div>
-								<div class="featurs-content text-center">
-									<p class="mb-0">카카오 로그인</p>
-								</div>
-							</div>
-						</a>
-					</div>
-					<div class="col-md-6 col-lg-3">
-						<a href="goJoin?type=general">
+						<a href="goAdReport">
 							<div class="featurs-item text-center rounded bg-light p-4">
 								<div
 									class="featurs-content">
 									<i class="bi bi-person-circle"></i>
 								</div>
 								<div class="featurs-content text-center">
-									<p class="mb-0">일반회원</p>
+									<p class="mb-0">신고회원 관리</p>
 								</div>
 							</div>
 						</a>
 					</div>
 					<div class="col-md-6 col-lg-3">
-						<a href="goJoin?type=company">
+						<a href="goAdApprove">
 							<div class="featurs-item text-center rounded bg-light p-4">
 								<div
 									class="featurs-content">
 									<i class="bi bi-building"></i>
 								</div>
 								<div class="featurs-content text-center">
-									<p class="mb-0">기업회원</p>
+									<p class="mb-0">기업회원승인</p>
 								</div>
 							</div>
 						</a>
@@ -216,76 +203,6 @@
     <!-- Template Javascript -->
     <script src="resources/asset/js/main.js"></script>
     </body>
-    
-    <!-- 카카오 로그인 > 회원가입 -->
-	<script src="https://developers.kakao.com/sdk/js/kakao.js"></script>
-	<script>
-	Kakao.init('2bc6b3bd3fef80118728da5119ebd261');
-	console.log(Kakao.isInitialized()); // sdk초기화여부판단
-	
-	//카카오로그인
-	function kakaoLogin() {
-	    Kakao.Auth.loginForm({
-	      scope: "profile_nickname, account_email",
-	      success: function (response) {
-	        Kakao.API.request({
-	          url: '/v2/user/me',
-	          success: function (response) {
-	        	  console.log(response)
-	        	  
-	        	  const kakao_account = response.kakao_account;
-                  console.log(kakao_account);
-                  
-                  var id = response.id;
-	      	      var profile_nickname = response.kakao_account.profile.nickname;
-	      	      var account_email = response.kakao_account.email;
-	      	      localStorage.setItem("nickname", profile_nickname);
-	      	      localStorage.setItem("id", id);
-	      	      localStorage.setItem("email", account_email);
-	      	      
-	      	      let kakaoInfo = [];
-	      	      kakaoInfo.push(id, profile_nickname, account_email);
-	      	   	  //for(let i=0; i<kakaoInfo.length; i++){
-	      	      //       console.log(arr[i]);}
-	      	      
-		      	   	let f = document.createElement('form');
-	                let obj;
-	        		    obj = document.createElement('input');
-	        		    obj.setAttribute('type', 'hidden');
-	        		    obj.setAttribute('name', 'kakaoInfo');
-	        		    obj.setAttribute('value', kakaoInfo);
-	        		    
-	        		    f.appendChild(obj);
-	        		    f.setAttribute('method', 'post');
-	        		    f.setAttribute('action', 'goJoin?type=kakao');
-	        		    document.body.appendChild(f);
-	        		    f.submit();
-                  
-                  
-                 	//if(kakao_account.email != null){
-                	  //window.location.href = "goJoin?type=kakao"
-                  	//}
-                  
-	          },
-	          fail: function (error) {
-	            console.log(error)
-	          },
-	        })
-	      },
-	      fail: function (error) {
-	        console.log(error)
-	      },
-	    })
-	  }
-	
-	
-		    
-		    
-		    
-		
-
-
-    </script>
     
 
 </html>

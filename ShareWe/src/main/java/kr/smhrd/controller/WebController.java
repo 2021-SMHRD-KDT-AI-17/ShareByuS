@@ -49,11 +49,23 @@ public class WebController {
 		return "cBoard";
 	}
 	
+	@RequestMapping("/goAdmin")
+	public String goAdmin() {
+		return "AdminPage";
+	}
+	
+	@RequestMapping("/goAdReport")
+	public String goAdReport() {
+		return "AdReport";
+	}
+	
 
 	
 //	@RequestMapping("/goMyPage")
 //	public String goMyPage() {
 //		return "MyPage";
 //	}
+	
+	
 
 }
