@@ -135,9 +135,9 @@
 
 	<!-- Single Page Header start -->
 	<div class="container-fluid page-header py-5">
-		<h1 class="text-center text-white display-6">Shop</h1>
+		<h1 class="text-center text-white display-6">마이페이지</h1>
 		<ol class="breadcrumb justify-content-center mb-0">
-			<li class="breadcrumb-item active text-white">general</li>
+			<li class="breadcrumb-item active text-white">아아</li>
 		</ol>
 	</div>
 	<!-- Single Page Header End -->
@@ -146,7 +146,7 @@
 	<!-- Fruits Shop Start-->
 	<div class="container-fluid fruite py-5">
 		<div class="container py-5">
-			<h1 class="mb-4">Company Shop</h1>
+			<h1 class="mb-4">마이 페이지지</h1>
 			<div class="row g-4">
 				<div class="col-lg-12">
 					<div class="row g-4">
@@ -223,42 +223,14 @@
 											max-value="500" for="rangeInput">0</output>
 									</div>
 								</div>
-								<div class="col-lg-12">
-									<div class="mb-3">
-										<h4>Additional</h4>
-										<div class="mb-2">
-											<input type="radio" class="me-2" id="Categories-1"
-												name="Categories-1" value="Beverages"> <label
-												for="Categories-1"> Organic</label>
-										</div>
-										<div class="mb-2">
-											<input type="radio" class="me-2" id="Categories-2"
-												name="Categories-1" value="Beverages"> <label
-												for="Categories-2"> Fresh</label>
-										</div>
-										<div class="mb-2">
-											<input type="radio" class="me-2" id="Categories-3"
-												name="Categories-1" value="Beverages"> <label
-												for="Categories-3"> Sales</label>
-										</div>
-										<div class="mb-2">
-											<input type="radio" class="me-2" id="Categories-4"
-												name="Categories-1" value="Beverages"> <label
-												for="Categories-4"> Discount</label>
-										</div>
-										<div class="mb-2">
-											<input type="radio" class="me-2" id="Categories-5"
-												name="Categories-1" value="Beverages"> <label
-												for="Categories-5"> Expired</label>
-										</div>
-									</div>
-								</div>
+								
 								<div class="col-lg-12">
 									<h4 class="mb-3">Featured products</h4>
 									<div class="d-flex align-items-center justify-content-start">
 										<div class="rounded me-4" style="width: 100px; height: 100px;">
 											<img src="img/featur-1.jpg" class="img-fluid rounded" alt="">
 										</div>
+										
 										<div>
 											<h6 class="mb-2">Big Banana</h6>
 											<div class="d-flex mb-2">
