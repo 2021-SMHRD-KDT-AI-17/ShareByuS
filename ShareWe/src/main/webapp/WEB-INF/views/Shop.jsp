@@ -62,6 +62,7 @@
 	font-size: 12px;
 	font-weight: bold;
 	font-family: "Trebuchet MS", Dotum, Arial;
+	
 }
 
 #topMenu .menuLink:hover {
@@ -74,6 +75,61 @@
     text-align: -webkit-match-parent;
     unicode-bidi: isolate;
 }
+
+#categoryBox .filters_menu li:hover {
+	color: white;
+	background-color: #009223;
+}
+
+#write {
+	color: white;
+	background-color: #009223;
+	border-radius: 10px;
+	width: 120px;
+	height: 50px;
+	box-shadow: 2px 2px 3px #999;
+	border-color : transparent;
+	position: fixed;
+	right:30px;
+	bottom: 50px;
+	
+	  
+}
+
+#inputSerch {
+	border-top-color : #bdc3c7;
+	border-bottom-color : #bdc3c7;
+	border-left-color :#bdc3c7;
+	border-right-color : #bdc3c7;
+	
+	border-bottom-left-radius: 10px;
+	border-top-left-radius: 10px;
+	
+	height: 40px;
+	
+}
+
+
+#buttonBar {
+ 	border-bottom-right-radius: 10px;
+ 	border-top-right-radius: 10px;
+	width : 40px;
+	height: 40px;
+	background-color: #009223;
+	border-color : transparent;
+	
+}
+
+#searchBar{
+	float: right 50px;
+}
+
+#buttonBar i {
+	color : white;
+}
+
+
+
 </style>
 
 </head>
@@ -185,7 +241,7 @@
 						aria-label="Close"></button>
 				</div>
 				<div class="modal-body d-flex align-items-center">
-					<div class="input-group w-75 mx-auto d-flex">
+					<div class="input-group w-75 mx-auto d-flex" >
 						<input type="search" class="form-control p-3"
 							placeholder="keywords" aria-describedby="search-icon-1">
 						<span id="search-icon-1" class="input-group-text p-3"><i
@@ -212,19 +268,34 @@
 	<!-- food section -->
 
 	<div class="row g-4 justify-content-center" id="categoryBox">
-		<div class="row g-4 justify-content-center text-center">
-			<h2>Our Menu</h2>
+			<!-- <div class="row g-4 justify-content-center text-center" style="margin-left: 850px">
+			<div class="col-xl-2">
+				<div class="input-group w-150 mx-auto d-flex">
+					<input type="search" class="form-control p-3"
+						placeholder="keywords" aria-describedby="search-icon-1"> 
+						<span id="search-icon-1" class="input-group-text p-3">
+						<i class="fa fa-search"></i></span>
+				</div>
+			</div>
+		</div> -->
+	
+		<!-- 카테고리 -->
+		<div class="col-lg-9">
+			<ul class="filters_menu" style="margin-top:20px !important;">
+			
+				<a href="goGeneral" ><li>All</li></a>
+				
+				<a href="getCategory?category=채소" id="clickVege"><li>채소</li></a>
+				<a href="getCategory?category=과일" id="clickFruit"><li>과일</li></a>
+				<a href="getCategory?category=생필품" id="ClickDaily"><li>생활용품</li></a>
+	
+				<input id="inputSerch" class="serchBar"  type="search" placeholder="keywords">
+				<button  type="button" id="buttonBar" class="serchBar"><i class="fa fa-search"></i></button>
+			
+			</ul>
 		</div>
 		
-		
-		<!-- 카테고리 -->
-		<ul class="filters_menu"  >
-			<a href="goGeneral" ><li>All</li></a>
-			
-			<a href="getCategory?category=채소" id="clickVege"><li>채소</li></a>
-			<a href="getCategory?category=과일" id="clickFruit"><li>과일</li></a>
-			<a href="getCategory?category=생필품" id="ClickDaily"><li>생활용품</li></a>
-		</ul>
+
 
 		<div class="col-lg-9">
 			<div class="row g-4 justify-content-center">
@@ -232,13 +303,13 @@
                            <div class="col-md-6 col-lg-6 col-xl-4">
                               <div class="rounded position-relative fruite-item">
                                  <div class="fruite-img">
-                                    <!-- <img src= class="img-fluid w-100 rounded-top" alt=""> -->
+                                    <img src="resources/g_Image/${g.g_img1}" class="img-fluid w-100 rounded-top" alt="">
                                  </div>
                                  <div
                                     class="text-white bg-secondary px-3 py-1 rounded position-absolute"
-                                    style="top: 10px; left: 10px;">${g.category}</div>
+                                    style="top: 10px; left: 10px; background-color: #009223 !important;">${g.category}</div>
                                  <div
-                                    class="p-4 border border-secondary border-top-0 rounded-bottom">
+                                    class="p-4 border border-secondary border-top-0 rounded-bottom" style="border-color: #009223 !important;">
                                     <br>
                                     <h5>${g.g_title}</h5>
                                     <h6>${g.g_writer}</h6>
@@ -253,8 +324,10 @@
                               </div>
                            </div>
                         </c:forEach>
-
                      </div>
+		</div>
+		<div class="row g-4 justify-content-center">
+			<button class="col-xl-1" id="write" type="button" onclick="location.href='gogBoard'">게시물작성</button>
 		</div>
 	</div>
 	<!-- end food section -->
@@ -283,9 +356,9 @@
 
 
 	<!-- Back to Top -->
-	<a href="#"
+<!-- 	<a href="#"
 		class="btn btn-primary border-3 border-primary rounded-circle back-to-top"><i
-		class="fa fa-arrow-up"></i></a>
+		class="fa fa-arrow-up"></i></a> -->
 
 
 	<!-- JavaScript Libraries -->
@@ -301,7 +374,7 @@
 	<!-- Template Javascript -->
 	<script src="resources/asset/js/main.js"></script>
 	
-	<!-- 카테고리:채소 비동기 -->
+<!-- 	<!-- 카테고리:채소 비동기 --
 	<script type="text/javascript">
 		function getVege(){
 			$.ajax({
@@ -319,7 +392,7 @@
 				
 			})
 		}
-	</script>
+	</script> -->
 	
 </body>
 

@@ -25,7 +25,10 @@ alter table c_board drop c_img3;
 
 select * from member;
 select * from g_board;
+select * from c_board;
 
 select * from approve;
 
 delete from member where email= 'tpwlsdl';
+
+delete from g_board where category='2';
