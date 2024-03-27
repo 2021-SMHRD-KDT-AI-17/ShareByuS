@@ -77,15 +77,7 @@ public class WebController {
 		return "AdReport";
 	}
 	
-	@RequestMapping("/goMyPage")
-	public String goMyPage(HttpSession session) {
-		member loginMember = (member)session.getAttribute("loginMember");
-		if(loginMember !=null) {
-			return "myPage";
-		}else {
-			
-		}return "Login";
-	}
+
 	
 	@RequestMapping("/goUpdateMember")
 	public String goUpdateMember(HttpSession session) {
@@ -103,13 +95,26 @@ public class WebController {
 	public String goReport() {
 		return "report";
 	}
+	@RequestMapping("/goGDetail")
+	public String goGDetail() {
+		return "gBoardDetail";
+	}
+	
 	
 //	@RequestMapping("/goReportSuccess")
 //	public String goReportSuccess() {
 //		return "reportSuccess";
 //	}
 
+
+//	@RequestMapping("/goMyPage")
+//	public String goMyPage() {
+//		return "MyPage";
+//	}
 	
+	
+
+
 
 	
 	
