@@ -70,6 +70,16 @@ public class WebController {
 		return "cBoard";
 	}
 	
+	@RequestMapping("/goAdmin")
+	public String goAdmin() {
+		return "AdminPage";
+	}
+	
+	@RequestMapping("/goAdReport")
+	public String goAdReport() {
+		return "AdReport";
+	}
+	
 	
 	
 	// 임시) 신고하기
@@ -87,5 +97,7 @@ public class WebController {
 //	public String goMyPage() {
 //		return "MyPage";
 //	}
+	
+	
 
 }

@@ -5,6 +5,10 @@
 	<insert id="memberInsert" parameterType="kr.smhrd.entity.member">
 		insert into member values (#{type}, #{email}, #{pw}, #{name}, #{nick}, #{address}, #{tel})
 	</insert>
+	
+	<insert id="approveMemInsert" parameterType="kr.smhrd.entity.approve">
+		insert into member values (#{type}, #{email}, #{pw}, #{name}, #{nick}, #{address}, #{tel})
+	</insert>
 
 	<select id="memberCheck" parameterType="kr.smhrd.entity.member" resultType="kr.smhrd.entity.member">
 		select * from member where email=#{email} and pw=#{pw}
@@ -17,4 +21,16 @@
 	<select id="memberCheck2" parameterType="kr.smhrd.entity.member" resultType="kr.smhrd.entity.member">
 		select * from member where email=#{email} and pw is null
 	</select>
+	
+	<select id="goAdApprove" resultType="kr.smhrd.entity.approve">
+		select * from approve
+	</select>
+	
+	<select id="getApprove" parameterType="String" resultType="kr.smhrd.entity.approve">
+		select * from approve where email=#{email}
+	</select>
+	
+	<delete id="delApprove" parameterType="String">
+		delete from approve where email=#{email}
+	</delete>
 </mapper>

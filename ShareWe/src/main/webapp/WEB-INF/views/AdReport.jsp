@@ -125,9 +125,9 @@
 
         <!-- Single Page Header start -->
         <div class="container-fluid page-header py-5">
-            <h1 class="text-center text-white display-6">관리페이지</h1>
+            <h1 class="text-center text-white display-6">신고 회원 관리</h1>
             <ol class="breadcrumb justify-content-center mb-0">
-                <li class="breadcrumb-item active text-white">Management page</li>
+                <li class="breadcrumb-item active text-white">Reporting membership management</li>
             </ol>
         </div>
         <!-- Single Page Header End -->
@@ -139,7 +139,7 @@
                 <div class="row g-4 justify-content-center">
 	
 					<div class="col-md-6 col-lg-3">
-						<a href="goAdReport">
+						<a href="goJoin?type=general">
 							<div class="featurs-item text-center rounded bg-light p-4">
 								<div
 									class="featurs-content">
@@ -152,7 +152,7 @@
 						</a>
 					</div>
 					<div class="col-md-6 col-lg-3">
-						<a href="goAdApprove">
+						<a href="goJoin?type=company">
 							<div class="featurs-item text-center rounded bg-light p-4">
 								<div
 									class="featurs-content">

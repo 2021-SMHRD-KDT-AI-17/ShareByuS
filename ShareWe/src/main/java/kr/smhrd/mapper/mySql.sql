@@ -10,6 +10,10 @@ create table gBoard(
 	primary key(num)
 );
 
+<<<<<<< HEAD
+=======
+select * from g_board;
+>>>>>>> branch 'main' of https://github.com/2021-SMHRD-KDT-AI-17/ShareByuS.git
 select * from c_board;
 
 select * from member;
@@ -22,3 +26,5 @@ select * from member;
 select * from g_board;
 
 select * from approve;
+
+delete from member where email= 'tpwlsdl';
