@@ -56,9 +56,9 @@ public class C_BoardController {
 		member loginMember = (member)session.getAttribute("loginMember");
 		String email = loginMember.getEmail();
 		String c_writer = loginMember.getNick();
-		int price = Integer.parseInt(request.getParameter("price"));
-		int c_ea = Integer.parseInt(request.getParameter("c_ea"));
-		double c_opt1 = Double.parseDouble(request.getParameter("c_opt1"));
+		int price = c_board.getPrice();
+		int c_ea = c_board.getC_ea();
+		double c_opt1 = c_board.getC_opt1();
 		
 		try {
 			MultipartRequest multi= new MultipartRequest(request,path,size, encoding, rename);

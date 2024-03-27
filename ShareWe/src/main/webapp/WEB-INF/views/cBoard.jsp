@@ -1,3 +1,4 @@
+<%@page import="kr.smhrd.entity.member"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
 
@@ -41,6 +42,11 @@
 
 <body>
 
+
+<%
+		member loginMember = (member)session.getAttribute("loginMember");
+	%>
+
 	<!-- Spinner Start -->
 	<div id="spinner"
 		class="show w-100 vh-100 bg-white position-fixed translate-middle top-50 start-50  d-flex align-items-center justify-content-center">
@@ -57,6 +63,18 @@
 					<small class="me-3"></small> <small class="me-3"></small>
 				</div>
 				<div class="top-link pe-2">
+				
+				<%if (loginMember == null) {%>
+							<a href="goLogin" class="text-white"><small class="text-white mx-2">로그인</small>/</a>
+							<a href="goMemberType" class="text-white"><small class="text-white mx-2">회원가입</small></a>
+						<%}else {%>
+							<span><small class="text-white mx-2"><%=loginMember.getNick() %>님 환영합니다.</small></span>
+							<%if(loginMember.getEmail().equals("admin")) {%>
+								<a href="#" class="text-white"><small class="text-white ms-2">회원관리</small></a>
+							<%} %>
+							<a href="memberLogout" class="text-white"><small class="text-white mx-2">로그아웃</small></a>
+						<%} %>
+						
 					<a href="goMain" class="text-white"><small
 						class="text-white mx-2">홈</small>|</a> <a href="goLogin"
 						class="text-white"><small class="text-white mx-2">로그인</small></a>
@@ -65,8 +83,8 @@
 		</div>
 		<div class="container px-0">
 			<nav class="navbar navbar-light bg-white navbar-expand-xl">
-				<a href="goMain" class="navbar-brand"><h1
-						class="text-primary display-6">Share We?</h1></a>
+				<a href="goMain" class="navbar-brand">
+						<h1 class="text-primary display-6">Share We?</h1></a>
 				<button class="navbar-toggler py-2 px-3" type="button"
 					data-bs-toggle="collapse" data-bs-target="#navbarCollapse">
 					<span class="fa fa-bars text-primary"></span>
@@ -189,12 +207,14 @@
 
 							<input type="text" name="price" placeholder="숫자만 입력해주세요"
 							class="border-0 border-bottom rounded me-5 py-3 mb-4"
-								oninput=" this.value = this.value.replace(/[^0-9.]/g, '').replace(/(\..*)\./g, '$1');" 
-								onkeyup="inputNumberFormat(this);"/>
+								/>
 								<span>원</span>
 								<hr>
 								
-								<script type="text/javascript">
+								<!-- oninput=" this.value = this.value.replace(/[^0-9.]/g, '').replace(/(\..*)\./g, '$1');" 
+								onkeyup="inputNumberFormat(this); -->
+								
+								<!-- <script type="text/javascript">
 								function comma(str) {
 							        str = String(str);
 							        return str.replace(/(\d)(?=(?:\d{3})+(?!\d))/g, '$1,');
@@ -217,7 +237,7 @@
 								    str = String(str);
 								    return str.replace(/(\d)(?=(?:\d{3})+(?!\d))/g,'$1');
 								}
-								</script>
+								</script> -->
 						</div>
 						
 					</div>
@@ -227,37 +247,11 @@
 						<br>
 						<div class="form-item">
 
-							<input type="text" name="c_ea" placeholder="숫자만 입력해주세요"
-							class="border-0 border-bottom rounded me-5 py-3 mb-4"
-								oninput=" this.value = this.value.replace(/[^0-9.]/g, '').replace(/(\..*)\./g, '$1');" 
-								onkeyup="inputNumberFormat(this);"/>
+							<input type="number" name="c_ea" placeholder="숫자만 입력해주세요"
+							class="border-0 border-bottom rounded me-5 py-3 mb-4"/>
 								<span>개</span>
 								<hr>
 								
-								<script type="text/javascript">
-								function comma(str) {
-							        str = String(str);
-							        return str.replace(/(\d)(?=(?:\d{3})+(?!\d))/g, '$1,');
-							    }
-
-							    function uncomma(str) {
-							        str = String(str);
-							        return str.replace(/[^\d]+/g, '');
-							    } 
-							    
-							    function inputNumberFormat(obj) {
-							        obj.value = comma(uncomma(obj.value));
-							    }
-							    
-							    function inputOnlyNumberFormat(obj) {
-							        obj.value = onlynumber(uncomma(obj.value));
-							    }
-							    
-							    function onlynumber(str) {
-								    str = String(str);
-								    return str.replace(/(\d)(?=(?:\d{3})+(?!\d))/g,'$1');
-								}
-								</script>
 						</div>
 						
 					</div>
@@ -390,7 +384,7 @@
 
 					<div class="col-md-12 col-lg-6 col-xl-7" align="left">
     <h4 class="form-label my-3">옵션</h4>
-    <br> <input type="number" id="opTitle" name="c_opt1" style="width: 300px"
+    <br> <input type="text" id="opTitle" name="c_opt1" style="width: 300px"
         class="border-0 border-bottom rounded me-5 py-3 mb-4"
         placeholder="ex)제주 감귤 10 kg"> 
         
@@ -505,11 +499,13 @@ function search(){
 					
 					
 				</div>
+				</form>
 		</div>
-	</div>
-	</form>
-	</div>
-	</div>
+		
+		</div>
+	
+	
+	
 
 	<!-- 메인 페이지 하단 -->
 	<div class="container-fluid bg-dark text-white-50 footer pt-5 mt-5">

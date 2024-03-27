@@ -87,6 +87,7 @@ public class WebController {
 	public String goReport() {
 		return "report";
 	}
+	
 	@RequestMapping("/goReportSuccess")
 	public String goReportSuccess() {
 		return "reportSuccess";
