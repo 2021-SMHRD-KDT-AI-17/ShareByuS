@@ -70,6 +70,17 @@ public class WebController {
 		return "cBoard";
 	}
 	
+	
+	
+	// 임시) 신고하기
+	@RequestMapping("/goReport")
+	public String goReport() {
+		return "report";
+	}
+	@RequestMapping("/goReportSuccess")
+	public String goReportSuccess() {
+		return "reportSuccess";
+	}
 
 	
 //	@RequestMapping("/goMyPage")

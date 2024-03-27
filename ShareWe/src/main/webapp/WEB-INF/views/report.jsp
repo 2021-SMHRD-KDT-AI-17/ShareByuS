@@ -37,13 +37,22 @@
 <link href="resources/asset/css/bootstrap.min.css" rel="stylesheet">
 
 <!-- Template Stylesheet -->
-<link href="resources/asset/css/sw_style.css" rel="stylesheet">
+<link href="resources/asset/css/style.css" rel="stylesheet">
 
 <style type="text/css">
 #submitBtn:hover {
 	background-color: #81c408;
 	color: white !important;
 }
+
+<!-- 신고 사유 작성 -->
+.writeRe{
+	display: none;
+}
+.checkon:checked + .writeRe{
+	display: inline;
+}
+
 </style>
 </head>
 
@@ -142,51 +151,72 @@
 
 	<!-- Single Page Header start -->
 	<div class="container-fluid page-header py-5">
-		<h1 class="text-center text-white display-6">로그인</h1>
+		<h1 class="text-center text-white display-6">신고하기</h1>
 		<ol class="breadcrumb justify-content-center mb-0">
-			<li class="breadcrumb-item active text-white">Login</li>
+			<li class="breadcrumb-item active text-white">Report</li>
 		</ol>
 	</div>
 	<!-- Single Page Header End -->
 
 
-	<!-- 로그인 Start -->
+	<!-- 신고 Start -->
 	<div class="container-fluid py-5">
 		<div class="container py-5">
-			<!-- <h1 class="mb-4 text-center">로그인</h1> -->
-			<form action="memberCheck" method="post" >
+			<!-- <h1 class="mb-4 text-center">신고</h1> -->
 				<div class="row g-5 justify-content-center" id="loginDiv">
 					<div class="col-md-12 col-lg-6 col-xl-7" align="center">
-						<h4 class="form-label my-3">로그인</h4>
-						<div class="form-item">
-							<input type="text" class="form-control" placeholder="아이디를 입력해주세요"
-								style="width: 300px; margin-bottom: 10px;" name="email">
-						</div>
-						<div class="form-item">
-							<input type="password" class="form-control"
-								placeholder="비밀번호를 입력해주세요" style="width: 300px;" name="pw">
-							<c:if test="${fail eq 'fail'}"><br><p style= "color: red;"><small>💡 아이디와 비밀번호를 확인해주세요! 💡</small></p></c:if>
-						</div>
-						<button type="submit" class="btn btn-outline-success"
-							style="width: 300px; height: 45px; margin-top: 50px; margin-bottom: 10px; color: #81c408; border-color: #81c408;"
-							id="submitBtn">로그인</button>
-						<br>
+						<h4 class="form-label my-3">신고</h4>
 						
-						<a href="javascript:kakaoLogin()">
-						<img src="resources/img/kakao_login_medium_wide.png">
-						</a>
+		
+		<form action="goReportSuccess" method="post">
+		<fieldset>
+			<legend>신고하려는 사유를 선택해 주세요</legend>
 
-					</div>
-					<div
-						class="row g-4 text-center align-items-center justify-content-center pt-4">
+			<table id="product-list" width="500">
+				<tr>
+					<td><input type="checkbox" name="reason" value="부적절한 게시글">부적절한 게시글/리뷰에요.</td>
+				</tr>
 
-					</div>
-				</div>
-		</div>
-		</form>
-	</div>
-	</div>
-	<!-- 로그인 End -->
+				<tr>
+					<td><input type="checkbox" name="reason" value="거래금지 품목">거래금지/위험한 물품을 나누고 있어요.</td>
+				</tr>
+
+				<tr>
+					<td><input type="checkbox" name="reason" value="거래중 분쟁발생">거래 중 분쟁이 발생했어요.</td>
+								</tr>
+				
+				<tr>
+					<td><input type="checkbox" name="reason" value="사기의심">사기인 것 같아요.</td>
+				</tr>
+				
+				<tr>
+					<td><input type="checkbox" id="checkon" name="reason" value="기타사유">다른 문제가 있어요.
+									
+					</td>
+						
+				</tr>
+							
+				<tr class="writeRe">
+				<td><textarea name="reason" id="" cols="50" rows="3"></textarea>
+				</td></tr>
+				
+				
+				<tr>
+					<td><input type="submit" value="신고하기">
+						<!-- <form action="goMain"><span><button>취소</button></span></form> -->
+					</td>
+					
+				</tr>			
+			
+			</table>
+			
+		</fieldset>
+	</form>
+
+	
+	
+	</form>					
+	<!-- 신고 End -->
 
 
 	<!-- 메인 페이지 하단 -->
@@ -223,55 +253,6 @@
 	<script src="resources/asset/lib/waypoints/waypoints.min.js"></script>
 	<script src="resources/asset/lib/lightbox/js/lightbox.min.js"></script>
 	<script src="resources/asset/lib/owlcarousel/owl.carousel.min.js"></script>
-
-
-
-
-	<!-- 카카오 로그인 -->
-	<script src="https://developers.kakao.com/sdk/js/kakao.js"></script>
-	<script>
-	Kakao.init('2bc6b3bd3fef80118728da5119ebd261');
-	console.log(Kakao.isInitialized()); // sdk초기화여부판단
-	
-	//카카오로그인
-	function kakaoLogin() {
-	    Kakao.Auth.loginForm({
-	      scope: "profile_nickname, account_email",
-	      success: function (response) {
-	        Kakao.API.request({
-	          url: '/v2/user/me',
-	          success: function (response) {
-	        	  console.log(response)
-	        	  const kakao_account = response.kakao_account;
-                  console.log(kakao_account);
-                  
-                  var account_email = response.kakao_account.email;
-                  let f = document.createElement('form');
-	                let obj;
-	        		    obj = document.createElement('input');
-	        		    obj.setAttribute('type', 'hidden');
-	        		    obj.setAttribute('name', 'email');
-	        		    obj.setAttribute('value', account_email);
-	        		    
-	        		    f.appendChild(obj);
-	        		    f.setAttribute('method', 'post');
-	        		    f.setAttribute('action', 'memberCheck2');
-	        		    document.body.appendChild(f);
-	        		    f.submit();
-                  
-                  
-	          },
-	          fail: function (error) {
-	            console.log(error)
-	          },
-	        })
-	      },
-	      fail: function (error) {
-	        console.log(error)
-	      },
-	    })
-	  }
-    </script>
 	
 	<!-- Template Javascript -->
 	<script src="resources/asset/js/main.js"></script>
