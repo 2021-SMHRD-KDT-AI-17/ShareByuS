@@ -1,3 +1,5 @@
+<%@page import="kr.smhrd.entity.g_board"%>
+<%@page import="kr.smhrd.entity.member"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
@@ -37,8 +39,52 @@
 
 <!-- Template Stylesheet -->
 <link href="resources/asset/css/sw_style.css" rel="stylesheet">
+
+
+<style>
+#topMenu {
+	height: 30px;
+	width: 850px;
+}
+
+#topMenu ul li {
+	list-style: none;
+	color: white;
+	background-color: #009223;
+	float: left;
+	line-height: 50px;
+	vertical-align: middle;
+	text-align: center;
+}
+
+#topMenu .menuLink {
+	text-decoration: none;
+	color: white;
+	display: block;
+	width: 150px;
+	font-size: 12px;
+	font-weight: bold;
+	font-family: "Trebuchet MS", Dotum, Arial;
+}
+
+#topMenu .menuLink:hover {
+	color: black;
+	background-color: #badc58;
+}
+
+.filters_menu {
+    display: list-item;
+    text-align: -webkit-match-parent;
+    unicode-bidi: isolate;
+}
+</style>
+
 </head>
 <body>
+<%
+		member loginMember = (member)session.getAttribute("loginMember");
+		g_board g_board = (g_board)session.getAttribute("g_board");
+	%>
 
 	<!-- Spinner Start -->
 	<div id="spinner"
@@ -179,77 +225,55 @@
 
 
 		<br> <br> <br>
-
-		<div class="accordion" id="accordionPanelsStayOpenExample">
-			<div class="accordion-item">
-				<h2 class="accordion-header">
-					<button class="accordion-button" type="button"
-						data-bs-toggle="collapse"
-						data-bs-target="#panelsStayOpen-collapseOne" aria-expanded="true"
-						aria-controls="panelsStayOpen-collapseOne">게시물작성</button>
-				</h2>
-				<div id="panelsStayOpen-collapseOne"
-					class="accordion-collapse collapse show">
-					<div class="accordion-body"></div>
-				</div>
-			</div>
-			<div class="accordion-item">
-				<h2 class="accordion-header">
-					<button class="accordion-button collapsed" type="button"
-						data-bs-toggle="collapse"
-						data-bs-target="#panelsStayOpen-collapseTwo" aria-expanded="false"
-						aria-controls="panelsStayOpen-collapseTwo">관심 카테고리 관리</button>
-				</h2>
-				<div id="panelsStayOpen-collapseTwo"
-					class="accordion-collapse collapse">
-					<div class="accordion-body"></div>
-				</div>
-			</div>
-			<div class="accordion-item">
-				<h2 class="accordion-header">
-					<button class="accordion-button collapsed" type="button"
-						data-bs-toggle="collapse"
-						data-bs-target="#panelsStayOpen-collapseThree"
-						aria-expanded="false" aria-controls="panelsStayOpen-collapseThree">
-						리뷰관리</button>
-				</h2>
-				<div id="panelsStayOpen-collapseThree"
-					class="accordion-collapse collapse">
-					<div class="accordion-body"></div>
-				</div>
-			</div>
-			<div class="accordion-item">
-				<h2 class="accordion-header">
-					<button class="accordion-button collapsed" type="button"
-						data-bs-toggle="collapse"
-						data-bs-target="#panelsStayOpen-collapseFour"
-						aria-expanded="false" aria-controls="panelsStayOpen-collapseFour">
-						내 구독권 확인</button>
-				</h2>
-				<div id="panelsStayOpen-collapseFour"
-					class="accordion-collapse collapse">
-					<div class="accordion-body"></div>
-				</div>
-			</div>
-			<div class="accordion-item">
-				<h2 class="accordion-header">
-					<button class="accordion-button collapsed" type="button"
-						data-bs-toggle="collapse"
-						data-bs-target="#panelsStayOpen-collapseFive"
-						aria-expanded="false" aria-controls="panelsStayOpen-collapseFive">
-						Share 참여 내역</button>
-				</h2>
-				<div id="panelsStayOpen-collapseFive"
-					class="accordion-collapse collapse">
-					<div class="accordion-body"></div>
-				</div>
-			</div>
-
 		</div>
 
+	<div class="row g-4 justify-content-center" id="categoryBox"
+		style="width:auto;" >
 
 
-		<!-- <div class="container py-5">
+		<ul class="filters_menu">
+			<li class="list-group-item">관심 카테고리</li>
+			<a onclick="getBoard()" id="clickVege"><li
+				class="list-group-item">My 게시글</li></a>
+			<li class="list-group-item">리뷰관리</li>
+			<li class="list-group-item">구독권</li>
+			<li class="list-group-item">Share 참여 내역</li>
+		</ul>
+
+
+		<script type="text/javascript">
+		function getBoard(){
+			document.getElementById("myBoard").style.display = "block"; 
+		}
+		</script>
+
+
+			<div class="col-lg-9" id="myBoard" style="display: none">
+				
+				<div class="row g-4 justify-content-center">
+						<div class="col-md-6 col-lg-6 col-xl-4" style="width: 1200px">
+							<div class="rounded position-relative fruite-item">
+								<c:forEach items="${gboard_list}" var="g">
+								<div class="fruite-img">						
+							<div align="justify" align="left">
+								<img alt="" src="resources/g_Image/${g.g_img1}" align="left" style="margin-right: 30px; width:100px; height:80px; object-fit:fill;">
+									<h3 style="text-align: center;">${g.g_title}</h3>
+									<strong>작성일 ${g.g_w_date }</strong>
+									<hr>
+							</div>
+
+					
+					
+							</div>
+							</c:forEach>
+						</div>
+			</div>
+		</div>
+	</div>
+
+
+
+	<!-- <div class="container py-5">
 			<div class="row g-4">
 				<div class="col-lg-12">
 					<div class="row g-4">

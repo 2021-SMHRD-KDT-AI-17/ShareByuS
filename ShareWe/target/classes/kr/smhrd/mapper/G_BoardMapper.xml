@@ -15,5 +15,9 @@
 	<select id="getCategory" parameterType="String" resultType="kr.smhrd.entity.g_board">
 		select * from g_board where category=#{category}
 	</select>
+	
+	<select id="getEmail" parameterType="String" resultType="kr.smhrd.entity.g_board">
+		select * from g_board where email=#{email}
+	</select>
 
 </mapper>

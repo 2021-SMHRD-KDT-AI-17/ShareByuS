@@ -99,10 +99,7 @@ public class WebController {
 //		return "MyPage";
 //	}
 	
-	@RequestMapping("/goMyPage")
-	public String goMyPage() {
-		return "myPage";
-	}
+	
 	
 	
 
