@@ -87,12 +87,7 @@
 						</button>
 						<div class="collapse navbar-collapse bg-white" id="navbarCollapse">
 							<div class="navbar-nav mx-auto">
-								<a href="goGeneral" class="nav-item nav-link active">일반</a> <a
-									
-									href=goShop class="nav-item nav-link">기업</a>
-									
-							
-									<a href="gogBoard" class="nav-item nav-link">게시글작성</a>
+								<a href="goGeneral" class="nav-item nav-link active">일반</a>
 									<a href="goCompany" class="nav-item nav-link">기업</a> <a
 									href="gogBoard" class="nav-item nav-link">게시글작성</a>
 									
