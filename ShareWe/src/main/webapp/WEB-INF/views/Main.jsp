@@ -164,6 +164,10 @@
 						<a href="goReport"><button>신고하기</button></a>
 						<!-- 신고 임시 버튼 -->
 						
+						<!-- 채팅 임시 버튼 -->
+						<a href="goChat"><button>채팅</button></a>
+						<!-- 채팅 임시 버튼 -->
+						
 						<div class="position-relative mx-auto">
 							<form action="search">
 								<input

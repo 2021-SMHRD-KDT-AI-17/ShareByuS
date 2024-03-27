@@ -104,6 +104,9 @@ public class WebController {
 		return "myPage";
 	}
 	
-	
+	@RequestMapping("/goChat")
+	public String goChat() {
+		return "chat-ws";
+	}
 
 }
