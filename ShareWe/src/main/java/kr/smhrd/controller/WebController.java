@@ -79,7 +79,7 @@ public class WebController {
 	
 	@RequestMapping("/goMyPage")
 	public String goMyPage() {
-		return "MyPage";
+		return "myPage";
 	}
 	
 	// 임시) 신고하기
@@ -99,6 +99,11 @@ public class WebController {
 //	public String goMyPage() {
 //		return "MyPage";
 //	}
+	
+	@RequestMapping("/goMyPage")
+	public String goMyPage() {
+		return "myPage";
+	}
 	
 	
 

@@ -115,10 +115,12 @@
 									class="fa fa-shopping-bag fa-2x"></i> <span
 									class="position-absolute bg-secondary rounded-circle d-flex align-items-center justify-content-center text-dark px-1"
 									style="top: -5px; left: 15px; height: 20px; min-width: 20px;">3</span>
+
 								</a>
 								<!-- 마이페이지 -->
 								<a href="goMyPage" class="my-auto"> <i class="fas fa-user fa-2x"></i></a>
 								<!-- 마이페이지 -->
+
 							</div>
 						</div>
 					</nav>
@@ -131,7 +133,7 @@
 		<div class="modal fade" id="searchModal" tabindex="-1"
 			aria-labelledby="exampleModalLabel" aria-hidden="true">
 			<div class="modal-dialog modal-fullscreen">
-				0
+				
 				<div class="modal-content rounded-0">
 					<div class="modal-header">
 						<h5 class="modal-title" id="exampleModalLabel">Search by
