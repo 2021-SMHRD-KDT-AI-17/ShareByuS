@@ -32,10 +32,10 @@ public class c_board {
     @NonNull private String c_img1;
 
     // 이미지2 
-    private String c_img2;
-
-    // 이미지3 
-    private String c_img3;
+//    private String c_img2;
+//
+//    // 이미지3 
+//    private String c_img3;
 
     // 내용 
     @NonNull private String c_content;
@@ -58,11 +58,11 @@ public class c_board {
     // 옵션1 
     @NonNull private double c_opt1;
 
-    // 옵션2 
-    @NonNull private double c_opt2;
+     //옵션2 
+   private double c_opt2;
 
     // 옵션3 
-    @NonNull private double c_opt3;
+    private double c_opt3;
 
     // 옵션4 
     private double c_opt4;

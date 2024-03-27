@@ -10,13 +10,13 @@ create table gBoard(
 	primary key(num)
 );
 
-select * from g_board;
+select * from c_board;
 
 select * from member;
 select email from member;
 
-alter table g_board drop g_img2;
-alter table g_board drop g_img3;
+alter table c_board drop c_img2;
+alter table c_board drop c_img3;
 
 select * from member;
 

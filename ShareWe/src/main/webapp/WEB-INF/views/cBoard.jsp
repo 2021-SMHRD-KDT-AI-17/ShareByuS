@@ -147,7 +147,7 @@
 
 	<div class="container-fluid py-5">
 		<div class="container py-5">
-			<form action="gBoardInsert" method="post"
+			<form action="cBoardInsert" method="post"
 				enctype="multipart/form-data">
 				
 				
@@ -389,48 +389,47 @@
 					</div>
 
 					<div class="col-md-12 col-lg-6 col-xl-7" align="left">
-						<h4 class="form-label my-3">옵션</h4>
-						<br> <input type="text" id="opTitle" style="width: 300px"
-							class="border-0 border-bottom rounded me-5 py-3 mb-4"
-							placeholder="ex)제주 감귤 10 kg"> <input type="text"
-							id="price" name="price" style="width: 80px" placeholder="가격 입력"
-							class="border-0 border-bottom rounded me-5 py-3 mb-4"
-							oninput=" this.value = this.value.replace(/[^0-9.]/g, '').replace(/(\..*)\./g, '$1');"
-							onkeyup="inputNumberFormat(this);" /> <span>원 </span>
-						<button class="border-0 border-bottom rounded me-5 py-3 mb-4"
-							onclick="opAppend()" style="width: 100px; margin-left: 20px;"
-							type="button">옵션 추가</button>
+    <h4 class="form-label my-3">옵션</h4>
+    <br> <input type="number" id="opTitle" name="c_opt1" style="width: 300px"
+        class="border-0 border-bottom rounded me-5 py-3 mb-4"
+        placeholder="ex)제주 감귤 10 kg"> 
+        
+       <!--  <input type="text" id="opPrice" name="optionPrice" style="width: 80px" 
+        placeholder="가격 입력" class="border-0 border-bottom rounded me-5 py-3 mb-4"
+        oninput=" this.value = this.value.replace(/[^0-9.]/g, '').replace(/(\..*)\./g, '$1');"
+        onkeyup="inputNumberFormat(this);" /> 
+        <span>원 </span> -->
+        
+        
+    <!-- button class="border-0 border-bottom rounded me-5 py-3 mb-4"
+        onclick="opAppend()" style="width: 100px; margin-left: 20px;"
+        type="button">옵션 추가</button>
 	
-					<div class="form-item">
-							<div class="col-sm-8">
-								<label for="a4"> 추가된 옵션</label>
-								 <select name="" id="option" size="5" class="form-control" style="width:300px">
-								</select>
-							</div>
-							<hr>
-						</div>
+<div class="form-item">
+        <div class="col-sm-8" id="option">-->
+        
+        <hr>
+    </div>
 
-						
-					</div>
-					
-					<script>
-					
-						function opAppend(){
-						   	var opTitle = document.getElementById("opTitle");
-						    var price = document.getElementById("price");
-						    
-						    var selectAp = document.getElementById("option");
-						    var objOption = document.createElement("option");
-							
-						    objOption.text = opTitle.value +"-----"+ price.value+" 원";
-						    objOption.value = opTitle.value;
-						    selectAp.options.add(objOption);
-						    objOption.name = 'c_opt1';
-						    
-						}
+<!--     </div>
+</div>  -->
+
+
+<!-- <script>
+
+    function opAppend(){
+        var opTitle = document.getElementById("opTitle");
+        var opPrice = document.getElementById("opPrice");
+        
+        console.log(opTitle.value,opPrice.value);
+
+        var p1 = document.createElement("p");
+        p1.innerHTML=`<p name='c_opt1' value='${opPrice.value}'>${opTitle.value}</p>`
+        option.appendChild(p1);
+    }
 						
 						    
-						</script>
+						</script> --> 
 
 
 					<div class="col-md-12 col-lg-6 col-xl-7" align="left">
@@ -494,9 +493,9 @@ function search(){
 	    } 
 	});
 }
-</script> -->
+</script>  -->
 
-<div class="col-md-12 col-lg-6 col-xl-7" align="right"
+					<div class="col-md-12 col-lg-6 col-xl-7" align="right"
 							style="margin-left: 100px">
 							<input class="border-0 border-bottom rounded me-5 py-3 mb-4"
 								style="width: 100px" type="reset" value="초기화"> <input

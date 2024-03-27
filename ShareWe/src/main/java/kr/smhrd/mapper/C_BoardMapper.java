@@ -11,4 +11,6 @@ public interface C_BoardMapper {
 
 	public List<c_board> getCBoard();
 
+	int insertCBoard(c_board c_board);
+
 }
