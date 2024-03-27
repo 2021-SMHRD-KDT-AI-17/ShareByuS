@@ -166,51 +166,52 @@
 			<legend>신고하려는 사유를 선택해 주세요</legend>
 			
 			<table id="report_re" width="500">
-				<tr>
+				<tr height></tr>
+	
+				<tr height="60px">
+					<td></td>
+					<td></td>
 					<td><input type="checkbox" name="reason" value="부적절한 게시글">부적절한 게시글/리뷰에요.</td>
 				</tr>
 
-				<tr>
+				<tr height="60px">
+					<td></td>
+					<td></td>
 					<td><input type="checkbox" name="reason" value="거래금지 품목">거래금지/위험한 물품을 나누고 있어요.</td>
 				</tr>
 
-				<tr>
+				<tr height="60px">
+					<td></td>
+					<td></td>
 					<td><input type="checkbox" name="reason" value="거래중 분쟁발생">거래 중 분쟁이 발생했어요.</td>
 								</tr>
 				
-				<tr>
+				<tr height="60px">
+					<td></td>
+					<td></td>
 					<td><input type="checkbox" name="reason" value="사기의심">사기인 것 같아요.</td>
 				</tr>
 				
-				<tr>
+				<tr height="120px">
+					<td></td>
+					<td></td>
 					<td>
 					<input type="checkbox" id="checkon" name="reason" value="기타사유">다른 문제가 있어요.
 					<br>
-					<textarea name="reason" id="" cols="50" rows="3"></textarea>				
+					<textarea name="reason" cols="50" rows="3"></textarea>				
 					</td>
 						
-				</tr>
-							
-				<tr class="writeRe">
-				<td>
-				</td></tr>
-				
-				
-				<tr>
-					<td><input type="submit" value="신고하기">
-						<!-- <form action="goMain"><span><button>취소</button></span></form> -->
-					</td>
-					
-				</tr>			
+				</tr>		
 			
-			</table>
-			
+			</table>	
 		</fieldset>
+		
+		<input type="submit" value="신고하기">
 	</form>
 
 	
 	
-	</form>					
+					
 	<!-- 신고 End -->
 
 
