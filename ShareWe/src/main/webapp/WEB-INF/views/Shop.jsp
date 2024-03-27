@@ -68,6 +68,12 @@
 	color: black;
 	background-color: #badc58;
 }
+
+.filters_menu {
+    display: list-item;
+    text-align: -webkit-match-parent;
+    unicode-bidi: isolate;
+}
 </style>
 
 </head>
@@ -212,40 +218,43 @@
 		
 		
 		<!-- 카테고리 -->
-		<ul class="filters_menu">
-			<a href="goMain"><li>All</li></a>
-			<a href="goMain"><li>Burger</li></a>
-			<a href="goMain"><li>Pizza</li></a>
-			<a href="goMain"><li>Pasta</li></a>
-			<a href="goMain"><li>Fries</li></a>
+		<ul class="filters_menu"  >
+			<a href="goMain" ><li>All</li></a>
+			
+			<a onClick="getVege()" id="clickVege"><li>채소</li></a>
+			<a href="goMain" id="clickFruit"><li>과일</li></a>
+			<a href="goMain" id="ClickDaily"><li>생활용품</li></a>
 		</ul>
 
 		<div class="col-lg-9">
 			<div class="row g-4 justify-content-center">
-				<div class="col-md-6 col-lg-6 col-xl-4">
-					<div class="rounded position-relative fruite-item">
-						<div class="fruite-img">
-							<img src="img/fruite-item-5.jpg"
-								class="img-fluid w-100 rounded-top" alt="">
-						</div>
-						<div
-							class="text-white bg-secondary px-3 py-1 rounded position-absolute"
-							style="top: 10px; left: 10px;">Fruits</div>
-						<div
-							class="p-4 border border-secondary border-top-0 rounded-bottom">
-							<h4>Grapes</h4>
-							<p>Lorem ipsum dolor sit amet consectetur adipisicing elit
-								sed do eiusmod te incididunt</p>
-							<div class="d-flex justify-content-between flex-lg-wrap">
-								<p class="text-dark fs-5 fw-bold mb-0">$4.99 / kg</p>
-								<a href="#"
-									class="btn border border-secondary rounded-pill px-3 text-primary"><i
-									class="fa fa-shopping-bag me-2 text-primary"></i> Add to cart</a>
-							</div>
-						</div>
-					</div>
-				</div>
-			</div>
+                        <c:forEach items="${gboard_list}" var="g">
+                           <div class="col-md-6 col-lg-6 col-xl-4">
+                              <div class="rounded position-relative fruite-item">
+                                 <div class="fruite-img">
+                                    <!-- <img src= class="img-fluid w-100 rounded-top" alt=""> -->
+                                 </div>
+                                 <div
+                                    class="text-white bg-secondary px-3 py-1 rounded position-absolute"
+                                    style="top: 10px; left: 10px;">${g.category}</div>
+                                 <div
+                                    class="p-4 border border-secondary border-top-0 rounded-bottom">
+                                    <br>
+                                    <h5>${g.g_title}</h5>
+                                    <h6>${g.g_writer}</h6>
+                                    <p>${g.g_content}</p>
+                                    <div class="d-flex justify-content-between flex-lg-wrap">
+                                       <!-- 찜버튼(하트) 기능 여기 아래에 -->
+
+                                       <!-- <p class="text-dark fs-5 fw-bold mb-0">$4.99 / kg</p> -->
+                                       <!-- <a href="#" class="btn border border-secondary rounded-pill px-3 text-primary"><i class="fa fa-shopping-bag me-2 text-primary"></i>찜</a> -->
+                                    </div>
+                                 </div>
+                              </div>
+                           </div>
+                        </c:forEach>
+
+                     </div>
 		</div>
 	</div>
 	<!-- end food section -->
@@ -291,6 +300,27 @@
 
 	<!-- Template Javascript -->
 	<script src="resources/asset/js/main.js"></script>
+	
+	<!-- 카테고리:채소 비동기 -->
+	<script type="text/javascript">
+		function getVege(){
+			$.ajax({
+				url :'',
+				data : '',
+				type : 'get',
+				
+				success : function(data){
+					
+				},
+				error : function() {
+					alert()
+				}
+				
+				
+			})
+		}
+	</script>
+	
 </body>
 
 </html>
