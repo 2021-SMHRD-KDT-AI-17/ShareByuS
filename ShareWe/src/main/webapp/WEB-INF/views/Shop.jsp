@@ -219,11 +219,11 @@
 		
 		<!-- 카테고리 -->
 		<ul class="filters_menu"  >
-			<a href="goMain" ><li>All</li></a>
+			<a href="goGeneral" ><li>All</li></a>
 			
-			<a onClick="getVege()" id="clickVege"><li>채소</li></a>
-			<a href="goMain" id="clickFruit"><li>과일</li></a>
-			<a href="goMain" id="ClickDaily"><li>생활용품</li></a>
+			<a href="getCategory?category=채소" id="clickVege"><li>채소</li></a>
+			<a href="getCategory?category=과일" id="clickFruit"><li>과일</li></a>
+			<a href="getCategory?category=생필품" id="ClickDaily"><li>생활용품</li></a>
 		</ul>
 
 		<div class="col-lg-9">

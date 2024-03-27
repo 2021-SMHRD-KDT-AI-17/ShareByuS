@@ -44,6 +44,13 @@ public class G_BoardController {
 		return "Shop";
 	}
 	
+	@RequestMapping("/getCategory")
+	public String getCategory(@RequestParam("category") String category, Model model) {
+		List<g_board> gboard_list = g_boardMapper.getCategory(category);
+		model.addAttribute("gboard_list", gboard_list);
+		return "Shop";
+	}
+	
 	
 	//게시글작성
 	@RequestMapping("/gBoardInsert")
