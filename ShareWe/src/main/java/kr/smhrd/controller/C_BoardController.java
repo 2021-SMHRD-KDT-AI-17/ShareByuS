@@ -65,6 +65,7 @@ public class C_BoardController {
 		member loginMember = (member)session.getAttribute("loginMember");
 		String email = loginMember.getEmail();
 		String c_writer = loginMember.getNick();
+		String c_f_date = c_board.getC_f_date();
 		int price = c_board.getPrice();
 		int c_ea = c_board.getC_ea();
 		double c_opt1 = c_board.getC_opt1();
@@ -73,30 +74,32 @@ public class C_BoardController {
 			MultipartRequest multi= new MultipartRequest(request,path,size, encoding, rename);
 			String c_title = multi.getParameter("c_title");
 			String c_content = multi.getParameter("c_content");
+			
 			String c_img1 = multi.getFilesystemName("c_img1");
 			String category = multi.getParameter("category");
 			
+			c_board = new c_board(c_title,c_writer, email, c_img1, c_content, c_f_date, category, price, c_opt1, c_ea);
 			
-			
-			
-			c_board = new c_board(c_title,c_writer, email, c_img1, c_content, category, price, c_opt1, c_ea);
-			System.out.println(c_board.toString());
+			int cnt = c_boardMapper.insertCBoard(c_board);
 		} catch (IOException e) {
 			e.printStackTrace();
-		}
-		
-		int cnt = c_boardMapper.insertCBoard(c_board);
-		if(cnt>0) {
-			System.out.println("업로드 성공~");
-		}else {
-			System.out.println("업로드 실패~");
 		}
 		
 			return "redirect:/goCompany";
 		
 	}
 		
+	
+	@RequestMapping("/C_BoardContent")
+	public String G_BoardContent(@RequestParam("c_num") int c_num, Model model) {
 		
+		c_board c_board = c_boardMapper.C_BoardContent(c_num); //num값에 해당하는 하나의 게시물 가져오기
+		model.addAttribute("c_board",c_board);
+		
+//			g_boardMapper.G_BoardCount(g_num); // num값에 해당하는 게시물 조회수 1증가
+		return "cBoardDetail";
+	}
+	
 	}
 	
 	

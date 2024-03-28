@@ -7,13 +7,12 @@
 	</select>
 	
 	<insert id="insertCBoard" parameterType="kr.smhrd.entity.c_board">
-	INSERT INTO c_board
-	(c_title, c_writer, email, c_img1, c_content, c_w_date, c_f_date, category,
-	place, price, c_opt1, c_opt2, c_opt3, c_opt4, c_ea)
-	
-	VALUES (#{c_title}, #{c_writer}, #{email}, #{c_img1}, #{c_content},
-	NOW(), NOW(), #{category}, '광주 동구', #{price}, #{c_opt1}, 1, 1, 1, #{c_ea});
-
+		INSERT INTO c_board
+		(c_title, c_writer, email, c_img1, c_content, c_w_date, c_f_date, category,
+		place, price, c_opt1, c_opt2, c_opt3, c_opt4, c_ea)
+		
+		VALUES (#{c_title}, #{c_writer}, #{email}, #{c_img1}, #{c_content},
+		NOW(), #{c_f_date}, #{category}, '광주 동구', #{price}, #{c_opt1}, 1, 1, 1, #{c_ea});
 	</insert>
 	
 	<select id="getCEmail" parameterType="String" resultType="kr.smhrd.entity.c_board">
@@ -22,5 +21,9 @@
 	
 	<select id="getComCategory" parameterType="String" resultType="kr.smhrd.entity.c_board">
 		select * from c_board where category=#{category}
+	</select>
+	
+	<select id="C_BoardContent" parameterType="int" resultType="kr.smhrd.entity.c_board">
+		select*from c_board where c_num=#{c_num}
 	</select>
 </mapper>

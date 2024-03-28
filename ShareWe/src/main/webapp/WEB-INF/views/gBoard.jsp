@@ -300,6 +300,8 @@
 								placeholder="상품 명을 입력해주세요">
 						</div>
 					</div>
+					
+					
 
 					<div class="col-md-12 col-lg-6 col-xl-7" align="left">
 						<h4 class="form-label my-3">* 카테고리</h4>

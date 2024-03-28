@@ -44,7 +44,7 @@ public class c_board {
     private String c_w_date;
 
     // 펀딩날짜 
-    private String c_f_date;
+   @NonNull private String c_f_date;
 
     // 카테고리 
     @NonNull private String category;

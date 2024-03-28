@@ -336,30 +336,51 @@
 			}
 		</script>
 
-			<div class="col-lg-9"  id="myBoard" style="display: none">
+	<div class="col-lg-9"  id="myBoard" style="display: none">
 
+		<c:if test="${loginMember.type == 2 || loginMember.type == 3}">
 			<div class="row g-4 justify-content-center">
 				<div class="col-md-6 col-lg-6 col-xl-4" style="width: 1200px">
 					<div class="rounded position-relative fruite-item">
 						<c:forEach items="${gboard_list}" var="g">
 							<div class="fruite-img">
 								<div align="justify" align="left">
-									<a href="G_BoardContent?g_num=${g.g_num}"> <img alt=""
-										src="resources/g_Image/${g.g_img1}" align="left"
+									<a href="G_BoardContent?g_num=${g.g_num}"> 
+									<img alt="" src="resources/g_Image/${g.g_img1}" align="left"
 										style="margin-right: 30px; width: 100px; height: 80px; object-fit: fill;"></a>
 									<a href="G_BoardContent?g_num=${g.g_num}"><h3 style="text-align: center;">${g.g_title}</h3></a>
 									<strong>작성일 ${g.g_w_date }</strong>
 									<hr>
 								</div>
-
-
-
 							</div>
 						</c:forEach>
 					</div>
 				</div>
 			</div>
-		</div>
+		</c:if>
+		
+		<c:if test="${loginMember.type == 1}">
+			<div class="row g-4 justify-content-center">
+				<div class="col-md-6 col-lg-6 col-xl-4" style="width: 1200px">
+					<div class="rounded position-relative fruite-item">
+						<c:forEach items="${cboard_list}" var="g">
+							<div class="fruite-img">
+								<div align="justify" align="left">
+									<a href="G_BoardContent?g_num=${c.c_num}"> 
+									<img alt="" src="resources/g_Image/${c.c_img1}" align="left"
+										style="margin-right: 30px; width: 100px; height: 80px; object-fit: fill;"></a>
+									<a href="G_BoardContent?g_num=${c.c_num}"><h3 style="text-align: center;">${c.c_title}</h3></a>
+									<strong>작성일 ${c.c_w_date }</strong>
+									<hr>
+								</div>
+							</div>
+						</c:forEach>
+					</div>
+				</div>
+			</div>
+		</c:if>
+		
+	</div>
 
 		<div class="col-lg-9" id="myCategory" style="display: none">
 
