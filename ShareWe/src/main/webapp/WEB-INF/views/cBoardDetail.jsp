@@ -63,7 +63,6 @@
 	font-size: 12px;
 	font-weight: bold;
 	font-family: "Trebuchet MS", Dotum, Arial;
-	
 }
 
 #topMenu .menuLink:hover {
@@ -72,9 +71,9 @@
 }
 
 .filters_menu {
-    display: list-item;
-    text-align: -webkit-match-parent;
-    unicode-bidi: isolate;
+	display: list-item;
+	text-align: -webkit-match-parent;
+	unicode-bidi: isolate;
 }
 
 #categoryBox .filters_menu li:hover {
@@ -89,56 +88,47 @@
 	width: 120px;
 	height: 50px;
 	box-shadow: 2px 2px 3px #999;
-	border-color : transparent;
+	border-color: transparent;
 	position: fixed;
-	right:160px;
+	right: 30px;
 	bottom: 50px;
-	
-	  
 }
 
 #inputSerch {
-	border-top-color : #bdc3c7;
-	border-bottom-color : #bdc3c7;
-	border-left-color :#bdc3c7;
-	border-right-color : #bdc3c7;
-	
+	border-top-color: #bdc3c7;
+	border-bottom-color: #bdc3c7;
+	border-left-color: #bdc3c7;
+	border-right-color: #bdc3c7;
 	border-bottom-left-radius: 10px;
 	border-top-left-radius: 10px;
-	
 	height: 40px;
-	
 }
-
 
 #buttonBar {
- 	border-bottom-right-radius: 10px;
- 	border-top-right-radius: 10px;
-	width : 40px;
+	border-bottom-right-radius: 10px;
+	border-top-right-radius: 10px;
+	width: 40px;
 	height: 40px;
 	background-color: #009223;
-	border-color : transparent;
-	
+	border-color: transparent;
 }
 
-#searchBar{
+#searchBar {
 	float: right 50px;
 }
 
 #buttonBar i {
-	color : white;
+	color: white;
 }
-
-
-
 </style>
+
 
 </head>
 
 <body>
 
 	<%
-		member loginMember = (member)session.getAttribute("loginMember");
+	member loginMember = (member) session.getAttribute("loginMember");
 	%>
 
 	<!-- Spinner Start -->
@@ -154,50 +144,69 @@
 		<div class="container topbar bg-primary d-none d-lg-block">
 			<div class="d-flex justify-content-between">
 				<div class="top-info ps-2">
-					<small class="me-3"></small>
-					<small class="me-3"></small>
+					<small class="me-3"></small> <small class="me-3"></small>
 				</div>
 				<div class="top-link pe-2">
-					<%if (loginMember == null) {%>
-						<a href="goLogin" class="text-white"><small class="text-white mx-2">로그인</small>/</a>
-						<a href="goMemberType" class="text-white"><small class="text-white mx-2">회원가입</small></a>
-					<%} else {%>
+					<%
+					if (loginMember == null) {
+					%>
+					<a href="goLogin" class="text-white"><small
+						class="text-white mx-2">로그인</small>/</a> <a href="goMemberType"
+						class="text-white"><small class="text-white mx-2">회원가입</small></a>
+					<%
+					} else {
+					%>
 					<span><small class="text-white mx-2"><%=loginMember.getNick()%>님
 							환영합니다.</small></span>
-						<%if (loginMember.getEmail().equals("admin")) {%>
-							<a href="goAdmin" class="text-white"><small class="text-white ms-2">회원관리</small></a>
-						<%}%>
-						<a href="memberLogout" class="text-white"><small
+					<%
+					if (loginMember.getEmail().equals("admin")) {
+					%>
+					<a href="goAdmin" class="text-white"><small
+						class="text-white ms-2">회원관리</small></a>
+					<%
+					}
+					%>
+					<a href="memberLogout" class="text-white"><small
 						class="text-white mx-2">로그아웃</small></a>
-					<%} %>
+					<%
+					}
+					%>
+
 				</div>
 			</div>
 		</div>
 		<div class="container px-0">
 			<nav class="navbar navbar-light bg-white navbar-expand-xl">
 				<a href="goMain" class="navbar-brand"><h1
-						class="text-primary display-6">Share We?</h1></a>
+						class="text-primary display-6" style="color: #009223 !important;">Share
+						We?</h1></a>
 				<button class="navbar-toggler py-2 px-3" type="button"
 					data-bs-toggle="collapse" data-bs-target="#navbarCollapse">
 					<span class="fa fa-bars text-primary"></span>
 				</button>
 				<div class="collapse navbar-collapse bg-white" id="navbarCollapse">
 					<div class="navbar-nav mx-auto">
-						<a href="goGeneral" class="nav-item nav-link" style="color: black">일반</a>
-						<a href="goCompany" class="nav-item nav-link" style="color: black">기업</a>
-						<!-- <a href="shop-detail.html" class="nav-item nav-link">Shop Detail</a> -->
+						<a href="goGeneral" class="nav-item nav-link active">일반</a> 
+						<a href="goCompany" class="nav-item nav-link">기업</a> 
+
+						<!-- 기업회원일때만 나오게 -->
+						<c:if test="${type eq 'company'}">
+							<a href="gocBoard" class="nav-item nav-link">상품등록</a>
+						</c:if>
+
 						<div class="nav-item dropdown">
-							<a href="#" class="nav-link dropdown-toggle active"
-								data-bs-toggle="dropdown">카테고리</a>
+							<a href="#" class="nav-link dropdown-toggle"
+								data-bs-toggle="dropdown">Pages</a>
+
+							<!-- 카테고리별 페이지 이동 -->
 							<div class="dropdown-menu m-0 bg-secondary rounded-0">
-								<a href="cart.html" class="dropdown-item">채소</a> <a
-									href="chackout.html" class="dropdown-item">과일</a> <a
-									href="testimonial.html" class="dropdown-item">생필품</a>
-								<!--<a href="404.html" class="dropdown-item active">404 Page</a> -->
+								<a href="cart.html" class="dropdown-item">식품</a> <a
+									href="chackout.html" class="dropdown-item">생필품</a> <a
+									href="testimonial.html" class="dropdown-item">항목3</a> <a
+									href="404.html" class="dropdown-item active">항목4</a>
 							</div>
 						</div>
-						<a href="contact.html" class="nav-item nav-link"
-							style="color: black">Contact</a>
+						<a href="contact.html" class="nav-item nav-link">Contact</a>
 					</div>
 					<div class="d-flex m-3 me-0">
 							<button
@@ -225,7 +234,8 @@
 		<div class="modal-dialog modal-fullscreen">
 			<div class="modal-content rounded-0">
 				<div class="modal-header">
-					<h5 class="modal-title" id="exampleModalLabel">검색어를 입력하세요</h5>
+					<h5 class="modal-title" id="exampleModalLabel">Search by
+						keyword</h5>
 					<button type="button" class="btn-close" data-bs-dismiss="modal"
 						aria-label="Close"></button>
 				</div>
@@ -243,7 +253,7 @@
 	<!-- Modal Search End -->
 
 
-	<!-- Modal Search Start 
+	<!-- Modal Search Start -->
 	<div class="modal fade" id="searchModal" tabindex="-1"
 		aria-labelledby="exampleModalLabel" aria-hidden="true">
 		<div class="modal-dialog modal-fullscreen">
@@ -255,7 +265,7 @@
 						aria-label="Close"></button>
 				</div>
 				<div class="modal-body d-flex align-items-center">
-					<div class="input-group w-75 mx-auto d-flex" >
+					<div class="input-group w-75 mx-auto d-flex">
 						<input type="search" class="form-control p-3"
 							placeholder="keywords" aria-describedby="search-icon-1">
 						<span id="search-icon-1" class="input-group-text p-3"><i
@@ -265,23 +275,21 @@
 			</div>
 		</div>
 	</div>
-	 Modal Search End -->
+	<!-- Modal Search End -->
 
 
 
 	<!-- Single Page Header start -->
-	<div class="container-fluid page-header py-5">
-		<h1 class="text-center text-white display-6">Shop</h1>
-		<ol class="breadcrumb justify-content-center mb-0">
-			<li class="breadcrumb-item active text-white">general</li>
-		</ol>
-	</div>
-	<!-- Single Page Header End -->
+
+	<div id="carouselExample" class="carousel slide">
 
 
-	<!-- food section -->
+		<!-- Single Page Header End -->
 
-	<div class="row g-4 justify-content-center" id="categoryBox">
+
+		<!-- food section -->
+
+		<div class="row g-4 justify-content-center" id="categoryBox">
 			<!-- <div class="row g-4 justify-content-center text-center" style="margin-left: 850px">
 			<div class="col-xl-2">
 				<div class="input-group w-150 mx-auto d-flex">
@@ -292,107 +300,140 @@
 				</div>
 			</div>
 		</div> -->
-	
-		<!-- 카테고리 -->
-		<div class="col-lg-9" style="margin-top : 90px;">
-			<ul class="filters_menu" style="margin-top:20px !important;">
-			
-				<a href="goGeneral"><li>All</li></a>
-				<a href="getCategory?category=채소" id="clickVege"><li>채소</li></a>
-				<a href="getCategory?category=과일" id="clickFruit"><li>과일</li></a>
-				<a href="getCategory?category=생필품" id="ClickDaily"><li>생활용품</li></a>
-	
-				<!-- <input id="inputSerch" class="serchBar"  type="search" placeholder="keywords">
-				<button  type="button" id="buttonBar" class="serchBar"><i class="fa fa-search"></i></button> -->
-			
-			</ul>
+
+			<!-- 카테고리 -->
+			<div class="col-lg-9">
+				<div class="container-fluid fruite py-5">
+					<ul class="filters_menu" style="margin-top: 20px !important;">
+
+						<a href="goGeneral"><li>All</li></a>
+
+						<a href="getCategory?category=채소" id="clickVege"><li>채소</li></a>
+						<a href="getCategory?category=과일" id="clickFruit"><li>과일</li></a>
+						<a href="getCategory?category=생필품" id="ClickDaily"><li>생활용품</li></a>
+
+						<input id="inputSerch" class="serchBar" type="search"
+							placeholder="keywords">
+						<button type="button" id="buttonBar" class="serchBar">
+							<i class="fa fa-search"></i>
+						</button>
+
+					</ul>
+				</div>
+				
+				
+				
+			</div>
+
+
+			<div class="row g-4 justify-content-center">
+				<button class="col-xl-1" id="write" type="button"
+					onclick="location.href='gogBoard'">게시물작성</button>
+			</div>
 		</div>
 		
+		<!-- end food section -->
 
+		<!-- Fruits Shop End-->
+		<div class="row g-5" style="margin-left: 380px; margin-right: 380px;">
 
-		<div class="col-lg-9" style="width:50% !important;  justify-content: center; align-items: center;">
-			<div class="row g-4 justify-content-center" id="boardDiv" >
-                        <c:forEach items="${gboard_list}" var="g">
-                           <div class="col-md-1 col-lg-2 col-xl-3">
-                              <div class="rounded position-relative fruite-item">
-                                 <div class="fruite-img">
-                                    <a href="G_BoardContent?g_num=${g.g_num}">
-                                    	<img src="resources/g_Image/${g.g_img1}" class="img-fluid w-100 rounded-top" alt="">
-                                 	</a>
-                                 </div>
-                                 <div
-                                    class="text-white bg-secondary px-3 py-1 rounded position-absolute"
-                                    style="top: 10px; left: 10px; background-color: #009223 !important;">${g.category}</div>
-                                 
-                                 	<div class="p-4 border border-secondary border-top-0 rounded-bottom" style=" border-color: #009223 !important;">
-                                
-                                    <br>
-                                    <a href="G_BoardContent?g_num=${g.g_num}"><h5>${g.g_title}</h5></a>
-                                    <h6>${g.g_writer}</h6>
-                                    <p>${g.g_content}</p>
-                                    <div class="d-flex justify-content-between flex-lg-wrap">
-                                       <!-- 찜버튼(하트) 기능 여기 아래에 -->
+			<script
+				src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js"
+				integrity="sha384-ka7Sk0Gln4gmtz2MlQnikT1wXgYsOg+OMhuP+IlRH9sENBO0LRn5q+8nbTov4+1p"
+				crossorigin="anonymous"></script>
 
-                                       <!-- <p class="text-dark fs-5 fw-bold mb-0">$4.99 / kg</p> -->
-                                       <!-- <a href="#" class="btn border border-secondary rounded-pill px-3 text-primary"><i class="fa fa-shopping-bag me-2 text-primary"></i>찜</a> -->
-                                    </div>
-                                 </div>
-                              </div>
-                           </div>
-                        </c:forEach>
-                     </div>
-		</div>
-		<c:if test="${loginMember.type == 2 || loginMember.type == 3}">
-			<div class="row g-4 justify-content-center">
-				<button class="col-xl-1" id="write" type="button" onclick="location.href='gogBoard'">게시물작성</button>
+			<div id="carouselExampleControls" class="carousel slide"
+				data-bs-ride="carousel" style="width: 40%; position: relative;" align="left">
+				<div class="carousel-inner" style="position: absoulte;" >
+					<div class="carousel-item active">
+						<img class="d-block w-100" 
+							src="resources/g_Image/${c_board.c_img1}" alt="..." />
+					</div>
+					<div class="carousel-item">
+						<img class="d-block w-100" 
+							src="https://source.unsplash.com/collection/190727/1600x900"
+							alt="..." />
+					</div>
+					<div class="carousel-item" >
+						<img class="d-block w-100"
+							src="https://source.unsplash.com/WLUHO9A_xik/1600x900" alt="..." />
+					</div>
+				</div>
+				<button class="carousel-control-prev" type="button"
+					data-bs-target="#carouselExampleControls" data-bs-slide="prev">
+					<span class="carousel-control-prev-icon" aria-hidden="true"></span>
+					<span class="visually-hidden">Previous</span>
+				</button>
+				<button class="carousel-control-next" type="button"
+					data-bs-target="#carouselExampleControls" data-bs-slide="next">
+					<span class="carousel-control-next-icon" aria-hidden="true"></span>
+					<span class="visually-hidden">Next</span>
+				</button>
 			</div>
-		</c:if>
-	</div>
-	<!-- end food section -->
+			
+			<div class="row g-4 justify-content-center" style="width: 50%; margin-left: 10%">
+					<h1>${c_board.c_title}</h1>
+					<b>종료 날짜 : ${c_board.c_f_date}</b>
+					<div>
+						거래 및 상품정보:
+						<b> ${c_board.c_content}</b>
+						
+					</div>
+					<div>
+						참여인원:
+					</div>
+					<div>
+						<b>작성자 : ${c_board.c_writer}</b>
+					</div>
+					
+					<button style="width: 35%; margin-left: 20%;" type="button" class="btn btn-outline-success">찜</button>
+					<button style="width: 35%; margin-left: 10%;" type="button" class="btn btn-outline-success">참여하기</button>
+			</div>
+			
+		</div>
 
-	<!-- Fruits Shop End-->
-
-
-	<!-- 메인 페이지 하단 -->
-	<div class="container-fluid bg-dark text-white-50 footer pt-5 mt-5">
-		<div class="container py-5">
-			<div class="row g-5">
-				<div class="col-lg-3 col-md-6">
-					<div class="footer-item">
-						<h4 class="text-light mb-3">Contact</h4>
-						<p>Address: Gwangju, Republic of Korea</p>
-						<p>Email: ShareByuS@gmail.com</p>
-						<p>Do you want to share it with us?</p>
-						<img src="img/payment.png" class="img-fluid" alt="">
+		<!-- 메인 페이지 하단 -->
+		<div class="container-fluid bg-dark text-white-50 footer pt-5 mt-5">
+			<div class="container py-5">
+				<div class="row g-5">
+					<div class="col-lg-3 col-md-6">
+						<div class="footer-item">
+							<h4 class="text-light mb-3">Contact</h4>
+							<p>Address: Gwangju, Republic of Korea</p>
+							<p>Email: ShareByuS@gmail.com</p>
+							<p>Do you want to share it with us?</p>
+							<img src="img/payment.png" class="img-fluid" alt="">
+						</div>
 					</div>
 				</div>
 			</div>
 		</div>
-	</div>
-	<!-- 메인 페이지 하단 End -->
+		
+
+		<!-- 메인 페이지 하단 End -->
 
 
 
-	<!-- Back to Top -->
-<!-- 	<a href="#"
+		<!-- Back to Top -->
+		<!-- 	<a href="#"
 		class="btn btn-primary border-3 border-primary rounded-circle back-to-top"><i
 		class="fa fa-arrow-up"></i></a> -->
 
 
-	<!-- JavaScript Libraries -->
-	<script
-		src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.4/jquery.min.js"></script>
-	<script
-		src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0/dist/js/bootstrap.bundle.min.js"></script>
-	<script src="resources/asset/lib/easing/easing.min.js"></script>
-	<script src="resources/asset/lib/waypoints/waypoints.min.js"></script>
-	<script src="resources/asset/lib/lightbox/js/lightbox.min.js"></script>
-	<script src="resources/asset/lib/owlcarousel/owl.carousel.min.js"></script>
+		<!-- JavaScript Libraries -->
+		<script
+			src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.4/jquery.min.js"></script>
+		<script
+			src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0/dist/js/bootstrap.bundle.min.js"></script>
+		<script src="resources/asset/lib/easing/easing.min.js"></script>
+		<script src="resources/asset/lib/waypoints/waypoints.min.js"></script>
+		<script src="resources/asset/lib/lightbox/js/lightbox.min.js"></script>
+		<script src="resources/asset/lib/owlcarousel/owl.carousel.min.js"></script>
 
-	<!-- Template Javascript -->
-	<script src="resources/asset/js/main.js"></script>
-	
-<!-- 	<!-- 카테고리:채소 비동기 --
+		<!-- Template Javascript -->
+		<script src="resources/asset/js/main.js"></script>
+
+		<!-- 	<!-- 카테고리:채소 비동기 --
 	<script type="text/javascript">
 		function getVege(){
 			$.ajax({
@@ -411,7 +452,6 @@
 			})
 		}
 	</script> -->
-	
 </body>
 
 </html>
