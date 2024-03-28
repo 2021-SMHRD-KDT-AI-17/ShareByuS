@@ -93,19 +93,7 @@ public class G_BoardController {
 			return "redirect:/goGeneral";
 		
 	}
-	@RequestMapping("/goMyPage")
-	public String goMyPage(Model model, HttpSession session) {
-		member loginMember = (member)session.getAttribute("loginMember");
-		
-		
-		List<g_board> gboard_list = g_boardMapper.getEmail(loginMember.getEmail());
-		model.addAttribute("gboard_list", gboard_list);
-		if(loginMember !=null) {
-			return "myPage";
-		}else {
-			
-		}return "Login";
-	}
+	
 	
 	
 	/*public String myGboard(HttpSession session, Model model) {
