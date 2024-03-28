@@ -297,8 +297,7 @@
 		<div class="col-lg-9" style="margin-top : 90px;">
 			<ul class="filters_menu" style="margin-top:20px !important;">
 			
-				<a href="goGeneral" ><li>All</li></a>
-				
+				<a href="goGeneral"><li>All</li></a>
 				<a href="getCategory?category=채소" id="clickVege"><li>채소</li></a>
 				<a href="getCategory?category=과일" id="clickFruit"><li>과일</li></a>
 				<a href="getCategory?category=생필품" id="ClickDaily"><li>생활용품</li></a>
@@ -340,7 +339,7 @@
                         </c:forEach>
                      </div>
 		</div>
-		<c:if test="${type == 2 || type == 3}">
+		<c:if test="${loginMember.type == 2 || loginMember.type == 3}">
 			<div class="row g-4 justify-content-center">
 				<button class="col-xl-1" id="write" type="button" onclick="location.href='gogBoard'">게시물작성</button>
 			</div>
