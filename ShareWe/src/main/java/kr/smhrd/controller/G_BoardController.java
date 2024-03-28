@@ -38,9 +38,10 @@ public class G_BoardController {
 	
 	//shop.jsp로 이동
 	@RequestMapping("/goGeneral")
-	public String goGeneral(Model model) {
+	public String goGeneral(@RequestParam("type")String type, Model model) {
 		List<g_board> gboard_list = g_boardMapper.getGBoard();
 		model.addAttribute("gboard_list", gboard_list);
+		model.addAttribute("type", type);
 		return "Shop";
 	}
 	

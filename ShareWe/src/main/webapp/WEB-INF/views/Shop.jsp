@@ -1,3 +1,4 @@
+<%@page import="kr.smhrd.entity.member"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
@@ -90,7 +91,7 @@
 	box-shadow: 2px 2px 3px #999;
 	border-color : transparent;
 	position: fixed;
-	right:30px;
+	right:160px;
 	bottom: 50px;
 	
 	  
@@ -136,6 +137,10 @@
 
 <body>
 
+	<%
+		member loginMember = (member)session.getAttribute("loginMember");
+	%>
+
 	<!-- Spinner Start -->
 	<div id="spinner"
 		class="show w-100 vh-100 bg-white position-fixed translate-middle top-50 start-50  d-flex align-items-center justify-content-center">
@@ -149,12 +154,22 @@
 		<div class="container topbar bg-primary d-none d-lg-block">
 			<div class="d-flex justify-content-between">
 				<div class="top-info ps-2">
-					<small class="me-3"></small> <small class="me-3"></small>
+					<small class="me-3"></small>
+					<small class="me-3"></small>
 				</div>
 				<div class="top-link pe-2">
-					<a href="goMemberType" class="text-white"><small
-						class="text-white mx-2">회원가입</small>|</a> <a href="goLogin"
-						class="text-white"><small class="text-white mx-2">로그인</small></a>
+					<%if (loginMember == null) {%>
+						<a href="goLogin" class="text-white"><small class="text-white mx-2">로그인</small>/</a>
+						<a href="goMemberType" class="text-white"><small class="text-white mx-2">회원가입</small></a>
+					<%} else {%>
+					<span><small class="text-white mx-2"><%=loginMember.getNick()%>님
+							환영합니다.</small></span>
+						<%if (loginMember.getEmail().equals("admin")) {%>
+							<a href="goAdmin" class="text-white"><small class="text-white ms-2">회원관리</small></a>
+						<%}%>
+						<a href="memberLogout" class="text-white"><small
+						class="text-white mx-2">로그아웃</small></a>
+					<%} %>
 				</div>
 			</div>
 		</div>
@@ -168,8 +183,8 @@
 				</button>
 				<div class="collapse navbar-collapse bg-white" id="navbarCollapse">
 					<div class="navbar-nav mx-auto">
-						<a href="gogBoard" class="nav-item nav-link" style="color: black">일반</a>
-						<a href="shop.html" class="nav-item nav-link" style="color: black">기업</a>
+						<a href="goGeneral?type=${loginMember.type}" class="nav-item nav-link" style="color: black">일반</a>
+						<a href="goCompany?type=${loginMember.type}" class="nav-item nav-link" style="color: black">기업</a>
 						<!-- <a href="shop-detail.html" class="nav-item nav-link">Shop Detail</a> -->
 						<div class="nav-item dropdown">
 							<a href="#" class="nav-link dropdown-toggle active"
@@ -210,8 +225,7 @@
 		<div class="modal-dialog modal-fullscreen">
 			<div class="modal-content rounded-0">
 				<div class="modal-header">
-					<h5 class="modal-title" id="exampleModalLabel">Search by
-						keyword</h5>
+					<h5 class="modal-title" id="exampleModalLabel">검색어를 입력하세요</h5>
 					<button type="button" class="btn-close" data-bs-dismiss="modal"
 						aria-label="Close"></button>
 				</div>
@@ -229,7 +243,7 @@
 	<!-- Modal Search End -->
 
 
-	<!-- Modal Search Start -->
+	<!-- Modal Search Start 
 	<div class="modal fade" id="searchModal" tabindex="-1"
 		aria-labelledby="exampleModalLabel" aria-hidden="true">
 		<div class="modal-dialog modal-fullscreen">
@@ -251,7 +265,7 @@
 			</div>
 		</div>
 	</div>
-	<!-- Modal Search End -->
+	 Modal Search End -->
 
 
 
@@ -280,7 +294,7 @@
 		</div> -->
 	
 		<!-- 카테고리 -->
-		<div class="col-lg-9">
+		<div class="col-lg-9" style="margin-top : 90px;">
 			<ul class="filters_menu" style="margin-top:20px !important;">
 			
 				<a href="goGeneral" ><li>All</li></a>
@@ -289,18 +303,18 @@
 				<a href="getCategory?category=과일" id="clickFruit"><li>과일</li></a>
 				<a href="getCategory?category=생필품" id="ClickDaily"><li>생활용품</li></a>
 	
-				<input id="inputSerch" class="serchBar"  type="search" placeholder="keywords">
-				<button  type="button" id="buttonBar" class="serchBar"><i class="fa fa-search"></i></button>
+				<!-- <input id="inputSerch" class="serchBar"  type="search" placeholder="keywords">
+				<button  type="button" id="buttonBar" class="serchBar"><i class="fa fa-search"></i></button> -->
 			
 			</ul>
 		</div>
 		
 
 
-		<div class="col-lg-9">
-			<div class="row g-4 justify-content-center">
+		<div class="col-lg-9" style="width:50% !important;  justify-content: center; align-items: center;">
+			<div class="row g-4 justify-content-center" id="boardDiv" >
                         <c:forEach items="${gboard_list}" var="g">
-                           <div class="col-md-6 col-lg-6 col-xl-4">
+                           <div class="col-md-1 col-lg-2 col-xl-3">
                               <div class="rounded position-relative fruite-item">
                                  <div class="fruite-img">
                                     <img src="resources/g_Image/${g.g_img1}" class="img-fluid w-100 rounded-top" alt="">
@@ -326,9 +340,11 @@
                         </c:forEach>
                      </div>
 		</div>
-		<div class="row g-4 justify-content-center">
-			<button class="col-xl-1" id="write" type="button" onclick="location.href='gogBoard'">게시물작성</button>
-		</div>
+		<c:if test="${type == 2 || type == 3}">
+			<div class="row g-4 justify-content-center">
+				<button class="col-xl-1" id="write" type="button" onclick="location.href='gogBoard'">게시물작성</button>
+			</div>
+		</c:if>
 	</div>
 	<!-- end food section -->
 
