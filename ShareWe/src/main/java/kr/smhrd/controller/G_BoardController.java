@@ -17,6 +17,7 @@ import org.springframework.web.bind.annotation.RequestParam;
 import com.oreilly.servlet.MultipartRequest;
 import com.oreilly.servlet.multipart.DefaultFileRenamePolicy;
 
+
 import kr.smhrd.entity.g_board;
 import kr.smhrd.entity.member;
 import kr.smhrd.mapper.G_BoardMapper;
@@ -30,6 +31,8 @@ public class G_BoardController {
 	
 	@Autowired
 	private MemberMapper memberMapper;
+
+	private int g_num;
 	
 	@RequestMapping("/goShop")
 	public String goShop() {
@@ -106,6 +109,17 @@ public class G_BoardController {
 		}return "Login";
 	}
 	
+	//gBoardDetail 로
+	
+	@RequestMapping("/G_BoardContent")
+	public String G_BoardContent(@RequestParam("g_num") int g_num, Model model) {
+		
+		g_board g_board = g_boardMapper.G_BoardContent(g_num); //num값에 해당하는 하나의 게시물 가져오기
+		model.addAttribute("g_board",g_board);
+		
+//			g_boardMapper.G_BoardCount(g_num); // num값에 해당하는 게시물 조회수 1증가
+		return "gBoardDetail";
+	}
 	
 	/*public String myGboard(HttpSession session, Model model) {
 		
