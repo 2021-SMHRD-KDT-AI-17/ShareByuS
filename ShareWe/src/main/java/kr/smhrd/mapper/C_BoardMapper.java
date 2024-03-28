@@ -13,4 +13,6 @@ public interface C_BoardMapper {
 
 	int insertCBoard(c_board c_board);
 
+	public List<c_board> getCEmail(String email);
+
 }

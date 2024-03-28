@@ -1,5 +1,7 @@
 package kr.smhrd.controller;
 
+import java.util.List;
+
 import javax.servlet.http.HttpSession;
 
 import org.slf4j.Logger;
@@ -10,7 +12,11 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 
+import kr.smhrd.entity.c_board;
+import kr.smhrd.entity.g_board;
 import kr.smhrd.entity.member;
+import kr.smhrd.mapper.C_BoardMapper;
+import kr.smhrd.mapper.G_BoardMapper;
 import kr.smhrd.mapper.MemberMapper;
 
 @Controller
@@ -18,7 +24,14 @@ public class WebController {
 	
 	@Autowired
 	private MemberMapper memberMapper;
+	
+	@Autowired
+	private G_BoardMapper g_boardMapper;
+	
+	@Autowired
+	private C_BoardMapper c_boardMapper;
 
+	
 	private static final Logger logger = LoggerFactory.getLogger(WebController.class);
 	
 	// Main.jsp로 이동하는 메소드
@@ -100,6 +113,25 @@ public class WebController {
 		return "gBoardDetail";
 	}
 	
+	@RequestMapping("/goMyPage")
+	public String goMyPage(Model model, HttpSession session) {
+		
+		if(session.getAttribute("loginMember") != null) {
+			member loginMember = (member)session.getAttribute("loginMember");
+			
+			if(loginMember.getType() == 2 || loginMember.getType() == 3 ) {
+				List<g_board> gboard_list = g_boardMapper.getGEmail(loginMember.getEmail());
+				model.addAttribute("gboard_list", gboard_list);
+			}else if (loginMember.getType() == 1){
+				List<c_board> cboard_list = c_boardMapper.getCEmail(loginMember.getEmail());
+				model.addAttribute("cboard_list", cboard_list);
+			}
+			return "myPage";
+		}else {
+			return "Login";
+		}
+		
+	}
 	
 //	@RequestMapping("/goReportSuccess")
 //	public String goReportSuccess() {

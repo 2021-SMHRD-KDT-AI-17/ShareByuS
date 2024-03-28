@@ -15,4 +15,8 @@
 	NOW(), NOW(), #{category}, '광주 동구', #{price}, #{c_opt1}, 1, 1, 1, #{c_ea});
 
 	</insert>
+	
+	<select id="getCEmail" parameterType="String" resultType="kr.smhrd.entity.c_board">
+		select * from c_board where email=#{email}
+	</select>
 </mapper>
