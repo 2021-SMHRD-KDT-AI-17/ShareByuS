@@ -1,3 +1,4 @@
+<%@page import="kr.smhrd.entity.member"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
@@ -49,6 +50,12 @@
 
 <body>
 
+<%
+		member loginMember = (member)session.getAttribute("loginMember");
+	%>
+
+
+
 <!-- Spinner Start -->
         <div id="spinner" class="show w-100 vh-100 bg-white position-fixed translate-middle top-50 start-50  d-flex align-items-center justify-content-center">
             <div class="spinner-grow text-primary" role="status"></div>
@@ -57,18 +64,26 @@
 	
 	
 		<!-- Navbar start -->
-		<div class="container-fluid fixed-top">
-			<div class="container topbar bg-primary d-none d-lg-block">
-				<div class="d-flex justify-content-between">
-					<div class="top-info ps-2">
-						<small class="me-3"></small> <small class="me-3"></small>
-					</div>
-					<div class="top-link pe-2">
-						<a href="goMain" class="text-white"><small class="text-white mx-2">홈</small>|</a>
-						<a href="goMemberType" class="text-white"><small class="text-white mx-2">회원가입</small></a>
-					</div>
+	<div class="container-fluid fixed-top">
+		<div class="container topbar bg-primary d-none d-lg-block">
+			<div class="d-flex justify-content-between">
+				<div class="top-info ps-2">
+					<small class="me-3"></small> <small class="me-3"></small>
+				</div>
+				<div class="top-link pe-2">
+					<%if (loginMember == null) {%>
+							<a href="goLogin" class="text-white"><small class="text-white mx-2">로그인</small>/</a>
+							<a href="goMemberType" class="text-white"><small class="text-white mx-2">회원가입</small></a>
+						<%}else {%>
+							<span><small class="text-white mx-2"><%=loginMember.getNick() %>님 환영합니다.</small></span>
+							<%if(loginMember.getEmail().equals("admin")) {%>
+								<a href="#" class="text-white"><small class="text-white ms-2">회원관리</small></a>
+							<%} %>
+							<a href="memberLogout" class="text-white"><small class="text-white mx-2">로그아웃</small></a>
+						<%} %>
 				</div>
 			</div>
+		</div>
 			<div class="container px-0">
 				<nav class="navbar navbar-light bg-white navbar-expand-xl">
 					<a href="goMain" class="navbar-brand"><h1
@@ -165,6 +180,7 @@
 		<fieldset>
 			<legend>신고하려는 사유를 선택해 주세요</legend>
 			
+			
 			<table id="report_re" width="500">
 				<tr>
 				<td colspan="2">
@@ -225,10 +241,9 @@
 				<div class="col-lg-3 col-md-6">
 					<div class="footer-item">
 						<h4 class="text-light mb-3">Contact</h4>
-						<p>Address: 1429 Netus Rd, NY 48247</p>
-						<p>Email: Example@gmail.com</p>
-						<p>Phone: +0123 4567 8910</p>
-						<p>Payment Accepted</p>
+						<p>Address: Gwangju, Republic of Korea</p>
+						<p>Email: ShareByuS@gmail.com</p>
+						<p>Do you want to share it with us?</p>
 						<img src="img/payment.png" class="img-fluid" alt="">
 					</div>
 				</div>
@@ -236,6 +251,8 @@
 		</div>
 	</div>
 	<!-- 메인 페이지 하단 End -->
+
+
 
 	<!-- Back to Top -->
 	<a href="#"
@@ -253,7 +270,6 @@
 	<script src="resources/asset/lib/lightbox/js/lightbox.min.js"></script>
 	<script src="resources/asset/lib/owlcarousel/owl.carousel.min.js"></script>
 
-	
 	<!-- Template Javascript -->
 	<script src="resources/asset/js/main.js"></script>
 </body>

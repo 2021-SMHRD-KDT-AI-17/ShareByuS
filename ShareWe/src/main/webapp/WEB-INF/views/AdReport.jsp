@@ -36,6 +36,7 @@
 
     <body>
 
+
         <!-- Spinner Start -->
         <div id="spinner" class="show w-100 vh-100 bg-white position-fixed translate-middle top-50 start-50  d-flex align-items-center justify-content-center">
             <div class="spinner-grow text-primary" role="status"></div>
@@ -139,31 +140,44 @@
          <div class="row g-4 justify-content-center" style="width: 1000px !important;" >
 
 
-         
-               <table class="text-center">
-                  <div class="featurs-content">
-                     <tr style="font-size:20px; background-color: #bdc3c7; ">
-                        <th>번호</th>
-                        <th>신고 게시글/리뷰</th>
-                        <th>작성자</th>
-                        <th>신고사유</th>
-                        <th>관리</th>
-                     </tr>
-                     
-                  <c:forEach items=${}  var="re" >
-                     <tr>
-                        <td>${re.rp_num }</td>
-                        <td>${re.name }</a></td>
-                        <td>${re.email }</td>
-                        <td>${re.address}</td>
-                        <td>
-                        <button type="button" onclick="location.href='approveComplete?email=${re.email}'">탈퇴</button>
-                        <button type="button" onclick="location.href='approveComplete?email=${re.email}'">정지</button>
-                        <button type="button" onclick="location.href='approveComplete?email=${re.email}'">해제</button>
-                        </td>
-                        
 
-                        <%-- <c:if test="${loginMember.email eq 'admin' }">
+			
+					<table class="text-center">
+						<div class="featurs-content">
+							<tr style="font-size:20px; background-color: #bdc3c7; ">
+								<th>No.</th>
+								<th>신고 게시글/리뷰</th>
+								<th>작성자</th>
+								<th>신고사유</th>
+								<th>관리</th>
+							</tr>
+							
+						<c:forEach items="${report}" var="re" >
+							<tr>
+								<td>${re.rp_num }</td>
+								<td>${re.name }</a></td>
+								<td>${re.email }</td>
+								<td>${re.address}</td>
+								<td>
+								<button type="button" onclick="">탈퇴</button>
+								<button type="button" onclick="">정지</button>
+								<button type="button" onclick="">해제</button>
+								</td>
+								
+
+					
+							</tr>
+						</c:forEach>
+						</div>
+					</table>
+			
+			</div>
+		</div>
+	</div>
+	
+	
+	<!-- 사용자 신고관리 end -->
+                      <%-- <c:if test="${loginMember.email eq 'admin' }">
                               <td><a href="deleteBoard?num=${b.num }">삭제</a></td>
                         </c:if> --%>
                      </tr>
@@ -177,6 +191,7 @@
    
    
    <!-- 사용자 신고관리 end -->
+
 
 
       <!-- 메인 페이지 하단 -->
@@ -212,6 +227,10 @@
     <!-- Template Javascript -->
     <script src="resources/asset/js/main.js"></script>
     </body>
+    
+    <script>
+    
+    </script>
     
 
 </html>
