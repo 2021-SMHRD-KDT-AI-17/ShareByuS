@@ -344,10 +344,10 @@
 						<c:forEach items="${gboard_list}" var="g">
 							<div class="fruite-img">
 								<div align="justify" align="left">
-									<a href="goGDetail"> <img alt=""
+									<a href="G_BoardContent?g_num=${g.g_num}"> <img alt=""
 										src="resources/g_Image/${g.g_img1}" align="left"
 										style="margin-right: 30px; width: 100px; height: 80px; object-fit: fill;"></a>
-									<a href="goGDetail"><h3 style="text-align: center;">${g.g_title}</h3></a>
+									<a href="G_BoardContent?g_num=${g.g_num}"><h3 style="text-align: center;">${g.g_title}</h3></a>
 									<strong>작성일 ${g.g_w_date }</strong>
 									<hr>
 								</div>

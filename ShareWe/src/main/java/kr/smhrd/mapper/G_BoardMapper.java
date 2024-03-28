@@ -18,6 +18,11 @@ public interface G_BoardMapper {
 	public List<g_board> getGEmail(String email);
 
 
+	public g_board G_BoardContent(int g_num);
+	
+		
+	
+
 	
 	
 

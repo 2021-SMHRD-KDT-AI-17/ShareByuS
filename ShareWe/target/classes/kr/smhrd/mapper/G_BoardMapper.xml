@@ -19,5 +19,9 @@
 	<select id="getGEmail" parameterType="String" resultType="kr.smhrd.entity.g_board">
 		select * from g_board where email=#{email}
 	</select>
+	
+	<select id="G_BoardContent" parameterType="int" resultType="kr.smhrd.entity.g_board">
+		select*from g_board where g_num=#{g_num}
+	</select>
 
 </mapper>
