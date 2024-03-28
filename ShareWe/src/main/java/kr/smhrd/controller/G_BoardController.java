@@ -34,9 +34,9 @@ public class G_BoardController {
 
 	private int g_num;
 	
-	@RequestMapping("/goShop")
-	public String goShop() {
-		return "Shop";
+	@RequestMapping("/goShare")
+	public String goShare() {
+		return "Share";
 	}
 	
 	//shop.jsp로 이동
@@ -44,14 +44,14 @@ public class G_BoardController {
 	public String goGeneral(Model model) {
 		List<g_board> gboard_list = g_boardMapper.getGBoard();
 		model.addAttribute("gboard_list", gboard_list);
-		return "Shop";
+		return "Share";
 	}
 	
 	@RequestMapping("/getCategory")
 	public String getCategory(@RequestParam("category") String category, Model model) {
 		List<g_board> gboard_list = g_boardMapper.getCategory(category);
 		model.addAttribute("gboard_list", gboard_list);
-		return "Shop";
+		return "Share";
 	}
 	
 	

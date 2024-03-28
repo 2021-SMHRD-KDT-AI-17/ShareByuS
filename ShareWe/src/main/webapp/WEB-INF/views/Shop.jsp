@@ -131,6 +131,7 @@
 
 
 
+
 </style>
 
 </head>
@@ -154,8 +155,7 @@
 		<div class="container topbar bg-primary d-none d-lg-block">
 			<div class="d-flex justify-content-between">
 				<div class="top-info ps-2">
-					<small class="me-3"></small>
-					<small class="me-3"></small>
+					<small class="me-3"></small> <small class="me-3"></small>
 				</div>
 				<div class="top-link pe-2">
 					<%if (loginMember == null) {%>
@@ -183,8 +183,8 @@
 				</button>
 				<div class="collapse navbar-collapse bg-white" id="navbarCollapse">
 					<div class="navbar-nav mx-auto">
-						<a href="goGeneral?type=${loginMember.type}" class="nav-item nav-link" style="color: black">일반</a>
-						<a href="goCompany?type=${loginMember.type}" class="nav-item nav-link" style="color: black">기업</a>
+						<a href="goGeneral" class="nav-item nav-link" style="color: black">일반</a>
+						<a href="goCompany" class="nav-item nav-link" style="color: black">기업</a>
 						<!-- <a href="shop-detail.html" class="nav-item nav-link">Shop Detail</a> -->
 						<div class="nav-item dropdown">
 							<a href="#" class="nav-link dropdown-toggle active"
@@ -273,7 +273,7 @@
 	<div class="container-fluid page-header py-5">
 		<h1 class="text-center text-white display-6">Shop</h1>
 		<ol class="breadcrumb justify-content-center mb-0">
-			<li class="breadcrumb-item active text-white">general</li>
+			<li class="breadcrumb-item active text-white">company</li>
 		</ol>
 	</div>
 	<!-- Single Page Header End -->
@@ -297,10 +297,11 @@
 		<div class="col-lg-9" style="margin-top : 90px;">
 			<ul class="filters_menu" style="margin-top:20px !important;">
 			
-				<a href="goGeneral"><li>All</li></a>
-				<a href="getCategory?category=채소" "><li>채소</li></a>
-				<a href="getCategory?category=과일" "><li>과일</li></a>
-				<a href="getCategory?category=생필품" "><li>생활용품</li></a>
+				<a href="goCompany" ><li>All</li></a>
+				
+				<a href="getComCategory?category=채소" id="clickVege"><li>채소</li></a>
+				<a href="getComCategory?category=과일" id="clickFruit"><li>과일</li></a>
+				<a href="getComCategory?category=생필품" id="ClickDaily"><li>생활용품</li></a>
 	
 				<!-- <input id="inputSerch" class="serchBar"  type="search" placeholder="keywords">
 				<button  type="button" id="buttonBar" class="serchBar"><i class="fa fa-search"></i></button> -->
@@ -312,21 +313,21 @@
 
 		<div class="col-lg-9" style="width:50% !important;  justify-content: center; align-items: center;">
 			<div class="row g-4 justify-content-center" id="boardDiv" >
-                        <c:forEach items="${gboard_list}" var="g">
+                        <c:forEach items="${cboard_list}" var="c">
                            <div class="col-md-1 col-lg-2 col-xl-3">
                               <div class="rounded position-relative fruite-item">
                                  <div class="fruite-img">
-                                    <img src="resources/g_Image/${g.g_img1}" class="img-fluid w-100 rounded-top" alt="">
+                                    <img src="resources/g_Image/${c.c_img1}" class="img-fluid w-100 rounded-top" alt="">
                                  </div>
                                  <div
                                     class="text-white bg-secondary px-3 py-1 rounded position-absolute"
-                                    style="top: 10px; left: 10px; background-color: #009223 !important;">${g.category}</div>
+                                    style="top: 10px; left: 10px; background-color: #009223 !important;">${c.category}</div>
                                  <div
                                     class="p-4 border border-secondary border-top-0 rounded-bottom" style="border-color: #009223 !important;">
                                     <br>
-                                    <h5>${g.g_title}</h5>
-                                    <h6>${g.g_writer}</h6>
-                                    <p>${g.g_content}</p>
+                                    <h5>${c.c_title}</h5>
+                                    <h6>${c.c_writer}</h6>
+                                    <p>${c.c_content}</p>
                                     <div class="d-flex justify-content-between flex-lg-wrap">
                                        <!-- 찜버튼(하트) 기능 여기 아래에 -->
 
@@ -339,9 +340,9 @@
                         </c:forEach>
                      </div>
 		</div>
-		<c:if test="${loginMember.type == 2 || loginMember.type == 3}">
+		<c:if test="${loginMember.type == 1}">
 			<div class="row g-4 justify-content-center">
-				<button class="col-xl-1" id="write" type="button" onclick="location.href='gogBoard'">게시물작성</button>
+				<button class="col-xl-1" id="write" type="button" onclick="location.href='gocBoard'">게시물작성</button>
 			</div>
 		</c:if>
 	</div>
