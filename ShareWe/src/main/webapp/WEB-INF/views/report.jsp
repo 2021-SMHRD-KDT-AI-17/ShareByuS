@@ -175,11 +175,19 @@
 						<img src="resources/img/report_icon.png" width="50px" height="50px">
 						<br>
 						<br>
+						
+		<% String g_num = request.getParameter("g_num");
+			String g_title = request.getParameter("g_title");
+			String email = request.getParameter("email"); %>
+			
 		
 		<form action="reportInsert" method="post">
 		<fieldset>
-			<legend>신고하려는 사유를 선택해 주세요</legend>
-			
+			<legend>
+			'${g_board.g_title}'
+			<br>
+			해당 게시글을 신고하려는 사유를 선택해 주세요
+			</legend>
 			
 			<table id="report_re" width="500">
 				<tr>
@@ -190,31 +198,31 @@
 					
 				<tr height="60px">
 				
-					<td align="right"><input type="checkbox" name="reason" value="부적절한 게시글"></td>
+					<td align="right"><input type="checkbox" name="rp_content" value="부적절한 게시글"></td>
 					
 					<td>부적절한 게시글/리뷰에요.</td>
 				</tr>
 
 				<tr height="60px">
-					<td align="right"><input type="checkbox" name="reason" value="거래금지 품목"></td>
+					<td align="right"><input type="checkbox" name="rp_content" value="거래금지 품목"></td>
 					<td>거래금지/위험한 물품을 나누고 있어요. </td>
 				</tr>
 
 				<tr height="60px">
-					<td align="right"><input type="checkbox" name="reason" value="거래중 분쟁발생"></td>
+					<td align="right"><input type="checkbox" name="rp_content" value="거래중 분쟁발생"></td>
 					<td> 거래 중 분쟁이 발생했어요.</td>
 					</tr>
 				
 				<tr height="60px">
-					<td align="right"><input type="checkbox" name="reason" value="사기의심"></td>
+					<td align="right"><input type="checkbox" name="rp_content" value="사기의심"></td>
 					<td> 사기인 것 같아요.</td>
 				</tr>
 				
 				<tr height="120px">
-					<td align="right"><input type="checkbox" id="checkon" name="reason" value="기타사유"></td>
+					<td align="right"><input type="checkbox" id="checkon" name="rp_content" value="기타사유"></td>
 					<td> 다른 문제가 있어요.
 					<br>
-					<textarea name="reason" cols="50" rows="3"></textarea>				
+					<textarea name="rp_content" cols="50" rows="3"></textarea>				
 					</td>
 				</tr>
 				
@@ -223,6 +231,13 @@
 				
 				</td>
 				</tr>	
+			
+			
+				
+				 	<input type="hidden" value="<%=g_num %>" name="r_num">
+				<!-- 	<input type="hidden" value="<% %>" name="g_title"> -->
+					<input type="hidden" value="<%=email %>" name="email">
+					<input type="hidden" value="${loginMember.email}" name="rp_email">
 			
 			</table>
 				<input type="submit" value="신고하기">

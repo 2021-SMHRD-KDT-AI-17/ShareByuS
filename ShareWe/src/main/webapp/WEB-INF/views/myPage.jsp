@@ -337,7 +337,7 @@
 		</script>
 
 			<div class="col-lg-9"  id="myBoard" style="display: none">
-
+			<!-- 게시글 상세보기 -->
 			<div class="row g-4 justify-content-center">
 				<div class="col-md-6 col-lg-6 col-xl-4" style="width: 1200px">
 					<div class="rounded position-relative fruite-item">

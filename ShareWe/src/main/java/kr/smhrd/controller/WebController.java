@@ -132,12 +132,6 @@ public class WebController {
 		}
 		
 	}
-	
-//	@RequestMapping("/goReportSuccess")
-//	public String goReportSuccess() {
-//		return "reportSuccess";
-//	}
-
 
 //	@RequestMapping("/goMyPage")
 //	public String goMyPage() {

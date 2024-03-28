@@ -334,9 +334,14 @@
 		
 		<!-- end food section -->
 
-		<!-- Fruits Shop End-->
-		<div class="row g-5" style="margin-left: 380px; margin-right: 380px;">
 
+
+
+		<!-- 게시물 자세히 시작 -->
+		 
+		
+		<div class="row g-5" style="margin-left: 380px; margin-right: 380px;">
+			
 			<script
 				src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js"
 				integrity="sha384-ka7Sk0Gln4gmtz2MlQnikT1wXgYsOg+OMhuP+IlRH9sENBO0LRn5q+8nbTov4+1p"
@@ -389,8 +394,26 @@
 					<button style="width: 35%; margin-left: 20%;" type="button" class="btn btn-outline-success">찜</button>
 					<button style="width: 35%; margin-left: 10%;" type="button" class="btn btn-outline-success">참여하기</button>
 			</div>
+			<div align="right">
+			<form action="sendReportInfo" method="post">
+			<input type="hidden" value="${g_board.g_title}" name="g_title">
+			<input type="hidden" value="${g_board.g_num}" name="g_num">
+			<input type="hidden" value="${g_board.email}" name="email">
+			<input type="hidden" value="${loginMember.email}" name="rp_email">
+				
+			<input type="submit" value="신고하기">
+			</form>
 			
+			
+			
+			</div>
 		</div>
+
+
+
+	<!-- 게시글 자세히 끝 -->
+
+
 
 		<!-- 메인 페이지 하단 -->
 		<div class="container-fluid bg-dark text-white-50 footer pt-5 mt-5">
