@@ -297,11 +297,11 @@
 		<div class="col-lg-9" style="margin-top : 90px;">
 			<ul class="filters_menu" style="margin-top:20px !important;">
 			
-				<a href="goGeneral" ><li>All</li></a>
+				<a href="goCompany" ><li>All</li></a>
 				
-				<a href="getCategory?category=채소" id="clickVege"><li>채소</li></a>
-				<a href="getCategory?category=과일" id="clickFruit"><li>과일</li></a>
-				<a href="getCategory?category=생필품" id="ClickDaily"><li>생활용품</li></a>
+				<a href="getComCategory?category=채소" "><li>채소</li></a>
+				<a href="getComCategory?category=과일" "><li>과일</li></a>
+				<a href="getComCategory?category=생필품" "><li>생활용품</li></a>
 	
 				<!-- <input id="inputSerch" class="serchBar"  type="search" placeholder="keywords">
 				<button  type="button" id="buttonBar" class="serchBar"><i class="fa fa-search"></i></button> -->

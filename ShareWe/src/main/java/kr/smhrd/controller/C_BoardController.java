@@ -37,12 +37,20 @@ public class C_BoardController {
 	public String goShop2() {
 		return "Shop2";
 	}
+
 	
 	@RequestMapping("/goCompany")
 	public String goGeneral(@RequestParam("type")String type, Model model) {
 		List<c_board> cboard_list = c_boardMapper.getCBoard();
 		model.addAttribute("cboard_list", cboard_list);
 		model.addAttribute("type", type);
+		return "Shop2";
+	}
+	
+	@RequestMapping("/getComCategory")
+	public String getComCategory(@RequestParam("category") String category, Model model) {
+		List<c_board> cboard_list = c_boardMapper.getComCategory(category);
+		model.addAttribute("cboard_list", cboard_list);
 		return "Shop2";
 	}
 	

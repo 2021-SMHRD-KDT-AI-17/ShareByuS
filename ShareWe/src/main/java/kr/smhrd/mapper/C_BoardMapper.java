@@ -15,4 +15,8 @@ public interface C_BoardMapper {
 
 	public List<c_board> getCEmail(String email);
 
+	public List<c_board> getComCategory(String category);
+	
+	
+
 }
