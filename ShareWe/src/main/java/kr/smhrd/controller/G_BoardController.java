@@ -38,9 +38,10 @@ public class G_BoardController {
 	
 	//shop.jsp로 이동
 	@RequestMapping("/goGeneral")
-	public String goGeneral(Model model) {
+	public String goGeneral(@RequestParam("type")String type, Model model) {
 		List<g_board> gboard_list = g_boardMapper.getGBoard();
 		model.addAttribute("gboard_list", gboard_list);
+		model.addAttribute("type", type);
 		return "Shop";
 	}
 	
@@ -89,9 +90,44 @@ public class G_BoardController {
 			System.out.println("업로드 실패~");
 		}
 		
-			return "redirect:/goShop";
+			return "redirect:/goGeneral";
 		
 	}
+	@RequestMapping("/goMyPage")
+	public String goMyPage(Model model, HttpSession session) {
+		member loginMember = (member)session.getAttribute("loginMember");
+		
+		
+		List<g_board> gboard_list = g_boardMapper.getEmail(loginMember.getEmail());
+		model.addAttribute("gboard_list", gboard_list);
+		if(loginMember !=null) {
+			return "myPage";
+		}else {
+			
+		}return "Login";
+	}
+	
+	
+	/*public String myGboard(HttpSession session, Model model) {
+		
+		member loginMember = (member)session.getAttribute("loginMember");
+		String email = loginMember.getEmail();
+		
+		List<g_board> gboard_list = g_boardMapper.getGBoard();
+		model.addAttribute("gboard_list", gboard_list);
+		
+		for(int i=0; i<gboard_list.size(); i++) {
+			if(email.equals(gboard_list.get(i).getEmail())) {
+				model.addAttribute("myGboard",gboard_list.get(i));
+			}
+	
+		}
+		return "myPage";*/
+		
+		
+		
+		
+//	}
 		
 	
 

@@ -64,9 +64,6 @@ public class WebController {
 
 	@RequestMapping("/gocBoard")
 	public String gocBoard() {
-		
-		
-		
 		return "cBoard";
 	}
 	
@@ -80,6 +77,17 @@ public class WebController {
 		return "AdReport";
 	}
 	
+
+	
+	@RequestMapping("/goUpdateMember")
+	public String goUpdateMember(HttpSession session) {
+		member loginMember = (member)session.getAttribute("loginMember");
+		if(loginMember !=null) {
+			return "UpdateMember";
+		}else {
+			
+		}return "Login";
+	}
 	
 	
 	// 임시) 신고하기
@@ -87,22 +95,27 @@ public class WebController {
 	public String goReport() {
 		return "report";
 	}
-	
-	@RequestMapping("/goReportSuccess")
-	public String goReportSuccess() {
-		return "reportSuccess";
+	@RequestMapping("/goGDetail")
+	public String goGDetail() {
+		return "gBoardDetail";
 	}
-
 	
+	
+//	@RequestMapping("/goReportSuccess")
+//	public String goReportSuccess() {
+//		return "reportSuccess";
+//	}
+
+
 //	@RequestMapping("/goMyPage")
 //	public String goMyPage() {
 //		return "MyPage";
 //	}
 	
-	@RequestMapping("/goMyPage")
-	public String goMyPage() {
-		return "myPage";
-	}
+	
+
+
+
 	
 	@RequestMapping("/goChat")
 	public String goChat() {

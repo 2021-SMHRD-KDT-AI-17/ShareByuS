@@ -30,6 +30,10 @@ public interface MemberMapper {
 
 	public void delApprove(String email);
 
+	public void memberUpdate(member member);
+
+	public void updateNick(member member);
+
 
 
 

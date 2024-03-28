@@ -1,3 +1,7 @@
+
+<%@page import="kr.smhrd.entity.g_board"%>
+
+<%@page import="kr.smhrd.entity.member"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
@@ -37,8 +41,54 @@
 
 <!-- Template Stylesheet -->
 <link href="resources/asset/css/sw_style.css" rel="stylesheet">
+
+
+<style>
+#topMenu {
+	height: 30px;
+	width: 850px;
+}
+
+#topMenu ul li {
+	list-style: none;
+	color: white;
+	background-color: #009223;
+	float: left;
+	line-height: 50px;
+	vertical-align: middle;
+	text-align: center;
+}
+
+#topMenu .menuLink {
+	text-decoration: none;
+	color: white;
+	display: block;
+	width: 150px;
+	font-size: 12px;
+	font-weight: bold;
+	font-family: "Trebuchet MS", Dotum, Arial;
+}
+
+#topMenu .menuLink:hover {
+	color: black;
+	background-color: #badc58;
+}
+
+.filters_menu {
+    display: list-item;
+    text-align: -webkit-match-parent;
+    unicode-bidi: isolate;
+}
+</style>
+
 </head>
 <body>
+<%
+		member loginMember = (member)session.getAttribute("loginMember");
+		g_board g_board = (g_board)session.getAttribute("g_board");
+	%>
+
+
 
 	<!-- Spinner Start -->
 	<div id="spinner"
@@ -56,9 +106,16 @@
 					<small class="me-3"></small> <small class="me-3"></small>
 				</div>
 				<div class="top-link pe-2">
-					<a href="goMemberType" class="text-white"><small
-						class="text-white mx-2">회원가입</small>|</a> <a href="goLogin"
-						class="text-white"><small class="text-white mx-2">로그인</small></a>
+					<%if (loginMember == null) {%>
+							<a href="goLogin" class="text-white"><small class="text-white mx-2">로그인</small>/</a>
+							<a href="goMemberType" class="text-white"><small class="text-white mx-2">회원가입</small></a>
+						<%}else {%>
+							<span><small class="text-white mx-2"><%=loginMember.getNick() %>님 환영합니다.</small></span>
+							<%if(loginMember.getEmail().equals("admin")) {%>
+								<a href="#" class="text-white"><small class="text-white ms-2">회원관리</small></a>
+							<%} %>
+							<a href="memberLogout" class="text-white"><small class="text-white mx-2">로그아웃</small></a>
+						<%} %>
 				</div>
 			</div>
 		</div>
@@ -133,11 +190,15 @@
 	<!-- Modal Search End -->
 
 
+	
+
+
+
 	<!-- Single Page Header start -->
 	<div class="container-fluid page-header py-5">
 		<h1 class="text-center text-white display-6">마이페이지</h1>
 		<ol class="breadcrumb justify-content-center mb-0">
-			<li class="breadcrumb-item active text-white">general</li>
+			<li class="breadcrumb-item active text-white">My Page</li>
 		</ol>
 	</div>
 	<!-- Single Page Header End -->
@@ -148,104 +209,204 @@
 
 	<div class="container-fluid fruite py-5" align="center">
 
-		<div class="card" style="width: 1200px" align="center">
+		<div class="card" style="width: 1000px" align="center">
+			<table width="1000px">
+			<tr>
+			<td>
 			<img src="resources/img/avatar.jpg" class="card-img-top"
 				style="width: 200px; height: 200px; margin: 50px;" align="left">
-			<div class="sc-eKZiaR jfoJEs">
-				
-				<script type="text/javascript">
-					 function div_show() {  
-						document.getElementById("ReNick").style.display = "block"; 
-						document.getElementById("none").style.display = "none"; } 
-					 function div_hide() {  document.getElementById("ReNick").style.display = "none"; }
-				</script>
-				 
-				<div  class="container-fluid fruite py-5" id="ReNick" style="display: none">
-				<input  type="text" value="헿헤헤헤헿렐">
-				<button type="submit">확인</button>
-				</div>
-				<input id="none" type="button" class="sc-kasBVs blcYdX" onclick="div_show();" value="닉네임 수정">
+			</td>
+			<td width="600px" border-top="0px">
+				<div class="sc-eKZiaR jfoJEs">
+					
+					<script type="text/javascript">
+						 function div_show() {  
+								document.getElementById("ReNick").style.display = "block"; 
+								document.getElementById("none").style.display = "none"; } 
+						 function div_hide() {  
+								document.getElementById("ReNick").style.display = "none";
+								document.getElementById("none").style.display = "block"; }
+					</script>
+					
+					<div> 
+						<h5>${loginMember.nick}</h5>
+						<input style="color: white" id="none" type="button" class="btn btn-primary" onclick="div_show();" value="닉네임 수정">
+						
+						<div id="ReNick" style="display:none">
+							<form action="UpdateNick">
+							<input type="hidden" value="${loginMember.email}" name="email">
+							<input type="text" value="${loginMember.nick}" name="nick">
+							<button type="submit" onclick="div_hide();">확인</button>
+							</form>
+						</div>
+							
+						<p><%=loginMember.getEmail() %></p>
+						
+					</div>
+			</td>
+			
+				<td>
+					<div class="card-body" style="width: 200px">
+						<a href="goUpdateMember" align="left" class="btn btn-primary" style="color: white">회원정보 수정</a>
+					</div>
+				</td>
+										
+			</div>	
 		
-				
-				
-			</div>
-			<div class="card-body" style="width: 1100px">
-				<h5 class="card-title">Card title</h5>
-				<p class="card-text">Some quick example text to build on the
-					card title and make up the bulk of the card's content.</p>
-				<a href="#" class="btn btn-primary" style="color: white">정보 수정</a>
-			</div>
+			</table>
 		</div>
 
 
 		<br> <br> <br>
-
-		<div class="accordion" id="accordionPanelsStayOpenExample">
-			<div class="accordion-item">
-				<h2 class="accordion-header">
-					<button class="accordion-button" type="button"
-						data-bs-toggle="collapse"
-						data-bs-target="#panelsStayOpen-collapseOne" aria-expanded="true"
-						aria-controls="panelsStayOpen-collapseOne">게시물작성</button>
-				</h2>
-				<div id="panelsStayOpen-collapseOne"
-					class="accordion-collapse collapse show">
-					<div class="accordion-body"></div>
-				</div>
-			</div>
-			<div class="accordion-item">
-				<h2 class="accordion-header">
-					<button class="accordion-button collapsed" type="button"
-						data-bs-toggle="collapse"
-						data-bs-target="#panelsStayOpen-collapseTwo" aria-expanded="false"
-						aria-controls="panelsStayOpen-collapseTwo">관심 카테고리 관리</button>
-				</h2>
-				<div id="panelsStayOpen-collapseTwo"
-					class="accordion-collapse collapse">
-					<div class="accordion-body"></div>
-				</div>
-			</div>
-			<div class="accordion-item">
-				<h2 class="accordion-header">
-					<button class="accordion-button collapsed" type="button"
-						data-bs-toggle="collapse"
-						data-bs-target="#panelsStayOpen-collapseThree"
-						aria-expanded="false" aria-controls="panelsStayOpen-collapseThree">
-						리뷰관리</button>
-				</h2>
-				<div id="panelsStayOpen-collapseThree"
-					class="accordion-collapse collapse">
-					<div class="accordion-body"></div>
-				</div>
-			</div>
-			<div class="accordion-item">
-				<h2 class="accordion-header">
-					<button class="accordion-button collapsed" type="button"
-						data-bs-toggle="collapse"
-						data-bs-target="#panelsStayOpen-collapseFour"
-						aria-expanded="false" aria-controls="panelsStayOpen-collapseFour">
-						내 구독권 확인</button>
-				</h2>
-				<div id="panelsStayOpen-collapseFour"
-					class="accordion-collapse collapse">
-					<div class="accordion-body"></div>
-				</div>
-			</div>
-			<div class="accordion-item">
-				<h2 class="accordion-header">
-					<button class="accordion-button collapsed" type="button"
-						data-bs-toggle="collapse"
-						data-bs-target="#panelsStayOpen-collapseFive"
-						aria-expanded="false" aria-controls="panelsStayOpen-collapseFive">
-						Share 참여 내역</button>
-				</h2>
-				<div id="panelsStayOpen-collapseFive"
-					class="accordion-collapse collapse">
-					<div class="accordion-body"></div>
-				</div>
-			</div>
-
 		</div>
+
+	<div class="row g-4 justify-content-center" id="categoryBox"
+		style="width:auto;" >
+
+
+
+		<ul class="filters_menu" >
+
+
+			<a onclick="getCategory()" id="clickVege">
+			<li class="list-group-item">관심 카테고리</li></a>
+
+			<a onclick="getBoard()" id="clickVege">
+			<li class="list-group-item">My 게시글</li></a>
+
+			<a onclick="getReview()" id="clickVege">
+			<li class="list-group-item">리뷰관리</li></a>
+
+			<a onclick="getSub()" id="clickVege">
+			<li class="list-group-item">구독권</li></a>
+
+			<a onclick="getJoin()" id="clickVege">
+			<li class="list-group-item">Share 참여 내역</li></a>
+
+
+
+
+		</ul>
+
+
+		<script type="text/javascript">
+			function getBoard() {
+				document.getElementById("myCategory").style.display = "none";
+				document.getElementById("myBoard").style.display = "block";
+				document.getElementById("myReview").style.display = "none";
+				document.getElementById("mySub").style.display = "none";
+				document.getElementById("myJoin").style.display = "none";
+			}
+		</script>
+		<script type="text/javascript">
+			function getCategory() {
+				document.getElementById("myCategory").style.display = "block";
+				document.getElementById("myBoard").style.display = "none";
+				document.getElementById("myReview").style.display = "none";
+				document.getElementById("mySub").style.display = "none";
+				document.getElementById("myJoin").style.display = "none";
+				
+			}
+		</script>
+		<script type="text/javascript">
+			function getReview() {
+				document.getElementById("myCategory").style.display = "none";
+				document.getElementById("myBoard").style.display = "none";
+				document.getElementById("myReview").style.display = "block";
+				document.getElementById("mySub").style.display = "none";
+				document.getElementById("myJoin").style.display = "none";
+			}
+		</script>
+		<script type="text/javascript">
+			function getSub() {
+				document.getElementById("myCategory").style.display = "none";
+				document.getElementById("myBoard").style.display = "none";
+				document.getElementById("myReview").style.display = "none";
+				document.getElementById("mySub").style.display = "block";
+				document.getElementById("myJoin").style.display = "none";
+			}
+		</script>
+		<script type="text/javascript">
+			function getJoin() {
+				document.getElementById("myCategory").style.display = "none";
+				document.getElementById("myBoard").style.display = "none";
+				document.getElementById("myReview").style.display = "none";
+				document.getElementById("mySub").style.display = "none";
+				document.getElementById("myJoin").style.display = "block";				
+			}
+		</script>
+
+			<div class="col-lg-9"  id="myBoard" style="display: none">
+
+			<div class="row g-4 justify-content-center">
+				<div class="col-md-6 col-lg-6 col-xl-4" style="width: 1200px">
+					<div class="rounded position-relative fruite-item">
+						<c:forEach items="${gboard_list}" var="g">
+							<div class="fruite-img">
+								<div align="justify" align="left">
+									<a href="goGDetail"> <img alt=""
+										src="resources/g_Image/${g.g_img1}" align="left"
+										style="margin-right: 30px; width: 100px; height: 80px; object-fit: fill;"></a>
+									<a href="goGDetail"><h3 style="text-align: center;">${g.g_title}</h3></a>
+									<strong>작성일 ${g.g_w_date }</strong>
+									<hr>
+								</div>
+
+
+
+							</div>
+						</c:forEach>
+					</div>
+				</div>
+			</div>
+		</div>
+
+		<div class="col-lg-9" id="myCategory" style="display: none">
+
+			<div class="row g-4 justify-content-center">
+				<div class="col-md-6 col-lg-6 col-xl-4" style="width: 1200px">
+					<div class="rounded position-relative fruite-item">
+						<h1>카테고리</h1>
+					</div>
+				</div>
+			</div>
+		</div>
+
+		<div class="col-lg-9" id="myReview" style="display: none">
+
+			<div class="row g-4 justify-content-center">
+				<div class="col-md-6 col-lg-6 col-xl-4" style="width: 1200px">
+					<div class="rounded position-relative fruite-item">
+						<h1>리뷰</h1>
+					</div>
+				</div>
+			</div>
+		</div>
+
+		<div class="col-lg-9" id="mySub" style="display: none">
+
+			<div class="row g-4 justify-content-center">
+				<div class="col-md-6 col-lg-6 col-xl-4" style="width: 1200px">
+					<div class="rounded position-relative fruite-item">
+						<h1>구독</h1>
+					</div>
+				</div>
+			</div>
+		</div>
+		<div class="col-lg-9" id="myJoin" style="display: none">
+
+			<div class="row g-4 justify-content-center">
+				<div class="col-md-6 col-lg-6 col-xl-4" style="width: 1200px">
+					<div class="rounded position-relative fruite-item">
+						<h1>참여내역</h1>
+					</div>
+				</div>
+			</div>
+		</div>
+	
+		
+
+
 
 
 
@@ -274,6 +435,7 @@
 				</div>
 			</div>
 		</div> -->
+
 	</div>
 	</div>
 	<!-- Fruits Shop End-->
