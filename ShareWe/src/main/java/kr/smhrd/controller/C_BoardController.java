@@ -33,17 +33,16 @@ public class C_BoardController {
 	@Autowired
 	private MemberMapper memberMapper;
 	
-	@RequestMapping("/goShop2")
-	public String goShop2() {
-		return "Shop2";
+	@RequestMapping("/goShop")
+	public String goShop() {
+		return "Shop";
 	}
 	
 	@RequestMapping("/goCompany")
-	public String goGeneral(@RequestParam("type")String type, Model model) {
+	public String goGeneral(Model model) {
 		List<c_board> cboard_list = c_boardMapper.getCBoard();
 		model.addAttribute("cboard_list", cboard_list);
-		model.addAttribute("type", type);
-		return "Shop2";
+		return "Shop";
 	}
 	
 	@RequestMapping("/cBoardInsert")
@@ -85,7 +84,7 @@ public class C_BoardController {
 			System.out.println("업로드 실패~");
 		}
 		
-			return "redirect:/goShop2";
+			return "redirect:/goCompany";
 		
 	}
 		

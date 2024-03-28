@@ -87,8 +87,8 @@
 						</button>
 						<div class="collapse navbar-collapse bg-white" id="navbarCollapse">
 							<div class="navbar-nav mx-auto" >
-								<a href="goGeneral?type=${loginMember.type}" class="nav-item nav-link active">일반</a>
-									 <a href="goCompany?type=${loginMember.type}" class="nav-item nav-link">기업</a> 
+								<a href="goGeneral" class="nav-item nav-link active">일반</a>
+								<a href="goCompany" class="nav-item nav-link">기업</a> 
 
 									<!-- 기업회원일때만 나오게 
 									<c:if test="${type eq 'company'}">
@@ -110,18 +110,16 @@
 								<a href="contact.html" class="nav-item nav-link">Contact</a>
 							</div>
 							<div class="d-flex m-3 me-0">
-								<a href="goCart" class="position-relative me-4 my-auto"> <i
-									class="fa fa-shopping-bag fa-2x"></i> <span
-									class="position-absolute bg-secondary rounded-circle d-flex align-items-center justify-content-center text-dark px-1"
+								<button class="btn-search btn border border-secondary btn-md-square rounded-circle bg-white me-4"
+									style="border-color: #009223 !important" data-bs-toggle="modal" data-bs-target="#searchModal">
+									<i class="fas fa-search text-primary"></i>
+								</button>
+								<a href="goCart" class="position-relative me-4 my-auto"> 
+								<i class="fa fa-shopping-bag fa-2x"></i> 
+								<span class="position-absolute bg-secondary rounded-circle d-flex align-items-center justify-content-center text-dark px-1"
 									style="top: -5px; left: 15px; height: 20px; min-width: 20px;">3</span>
-
 								</a> 
 								<a href="goMyPage" class="my-auto" > <i class="fas fa-user fa-2x"></i></a>
-
-
-								</a>
-							
-
 							</div>
 						</div>
 					</nav>
@@ -161,7 +159,7 @@
 			<div class="container py-5">
 				<div class="row g-5 align-items-center">
 					<div class="col-md-12 col-lg-7">
-						<h4 class="mb-3 text-secondary">100% Organic Foods</h4>
+						<h4 class="mb-3 text-secondary" style="color: black !important">100% Organic Foods</h4>
 						<h1 class="mb-5 display-3 text-primary">Organic Veggies &
 							Fruits Foods</h1>
 						
@@ -177,10 +175,10 @@
 							<form action="search">
 								<input
 									class="form-control border-2 border-secondary w-75 py-3 px-4 rounded-pill"
-									type="text" placeholder="Search" name="searchText">
+									type="text" placeholder="Search" name="searchText" style="border-color: #009223 !important">
 								<input type="submit" value="검색"
 									class="btn btn-primary border-2 border-secondary py-3 px-4 position-absolute rounded-pill text-white h-100"
-									style="top: 0; right: 25%;"></input>
+									style="top: 0; right: 25%; border-color: #009223 !important;"></input>
 							</form>
 						</div>
 					</div>
