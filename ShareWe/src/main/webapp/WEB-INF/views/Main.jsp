@@ -86,15 +86,14 @@
 							<span class="fa fa-bars text-primary"></span>
 						</button>
 						<div class="collapse navbar-collapse bg-white" id="navbarCollapse">
-							<div class="navbar-nav mx-auto">
-								<a href="goGeneral" class="nav-item nav-link active">일반</a>
-									 <a href="goCompany" class="nav-item nav-link">기업</a> 
-									<a href="gogBoard" class="nav-item nav-link">게시글작성</a>
+							<div class="navbar-nav mx-auto" >
+								<a href="goGeneral?type=${loginMember.type}" class="nav-item nav-link active">일반</a>
+									 <a href="goCompany?type=${loginMember.type}" class="nav-item nav-link">기업</a> 
 
-									<!-- 기업회원일때만 나오게 -->
+									<!-- 기업회원일때만 나오게 
 									<c:if test="${type eq 'company'}">
 										<a href="gocBoard" class="nav-item nav-link">상품등록</a>
-									</c:if>
+									</c:if>-->
 								
 								<div class="nav-item dropdown">
 									<a href="#" class="nav-link dropdown-toggle"

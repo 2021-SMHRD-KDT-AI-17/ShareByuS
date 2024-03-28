@@ -12,6 +12,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestParam;
 
 import com.oreilly.servlet.MultipartRequest;
 import com.oreilly.servlet.multipart.DefaultFileRenamePolicy;
@@ -38,9 +39,10 @@ public class C_BoardController {
 	}
 	
 	@RequestMapping("/goCompany")
-	public String goGeneral(Model model) {
+	public String goGeneral(@RequestParam("type")String type, Model model) {
 		List<c_board> cboard_list = c_boardMapper.getCBoard();
 		model.addAttribute("cboard_list", cboard_list);
+		model.addAttribute("type", type);
 		return "Shop2";
 	}
 	
