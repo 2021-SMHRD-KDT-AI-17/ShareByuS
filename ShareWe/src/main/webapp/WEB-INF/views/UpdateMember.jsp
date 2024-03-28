@@ -168,26 +168,9 @@
 									<input type="text" class="form-control" value="${loginMember.email }" name="email" readonly >
 								</div>
 							</div>
-						 
-						
-					<!-- <div class="form-item">
-							<label class="form-label my-3">이메일</label> 
-							<br>
-							<div style="align-content: middle !important;">
-								<input type="text" class="form-control" placeholder="Ex) example@shareWe.com" name="email" id="inputEmail" 
-									style="width: 580px !important; display: inline !important;"
-									value="${loginMember.email}">
-								
-								<input type="button" value="Email 중복체크" onclick="checkEmail()" 
-									class="btn border-secondary py-2 px-2  text-primary"
-									style="width: 150px !important; height: 36px !important;  display: inline !important; padding:4px !important;">
-								<br>
-								<span id="resultCheck"></span>
-							</div>							
-						</div>  -->
-												
+						 												
 											
-						<c:if test="${loginMember.type == 1 || loginMember.type == 2}">
+						<c:if test="${loginMember.type != 3 }">
 						<div class="form-item">
 							<label class="form-label my-3">비밀번호</label>
 							<input type="password" class="form-control" name="pw" value="${loginMember.pw}">
