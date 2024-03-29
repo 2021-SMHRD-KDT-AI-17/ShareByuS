@@ -19,7 +19,9 @@ import com.oreilly.servlet.multipart.DefaultFileRenamePolicy;
 
 
 import kr.smhrd.entity.g_board;
+import kr.smhrd.entity.g_favorite;
 import kr.smhrd.entity.member;
+import kr.smhrd.mapper.FavoriteMapper;
 import kr.smhrd.mapper.G_BoardMapper;
 import kr.smhrd.mapper.MemberMapper;
 
@@ -33,6 +35,8 @@ public class G_BoardController {
 	private MemberMapper memberMapper;
 
 	private int g_num;
+
+	private FavoriteMapper favoriteMapper;
 	
 	@RequestMapping("/goShop")
 	public String goShop() {
@@ -100,12 +104,12 @@ public class G_BoardController {
 	//gBoardDetail 로
 	
 	@RequestMapping("/G_BoardContent")
-	public String G_BoardContent(@RequestParam("g_num") int g_num, Model model) {
-		
+	public String G_BoardContent(@RequestParam("g_num") int g_num, Model model, HttpSession session) {
+		member loginMember = (member)session.getAttribute("loginMember");
 		g_board g_board = g_boardMapper.G_BoardContent(g_num); //num값에 해당하는 하나의 게시물 가져오기
 		model.addAttribute("g_board",g_board);
 		
-//			g_boardMapper.G_BoardCount(g_num); // num값에 해당하는 게시물 조회수 1증가
+	
 		return "gBoardDetail";
 	}
 	

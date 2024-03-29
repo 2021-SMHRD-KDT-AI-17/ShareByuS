@@ -384,10 +384,15 @@
 					<div>
 						<b>작성자 : ${g_board.g_writer}</b>
 					</div>
+					<!-- onclick="insertFavorite()" -->
+					<%-- <a href="addFavorite?g_num=${g_board.g_num }"> </a> --%> 
 					
-					<button style="width: 35%; margin-left: 20%;" type="button" class="btn btn-outline-success">찜</button>
+		<input type="button" onclick="checkFavorite()"  value="찜좀돼라" 
+		style="width: 35%; margin-left: 20%;"  class="btn btn-outline-success" >
+					<span id="zzim"></span>
 					<button style="width: 35%; margin-left: 10%;" type="button" class="btn btn-outline-success">참여하기</button>
 			</div>
+				
 			
 		</div>
 
@@ -420,37 +425,46 @@
 
 
 		<!-- JavaScript Libraries -->
-		<script
-			src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.4/jquery.min.js"></script>
-		<script
-			src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0/dist/js/bootstrap.bundle.min.js"></script>
-		<script src="resources/asset/lib/easing/easing.min.js"></script>
-		<script src="resources/asset/lib/waypoints/waypoints.min.js"></script>
-		<script src="resources/asset/lib/lightbox/js/lightbox.min.js"></script>
-		<script src="resources/asset/lib/owlcarousel/owl.carousel.min.js"></script>
+	<script
+		src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.4/jquery.min.js"></script>
+	<script
+		src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0/dist/js/bootstrap.bundle.min.js"></script>
+	<script src="resources/asset/lib/easing/easing.min.js"></script>
+	<script src="resources/asset/lib/waypoints/waypoints.min.js"></script>
+	<script src="resources/asset/lib/lightbox/js/lightbox.min.js"></script>
+	<script src="resources/asset/lib/owlcarousel/owl.carousel.min.js"></script>
+
 
 		<!-- Template Javascript -->
 		<script src="resources/asset/js/main.js"></script>
-
-		<!-- 	<!-- 카테고리:채소 비동기 --
-	<script type="text/javascript">
-		function getVege(){
-			$.ajax({
-				url :'',
-				data : '',
-				type : 'get',
-				
-				success : function(data){
-					
-				},
-				error : function() {
-					alert()
+	
+		<script type="text/javascript">
+					function checkFavorite(){
+				var g_num=${g_board.g_num};
+				console.log(g_num);
+						
+						$.ajax(
+						{
+							url : "checkFavorite",
+							data : {'g_num' : g_num},
+							type :'get',
+							success : function(data){
+								if(data==1){
+										$("#zzim").text('찜완료!')
+								}else{
+									$("#zzim").text('이미!')	
+								}
+							},
+							error : function(){
+								alert("통신실패")
+							}
+						}
+					)
 				}
-				
-				
-			})
-		}
-	</script> -->
+				</script>
+
+	
+
 </body>
 
 </html>
