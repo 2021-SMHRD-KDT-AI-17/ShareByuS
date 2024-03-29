@@ -57,7 +57,7 @@ public class G_BoardController {
 	
 	//게시글작성
 	@RequestMapping("/gBoardInsert")
-		public String gBoardInsert(  g_board g_board, HttpSession session, HttpServletRequest request) {
+		public String gBoardInsert(g_board g_board, HttpSession session, HttpServletRequest request) {
 		String path = request.getRealPath("resources/g_Image");
 		System.out.println(path);
 		int size = 1024*1024*10;

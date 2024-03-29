@@ -172,8 +172,7 @@
 
 							<label class="input-file-button" for="btnAtt"> 업로드 </label> 
 							
-								<input  type="file" name="g_img1"  id="btnAtt"
-								 accept="image/jpg, image/jpeg, image/png" style="display: none">
+								<input  type="file" name="g_img1"  id="btnAtt" style="display: none">
 								<!-- multiple="multiple" style="display: none" onchange="readURL(this);" -->
 							<!-- 이미피자일 name = filename -->
 

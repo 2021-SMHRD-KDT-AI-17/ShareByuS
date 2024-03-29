@@ -64,9 +64,24 @@ public class c_board {
     // 옵션3 
     private double c_opt3;
 
-    // 옵션4 
+    public c_board(@NonNull String c_title, @NonNull String c_img1, @NonNull String c_content, @NonNull String c_f_date,
+			@NonNull String category, String place, @NonNull int price, @NonNull double c_opt1, @NonNull int c_ea) {
+		super();
+		this.c_title = c_title;
+		this.c_img1 = c_img1;
+		this.c_content = c_content;
+		this.c_f_date = c_f_date;
+		this.category = category;
+		this.price = price;
+		this.c_opt1 = c_opt1;
+		this.c_ea = c_ea;
+	}
+
+	// 옵션4 
     private double c_opt4;
 
     // 상품등록갯수 
     @NonNull private int c_ea;
 }
+
+
