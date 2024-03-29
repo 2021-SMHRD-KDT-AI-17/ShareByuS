@@ -38,9 +38,9 @@ public class G_BoardController {
 
 	private FavoriteMapper favoriteMapper;
 	
-	@RequestMapping("/goShop")
-	public String goShop() {
-		return "Shop";
+	@RequestMapping("/goShare")
+	public String goShare() {
+		return "Share";
 	}
 	
 	//shop.jsp로 이동
@@ -48,20 +48,20 @@ public class G_BoardController {
 	public String goGeneral(Model model) {
 		List<g_board> gboard_list = g_boardMapper.getGBoard();
 		model.addAttribute("gboard_list", gboard_list);
-		return "Shop";
+		return "Share";
 	}
 	
 	@RequestMapping("/getCategory")
 	public String getCategory(@RequestParam("category") String category, Model model) {
 		List<g_board> gboard_list = g_boardMapper.getCategory(category);
 		model.addAttribute("gboard_list", gboard_list);
-		return "Shop";
+		return "Share";
 	}
 	
 	
 	//게시글작성
 	@RequestMapping("/gBoardInsert")
-		public String gBoardInsert(  g_board g_board, HttpSession session, HttpServletRequest request) {
+		public String gBoardInsert(g_board g_board, HttpSession session, HttpServletRequest request) {
 		String path = request.getRealPath("resources/g_Image");
 		System.out.println(path);
 		int size = 1024*1024*10;
@@ -110,30 +110,19 @@ public class G_BoardController {
 		model.addAttribute("g_board",g_board);
 		
 	
+		model.addAttribute("g_board", g_board);
+		 
+//			g_boardMapper.G_BoardCount(g_num); // num값에 해당하는 게시물 조회수 1증가
 		return "gBoardDetail";
 	}
 	
-	/*public String myGboard(HttpSession session, Model model) {
-		
-		member loginMember = (member)session.getAttribute("loginMember");
-		String email = loginMember.getEmail();
-		
-		List<g_board> gboard_list = g_boardMapper.getGBoard();
-		model.addAttribute("gboard_list", gboard_list);
-		
-		for(int i=0; i<gboard_list.size(); i++) {
-			if(email.equals(gboard_list.get(i).getEmail())) {
-				model.addAttribute("myGboard",gboard_list.get(i));
-			}
 	
-		}
-		return "myPage";*/
+	@RequestMapping("/gParticipate")
+	public String gParticipate(@RequestParam("g_num") int g_num) {
+		g_boardMapper.gParticipate(g_num);
 		
 		
+		return "redirect:/goGeneral";
+	}	
 		
-		
-//	}
-		
-	
-
 }

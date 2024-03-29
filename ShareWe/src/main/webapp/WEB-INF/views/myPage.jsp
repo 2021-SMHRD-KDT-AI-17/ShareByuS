@@ -129,8 +129,8 @@
 				</button>
 				<div class="collapse navbar-collapse bg-white" id="navbarCollapse">
 					<div class="navbar-nav mx-auto">
-						<a href="gogBoard" class="nav-item nav-link" style="color: black">일반</a>
-						<a href="shop.html" class="nav-item nav-link" style="color: black">기업</a>
+						<a href="goGeneral" class="nav-item nav-link" style="color: black">일반</a>
+						<a href="goCompany" class="nav-item nav-link" style="color: black">기업</a>
 						<!-- <a href="shop-detail.html" class="nav-item nav-link">Shop Detail</a> -->
 						<div class="nav-item dropdown">
 							<a href="#" class="nav-link dropdown-toggle active"
@@ -146,17 +146,17 @@
 							style="color: black">Contact</a>
 					</div>
 					<div class="d-flex m-3 me-0">
-						<button
-							class="btn-search btn border border-secondary btn-md-square rounded-circle bg-white me-4"
-							data-bs-toggle="modal" data-bs-target="#searchModal">
-							<i class="fas fa-search text-primary"></i>
-						</button>
-						<a href="#" class="position-relative me-4 my-auto"> <i
-							class="fa fa-shopping-bag fa-2x"></i> <span
-							class="position-absolute bg-secondary rounded-circle d-flex align-items-center justify-content-center text-dark px-1"
-							style="top: -5px; left: 15px; height: 20px; min-width: 20px;">3</span>
-						</a> <a href="#" class="my-auto"> <i class="fas fa-user fa-2x"></i>
-						</a>
+							<button
+								class="btn-search btn border border-secondary btn-md-square rounded-circle bg-white me-4"
+								data-bs-toggle="modal" data-bs-target="#searchModal">
+								<i class="fas fa-search text-primary"></i>
+							</button>
+							<a href="goCart" class="position-relative me-4 my-auto"> <i
+								class="fa fa-shopping-bag fa-2x"></i> <span
+								class="position-absolute bg-secondary rounded-circle d-flex align-items-center justify-content-center text-dark px-1"
+								style="top: -5px; left: 15px; height: 20px; min-width: 20px;">3</span>
+							</a> <a href="goMyPage" class="my-auto"> <i
+								class="fas fa-user fa-2x"></i></a>
 					</div>
 				</div>
 			</nav>
@@ -336,30 +336,51 @@
 			}
 		</script>
 
-			<div class="col-lg-9"  id="myBoard" style="display: none">
+	<div class="col-lg-9"  id="myBoard" style="display: none">
 
+		<c:if test="${loginMember.type == 2 || loginMember.type == 3}">
 			<div class="row g-4 justify-content-center">
 				<div class="col-md-6 col-lg-6 col-xl-4" style="width: 1200px">
 					<div class="rounded position-relative fruite-item">
 						<c:forEach items="${gboard_list}" var="g">
 							<div class="fruite-img">
 								<div align="justify" align="left">
-									<a href="G_BoardContent?g_num=${g.g_num}"> <img alt=""
-										src="resources/g_Image/${g.g_img1}" align="left"
+									<a href="G_BoardContent?g_num=${g.g_num}"> 
+									<img alt="" src="resources/g_Image/${g.g_img1}" align="left"
 										style="margin-right: 30px; width: 100px; height: 80px; object-fit: fill;"></a>
 									<a href="G_BoardContent?g_num=${g.g_num}"><h3 style="text-align: center;">${g.g_title}</h3></a>
 									<strong>작성일 ${g.g_w_date }</strong>
 									<hr>
 								</div>
-
-
-
 							</div>
 						</c:forEach>
 					</div>
 				</div>
 			</div>
-		</div>
+		</c:if>
+		
+		<c:if test="${loginMember.type == 1}">
+			<div class="row g-4 justify-content-center">
+				<div class="col-md-6 col-lg-6 col-xl-4" style="width: 1200px">
+					<div class="rounded position-relative fruite-item">
+						<c:forEach items="${cboard_list}" var="g">
+							<div class="fruite-img">
+								<div align="justify" align="left">
+									<a href="G_BoardContent?g_num=${c.c_num}"> 
+									<img alt="" src="resources/g_Image/${c.c_img1}" align="left"
+										style="margin-right: 30px; width: 100px; height: 80px; object-fit: fill;"></a>
+									<a href="G_BoardContent?g_num=${c.c_num}"><h3 style="text-align: center;">${c.c_title}</h3></a>
+									<strong>작성일 ${c.c_w_date }</strong>
+									<hr>
+								</div>
+							</div>
+						</c:forEach>
+					</div>
+				</div>
+			</div>
+		</c:if>
+		
+	</div>
 
 		<div class="col-lg-9" id="myCategory" style="display: none">
 

@@ -196,7 +196,7 @@
 						<a href="goCompany" class="nav-item nav-link">기업</a> 
 
 						<!-- 기업회원일때만 나오게 -->
-						<c:if test="${loginMember.type == 1}">
+						<c:if test="${type eq 'company'}">
 							<a href="gocBoard" class="nav-item nav-link">상품등록</a>
 						</c:if>
 
@@ -302,8 +302,9 @@
 			</div>
 		</div>
 		
-		<div class="row g-4 justify-content-center hero-header" style="margin-left: 28%; margin-right: 28%; ">
-				<script
+		<div class="row g-4 justify-content-center hero-header" style="margin-left: 28%; margin-right: 28%;">
+
+			<script
 				src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js"
 				integrity="sha384-ka7Sk0Gln4gmtz2MlQnikT1wXgYsOg+OMhuP+IlRH9sENBO0LRn5q+8nbTov4+1p"
 				crossorigin="anonymous"></script>
@@ -313,7 +314,7 @@
 				<div class="carousel-inner" style="position: absoulte;" >
 					<div class="carousel-item active">
 						<img class="d-block w-100" style="object-fit: cover !important; height: 450px;"
-							src="resources/g_Image/${g_board.g_img1}" alt="..." />
+							src="resources/g_Image/${c_board.c_img1}" alt="..." />
 					</div>
 					<div class="carousel-item">
 						<img class="d-block w-100" style="object-fit: cover !important; height: 450px;"
@@ -335,54 +336,26 @@
 					<span class="carousel-control-next-icon" aria-hidden="true"></span>
 					<span class="visually-hidden">Next</span>
 				</button>
-<<<<<<< HEAD
 			</div>
 			
-			<div class="row g-4 justify-content-center" style="width: 50%; margin-left: 10%">
-					<h1>${g_board.g_title}</h1>
-					<b>종료 날짜 : ${g_board.g_b_date}</b>
-					<div>
-						거래 및 상품정보:
-						<b> ${g_board.g_content}</b>
-						
-					</div>
-					<div>
-						참여인원:
-					</div>
-					<div>
-						<b>작성자 : ${g_board.g_writer}</b>
-					</div>
-					<!-- onclick="insertFavorite()" -->
-					<%-- <a href="addFavorite?g_num=${g_board.g_num }"> </a> --%> 
-			</div>	
-					
-		<input type="button" onclick="checkFavorite()"  value="찜좀돼라" 
-		style="width: 35%; margin-left: 20%;"  class="btn btn-outline-success" >
-					<span id="zzim"></span>
-					<button style="width: 35%; margin-left: 10%;" type="button" class="btn btn-outline-success">참여하기</button>
-			</div>
-				
-			
-				
-				<div class="row g-4 justify-content-center" style="display: block;">
-					<div class="boardContent">
-						<button style="width: 10%;" type="button" class="btn btn-outline-success">❤ 찜</button>
-						<button type="button" class="btn btn-outline-success"
-							onclick="location.href='gParticipate?g_num=${g_board.g_num}'" style="width: 20%; margin-left: 20px">참여하기</button><br>
-					</div>
-					<div class="boardContent">
-						참여인원 : ${g_board.g_p_count}
-					</div>
-					<div class="boardContent">
-						<span><h6 style="display: inline;">작성자 : ${g_board.g_writer}</h6></span>
-						<span style="float: right;">${g_board.category} / ${g_board.g_w_date}</span>
-					</div>
-					<div class="boardContent">
-						<h5>${g_board.g_title}</h5>	
-						<h6>종료 날짜 : ${g_board.g_b_date}</h6><br>
-						<div>${g_board.g_content}</div>	
-					</div>
+			<div class="row g-4 justify-content-center">
+				<div class="boardContent">
+					<button style="width: 10%;" type="button" class="btn btn-outline-success">❤ 찜</button>
+					<button style="width: 20%; margin-left: 20px" type="button" class="btn btn-outline-success">참여하기</button><br>
 				</div>
+				<div class="boardContent">
+					참여인원:
+				</div>
+				<div class="boardContent">
+					<span><h6 style="display: inline;">작성자 : ${c_board.c_writer}</h6></span>
+					<span style="float: right;">${c_board.category} / ${c_board.c_w_date}</span>
+				</div>
+				<div class="boardContent">
+					<h5>${c_board.c_title}</h5>
+					<h6>종료 날짜 : ${c_board.c_f_date}</h6><br>
+					<div>${c_board.c_content}</div>
+				</div>
+			</div>			
 		</div>
 
 		<!-- 메인 페이지 하단 -->
@@ -414,46 +387,37 @@
 
 
 		<!-- JavaScript Libraries -->
-	<script
-		src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.4/jquery.min.js"></script>
-	<script
-		src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0/dist/js/bootstrap.bundle.min.js"></script>
-	<script src="resources/asset/lib/easing/easing.min.js"></script>
-	<script src="resources/asset/lib/waypoints/waypoints.min.js"></script>
-	<script src="resources/asset/lib/lightbox/js/lightbox.min.js"></script>
-	<script src="resources/asset/lib/owlcarousel/owl.carousel.min.js"></script>
-
+		<script
+			src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.4/jquery.min.js"></script>
+		<script
+			src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0/dist/js/bootstrap.bundle.min.js"></script>
+		<script src="resources/asset/lib/easing/easing.min.js"></script>
+		<script src="resources/asset/lib/waypoints/waypoints.min.js"></script>
+		<script src="resources/asset/lib/lightbox/js/lightbox.min.js"></script>
+		<script src="resources/asset/lib/owlcarousel/owl.carousel.min.js"></script>
 
 		<!-- Template Javascript -->
 		<script src="resources/asset/js/main.js"></script>
-	
-		<script type="text/javascript">
-					function checkFavorite(){
-				var g_num=${g_board.g_num};
-				console.log(g_num);
-						
-						$.ajax(
-						{
-							url : "checkFavorite",
-							data : {'g_num' : g_num},
-							type :'get',
-							success : function(data){
-								if(data==1){
-										$("#zzim").text('찜완료!')
-								}else{
-									$("#zzim").text('이미!')	
-								}
-							},
-							error : function(){
-								alert("통신실패")
-							}
-						}
-					)
+
+		<!-- 	<!-- 카테고리:채소 비동기 --
+	<script type="text/javascript">
+		function getVege(){
+			$.ajax({
+				url :'',
+				data : '',
+				type : 'get',
+				
+				success : function(data){
+					
+				},
+				error : function() {
+					alert()
 				}
-				</script>
-
-	
-
+				
+				
+			})
+		}
+	</script> -->
 </body>
 
 </html>

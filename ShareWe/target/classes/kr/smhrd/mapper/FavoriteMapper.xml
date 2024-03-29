@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="kr.smhrd.mapper.FavoriteMapper">
+
+<insert id="addFavorite" parameterType="kr.smhrd.entity.g_favorite">
+		insert into g_favorite(email, g_num, g_f_date) values(#{email}, #{g_num}, NOW())
+	</insert>
+
+<select id="getGEmail" parameterType="String" resultType="kr.smhrd.entity.g_favorite">
+		select * from g_favorite where email=#{email}
+	</select>
+
+<!-- <select id="getFavorite_list" resultType="kr.smhrd.entity.g_favorite">
+	select * from g_favorite
+</select> -->
+</mapper>

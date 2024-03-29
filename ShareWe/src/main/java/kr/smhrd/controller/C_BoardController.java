@@ -33,17 +33,24 @@ public class C_BoardController {
 	@Autowired
 	private MemberMapper memberMapper;
 	
-	@RequestMapping("/goShop2")
-	public String goShop2() {
-		return "Shop2";
+	@RequestMapping("/goShop")
+	public String goShop() {
+		return "Shop";
 	}
+
 	
 	@RequestMapping("/goCompany")
-	public String goGeneral(@RequestParam("type")String type, Model model) {
+	public String goGeneral(Model model) {
 		List<c_board> cboard_list = c_boardMapper.getCBoard();
 		model.addAttribute("cboard_list", cboard_list);
-		model.addAttribute("type", type);
-		return "Shop2";
+		return "Shop";
+	}
+	
+	@RequestMapping("/getComCategory")
+	public String getComCategory(@RequestParam("category") String category, Model model) {
+		List<c_board> cboard_list = c_boardMapper.getComCategory(category);
+		model.addAttribute("cboard_list", cboard_list);
+		return "Shop";
 	}
 	
 	@RequestMapping("/cBoardInsert")
@@ -66,30 +73,40 @@ public class C_BoardController {
 			MultipartRequest multi= new MultipartRequest(request,path,size, encoding, rename);
 			String c_title = multi.getParameter("c_title");
 			String c_content = multi.getParameter("c_content");
+			String c_f_date = multi.getParameter("c_f_date");
 			String c_img1 = multi.getFilesystemName("c_img1");
 			String category = multi.getParameter("category");
 			
+			c_board = new c_board(c_title, c_writer, email, c_img1, c_content, c_f_date, category, price, c_opt1, c_ea);
 			
-			
-			
-			c_board = new c_board(c_title,c_writer, email, c_img1, c_content, category, price, c_opt1, c_ea);
-			System.out.println(c_board.toString());
+			int cnt = c_boardMapper.insertCBoard(c_board);
 		} catch (IOException e) {
 			e.printStackTrace();
 		}
 		
-		int cnt = c_boardMapper.insertCBoard(c_board);
-		if(cnt>0) {
-			System.out.println("업로드 성공~");
-		}else {
-			System.out.println("업로드 실패~");
-		}
-		
-			return "redirect:/goShop2";
+			return "redirect:/goCompany";
 		
 	}
 		
+	
+	@RequestMapping("/C_BoardContent")
+	public String C_BoardContent(@RequestParam("c_num") int c_num, Model model) {
 		
+		
+		c_board c_board = c_boardMapper.C_BoardContent(c_num); //num값에 해당하는 하나의 게시물 가져오기
+		model.addAttribute("c_board",c_board);
+		
+//			g_boardMapper.G_BoardCount(g_num); // num값에 해당하는 게시물 조회수 1증가
+		return "cBoardDetail";
+	}
+	
+	@RequestMapping("/cParticipate")
+	public String cParticipate(@RequestParam("c_num") int c_num) {
+		c_boardMapper.cParticipate(c_num);
+		
+		return "redirect:/goMain";
+	}
+	
 	}
 	
 	

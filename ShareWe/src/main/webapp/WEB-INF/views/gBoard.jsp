@@ -87,8 +87,8 @@
 				</button>
 				<div class="collapse navbar-collapse bg-white" id="navbarCollapse">
 					<div class="navbar-nav mx-auto">
-						<a href="gogBoard" class="nav-item nav-link" style="color: black">일반</a>
-						<a href="shop.html" class="nav-item nav-link" style="color: black">기업</a>
+						<a href="goGeneral" class="nav-item nav-link" style="color: black">일반</a>
+						<a href="goCompany" class="nav-item nav-link" style="color: black">기업</a>
 						<!-- <a href="shop-detail.html" class="nav-item nav-link">Shop Detail</a> -->
 						<div class="nav-item dropdown">
 							<a href="#" class="nav-link dropdown-toggle active"
@@ -104,17 +104,17 @@
 							style="color: black">Contact</a>
 					</div>
 					<div class="d-flex m-3 me-0">
-						<button
-							class="btn-search btn border border-secondary btn-md-square rounded-circle bg-white me-4"
-							data-bs-toggle="modal" data-bs-target="#searchModal">
-							<i class="fas fa-search text-primary"></i>
-						</button>
-						<a href="#" class="position-relative me-4 my-auto"> <i
-							class="fa fa-shopping-bag fa-2x"></i> <span
-							class="position-absolute bg-secondary rounded-circle d-flex align-items-center justify-content-center text-dark px-1"
-							style="top: -5px; left: 15px; height: 20px; min-width: 20px;">3</span>
-						</a> <a href="#" class="my-auto"> <i class="fas fa-user fa-2x"></i>
-						</a>
+							<button
+								class="btn-search btn border border-secondary btn-md-square rounded-circle bg-white me-4"
+								data-bs-toggle="modal" data-bs-target="#searchModal">
+								<i class="fas fa-search text-primary"></i>
+							</button>
+							<a href="goCart" class="position-relative me-4 my-auto"> <i
+								class="fa fa-shopping-bag fa-2x"></i> <span
+								class="position-absolute bg-secondary rounded-circle d-flex align-items-center justify-content-center text-dark px-1"
+								style="top: -5px; left: 15px; height: 20px; min-width: 20px;">3</span>
+							</a> <a href="goMyPage" class="my-auto"> <i
+								class="fas fa-user fa-2x"></i></a>
 					</div>
 				</div>
 			</nav>
@@ -172,8 +172,7 @@
 
 							<label class="input-file-button" for="btnAtt"> 업로드 </label> 
 							
-								<input  type="file" name="g_img1"  id="btnAtt"
-								 accept="image/jpg, image/jpeg, image/png" style="display: none">
+								<input  type="file" name="g_img1"  id="btnAtt" style="display: none">
 								<!-- multiple="multiple" style="display: none" onchange="readURL(this);" -->
 							<!-- 이미피자일 name = filename -->
 
@@ -300,6 +299,8 @@
 								placeholder="상품 명을 입력해주세요">
 						</div>
 					</div>
+					
+					
 
 					<div class="col-md-12 col-lg-6 col-xl-7" align="left">
 						<h4 class="form-label my-3">* 카테고리</h4>

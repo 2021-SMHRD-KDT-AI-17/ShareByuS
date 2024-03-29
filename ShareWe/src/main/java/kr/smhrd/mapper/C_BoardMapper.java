@@ -15,4 +15,12 @@ public interface C_BoardMapper {
 
 	public List<c_board> getCEmail(String email);
 
+	public List<c_board> getComCategory(String category);
+
+	public c_board C_BoardContent(int c_num);
+
+	public void cParticipate(int c_num);
+	
+	
+
 }

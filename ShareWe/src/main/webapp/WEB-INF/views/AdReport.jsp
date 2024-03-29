@@ -36,6 +36,7 @@
 
     <body>
 
+
         <!-- Spinner Start -->
         <div id="spinner" class="show w-100 vh-100 bg-white position-fixed translate-middle top-50 start-50  d-flex align-items-center justify-content-center">
             <div class="spinner-grow text-primary" role="status"></div>
@@ -67,8 +68,8 @@
                </button>
                <div class="collapse navbar-collapse bg-white" id="navbarCollapse">
                   <div class="navbar-nav mx-auto">
-                     <a href="gogBoard" class="nav-item nav-link" style="color: black">일반</a>
-                     <a href="shop.html" class="nav-item nav-link" style="color: black">기업</a>
+                     <a href="goGeneral" class="nav-item nav-link" style="color: black">일반</a>
+                     <a href="goCompany" class="nav-item nav-link" style="color: black">기업</a>
                      <!-- <a href="shop-detail.html" class="nav-item nav-link">Shop Detail</a> -->
                      <div class="nav-item dropdown">
                         <a href="#" class="nav-link dropdown-toggle active"
@@ -83,20 +84,20 @@
                      <a href="contact.html" class="nav-item nav-link"
                         style="color: black">Contact</a>
                   </div>
-                  <div class="d-flex m-3 me-0">
-                     <button
-                        class="btn-search btn border border-secondary btn-md-square rounded-circle bg-white me-4"
-                        data-bs-toggle="modal" data-bs-target="#searchModal">
-                        <i class="fas fa-search text-primary"></i>
-                     </button>
-                     <a href="#" class="position-relative me-4 my-auto"> <i
-                        class="fa fa-shopping-bag fa-2x"></i> <span
-                        class="position-absolute bg-secondary rounded-circle d-flex align-items-center justify-content-center text-dark px-1"
-                        style="top: -5px; left: 15px; height: 20px; min-width: 20px;">3</span>
-                     </a> <a href="#" class="my-auto"> <i class="fas fa-user fa-2x"></i>
-                     </a>
-                  </div>
-               </div>
+                  		<div class="d-flex m-3 me-0">
+							<button
+								class="btn-search btn border border-secondary btn-md-square rounded-circle bg-white me-4"
+								data-bs-toggle="modal" data-bs-target="#searchModal">
+								<i class="fas fa-search text-primary"></i>
+							</button>
+							<a href="goCart" class="position-relative me-4 my-auto"> <i
+								class="fa fa-shopping-bag fa-2x"></i> <span
+								class="position-absolute bg-secondary rounded-circle d-flex align-items-center justify-content-center text-dark px-1"
+								style="top: -5px; left: 15px; height: 20px; min-width: 20px;">3</span>
+							</a> <a href="goMyPage" class="my-auto"> <i
+								class="fas fa-user fa-2x"></i></a>
+						</div>
+              	 </div>
             </nav>
          </div>
       </div>
@@ -139,35 +140,50 @@
          <div class="row g-4 justify-content-center" style="width: 1000px !important;" >
 
 
-         
-               <table class="text-center">
-                  <div class="featurs-content">
-                     <tr style="font-size:20px; background-color: #bdc3c7; ">
-                        <th>번호</th>
-                        <th>신고 게시글/리뷰</th>
-                        <th>작성자</th>
-                        <th>신고사유</th>
-                        <th>관리</th>
-                     </tr>
-                     
-                  <c:forEach items=${}  var="re" >
-                     <tr>
-                        <td>${re.rp_num }</td>
-                        <td>${re.name }</a></td>
-                        <td>${re.email }</td>
-                        <td>${re.address}</td>
-                        <td>
-                        <button type="button" onclick="location.href='approveComplete?email=${re.email}'">탈퇴</button>
-                        <button type="button" onclick="location.href='approveComplete?email=${re.email}'">정지</button>
-                        <button type="button" onclick="location.href='approveComplete?email=${re.email}'">해제</button>
-                        </td>
-                        
 
-                        <%-- <c:if test="${loginMember.email eq 'admin' }">
+			
+					<table class="text-center">
+						<div class="featurs-content">
+							<tr style="font-size:20px; background-color: #bdc3c7; ">
+								<th>No.</th>
+								<th>신고 게시글/리뷰</th>
+								<th>작성자</th>
+								<th>신고사유</th>
+								<th>관리</th>
+							</tr>
+							
+						<c:forEach items="${report}" var="re" >
+							<tr>
+								<td>${re.rp_num }</td>
+								<td>${re.name }</a></td>
+								<td>${re.email }</td>
+								<td>${re.address}</td>
+								<td>
+								<button type="button" onclick="">탈퇴</button>
+								<button type="button" onclick="">정지</button>
+								<button type="button" onclick="">해제</button>
+								</td>
+								
+
+					
+							</tr>
+						</c:forEach>
+						</div>
+					</table>
+			
+			</div>
+		</div>
+	</div>
+	
+	
+	<!-- 사용자 신고관리 end -->
+                      <%-- <c:if test="${loginMember.email eq 'admin' }">
                               <td><a href="deleteBoard?num=${b.num }">삭제</a></td>
+                       
                         </c:if> --%>
+                     
                      </tr>
-                  </c:forEach>
+                  
                   </div>
                </table>
          
@@ -177,6 +193,7 @@
    
    
    <!-- 사용자 신고관리 end -->
+
 
 
       <!-- 메인 페이지 하단 -->
@@ -212,6 +229,10 @@
     <!-- Template Javascript -->
     <script src="resources/asset/js/main.js"></script>
     </body>
+    
+    <script>
+    
+    </script>
     
 
 </html>

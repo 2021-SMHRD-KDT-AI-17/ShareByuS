@@ -3,7 +3,7 @@
 <mapper namespace="kr.smhrd.mapper.G_BoardMapper">
 
 	<select id="getGBoard" resultType="kr.smhrd.entity.g_board">
-		select * from g_board
+		select * from g_board order by g_w_date desc
 	</select>
 
 	<insert id="insertBoard" parameterType="kr.smhrd.entity.g_board">
@@ -21,7 +21,11 @@
 	</select>
 	
 	<select id="G_BoardContent" parameterType="int" resultType="kr.smhrd.entity.g_board">
-		select*from g_board where g_num=#{g_num}
+		select * from g_board where g_num=#{g_num}
 	</select>
+	
+	<update id="gParticipate" parameterType="int">
+		update g_board set g_p_count=g_p_count+1 where g_num=#{g_num}
+	</update>
 
 </mapper>

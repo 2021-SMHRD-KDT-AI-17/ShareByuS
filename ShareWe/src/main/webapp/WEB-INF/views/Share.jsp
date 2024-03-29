@@ -131,7 +131,6 @@
 
 
 
-
 </style>
 
 </head>
@@ -155,7 +154,8 @@
 		<div class="container topbar bg-primary d-none d-lg-block">
 			<div class="d-flex justify-content-between">
 				<div class="top-info ps-2">
-					<small class="me-3"></small> <small class="me-3"></small>
+					<small class="me-3"></small>
+					<small class="me-3"></small>
 				</div>
 				<div class="top-link pe-2">
 					<%if (loginMember == null) {%>
@@ -183,8 +183,8 @@
 				</button>
 				<div class="collapse navbar-collapse bg-white" id="navbarCollapse">
 					<div class="navbar-nav mx-auto">
-						<a href="goGeneral?type=${loginMember.type}" class="nav-item nav-link" style="color: black">일반</a>
-						<a href="goCompany?type=${loginMember.type}" class="nav-item nav-link" style="color: black">기업</a>
+						<a href="goGeneral" class="nav-item nav-link" style="color: black">일반</a>
+						<a href="goCompany" class="nav-item nav-link" style="color: black">기업</a>
 						<!-- <a href="shop-detail.html" class="nav-item nav-link">Shop Detail</a> -->
 						<div class="nav-item dropdown">
 							<a href="#" class="nav-link dropdown-toggle active"
@@ -200,17 +200,17 @@
 							style="color: black">Contact</a>
 					</div>
 					<div class="d-flex m-3 me-0">
-						<button
-							class="btn-search btn border border-secondary btn-md-square rounded-circle bg-white me-4"
-							data-bs-toggle="modal" data-bs-target="#searchModal">
-							<i class="fas fa-search text-primary"></i>
-						</button>
-						<a href="#" class="position-relative me-4 my-auto"> <i
-							class="fa fa-shopping-bag fa-2x"></i> <span
-							class="position-absolute bg-secondary rounded-circle d-flex align-items-center justify-content-center text-dark px-1"
-							style="top: -5px; left: 15px; height: 20px; min-width: 20px;">3</span>
-						</a> <a href="#" class="my-auto"> <i class="fas fa-user fa-2x"></i>
-						</a>
+							<button
+								class="btn-search btn border border-secondary btn-md-square rounded-circle bg-white me-4"
+								data-bs-toggle="modal" data-bs-target="#searchModal">
+								<i class="fas fa-search text-primary"></i>
+							</button>
+							<a href="goCart" class="position-relative me-4 my-auto"> <i
+								class="fa fa-shopping-bag fa-2x"></i> <span
+								class="position-absolute bg-secondary rounded-circle d-flex align-items-center justify-content-center text-dark px-1"
+								style="top: -5px; left: 15px; height: 20px; min-width: 20px;">3</span>
+							</a> <a href="goMyPage" class="my-auto"> <i
+								class="fas fa-user fa-2x"></i></a>
 					</div>
 				</div>
 			</nav>
@@ -273,7 +273,7 @@
 	<div class="container-fluid page-header py-5">
 		<h1 class="text-center text-white display-6">Shop</h1>
 		<ol class="breadcrumb justify-content-center mb-0">
-			<li class="breadcrumb-item active text-white">company</li>
+			<li class="breadcrumb-item active text-white">general</li>
 		</ol>
 	</div>
 	<!-- Single Page Header End -->
@@ -297,8 +297,7 @@
 		<div class="col-lg-9" style="margin-top : 90px;">
 			<ul class="filters_menu" style="margin-top:20px !important;">
 			
-				<a href="goGeneral" ><li>All</li></a>
-				
+				<a href="goGeneral"><li>All</li></a>
 				<a href="getCategory?category=채소" id="clickVege"><li>채소</li></a>
 				<a href="getCategory?category=과일" id="clickFruit"><li>과일</li></a>
 				<a href="getCategory?category=생필품" id="ClickDaily"><li>생활용품</li></a>
@@ -313,21 +312,24 @@
 
 		<div class="col-lg-9" style="width:50% !important;  justify-content: center; align-items: center;">
 			<div class="row g-4 justify-content-center" id="boardDiv" >
-                        <c:forEach items="${cboard_list}" var="c">
+                        <c:forEach items="${gboard_list}" var="g">
                            <div class="col-md-1 col-lg-2 col-xl-3">
                               <div class="rounded position-relative fruite-item">
                                  <div class="fruite-img">
-                                    <img src="resources/g_Image/${c.c_img1}" class="img-fluid w-100 rounded-top" alt="">
+                                    <a href="G_BoardContent?g_num=${g.g_num}">
+                                    	<img src="resources/g_Image/${g.g_img1}" class="img-fluid w-100 rounded-top" alt="">
+                                 	</a>
                                  </div>
                                  <div
                                     class="text-white bg-secondary px-3 py-1 rounded position-absolute"
-                                    style="top: 10px; left: 10px; background-color: #009223 !important;">${c.category}</div>
-                                 <div
-                                    class="p-4 border border-secondary border-top-0 rounded-bottom" style="border-color: #009223 !important;">
+                                    style="top: 10px; left: 10px; background-color: #009223 !important;">${g.category}</div>
+                                 
+                                 	<div class="p-4 border border-secondary border-top-0 rounded-bottom" style=" border-color: #009223 !important;">
+                                
                                     <br>
-                                    <h5>${c.c_title}</h5>
-                                    <h6>${c.c_writer}</h6>
-                                    <p>${c.c_content}</p>
+                                    <a href="G_BoardContent?g_num=${g.g_num}"><h5>${g.g_title}</h5></a>
+                                    <h6>${g.g_writer}</h6>
+                                    <p>${g.g_content}</p>
                                     <div class="d-flex justify-content-between flex-lg-wrap">
                                        <!-- 찜버튼(하트) 기능 여기 아래에 -->
 
@@ -340,9 +342,9 @@
                         </c:forEach>
                      </div>
 		</div>
-		<c:if test="${type == 1}">
+		<c:if test="${loginMember.type == 2 || loginMember.type == 3}">
 			<div class="row g-4 justify-content-center">
-				<button class="col-xl-1" id="write" type="button" onclick="location.href='gocBoard'">게시물작성</button>
+				<button class="col-xl-1" id="write" type="button" onclick="location.href='gogBoard'">게시물작성</button>
 			</div>
 		</c:if>
 	</div>

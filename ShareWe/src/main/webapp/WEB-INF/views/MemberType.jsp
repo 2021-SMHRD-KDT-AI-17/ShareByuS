@@ -67,8 +67,8 @@
 					</button>
 					<div class="collapse navbar-collapse bg-white" id="navbarCollapse">
 						<div class="navbar-nav mx-auto">
-							<a href="gogBoard" class="nav-item nav-link" style="color: black">일반</a>
-							<a href="shop.html" class="nav-item nav-link" style="color: black">기업</a>
+							<a href="goGeneral" class="nav-item nav-link" style="color: black">일반</a>
+							<a href="goCompany" class="nav-item nav-link" style="color: black">기업</a>
 							<!-- <a href="shop-detail.html" class="nav-item nav-link">Shop Detail</a> -->
 							<div class="nav-item dropdown">
 								<a href="#" class="nav-link dropdown-toggle active"
@@ -89,12 +89,12 @@
 								data-bs-toggle="modal" data-bs-target="#searchModal">
 								<i class="fas fa-search text-primary"></i>
 							</button>
-							<a href="#" class="position-relative me-4 my-auto"> <i
+							<a href="goCart" class="position-relative me-4 my-auto"> <i
 								class="fa fa-shopping-bag fa-2x"></i> <span
 								class="position-absolute bg-secondary rounded-circle d-flex align-items-center justify-content-center text-dark px-1"
 								style="top: -5px; left: 15px; height: 20px; min-width: 20px;">3</span>
-							</a> <a href="#" class="my-auto"> <i class="fas fa-user fa-2x"></i>
-							</a>
+							</a> <a href="goMyPage" class="my-auto"> <i
+								class="fas fa-user fa-2x"></i></a>
 						</div>
 					</div>
 				</nav>
