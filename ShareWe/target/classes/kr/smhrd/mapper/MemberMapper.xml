@@ -42,6 +42,8 @@
 		update member set nick=#{nick} where email=#{email}
 	</update>
 	
-	
+	<select id="goAdReport" resultType="kr.smhrd.entity.report">
+		select r_title, email, rp_content from report
+	</select>
 	
 </mapper>

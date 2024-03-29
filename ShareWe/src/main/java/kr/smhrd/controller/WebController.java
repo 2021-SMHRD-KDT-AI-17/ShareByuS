@@ -88,13 +88,7 @@ public class WebController {
 	@RequestMapping("/goAdmin")
 	public String goAdmin() {
 		return "AdminPage";
-	}
-	
-	@RequestMapping("/goAdReport")
-	public String goAdReport() {
-		return "AdReport";
-	}
-	
+	}	
 
 	
 	@RequestMapping("/goUpdateMember")

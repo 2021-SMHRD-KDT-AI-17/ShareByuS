@@ -7,6 +7,7 @@ import org.apache.ibatis.annotations.Select;
 
 import kr.smhrd.entity.approve;
 import kr.smhrd.entity.member;
+import kr.smhrd.entity.report;
 
 @Mapper
 public interface MemberMapper {
@@ -38,6 +39,8 @@ public interface MemberMapper {
 		// TODO Auto-generated method stub
 		
 	}
+
+	public List<report> goAdReport();
 
 
 

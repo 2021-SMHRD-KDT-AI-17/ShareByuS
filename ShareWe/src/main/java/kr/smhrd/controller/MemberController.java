@@ -14,6 +14,7 @@ import org.springframework.web.bind.annotation.RequestParam;
 
 import kr.smhrd.entity.approve;
 import kr.smhrd.entity.member;
+import kr.smhrd.entity.report;
 //import kr.smhrd.entity.Message;
 import kr.smhrd.mapper.MemberMapper;
 //import kr.smhrd.mapper.MessageMapper;
@@ -102,6 +103,17 @@ public class MemberController {
 		return "redirect:/goAdApprove";
 	}
 	
+	
+	// 신고회원 관리 페이지로 이동
+	@RequestMapping("/goAdReport")
+	public String goAdReport(Model model) {
+		List<report> adReport = memberMapper.goAdReport();
+		model.addAttribute("adReport", adReport);
+		return "AdReport";
+	}
+	
+	// 신고회원 탈퇴
+
 	
 	// 회원정보 수정 메소드 /memberUpdate
 	@RequestMapping("/memberUpdate")

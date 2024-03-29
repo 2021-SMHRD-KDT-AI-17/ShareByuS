@@ -24,12 +24,14 @@ public class ReportController {
 	@Autowired
 	private ReportMapper reportMapper;
 	
+	// 신고사유 선택 페이지로 이동
 	@RequestMapping("/sendReportInfo")
 	public String sendReportInfo(g_board g_board, report report,HttpSession session) {
 			
 		return "report";
 	}
 	
+	// 신고한 정보를 넘기고 신고 완료 페이지로 이동
 	@RequestMapping("/reportInsert")
 	public String reportInsert(report report,HttpServletRequest request , HttpSession session) {
 		member loginMember = (member)session.getAttribute("loginMember");
@@ -37,15 +39,18 @@ public class ReportController {
 		String rp_email = loginMember.getEmail();
 		String rp_content = request.getParameter("rp_content");
 		String email = request.getParameter("email");
-		int r_num = Integer.parseInt(request.getParameter("r_num")) ;
+		int b_num = Integer.parseInt(request.getParameter("b_num")) ;
+		String r_title = request.getParameter("r_title");
 		
-		report = new report(email,rp_email,rp_content,r_num);
+		report = new report(email,rp_email,rp_content,b_num,r_title);
 		
 		reportMapper.reportInsert(report);
 //		model.addAttribute("reportMember", report);
 		
 		return "reportSuccess";
 	}
+	
+	
 	
 	
 

@@ -4,7 +4,7 @@
 
 
 	<insert id="reportInsert" parameterType="kr.smhrd.entity.report">
-		insert into report (email, rp_email, rp_content, r_num) values (#{email}, #{rp_email}, #{rp_content}, #{r_num})
+		insert into report (email, rp_email, rp_content, b_num, r_title) values (#{email}, #{rp_email}, #{rp_content}, #{b_num}, #{r_title})
 	</insert>
 	
 	</mapper>

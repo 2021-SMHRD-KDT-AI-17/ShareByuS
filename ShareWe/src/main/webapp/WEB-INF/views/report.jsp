@@ -177,10 +177,10 @@
 						<br>
 						<br>
 						
-		<% String g_num = request.getParameter("r_num");
+		<% String b_num = request.getParameter("b_num");
 	    	String email = request.getParameter("email");
 	    	String g_title = request.getParameter("g_title");
-			out.print(g_num);
+			out.print(b_num);
 			out.print(email);
 			out.print(g_title);
 			%>
@@ -238,8 +238,8 @@
 				</tr>	
 			
 			
-				 	<input type="text" value="<%=g_num %>" name="r_num">
-					<input type="text" value="<%=g_title %>" name="g_title">
+				 	<input type="text" value="<%=b_num %>" name="b_num">
+					<input type="text" value="<%=g_title %>" name="r_title">
 					<input type="text" value="<%=email %>" name="email">
 					<input type="text" value="${loginMember.email}" name="rp_email">
 			

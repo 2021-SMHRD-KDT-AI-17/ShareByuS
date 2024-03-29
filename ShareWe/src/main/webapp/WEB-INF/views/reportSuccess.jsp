@@ -154,13 +154,6 @@
 			<%}%>
 			
 			
-			
-		
-		
-	
-	
-		
-	
 	<!-- Single Page Header End -->
 
 

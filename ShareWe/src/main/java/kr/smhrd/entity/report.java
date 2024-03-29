@@ -34,8 +34,13 @@ public class report {
     @NonNull
     private String rp_content;
 
+    // 게시판 고유번호
+    @NonNull private int b_num;
+    
     // 리뷰 고유번호
-
-    @NonNull private int r_num;
+    private int r_num;
 	
+    // 신고글 제목
+    @NonNull
+    private String r_title;
 }

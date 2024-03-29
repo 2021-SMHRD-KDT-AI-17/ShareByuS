@@ -1,3 +1,4 @@
+<%@page import="kr.smhrd.entity.report"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
    pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
@@ -141,7 +142,7 @@
 
 
 
-			
+					<%int index = 0;%>
 					<table class="text-center">
 						<div class="featurs-content">
 							<tr style="font-size:20px; background-color: #bdc3c7; ">
@@ -151,24 +152,23 @@
 								<th>신고사유</th>
 								<th>관리</th>
 							</tr>
-							
-						<c:forEach items="${report}" var="re" >
-							<tr>
-								<td>${re.rp_num }</td>
-								<td>${re.name }</a></td>
-								<td>${re.email }</td>
-								<td>${re.address}</td>
-								<td>
-								<button type="button" onclick="">탈퇴</button>
-								<button type="button" onclick="">정지</button>
-								<button type="button" onclick="">해제</button>
-								</td>
-								
 
-					
-							</tr>
-						</c:forEach>
+							 <c:forEach var="rp" items="${adReport}">
+							 		<%index++;%>
+										<tr>
+											<td><%=index %></td>
+											<td>${rp.r_title}</td>
+											<td>${rp.email}</td>
+											<td>${rp.rp_content}</td>
+											<td><a href="goOutMember"><button>탈퇴</button></a>
+											<a href="goSusMember"><button>정지</button></a>
+											<a href="goResMember"><button>해제</button></a></td>
+										</tr>
 						</div>
+							 
+							 
+							 </c:forEach>
+								
 					</table>
 			
 			</div>

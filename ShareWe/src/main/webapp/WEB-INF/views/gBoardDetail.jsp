@@ -357,12 +357,9 @@
                   <div>${g_board.g_content}</div>   
                </div>
             </div>
-      </div>
-
-
-			<div align="right">
+            <div align="right">
 				<form action="sendReportInfo" method="post">
-				<input type="hidden" value="${g_board.g_num}" name="r_num">
+				<input type="hidden" value="${g_board.g_num}" name="b_num">
 				<input type="hidden" value="${g_board.email}" name="email">
 				<input type="hidden" value="${g_board.g_title}" name="g_title">
 	 			<input type="hidden" value="${loginMember.email}" name="rp_email">
@@ -370,6 +367,10 @@
 				<input type="submit" value="신고하기">
 				</form>
 			</div>
+      </div>
+
+
+			
 
       <!-- 메인 페이지 하단 -->
       <div class="container-fluid bg-dark text-white-50 footer pt-5 mt-5">
