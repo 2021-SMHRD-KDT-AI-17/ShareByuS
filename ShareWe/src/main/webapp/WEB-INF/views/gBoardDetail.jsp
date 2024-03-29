@@ -301,27 +301,32 @@
 					onclick="location.href='gogBoard'">게시물작성</button>
 			</div>
 		</div>
-		
-		<div class="row g-4 justify-content-center hero-header" style="margin-left: 28%; margin-right: 28%; ">
-				<script
+
+		<div class="row g-4 justify-content-center hero-header"
+			style="margin-left: 28%; margin-right: 28%;">
+			<script
 				src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js"
 				integrity="sha384-ka7Sk0Gln4gmtz2MlQnikT1wXgYsOg+OMhuP+IlRH9sENBO0LRn5q+8nbTov4+1p"
 				crossorigin="anonymous"></script>
 
 			<div id="carouselExampleControls" class="carousel slide"
-				data-bs-ride="carousel" style="width: 40%; position: relative;" align="left">
-				<div class="carousel-inner" style="position: absoulte;" >
+				data-bs-ride="carousel" style="width: 40%; position: relative;"
+				align="left">
+				<div class="carousel-inner" style="position: absoulte;">
 					<div class="carousel-item active">
-						<img class="d-block w-100" style="object-fit: cover !important; height: 450px;"
+						<img class="d-block w-100"
+							style="object-fit: cover !important; height: 450px;"
 							src="resources/g_Image/${g_board.g_img1}" alt="..." />
 					</div>
 					<div class="carousel-item">
-						<img class="d-block w-100" style="object-fit: cover !important; height: 450px;"
+						<img class="d-block w-100"
+							style="object-fit: cover !important; height: 450px;"
 							src="https://source.unsplash.com/collection/190727/1600x900"
 							alt="..." />
 					</div>
-					<div class="carousel-item" >
-						<img class="d-block w-100" style="object-fit: cover !important; height: 450px;"
+					<div class="carousel-item">
+						<img class="d-block w-100"
+							style="object-fit: cover !important; height: 450px;"
 							src="https://source.unsplash.com/WLUHO9A_xik/1600x900" alt="..." />
 					</div>
 				</div>
@@ -335,38 +340,17 @@
 					<span class="carousel-control-next-icon" aria-hidden="true"></span>
 					<span class="visually-hidden">Next</span>
 				</button>
-<<<<<<< HEAD
+
 			</div>
-			
-			<div class="row g-4 justify-content-center" style="width: 50%; margin-left: 10%">
-					<h1>${g_board.g_title}</h1>
-					<b>종료 날짜 : ${g_board.g_b_date}</b>
-					<div>
-						거래 및 상품정보:
-						<b> ${g_board.g_content}</b>
-						
-					</div>
-					<div>
-						참여인원:
-					</div>
-					<div>
-						<b>작성자 : ${g_board.g_writer}</b>
-					</div>
-					<!-- onclick="insertFavorite()" -->
-					<%-- <a href="addFavorite?g_num=${g_board.g_num }"> </a> --%> 
-			</div>	
-					
-		<input type="button" onclick="checkFavorite()"  value="찜좀돼라" 
-		style="width: 35%; margin-left: 20%;"  class="btn btn-outline-success" >
-					<span id="zzim"></span>
-					<button style="width: 35%; margin-left: 10%;" type="button" class="btn btn-outline-success">참여하기</button>
-			</div>
-				
-			
-				
-				<div class="row g-4 justify-content-center" style="display: block;">
+
+		
+
+
+
+		<div class="row g-4 justify-content-center" style="display: block;">
 					<div class="boardContent">
-						<button style="width: 10%;" type="button" class="btn btn-outline-success">❤ 찜</button>
+						<button onclick="checkFavorite()" id="zzim" style="width: 10%;" type="button" class="btn btn-outline-success">❤ 찜</button>
+						
 						<button type="button" class="btn btn-outline-success"
 							onclick="location.href='gParticipate?g_num=${g_board.g_num}'" style="width: 20%; margin-left: 20px">참여하기</button><br>
 					</div>
@@ -383,6 +367,7 @@
 						<div>${g_board.g_content}</div>	
 					</div>
 				</div>
+		</div>
 		</div>
 
 		<!-- 메인 페이지 하단 -->
@@ -439,9 +424,10 @@
 							type :'get',
 							success : function(data){
 								if(data==1){
-										$("#zzim").text('찜완료!')
+									
+										$("#zzim").text('♥ 찜 완료')
 								}else{
-									$("#zzim").text('이미!')	
+									$("#zzim").text('이미 찜한 상품 입니다')	
 								}
 							},
 							error : function(){

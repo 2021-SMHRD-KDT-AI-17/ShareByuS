@@ -13,6 +13,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 
 import kr.smhrd.entity.c_board;
+import kr.smhrd.entity.c_favorite;
 import kr.smhrd.entity.g_board;
 import kr.smhrd.entity.g_favorite;
 import kr.smhrd.entity.member;
@@ -125,13 +126,33 @@ public class WebController {
 			member loginMember = (member)session.getAttribute("loginMember");
 			
 			if(loginMember.getType() == 2 || loginMember.getType() == 3 ) {
+				
 				List<g_board> gboard_list = g_boardMapper.getGEmail(loginMember.getEmail());
 				model.addAttribute("gboard_list", gboard_list);
-				List<g_favorite> fv_list = favoriteMapper.getGEmail(loginMember.getEmail());
-				model.addAttribute("fv_list", fv_list);
+				
+//				자신이한 g찜과 모든g리스트비교
+				List<g_board> allG_list = g_boardMapper.getGBoard();
+				model.addAttribute("allG_list", allG_list);
+				List<g_favorite> Gfv_list = favoriteMapper.getGEmail(loginMember.getEmail());
+				model.addAttribute("Gfv_list", Gfv_list);
+				
+//				자신이한 c찜과 모든c리스트비교
+				List<c_board> allC_list = c_boardMapper.getCBoard();
+				model.addAttribute("allC_list", allC_list);
+				List<c_favorite> Cfv_list = favoriteMapper.getCEmail(loginMember.getEmail());
+				model.addAttribute("Cfv_list", Cfv_list);
+			
 			}else if (loginMember.getType() == 1){
+				
 				List<c_board> cboard_list = c_boardMapper.getCEmail(loginMember.getEmail());
 				model.addAttribute("cboard_list", cboard_list);
+				
+				List<c_board> allC_list = c_boardMapper.getCBoard();
+				model.addAttribute("allC_list", allC_list);
+				
+				
+				List<c_favorite> Cfv_list = favoriteMapper.getCEmail(loginMember.getEmail());
+				model.addAttribute("Cfv_list", Cfv_list);
 			}
 			return "myPage";
 		}else {

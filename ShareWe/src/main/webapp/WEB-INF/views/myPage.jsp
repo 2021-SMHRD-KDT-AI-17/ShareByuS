@@ -287,10 +287,12 @@
 
 
 		</ul>
+		
 
 
 		<script type="text/javascript">
 			function getBoard() {
+				
 				document.getElementById("myCategory").style.display = "none";
 				document.getElementById("myBoard").style.display = "block";
 				document.getElementById("myReview").style.display = "none";
@@ -336,6 +338,8 @@
 			}
 		</script>
 
+	
+	
 	<div class="col-lg-9"  id="myBoard" style="display: none">
 
 		<c:if test="${loginMember.type == 2 || loginMember.type == 3}">
@@ -343,16 +347,16 @@
 				<div class="col-md-6 col-lg-6 col-xl-4" style="width: 1200px">
 					<div class="rounded position-relative fruite-item">
 						<c:forEach items="${gboard_list}" var="g">
-							<div class="fruite-img">
-								<div align="justify" align="left">
+						
+								<div align="justify" align="left" style="width: 50px">
 									<a href="G_BoardContent?g_num=${g.g_num}"> 
 									<img alt="" src="resources/g_Image/${g.g_img1}" align="left"
 										style="margin-right: 30px; width: 100px; height: 80px; object-fit: fill;"></a>
-									<a href="G_BoardContent?g_num=${g.g_num}"><h3 style="text-align: center;">${g.g_title}</h3></a>
+									<a href="G_BoardContent?g_num=${g.g_num}"><h3 >${g.g_title}</h3></a>
 									<strong>작성일 ${g.g_w_date }</strong>
 									<hr>
 								</div>
-							</div>
+							
 						</c:forEach>
 					</div>
 				</div>
@@ -363,13 +367,13 @@
 			<div class="row g-4 justify-content-center">
 				<div class="col-md-6 col-lg-6 col-xl-4" style="width: 1200px">
 					<div class="rounded position-relative fruite-item">
-						<c:forEach items="${cboard_list}" var="g">
+						<c:forEach items="${cboard_list}" var="c">
 							<div class="fruite-img">
 								<div align="justify" align="left">
-									<a href="G_BoardContent?g_num=${c.c_num}"> 
-									<img alt="" src="resources/g_Image/${c.c_img1}" align="left"
+									<a href="C_BoardContent?c_num=${c.c_num}"> 
+									<img alt="" src="resources/c_Image/${c.c_img1}" align="left"
 										style="margin-right: 30px; width: 100px; height: 80px; object-fit: fill;"></a>
-									<a href="G_BoardContent?g_num=${c.c_num}"><h3 style="text-align: center;">${c.c_title}</h3></a>
+									<a href="C_BoardContent?g_num=${c.c_num}"><h3 style="text-align: center;">${c.c_title}</h3></a>
 									<strong>작성일 ${c.c_w_date }</strong>
 									<hr>
 								</div>
@@ -381,37 +385,100 @@
 		</c:if>
 		
 	</div>
-
-		<div class="col-lg-9" id="myCategory" style="display: none">
+<!-- my 찜 및카테고리 -->
+		<div align="center"  id="myCategory" style="display: none; width: 1500px;">
+			<ul class="filters_menu" style="margin: 0px;" >
+				<a onclick="getGen()" style="margin: 10px;"> <li id="genText" style="border-color: white; color: green;">일반</li></a> 
+				<a onclick="getCom()"style="margin: 10px;"> <li id="comText" style="border-color: white;">기업</li></a>
+			</ul>
+			
+			<script type="text/javascript">
+			function getGen() {
+				document.getElementById("gen").style.display = "block";
+				document.getElementById("com").style.display = "none";
+				document.getElementById("comText").style.color = "black";
+				document.getElementById("genText").style.display = "green";
+						
+			}
+			function getCom() {
+				document.getElementById("gen").style.display = "none";
+				document.getElementById("com").style.display = "block";
+				document.getElementById("comText").style.color = "green";
+				document.getElementById("genText").style.color = "black";
+						
+			}
+		</script>
+		
+			
+			<br>
 
 			<div class="row g-4 justify-content-center">
-				<div class="col-md-6 col-lg-6 col-xl-4" style="width: 1200px">
-					<div class="rounded position-relative fruite-item">
-					<h1>찜한 게시물</h1>
-					<c:forEach items="${fv_list}" var="f">
-							<div class="fruite-img">
-								<div align="justify" align="left">
-							<c:forEach items="${gboard_list}" var="g">
-								<c:if test="${f.g_num eq g.g_num }">
+			
+				<div id="gen" class="col-md-6 col-lg-6 col-xl-4" style="width: 100%;">
+					<div class="rounded position-relative fruite-item" style="width:1500px;" >
+					
+					<c:forEach items="${Gfv_list}" var="f">
+						
+							<div  class="p-4 border border-secondary  rounded" style="width: 300px; border:solid; border-width:1px;margin:auto; border-color:#EEEEEE !important; display: inline-block;" align="cenber;">
+								
+							<c:forEach items="${allG_list}" var="g">
+								<c:if test="${f.g_num eq g.g_num}">
 									<a href="G_BoardContent?g_num=${g.g_num}"> <img alt=""
 										src="resources/g_Image/${g.g_img1}" align="left"
-										style="margin-right: 30px; width: 100px; height: 80px; object-fit: fill;"></a>
-									<a href="G_BoardContent?g_num=${g.g_num}"><h3 style="text-align: center;">${g.g_title}</h3></a>
-									<strong>작성일 ${g.g_w_date }</strong>
+										class='img-fluid w-100 rounded-top' style="width: 150px; height: 150px; !important;"></a>
+									<a href="G_BoardContent?g_num=${g.g_num}">
+									
+									<h3 style="text-align: center; ">${g.g_title}</h3></a>
+									
+									<br>
+									<strong style="color: #A4A4A4;">${g.category }</strong>
 									<hr>
+										<strong style="color: #A4A4A4;">${g.g_w_date }</strong>
 									</c:if>
 									</c:forEach>
-								</div>
+								
 								
 							</div>
 							</c:forEach>
-						<h1>카테고리</h1>
+				
+					</div>
+				</div>
+			</div>
+			
+		
+				<div class="row g-4 justify-content-center">
+				<div id="com" class="col-md-6 col-lg-6 col-xl-4" style="width: 100%; display: none">
+					<div class="rounded position-relative fruite-item" style="width:1500px;">
+					<c:forEach items="${Cfv_list}" var="f">
 						
+							<div  class="p-4 border border-secondary  rounded" style="width: 300px; border:solid; border-width:1px;margin:auto; border-color:#EEEEEE !important; display: inline-block;" align="cenber;">
+								
+							<c:forEach items="${allC_list}" var="c">
+								<c:if test="${f.c_num eq c.c_num }">
+									<a href="C_BoardContent?c_num=${c.c_num}"> <img alt=""
+										src="resources/g_Image/${c.c_img1}" align="left"
+										class='img-fluid w-100 rounded-top' style="width: 150px; height: 150px; !important;"></a>
+									<a href="C_BoardContent?c_num=${c.c_num}">
+									
+									<h3 style="text-align: center; ">${c.c_title}</h3></a>
+									
+									<br>
+									<strong style="color: #A4A4A4;">${c.category }</strong>
+									<hr>
+										<strong style="color: #A4A4A4;">${c.c_w_date }</strong>
+									</c:if>
+									</c:forEach>
+								
+								
+							</div>
+							</c:forEach>
 						
 				
 					</div>
 				</div>
 			</div>
+			
+
 		</div>
 
 		<div class="col-lg-9" id="myReview" style="display: none">
