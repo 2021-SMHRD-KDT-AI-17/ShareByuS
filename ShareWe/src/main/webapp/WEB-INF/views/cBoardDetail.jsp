@@ -310,30 +310,30 @@
 				crossorigin="anonymous"></script>
 
 			<div id="carouselExampleControls" class="carousel slide"
-				data-bs-ride="carousel" style="width: 40%; position: relative;" align="left">
+				data-bs-ride="carousel" style="position: relative;" align="center">
 				<div class="carousel-inner" style="position: absoulte;" >
 					<div class="carousel-item active">
-						<img class="d-block w-100" style="object-fit: cover !important; height: 450px;"
+						<img class="d-block" style="object-fit: cover !important; height: 450px;"
 							src="resources/g_Image/${c_board.c_img1}" alt="..." />
 					</div>
 					<div class="carousel-item">
-						<img class="d-block w-100" style="object-fit: cover !important; height: 450px;"
+						<img class="d-block" style="object-fit: cover !important; height: 450px;"
 							src="https://source.unsplash.com/collection/190727/1600x900"
 							alt="..." />
 					</div>
 					<div class="carousel-item" >
-						<img class="d-block w-100" style="object-fit: cover !important; height: 450px;"
+						<img class="d-block" style="object-fit: cover !important; height: 450px;"
 							src="https://source.unsplash.com/WLUHO9A_xik/1600x900" alt="..." />
 					</div>
 				</div>
 				<button class="carousel-control-prev" type="button"
 					data-bs-target="#carouselExampleControls" data-bs-slide="prev">
-					<span class="carousel-control-prev-icon" aria-hidden="true"></span>
+					<span class="carousel-control-prev-icon" aria-hidden="true" style="background-color: grey"></span>
 					<span class="visually-hidden">Previous</span>
 				</button>
 				<button class="carousel-control-next" type="button"
 					data-bs-target="#carouselExampleControls" data-bs-slide="next">
-					<span class="carousel-control-next-icon" aria-hidden="true"></span>
+					<span class="carousel-control-next-icon" aria-hidden="true" style="background-color: grey"></span>
 					<span class="visually-hidden">Next</span>
 				</button>
 			</div>
