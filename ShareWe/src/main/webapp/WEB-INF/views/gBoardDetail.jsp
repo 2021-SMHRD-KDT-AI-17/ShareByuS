@@ -342,7 +342,9 @@
                <div class="boardContent">
                   <button style="width: 10%;" type="button" class="btn btn-outline-success">❤ 찜</button>
                   <button type="button" class="btn btn-outline-success"
-                     onclick="location.href='gParticipate?g_num=${g_board.g_num}'" style="width: 20%; margin-left: 20px">참여하기</button><br>
+                     onclick="location.href='gParticipate?g_num=${g_board.g_num}'" style="width: 20%; margin-left: 20px">참여하기</button>
+                  <button type="button" class="btn btn-outline-success"
+                  	 onclick="location.href=''" style="width: 20%; float: ">끌어올리기</button>
                </div>
                <div class="boardContent">
                   참여인원 : ${g_board.g_p_count}
