@@ -179,9 +179,11 @@
 	<!-- 사용자 신고관리 end -->
                       <%-- <c:if test="${loginMember.email eq 'admin' }">
                               <td><a href="deleteBoard?num=${b.num }">삭제</a></td>
+                       
                         </c:if> --%>
+                     
                      </tr>
-                  </c:forEach>
+                  
                   </div>
                </table>
          

@@ -336,9 +336,13 @@
 			}
 		</script>
 
+
+			<!-- 게시글 상세보기 -->
+
 	<div class="col-lg-9"  id="myBoard" style="display: none">
 
 		<c:if test="${loginMember.type == 2 || loginMember.type == 3}">
+
 			<div class="row g-4 justify-content-center">
 				<div class="col-md-6 col-lg-6 col-xl-4" style="width: 1200px">
 					<div class="rounded position-relative fruite-item">
@@ -387,7 +391,28 @@
 			<div class="row g-4 justify-content-center">
 				<div class="col-md-6 col-lg-6 col-xl-4" style="width: 1200px">
 					<div class="rounded position-relative fruite-item">
+					<h1>찜한 게시물</h1>
+					<c:forEach items="${fv_list}" var="f">
+							<div class="fruite-img">
+								<div align="justify" align="left">
+							<c:forEach items="${gboard_list}" var="g">
+								<c:if test="${f.g_num eq g.g_num }">
+									<a href="G_BoardContent?g_num=${g.g_num}"> <img alt=""
+										src="resources/g_Image/${g.g_img1}" align="left"
+										style="margin-right: 30px; width: 100px; height: 80px; object-fit: fill;"></a>
+									<a href="G_BoardContent?g_num=${g.g_num}"><h3 style="text-align: center;">${g.g_title}</h3></a>
+									<strong>작성일 ${g.g_w_date }</strong>
+									<hr>
+									</c:if>
+									</c:forEach>
+								</div>
+								
+							</div>
+							</c:forEach>
 						<h1>카테고리</h1>
+						
+						
+				
 					</div>
 				</div>
 			</div>

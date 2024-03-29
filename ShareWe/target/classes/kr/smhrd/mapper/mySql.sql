@@ -30,3 +30,6 @@ select * from approve;
 delete from member where email= 'tpwlsdl';
 
 delete from g_board where category='2';
+
+select *from g_favorite;
+insert into g_favorite(email, g_num, g_f_date) values('didtpwls8@naver.com', 7, NOW());

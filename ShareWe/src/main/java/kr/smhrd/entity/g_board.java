@@ -49,5 +49,8 @@ public class g_board {
 
     // 카테고리 
     @NonNull private String category;
+    
+    // 참여인원
+    private int g_p_count;
 
 }
