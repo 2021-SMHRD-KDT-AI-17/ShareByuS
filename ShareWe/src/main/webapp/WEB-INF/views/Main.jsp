@@ -311,9 +311,9 @@
 							<div class="col-lg-12">
 								<div class="row g-4">
 
-									<c:forEach items="${gboard_list }" var="g" end="9">
+									<c:forEach items="${gboard_list }" var="g" end="7">
 										<div class="col-md-6 col-lg-4 col-xl-3"
-											style="margin: auto; width: 20%; height: 10%">
+											style="margin: auto; width: 25%; height: 10%; margin-bottom: 20px;">
 											<div class="rounded position-relative fruite-item">
 												<div class="fruite-img">
 													<img src="resources/g_Image/${g.g_img1}"
