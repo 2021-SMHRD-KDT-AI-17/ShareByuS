@@ -93,9 +93,9 @@
 		</div>
 		<div class="container px-0">
 			<nav class="navbar navbar-light bg-white navbar-expand-xl">
-				<a href="goMain" class="navbar-brand"><h1
-						class="text-primary display-6" style="color: #009223 !important;">Share
-						We?</h1></a>
+				<a href="goMain" class="navbar-brand">
+					<h1 class="text-primary display-6" style="color: #009223 !important;">ShareWe?</h1>
+				</a>
 				<button class="navbar-toggler py-2 px-3" type="button"
 					data-bs-toggle="collapse" data-bs-target="#navbarCollapse">
 					<span class="fa fa-bars text-primary"></span>
@@ -189,7 +189,7 @@
 					<!-- 채팅 임시 버튼 -->
 
 					<div class="position-relative mx-auto">
-						<form action="search">
+						<form action="goSearch">
 							<input
 								class="form-control border-2 border-secondary w-75 py-3 px-4 rounded-pill"
 								type="text" placeholder="Search" name="searchText"
