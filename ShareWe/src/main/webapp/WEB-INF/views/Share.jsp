@@ -82,52 +82,12 @@
 	background-color: #009223;
 }
 
-#write {
-	color: white;
-	background-color: #009223;
-	border-radius: 10px;
-	width: 120px;
-	height: 50px;
-	box-shadow: 2px 2px 3px #999;
-	border-color : transparent;
-	position: fixed;
-	right:160px;
-	bottom: 50px;
-	
-	  
-}
-
-#inputSerch {
-	border-top-color : #bdc3c7;
-	border-bottom-color : #bdc3c7;
-	border-left-color :#bdc3c7;
-	border-right-color : #bdc3c7;
-	
-	border-bottom-left-radius: 10px;
-	border-top-left-radius: 10px;
-	
-	height: 40px;
-	
-}
 
 
-#buttonBar {
- 	border-bottom-right-radius: 10px;
- 	border-top-right-radius: 10px;
-	width : 40px;
-	height: 40px;
-	background-color: #009223;
-	border-color : transparent;
-	
-}
 
-#searchBar{
-	float: right 50px;
-}
 
-#buttonBar i {
-	color : white;
-}
+
+
 
 
 
@@ -295,7 +255,7 @@
 	
 		<!-- 카테고리 -->
 		<div class="col-lg-9" style="margin-top : 90px;">
-			<ul class="filters_menu" style="margin-top:20px !important;">
+			<ul class="filters_menu" >
 			
 				<a href="goGeneral"><li>All</li></a>
 				<a href="getCategory?category=채소" id="clickVege"><li>채소</li></a>
@@ -310,10 +270,11 @@
 		
 
 
-		<div class="col-lg-9" style="width:50% !important;  justify-content: center; align-items: center;">
+		<div class="col-lg-9" style="width:60% !important;  justify-content: center; align-items: center;">
 			<div class="row g-4 justify-content-center" id="boardDiv" >
                         <c:forEach items="${gboard_list}" var="g">
-                           <div class="col-md-1 col-lg-2 col-xl-3">
+                           <div class="col-md-1 col-lg-2 col-xl-3"
+                           		style="margin-right: 10px; margin-left: 10px; width: 20%; height: 10%; margin-bottom: 20px;">
                               <div class="rounded position-relative fruite-item">
                                  <div class="fruite-img">
                                     <a href="G_BoardContent?g_num=${g.g_num}">
@@ -328,14 +289,19 @@
                                 
                                     <br>
                                     <a href="G_BoardContent?g_num=${g.g_num}"><h5>${g.g_title}</h5></a>
-                                    <h6>${g.g_writer}</h6>
-                                    <p>${g.g_content}</p>
-                                    <div class="d-flex justify-content-between flex-lg-wrap">
-                                       <!-- 찜버튼(하트) 기능 여기 아래에 -->
-
-                                       <!-- <p class="text-dark fs-5 fw-bold mb-0">$4.99 / kg</p> -->
-                                       <!-- <a href="#" class="btn border border-secondary rounded-pill px-3 text-primary"><i class="fa fa-shopping-bag me-2 text-primary"></i>찜</a> -->
-                                    </div>
+                                    <h6 style="display: inline;">${g.g_writer}</h6>
+                                    <c:choose>
+	                                      <c:when test="${loginMember.type == 0}">
+	                                       	<a href="#" style="float: right;"
+	                                             class="btn border border-secondary rounded-pill px-3 text-primary">
+	                                             삭제 </a>
+	                                      </c:when>
+	                                      <c:otherwise>
+	                                       	<a href="#" style="float: right;"
+	                                             class="btn border border-secondary rounded-pill px-3 text-primary">
+	                                             ❤ 찜 </a>
+	                                      </c:otherwise> 
+                                      </c:choose>
                                  </div>
                               </div>
                            </div>
