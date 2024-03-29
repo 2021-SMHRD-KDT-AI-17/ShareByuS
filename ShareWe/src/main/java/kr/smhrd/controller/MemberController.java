@@ -56,7 +56,7 @@ public class MemberController {
 		}else {
 			session.setAttribute("loginMember", loginMember);
 			
-			return "Main";
+			return "redirect:/goMain";
 		}
 	}
 	
@@ -72,7 +72,7 @@ public class MemberController {
 				return "Login";
 			}else {
 				session.setAttribute("loginMember", loginMember);
-				return "Main";
+				return "redirect:/goMain";
 		}
 	}
 
@@ -81,7 +81,7 @@ public class MemberController {
 	@RequestMapping("/memberLogout")
 	public String memberLogout(HttpSession session) {
 		session.invalidate();
-		return "Main";
+		return "redirect:/goMain";
 	}
 	
 	

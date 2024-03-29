@@ -47,7 +47,7 @@ public class WebController {
 	    model.addAttribute("gboard_list", gboard_list);
 	    List<c_board> cboard_list = c_boardMapper.getCBoard();
 	    model.addAttribute("cboard_list", cboard_list);
-		
+	    
 		return "Main";
 	}
 
