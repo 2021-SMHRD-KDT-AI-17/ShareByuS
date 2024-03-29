@@ -75,15 +75,15 @@
 }
 
 .filters_menu {
-    display: list-item;
-    text-align: -webkit-match-parent;
-    unicode-bidi: isolate;
+	display: list-item;
+	text-align: -webkit-match-parent;
+	unicode-bidi: isolate;
 }
 </style>
 
 </head>
 <body>
-<%
+	<%
 		member loginMember = (member)session.getAttribute("loginMember");
 		g_board g_board = (g_board)session.getAttribute("g_board");
 	%>
@@ -107,15 +107,18 @@
 				</div>
 				<div class="top-link pe-2">
 					<%if (loginMember == null) {%>
-							<a href="goLogin" class="text-white"><small class="text-white mx-2">로그인</small>/</a>
-							<a href="goMemberType" class="text-white"><small class="text-white mx-2">회원가입</small></a>
-						<%}else {%>
-							<span><small class="text-white mx-2"><%=loginMember.getNick() %>님 환영합니다.</small></span>
-							<%if(loginMember.getEmail().equals("admin")) {%>
-								<a href="#" class="text-white"><small class="text-white ms-2">회원관리</small></a>
-							<%} %>
-							<a href="memberLogout" class="text-white"><small class="text-white mx-2">로그아웃</small></a>
-						<%} %>
+					<a href="goLogin" class="text-white"><small
+						class="text-white mx-2">로그인</small>/</a> <a href="goMemberType"
+						class="text-white"><small class="text-white mx-2">회원가입</small></a>
+					<%}else {%>
+					<span><small class="text-white mx-2"><%=loginMember.getNick() %>님
+							환영합니다.</small></span>
+					<%if(loginMember.getEmail().equals("admin")) {%>
+					<a href="#" class="text-white"><small class="text-white ms-2">회원관리</small></a>
+					<%} %>
+					<a href="memberLogout" class="text-white"><small
+						class="text-white mx-2">로그아웃</small></a>
+					<%} %>
 				</div>
 			</div>
 		</div>
@@ -146,17 +149,17 @@
 							style="color: black">Contact</a>
 					</div>
 					<div class="d-flex m-3 me-0">
-							<button
-								class="btn-search btn border border-secondary btn-md-square rounded-circle bg-white me-4"
-								data-bs-toggle="modal" data-bs-target="#searchModal">
-								<i class="fas fa-search text-primary"></i>
-							</button>
-							<a href="goCart" class="position-relative me-4 my-auto"> <i
-								class="fa fa-shopping-bag fa-2x"></i> <span
-								class="position-absolute bg-secondary rounded-circle d-flex align-items-center justify-content-center text-dark px-1"
-								style="top: -5px; left: 15px; height: 20px; min-width: 20px;">3</span>
-							</a> <a href="goMyPage" class="my-auto"> <i
-								class="fas fa-user fa-2x"></i></a>
+						<button
+							class="btn-search btn border border-secondary btn-md-square rounded-circle bg-white me-4"
+							data-bs-toggle="modal" data-bs-target="#searchModal">
+							<i class="fas fa-search text-primary"></i>
+						</button>
+						<a href="goCart" class="position-relative me-4 my-auto"> <i
+							class="fa fa-shopping-bag fa-2x"></i> <span
+							class="position-absolute bg-secondary rounded-circle d-flex align-items-center justify-content-center text-dark px-1"
+							style="top: -5px; left: 15px; height: 20px; min-width: 20px;">3</span>
+						</a> <a href="goMyPage" class="my-auto"> <i
+							class="fas fa-user fa-2x"></i></a>
 					</div>
 				</div>
 			</nav>
@@ -190,7 +193,7 @@
 	<!-- Modal Search End -->
 
 
-	
+
 
 
 
@@ -211,15 +214,14 @@
 
 		<div class="card" style="width: 1000px" align="center">
 			<table width="1000px">
-			<tr>
-			<td>
-			<img src="resources/img/avatar.jpg" class="card-img-top"
-				style="width: 200px; height: 200px; margin: 50px;" align="left">
-			</td>
-			<td width="600px" border-top="0px">
-				<div class="sc-eKZiaR jfoJEs">
-					
-					<script type="text/javascript">
+				<tr>
+					<td><img src="resources/img/avatar.jpg" class="card-img-top"
+						style="width: 200px; height: 200px; margin: 50px;" align="left">
+					</td>
+					<td width="600px" border-top="0px">
+						<div class="sc-eKZiaR jfoJEs">
+
+							<script type="text/javascript">
 						 function div_show() {  
 								document.getElementById("ReNick").style.display = "block"; 
 								document.getElementById("none").style.display = "none"; } 
@@ -227,67 +229,74 @@
 								document.getElementById("ReNick").style.display = "none";
 								document.getElementById("none").style.display = "block"; }
 					</script>
-					
-					<div> 
-						<h5>${loginMember.nick}</h5>
-						<input style="color: white" id="none" type="button" class="btn btn-primary" onclick="div_show();" value="닉네임 수정">
-						
-						<div id="ReNick" style="display:none">
-							<form action="UpdateNick">
-							<input type="hidden" value="${loginMember.email}" name="email">
-							<input type="text" value="${loginMember.nick}" name="nick">
-							<button type="submit" onclick="div_hide();">확인</button>
-							</form>
+
+							<div>
+								 
+								<h5>${loginMember.nick}</h5>
+								<input style="color: white" id="none" type="button"
+									class="btn btn-primary" onclick="div_show();" value="닉네임 수정">
+
+								<div id="ReNick" style="display: none">
+									<form action="UpdateNick">
+										<input type="hidden" value="${loginMember.email}" name="email">
+										<input type="text" value="${loginMember.nick}" name="nick">
+										<button type="submit" onclick="div_hide();">확인</button>
+									</form>
+								</div>
+
+								<p><%=loginMember.getEmail() %></p>
+
+							</div>
+					</td>
+
+					<td>
+						<div class="card-body" style="width: 200px">
+							<a href="goUpdateMember" align="left" class="btn btn-primary"
+								style="color: white">회원정보 수정</a>
 						</div>
-							
-						<p><%=loginMember.getEmail() %></p>
-						
+					</td>
+
 					</div>
-			</td>
-			
-				<td>
-					<div class="card-body" style="width: 200px">
-						<a href="goUpdateMember" align="left" class="btn btn-primary" style="color: white">회원정보 수정</a>
-					</div>
-				</td>
-										
-			</div>	
-		
 			</table>
 		</div>
 
 
 		<br> <br> <br>
-		</div>
+	</div>
 
 	<div class="row g-4 justify-content-center" id="categoryBox"
-		style="width:auto;" >
+		style="width: auto;">
 
 
 
-		<ul class="filters_menu" >
+		<ul class="filters_menu">
 
 
 			<a onclick="getCategory()" id="clickVege">
-			<li class="list-group-item">관심 카테고리</li></a>
+				<li class="list-group-item">관심 카테고리</li>
+			</a>
 
 			<a onclick="getBoard()" id="clickVege">
-			<li class="list-group-item">My 게시글</li></a>
+				<li class="list-group-item">My 게시글</li>
+			</a>
 
 			<a onclick="getReview()" id="clickVege">
-			<li class="list-group-item">리뷰관리</li></a>
+				<li class="list-group-item">리뷰관리</li>
+			</a>
 
 			<a onclick="getSub()" id="clickVege">
-			<li class="list-group-item">구독권</li></a>
+				<li class="list-group-item">구독권</li>
+			</a>
 
 			<a onclick="getJoin()" id="clickVege">
-			<li class="list-group-item">Share 참여 내역</li></a>
+				<li class="list-group-item">Share 참여 내역</li>
+			</a>
 
 
 
 
 		</ul>
-		
+
 
 
 		<script type="text/javascript">
@@ -338,60 +347,91 @@
 			}
 		</script>
 
-	
-	
-	<div class="col-lg-9"  id="myBoard" style="display: none">
 
-		<c:if test="${loginMember.type == 2 || loginMember.type == 3}">
-			<div class="row g-4 justify-content-center">
-				<div class="col-md-6 col-lg-6 col-xl-4" style="width: 1200px">
-					<div class="rounded position-relative fruite-item">
-						<c:forEach items="${gboard_list}" var="g">
+
+
+		<!-- 게시글 상세보기 -->
+		<div align="center" id="myBoard"
+			style="display: none; width: 1500px;">
+			<br>
+
+			<c:if test="${loginMember.type == 2 || loginMember.type == 3}">
+
+				<div class="row g-4 justify-content-center">
+					<div class="class="col-md-6 col-lg-6 col-xl-4"
+					style="width: 100%;">
+						<div class="rounded position-relative fruite-item"
+						style="width: 1500px;">
 						
-								<div align="justify" align="left" style="width: 50px">
-									<a href="G_BoardContent?g_num=${g.g_num}"> 
-									<img alt="" src="resources/g_Image/${g.g_img1}" align="left"
-										style="margin-right: 30px; width: 100px; height: 80px; object-fit: fill;"></a>
-									<a href="G_BoardContent?g_num=${g.g_num}"><h3 >${g.g_title}</h3></a>
-									<strong>작성일 ${g.g_w_date }</strong>
-									<hr>
-								</div>
+						
+							<c:forEach items="${gboard_list}" var="g">
+							<div class="p-4 border border-secondary  rounded"
+								style="width: 300px; border: solid; border-width: 1px; margin: auto; border-color: #EEEEEE !important; display: inline-block;"
+								align="cenber;">
+
+									<a href="G_BoardContent?g_num=${g.g_num}"> <img alt=""
+											src="resources/g_Image/${g.g_img1}" align="left"
+											class='img-fluid w-100 rounded-top'
+											style="width: 150px; height: 150px; !important;"></a>
+									<a href="G_BoardContent?g_num=${g.g_num}">
+									<h3 style="text-align: center;">${g.g_title}</h3></a>
+									<br>
+										<strong style="color: #A4A4A4;">${g.category }</strong>
+										<hr>
+										<strong style="color: #A4A4A4;">${g.g_w_date }</strong>
+										</div>
+							</c:forEach>
 							
-						</c:forEach>
+						</div>
 					</div>
 				</div>
-			</div>
-		</c:if>
-		
-		<c:if test="${loginMember.type == 1}">
-			<div class="row g-4 justify-content-center">
-				<div class="col-md-6 col-lg-6 col-xl-4" style="width: 1200px">
-					<div class="rounded position-relative fruite-item">
-						<c:forEach items="${cboard_list}" var="c">
-							<div class="fruite-img">
-								<div align="justify" align="left">
-									<a href="C_BoardContent?c_num=${c.c_num}"> 
-									<img alt="" src="resources/c_Image/${c.c_img1}" align="left"
-										style="margin-right: 30px; width: 100px; height: 80px; object-fit: fill;"></a>
-									<a href="C_BoardContent?g_num=${c.c_num}"><h3 style="text-align: center;">${c.c_title}</h3></a>
-									<strong>작성일 ${c.c_w_date }</strong>
-									<hr>
-								</div>
-							</div>
-						</c:forEach>
+			</c:if>
+
+			<c:if test="${loginMember.type == 1}">
+				<div class="row g-4 justify-content-center">
+					<div class="class="col-md-6 col-lg-6 col-xl-4"
+					style="width: 100%;">
+						<div class="rounded position-relative fruite-item"
+						style="width: 1500px;">
+						
+						
+							<c:forEach items="${cboard_list}" var="g">
+							<div class="p-4 border border-secondary  rounded"
+								style="width: 300px; border: solid; border-width: 1px; margin: auto; border-color: #EEEEEE !important; display: inline-block;"
+								align="cenber;">
+
+									<a href="G_BoardContent?g_num=${c.c_num}"> <img alt=""
+											src="resources/g_Image/${c.c_img1}" align="left"
+											class='img-fluid w-100 rounded-top'
+											style="width: 150px; height: 150px; !important;"></a>
+									<a href="G_BoardContent?g_num=${c.c_num}">
+									<h3 style="text-align: center;">${c.c_title}</h3></a>
+									<br>
+										<strong style="color: #A4A4A4;">${c.category }</strong>
+										<hr>
+										<strong style="color: #A4A4A4;">${c.c_w_date }</strong>
+										</div>
+							</c:forEach>
+							
+						</div>
 					</div>
 				</div>
-			</div>
-		</c:if>
+			</c:if>
+		</div>
 		
-	</div>
-<!-- my 찜 및카테고리 -->
-		<div align="center"  id="myCategory" style="display: none; width: 1500px;">
-			<ul class="filters_menu" style="margin: 0px;" >
-				<a onclick="getGen()" style="margin: 10px;"> <li id="genText" style="border-color: white; color: green;">일반</li></a> 
-				<a onclick="getCom()"style="margin: 10px;"> <li id="comText" style="border-color: white;">기업</li></a>
-			</ul>
+		<!-- my 찜 및카테고리 -->
+		<div align="center" id="myCategory"
+			style="display: none; width: 1500px;">
 			
+			<ul class="filters_menu" style="margin: 0px;">
+				<a onclick="getGen()" style="margin: 10px;">
+					<li id="genText" style="border-color: white; color: green;">일반</li>
+				</a>
+				<a onclick="getCom()" style="margin: 10px;">
+					<li id="comText" style="border-color: white;">기업</li>
+				</a>
+			</ul>
+
 			<script type="text/javascript">
 			function getGen() {
 				document.getElementById("gen").style.display = "block";
@@ -408,79 +448,91 @@
 						
 			}
 		</script>
-		
-			
+
+
 			<br>
 
 			<div class="row g-4 justify-content-center">
-			
-				<div id="gen" class="col-md-6 col-lg-6 col-xl-4" style="width: 100%;">
-					<div class="rounded position-relative fruite-item" style="width:1500px;" >
-					
-					<c:forEach items="${Gfv_list}" var="f">
-						
-							<div  class="p-4 border border-secondary  rounded" style="width: 300px; border:solid; border-width:1px;margin:auto; border-color:#EEEEEE !important; display: inline-block;" align="cenber;">
-								
-							<c:forEach items="${allG_list}" var="g">
-								<c:if test="${f.g_num eq g.g_num}">
-									<a href="G_BoardContent?g_num=${g.g_num}"> <img alt=""
-										src="resources/g_Image/${g.g_img1}" align="left"
-										class='img-fluid w-100 rounded-top' style="width: 150px; height: 150px; !important;"></a>
-									<a href="G_BoardContent?g_num=${g.g_num}">
-									
-									<h3 style="text-align: center; ">${g.g_title}</h3></a>
-									
-									<br>
-									<strong style="color: #A4A4A4;">${g.category }</strong>
-									<hr>
+
+				<div id="gen" class="col-md-6 col-lg-6 col-xl-4"
+					style="width: 100%;">
+					<div class="rounded position-relative fruite-item"
+						style="width: 1500px;">
+
+						<c:forEach items="${Gfv_list}" var="f">
+
+							<div class="p-4 border border-secondary  rounded"
+								style="width: 300px; border: solid; border-width: 1px; margin: auto; border-color: #EEEEEE !important; display: inline-block;"
+								align="cenber;">
+
+								<c:forEach items="${allG_list}" var="g">
+									<c:if test="${f.g_num eq g.g_num}">
+										<a href="G_BoardContent?g_num=${g.g_num}"> <img alt=""
+											src="resources/g_Image/${g.g_img1}" align="left"
+											class='img-fluid w-100 rounded-top'
+											style="width: 150px; height: 150px; !important;"></a>
+										<a href="G_BoardContent?g_num=${g.g_num}">
+
+											<h3 style="text-align: center;">${g.g_title}</h3>
+										</a>
+
+										<br>
+										<strong style="color: #A4A4A4;">${g.category }</strong>
+										<hr>
 										<strong style="color: #A4A4A4;">${g.g_w_date }</strong>
 									</c:if>
-									</c:forEach>
-								
-								
+								</c:forEach>
+
+
 							</div>
-							</c:forEach>
-				
+						</c:forEach>
+
 					</div>
 				</div>
 			</div>
-			
-		
-				<div class="row g-4 justify-content-center">
-				<div id="com" class="col-md-6 col-lg-6 col-xl-4" style="width: 100%; display: none">
-					<div class="rounded position-relative fruite-item" style="width:1500px;">
-					<c:forEach items="${Cfv_list}" var="f">
-						
-							<div  class="p-4 border border-secondary  rounded" style="width: 300px; border:solid; border-width:1px;margin:auto; border-color:#EEEEEE !important; display: inline-block;" align="cenber;">
-								
-							<c:forEach items="${allC_list}" var="c">
-								<c:if test="${f.c_num eq c.c_num }">
-									<a href="C_BoardContent?c_num=${c.c_num}"> <img alt=""
-										src="resources/g_Image/${c.c_img1}" align="left"
-										class='img-fluid w-100 rounded-top' style="width: 150px; height: 150px; !important;"></a>
-									<a href="C_BoardContent?c_num=${c.c_num}">
-									
-									<h3 style="text-align: center; ">${c.c_title}</h3></a>
-									
-									<br>
-									<strong style="color: #A4A4A4;">${c.category }</strong>
-									<hr>
+
+
+			<div class="row g-4 justify-content-center">
+				<div id="com" class="col-md-6 col-lg-6 col-xl-4"
+					style="width: 100%; display: none">
+					<div class="rounded position-relative fruite-item"
+						style="width: 1500px;">
+						<c:forEach items="${Cfv_list}" var="f">
+
+							<div class="p-4 border border-secondary  rounded"
+								style="width: 300px; border: solid; border-width: 1px; margin: auto; border-color: #EEEEEE !important; display: inline-block;"
+								align="cenber;">
+
+								<c:forEach items="${allC_list}" var="c">
+									<c:if test="${f.c_num eq c.c_num }">
+										<a href="C_BoardContent?c_num=${c.c_num}"> <img alt=""
+											src="resources/g_Image/${c.c_img1}" align="left"
+											class='img-fluid w-100 rounded-top'
+											style="width: 150px; height: 150px; !important;"></a>
+										<a href="C_BoardContent?c_num=${c.c_num}">
+
+											<h3 style="text-align: center;">${c.c_title}</h3>
+										</a>
+
+										<br>
+										<strong style="color: #A4A4A4;">${c.category }</strong>
+										<hr>
 										<strong style="color: #A4A4A4;">${c.c_w_date }</strong>
 									</c:if>
-									</c:forEach>
-								
-								
+								</c:forEach>
+
+
 							</div>
-							</c:forEach>
-						
-				
+						</c:forEach>
+
+
 					</div>
 				</div>
 			</div>
-			
+
 
 		</div>
-
+<!-- 리뷰관리  -->
 		<div class="col-lg-9" id="myReview" style="display: none">
 
 			<div class="row g-4 justify-content-center">
@@ -512,8 +564,8 @@
 				</div>
 			</div>
 		</div>
-	
-		
+
+
 
 
 

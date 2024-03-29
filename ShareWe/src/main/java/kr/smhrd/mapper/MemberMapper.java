@@ -34,6 +34,11 @@ public interface MemberMapper {
 
 	public void updateNick(member member);
 
+	public static void sendReportInfo() {
+		// TODO Auto-generated method stub
+		
+	}
+
 
 
 

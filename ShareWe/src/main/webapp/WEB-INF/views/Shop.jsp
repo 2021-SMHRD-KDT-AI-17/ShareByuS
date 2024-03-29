@@ -183,8 +183,8 @@
 				</button>
 				<div class="collapse navbar-collapse bg-white" id="navbarCollapse">
 					<div class="navbar-nav mx-auto">
-						<a href="goGeneral" class="nav-item nav-link" style="color: black">일반</a>
-						<a href="goCompany" class="nav-item nav-link" style="color: black">기업</a>
+						<a href="goGeneral" class="nav-item nav-link" style="color: black">Share</a>
+						<a href="goCompany" class="nav-item nav-link" style="color: black">Shop</a>
 						<!-- <a href="shop-detail.html" class="nav-item nav-link">Shop Detail</a> -->
 						<div class="nav-item dropdown">
 							<a href="#" class="nav-link dropdown-toggle active"
@@ -301,10 +301,11 @@
 		
 
 
-		<div class="col-lg-9" style="width:50% !important;  justify-content: center; align-items: center;">
+		<div class="col-lg-9" style="width:60% !important;  justify-content: center; align-items: center;">
 			<div class="row g-4 justify-content-center" id="boardDiv" >
                         <c:forEach items="${cboard_list}" var="c">
-                           <div class="col-md-1 col-lg-2 col-xl-3">
+                           <div class="col-md-1 col-lg-2 col-xl-3" 
+                           		style="margin-right: 10px; margin-left: 10px; width: 20%; height: 10%; margin-bottom: 20px;">
                               <div class="rounded position-relative fruite-item">
                                  <div class="fruite-img">
                                     <a href="C_BoardContent?c_num=${c.c_num}">
@@ -318,14 +319,19 @@
                                     class="p-4 border border-secondary border-top-0 rounded-bottom" style="border-color: #009223 !important;">
                                     <br>
                                      <a href="C_BoardContent?c_num=${c.c_num}"><h5>${c.c_title}</h5></a>
-                                    <h6>${c.c_writer}</h6>
-                                    <p>${c.c_content}</p>
-                                    <div class="d-flex justify-content-between flex-lg-wrap">
-                                       <!-- 찜버튼(하트) 기능 여기 아래에 -->
-
-                                       <!-- <p class="text-dark fs-5 fw-bold mb-0">$4.99 / kg</p> -->
-                                       <!-- <a href="#" class="btn border border-secondary rounded-pill px-3 text-primary"><i class="fa fa-shopping-bag me-2 text-primary"></i>찜</a> -->
-                                    </div>
+                                     <h6 style="display: inline;">${c.c_writer }</h6>
+                                     <c:choose>
+	                                      <c:when test="${loginMember.type == 0}">
+	                                       	<a href="#" style="float: right;"
+	                                             class="btn border border-secondary rounded-pill px-3 text-primary">
+	                                             삭제 </a>
+	                                      </c:when>
+	                                      <c:otherwise>
+	                                       	<a href="#" style="float: right;"
+	                                             class="btn border border-secondary rounded-pill px-3 text-primary">
+	                                             ❤ 찜 </a>
+	                                      </c:otherwise> 
+                                      </c:choose>
                                  </div>
                               </div>
                            </div>
