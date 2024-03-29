@@ -1,3 +1,4 @@
+<%@page import="org.apache.ibatis.reflection.SystemMetaObject"%>
 <%@page import="kr.smhrd.entity.member"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
@@ -176,15 +177,19 @@
 						<br>
 						<br>
 						
-		<% String g_num = request.getParameter("g_num");
-			String g_title = request.getParameter("g_title");
-			String email = request.getParameter("email"); %>
+		<% String g_num = request.getParameter("r_num");
+	    	String email = request.getParameter("email");
+	    	String g_title = request.getParameter("g_title");
+			out.print(g_num);
+			out.print(email);
+			out.print(g_title);
+			%>
 			
 		
 		<form action="reportInsert" method="post">
 		<fieldset>
 			<legend>
-			'${g_board.g_title}'
+			<%=g_title %>
 			<br>
 			해당 게시글을 신고하려는 사유를 선택해 주세요
 			</legend>
@@ -233,11 +238,10 @@
 				</tr>	
 			
 			
-				
-				 	<input type="hidden" value="<%=g_num %>" name="r_num">
-				<!-- 	<input type="hidden" value="<% %>" name="g_title"> -->
-					<input type="hidden" value="<%=email %>" name="email">
-					<input type="hidden" value="${loginMember.email}" name="rp_email">
+				 	<input type="text" value="<%=g_num %>" name="r_num">
+					<input type="text" value="<%=g_title %>" name="g_title">
+					<input type="text" value="<%=email %>" name="email">
+					<input type="text" value="${loginMember.email}" name="rp_email">
 			
 			</table>
 				<input type="submit" value="신고하기">

@@ -1,5 +1,6 @@
 package kr.smhrd.controller;
 
+import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
 
 import org.slf4j.Logger;
@@ -24,15 +25,24 @@ public class ReportController {
 	private ReportMapper reportMapper;
 	
 	@RequestMapping("/sendReportInfo")
-	public String sendReportInfo(member member, g_board g_board, HttpSession session) {
-		reportMapper.sendReportInfo();
+	public String sendReportInfo(g_board g_board, report report,HttpSession session) {
+			
 		return "report";
 	}
 	
 	@RequestMapping("/reportInsert")
-	public String reportInsert(report report, Model model) {
-		reportMapper.reportInsert();
-		model.addAttribute("reportMember", report);
+	public String reportInsert(report report,HttpServletRequest request , HttpSession session) {
+		member loginMember = (member)session.getAttribute("loginMember");
+		
+		String rp_email = loginMember.getEmail();
+		String rp_content = request.getParameter("rp_content");
+		String email = request.getParameter("email");
+		int r_num = Integer.parseInt(request.getParameter("r_num")) ;
+		
+		report = new report(email,rp_email,rp_content,r_num);
+		
+		reportMapper.reportInsert(report);
+//		model.addAttribute("reportMember", report);
 		
 		return "reportSuccess";
 	}
