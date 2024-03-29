@@ -13,8 +13,11 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 
 import kr.smhrd.entity.approve;
+import kr.smhrd.entity.g_board;
 import kr.smhrd.entity.member;
 import kr.smhrd.entity.report;
+import kr.smhrd.mapper.C_BoardMapper;
+import kr.smhrd.mapper.G_BoardMapper;
 //import kr.smhrd.entity.Message;
 import kr.smhrd.mapper.MemberMapper;
 //import kr.smhrd.mapper.MessageMapper;
@@ -112,8 +115,14 @@ public class MemberController {
 		return "AdReport";
 	}
 	
-	// 신고회원 탈퇴
-
+	// 신고사유 선택 페이지로 이동
+		@RequestMapping("/sendReportInfo")
+		public String sendReportInfo(@RequestParam("email") String email, g_board g_board, report report,HttpSession session) {
+			memberMapper.selectRp_cnt(email);
+			
+			return "report";
+		}
+		
 	
 	// 회원정보 수정 메소드 /memberUpdate
 	@RequestMapping("/memberUpdate")

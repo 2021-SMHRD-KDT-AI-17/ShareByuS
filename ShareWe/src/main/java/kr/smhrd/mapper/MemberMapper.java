@@ -42,6 +42,8 @@ public interface MemberMapper {
 
 	public List<report> goAdReport();
 
+	public void selectRp_cnt(String email);
+
 
 
 

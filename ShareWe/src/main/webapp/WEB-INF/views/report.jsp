@@ -177,13 +177,12 @@
 						<br>
 						<br>
 						
-		<% String b_num = request.getParameter("b_num");
+		<% 
+			String b_num = request.getParameter("b_num");
 	    	String email = request.getParameter("email");
 	    	String g_title = request.getParameter("g_title");
-			out.print(b_num);
-			out.print(email);
-			out.print(g_title);
-			%>
+	    	
+																%>	
 			
 		
 		<form action="reportInsert" method="post">
@@ -238,10 +237,12 @@
 				</tr>	
 			
 			
-				 	<input type="text" value="<%=b_num %>" name="b_num">
-					<input type="text" value="<%=g_title %>" name="r_title">
-					<input type="text" value="<%=email %>" name="email">
-					<input type="text" value="${loginMember.email}" name="rp_email">
+				 	<input type="hidden" value="<%=b_num %>" name="b_num">
+					<input type="hidden" value="<%=g_title %>" name="r_title">
+					<input type="hidden" value="<%=email %>" name="email">
+					<input type="hidden" value="${loginMember.email}" name="rp_email">
+					
+				
 			
 			</table>
 				<input type="submit" value="신고하기">

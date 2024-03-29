@@ -7,4 +7,8 @@
 		insert into report (email, rp_email, rp_content, b_num, r_title) values (#{email}, #{rp_email}, #{rp_content}, #{b_num}, #{r_title})
 	</insert>
 	
+	<delete id="passRep" parameterType="map">
+		delete from report where email=#{param1} and b_num=#{param2}
+	</delete>
+	
 	</mapper>

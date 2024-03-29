@@ -30,4 +30,6 @@
 	<update id="cParticipate" parameterType="int">
 		update c_board set c_p_count=c_p_count+1 where c_num=#{c_num}
 	</update>
+	
+	
 </mapper>

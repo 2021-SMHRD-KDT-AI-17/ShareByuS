@@ -5,6 +5,7 @@ import java.util.List;
 import org.apache.ibatis.annotations.Mapper;
 
 import kr.smhrd.entity.g_board;
+import kr.smhrd.entity.report;
 
 @Mapper
 public interface G_BoardMapper {
@@ -22,8 +23,7 @@ public interface G_BoardMapper {
 
 	public List<g_board> getG_num(int g_num);
 	public void gParticipate(int g_num);
-	
-		
+
 	
 
 	

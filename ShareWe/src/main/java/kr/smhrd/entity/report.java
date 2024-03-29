@@ -1,6 +1,7 @@
 package kr.smhrd.entity;
 
 import lombok.AllArgsConstructor;
+import lombok.Builder;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.NonNull;
@@ -43,4 +44,13 @@ public class report {
     // 신고글 제목
     @NonNull
     private String r_title;
+    
+    
+    
+    @Builder
+    private report(String email, int b_num){
+        this.email = email;
+        this.b_num = b_num;
+    }
+    
 }

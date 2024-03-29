@@ -5,6 +5,7 @@ import java.util.List;
 import org.apache.ibatis.annotations.Mapper;
 
 import kr.smhrd.entity.c_board;
+import kr.smhrd.entity.report;
 
 @Mapper
 public interface C_BoardMapper {
@@ -20,6 +21,7 @@ public interface C_BoardMapper {
 	public c_board C_BoardContent(int c_num);
 
 	public void cParticipate(int c_num);
+
 	
 	
 

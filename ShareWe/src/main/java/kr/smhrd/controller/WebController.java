@@ -114,11 +114,6 @@ public class WebController {
 	}
 	
 	
-	// 임시) 신고하기
-	@RequestMapping("/goReport")
-	public String goReport() {
-		return "report";
-	}
 	@RequestMapping("/goGDetail")
 	public String goGDetail() {
 		return "gBoardDetail";
