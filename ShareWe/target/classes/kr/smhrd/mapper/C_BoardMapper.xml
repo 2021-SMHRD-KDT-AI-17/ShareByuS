@@ -3,7 +3,7 @@
 <mapper namespace="kr.smhrd.mapper.C_BoardMapper">
 
 	<select id="getCBoard" resultType="kr.smhrd.entity.c_board">
-		select * from c_board
+		select * from c_board order by c_w_date desc
 	</select>
 	
 	<insert id="insertCBoard" parameterType="kr.smhrd.entity.c_board">
@@ -26,4 +26,8 @@
 	<select id="C_BoardContent" parameterType="int" resultType="kr.smhrd.entity.c_board">
 		select*from c_board where c_num=#{c_num}
 	</select>
+	
+	<update id="cParticipate" parameterType="int">
+		update c_board set c_p_count=c_p_count+1 where c_num=#{c_num}
+	</update>
 </mapper>

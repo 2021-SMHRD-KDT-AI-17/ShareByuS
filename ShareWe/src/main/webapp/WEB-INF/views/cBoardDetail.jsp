@@ -120,6 +120,12 @@
 #buttonBar i {
 	color: white;
 }
+
+.boardContent{
+	border-bottom: 1px solid grey;
+	padding-bottom: 20px;
+	padding-left: 20px;
+}
 </style>
 
 
@@ -287,55 +293,16 @@
 		<!-- Single Page Header End -->
 
 
-		<!-- food section -->
+		<!-- 게시글 상세 -->
 
 		<div class="row g-4 justify-content-center" id="categoryBox">
-			<!-- <div class="row g-4 justify-content-center text-center" style="margin-left: 850px">
-			<div class="col-xl-2">
-				<div class="input-group w-150 mx-auto d-flex">
-					<input type="search" class="form-control p-3"
-						placeholder="keywords" aria-describedby="search-icon-1"> 
-						<span id="search-icon-1" class="input-group-text p-3">
-						<i class="fa fa-search"></i></span>
-				</div>
-			</div>
-		</div> -->
-
-			<!-- 카테고리 -->
-			<div class="col-lg-9">
-				<div class="container-fluid fruite py-5">
-					<ul class="filters_menu" style="margin-top: 20px !important;">
-
-						<a href="goGeneral"><li>All</li></a>
-
-						<a href="getCategory?category=채소" id="clickVege"><li>채소</li></a>
-						<a href="getCategory?category=과일" id="clickFruit"><li>과일</li></a>
-						<a href="getCategory?category=생필품" id="ClickDaily"><li>생활용품</li></a>
-
-						<input id="inputSerch" class="serchBar" type="search"
-							placeholder="keywords">
-						<button type="button" id="buttonBar" class="serchBar">
-							<i class="fa fa-search"></i>
-						</button>
-
-					</ul>
-				</div>
-				
-				
-				
-			</div>
-
-
 			<div class="row g-4 justify-content-center">
 				<button class="col-xl-1" id="write" type="button"
 					onclick="location.href='gogBoard'">게시물작성</button>
 			</div>
 		</div>
 		
-		<!-- end food section -->
-
-		<!-- Fruits Shop End-->
-		<div class="row g-5" style="margin-left: 380px; margin-right: 380px;">
+		<div class="row g-4 justify-content-center hero-header" style="margin-left: 28%; margin-right: 28%;">
 
 			<script
 				src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js"
@@ -346,16 +313,16 @@
 				data-bs-ride="carousel" style="width: 40%; position: relative;" align="left">
 				<div class="carousel-inner" style="position: absoulte;" >
 					<div class="carousel-item active">
-						<img class="d-block w-100" 
+						<img class="d-block w-100" style="object-fit: cover !important; height: 450px;"
 							src="resources/g_Image/${c_board.c_img1}" alt="..." />
 					</div>
 					<div class="carousel-item">
-						<img class="d-block w-100" 
+						<img class="d-block w-100" style="object-fit: cover !important; height: 450px;"
 							src="https://source.unsplash.com/collection/190727/1600x900"
 							alt="..." />
 					</div>
 					<div class="carousel-item" >
-						<img class="d-block w-100"
+						<img class="d-block w-100" style="object-fit: cover !important; height: 450px;"
 							src="https://source.unsplash.com/WLUHO9A_xik/1600x900" alt="..." />
 					</div>
 				</div>
@@ -371,25 +338,24 @@
 				</button>
 			</div>
 			
-			<div class="row g-4 justify-content-center" style="width: 50%; margin-left: 10%">
-					<h1>${c_board.c_title}</h1>
-					<b>종료 날짜 : ${c_board.c_f_date}</b>
-					<div>
-						거래 및 상품정보:
-						<b> ${c_board.c_content}</b>
-						
-					</div>
-					<div>
-						참여인원:
-					</div>
-					<div>
-						<b>작성자 : ${c_board.c_writer}</b>
-					</div>
-					
-					<button style="width: 35%; margin-left: 20%;" type="button" class="btn btn-outline-success">찜</button>
-					<button style="width: 35%; margin-left: 10%;" type="button" class="btn btn-outline-success">참여하기</button>
-			</div>
-			
+			<div class="row g-4 justify-content-center">
+				<div class="boardContent">
+					<button style="width: 10%;" type="button" class="btn btn-outline-success">❤ 찜</button>
+					<button style="width: 20%; margin-left: 20px" type="button" class="btn btn-outline-success">참여하기</button><br>
+				</div>
+				<div class="boardContent">
+					참여인원:
+				</div>
+				<div class="boardContent">
+					<span><h6 style="display: inline;">작성자 : ${c_board.c_writer}</h6></span>
+					<span style="float: right;">${c_board.category} / ${c_board.c_w_date}</span>
+				</div>
+				<div class="boardContent">
+					<h5>${c_board.c_title}</h5>
+					<h6>종료 날짜 : ${c_board.c_f_date}</h6><br>
+					<div>${c_board.c_content}</div>
+				</div>
+			</div>			
 		</div>
 
 		<!-- 메인 페이지 하단 -->

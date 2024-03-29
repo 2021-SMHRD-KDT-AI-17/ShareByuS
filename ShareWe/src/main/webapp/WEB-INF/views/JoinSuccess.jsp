@@ -137,7 +137,7 @@
 
 	<!-- Single Page Header start -->
 	<c:if test="${joinMember.type == 2}">
-	  	<div class="container-fluid page-header py-5" style="background-color: #FFFFFF !important">
+	  	<div class="container-fluid page-header py-5" style="color: black !important">
 			<h1 class="text-center text-white display-6">환영합니다!</h1>
 			<ol class="breadcrumb justify-content-center mb-0">
 				<li class="breadcrumb-item active text-white">Join Success!</li>
@@ -150,7 +150,7 @@
 	</c:if>
 	
 	<c:if test="${joinMember.type == 1}">
-		 <div class="container-fluid page-header py-5" style="background-color: #FFFFFF !important">
+		 <div class="container-fluid page-header py-5" style="color: black !important">
 			<h1 class="text-center text-white display-6">회원가입 승인 대기</h1>
 			<ol class="breadcrumb justify-content-center mb-0">
 				<li class="breadcrumb-item active text-white">Waiting for approval</li>

@@ -743,5 +743,35 @@ body.is-menu-visible #menu .inner {
     margin: 20px 0 20px 0;
 }
 
+.contentTitle{
+	width: 30%;
+	border-color: white !important;
+}
+
+#contentBox{
+	border: 2px solid #a4b0be;
+}
+
+#contentBox tr, td{
+	border: 1px solid #a4b0be;
+}
+
+.fruite-img{
+	overflow: hidden;
+}
+
+.fruite-img img {
+	height: 180px;
+	object-fit: cover;
+}
+
+#carouselExampleControls{
+	height: 500px !important;
+	width: 800px !important;
+}
+
+.mainImg{
+	object-fit: cover !important;
+}
 
 

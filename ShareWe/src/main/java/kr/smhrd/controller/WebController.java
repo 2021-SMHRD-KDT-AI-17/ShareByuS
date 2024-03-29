@@ -14,8 +14,10 @@ import org.springframework.web.bind.annotation.RequestParam;
 
 import kr.smhrd.entity.c_board;
 import kr.smhrd.entity.g_board;
+import kr.smhrd.entity.g_favorite;
 import kr.smhrd.entity.member;
 import kr.smhrd.mapper.C_BoardMapper;
+import kr.smhrd.mapper.FavoriteMapper;
 import kr.smhrd.mapper.G_BoardMapper;
 import kr.smhrd.mapper.MemberMapper;
 
@@ -30,6 +32,9 @@ public class WebController {
 	
 	@Autowired
 	private C_BoardMapper c_boardMapper;
+	
+	@Autowired
+	private FavoriteMapper favoriteMapper;
 
 	
 	private static final Logger logger = LoggerFactory.getLogger(WebController.class);
@@ -122,6 +127,8 @@ public class WebController {
 			if(loginMember.getType() == 2 || loginMember.getType() == 3 ) {
 				List<g_board> gboard_list = g_boardMapper.getGEmail(loginMember.getEmail());
 				model.addAttribute("gboard_list", gboard_list);
+				List<g_favorite> fv_list = favoriteMapper.getGEmail(loginMember.getEmail());
+				model.addAttribute("fv_list", fv_list);
 			}else if (loginMember.getType() == 1){
 				List<c_board> cboard_list = c_boardMapper.getCEmail(loginMember.getEmail());
 				model.addAttribute("cboard_list", cboard_list);

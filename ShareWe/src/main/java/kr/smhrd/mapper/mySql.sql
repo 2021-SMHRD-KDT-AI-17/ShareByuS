@@ -10,11 +10,9 @@ create table gBoard(
 	primary key(num)
 );
 
-<<<<<<< HEAD
-=======
+
 select * from g_board;
 select * from c_board;
->>>>>>> branch 'main' of https://github.com/2021-SMHRD-KDT-AI-17/ShareByuS.git
 select * from c_board;
 
 select * from member;
@@ -32,3 +30,6 @@ select * from approve;
 delete from member where email= 'tpwlsdl';
 
 delete from g_board where category='2';
+
+select *from g_favorite;
+insert into g_favorite(email, g_num, g_f_date) values('didtpwls8@naver.com', 7, NOW());

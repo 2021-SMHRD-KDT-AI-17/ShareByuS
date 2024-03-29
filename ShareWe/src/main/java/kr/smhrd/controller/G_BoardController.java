@@ -19,7 +19,9 @@ import com.oreilly.servlet.multipart.DefaultFileRenamePolicy;
 
 
 import kr.smhrd.entity.g_board;
+import kr.smhrd.entity.g_favorite;
 import kr.smhrd.entity.member;
+import kr.smhrd.mapper.FavoriteMapper;
 import kr.smhrd.mapper.G_BoardMapper;
 import kr.smhrd.mapper.MemberMapper;
 
@@ -33,6 +35,8 @@ public class G_BoardController {
 	private MemberMapper memberMapper;
 
 	private int g_num;
+
+	private FavoriteMapper favoriteMapper;
 	
 	@RequestMapping("/goShare")
 	public String goShare() {
@@ -57,7 +61,7 @@ public class G_BoardController {
 	
 	//게시글작성
 	@RequestMapping("/gBoardInsert")
-		public String gBoardInsert(  g_board g_board, HttpSession session, HttpServletRequest request) {
+		public String gBoardInsert(g_board g_board, HttpSession session, HttpServletRequest request) {
 		String path = request.getRealPath("resources/g_Image");
 		System.out.println(path);
 		int size = 1024*1024*10;
@@ -100,36 +104,25 @@ public class G_BoardController {
 	//gBoardDetail 로
 	
 	@RequestMapping("/G_BoardContent")
-	public String G_BoardContent(@RequestParam("g_num") int g_num, Model model) {
-		
+	public String G_BoardContent(@RequestParam("g_num") int g_num, Model model, HttpSession session) {
+		member loginMember = (member)session.getAttribute("loginMember");
 		g_board g_board = g_boardMapper.G_BoardContent(g_num); //num값에 해당하는 하나의 게시물 가져오기
 		model.addAttribute("g_board",g_board);
 		
+	
+		model.addAttribute("g_board", g_board);
+		 
 //			g_boardMapper.G_BoardCount(g_num); // num값에 해당하는 게시물 조회수 1증가
 		return "gBoardDetail";
 	}
 	
-	/*public String myGboard(HttpSession session, Model model) {
-		
-		member loginMember = (member)session.getAttribute("loginMember");
-		String email = loginMember.getEmail();
-		
-		List<g_board> gboard_list = g_boardMapper.getGBoard();
-		model.addAttribute("gboard_list", gboard_list);
-		
-		for(int i=0; i<gboard_list.size(); i++) {
-			if(email.equals(gboard_list.get(i).getEmail())) {
-				model.addAttribute("myGboard",gboard_list.get(i));
-			}
 	
-		}
-		return "myPage";*/
+	@RequestMapping("/gParticipate")
+	public String gParticipate(@RequestParam("g_num") int g_num) {
+		g_boardMapper.gParticipate(g_num);
 		
 		
+		return "redirect:/goGeneral";
+	}	
 		
-		
-//	}
-		
-	
-
 }
