@@ -41,12 +41,24 @@ public class WebController {
 	
 	// Main.jsp로 이동하는 메소드
 	@RequestMapping("/")
-	public String main() {
+	public String main(Model model) {
+		
+		List<g_board> gboard_list = g_boardMapper.getGBoard();
+	    model.addAttribute("gboard_list", gboard_list);
+	    List<c_board> cboard_list = c_boardMapper.getCBoard();
+	    model.addAttribute("cboard_list", cboard_list);
+		
 		return "Main";
 	}
 
 	@RequestMapping("/goMain")
-	public String goMain() {
+	public String goMain(Model model) {
+		
+		List<g_board> gboard_list = g_boardMapper.getGBoard();
+	    model.addAttribute("gboard_list", gboard_list);
+	    List<c_board> cboard_list = c_boardMapper.getCBoard();
+	    model.addAttribute("cboard_list", cboard_list);
+		
 		return "Main";
 	}
 
