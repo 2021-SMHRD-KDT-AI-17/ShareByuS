@@ -187,7 +187,7 @@
 						<h1>Share 게시글</h1>
 					</div>
 				</div>
-				<div class="tab-content" style="margin-top: 30px;">
+				<div class="tab-content" style="margin-top: 50px;">
 					<div id="tab-1" class="tab-pane fade show p-0 active">
 						<div class="row g-4">
 							<div class="col-lg-12">
@@ -211,9 +211,8 @@
 															<br>
 															<h5>${g.g_title }</h5>
 															<h6>${g.g_writer }</h6>
-															<p>${g.g_content }</p>
 															<div class="d-flex justify-content-between flex-lg-wrap">
-																<a href="#"
+																<a href="#" style="float: right"
 																	class="btn border border-secondary rounded-pill px-3 text-primary">
 																	❤ 찜 </a>
 															</div>
@@ -251,7 +250,7 @@
 						<h1>Shop 게시글</h1>
 					</div>
 				</div>
-				<div class="tab-content">
+				<div class="tab-content" style="margin-top: 50px;">
 					<div id="tab-1" class="tab-pane fade show p-0 active">
 						<div class="row g-4">
 							<div class="col-lg-12">
@@ -275,9 +274,8 @@
 															<br>
 															<h5>${c.c_title }</h5>
 															<h6>${c.c_writer }</h6>
-															<p>${c.c_content }</p>
 															<div class="d-flex justify-content-between flex-lg-wrap">
-																<a href="#"
+																<a href="#" style="float: right"
 																	class="btn border border-secondary rounded-pill px-3 text-primary">
 																	❤ 찜 </a>
 															</div>

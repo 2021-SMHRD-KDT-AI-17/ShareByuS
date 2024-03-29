@@ -211,48 +211,46 @@
 
 		<div class="card" style="width: 1000px" align="center">
 			<table width="1000px">
-			<tr>
-			<td>
-			<img src="resources/img/avatar.jpg" class="card-img-top"
-				style="width: 200px; height: 200px; margin: 50px;" align="left">
-			</td>
-			<td width="600px" border-top="0px">
-				<div class="sc-eKZiaR jfoJEs">
-					
-					<script type="text/javascript">
-						 function div_show() {  
-								document.getElementById("ReNick").style.display = "block"; 
-								document.getElementById("none").style.display = "none"; } 
-						 function div_hide() {  
-								document.getElementById("ReNick").style.display = "none";
-								document.getElementById("none").style.display = "block"; }
-					</script>
-					
-					<div> 
-						<h5>${loginMember.nick}</h5>
-						<input style="color: white" id="none" type="button" class="btn btn-primary" onclick="div_show();" value="닉네임 수정">
-						
-						<div id="ReNick" style="display:none">
-							<form action="UpdateNick">
-							<input type="hidden" value="${loginMember.email}" name="email">
-							<input type="text" value="${loginMember.nick}" name="nick">
-							<button type="submit" onclick="div_hide();">확인</button>
-							</form>
-						</div>
+				<tr>
+					<td>
+						<img src="resources/img/avatar.jpg" class="card-img-top"
+							style="width: 200px; height: 200px; margin: 50px;" align="left">
+					</td>
+					<td width="600px" border-top="0px">
+						<div class="sc-eKZiaR jfoJEs">
 							
-						<p><%=loginMember.getEmail() %></p>
-						
-					</div>
-			</td>
-			
-				<td>
-					<div class="card-body" style="width: 200px">
-						<a href="goUpdateMember" align="left" class="btn btn-primary" style="color: white">회원정보 수정</a>
-					</div>
-				</td>
-										
-			</div>	
-		
+							<script type="text/javascript">
+								 function div_show() {  
+										document.getElementById("ReNick").style.display = "block"; 
+										document.getElementById("none").style.display = "none"; } 
+								 function div_hide() {  
+										document.getElementById("ReNick").style.display = "none";
+										document.getElementById("none").style.display = "block"; }
+							</script>
+							
+							<div> 
+								<h5>${loginMember.nick}</h5>
+								<input style="color: white" id="none" type="button" class="btn btn-primary" onclick="div_show();" value="닉네임 수정">
+								
+								<div id="ReNick" style="display:none">
+									<form action="UpdateNick">
+									<input type="hidden" value="${loginMember.email}" name="email">
+									<input type="text" value="${loginMember.nick}" name="nick">
+									<button type="submit" onclick="div_hide();">확인</button>
+									</form>
+								</div>
+									
+								<p><%=loginMember.getEmail() %></p>
+								
+							</div>
+						</div>
+					</td>
+					<td>
+						<div class="card-body" style="width: 200px">
+							<a href="goUpdateMember" align="left" class="btn btn-primary" style="color: white">회원정보 수정</a>
+						</div>
+					</td>
+				</tr>
 			</table>
 		</div>
 

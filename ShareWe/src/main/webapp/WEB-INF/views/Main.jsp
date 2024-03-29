@@ -158,12 +158,15 @@
 				</div>
 				<div class="modal-body d-flex align-items-center">
 					<div class="input-group w-75 mx-auto d-flex">
-						<input type="search" class="form-control p-3"
-							placeholder="keywords" aria-describedby="search-icon-1">
-						<span id="search-icon-1" class="input-group-text p-3"><i
-							class="fa fa-search"></i></span>
+						<form action="goSearch">
+							<input type="text" class="form-control p-3"
+								placeholder="검색어를 입력해주세요." aria-describedby="search-icon-1">
+							<input type="submit" value="검색" id="search-icon-1" style="border-top-right-radius: 10px; border-bottom-right-radius: 10px;"
+								class="btn btn-primary border-2 border-secondary py-3 px-4">
+						</form>
 					</div>
 				</div>
+				</form>
 			</div>
 		</div>
 	</div>
