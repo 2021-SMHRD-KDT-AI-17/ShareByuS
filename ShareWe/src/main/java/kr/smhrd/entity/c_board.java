@@ -44,7 +44,7 @@ public class c_board {
     private String c_w_date;
 
     // 펀딩날짜 
-   @NonNull private String c_f_date;
+    @NonNull private String c_f_date;
 
     // 카테고리 
     @NonNull private String category;
@@ -59,10 +59,13 @@ public class c_board {
     @NonNull private double c_opt1;
 
      //옵션2 
-   private double c_opt2;
+    private double c_opt2;
 
     // 옵션3 
     private double c_opt3;
+    
+    // 참여인원
+    private int c_p_count;
 
     public c_board(@NonNull String c_title, @NonNull String c_img1, @NonNull String c_content, @NonNull String c_f_date,
 			@NonNull String category, String place, @NonNull int price, @NonNull double c_opt1, @NonNull int c_ea) {

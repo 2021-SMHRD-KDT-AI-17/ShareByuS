@@ -90,13 +90,21 @@ public class C_BoardController {
 		
 	
 	@RequestMapping("/C_BoardContent")
-	public String G_BoardContent(@RequestParam("c_num") int c_num, Model model) {
+	public String C_BoardContent(@RequestParam("c_num") int c_num, Model model) {
+		
 		
 		c_board c_board = c_boardMapper.C_BoardContent(c_num); //num값에 해당하는 하나의 게시물 가져오기
 		model.addAttribute("c_board",c_board);
 		
 //			g_boardMapper.G_BoardCount(g_num); // num값에 해당하는 게시물 조회수 1증가
 		return "cBoardDetail";
+	}
+	
+	@RequestMapping("/cParticipate")
+	public String cParticipate(@RequestParam("c_num") int c_num) {
+		c_boardMapper.cParticipate(c_num);
+		
+		return "redirect:/goMain";
 	}
 	
 	}

@@ -771,7 +771,7 @@ body.is-menu-visible #menu .inner {
 }
 
 .mainImg{
-	object-fit: scale-down !important;
+	object-fit: cover !important;
 }
 
 

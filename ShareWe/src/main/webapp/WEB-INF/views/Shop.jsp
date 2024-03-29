@@ -282,16 +282,6 @@
 	<!-- food section -->
 
 	<div class="row g-4 justify-content-center" id="categoryBox">
-			<!-- <div class="row g-4 justify-content-center text-center" style="margin-left: 850px">
-			<div class="col-xl-2">
-				<div class="input-group w-150 mx-auto d-flex">
-					<input type="search" class="form-control p-3"
-						placeholder="keywords" aria-describedby="search-icon-1"> 
-						<span id="search-icon-1" class="input-group-text p-3">
-						<i class="fa fa-search"></i></span>
-				</div>
-			</div>
-		</div> -->
 	
 		<!-- 카테고리 -->
 		<div class="col-lg-9" style="margin-top : 90px;">

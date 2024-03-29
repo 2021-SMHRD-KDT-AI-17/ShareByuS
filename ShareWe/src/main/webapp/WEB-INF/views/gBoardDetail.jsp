@@ -120,6 +120,12 @@
 #buttonBar i {
 	color: white;
 }
+
+.boardContent{
+	border-bottom: 1px solid grey;
+	padding-bottom: 20px;
+	padding-left: 20px;
+}
 </style>
 
 
@@ -296,36 +302,60 @@
 			</div>
 		</div>
 		
-		<div class="row g-4 justify-content-center hero-header" style="margin-left: 30%; margin-right: 30%;">
-					<div class="row g-4 justify-content-center" align="bottom">
-							<img class="mainImg" 
-								src="resources/g_Image/${g_board.g_img1}"/>
-					</div>	
+		<div class="row g-4 justify-content-center hero-header" style="margin-left: 28%; margin-right: 28%; ">
+				<script
+				src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js"
+				integrity="sha384-ka7Sk0Gln4gmtz2MlQnikT1wXgYsOg+OMhuP+IlRH9sENBO0LRn5q+8nbTov4+1p"
+				crossorigin="anonymous"></script>
+
+			<div id="carouselExampleControls" class="carousel slide"
+				data-bs-ride="carousel" style="width: 40%; position: relative;" align="left">
+				<div class="carousel-inner" style="position: absoulte;" >
+					<div class="carousel-item active">
+						<img class="d-block w-100" style="object-fit: cover !important; height: 450px;"
+							src="resources/g_Image/${g_board.g_img1}" alt="..." />
+					</div>
+					<div class="carousel-item">
+						<img class="d-block w-100" style="object-fit: cover !important; height: 450px;"
+							src="https://source.unsplash.com/collection/190727/1600x900"
+							alt="..." />
+					</div>
+					<div class="carousel-item" >
+						<img class="d-block w-100" style="object-fit: cover !important; height: 450px;"
+							src="https://source.unsplash.com/WLUHO9A_xik/1600x900" alt="..." />
+					</div>
+				</div>
+				<button class="carousel-control-prev" type="button"
+					data-bs-target="#carouselExampleControls" data-bs-slide="prev">
+					<span class="carousel-control-prev-icon" aria-hidden="true"></span>
+					<span class="visually-hidden">Previous</span>
+				</button>
+				<button class="carousel-control-next" type="button"
+					data-bs-target="#carouselExampleControls" data-bs-slide="next">
+					<span class="carousel-control-next-icon" aria-hidden="true"></span>
+					<span class="visually-hidden">Next</span>
+				</button>
+			</div>	
 					
 				
-				<div class="row g-4 justify-content-center">
-					<button style="width: 10%;" type="button" class="btn btn-outline-success">찜</button>
-					<button style="width: 20%; margin-left: 20px" type="button" class="btn btn-outline-success">참여하기</button>
-					
-							제목 :
-							${g_board.g_title}
-						
-						
-							<td class="contentTitle" style="border-color: black !important;">종료 날짜 :</td>
-							<td>${g_board.g_b_date}</td>
-					
-					
-							<td class="contentTitle">참여인원 :</td>
-							<td></td>
-					
-					
-							<td class="contentTitle">작성자 :</td>
-							<td>${g_board.g_writer}</td>
-					
-					
-							<td class="contentTitle">거래 및 상품정보 :</td>
-							<td>${g_board.g_content}</td>
-						
+				<div class="row g-4 justify-content-center" style="display: block;">
+					<div class="boardContent">
+						<button style="width: 10%;" type="button" class="btn btn-outline-success">❤ 찜</button>
+						<button type="button" class="btn btn-outline-success"
+							onclick="location.href='gParticipate?g_num=${g_board.g_num}'" style="width: 20%; margin-left: 20px">참여하기</button><br>
+					</div>
+					<div class="boardContent">
+						참여인원 : ${g_board.g_p_count}
+					</div>
+					<div class="boardContent">
+						<span><h6 style="display: inline;">작성자 : ${g_board.g_writer}</h6></span>
+						<span style="float: right;">${g_board.category} / ${g_board.g_w_date}</span>
+					</div>
+					<div class="boardContent">
+						<h5>${g_board.g_title}</h5>	
+						<h6>종료 날짜 : ${g_board.g_b_date}</h6><br>
+						<div>${g_board.g_content}</div>	
+					</div>
 				</div>
 		</div>
 

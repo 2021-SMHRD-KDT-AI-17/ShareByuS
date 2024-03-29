@@ -19,6 +19,8 @@ public interface G_BoardMapper {
 
 
 	public g_board G_BoardContent(int g_num);
+
+	public void gParticipate(int g_num);
 	
 		
 	
