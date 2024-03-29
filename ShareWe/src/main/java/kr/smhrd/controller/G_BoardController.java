@@ -105,6 +105,7 @@ public class G_BoardController {
 	
 	@RequestMapping("/G_BoardContent")
 	public String G_BoardContent(@RequestParam("g_num") int g_num, Model model, HttpSession session) {
+		
 		member loginMember = (member)session.getAttribute("loginMember");
 		g_board g_board = g_boardMapper.G_BoardContent(g_num); //num값에 해당하는 하나의 게시물 가져오기
 		model.addAttribute("g_board",g_board);
