@@ -170,9 +170,9 @@
 													<td>${m.rp_cnt }</td>
 												</c:otherwise>
 											</c:choose>
-											<td><a href="goOutMember"><button>탈퇴</button></a>
-											<a href="goSusMember"><button>정지</button></a>
-											<a href="goResMember"><button>해제</button></a></td>
+											<td><a href="deleteMember?email=${m.email}"><button>탈퇴</button></a>
+											<a href="susMember?type=${m.type}"><button>정지</button></a>
+											<a href="resMember?type=${m.type}"><button>해제</button></a></td>
 										</tr>
 						</div>
 							 

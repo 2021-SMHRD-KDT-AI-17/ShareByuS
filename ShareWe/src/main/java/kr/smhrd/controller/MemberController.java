@@ -143,12 +143,31 @@ public class MemberController {
 	
 	
 	// 회원 탈퇴(관리자)
-	@RequestMapping("/goOutMember")
-	public String goOutMember(@RequestParam("email") String email, Model model) {
-		memberMapper.goOutMember(email);
+	@RequestMapping("/deleteMember")
+	public String deleteMember(@RequestParam("email") String email, Model model) {
+		memberMapper.deleteMember(email);
 		
 		return "redirect:/goAdMember";
 	}
+	
+	// 회원 정지(관리자)
+	@RequestMapping("/susMember")
+	public String susMember(@RequestParam("type") int type) {
+		memberMapper.susMember(type);
+		
+		return "redirect:/goAdMember";
+	}
+	
+	
+	
+	// 회원 정지 해제(관리자)
+	@RequestMapping("/resMember")
+	public String resMember(@RequestParam("type") int type) {
+		memberMapper.resMember(type);
+		
+		return "redirect:/goAdMember";
+	}
+	
 	
 	
 //	// 로그인 메소드

@@ -25,7 +25,10 @@ public interface G_BoardMapper {
 	
 	public void gParticipate(int g_num);
 
-	
+	public void deleteRep(String param1, int param2);
+
+
+		
 
 	
 	

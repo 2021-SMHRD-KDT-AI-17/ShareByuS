@@ -22,6 +22,9 @@ public interface C_BoardMapper {
 
 	public void cParticipate(int c_num);
 
+	public void deleteRep(String param1, int param2);
+
+
 	
 	
 

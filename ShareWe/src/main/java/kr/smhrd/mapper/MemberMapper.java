@@ -9,6 +9,7 @@ import kr.smhrd.entity.approve;
 import kr.smhrd.entity.g_board;
 import kr.smhrd.entity.member;
 import kr.smhrd.entity.report;
+import lombok.NonNull;
 
 @Mapper
 public interface MemberMapper {
@@ -47,7 +48,13 @@ public interface MemberMapper {
 
 	public void goOutMember(String email);
 
-	public void goupdateCnt(String email);
+	public void deleteMember(String email);
+
+	public void goupdateCnt(@NonNull String email);
+
+	public void susMember(int type);
+
+	public void resMember(int type);
 
 
 

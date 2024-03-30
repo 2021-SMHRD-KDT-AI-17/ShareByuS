@@ -10,7 +10,6 @@
 	<delete id="passRep" parameterType="map">
 		delete from report where email=#{param1} and b_num=#{param2}
 	</delete>
-	
-	
+		
 	
 	</mapper>

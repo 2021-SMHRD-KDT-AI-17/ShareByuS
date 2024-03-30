@@ -54,5 +54,8 @@
 		update member set rp_cnt = rp_cnt + 1 where email=#{email}
 	</update>
 	
+	<delete id="deleteMember" parameterType="String">
+		delete from member where email=#{email}
+	</delete>
 	
 </mapper>
