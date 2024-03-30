@@ -39,6 +39,8 @@ public interface MemberMapper {
 		
 	}
 
+	public member C_BoardMap(String c_writer);
+
 
 
 

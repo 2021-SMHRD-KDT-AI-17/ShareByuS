@@ -90,11 +90,14 @@ public class C_BoardController {
 		
 	
 	@RequestMapping("/C_BoardContent")
-	public String C_BoardContent(@RequestParam("c_num") int c_num, Model model) {
+	public String C_BoardContent(@RequestParam("c_num") int c_num, @RequestParam("c_writer") String c_writer, Model model) {
 		
 		
 		c_board c_board = c_boardMapper.C_BoardContent(c_num); //num값에 해당하는 하나의 게시물 가져오기
 		model.addAttribute("c_board",c_board);
+		
+		member m_addr = memberMapper.C_BoardMap(c_writer);
+		model.addAttribute("m_addr",m_addr);
 		
 //			g_boardMapper.G_BoardCount(g_num); // num값에 해당하는 게시물 조회수 1증가
 		return "cBoardDetail";
