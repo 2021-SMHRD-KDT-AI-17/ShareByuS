@@ -312,6 +312,19 @@
 
       <!-- 게시글 상세 -->
 
+		<div class="row g-4 justify-content-center" id="categoryBox">
+			<div class="row g-4 justify-content-center">
+				<button class="col-xl-1" id="write" type="button"
+					onclick="location.href='gogBoard'">게시물작성</button>
+			</div>
+		</div>
+
+		<div class="row g-4 justify-content-center hero-header"
+			style="margin-left: 28%; margin-right: 28%;">
+			<script
+				src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js"
+				integrity="sha384-ka7Sk0Gln4gmtz2MlQnikT1wXgYsOg+OMhuP+IlRH9sENBO0LRn5q+8nbTov4+1p"
+				crossorigin="anonymous"></script>
       <div class="row g-4 justify-content-center" id="categoryBox">
          <div class="row g-4 justify-content-center">
             <button class="col-xl-1" id="write" type="button"
@@ -328,6 +341,66 @@
             
 
 			<div id="carouselExampleControls" class="carousel slide"
+				data-bs-ride="carousel" style="width: 40%; position: relative"
+				align="left">
+				<div class="carousel-inner" style="position: absoulte;">
+					<div class="carousel-item active">
+						<img class="d-block w-100"
+							style="object-fit: cover !important; height: 450px;"
+							src="resources/g_Image/${g_board.g_img1}" alt="..." />
+					</div>
+					<div class="carousel-item">
+						<img class="d-block w-100"
+							style="object-fit: cover !important; height: 450px;"
+							src="https://source.unsplash.com/collection/190727/1600x900"
+							alt="..." />
+					</div>
+					<div class="carousel-item">
+						<img class="d-block w-100"
+							style="object-fit: cover !important; height: 450px;"
+							src="https://source.unsplash.com/WLUHO9A_xik/1600x900" alt="..." />
+					</div>
+				</div>
+				<button class="carousel-control-prev" type="button"
+					data-bs-target="#carouselExampleControls" data-bs-slide="prev">
+					<span class="carousel-control-prev-icon" aria-hidden="true"></span>
+					<span class="visually-hidden">Previous</span>
+				</button>
+				<button class="carousel-control-next" type="button"
+					data-bs-target="#carouselExampleControls" data-bs-slide="next">
+					<span class="carousel-control-next-icon" aria-hidden="true"></span>
+					<span class="visually-hidden">Next</span>
+				</button>
+
+			</div>
+
+		
+
+
+
+		<div class="row g-4 justify-content-center" style="display: block;">
+					<div class="boardContent">
+						<button onclick="checkFavorite()" id="zzim" style="width: 10%;" type="button" class="btn btn-outline-success">❤ 찜</button>
+						
+						<button type="button" class="btn btn-outline-success"
+							onclick="location.href='gParticipate?g_num=${g_board.g_num}'" style="width: 20%; margin-left: 20px">참여하기</button><br>
+					</div>
+					<div class="boardContent">
+						참여인원 : ${g_board.g_p_count}
+					</div>
+					<div class="boardContent">
+						<span><h6 style="display: inline;">작성자 : ${g_board.g_writer}</h6></span>
+						<span style="float: right;">${g_board.category} / ${g_board.g_w_date}</span>
+					</div>
+					<div class="boardContent">
+						<h5>${g_board.g_title}</h5>	
+						<h6>종료 날짜 : ${g_board.g_b_date}</h6><br>
+						<div>${g_board.g_content}</div>	
+					</div>
+				</div>
+		</div>
+		</div>
+         <div id="carouselExampleControls" class="carousel slide"
             data-bs-ride="carousel" style="position: relative;" align="center">
             <div class="carousel-inner" style="position: absoulte;" >
                <div class="carousel-item active">
@@ -442,6 +515,37 @@
 
       <!-- Template Javascript -->
       <script src="resources/asset/js/main.js"></script>
+
+		<!-- Template Javascript -->
+		<script src="resources/asset/js/main.js"></script>
+	
+		<script type="text/javascript">
+					function checkFavorite(){
+				var g_num=${g_board.g_num};
+				console.log(g_num);
+						
+						$.ajax(
+						{
+							url : "checkFavorite",
+							data : {'g_num' : g_num},
+							type :'get',
+							success : function(data){
+								if(data==1){
+									
+										$("#zzim").text('♥ 찜 완료')
+								}else{
+									$("#zzim").text('이미 찜한 상품 입니다')	
+								}
+							},
+							error : function(){
+								alert("통신실패")
+							}
+						}
+					)
+				}
+				</script>
+
+	
 
       <!--    <!-- 카테고리:채소 비동기 --
    <script type="text/javascript">

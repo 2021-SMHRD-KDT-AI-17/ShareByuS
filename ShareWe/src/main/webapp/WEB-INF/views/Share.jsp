@@ -83,14 +83,6 @@
 }
 
 
-
-
-
-
-
-
-
-
 </style>
 
 </head>
@@ -311,6 +303,7 @@
 		<c:if test="${loginMember.type == 2 || loginMember.type == 3}">
 			<div class="row g-4 justify-content-center">
 				<button class="col-xl-1" id="write" type="button" onclick="location.href='gogBoard'">게시물작성</button>
+			</div>
 			</div>
 		</c:if>
 	</div>
