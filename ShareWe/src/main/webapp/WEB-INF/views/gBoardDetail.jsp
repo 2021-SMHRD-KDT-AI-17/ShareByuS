@@ -372,35 +372,58 @@
 
       <div class="row g-4 justify-content-center" style="display: block;">
                
-           <div class="boardContent">
+               <div class="boardContent">
                   <button onclick="checkFavorite()" id="zzim" style="width: 10%;" type="button" class="btn btn-outline-success">❤ 찜</button>
+					<c:choose >
+						<c:when test="${loginMember.email eq g_board.email}">
+							<nav class="detailMenu" style="float: right;">
+								<ul>
+									<li><a href="#"> <strong style="float: right;">⁝</strong>
+									</a>
+										<ul>
+											<li><a
+												href="goBoardUp?g_num=${g_board.g_num}&g_img1=${g_board.g_img1 }&g_content=${g_board.g_content}">끌어올리기</a></li>
+											<li><a href="#">공동구매 마감</a></li>
+											<li><a href="goUpdate?g_num=${g_board.g_num}">게시글 수정</a></li>
+											<li><a href="deleteGBoard?g_num=${g_board.g_num}">게시글 삭제</a></li>
+										</ul></li>
+								</ul>
+							</nav>
+						</c:when>
+						<c:when test="${not empty loginMember }">
+							<nav class="detailMenu" style="float: right;">
+								<ul>
+									<li><a href="#"> <strong style="float: right;">⁝</strong>
+									</a>
+										<ul>
+											<li><a href="#">게시물 신고</a></li>
+										</ul></li>
+								</ul>
+							</nav>
+						</c:when>
+						<c:when test="${ empty loginMember}">
+							<nav class="detailMenu" style="float: right;">
+								<ul>
+									<li><a href="#"> <strong style="float: right;"></strong></a>
+								</ul>
+							</nav>
+						</c:when>
+					</c:choose>
+					
+						
                   
                   <button type="button" class="btn btn-outline-success"
                      onclick="location.href='gParticipate?g_num=${g_board.g_num}'" style="width: 20%; margin-left: 20px">참여하기</button><br>
-               
-               <c:if test="${loginMember.email eq g_board.email}">
-                  <nav class="detailMenu" style="float: right;">
-                     <ul>
-                        <li><a href="#"> <strong style="float: right;">⁝</strong>
-                        </a>
-                           <ul>
-                              <li><a
-                                 href="goBoardUp?g_num=${g_board.g_num}&g_img1=${g_board.g_img1 }&g_content=${g_board.g_content}">끌어올리기</a></li>
-                              <li><a href="gBoardUpdate?g_num={${g_board.g_num}">게시글
-                                    수정</a></li>
-                              <li><a href="#">게시글 삭제</a></li>
-                           </ul></li>
-                     </ul>
-                  </nav>
-               </c:if>
-               
-            </div>
+					
+					
+				</div>
+				
                <div class="boardContent">
                   참여인원 : ${g_board.g_p_count}
                </div>
                <div class="boardContent">
                   <span><h6 style="display: inline;">작성자 : ${g_board.g_writer}</h6></span>
-                  <span style="float: right;">${g_board.category} / ${g_board.g_w_date}</span>
+                  <span style="float: right;">카테고리 : ${g_board.category} / ${g_board.g_w_date}</span>
                </div>
                <div class="boardContent">
                   <h5>${g_board.g_title}</h5>   

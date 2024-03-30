@@ -139,5 +139,30 @@ public class G_BoardController {
 		
 		return "redirect:/goGeneral";
 	}	
+	
+	// 게시글 수정 페이지로
+	@RequestMapping("/goUpdate")
+	public String goUpdate(int g_num, Model model) {
+		g_board g_board = g_boardMapper.G_BoardContent(g_num);
+		model.addAttribute("g_board", g_board);
+		
+		return "UpdateGBoard";
+	}
+	
+	// 게시글 수정
+	@RequestMapping("/gBoardUpdate")
+	public String gBoardUpdate(g_board g_board, Model model) {
+		g_boardMapper.gBoardUpdate(g_board);
+		
+		return "redirect:/G_BoardContent";
+	}
+	
+	// 게시글 삭제
+	@RequestMapping("/deleteGBoard")
+	public String deleteGBoard(@RequestParam("g_num") int g_num) {
+		g_boardMapper.deleteGBoard(g_num);
+		
+		return "redirect:/goGeneral";
+	}
 		
 }

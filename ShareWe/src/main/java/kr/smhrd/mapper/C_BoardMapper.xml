@@ -30,4 +30,13 @@
 	<update id="cParticipate" parameterType="int">
 		update c_board set c_p_count=c_p_count+1 where c_num=#{c_num}
 	</update>
+	
+	<delete id="deleteCBoard" parameterType="int">
+		delete from c_board where c_num=#{c_num}	
+	</delete>
+	
+	<update id="">
+		update c_board set c_title=#{c_title}, c_img1=#{c_img1}, c_content=#{c_content},
+		category={category}, price=#{price}, c_opt1=#{c_opt1}, c_ea=#{c_ea} where c_num=#{c_num}
+	</update>
 </mapper>

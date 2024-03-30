@@ -264,52 +264,49 @@
 		</div>
 
 
-
-		<div class="col-lg-9"
-			style="width: 60% !important; justify-content: center; align-items: center;">
-			<div class="row g-4 justify-content-center" id="boardDiv">
-				<c:forEach items="${gboard_list}" var="g">
-					<div class="col-md-1 col-lg-2 col-xl-3"
-						style="margin-right: 10px; margin-left: 10px; width: 20%; height: 10%; margin-bottom: 20px;">
-						<div class="rounded position-relative fruite-item">
-							<div class="fruite-img">
-								<a href="G_BoardContent?g_num=${g.g_num}"> <img
-									src="resources/g_Image/${g.g_img1}"
-									class="img-fluid w-100 rounded-top" alt="">
-								</a>
-							</div>
-							<div
-								class="text-white bg-secondary px-3 py-1 rounded position-absolute"
-								style="top: 10px; left: 10px; background-color: #009223 !important;">${g.category}</div>
-
-							<div
-								class="p-4 border border-secondary border-top-0 rounded-bottom"
-								style="border-color: #009223 !important;">
-
-								<br> <a href="G_BoardContent?g_num=${g.g_num}"><h5>${g.g_title}</h5></a>
-								<h6 style="display: inline;">${g.g_writer}</h6>
-								<c:choose>
-									<c:when test="${loginMember.type == 0}">
-										<a href="#" style="float: right;"
-											class="btn border border-secondary rounded-pill px-3 text-primary">
-											삭제 </a>
-									</c:when>
-									<c:otherwise>
-										<a href="#" style="float: right;"
-											class="btn border border-secondary rounded-pill px-3 text-primary">
-											❤ 찜 </a>
-									</c:otherwise>
-								</c:choose>
-							</div>
-						</div>
-					</div>
-				</c:forEach>
-			</div>
+		<div class="col-lg-9" style="width:60% !important;  justify-content: center; align-items: center;">
+			<div class="row g-4 justify-content-center" id="boardDiv" >
+                        <c:forEach items="${gboard_list}" var="g">
+                           <div class="col-md-1 col-lg-2 col-xl-3"
+                           		style="margin-right: 10px; margin-left: 10px; width: 20%; height: 10%; margin-bottom: 20px;">
+                              <div class="rounded position-relative fruite-item">
+                                 <div class="fruite-img">
+                                    <a href="G_BoardContent?g_num=${g.g_num}">
+                                    	<img src="resources/g_Image/${g.g_img1}" class="img-fluid w-100 rounded-top" alt="">
+                                 	</a>
+                                 </div>
+                                 <div
+                                    class="text-white bg-secondary px-3 py-1 rounded position-absolute"
+                                    style="top: 10px; left: 10px; background-color: #009223 !important;">${g.category}</div>
+                                 
+                                 	<div class="p-4 border border-secondary border-top-0 rounded-bottom" style=" border-color: #009223 !important;">
+                                
+                                    <br>
+                                    <a href="G_BoardContent?g_num=${g.g_num}"><h5>${g.g_title}</h5></a>
+                                    <h6 style="display: inline;">${g.g_writer}</h6>
+                                    <c:choose>
+	                                      <c:when test="${loginMember.type == 0}">
+	                                       	<a href="deleteGBoard?g_num=${g.g_num }" style="float: right;"
+	                                             class="btn border border-secondary rounded-pill px-3 text-primary">
+	                                             삭제 </a>
+	                                      </c:when>
+	                                      <c:otherwise>
+	                                       	<a href="#" style="float: right;"
+	                                             class="btn border border-secondary rounded-pill px-3 text-primary">
+	                                             ❤ 찜 </a>
+	                                      </c:otherwise> 
+                                      </c:choose>
+                                 </div>
+                              </div>
+                           </div>
+                        </c:forEach>
+                     </div>
 		</div>
 		<c:if test="${loginMember.type == 2 || loginMember.type == 3}">
 			<div class="row g-4 justify-content-center">
 				<button class="col-xl-1" id="write" type="button"
 					onclick="location.href='gogBoard'">게시물작성</button>
+			</div>
 			</div>
 		</c:if>
 	</div>
