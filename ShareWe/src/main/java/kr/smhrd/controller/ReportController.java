@@ -29,6 +29,14 @@ public class ReportController {
 	@Autowired
 	private ReportMapper reportMapper;
 	
+	// 신고사유 선택 페이지로 이동
+	@RequestMapping("/sendReportInfo")
+	public String sendReportInfo(g_board g_board, report report,HttpSession session) {
+							
+	return "report";
+			}
+
+	
 	// 신고한 정보를 넘기고 신고 완료 페이지로 이동
 	@RequestMapping("/reportInsert")
 	public String reportInsert(report report,HttpServletRequest request , HttpSession session) {

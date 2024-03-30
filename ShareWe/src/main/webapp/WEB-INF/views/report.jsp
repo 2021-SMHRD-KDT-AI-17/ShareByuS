@@ -182,9 +182,10 @@
 	    	String email = request.getParameter("email");
 	    	String g_title = request.getParameter("g_title");
 	    	
+	    	
 																%>	
 			
-		
+					
 		<form action="reportInsert" method="post">
 		<fieldset>
 			<legend>
@@ -205,6 +206,7 @@
 					<td align="right"><input type="checkbox" name="rp_content" value="부적절한 게시글"></td>
 					
 					<td>부적절한 게시글/리뷰에요.</td>
+					<td>${report_cnt}</td>
 				</tr>
 
 				<tr height="60px">
@@ -241,9 +243,8 @@
 					<input type="hidden" value="<%=g_title %>" name="r_title">
 					<input type="hidden" value="<%=email %>" name="email">
 					<input type="hidden" value="${loginMember.email}" name="rp_email">
-					
+									
 				
-			
 			</table>
 				<input type="submit" value="신고하기">
 		</fieldset>

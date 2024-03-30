@@ -45,7 +45,10 @@
 	<select id="goAdReport" resultType="kr.smhrd.entity.report">
 		select * from report
 	</select>
-	
+		
+	<select id="goAdMember" resultType="kr.smhrd.entity.member">
+		select * from member order by type ASC where type!=0
+	</select>
 	
 	
 </mapper>

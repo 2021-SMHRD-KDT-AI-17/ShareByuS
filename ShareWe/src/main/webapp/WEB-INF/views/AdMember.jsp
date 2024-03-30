@@ -127,40 +127,43 @@
 
         <!-- Single Page Header start -->
         <div class="container-fluid page-header py-5">
-            <h1 class="text-center text-white display-6">신고 관리</h1>
+            <h1 class="text-center text-white display-6">회원 관리</h1>
             <ol class="breadcrumb justify-content-center mb-0">
-                <li class="breadcrumb-item active text-white">Report Administration</li>
+                <li class="breadcrumb-item active text-white">Member Administration</li>
             </ol>
         </div>
         <!-- Single Page Header End -->
+				
 
-
-        <!-- 사용자 신고관리 -->
+        <!-- 회원관리 -->
    <div class="container-fluid py-5">
+   	
       <div class="row g-4 justify-content-center">
          <div class="row g-4 justify-content-center" style="width: 1000px !important;" >
-
-
+			<a href="goAdReport"><div class="text-white bg-secondary px-3 py-1 rounded position-absolute"
+				 style="width:105px; text-align:center;">신고 관리</div></a>
 
 					<%int index = 0;%>
 					<table class="text-center">
 						<div class="featurs-content">
+							
+															
 							<tr style="font-size:20px; background-color: #bdc3c7; ">
-								<th>No.</th>
-								<th>신고 게시글/리뷰</th>
-								<th>작성자</th>
-								<th>신고사유</th>
+								<th>회원 유형</th>
+								<th>이메일</th>
+								<th>닉네임</th>
+								<th>신고 누적 횟수</th>
 								<th>관리</th>
 							</tr>
 
-							 <c:forEach var="rp" items="${adReport}">
+							 <c:forEach var="m" items="${adMember}">
 							 		<%index++;%>
 										<tr>
-											<td><%=index %></td>
-											<td>${rp.r_title}</td>
-											<td>${rp.email}</td>
-											<td>${rp.rp_content}</td>
-											<td><a href="goOutMember"><button>탈퇴</button></a>
+											<td>${m.type}</td>
+											<td>${m.email}</td>
+											<td>${m.nick}</td>
+											<td></td>
+											<td><a href="goOutMember?email=${m.email}"><button>탈퇴</button></a>
 											<a href="goSusMember"><button>정지</button></a>
 											<a href="goResMember"><button>해제</button></a></td>
 										</tr>
@@ -175,12 +178,6 @@
 		</div>
 	</div>
 	
-	
-	<!-- 사용자 신고관리 end -->
-                      <%-- <c:if test="${loginMember.email eq 'admin' }">
-                              <td><a href="deleteBoard?num=${b.num }">삭제</a></td>
-                       
-                        </c:if> --%>
                      
                      </tr>
                   
@@ -192,7 +189,7 @@
    </div>
    
    
-   <!-- 사용자 신고관리 end -->
+   <!-- 회원 관리 end -->
 
 
 

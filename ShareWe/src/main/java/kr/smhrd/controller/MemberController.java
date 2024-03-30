@@ -106,6 +106,14 @@ public class MemberController {
 		return "redirect:/goAdApprove";
 	}
 	
+	// 회원 관리 페이지로 이동, 모든 회원정보를 불러오는 메소드
+	@RequestMapping("/goAdMember")
+	public String goAdMember(Model model) {
+		List<member> adMember = memberMapper.goAdMember();
+		model.addAttribute("adMember", adMember);
+		return "AdMember";
+	}
+	
 	
 	// 신고회원 관리 페이지로 이동
 	@RequestMapping("/goAdReport")
@@ -115,15 +123,7 @@ public class MemberController {
 		return "AdReport";
 	}
 	
-	// 신고사유 선택 페이지로 이동
-		@RequestMapping("/sendReportInfo")
-		public String sendReportInfo(@RequestParam("email") String email, g_board g_board, report report,HttpSession session) {
-			memberMapper.selectRp_cnt(email);
-			
-			return "report";
-		}
 		
-	
 	// 회원정보 수정 메소드 /memberUpdate
 	@RequestMapping("/memberUpdate")
 	public String memberUpdate(member member, HttpSession session) {
@@ -141,6 +141,14 @@ public class MemberController {
 		return "myPage";
 	}
 	
+	
+	// 회원 탈퇴(관리자)
+	@RequestMapping("/goOutMember")
+	public String goOutMember(@RequestParam("email") String email, Model model) {
+		memberMapper.goOutMember(email);
+		
+		return "redirect:/goAdMember";
+	}
 	
 	
 //	// 로그인 메소드

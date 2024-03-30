@@ -159,7 +159,6 @@
 											<td><%=index %></td>
 											<td><a href="G_BoardContent?g_num=${rp.b_num}">${rp.r_title}</td>
 											<td>${rp.email}</td>
-											<td>${rp.b_num}</td>
 											<td>${rp.rp_content}</td>
 											<td><a href="deleteRep"><button>삭제</button></a>
 											<a href="passRep?b_num=${rp.b_num}&email=${rp.email}"><button>통과</button></a>

@@ -42,7 +42,9 @@ public interface MemberMapper {
 
 	public List<report> goAdReport();
 
-	public void selectRp_cnt(String email);
+	public List<member> goAdMember();
+
+	public void goOutMember(String email);
 
 
 
