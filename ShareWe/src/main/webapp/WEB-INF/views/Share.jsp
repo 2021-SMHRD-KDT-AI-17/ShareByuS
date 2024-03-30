@@ -63,7 +63,6 @@
 	font-size: 12px;
 	font-weight: bold;
 	font-family: "Trebuchet MS", Dotum, Arial;
-	
 }
 
 #topMenu .menuLink:hover {
@@ -72,25 +71,15 @@
 }
 
 .filters_menu {
-    display: list-item;
-    text-align: -webkit-match-parent;
-    unicode-bidi: isolate;
+	display: list-item;
+	text-align: -webkit-match-parent;
+	unicode-bidi: isolate;
 }
 
 #categoryBox .filters_menu li:hover {
 	color: white;
 	background-color: #009223;
 }
-
-
-
-
-
-
-
-
-
-
 </style>
 
 </head>
@@ -98,7 +87,7 @@
 <body>
 
 	<%
-		member loginMember = (member)session.getAttribute("loginMember");
+	member loginMember = (member) session.getAttribute("loginMember");
 	%>
 
 	<!-- Spinner Start -->
@@ -114,22 +103,33 @@
 		<div class="container topbar bg-primary d-none d-lg-block">
 			<div class="d-flex justify-content-between">
 				<div class="top-info ps-2">
-					<small class="me-3"></small>
-					<small class="me-3"></small>
+					<small class="me-3"></small> <small class="me-3"></small>
 				</div>
 				<div class="top-link pe-2">
-					<%if (loginMember == null) {%>
-						<a href="goLogin" class="text-white"><small class="text-white mx-2">로그인</small>/</a>
-						<a href="goMemberType" class="text-white"><small class="text-white mx-2">회원가입</small></a>
-					<%} else {%>
+					<%
+					if (loginMember == null) {
+					%>
+					<a href="goLogin" class="text-white"><small
+						class="text-white mx-2">로그인</small>/</a> <a href="goMemberType"
+						class="text-white"><small class="text-white mx-2">회원가입</small></a>
+					<%
+					} else {
+					%>
 					<span><small class="text-white mx-2"><%=loginMember.getNick()%>님
 							환영합니다.</small></span>
-						<%if (loginMember.getEmail().equals("admin")) {%>
-							<a href="goAdmin" class="text-white"><small class="text-white ms-2">회원관리</small></a>
-						<%}%>
-						<a href="memberLogout" class="text-white"><small
+					<%
+					if (loginMember.getEmail().equals("admin")) {
+					%>
+					<a href="goAdmin" class="text-white"><small
+						class="text-white ms-2">회원관리</small></a>
+					<%
+					}
+					%>
+					<a href="memberLogout" class="text-white"><small
 						class="text-white mx-2">로그아웃</small></a>
-					<%} %>
+					<%
+					}
+					%>
 				</div>
 			</div>
 		</div>
@@ -160,17 +160,17 @@
 							style="color: black">Contact</a>
 					</div>
 					<div class="d-flex m-3 me-0">
-							<button
-								class="btn-search btn border border-secondary btn-md-square rounded-circle bg-white me-4"
-								data-bs-toggle="modal" data-bs-target="#searchModal">
-								<i class="fas fa-search text-primary"></i>
-							</button>
-							<a href="goCart" class="position-relative me-4 my-auto"> <i
-								class="fa fa-shopping-bag fa-2x"></i> <span
-								class="position-absolute bg-secondary rounded-circle d-flex align-items-center justify-content-center text-dark px-1"
-								style="top: -5px; left: 15px; height: 20px; min-width: 20px;">3</span>
-							</a> <a href="goMyPage" class="my-auto"> <i
-								class="fas fa-user fa-2x"></i></a>
+						<button
+							class="btn-search btn border border-secondary btn-md-square rounded-circle bg-white me-4"
+							data-bs-toggle="modal" data-bs-target="#searchModal">
+							<i class="fas fa-search text-primary"></i>
+						</button>
+						<a href="goCart" class="position-relative me-4 my-auto"> <i
+							class="fa fa-shopping-bag fa-2x"></i> <span
+							class="position-absolute bg-secondary rounded-circle d-flex align-items-center justify-content-center text-dark px-1"
+							style="top: -5px; left: 15px; height: 20px; min-width: 20px;">3</span>
+						</a> <a href="goMyPage" class="my-auto"> <i
+							class="fas fa-user fa-2x"></i></a>
 					</div>
 				</div>
 			</nav>
@@ -180,9 +180,9 @@
 
 
 	<!-- Search Start -->
-   <div class="modal fade" id="searchModal" tabindex="-1"
-      aria-labelledby="exampleModalLabel" aria-hidden="true">
-      <div class="modal-dialog modal-fullscreen">
+	<div class="modal fade" id="searchModal" tabindex="-1"
+		aria-labelledby="exampleModalLabel" aria-hidden="true">
+		<div class="modal-dialog modal-fullscreen">
 
 			<div class="modal-content rounded-0">
 				<div class="modal-header">
@@ -193,11 +193,13 @@
 				</div>
 				<form action="goSearch">
 					<div class="modal-body d-flex align-items-center">
-						<div class="input-group w-75 mx-auto d-flex" 
-							style="height: 800px; padding-bottom: 100px; width:50% !important;  justify-content: center; align-items: center;">
-							<input type="text" class="form-control p-3" name="searchText" style="height: 58px;"
-								placeholder="검색어를 입력해주세요." aria-describedby="search-icon-1">
-							<input type="submit" value="검색" id="search-icon-1" style="border-top-right-radius: 10px; border-bottom-right-radius: 10px; height: 58px;"
+						<div class="input-group w-75 mx-auto d-flex"
+							style="height: 800px; padding-bottom: 100px; width: 50% !important; justify-content: center; align-items: center;">
+							<input type="text" class="form-control p-3" name="searchText"
+								style="height: 58px;" placeholder="검색어를 입력해주세요."
+								aria-describedby="search-icon-1"> <input type="submit"
+								value="검색" id="search-icon-1"
+								style="border-top-right-radius: 10px; border-bottom-right-radius: 10px; height: 58px;"
 								class="btn btn-primary border-2 border-secondary py-3 px-4">
 						</div>
 					</div>
@@ -205,33 +207,6 @@
 			</div>
 		</div>
 	</div>
-	<!-- Search End -->
-
-
-	<!-- Modal Search Start 
-	<div class="modal fade" id="searchModal" tabindex="-1"
-		aria-labelledby="exampleModalLabel" aria-hidden="true">
-		<div class="modal-dialog modal-fullscreen">
-			<div class="modal-content rounded-0">
-				<div class="modal-header">
-					<h5 class="modal-title" id="exampleModalLabel">Search by
-						keyword</h5>
-					<button type="button" class="btn-close" data-bs-dismiss="modal"
-						aria-label="Close"></button>
-				</div>
-				<div class="modal-body d-flex align-items-center">
-					<div class="input-group w-75 mx-auto d-flex" >
-						<input type="search" class="form-control p-3"
-							placeholder="keywords" aria-describedby="search-icon-1">
-						<span id="search-icon-1" class="input-group-text p-3"><i
-							class="fa fa-search"></i></span>
-					</div>
-				</div>
-			</div>
-		</div>
-	</div>
-	 Modal Search End -->
-
 
 
 	<!-- Single Page Header start -->
@@ -245,84 +220,75 @@
 
 
 	<!-- food section -->
-	
-	<c:if test="${loginMember.type == 2 || loginMember.type == 3}">
-			<div class="row g-4 justify-content-center" id="categoryBox">
-	         	<div class="row g-4 justify-content-center">
-	           		 <button class="col-xl-1" id="write" type="button"
-               			onclick="location.href='gogBoard'">게시물작성</button>
-         		</div>
-     	 	</div>
-	</c:if>
-	
+
+
 	<div class="row g-4 justify-content-center" id="categoryBox">
-			<!-- <div class="row g-4 justify-content-center text-center" style="margin-left: 850px">
-			<div class="col-xl-2">
-				<div class="input-group w-150 mx-auto d-flex">
-					<input type="search" class="form-control p-3"
-						placeholder="keywords" aria-describedby="search-icon-1"> 
-						<span id="search-icon-1" class="input-group-text p-3">
-						<i class="fa fa-search"></i></span>
-				</div>
-			</div>
-		</div> -->
-	
+
+
 		<!-- 카테고리 -->
-		<div class="col-lg-9" style="margin-top : 90px;">
-			<ul class="filters_menu" >
-			
+		<div class="col-lg-9" style="margin-top: 90px;">
+			<ul class="filters_menu">
+
 				<a href="goGeneral"><li>All</li></a>
 				<a href="getCategory?category=채소" id="clickVege"><li>채소</li></a>
 				<a href="getCategory?category=과일" id="clickFruit"><li>과일</li></a>
 				<a href="getCategory?category=생필품" id="ClickDaily"><li>생활용품</li></a>
-	
+
 				<!-- <input id="inputSerch" class="serchBar"  type="search" placeholder="keywords">
 				<button  type="button" id="buttonBar" class="serchBar"><i class="fa fa-search"></i></button> -->
-			
+
 			</ul>
 		</div>
-		
 
 
-		<div class="col-lg-9" style="width:60% !important;  justify-content: center; align-items: center;">
-			<div class="row g-4 justify-content-center" id="boardDiv" >
-                        <c:forEach items="${gboard_list}" var="g">
-                           <div class="col-md-1 col-lg-2 col-xl-3"
-                           		style="margin-right: 10px; margin-left: 10px; width: 20%; height: 10%; margin-bottom: 20px;">
-                              <div class="rounded position-relative fruite-item">
-                                 <div class="fruite-img">
-                                    <a href="G_BoardContent?g_num=${g.g_num}">
-                                    	<img src="resources/g_Image/${g.g_img1}" class="img-fluid w-100 rounded-top" alt="">
-                                 	</a>
-                                 </div>
-                                 <div
-                                    class="text-white bg-secondary px-3 py-1 rounded position-absolute"
-                                    style="top: 10px; left: 10px; background-color: #009223 !important;">${g.category}</div>
-                                 
-                                 	<div class="p-4 border border-secondary border-top-0 rounded-bottom" style=" border-color: #009223 !important;">
-                                
-                                    <br>
-                                    <a href="G_BoardContent?g_num=${g.g_num}"><h5>${g.g_title}</h5></a>
-                                    <h6 style="display: inline;">${g.g_writer}</h6>
-                                    <c:choose>
-	                                      <c:when test="${loginMember.type == 0}">
-	                                       	<a href="#" style="float: right;"
-	                                             class="btn border border-secondary rounded-pill px-3 text-primary">
-	                                             삭제 </a>
-	                                      </c:when>
-	                                      <c:otherwise>
-	                                       	<a href="#" style="float: right;"
-	                                             class="btn border border-secondary rounded-pill px-3 text-primary">
-	                                             ❤ 찜 </a>
-	                                      </c:otherwise> 
-                                      </c:choose>
-                                 </div>
-                              </div>
-                           </div>
-                        </c:forEach>
-                     </div>
+
+		<div class="col-lg-9"
+			style="width: 60% !important; justify-content: center; align-items: center;">
+			<div class="row g-4 justify-content-center" id="boardDiv">
+				<c:forEach items="${gboard_list}" var="g">
+					<div class="col-md-1 col-lg-2 col-xl-3"
+						style="margin-right: 10px; margin-left: 10px; width: 20%; height: 10%; margin-bottom: 20px;">
+						<div class="rounded position-relative fruite-item">
+							<div class="fruite-img">
+								<a href="G_BoardContent?g_num=${g.g_num}"> <img
+									src="resources/g_Image/${g.g_img1}"
+									class="img-fluid w-100 rounded-top" alt="">
+								</a>
+							</div>
+							<div
+								class="text-white bg-secondary px-3 py-1 rounded position-absolute"
+								style="top: 10px; left: 10px; background-color: #009223 !important;">${g.category}</div>
+
+							<div
+								class="p-4 border border-secondary border-top-0 rounded-bottom"
+								style="border-color: #009223 !important;">
+
+								<br> <a href="G_BoardContent?g_num=${g.g_num}"><h5>${g.g_title}</h5></a>
+								<h6 style="display: inline;">${g.g_writer}</h6>
+								<c:choose>
+									<c:when test="${loginMember.type == 0}">
+										<a href="#" style="float: right;"
+											class="btn border border-secondary rounded-pill px-3 text-primary">
+											삭제 </a>
+									</c:when>
+									<c:otherwise>
+										<a href="#" style="float: right;"
+											class="btn border border-secondary rounded-pill px-3 text-primary">
+											❤ 찜 </a>
+									</c:otherwise>
+								</c:choose>
+							</div>
+						</div>
+					</div>
+				</c:forEach>
+			</div>
 		</div>
-		
+		<c:if test="${loginMember.type == 2 || loginMember.type == 3}">
+			<div class="row g-4 justify-content-center">
+				<button class="col-xl-1" id="write" type="button"
+					onclick="location.href='gogBoard'">게시물작성</button>
+			</div>
+		</c:if>
 	</div>
 	<!-- end food section -->
 
@@ -350,7 +316,7 @@
 
 
 	<!-- Back to Top -->
-<!-- 	<a href="#"
+	<!-- 	<a href="#"
 		class="btn btn-primary border-3 border-primary rounded-circle back-to-top"><i
 		class="fa fa-arrow-up"></i></a> -->
 
@@ -367,8 +333,8 @@
 
 	<!-- Template Javascript -->
 	<script src="resources/asset/js/main.js"></script>
-	
-<!-- 	<!-- 카테고리:채소 비동기 --
+
+	<!-- 	<!-- 카테고리:채소 비동기 --
 	<script type="text/javascript">
 		function getVege(){
 			$.ajax({
@@ -387,7 +353,7 @@
 			})
 		}
 	</script> -->
-	
+
 </body>
 
 </html>

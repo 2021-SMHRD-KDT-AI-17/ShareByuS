@@ -300,19 +300,6 @@
 
       <!-- 게시글 상세 -->
 
-		<div class="row g-4 justify-content-center" id="categoryBox">
-			<div class="row g-4 justify-content-center">
-				<button class="col-xl-1" id="write" type="button"
-					onclick="location.href='gogBoard'">게시물작성</button>
-			</div>
-		</div>
-
-		<div class="row g-4 justify-content-center hero-header"
-			style="margin-left: 28%; margin-right: 28%;">
-			<script
-				src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js"
-				integrity="sha384-ka7Sk0Gln4gmtz2MlQnikT1wXgYsOg+OMhuP+IlRH9sENBO0LRn5q+8nbTov4+1p"
-				crossorigin="anonymous"></script>
       <div class="row g-4 justify-content-center" id="categoryBox">
          <div class="row g-4 justify-content-center">
             <button class="col-xl-1" id="write" type="button"
@@ -521,27 +508,7 @@
 				}
 				</script>
 
-	
 
-      <!--    <!-- 카테고리:채소 비동기 --
-   <script type="text/javascript">
-      function getVege(){
-         $.ajax({
-            url :'',
-            data : '',
-            type : 'get',
-            
-            success : function(data){
-               
-            },
-            error : function() {
-               alert()
-            }
-            
-            
-         })
-      }
-   </script> -->
 </body>
 
 </html>
