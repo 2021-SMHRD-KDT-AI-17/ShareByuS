@@ -36,7 +36,7 @@ public class MemberController {
 	 // 회원가입하는 메소드 /memberInsert
 	@RequestMapping("/memberInsert")
 	public String memberInsert(member member, Model model) {
-		 // System.out.println(member.toString());
+		System.out.println(member.toString());
 		if(member.getType() == 1) {
 			memberMapper.approveInsert(member);
 		}else {
@@ -157,8 +157,6 @@ public class MemberController {
 		
 		return "redirect:/goAdMember";
 	}
-	
-	
 	
 	// 회원 정지 해제(관리자)
 	@RequestMapping("/resMember")

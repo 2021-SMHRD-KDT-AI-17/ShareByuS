@@ -38,6 +38,12 @@
 
 <!-- Template Stylesheet -->
 <link href="resources/asset/css/sw_style.css" rel="stylesheet">
+
+<link rel='stylesheet' href='/stylesheets/style.css' />
+<!-- jquery -->
+<script type="text/javascript" src="/js/jquery-1.11.3.min.js"></script>
+<script src="/javascript/popup_2.js"></script>
+
 </head>
 <body>
 
@@ -119,29 +125,33 @@
 	<!-- Navbar End -->
 
 
-	<!-- Modal Search Start -->
-	<div class="modal fade" id="searchModal" tabindex="-1"
-		aria-labelledby="exampleModalLabel" aria-hidden="true">
-		<div class="modal-dialog modal-fullscreen">
+	<!-- Search Start -->
+   <div class="modal fade" id="searchModal" tabindex="-1"
+      aria-labelledby="exampleModalLabel" aria-hidden="true">
+      <div class="modal-dialog modal-fullscreen">
+
 			<div class="modal-content rounded-0">
 				<div class="modal-header">
-					<h5 class="modal-title" id="exampleModalLabel">Search by
-						keyword</h5>
+					<!-- <h5 class="modal-title" id="exampleModalLabel">Search by
+						keyword</h5> -->
 					<button type="button" class="btn-close" data-bs-dismiss="modal"
 						aria-label="Close"></button>
 				</div>
-				<div class="modal-body d-flex align-items-center">
-					<div class="input-group w-75 mx-auto d-flex">
-						<input type="search" class="form-control p-3"
-							placeholder="keywords" aria-describedby="search-icon-1">
-						<span id="search-icon-1" class="input-group-text p-3"><i
-							class="fa fa-search"></i></span>
+				<form action="goSearch">
+					<div class="modal-body d-flex align-items-center">
+						<div class="input-group w-75 mx-auto d-flex" 
+							style="height: 800px; padding-bottom: 100px; width:50% !important;  justify-content: center; align-items: center;">
+							<input type="text" class="form-control p-3" name="searchText" style="height: 58px;"
+								placeholder="검색어를 입력해주세요." aria-describedby="search-icon-1">
+							<input type="submit" value="검색" id="search-icon-1" style="border-top-right-radius: 10px; border-bottom-right-radius: 10px; height: 58px;"
+								class="btn btn-primary border-2 border-secondary py-3 px-4">
+						</div>
 					</div>
-				</div>
+				</form>
 			</div>
 		</div>
 	</div>
-	<!-- Modal Search End -->
+	<!-- Search End -->
 
 
 	<!-- Single Page Header start -->
@@ -204,8 +214,72 @@
 					
 						<div class="form-item">
 							<label class="form-label my-3">도로명 주소</label>
-							<input type="text" class="form-control" placeholder="Ex) 광주광역시 동구 예술길 31-15" name="address"
-									value="${loginMember.address}">
+							<br>
+							<input type="text" id="sample6_postcode" placeholder="우편번호" class="form-control" style="width: 300px; display: inline !important;"">
+							<input type="button" onclick="sample6_execDaumPostcode()" 
+								value="우편번호 찾기"  class="btn border-secondary py-2 px-2  text-primary"
+								style="width: 150px !important; height: 36px !important; display: inline !important; padding: 4px !important;">
+							<br> <br> <input type="text" name="address"  
+								id="sample6_address" placeholder="주소" class="form-control" value="${loginMember.address}"><br> <input
+								type="text" id="sample6_detailAddress" placeholder="상세주소" class="form-control"> <br>
+							<input type="text" id="sample6_extraAddress" placeholder="참고항목" class="form-control">
+							
+							
+							<script type="text/javascript">
+							function sample6_execDaumPostcode() {
+								new daum.Postcode(
+										{
+											oncomplete : function(data) {
+												
+												var addr = ''; 
+												var extraAddr = ''; 
+
+											
+												if (data.userSelectedType === 'R') { 
+													addr = data.roadAddress;
+												} else { 
+													addr = data.jibunAddress;
+												}
+
+												
+												if (data.userSelectedType === 'R') {
+													if (data.bname !== ''
+															&& /[동|로|가]$/g
+																	.test(data.bname)) {
+														extraAddr += data.bname;
+													}
+													if (data.buildingName !== ''
+															&& data.apartment === 'Y') {
+														extraAddr += (extraAddr !== '' ? ', '
+																+ data.buildingName
+																: data.buildingName);
+													}
+													if (extraAddr !== '') {
+														extraAddr = ' ('
+																+ extraAddr
+																+ ')';
+													}
+													document
+															.getElementById("sample6_extraAddress").value = extraAddr;
+
+												} else {
+													document
+															.getElementById("sample6_extraAddress").value = '';
+												}
+
+												document
+														.getElementById('sample6_postcode').value = data.zonecode;
+												document
+														.getElementById("sample6_address").value = addr;
+												document
+														.getElementById(
+																"sample6_detailAddress")
+														.focus();
+											}
+										}).open();
+							}
+						</script>
+							
 									
 						</div>
 						<div class="form-item">
@@ -308,5 +382,21 @@
 	
 	
 </body>
+
+				<script
+							src="//t1.daumcdn.net/mapjsapi/bundle/postcode/prod/postcode.v2.js">
+							</script>
+							<style>
+							.wrong_text {
+								font-size: 1rem;
+								color: #f44e38;
+								letter-spacing: -.2px;
+								font-weight: 300;
+								margin: 8px 0 2px;
+								line-height: 1em;
+								display: none
+							}
+							</style>
+
 
 </html>

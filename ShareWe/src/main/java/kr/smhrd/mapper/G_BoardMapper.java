@@ -25,9 +25,18 @@ public interface G_BoardMapper {
 	
 	public void gParticipate(int g_num);
 
+<<<<<<< HEAD
 	public void deleteRep(String param1, int param2);
 
 
+=======
+	public void gBoardUp(int g_num);
+
+	public void deleteGBoard(int g_num);
+
+	public void gBoardUpdate(g_board g_board);
+	
+>>>>>>> branch 'main' of https://github.com/2021-SMHRD-KDT-AI-17/ShareByuS.git
 		
 
 	

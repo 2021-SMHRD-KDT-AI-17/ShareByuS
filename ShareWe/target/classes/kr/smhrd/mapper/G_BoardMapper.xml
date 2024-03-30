@@ -31,5 +31,17 @@
 	<delete id="deleteRep" parameterType="map">
 		delete from g_board where email=#{param1} and g_num=#{param2}
 	</delete>
+	
+	<update id="gBoardUp" parameterType="int">
+		update g_board set g_w_date=NOW() where g_num=#{g_num}
+	</update>
+	
+	<update id="gBoardUpdate" parameterType="kr.smhrd.entity.g_board">
+			update g_board set g_title=#{g_title}, g_img1=#{g_img1}, g_content=#{g_content},
+			 category=#{category} where g_num=#{g_num}
+	</update>
 
+	<delete id="deleteGBoard" parameterType="int">
+		delete from g_board where g_num=#{g_num}	
+	</delete>
 </mapper>

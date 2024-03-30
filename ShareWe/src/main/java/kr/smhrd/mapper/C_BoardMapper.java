@@ -24,7 +24,9 @@ public interface C_BoardMapper {
 
 	public void deleteRep(String param1, int param2);
 
+	public void deleteCBoard(int c_num);
 
+	public void cBoardUpdate(c_board c_board);
 	
 	
 
