@@ -317,13 +317,14 @@
 
       <!-- 게시글 상세 -->
 
-      <div class="row g-4 justify-content-center" id="categoryBox">
-         <div class="row g-4 justify-content-center">
-            <button class="col-xl-1" id="write" type="button"
-               onclick="location.href='gogBoard'">게시물작성</button>
-         </div>
-      </div>
-      
+    <c:if test="${loginMember.type == 2 || loginMember.type == 3}">
+			<div class="row g-4 justify-content-center">
+				<button class="col-xl-1" id="write" type="button"
+					onclick="location.href='gogBoard'">게시물작성</button>
+			</div>
+			</div>
+		</c:if>
+		
       <div class="row g-4 justify-content-center hero-header" style="margin-left: 28%; margin-right: 28%; ">
             <script
             src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js"

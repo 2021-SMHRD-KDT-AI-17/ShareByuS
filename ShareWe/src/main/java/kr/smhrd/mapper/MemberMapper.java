@@ -52,9 +52,9 @@ public interface MemberMapper {
 
 	public void goupdateCnt(@NonNull String email);
 
-	public void susMember(int type);
+	public void susMember(String email);
 
-	public void resMember(int type);
+	public void resMember(String email);
 
 
 
