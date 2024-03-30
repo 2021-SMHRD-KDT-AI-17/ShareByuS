@@ -20,6 +20,8 @@ public interface C_BoardMapper {
 	public c_board C_BoardContent(int c_num);
 
 	public void cParticipate(int c_num);
+
+	public void deleteCBoard(int c_num);
 	
 	
 

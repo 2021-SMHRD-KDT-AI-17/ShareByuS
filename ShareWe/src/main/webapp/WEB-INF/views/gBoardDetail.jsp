@@ -126,6 +126,28 @@
    padding-bottom: 20px;
    padding-left: 20px;
 }
+
+#clickcontents{
+	float: right !important;
+	border-radius: 120px;
+	border-color: transparent !important;
+
+}
+
+.detailMenu{width: 100%;max-width: 100px;}
+.detailMenu ul{list-style: none;z-index: 2;}
+.detailMenu a{color:#000;text-decoration: none;}
+.detailMenu > ul{display: flex;width: 100%;justify-content: space-between;padding:10px;}
+.detailMenu > ul > li{position: relative; width: 100%}
+.detailMenu > ul > li > a{font-size: 20px;font-weight: bold;padding:10px 0;}
+.detailMenu > ul > li > a:hover{color:#999;}
+.detailMenu > ul > li > ul{ padding: 0; display: none; position: absolute; left:50%; transform: translateX(-50%);border:1px solid #ddd;border-radius: 6px;background: #fff;}
+.detailMenu > ul > li > ul > li{width: 120px !important; text-align: center;}
+.detailMenu > ul > li:hover ul{display:block; margin-top: 30px;}
+.detailMenu > ul > li  li a{display: block; padding:10px 15px;}
+.detailMenu > ul > li  li a:hover{background:#eee;}
+.detailMenu > ul > li > li + li{margin-top:5px;}
+
 </style>
 
 
@@ -192,17 +214,12 @@
             </button>
             <div class="collapse navbar-collapse bg-white" id="navbarCollapse">
                <div class="navbar-nav mx-auto">
-                  <a href="goGeneral" class="nav-item nav-link active">일반</a> 
-                  <a href="goCompany" class="nav-item nav-link">기업</a> 
-
-                  <!-- 기업회원일때만 나오게 -->
-                  <c:if test="${loginMember.type == 1}">
-                     <a href="gocBoard" class="nav-item nav-link">상품등록</a>
-                  </c:if>
+                  <a href="goGeneral" class="nav-item nav-link active">Share</a> 
+                  <a href="goCompany" class="nav-item nav-link">Shop</a> 
 
                   <div class="nav-item dropdown">
                      <a href="#" class="nav-link dropdown-toggle"
-                        data-bs-toggle="dropdown">Pages</a>
+                        data-bs-toggle="dropdown">Category</a>
 
                      <!-- 카테고리별 페이지 이동 -->
                      <div class="dropdown-menu m-0 bg-secondary rounded-0">
@@ -307,8 +324,10 @@
             src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js"
             integrity="sha384-ka7Sk0Gln4gmtz2MlQnikT1wXgYsOg+OMhuP+IlRH9sENBO0LRn5q+8nbTov4+1p"
             crossorigin="anonymous"></script>
+            
+            
 
-         <div id="carouselExampleControls" class="carousel slide"
+			<div id="carouselExampleControls" class="carousel slide"
             data-bs-ride="carousel" style="position: relative;" align="center">
             <div class="carousel-inner" style="position: absoulte;" >
                <div class="carousel-item active">
@@ -345,7 +364,17 @@
                      onclick="location.href='gParticipate?g_num=${g_board.g_num}'" style="width: 20%; margin-left: 20px">참여하기</button>
                   <button type="button" class="btn btn-outline-success"
                   	 onclick="location.href=''" style="width: 20%; float: ">끌어올리기</button>
-               </div>
+					<nav class="detailMenu" style="float: right;">
+						<ul>
+							<li><a href="#"> <strong style="float: right;">⁝</strong> </a>
+								<ul>
+									<li><a href="#">게시글 수정</a></li>
+									<li><a href="#">끌어올리기</a></li>
+									<li><a href="#">게시글 삭제</a></li>
+								</ul></li>
+						</ul>
+					</nav>
+				</div>
                <div class="boardContent">
                   참여인원 : ${g_board.g_p_count}
                </div>

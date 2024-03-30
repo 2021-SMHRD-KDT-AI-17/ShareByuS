@@ -107,6 +107,17 @@ public class C_BoardController {
 		return "redirect:/goMain";
 	}
 	
+	// 게시글 삭제
+	@RequestMapping("/deleteCBoard")
+	public String deleteCBoard(@RequestParam("c_num") int c_num) {
+		c_boardMapper.deleteCBoard(c_num);
+		
+		return "redirect:/goCompany";
+	}
+	
+	
+	
+	
 	}
 	
 	

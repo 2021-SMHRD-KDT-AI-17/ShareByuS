@@ -322,7 +322,7 @@
                                      <h6 style="display: inline;">${c.c_writer }</h6>
                                      <c:choose>
 	                                      <c:when test="${loginMember.type == 0}">
-	                                       	<a href="#" style="float: right;"
+	                                       	<a href="deleteCBoard?c_num=${c.c_num }" style="float: right;"
 	                                             class="btn border border-secondary rounded-pill px-3 text-primary">
 	                                             삭제 </a>
 	                                      </c:when>
