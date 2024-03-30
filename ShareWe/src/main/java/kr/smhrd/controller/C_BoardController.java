@@ -115,7 +115,22 @@ public class C_BoardController {
 		return "redirect:/goCompany";
 	}
 	
+	// 게시글 수정 페이지로
+	@RequestMapping("/goCUpdate")
+	public String goCUpdate(int c_num, Model model) {
+		c_board c_board = c_boardMapper.C_BoardContent(c_num);
+		model.addAttribute("c_board", c_board);
+		
+		return "UpdateCBoard";
+	}
 	
+	// 게시글 수정
+	@RequestMapping("/cBoardUpdate")
+	public String cBoardUpdate(c_board c_board, Model model) {
+		c_boardMapper.cBoardUpdate(c_board);
+		
+		return "redirect:/C_BoardContent";
+	}
 	
 	
 	}

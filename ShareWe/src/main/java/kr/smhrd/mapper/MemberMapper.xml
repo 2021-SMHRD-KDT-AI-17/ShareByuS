@@ -3,11 +3,11 @@
 <mapper namespace="kr.smhrd.mapper.MemberMapper">
 
 	<insert id="memberInsert" parameterType="kr.smhrd.entity.member">
-		insert into member values (#{type}, #{email}, #{pw}, #{name}, #{nick}, #{address}, #{tel})
+		insert into member(type, email, pw, name, nick, address, tel) values (#{type}, #{email}, #{pw}, #{name}, #{nick}, #{address}, #{tel})
 	</insert>
 	
 	<insert id="approveMemInsert" parameterType="kr.smhrd.entity.approve">
-		insert into member values (#{type}, #{email}, #{pw}, #{name}, #{nick}, #{address}, #{tel})
+		insert into member(type, email, pw, name, nick, address, tel) values (#{type}, #{email}, #{pw}, #{name}, #{nick}, #{address}, #{tel})
 	</insert>
 
 	<select id="memberCheck" parameterType="kr.smhrd.entity.member" resultType="kr.smhrd.entity.member">

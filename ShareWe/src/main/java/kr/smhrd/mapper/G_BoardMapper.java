@@ -24,7 +24,11 @@ public interface G_BoardMapper {
 	
 	public void gParticipate(int g_num);
 
+	public void gBoardUp(int g_num);
+
 	public void deleteGBoard(int g_num);
+
+	public void gBoardUpdate(g_board g_board);
 	
 		
 	

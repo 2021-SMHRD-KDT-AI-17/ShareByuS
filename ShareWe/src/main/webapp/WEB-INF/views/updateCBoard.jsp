@@ -42,6 +42,7 @@
 
 <body>
 
+
 <%
 		member loginMember = (member)session.getAttribute("loginMember");
 	%>
@@ -57,13 +58,13 @@
 	<!-- Navbar start -->
 	<div class="container-fluid fixed-top">
 		<div class="container topbar bg-primary d-none d-lg-block">
-				<div class="d-flex justify-content-between">
-					<div class="top-info ps-2">
-                        <small class="me-3"></small>
-                        <small class="me-3"></small>
-                    </div>
-					<div class="top-link pe-2">
-						<%if (loginMember == null) {%>
+			<div class="d-flex justify-content-between">
+				<div class="top-info ps-2">
+					<small class="me-3"></small> <small class="me-3"></small>
+				</div>
+				<div class="top-link pe-2">
+				
+				<%if (loginMember == null) {%>
 							<a href="goLogin" class="text-white"><small class="text-white mx-2">로그인</small>/</a>
 							<a href="goMemberType" class="text-white"><small class="text-white mx-2">회원가입</small></a>
 						<%}else {%>
@@ -74,13 +75,16 @@
 							<a href="memberLogout" class="text-white"><small class="text-white mx-2">로그아웃</small></a>
 						<%} %>
 						
-					</div>
+					<a href="goMain" class="text-white"><small
+						class="text-white mx-2">홈</small>|</a> <a href="goLogin"
+						class="text-white"><small class="text-white mx-2">로그인</small></a>
 				</div>
 			</div>
+		</div>
 		<div class="container px-0">
 			<nav class="navbar navbar-light bg-white navbar-expand-xl">
-				<a href="goMain" class="navbar-brand"><h1
-						class="text-primary display-6">Share We?</h1></a>
+				<a href="goMain" class="navbar-brand">
+						<h1 class="text-primary display-6">Share We?</h1></a>
 				<button class="navbar-toggler py-2 px-3" type="button"
 					data-bs-toggle="collapse" data-bs-target="#navbarCollapse">
 					<span class="fa fa-bars text-primary"></span>
@@ -123,41 +127,36 @@
 	<!-- Navbar End -->
 
 
-	<!-- Search Start -->
-   <div class="modal fade" id="searchModal" tabindex="-1"
-      aria-labelledby="exampleModalLabel" aria-hidden="true">
-      <div class="modal-dialog modal-fullscreen">
-
+	<!-- Modal Search Start -->
+	<div class="modal fade" id="searchModal" tabindex="-1"
+		aria-labelledby="exampleModalLabel" aria-hidden="true">
+		<div class="modal-dialog modal-fullscreen">
 			<div class="modal-content rounded-0">
 				<div class="modal-header">
-					<!-- <h5 class="modal-title" id="exampleModalLabel">Search by
-						keyword</h5> -->
+					<h5 class="modal-title" id="exampleModalLabel">Search by
+						keyword</h5>
 					<button type="button" class="btn-close" data-bs-dismiss="modal"
 						aria-label="Close"></button>
 				</div>
-				<form action="goSearch">
-					<div class="modal-body d-flex align-items-center">
-						<div class="input-group w-75 mx-auto d-flex" 
-							style="height: 800px; padding-bottom: 100px; width:50% !important;  justify-content: center; align-items: center;">
-							<input type="text" class="form-control p-3" name="searchText" style="height: 58px;"
-								placeholder="검색어를 입력해주세요." aria-describedby="search-icon-1">
-							<input type="submit" value="검색" id="search-icon-1" style="border-top-right-radius: 10px; border-bottom-right-radius: 10px; height: 58px;"
-								class="btn btn-primary border-2 border-secondary py-3 px-4">
-						</div>
+				<div class="modal-body d-flex align-items-center">
+					<div class="input-group w-75 mx-auto d-flex">
+						<input type="search" class="form-control p-3"
+							placeholder="keywords" aria-describedby="search-icon-1">
+						<span id="search-icon-1" class="input-group-text p-3"><i
+							class="fa fa-search"></i></span>
 					</div>
-				</form>
+				</div>
 			</div>
 		</div>
 	</div>
-	<!-- Search End -->
+	<!-- Modal Search End -->
 
 
 	<!-- Single Page Header start -->
 	<div class="container-fluid page-header py-5">
 		<h1 class="text-center text-white display-6"
-			style="margin-bottom: 20px">게시글 작성</h1>
+			style="margin-bottom: 20px">상품 등록</h1>
 		<ol class="breadcrumb justify-content-center mb-0">
-			<span class="breadcrumb-item" style="color: brown">* 필수항목</span>
 		</ol>
 	</div>
 	<!-- Single Page Header End -->
@@ -166,20 +165,119 @@
 
 	<div class="container-fluid py-5">
 		<div class="container py-5">
-			<form action="gBoardInsert" method="post"
+			<form action="cBoardInsert" method="post"
 				enctype="multipart/form-data">
+				
+				
 				<div class="row g-5 justify-content-center" id="loginDiv">
+				
 					<div class="col-md-12 col-lg-6 col-xl-7" align="left">
-						<h4 class="form-label my-3">* 상품 사진</h4>
+						<h4 class="form-label my-3">* 상품 명</h4>
+						<br>
+						<div class="form-item">
+							<input type="text" name="c_title" style="width: 600px"
+								class="border-0 border-bottom rounded me-5 py-3 mb-4"
+								placeholder="상품 명을 입력해주세요">
+						</div>
+						
+					</div>
+					
+					<div class="col-md-12 col-lg-6 col-xl-7" align="left">
+						<h4 class="form-label my-3">* 펀딩 종료 날짜</h4>
+						<br>
+						<div class="form-item">
+							<input type="date" name="c_f_date" style="width: 600px"
+								class="border-0 border-bottom rounded me-5 py-3 mb-4">
+						</div>
+					</div>
+					
+					
+					<div class="col-md-12 col-lg-6 col-xl-7" align="left">
+						<h4 class="form-label my-3">* 카테고리</h4>
+						<br>
+						<div class="form-item">
+							<div class="col-sm-8">
+								<select name="category" id="a4" class="form-control">
+									<option value="채소">채소</option>
+									<option value="과일">과일</option>
+									<option value="식품">식품</option>
+									<option value="생필품">생필품</option>
+								</select>
+							</div>
+							<hr>
+						</div>
+					</div>
+				
+				<div class="col-md-12 col-lg-6 col-xl-7" align="left">
+						<h4 class="form-label my-3">* 상품 가격</h4>
 						<br>
 						<div class="form-item">
 
-							<label class="input-file-button" for="btnAtt"> 업로드 </label> 
-							
-								<input  type="file" name="g_img1"  id="btnAtt" style="display: none">
-								<!-- multiple="multiple" style="display: none" onchange="readURL(this);" -->
-							<!-- 이미피자일 name = filename -->
+							<input type="text" name="price" placeholder="숫자만 입력해주세요"
+							class="border-0 border-bottom rounded me-5 py-3 mb-4"
+								/>
+								<span>원</span>
+								<hr>
+								
+								<!-- oninput=" this.value = this.value.replace(/[^0-9.]/g, '').replace(/(\..*)\./g, '$1');" 
+								onkeyup="inputNumberFormat(this); -->
+								
+								<!-- <script type="text/javascript">
+								function comma(str) {
+							        str = String(str);
+							        return str.replace(/(\d)(?=(?:\d{3})+(?!\d))/g, '$1,');
+							    }
 
+							    function uncomma(str) {
+							        str = String(str);
+							        return str.replace(/[^\d]+/g, '');
+							    } 
+							    
+							    function inputNumberFormat(obj) {
+							        obj.value = comma(uncomma(obj.value));
+							    }
+							    
+							    function inputOnlyNumberFormat(obj) {
+							        obj.value = onlynumber(uncomma(obj.value));
+							    }
+							    
+							    function onlynumber(str) {
+								    str = String(str);
+								    return str.replace(/(\d)(?=(?:\d{3})+(?!\d))/g,'$1');
+								}
+								</script> -->
+						</div>
+						
+					</div>
+					
+					<div class="col-md-12 col-lg-6 col-xl-7" align="left">
+						<h4 class="form-label my-3">* 재고 수량</h4>
+						<br>
+						<div class="form-item">
+
+							<input type="number" name="c_ea" placeholder="숫자만 입력해주세요"
+							class="border-0 border-bottom rounded me-5 py-3 mb-4"/>
+								<span>개</span>
+								<hr>
+								
+						</div>
+						
+					</div>
+				
+				
+				
+					
+					
+					<div class="col-md-12 col-lg-6 col-xl-7" align="left">
+						<h4 class="form-label my-3">* 대표 이미지</h4>
+						<br>
+						<div class="form-item">
+
+							<label class="input-file-button" for="btnAtt"> 업로드 </label>
+							
+								<input  type="file" name="c_img1"  id="btnAtt"
+								 accept="image/jpg, image/jpeg, image/png" multiple="multiple" style="display: none" onchange="readURL(this);">								
+				
 							<div id='image_preview'>
 								<div id='att_zone'
 									data-placeholder='파일을 첨부 하려면 파일 선택 버튼을 클릭하거나 파일을 드래그앤드롭 하세요'></div>
@@ -288,99 +386,134 @@
 
 </script>
 
-
-
-
 						</div>
 						<hr>
 					</div>
-					<div class="col-md-12 col-lg-6 col-xl-7" align="left">
-						<h4 class="form-label my-3">* 상품 명</h4>
-						<br>
-						<div class="form-item">
-							<input type="text" name="g_title" style="width: 600px"
-								class="border-0 border-bottom rounded me-5 py-3 mb-4"
-								placeholder="상품 명을 입력해주세요">
-						</div>
-					</div>
-					
-					
 
 					<div class="col-md-12 col-lg-6 col-xl-7" align="left">
-						<h4 class="form-label my-3">* 카테고리</h4>
-						<br>
-						<div class="form-item">
-							<div class="col-sm-8">
-								<select name="category" id="a4" class="form-control">
-									<option value="채소">채소</option>
-									<option value="과일">과일</option>
-									<option value="식품">식품</option>
-									<option value="생필품">생필품</option>
-								</select>
-							</div>
-							<hr>
-						</div>
-					</div>
-
-
-					<div class="col-md-12 col-lg-6 col-xl-7" align="left">
-						<h4 class="form-label my-3">* 참여인원</h4>
-						<br>
-						<div class="form-item">
-							<div class="col-sm-8">
-							
-								<button type="button" class="border-0 border-bottom rounded me-5 py-3 mb-4" style="width: 50px; font-size: 20px;" onclick="increase()">+</button>
-							
-								<b style="margin-right: 40px; font-size: 30px;" id="num" >2</b>
+    <h4 class="form-label my-3">옵션</h4>
+    <br> <input type="text" id="opTitle" name="c_opt1" style="width: 300px"
+        class="border-0 border-bottom rounded me-5 py-3 mb-4"
+        placeholder="ex)제주 감귤 10 kg"> 
+        
+       <!--  <input type="text" id="opPrice" name="optionPrice" style="width: 80px" 
+        placeholder="가격 입력" class="border-0 border-bottom rounded me-5 py-3 mb-4"
+        oninput=" this.value = this.value.replace(/[^0-9.]/g, '').replace(/(\..*)\./g, '$1');"
+        onkeyup="inputNumberFormat(this);" /> 
+        <span>원 </span> -->
+        
+        
+    <!-- button class="border-0 border-bottom rounded me-5 py-3 mb-4"
+        onclick="opAppend()" style="width: 100px; margin-left: 20px;"
+        type="button">옵션 추가</button>
 	
-								<button type="button" class="border-0 border-bottom rounded me-5 py-3 mb-4" style="width: 50px; font-size: 20px;" onclick="decrease()">-</button>
-							
-								<script >
-								
-								const join = document.getElementById('num');
-						        
-						        const increase =()=>{
-						            num.innerText= parseInt(join.innerText)+1
-						        }
-						        const decrease =()=>{
-						            if(parseInt(join.innerText)!=2){
-						                num.innerText= parseInt(join.innerText)-1
+<div class="form-item">
+        <div class="col-sm-8" id="option">-->
+        
+        <hr>
+    </div>
+
+<!--     </div>
+</div>  -->
+
+
+<!-- <script>
+
+    function opAppend(){
+        var opTitle = document.getElementById("opTitle");
+        var opPrice = document.getElementById("opPrice");
+        
+        console.log(opTitle.value,opPrice.value);
+
+        var p1 = document.createElement("p");
+        p1.innerHTML=`<p name='c_opt1' value='${opPrice.value}'>${opTitle.value}</p>`
+        option.appendChild(p1);
+    }
 						
-						            }
-						        }
-								</script>
-								<br>
-								<b style="margin-right: 40px; font-size: 15px;" >최소인원은 2명 입니다.</b>
-							</div>
-						</div>
-						<hr>
+						    
+						</script> --> 
 
 
-					</div>
 					<div class="col-md-12 col-lg-6 col-xl-7" align="left">
 						<h4 class="form-label my-3">* 상품설명</h4>
 						<br>
 						<div class="form-item">
-							<textarea name="g_content" rows="6" cols="80"
+							<textarea name="c_content" rows="6" cols="80"
 								style="border-radius: 5px" placeholder="상품 가격 및 거래방법 등 작성"></textarea>
 						</div>
 						<hr>
+						
+					</div>
+					
+					<!-- <div class="col-md-12 col-lg-6 col-xl-7" align="left">
+					<h4 class="form-label my-3">위치 설정</h4>
+					<input type="text" id="place" style="width: 300px"
+								class="border-0 border-bottom rounded me-5 py-3 mb-4"
+								placeholder="주소를 입력해주세요"> 
+					<button class="border-0 border-bottom rounded me-5 py-3 mb-4" onclick="search()">검색</button>
+					<div id="map" style="width:100%;height:350px;"></div>
+					</div>
 
-						<div class="col-md-12 col-lg-6 col-xl-7" align="right"
+<script type="text/javascript" src="//dapi.kakao.com/v2/maps/sdk.js?appkey=db0a7dd04d902c908bc5aaa345eaa55c&libraries=services"></script>
+<script>
+
+var myPlace = document.getElementById('place').value
+var mapContainer = document.getElementById('map'), // 지도를 표시할 div 
+    mapOption = {
+        center: new kakao.maps.LatLng(33.450701, 126.570667), // 지도의 중심좌표
+        level: 3 // 지도의 확대 레벨
+    };  
+
+// 지도를 생성합니다    
+var map = new kakao.maps.Map(mapContainer, mapOption); 
+
+// 주소-좌표 변환 객체를 생성합니다
+var geocoder = new kakao.maps.services.Geocoder();
+
+function search(){
+	geocoder.addressSearch('myPlace', function(result, status) {
+
+	    // 정상적으로 검색이 완료됐으면 
+	     if (status === kakao.maps.services.Status.OK) {
+
+	        var coords = new kakao.maps.LatLng(result[0].y, result[0].x);
+
+	        // 결과값으로 받은 위치를 마커로 표시합니다
+	        var marker = new kakao.maps.Marker({
+	            map: map,
+	            position: coords
+	        });
+
+	        // 인포윈도우로 장소에 대한 설명을 표시합니다
+	        var infowindow = new kakao.maps.InfoWindow({
+	            content: '<div style="width:150px;text-align:center;padding:6px 0;">픽업장소</div>'
+	        });
+	        infowindow.open(map, marker);
+
+	        // 지도의 중심을 결과값으로 받은 위치로 이동시킵니다
+	        map.setCenter(coords);
+	    } 
+	});
+}
+</script>  -->
+
+					<div class="col-md-12 col-lg-6 col-xl-7" align="right"
 							style="margin-left: 100px">
 							<input class="border-0 border-bottom rounded me-5 py-3 mb-4"
 								style="width: 100px" type="reset" value="초기화"> <input
 								class="border-0 border-bottom rounded me-5 py-3 mb-4"
 								style="width: 100px" type="submit" value="등록하기">
 						</div>
-
-					</div>
+					
+					
 				</div>
+				</form>
 		</div>
-	</div>
-	</form>
-	</div>
-	</div>
+		
+		</div>
+	
+	
+	
 
 	<!-- 메인 페이지 하단 -->
 	<div class="container-fluid bg-dark text-white-50 footer pt-5 mt-5">
@@ -393,7 +526,7 @@
 						<p>Email: Example@gmail.com</p>
 						<p>Phone: +0123 4567 8910</p>
 						<p>Payment Accepted</p>
-						<img src="img/payment.png" class="img-fluid" alt="">
+					<!-- <img src="img/payment.png" class="img-fluid" alt=""> -->
 					</div>
 				</div>
 			</div>
