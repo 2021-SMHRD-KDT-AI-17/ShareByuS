@@ -13,7 +13,11 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 
 import kr.smhrd.entity.approve;
+import kr.smhrd.entity.g_board;
 import kr.smhrd.entity.member;
+import kr.smhrd.entity.report;
+import kr.smhrd.mapper.C_BoardMapper;
+import kr.smhrd.mapper.G_BoardMapper;
 //import kr.smhrd.entity.Message;
 import kr.smhrd.mapper.MemberMapper;
 //import kr.smhrd.mapper.MessageMapper;
@@ -32,7 +36,7 @@ public class MemberController {
 	 // 회원가입하는 메소드 /memberInsert
 	@RequestMapping("/memberInsert")
 	public String memberInsert(member member, Model model) {
-		 // System.out.println(member.toString());
+		System.out.println(member.toString());
 		if(member.getType() == 1) {
 			memberMapper.approveInsert(member);
 		}else {
@@ -102,7 +106,24 @@ public class MemberController {
 		return "redirect:/goAdApprove";
 	}
 	
+	// 회원 관리 페이지로 이동, 모든 회원정보를 불러오는 메소드
+	@RequestMapping("/goAdMember")
+	public String goAdMember(Model model) {
+		List<member> adMember = memberMapper.goAdMember();
+		model.addAttribute("adMember", adMember);
+		return "AdMember";
+	}
 	
+	
+	// 신고회원 관리 페이지로 이동
+	@RequestMapping("/goAdReport")
+	public String goAdReport(Model model) {
+		List<report> adReport = memberMapper.goAdReport();
+		model.addAttribute("adReport", adReport);
+		return "AdReport";
+	}
+	
+		
 	// 회원정보 수정 메소드 /memberUpdate
 	@RequestMapping("/memberUpdate")
 	public String memberUpdate(member member, HttpSession session) {
@@ -118,6 +139,31 @@ public class MemberController {
 		memberMapper.updateNick(member);
 		session.setAttribute("loginMember", member);
 		return "myPage";
+	}
+	
+	
+	// 회원 탈퇴(관리자)
+	@RequestMapping("/deleteMember")
+	public String deleteMember(@RequestParam("email") String email, Model model) {
+		memberMapper.deleteMember(email);
+		
+		return "redirect:/goAdMember";
+	}
+	
+	// 회원 정지(관리자)
+	@RequestMapping("/susMember")
+	public String susMember(@RequestParam("email") String email) {
+		memberMapper.susMember(email);
+		
+		return "redirect:/goAdMember";
+	}
+	
+	// 회원 정지 해제(관리자)
+	@RequestMapping("/resMember")
+	public String resMember( @RequestParam("email") String email) {
+		memberMapper.resMember(email);
+		
+		return "redirect:/goAdMember";
 	}
 	
 	

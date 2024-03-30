@@ -5,6 +5,7 @@ import java.util.List;
 import org.apache.ibatis.annotations.Mapper;
 
 import kr.smhrd.entity.g_board;
+import kr.smhrd.entity.report;
 
 @Mapper
 public interface G_BoardMapper {
@@ -17,19 +18,22 @@ public interface G_BoardMapper {
 
 	public List<g_board> getGEmail(String email);
 
-
 	public g_board G_BoardContent(int g_num);
 
 	public List<g_board> getG_num(int g_num);
 	
 	public void gParticipate(int g_num);
 
+	public void deleteRep(String param1, int param2);
+
+	public void gBoardUp(int g_num);
+
 	public void deleteGBoard(int g_num);
 
 	public void gBoardUpdate(g_board g_board);
 	
+
 		
-	
 
 	
 	

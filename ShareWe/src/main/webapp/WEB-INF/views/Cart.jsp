@@ -109,29 +109,33 @@
 	<!-- Navbar End -->
 
 
-	<!-- Modal Search Start -->
-	<div class="modal fade" id="searchModal" tabindex="-1"
-		aria-labelledby="exampleModalLabel" aria-hidden="true">
-		<div class="modal-dialog modal-fullscreen">
+	<!-- Search Start -->
+   <div class="modal fade" id="searchModal" tabindex="-1"
+      aria-labelledby="exampleModalLabel" aria-hidden="true">
+      <div class="modal-dialog modal-fullscreen">
+
 			<div class="modal-content rounded-0">
 				<div class="modal-header">
-					<h5 class="modal-title" id="exampleModalLabel">Search by
-						keyword</h5>
+					<!-- <h5 class="modal-title" id="exampleModalLabel">Search by
+						keyword</h5> -->
 					<button type="button" class="btn-close" data-bs-dismiss="modal"
 						aria-label="Close"></button>
 				</div>
-				<div class="modal-body d-flex align-items-center">
-					<div class="input-group w-75 mx-auto d-flex">
-						<input type="search" class="form-control p-3"
-							placeholder="keywords" aria-describedby="search-icon-1">
-						<span id="search-icon-1" class="input-group-text p-3"><i
-							class="fa fa-search"></i></span>
+				<form action="goSearch">
+					<div class="modal-body d-flex align-items-center">
+						<div class="input-group w-75 mx-auto d-flex" 
+							style="height: 800px; padding-bottom: 100px; width:50% !important;  justify-content: center; align-items: center;">
+							<input type="text" class="form-control p-3" name="searchText" style="height: 58px;"
+								placeholder="검색어를 입력해주세요." aria-describedby="search-icon-1">
+							<input type="submit" value="검색" id="search-icon-1" style="border-top-right-radius: 10px; border-bottom-right-radius: 10px; height: 58px;"
+								class="btn btn-primary border-2 border-secondary py-3 px-4">
+						</div>
 					</div>
-				</div>
+				</form>
 			</div>
 		</div>
 	</div>
-	<!-- Modal Search End -->
+	<!-- Search End -->
 
 
 	<!-- Single Page Header start -->

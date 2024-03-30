@@ -6,7 +6,10 @@ import org.apache.ibatis.annotations.Mapper;
 import org.apache.ibatis.annotations.Select;
 
 import kr.smhrd.entity.approve;
+import kr.smhrd.entity.g_board;
 import kr.smhrd.entity.member;
+import kr.smhrd.entity.report;
+import lombok.NonNull;
 
 @Mapper
 public interface MemberMapper {
@@ -38,6 +41,20 @@ public interface MemberMapper {
 		// TODO Auto-generated method stub
 		
 	}
+
+	public List<report> goAdReport();
+
+	public List<member> goAdMember();
+
+	public void goOutMember(String email);
+
+	public void deleteMember(String email);
+
+	public void goupdateCnt(@NonNull String email);
+
+	public void susMember(String email);
+
+	public void resMember(String email);
 
 
 

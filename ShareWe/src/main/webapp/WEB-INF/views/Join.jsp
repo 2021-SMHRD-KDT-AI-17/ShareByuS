@@ -40,6 +40,11 @@
 <!-- Template Stylesheet -->
 <link href="resources/asset/css/sw_style.css" rel="stylesheet">
 
+<link rel='stylesheet' href='/stylesheets/style.css' />
+<!-- jquery -->
+<script type="text/javascript" src="/js/jquery-1.11.3.min.js"></script>
+<script src="/javascript/popup_2.js"></script>
+
 </head>
 
 
@@ -63,8 +68,9 @@
 					<small class="me-3"></small> <small class="me-3"></small>
 				</div>
 				<div class="top-link pe-2">
-					<a href="goMain" class="text-white"><small class="text-white mx-2">홈</small>|</a> 
-					<a href="goLogin" class="text-white"><small class="text-white mx-2">로그인</small></a>
+					<a href="goMain" class="text-white"><small
+						class="text-white mx-2">홈</small>|</a> <a href="goLogin"
+						class="text-white"><small class="text-white mx-2">로그인</small></a>
 				</div>
 			</div>
 		</div>
@@ -78,33 +84,34 @@
 				</button>
 				<div class="collapse navbar-collapse bg-white" id="navbarCollapse">
 					<div class="navbar-nav mx-auto">
-						<a href="goGeneral" class="nav-item nav-link" style="color: black">일반</a> 
-						<a href="goCompany" class="nav-item nav-link" style="color: black">기업</a> 
+						<a href="goGeneral" class="nav-item nav-link" style="color: black">일반</a>
+						<a href="goCompany" class="nav-item nav-link" style="color: black">기업</a>
 						<!-- <a href="shop-detail.html" class="nav-item nav-link">Shop Detail</a> -->
 						<div class="nav-item dropdown">
 							<a href="#" class="nav-link dropdown-toggle active"
-								data-bs-toggle="dropdown" >카테고리</a>
+								data-bs-toggle="dropdown">카테고리</a>
 							<div class="dropdown-menu m-0 bg-secondary rounded-0">
-								<a href="cart.html" class="dropdown-item">채소</a> 
-								<a href="chackout.html" class="dropdown-item">과일</a> 
-									<a href="testimonial.html" class="dropdown-item">생필품</a> 
-									<!--<a href="404.html" class="dropdown-item active">404 Page</a> -->
+								<a href="cart.html" class="dropdown-item">채소</a> <a
+									href="chackout.html" class="dropdown-item">과일</a> <a
+									href="testimonial.html" class="dropdown-item">생필품</a>
+								<!--<a href="404.html" class="dropdown-item active">404 Page</a> -->
 							</div>
 						</div>
-						<a href="contact.html" class="nav-item nav-link" style="color: black">Contact</a>
+						<a href="contact.html" class="nav-item nav-link"
+							style="color: black">Contact</a>
 					</div>
 					<div class="d-flex m-3 me-0">
-							<button
-								class="btn-search btn border border-secondary btn-md-square rounded-circle bg-white me-4"
-								data-bs-toggle="modal" data-bs-target="#searchModal">
-								<i class="fas fa-search text-primary"></i>
-							</button>
-							<a href="goCart" class="position-relative me-4 my-auto"> <i
-								class="fa fa-shopping-bag fa-2x"></i> <span
-								class="position-absolute bg-secondary rounded-circle d-flex align-items-center justify-content-center text-dark px-1"
-								style="top: -5px; left: 15px; height: 20px; min-width: 20px;">3</span>
-							</a> <a href="goMyPage" class="my-auto"> <i
-								class="fas fa-user fa-2x"></i></a>
+						<button
+							class="btn-search btn border border-secondary btn-md-square rounded-circle bg-white me-4"
+							data-bs-toggle="modal" data-bs-target="#searchModal">
+							<i class="fas fa-search text-primary"></i>
+						</button>
+						<a href="goCart" class="position-relative me-4 my-auto"> <i
+							class="fa fa-shopping-bag fa-2x"></i> <span
+							class="position-absolute bg-secondary rounded-circle d-flex align-items-center justify-content-center text-dark px-1"
+							style="top: -5px; left: 15px; height: 20px; min-width: 20px;">3</span>
+						</a> <a href="goMyPage" class="my-auto"> <i
+							class="fas fa-user fa-2x"></i></a>
 					</div>
 				</div>
 			</nav>
@@ -113,36 +120,40 @@
 	<!-- Navbar End -->
 
 
-	<!-- Modal Search Start -->
-	<div class="modal fade" id="searchModal" tabindex="-1"
-		aria-labelledby="exampleModalLabel" aria-hidden="true">
-		<div class="modal-dialog modal-fullscreen">
+	<!-- Search Start -->
+   <div class="modal fade" id="searchModal" tabindex="-1"
+      aria-labelledby="exampleModalLabel" aria-hidden="true">
+      <div class="modal-dialog modal-fullscreen">
+
 			<div class="modal-content rounded-0">
 				<div class="modal-header">
-					<h5 class="modal-title" id="exampleModalLabel">Search by
-						keyword</h5>
+					<!-- <h5 class="modal-title" id="exampleModalLabel">Search by
+						keyword</h5> -->
 					<button type="button" class="btn-close" data-bs-dismiss="modal"
 						aria-label="Close"></button>
 				</div>
-				<div class="modal-body d-flex align-items-center">
-					<div class="input-group w-75 mx-auto d-flex">
-						<input type="search" class="form-control p-3"
-							placeholder="keywords" aria-describedby="search-icon-1">
-						<span id="search-icon-1" class="input-group-text p-3"><i
-							class="fa fa-search"></i></span>
+				<form action="goSearch">
+					<div class="modal-body d-flex align-items-center">
+						<div class="input-group w-75 mx-auto d-flex" 
+							style="height: 800px; padding-bottom: 100px; width:50% !important;  justify-content: center; align-items: center;">
+							<input type="text" class="form-control p-3" name="searchText" style="height: 58px;"
+								placeholder="검색어를 입력해주세요." aria-describedby="search-icon-1">
+							<input type="submit" value="검색" id="search-icon-1" style="border-top-right-radius: 10px; border-bottom-right-radius: 10px; height: 58px;"
+								class="btn btn-primary border-2 border-secondary py-3 px-4">
+						</div>
 					</div>
-				</div>
+				</form>
 			</div>
 		</div>
 	</div>
-	<!-- Modal Search End -->
+	<!-- Search End -->
 
 
 	<!-- Single Page Header start -->
 	<div class="container-fluid page-header py-5">
 		<h1 class="text-center text-white display-6">회원가입</h1>
 		<ol class="breadcrumb justify-content-center mb-0">
-<!-- 			<li class="breadcrumb-item "><a href="goMain" style="color:white">Home</a></li> -->
+			<!-- 			<li class="breadcrumb-item "><a href="goMain" style="color:white">Home</a></li> -->
 			<li class="breadcrumb-item active text-white">Join</li>
 		</ol>
 	</div>
@@ -155,92 +166,91 @@
 			<form action="memberInsert" method="post">
 				<div class="row g-5 justify-content-center">
 					<div class="col-md-12 col-lg-6 col-xl-7">
-						
-						
- 						<c:if test="${type eq 'company'}">
+
+
+						<c:if test="${type eq 'company'}">
 							<div class="form-item">
 								<div class="form-item">
-									<input type="text" class="form-control" placeholder="기업회원" readonly >
-									<input type="hidden" value="1" name="type">
+									<input type="text" class="form-control" placeholder="기업회원"
+										readonly> <input type="hidden" value="1" name="type">
 								</div>
 							</div>
-						</c:if> 
+						</c:if>
 
 						<c:if test="${type eq 'general'}">
 							<div class="form-item">
 								<div class="form-item">
-									<input type="text" class="form-control" placeholder="일반회원" readonly >
-									<input type="hidden" value="2" name="type">
+									<input type="text" class="form-control" placeholder="일반회원"
+										readonly> <input type="hidden" value="2" name="type">
 								</div>
 							</div>
 						</c:if>
-						
+
 						<c:if test="${type eq 'kakao'}">
 							<div class="form-item">
 								<div class="form-item">
-									<input type="text" class="form-control" placeholder="카카오회원" readonly >
-									<input type="hidden" value="3" name="type">
+									<input type="text" class="form-control" placeholder="카카오회원"
+										readonly> <input type="hidden" value="3" name="type">
 								</div>
 							</div>
 						</c:if>
-						
+
 						<c:if test="${type eq 'company' || type eq 'general'}">
-						<div class="form-item">
-							<label class="form-label my-3">이메일<sup>*</sup></label> 
-							<br>
-							<div style="align-content: middle !important;">
-								<input type="text" class="form-control" placeholder="Ex) example@shareWe.com" name="email" id="inputEmail" 
-									style="width: 580px !important; display: inline !important;">
-								
-								<input type="button" value="Email 중복체크" onclick="checkEmail()" 
-									class="btn border-secondary py-2 px-2  text-primary"
-									style="width: 150px !important; height: 36px !important;  display: inline !important; padding:4px !important;">
-								<br>
-								<span id="resultCheck"></span>
-							</div>							
-						</div>
+							<div class="form-item">
+								<label class="form-label my-3">이메일<sup>*</sup></label> <br>
+								<div style="align-content: middle !important;">
+									<input type="text" class="form-control"
+										placeholder="Ex) example@shareWe.com" name="email"
+										id="inputEmail"
+										style="width: 580px !important; display: inline !important;">
+
+									<input type="button" value="Email 중복체크" onclick="checkEmail()"
+										class="btn border-secondary py-2 px-2  text-primary"
+										style="width: 150px !important; height: 36px !important; display: inline !important; padding: 4px !important;">
+									<br> <span id="resultCheck"></span>
+								</div>
+							</div>
 						</c:if>
-						
+
 						<c:if test="${type eq 'kakao'}">
-						<div class="form-item">
-							<label class="form-label my-3">이메일<sup>*</sup></label> 
-							<br>
-							<div style="align-content: middle !important;">
-								<% String kakoInfo = request.getParameter("kakaoInfo");
-								   String[] info = kakoInfo.split(",");
-								%>
-							
-								<input type="text" class="form-control" placeholder="카카오회원" name="email" id="inputEmail" 
-									value="<%=info[2] %>"
-									style="width: 580px !important; display: inline !important;">
-								
-								<input type="button" value="Email 중복체크" onclick="checkEmail()" 
-									class="btn border-secondary py-2 px-2  text-primary"
-									style="width: 150px !important; height: 36px !important;  display: inline !important; padding:4px !important;">
-								<br>
-								<span id="resultCheck"></span>
-							</div>							
-						</div>
+							<div class="form-item">
+								<label class="form-label my-3">이메일<sup>*</sup></label> <br>
+								<div style="align-content: middle !important;">
+									<%
+									String kakoInfo = request.getParameter("kakaoInfo");
+									String[] info = kakoInfo.split(",");
+									%>
+
+									<input type="text" class="form-control" placeholder="카카오회원"
+										name="email" id="inputEmail" value="<%=info[2]%>"
+										style="width: 580px !important; display: inline !important;">
+
+									<input type="button" value="Email 중복체크" onclick="checkEmail()"
+										class="btn border-secondary py-2 px-2  text-primary"
+										style="width: 150px !important; height: 36px !important; display: inline !important; padding: 4px !important;">
+									<br> <span id="resultCheck"></span>
+								</div>
+							</div>
 						</c:if>
-						
-						
+
+
 						<c:if test="${type eq 'company' || type eq 'general'}">
-						<div class="form-item">
-							<label class="form-label my-3">비밀번호<sup>*</sup></label> <input
-								type="password" class="form-control" name="pw">
-						</div>
-						<div class="form-item">
-							<label class="form-label my-3">비밀번호 확인<sup>*</sup></label> 
-							<input type="password" class="form-control">
-						</div>
+							<div class="form-item">
+								<label class="form-label my-3">비밀번호<sup>*</sup></label> <input
+									type="password" class="form-control" name="pw">
+							</div>
+							<div class="form-item">
+								<label class="form-label my-3">비밀번호 확인<sup>*</sup></label> <input
+									type="password" class="form-control">
+							</div>
 						</c:if>
-						
+
 						<div class="form-item">
 							<label class="form-label my-3">이름<sup>*</sup></label> <input
 								type="text" class="form-control" name="name">
 						</div>
-						
-						
+
+
 						<c:if test="${type eq 'company'}">
 							<div class="form-item">
 								<label class="form-label my-3">기업이름<sup>*</sup></label> <input
@@ -253,21 +263,89 @@
 								<label class="form-label my-3">닉네임<sup>*</sup></label> <input
 									type="text" class="form-control" name="nick">
 							</div>
-						</c:if>	
-						
+						</c:if>
+
 						<c:if test="${type eq 'kakao'}">
 							<div class="form-item">
-								<label class="form-label my-3">닉네임<sup>*</sup></label>
-								<input type="text" class="form-control" name="nick" value="${account_email}">
+								<label class="form-label my-3">닉네임<sup>*</sup></label> <input
+									type="text" class="form-control" name="nick"
+									value="${account_email}">
 							</div>
-						</c:if>	
-						
+						</c:if>
 					
+
 						<div class="form-item">
-							<label class="form-label my-3">도로명 주소 <sup>*</sup></label> <input
-								type="text" class="form-control"
-								placeholder="Ex) 광주광역시 동구 예술길 31-15" name="address">
+							<label class="form-label my-3">도로명 주소 <sup>*</sup></label>
+							<br>
+							<input type="text" id="sample6_postcode" placeholder="우편번호" class="form-control" style="width: 300px; display: inline !important;"">
+							<input type="button" onclick="sample6_execDaumPostcode()" 
+								value="우편번호 찾기"  class="btn border-secondary py-2 px-2  text-primary"
+								style="width: 150px !important; height: 36px !important; display: inline !important; padding: 4px !important;">
+							<br> <br> <input type="text" name="address"  
+								id="sample6_address" placeholder="주소" class="form-control"><br> <input
+								type="text" id="sample6_detailAddress" placeholder="상세주소" class="form-control"> <br>
+							<input type="text" id="sample6_extraAddress" placeholder="참고항목" class="form-control">
+
+
+
 						</div>
+						
+						<script type="text/javascript">
+							function sample6_execDaumPostcode() {
+								new daum.Postcode(
+										{
+											oncomplete : function(data) {
+												
+												var addr = ''; 
+												var extraAddr = ''; 
+
+											
+												if (data.userSelectedType === 'R') { 
+													addr = data.roadAddress;
+												} else { 
+													addr = data.jibunAddress;
+												}
+
+												
+												if (data.userSelectedType === 'R') {
+													if (data.bname !== ''
+															&& /[동|로|가]$/g
+																	.test(data.bname)) {
+														extraAddr += data.bname;
+													}
+													if (data.buildingName !== ''
+															&& data.apartment === 'Y') {
+														extraAddr += (extraAddr !== '' ? ', '
+																+ data.buildingName
+																: data.buildingName);
+													}
+													if (extraAddr !== '') {
+														extraAddr = ' ('
+																+ extraAddr
+																+ ')';
+													}
+													document
+															.getElementById("sample6_extraAddress").value = extraAddr;
+
+												} else {
+													document
+															.getElementById("sample6_extraAddress").value = '';
+												}
+
+												document
+														.getElementById('sample6_postcode').value = data.zonecode;
+												document
+														.getElementById("sample6_address").value = addr;
+												document
+														.getElementById(
+																"sample6_detailAddress")
+														.focus();
+											}
+										}).open();
+							}
+						</script>
+
+
 						<div class="form-item">
 							<label class="form-label my-3">전화번호<sup>*</sup></label> <input
 								type="tel" class="form-control" name="tel">
@@ -283,7 +361,8 @@
 
 						<div
 							class="row g-4 text-center align-items-center justify-content-center pt-4">
-							<input type="submit" value="회원가입" class="btn border-secondary py-3 px-4 text-uppercase w-50 text-primary" >
+							<input type="submit" value="회원가입"
+								class="btn border-secondary py-3 px-4 text-uppercase w-50 text-primary">
 						</div>
 					</div>
 				</div>
@@ -300,9 +379,9 @@
 				<div class="col-lg-3 col-md-6">
 					<div class="footer-item">
 						<h4 class="text-light mb-3">Contact</h4>
-							<p>Address: Gwangju, Republic of Korea</p>
-							<p>Email: ShareByuS@gmail.com</p>
-							<p>Do you want to share it with us?</p>
+						<p>Address: Gwangju, Republic of Korea</p>
+						<p>Email: ShareByuS@gmail.com</p>
+						<p>Do you want to share it with us?</p>
 						<img src="img/payment.png" class="img-fluid" alt="">
 					</div>
 				</div>
@@ -329,26 +408,27 @@
 
 	<!-- Template Javascript -->
 	<script src="resources/asset/js/main.js"></script>
-	
+
 	<!-- script -->
-	
+
 	<script type="text/javascript">
-		function checkEmail(){
+		function checkEmail() {
 			var inputEmail = $('#inputEmail').val();
 			console.log(inputEmail);
-			
-			$.ajax(
-			{
+
+			$.ajax({
 				url : 'emailCheck',
 				// 요청 데이터 형태 -> JSON
-				data : {'inputEmail' : inputEmail},
+				data : {
+					'inputEmail' : inputEmail
+				},
 				// 요청방식 
 				type : 'get',
-				
-				success : function(data){
-					if(data == 1) {
+
+				success : function(data) {
+					if (data == 1) {
 						$('#resultCheck').text('*사용가능한 이메일입니다.')
-					}else {
+					} else {
 						$('#resultCheck').text('*사용 불가능한 이메일입니다.')
 					}
 				},
@@ -356,16 +436,28 @@
 					alert("에러")
 				}
 			}
-			
+
 			)
-			
-			
+
 		}
 	</script>
-    		
-	
-</body>
 
+
+</body>
+							<script
+							src="//t1.daumcdn.net/mapjsapi/bundle/postcode/prod/postcode.v2.js">
+							</script>
+							<style>
+							.wrong_text {
+								font-size: 1rem;
+								color: #f44e38;
+								letter-spacing: -.2px;
+								font-weight: 300;
+								margin: 8px 0 2px;
+								line-height: 1em;
+								display: none
+							}
+							</style>
 
 
 </html>

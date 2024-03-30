@@ -3,11 +3,11 @@
 <mapper namespace="kr.smhrd.mapper.MemberMapper">
 
 	<insert id="memberInsert" parameterType="kr.smhrd.entity.member">
-		insert into member values (#{type}, #{email}, #{pw}, #{name}, #{nick}, #{address}, #{tel})
+		insert into member(type, email, pw, name, nick, address, tel) values (#{type}, #{email}, #{pw}, #{name}, #{nick}, #{address}, #{tel})
 	</insert>
 	
 	<insert id="approveMemInsert" parameterType="kr.smhrd.entity.approve">
-		insert into member values (#{type}, #{email}, #{pw}, #{name}, #{nick}, #{address}, #{tel})
+		insert into member(type, email, pw, name, nick, address, tel) values (#{type}, #{email}, #{pw}, #{name}, #{nick}, #{address}, #{tel})
 	</insert>
 
 	<select id="memberCheck" parameterType="kr.smhrd.entity.member" resultType="kr.smhrd.entity.member">
@@ -42,6 +42,28 @@
 		update member set nick=#{nick} where email=#{email}
 	</update>
 	
+	<select id="goAdReport" resultType="kr.smhrd.entity.report">
+		select * from report
+	</select>
+		
+	<select id="goAdMember" resultType="kr.smhrd.entity.member">
+		select * from member where type in (1,2,3,4,5,6) order by type ASC
+	</select>
 	
+	<update id="goupdateCnt" parameterType="String">
+		update member set rp_cnt = rp_cnt + 1 where email=#{email}
+	</update>
+	
+	<delete id="deleteMember" parameterType="String">
+		delete from member where email=#{email}
+	</delete>
+	
+	<update id="susMember" parameterType="String">
+		update member set type=type+3 where email=#{email}
+	</update>
+	
+	<update id="resMember" parameterType="String">
+		update member set type=type-3 where email=#{email}
+	</update>
 	
 </mapper>

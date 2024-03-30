@@ -1,3 +1,4 @@
+<%@page import="kr.smhrd.entity.member"%>
 <%@page import="org.apache.ibatis.reflection.SystemMetaObject"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
@@ -43,7 +44,10 @@
 </head>
 
 <body>
-
+	
+	<%
+		member loginMember = (member)session.getAttribute("loginMember");
+	%>
 
 	<!-- Spinner Start -->
 	<div id="spinner"
@@ -61,79 +65,99 @@
 					<small class="me-3"></small> <small class="me-3"></small>
 				</div>
 				<div class="top-link pe-2">
-					<a href="goMain" class="text-white"><small class="text-white mx-2">홈</small>|</a> 
-					<a href="goLogin" class="text-white"><small class="text-white mx-2">로그인</small></a>
+					<%if (loginMember == null) {%>
+							<a href="goLogin" class="text-white"><small class="text-white mx-2">로그인</small>/</a>
+							<a href="goMemberType" class="text-white"><small class="text-white mx-2">회원가입</small></a>
+						<%}else {%>
+							<span><small class="text-white mx-2"><%=loginMember.getNick() %>님 환영합니다.</small></span>
+							<%if(loginMember.getEmail().equals("admin")) {%>
+								<a href="#" class="text-white"><small class="text-white ms-2">회원관리</small></a>
+							<%} %>
+							<a href="memberLogout" class="text-white"><small class="text-white mx-2">로그아웃</small></a>
+						<%} %>
 				</div>
 			</div>
 		</div>
 		<div class="container px-0">
-			<nav class="navbar navbar-light bg-white navbar-expand-xl">
-				<a href="goMain" class="navbar-brand"><h1
-						class="text-primary display-6">Share We?</h1></a>
-				<button class="navbar-toggler py-2 px-3" type="button"
-					data-bs-toggle="collapse" data-bs-target="#navbarCollapse">
-					<span class="fa fa-bars text-primary"></span>
-				</button>
-				<div class="collapse navbar-collapse bg-white" id="navbarCollapse">
-					<div class="navbar-nav mx-auto">
-						<a href="goGeneral" class="nav-item nav-link" style="color: black">일반</a> 
-						<a href="goCompany" class="nav-item nav-link" style="color: black">기업</a> 
-						<!-- <a href="shop-detail.html" class="nav-item nav-link">Shop Detail</a> -->
-						<div class="nav-item dropdown">
-							<a href="#" class="nav-link dropdown-toggle active"
-								data-bs-toggle="dropdown" >카테고리</a>
-							<div class="dropdown-menu m-0 bg-secondary rounded-0">
-								<a href="cart.html" class="dropdown-item">채소</a> 
-								<a href="chackout.html" class="dropdown-item">과일</a> 
-									<a href="testimonial.html" class="dropdown-item">생필품</a> 
-									<!--<a href="404.html" class="dropdown-item active">404 Page</a> -->
-							</div>
-						</div>
-						<a href="contact.html" class="nav-item nav-link" style="color: black">Contact</a>
-					</div>
-					<div class="d-flex m-3 me-0">
-							<button
-								class="btn-search btn border border-secondary btn-md-square rounded-circle bg-white me-4"
-								data-bs-toggle="modal" data-bs-target="#searchModal">
-								<i class="fas fa-search text-primary"></i>
-							</button>
-							<a href="goCart" class="position-relative me-4 my-auto"> <i
-								class="fa fa-shopping-bag fa-2x"></i> <span
-								class="position-absolute bg-secondary rounded-circle d-flex align-items-center justify-content-center text-dark px-1"
-								style="top: -5px; left: 15px; height: 20px; min-width: 20px;">3</span>
-							</a> <a href="goMyPage" class="my-auto"> <i
-								class="fas fa-user fa-2x"></i></a>
-					</div>
-				</div>
-			</nav>
-		</div>
-	</div>
+         <nav class="navbar navbar-light bg-white navbar-expand-xl">
+            <a href="goMain" class="navbar-brand"><h1
+                  class="text-primary display-6" style="color: #009223 !important;">Share
+                  We?</h1></a>
+            <button class="navbar-toggler py-2 px-3" type="button"
+               data-bs-toggle="collapse" data-bs-target="#navbarCollapse">
+               <span class="fa fa-bars text-primary"></span>
+            </button>
+            <div class="collapse navbar-collapse bg-white" id="navbarCollapse">
+               <div class="navbar-nav mx-auto">
+                  <a href="goGeneral" class="nav-item nav-link active">Share</a> <a
+                     href="goCompany" class="nav-item nav-link">Shop</a>
+
+                  <!-- 기업회원일때만 나오게 
+                           <c:if test="${type eq 'company'}">
+                              <a href="gocBoard" class="nav-item nav-link">상품등록</a>
+                           </c:if>-->
+
+                  <div class="nav-item dropdown">
+                     <a href="#" class="nav-link dropdown-toggle"
+                        data-bs-toggle="dropdown">Category</a>
+
+                     <!-- 카테고리별 페이지 이동 -->
+                     <div class="dropdown-menu m-0 bg-secondary rounded-0">
+                        <a href="cart.html" class="dropdown-item">식품</a> <a
+                           href="chackout.html" class="dropdown-item">과일</a> <a
+                           href="testimonial.html" class="dropdown-item">생필품</a>
+                     </div>
+                  </div>
+                  <a href="contact.html" class="nav-item nav-link">Contact</a>
+               </div>
+               <div class="d-flex m-3 me-0">
+                  <button
+                     class="btn-search btn border border-secondary btn-md-square rounded-circle bg-white me-4"
+                     style="border-color: #009223 !important" data-bs-toggle="modal"
+                     data-bs-target="#searchModal">
+                     <i class="fas fa-search text-primary"></i>
+                  </button>
+                  <a href="goCart" class="position-relative me-4 my-auto"> <i
+                     class="fa fa-shopping-bag fa-2x"></i> <span
+                     class="position-absolute bg-secondary rounded-circle d-flex align-items-center justify-content-center text-dark px-1"
+                     style="top: -5px; left: 15px; height: 20px; min-width: 20px;">3</span>
+                  </a> <a href="goMyPage" class="my-auto"> <i
+                     class="fas fa-user fa-2x"></i></a>
+               </div>
+            </div>
+         </nav>
+      </div>
+   </div>
 	<!-- Navbar End -->
 
 
-	<!-- Modal Search Start -->
-	<div class="modal fade" id="searchModal" tabindex="-1"
-		aria-labelledby="exampleModalLabel" aria-hidden="true">
-		<div class="modal-dialog modal-fullscreen">
+	<!-- Search Start -->
+   <div class="modal fade" id="searchModal" tabindex="-1"
+      aria-labelledby="exampleModalLabel" aria-hidden="true">
+      <div class="modal-dialog modal-fullscreen">
+
 			<div class="modal-content rounded-0">
 				<div class="modal-header">
-					<h5 class="modal-title" id="exampleModalLabel">Search by
-						keyword</h5>
+					<!-- <h5 class="modal-title" id="exampleModalLabel">Search by
+						keyword</h5> -->
 					<button type="button" class="btn-close" data-bs-dismiss="modal"
 						aria-label="Close"></button>
 				</div>
-				<div class="modal-body d-flex align-items-center">
-					<div class="input-group w-75 mx-auto d-flex">
-						<input type="search" class="form-control p-3"
-							placeholder="keywords" aria-describedby="search-icon-1">
-						<span id="search-icon-1" class="input-group-text p-3"><i
-							class="fa fa-search"></i></span>
+				<form action="goSearch">
+					<div class="modal-body d-flex align-items-center">
+						<div class="input-group w-75 mx-auto d-flex" 
+							style="height: 800px; padding-bottom: 100px; width:50% !important;  justify-content: center; align-items: center;">
+							<input type="text" class="form-control p-3" name="searchText" style="height: 58px;"
+								placeholder="검색어를 입력해주세요." aria-describedby="search-icon-1">
+							<input type="submit" value="검색" id="search-icon-1" style="border-top-right-radius: 10px; border-bottom-right-radius: 10px; height: 58px;"
+								class="btn btn-primary border-2 border-secondary py-3 px-4">
+						</div>
 					</div>
-				</div>
+				</form>
 			</div>
 		</div>
 	</div>
-	<!-- Modal Search End -->
+	<!-- Search End -->
 
 
 	<!-- Single Page Header start -->
@@ -154,13 +178,6 @@
 			<%}%>
 			
 			
-			
-		
-		
-	
-	
-		
-	
 	<!-- Single Page Header End -->
 
 

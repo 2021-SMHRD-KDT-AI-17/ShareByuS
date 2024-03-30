@@ -34,4 +34,6 @@ public class member{
     // 전화번호 
     private String tel;
 	
+    // 신고 누적 횟수
+    private int rp_cnt;
 }

@@ -149,25 +149,28 @@
       aria-labelledby="exampleModalLabel" aria-hidden="true">
       <div class="modal-dialog modal-fullscreen">
 
-         <div class="modal-content rounded-0">
-            <div class="modal-header">
-               <h5 class="modal-title" id="exampleModalLabel">Search by
-                  keyword</h5>
-               <button type="button" class="btn-close" data-bs-dismiss="modal"
-                  aria-label="Close"></button>
-            </div>
-            <div class="modal-body d-flex align-items-center">
-               <div class="input-group w-75 mx-auto d-flex">
-                  <input type="search" class="form-control p-3"
-                     placeholder="keywords" aria-describedby="search-icon-1">
-                  <span id="search-icon-1" class="input-group-text p-3"><i
-                     class="fa fa-search"></i></span>
-               </div>
-            </div>
-         </div>
-      </div>
-   </div>
-   <!-- Modal Search End -->
+			<div class="modal-content rounded-0">
+				<div class="modal-header">
+					<!-- <h5 class="modal-title" id="exampleModalLabel">Search by
+						keyword</h5> -->
+					<button type="button" class="btn-close" data-bs-dismiss="modal"
+						aria-label="Close"></button>
+				</div>
+				<form action="goSearch">
+					<div class="modal-body d-flex align-items-center">
+						<div class="input-group w-75 mx-auto d-flex" 
+							style="height: 800px; padding-bottom: 100px; width:50% !important;  justify-content: center; align-items: center;">
+							<input type="text" class="form-control p-3" name="searchText" style="height: 58px;"
+								placeholder="검색어를 입력해주세요." aria-describedby="search-icon-1">
+							<input type="submit" value="검색" id="search-icon-1" style="border-top-right-radius: 10px; border-bottom-right-radius: 10px; height: 58px;"
+								class="btn btn-primary border-2 border-secondary py-3 px-4">
+						</div>
+					</div>
+				</form>
+			</div>
+		</div>
+	</div>
+	<!-- Search End -->
 
 
    <!-- 메인 이미지 슬라이드 div Start -->
@@ -180,59 +183,60 @@
                <h1 class="mb-5 display-3 text-primary">Organic Veggies &
                   Fruits Foods</h1>
 
-               <!-- 신고 임시 버튼 -->
-               <a href="goReport"><button>신고하기</button></a>
-               <!-- 신고 임시 버튼 -->
+			   <!-- 리뷰작성 임시 버튼 -->
+				
+			   <!-- 리뷰작성 임시 버튼 -->
+
 
                <!-- 채팅 임시 버튼 -->
                <a href="goChat"><button>채팅</button></a>
                <!-- 채팅 임시 버튼 -->
 
-               <div class="position-relative mx-auto">
-                  <form action="search">
-                     <input
-                        class="form-control border-2 border-secondary w-75 py-3 px-4 rounded-pill"
-                        type="text" placeholder="Search" name="searchText"
-                        style="border-color: #009223 !important"> <input
-                        type="submit" value="검색"
-                        class="btn btn-primary border-2 border-secondary py-3 px-4 position-absolute rounded-pill text-white h-100"
-                        style="top: 0; right: 25%; border-color: #009223 !important;"></input>
-                  </form>
-               </div>
-            </div>
-            <div class="col-md-12 col-lg-5">
-               <div id="carouselId" class="carousel slide position-relative"
-                  data-bs-ride="carousel">
-                  <div class="carousel-inner" role="listbox">
-                     <div class="carousel-item active rounded">
-                        <img src="resources/img/hero-img-1.png"
-                           class="img-fluid w-100 h-100 bg-secondary rounded"
-                           alt="First slide"> <a href="#"
-                           class="btn px-4 py-2 text-white rounded">슬라이드 사진1</a>
-                     </div>
-                     <div class="carousel-item rounded">
-                        <img src="resources/img/hero-img-2.jpg"
-                           class="img-fluid w-100 h-100 rounded" alt="Second slide">
-                        <a href="#" class="btn px-4 py-2 text-white rounded">슬라이드
-                           사진2</a>
-                     </div>
-                  </div>
-                  <button class="carousel-control-prev" type="button"
-                     data-bs-target="#carouselId" data-bs-slide="prev">
-                     <span class="carousel-control-prev-icon" aria-hidden="true"></span>
-                     <span class="visually-hidden">Previous</span>
-                  </button>
-                  <button class="carousel-control-next" type="button"
-                     data-bs-target="#carouselId" data-bs-slide="next">
-                     <span class="carousel-control-next-icon" aria-hidden="true"></span>
-                     <span class="visually-hidden">Next</span>
-                  </button>
-               </div>
-            </div>
-         </div>
-      </div>
-   </div>
-   <!-- 메인 이미지 슬라이드 div End -->
+					<div class="position-relative mx-auto">
+						<form action="goSearch">
+							<input
+								class="form-control border-2 border-secondary w-75 py-3 px-4 rounded-pill"
+								type="text" placeholder="Search" name="searchText"
+								style="border-color: #009223 !important"> <input
+								type="submit" value="검색"
+								class="btn btn-primary border-2 border-secondary py-3 px-4 position-absolute rounded-pill text-white h-100"
+								style="top: 0; right: 25%; border-color: #009223 !important;"></input>
+						</form>
+					</div>
+				</div>
+				<div class="col-md-12 col-lg-5">
+					<div id="carouselId" class="carousel slide position-relative"
+						data-bs-ride="carousel">
+						<div class="carousel-inner" role="listbox">
+							<div class="carousel-item active rounded">
+								<img src="resources/img/hero-img-1.png"
+									class="img-fluid w-100 h-100 bg-secondary rounded"
+									alt="First slide"> <a href="#"
+									class="btn px-4 py-2 text-white rounded">슬라이드 사진1</a>
+							</div>
+							<div class="carousel-item rounded">
+								<img src="resources/img/hero-img-2.jpg"
+									class="img-fluid w-100 h-100 rounded" alt="Second slide">
+								<a href="#" class="btn px-4 py-2 text-white rounded">슬라이드
+									사진2</a>
+							</div>
+						</div>
+						<button class="carousel-control-prev" type="button"
+							data-bs-target="#carouselId" data-bs-slide="prev">
+							<span class="carousel-control-prev-icon" aria-hidden="true"></span>
+							<span class="visually-hidden">Previous</span>
+						</button>
+						<button class="carousel-control-next" type="button"
+							data-bs-target="#carouselId" data-bs-slide="next">
+							<span class="carousel-control-next-icon" aria-hidden="true"></span>
+							<span class="visually-hidden">Next</span>
+						</button>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+	<!-- 메인 이미지 슬라이드 div End -->
 
    <!-- Share We 장점 Start 
       <div class="container-fluid featurs py-5">

@@ -137,8 +137,23 @@
         <div class="container-fluid py-5">
             <div class="container py-5">
                 <div class="row g-4 justify-content-center">
-	
+				
 					<div class="col-md-6 col-lg-3">
+						<a href="goAdMember">
+							<div class="featurs-item text-center rounded bg-light p-4">
+								<div
+									class="featurs-content">
+									<i class="bi bi-person-circle"></i>
+								</div>
+								<div class="featurs-content text-center">
+									<p class="mb-0">회원 관리</p>
+								</div>
+							</div>
+						</a>
+					</div>
+					
+				
+					<!-- <div class="col-md-6 col-lg-3">
 						<a href="goAdReport">
 							<div class="featurs-item text-center rounded bg-light p-4">
 								<div
@@ -150,7 +165,8 @@
 								</div>
 							</div>
 						</a>
-					</div>
+					</div> -->
+				
 					<div class="col-md-6 col-lg-3">
 						<a href="goAdApprove">
 							<div class="featurs-item text-center rounded bg-light p-4">
@@ -167,7 +183,7 @@
 				</div>
             </div>
         </div>
-        <!-- 회원가입 유형 End -->
+        <!-- 관리페이지 유형 선택 End -->
 
 
 		<!-- 메인 페이지 하단 -->
