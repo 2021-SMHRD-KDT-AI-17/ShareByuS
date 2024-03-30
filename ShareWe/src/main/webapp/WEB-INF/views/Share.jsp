@@ -297,7 +297,7 @@
 	                                             삭제 </a>
 	                                      </c:when>
 	                                      <c:otherwise>
-	                                       	<a href="#" style="float: right;"
+	                                       	<a href="checkFavorite" style="float: right;"
 	                                             class="btn border border-secondary rounded-pill px-3 text-primary">
 	                                             ❤ 찜 </a>
 	                                      </c:otherwise> 
@@ -358,6 +358,31 @@
 	<!-- Template Javascript -->
 	<script src="resources/asset/js/main.js"></script>
 	
+	<script type="text/javascript">
+	function checkFavorite(){
+		var g_num=${g_board.g_num};
+		console.log(g_num);
+				
+				$.ajax(
+				{
+					url : "checkFavorite",
+					data : {'g_num' : g_num},
+					type :'get',
+					success : function(data){
+						if(data==1){
+							
+								$("#zzim").text('♥ 찜 완료')
+						}else{
+							$("#zzim").text('이미 찜한 상품 입니다')	
+						}
+					},
+					error : function(){
+						alert("통신실패")
+					}
+				}
+			)
+		}
+	</script>
 <!-- 	<!-- 카테고리:채소 비동기 --
 	<script type="text/javascript">
 		function getVege(){

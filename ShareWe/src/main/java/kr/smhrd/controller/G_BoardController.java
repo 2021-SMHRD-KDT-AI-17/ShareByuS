@@ -48,6 +48,8 @@ public class G_BoardController {
 	public String goGeneral(Model model) {
 		List<g_board> gboard_list = g_boardMapper.getGBoard();
 		model.addAttribute("gboard_list", gboard_list);
+		
+		
 		return "Share";
 	}
 	
