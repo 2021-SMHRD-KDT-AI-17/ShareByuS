@@ -149,6 +149,7 @@
 							
 															
 							<tr style="font-size:20px; background-color: #bdc3c7; ">
+								<th>No.</th>
 								<th>회원 유형</th>
 								<th>이메일</th>
 								<th>닉네임</th>
@@ -159,7 +160,18 @@
 							 <c:forEach var="m" items="${adMember}">
 							 		<%index++;%>
 										<tr>
-											<td>${m.type}</td>
+											<td><%=index %></td>
+											<c:choose>
+												<c:when test="${m.type == 1}">
+													<td>기업회원</td>
+												</c:when>
+												<c:when test="${m.type == 2 || m.type == 3 }">
+													<td>일반회원</td>
+												</c:when>
+												<c:otherwise>
+													<td>정지회원</td>
+												</c:otherwise>
+											</c:choose>										
 											<td>${m.email}</td>
 											<td>${m.nick}</td>
 											<c:choose>
@@ -171,8 +183,8 @@
 												</c:otherwise>
 											</c:choose>
 											<td><a href="deleteMember?email=${m.email}"><button>탈퇴</button></a>
-											<a href="susMember?type=${m.type}"><button>정지</button></a>
-											<a href="resMember?type=${m.type}"><button>해제</button></a></td>
+											<a href="susMember?email=${m.email}"><button>정지</button></a>
+											<a href="resMember?email=${m.email}"><button>해제</button></a></td>
 										</tr>
 						</div>
 							 

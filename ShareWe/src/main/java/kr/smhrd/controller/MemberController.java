@@ -152,16 +152,16 @@ public class MemberController {
 	
 	// 회원 정지(관리자)
 	@RequestMapping("/susMember")
-	public String susMember(@RequestParam("type") int type) {
-		memberMapper.susMember(type);
+	public String susMember(@RequestParam("email") String email) {
+		memberMapper.susMember(email);
 		
 		return "redirect:/goAdMember";
 	}
 	
 	// 회원 정지 해제(관리자)
 	@RequestMapping("/resMember")
-	public String resMember(@RequestParam("type") int type) {
-		memberMapper.resMember(type);
+	public String resMember( @RequestParam("email") String email) {
+		memberMapper.resMember(email);
 		
 		return "redirect:/goAdMember";
 	}
