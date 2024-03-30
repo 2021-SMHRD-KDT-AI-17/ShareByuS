@@ -126,6 +126,20 @@
 	padding-bottom: 20px;
 	padding-left: 20px;
 }
+
+.detailMenu{width: 100%;max-width: 100px;}
+.detailMenu ul{list-style: none;z-index: 2;}
+.detailMenu a{color:#000;text-decoration: none;}
+.detailMenu > ul{display: flex;width: 100%;justify-content: space-between;padding:10px;}
+.detailMenu > ul > li{position: relative; width: 100%}
+.detailMenu > ul > li > a{font-size: 20px;font-weight: bold;padding:10px 0;}
+.detailMenu > ul > li > a:hover{color:#999;}
+.detailMenu > ul > li > ul{ padding: 0; display: none; position: absolute; left:50%; transform: translateX(-50%);border:1px solid #ddd;border-radius: 6px;background: #fff;}
+.detailMenu > ul > li > ul > li{width: 140px !important; text-align: center;}
+.detailMenu > ul > li:hover ul{display:block; margin-top: 30px;}
+.detailMenu > ul > li  li a{display: block; padding:10px 15px;}
+.detailMenu > ul > li  li a:hover{background:#eee;}
+.detailMenu > ul > li > li + li{margin-top:5px;}
 </style>
 
 
@@ -341,6 +355,41 @@
 			<div class="row g-4 justify-content-center">
 				<div class="boardContent">
 					<button onclick="checkCFavorite()" id="zzim" style="width: 10%;" type="button" class="btn btn-outline-success">❤ 찜</button>
+					
+					<c:choose >
+						<c:when test="${loginMember.email eq c_board.email}">
+							<nav class="detailMenu" style="float: right;">
+								<ul>
+									<li><a href="#"> <strong style="float: right;">⁝</strong>
+									</a>
+										<ul>
+											<li><a href="#">펀딩 마감</a></li>
+											<li><a href="goCUpdate?c_num=${c_board.c_num}">게시글 수정</a></li>
+											<li><a href="deleteCBoard?c_num=${c_board.c_num}">게시글 삭제</a></li>
+										</ul></li>
+								</ul>
+							</nav>
+						</c:when>
+						<c:when test="${not empty loginMember }">
+							<nav class="detailMenu" style="float: right;">
+								<ul>
+									<li><a href="#"> <strong style="float: right;">⁝</strong>
+									</a>
+										<ul>
+											<li><a href="#">게시물 신고</a></li>
+										</ul></li>
+								</ul>
+							</nav>
+						</c:when>
+						<c:when test="${ empty loginMember}">
+							<nav class="detailMenu" style="float: right;">
+								<ul>
+									<li><a href="#"> <strong style="float: right;"></strong></a>
+								</ul>
+							</nav>
+						</c:when>
+					</c:choose>
+					
 					<button style="width: 20%; margin-left: 20px" type="button" class="btn btn-outline-success">참여하기</button><br>
 				</div>
 				<div class="boardContent">
