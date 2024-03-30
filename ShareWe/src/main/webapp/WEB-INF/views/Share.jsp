@@ -179,28 +179,33 @@
 	<!-- Navbar End -->
 
 
-	<!-- Modal Search Start -->
-	<div class="modal fade" id="searchModal" tabindex="-1"
-		aria-labelledby="exampleModalLabel" aria-hidden="true">
-		<div class="modal-dialog modal-fullscreen">
+	<!-- Search Start -->
+   <div class="modal fade" id="searchModal" tabindex="-1"
+      aria-labelledby="exampleModalLabel" aria-hidden="true">
+      <div class="modal-dialog modal-fullscreen">
+
 			<div class="modal-content rounded-0">
 				<div class="modal-header">
-					<h5 class="modal-title" id="exampleModalLabel">검색어를 입력하세요</h5>
+					<!-- <h5 class="modal-title" id="exampleModalLabel">Search by
+						keyword</h5> -->
 					<button type="button" class="btn-close" data-bs-dismiss="modal"
 						aria-label="Close"></button>
 				</div>
-				<div class="modal-body d-flex align-items-center">
-					<div class="input-group w-75 mx-auto d-flex">
-						<input type="search" class="form-control p-3"
-							placeholder="keywords" aria-describedby="search-icon-1">
-						<span id="search-icon-1" class="input-group-text p-3"><i
-							class="fa fa-search"></i></span>
+				<form action="goSearch">
+					<div class="modal-body d-flex align-items-center">
+						<div class="input-group w-75 mx-auto d-flex" 
+							style="height: 800px; padding-bottom: 100px; width:50% !important;  justify-content: center; align-items: center;">
+							<input type="text" class="form-control p-3" name="searchText" style="height: 58px;"
+								placeholder="검색어를 입력해주세요." aria-describedby="search-icon-1">
+							<input type="submit" value="검색" id="search-icon-1" style="border-top-right-radius: 10px; border-bottom-right-radius: 10px; height: 58px;"
+								class="btn btn-primary border-2 border-secondary py-3 px-4">
+						</div>
 					</div>
-				</div>
+				</form>
 			</div>
 		</div>
 	</div>
-	<!-- Modal Search End -->
+	<!-- Search End -->
 
 
 	<!-- Modal Search Start 
@@ -240,7 +245,16 @@
 
 
 	<!-- food section -->
-
+	
+	<c:if test="${loginMember.type == 2 || loginMember.type == 3}">
+			<div class="row g-4 justify-content-center" id="categoryBox">
+	         	<div class="row g-4 justify-content-center">
+	           		 <button class="col-xl-1" id="write" type="button"
+               			onclick="location.href='gogBoard'">게시물작성</button>
+         		</div>
+     	 	</div>
+	</c:if>
+	
 	<div class="row g-4 justify-content-center" id="categoryBox">
 			<!-- <div class="row g-4 justify-content-center text-center" style="margin-left: 850px">
 			<div class="col-xl-2">
@@ -308,11 +322,7 @@
                         </c:forEach>
                      </div>
 		</div>
-		<c:if test="${loginMember.type == 2 || loginMember.type == 3}">
-			<div class="row g-4 justify-content-center">
-				<button class="col-xl-1" id="write" type="button" onclick="location.href='gogBoard'">게시물작성</button>
-			</div>
-		</c:if>
+		
 	</div>
 	<!-- end food section -->
 

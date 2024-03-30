@@ -27,5 +27,9 @@
 	<update id="gParticipate" parameterType="int">
 		update g_board set g_p_count=g_p_count+1 where g_num=#{g_num}
 	</update>
-
+	
+	<update id="gBoardUp" parameterType="int">
+		update g_board set g_w_date=NOW() where g_num=#{g_num}
+	</update>
+	
 </mapper>

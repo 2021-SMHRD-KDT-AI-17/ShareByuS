@@ -112,7 +112,6 @@ public class G_BoardController {
 	
 		model.addAttribute("g_board", g_board);
 		 
-//			g_boardMapper.G_BoardCount(g_num); // num값에 해당하는 게시물 조회수 1증가
 		return "gBoardDetail";
 	}
 	
@@ -121,6 +120,21 @@ public class G_BoardController {
 	public String gParticipate(@RequestParam("g_num") int g_num) {
 		g_boardMapper.gParticipate(g_num);
 		
+		return "redirect:/goGeneral";
+	}	
+	
+	@RequestMapping("/goBoardUp")
+	public String goBoardUp(@RequestParam("g_num") int g_num, @RequestParam("g_img1") String g_img1, @RequestParam("g_content") String g_content, Model model) {
+		model.addAttribute("g_num", g_num);
+		model.addAttribute("g_content", g_content);
+		model.addAttribute("g_img1", g_img1);
+		
+		return "BoardUp";
+	}
+	
+	@RequestMapping("/gBoardUp")
+	public String gBoardUp(@RequestParam("g_num") int g_num, Model model) {
+		g_boardMapper.gBoardUp(g_num);
 		
 		return "redirect:/goGeneral";
 	}	

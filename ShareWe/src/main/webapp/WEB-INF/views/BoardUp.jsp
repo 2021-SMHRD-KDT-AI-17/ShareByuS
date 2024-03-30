@@ -126,7 +126,6 @@
    padding-bottom: 20px;
    padding-left: 20px;
 }
-
 </style>
 
 
@@ -299,84 +298,29 @@
 
 
       <!-- 게시글 상세 -->
-
-      <div class="row g-4 justify-content-center" id="categoryBox">
-         <div class="row g-4 justify-content-center">
-            <button class="col-xl-1" id="write" type="button"
-               onclick="location.href='gogBoard'">게시물작성</button>
-         </div>
-      </div>
       
       <div class="row g-4 justify-content-center hero-header" style="margin-left: 28%; margin-right: 28%; ">
-            <script
-            src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js"
-            integrity="sha384-ka7Sk0Gln4gmtz2MlQnikT1wXgYsOg+OMhuP+IlRH9sENBO0LRn5q+8nbTov4+1p"
-            crossorigin="anonymous"></script>
-
-         <div id="carouselExampleControls" class="carousel slide"
-            data-bs-ride="carousel" style="position: relative;" align="center">
-            <div class="carousel-inner" style="position: absoulte;" >
-               <div class="carousel-item active">
-                  <img class="d-block" style="object-fit: cover !important; height: 450px;"
-                     src="resources/g_Image/${g_board.g_img1}" alt="..." />
-               </div>
-               <div class="carousel-item">
-                  <img class="d-block" style="object-fit: cover !important; height: 450px;"
-                     src="https://source.unsplash.com/collection/190727/1600x900"
-                     alt="..." />
-               </div>
-               <div class="carousel-item" >
-                  <img class="d-block" style="object-fit: cover !important; height: 450px;"
-                     src="https://source.unsplash.com/WLUHO9A_xik/1600x900" alt="..." />
-               </div>
+         <div class="boardContent">
+         	<img style="object-fit: cover !important; height: 200px;"
+                     src="resources/g_Image/${g_img1}" />
+            <div class="row g-4 justify-content-center" style="display: inline; margin-left: 30px;">
+            	<span>${g_content}</span>
             </div>
-            <button class="carousel-control-prev" type="button"
-               data-bs-target="#carouselExampleControls" data-bs-slide="prev">
-               <span class="carousel-control-prev-icon" aria-hidden="true" style="background-color: grey"></span>
-               <span class="visually-hidden">Previous</span>
-            </button>
-            <button class="carousel-control-next" type="button"
-               data-bs-target="#carouselExampleControls" data-bs-slide="next">
-               <span class="carousel-control-next-icon" aria-hidden="true" style="background-color: grey"></span>
-               <span class="visually-hidden">Next</span>
-            </button>
-         </div>   
-               
-            
-            <div class="row g-4 justify-content-center" style="display: block;">
-               <div class="boardContent">
-                  <button style="width: 10%;" type="button" class="btn btn-outline-success">❤</button>
-                  <button type="button" class="btn btn-outline-success"
-                                      onclick="location.href='gParticipate?g_num=${g_board.g_num}'" style="width: 20%; margin-left: 20px">참여하기</button>
-                  <button type="button" class="btn btn-outline-success"
-                  	 onclick="location.href='goBoardUp?g_num=${g_board.g_num}&g_img1=${g_board.g_img1 }&g_content=${g_board.g_content}'" style="width: 20%; float: ">끌어올리기</button>
-               </div>
-               <div class="boardContent">
-                  참여인원 : ${g_board.g_p_count}
-               </div>
-               <div class="boardContent">
-                  <span><h6 style="display: inline;">작성자 : ${g_board.g_writer}</h6></span>
-                  <span style="float: right;">${g_board.category} / ${g_board.g_w_date}</span>
-               </div>
-               <div class="boardContent">
-                  <h5>${g_board.g_title}</h5>   
-                  <h6>종료 날짜 : ${g_board.g_b_date}</h6><br>
-                  <div>${g_board.g_content}</div>   
-               </div>
-            </div>
+         </div>
+         <div class="boardContent">
+         	<h6>무료 끌어올리기 횟수 : </h6>
+         </div>
+         <div class="boardContent">
+         	<p>${loginMember.nick } 님의 게시글을 끌어 올리겠습니까?</p><br>
+         	<h6>구독권을 구매하여 끌어올리기 기능을 사용해보세요!</h6>
+         </div>
+         <div class="row g-4 justify-content-center" style="padding-bottom: 20px; margin-top: 10px !important;">
+            <button type="button" class="btn btn-outline-success"
+                  	 onclick="location.href='gBoardUp?g_num=${g_num} & g_img1=${g_img1}'" style="width: 20%; margin-top: 10px !important;">끌어올리기</button>
+            <button type="button" class="btn btn-outline-success"
+                     onclick="location.href='#'" style="width: 20%; margin-left: 20px; margin-top: 10px !important;">구독권 구매</button>
+         </div>
       </div>
-
-
-			<div align="right">
-				<form action="sendReportInfo" method="post">
-				<input type="hidden" value="${g_board.g_num}" name="r_num">
-				<input type="hidden" value="${g_board.email}" name="email">
-				<input type="hidden" value="${g_board.g_title}" name="g_title">
-	 			<input type="hidden" value="${loginMember.email}" name="rp_email">
-					
-				<input type="submit" value="신고하기">
-				</form>
-			</div>
 
       <!-- 메인 페이지 하단 -->
       <div class="container-fluid bg-dark text-white-50 footer pt-5 mt-5">
