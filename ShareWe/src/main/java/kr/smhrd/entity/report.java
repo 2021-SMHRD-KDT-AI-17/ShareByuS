@@ -47,7 +47,17 @@ public class report {
     
     
     
-    @Builder
+    public report(@NonNull String email, @NonNull String rp_email, @NonNull int b_num, @NonNull String r_title) {
+		super();
+		this.email = email;
+		this.rp_email = rp_email;
+		this.b_num = b_num;
+		this.r_title = r_title;
+	}
+
+
+
+	@Builder
     private report(String email, int b_num){
         this.email = email;
         this.b_num = b_num;

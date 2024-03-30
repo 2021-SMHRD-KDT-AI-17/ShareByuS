@@ -162,8 +162,15 @@
 											<td>${m.type}</td>
 											<td>${m.email}</td>
 											<td>${m.nick}</td>
-											<td></td>
-											<td><a href="goOutMember?email=${m.email}"><button>탈퇴</button></a>
+											<c:choose>
+												<c:when test="${empty m.rp_cnt}">
+													<td>0</td>
+												</c:when>
+												<c:otherwise>
+													<td>${m.rp_cnt }</td>
+												</c:otherwise>
+											</c:choose>
+											<td><a href="goOutMember"><button>탈퇴</button></a>
 											<a href="goSusMember"><button>정지</button></a>
 											<a href="goResMember"><button>해제</button></a></td>
 										</tr>

@@ -80,11 +80,32 @@
 #categoryBox .filters_menu li:hover {
 	color: white;
 	background-color: #009223;
+	
+	
+
 }
 
+#buttonBar {
+   border-bottom-right-radius: 10px;
+   border-top-right-radius: 10px;
+   width: 40px;
+   height: 40px;
+   background-color: #009223;
+   border-color: transparent;
+}
 
-
-
+#write {
+   color: white;
+   background-color: #009223;
+   border-radius: 10px;
+   width: 120px;
+   height: 50px;
+   box-shadow: 2px 2px 3px #999;
+   border-color: transparent;
+   position: fixed;
+   right: 30px;
+   bottom: 50px;
+}
 
 
 
@@ -268,7 +289,19 @@
 			</ul>
 		</div>
 		
-
+		
+		
+		<!-- 코드 시작-------------------------------- -->
+		
+		<div class="row g-4 justify-content-center" id="categoryBox">
+			<div class="row g-4 justify-content-center">
+				<button class="col-xl-1" id="write" type="button"
+					onclick="location.href='gogBoard'">게시물작성</button>
+			</div>
+		</div>
+					
+		
+		
 
 		<div class="col-lg-9" style="width:60% !important;  justify-content: center; align-items: center;">
 			<div class="row g-4 justify-content-center" id="boardDiv" >

@@ -135,7 +135,7 @@
 
    <%
    member loginMember = (member) session.getAttribute("loginMember");
-   %>
+   	%>
 
    <!-- Spinner Start -->
    <div id="spinner"
@@ -436,9 +436,9 @@
 				<form action="sendReportInfo" method="post">
 				<input type="hidden" value="${g_board.g_num}" name="b_num">
 				<input type="hidden" value="${g_board.email}" name="email">
-				<input type="hidden" value="${g_board.g_title}" name="g_title">
+				<input type="hidden" value="${g_board.g_title}" name="r_title">
 	 			<input type="hidden" value="${loginMember.email}" name="rp_email">
-	 								
+	 				 								
 				<input type="submit" value="신고하기">
 				</form>
 			</div>
@@ -510,8 +510,7 @@
 								}
 							},
 							error : function(){
-								alert("통신실패")
-							}
+								alert("Share: Σ(っ °Д °;)っ 다시 시도해주세요!")
 						}
 					)
 				}

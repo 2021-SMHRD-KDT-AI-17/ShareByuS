@@ -47,8 +47,12 @@
 	</select>
 		
 	<select id="goAdMember" resultType="kr.smhrd.entity.member">
-		select * from member order by type ASC where type!=0
+		select * from member where type in (1,2,3) order by type ASC
 	</select>
+	
+	<update id="goupdateCnt" parameterType="String">
+		update member set rp_cnt = rp_cnt + 1 where email=#{email}
+	</update>
 	
 	
 </mapper>

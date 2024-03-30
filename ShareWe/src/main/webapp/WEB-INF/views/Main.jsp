@@ -180,6 +180,10 @@
                <h1 class="mb-5 display-3 text-primary">Organic Veggies &
                   Fruits Foods</h1>
 
+			   <!-- 리뷰작성 임시 버튼 -->
+				
+			   <!-- 리뷰작성 임시 버튼 -->
+
 
                <!-- 채팅 임시 버튼 -->
                <a href="goChat"><button>채팅</button></a>

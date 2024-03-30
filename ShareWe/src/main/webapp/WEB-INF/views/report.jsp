@@ -86,48 +86,56 @@
 			</div>
 		</div>
 			<div class="container px-0">
-				<nav class="navbar navbar-light bg-white navbar-expand-xl">
-					<a href="goMain" class="navbar-brand"><h1
-							class="text-primary display-6">Share We?</h1></a>
-					<button class="navbar-toggler py-2 px-3" type="button"
-						data-bs-toggle="collapse" data-bs-target="#navbarCollapse">
-						<span class="fa fa-bars text-primary"></span>
-					</button>
-					<div class="collapse navbar-collapse bg-white" id="navbarCollapse">
-						<div class="navbar-nav mx-auto">
-							<a href="goGeneral" class="nav-item nav-link" style="color: black">일반</a>
-							<a href="goCompany" class="nav-item nav-link" style="color: black">기업</a>
+         <nav class="navbar navbar-light bg-white navbar-expand-xl">
+            <a href="goMain" class="navbar-brand"><h1
+                  class="text-primary display-6" style="color: #009223 !important;">Share
+                  We?</h1></a>
+            <button class="navbar-toggler py-2 px-3" type="button"
+               data-bs-toggle="collapse" data-bs-target="#navbarCollapse">
+               <span class="fa fa-bars text-primary"></span>
+            </button>
+            <div class="collapse navbar-collapse bg-white" id="navbarCollapse">
+               <div class="navbar-nav mx-auto">
+                  <a href="goGeneral" class="nav-item nav-link active">Share</a> <a
+                     href="goCompany" class="nav-item nav-link">Shop</a>
+							
+							
 							<!-- <a href="shop-detail.html" class="nav-item nav-link">Shop Detail</a> -->
+							
+							
+							
+							
 							<div class="nav-item dropdown">
-								<a href="#" class="nav-link dropdown-toggle active"
-									data-bs-toggle="dropdown">카테고리</a>
-								<div class="dropdown-menu m-0 bg-secondary rounded-0">
-									<a href="cart.html" class="dropdown-item">채소</a> <a
-										href="chackout.html" class="dropdown-item">과일</a> <a
-										href="testimonial.html" class="dropdown-item">생필품</a>
-									<!--<a href="404.html" class="dropdown-item active">404 Page</a> -->
-								</div>
-							</div>
-							<a href="contact.html" class="nav-item nav-link"
-								style="color: black">Contact</a>
-						</div>
-						<div class="d-flex m-3 me-0">
-							<button
-								class="btn-search btn border border-secondary btn-md-square rounded-circle bg-white me-4"
-								data-bs-toggle="modal" data-bs-target="#searchModal">
-								<i class="fas fa-search text-primary"></i>
-							</button>
-							<a href="goCart" class="position-relative me-4 my-auto"> <i
-								class="fa fa-shopping-bag fa-2x"></i> <span
-								class="position-absolute bg-secondary rounded-circle d-flex align-items-center justify-content-center text-dark px-1"
-								style="top: -5px; left: 15px; height: 20px; min-width: 20px;">3</span>
-							</a> <a href="goMyPage" class="my-auto"> <i
-								class="fas fa-user fa-2x"></i></a>
-						</div>
-					</div>
-				</nav>
-			</div>
-		</div>
+                     <a href="#" class="nav-link dropdown-toggle"
+                        data-bs-toggle="dropdown">Category</a>
+
+                     <!-- 카테고리별 페이지 이동 -->
+                     <div class="dropdown-menu m-0 bg-secondary rounded-0">
+                        <a href="cart.html" class="dropdown-item">식품</a> <a
+                           href="chackout.html" class="dropdown-item">과일</a> <a
+                           href="testimonial.html" class="dropdown-item">생필품</a>
+                     </div>
+                  </div>
+                  <a href="contact.html" class="nav-item nav-link">Contact</a>
+               </div>
+               <div class="d-flex m-3 me-0">
+                  <button
+                     class="btn-search btn border border-secondary btn-md-square rounded-circle bg-white me-4"
+                     style="border-color: #009223 !important" data-bs-toggle="modal"
+                     data-bs-target="#searchModal">
+                     <i class="fas fa-search text-primary"></i>
+                  </button>
+                  <a href="goCart" class="position-relative me-4 my-auto"> <i
+                     class="fa fa-shopping-bag fa-2x"></i> <span
+                     class="position-absolute bg-secondary rounded-circle d-flex align-items-center justify-content-center text-dark px-1"
+                     style="top: -5px; left: 15px; height: 20px; min-width: 20px;">3</span>
+                  </a> <a href="goMyPage" class="my-auto"> <i
+                     class="fas fa-user fa-2x"></i></a>
+               </div>
+            </div>
+         </nav>
+      </div>
+   </div>
 		<!-- Navbar End -->
 
 
@@ -176,20 +184,12 @@
 						<img src="resources/img/report_icon.png" width="50px" height="50px">
 						<br>
 						<br>
-						
-		<% 
-			String b_num = request.getParameter("b_num");
-	    	String email = request.getParameter("email");
-	    	String g_title = request.getParameter("g_title");
-	    	
-	    	
-																%>	
 			
 					
 		<form action="reportInsert" method="post">
 		<fieldset>
 			<legend>
-			<%=g_title %>
+			${reportMember.r_title }
 			<br>
 			해당 게시글을 신고하려는 사유를 선택해 주세요
 			</legend>
@@ -206,7 +206,6 @@
 					<td align="right"><input type="checkbox" name="rp_content" value="부적절한 게시글"></td>
 					
 					<td>부적절한 게시글/리뷰에요.</td>
-					<td>${report_cnt}</td>
 				</tr>
 
 				<tr height="60px">
@@ -239,12 +238,11 @@
 				</tr>	
 			
 			
-				 	<input type="hidden" value="<%=b_num %>" name="b_num">
-					<input type="hidden" value="<%=g_title %>" name="r_title">
-					<input type="hidden" value="<%=email %>" name="email">
+				 	<input type="hidden" value="${reportMember.b_num }" name="b_num">
+					<input type="hidden" value="${reportMember.r_title }" name="r_title">
+					<input type="hidden" value="${reportMember.email}" name="email">
 					<input type="hidden" value="${loginMember.email}" name="rp_email">
 									
-				
 			</table>
 				<input type="submit" value="신고하기">
 		</fieldset>

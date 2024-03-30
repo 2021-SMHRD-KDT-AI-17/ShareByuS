@@ -162,15 +162,6 @@ public class WebController {
 		
 	}
 
-//	@RequestMapping("/goMyPage")
-//	public String goMyPage() {
-//		return "MyPage";
-//	}
-	
-	
-
-
-
 	
 	@RequestMapping("/goChat")
 	public String goChat() {

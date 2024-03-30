@@ -6,6 +6,7 @@ import org.apache.ibatis.annotations.Mapper;
 import org.apache.ibatis.annotations.Select;
 
 import kr.smhrd.entity.approve;
+import kr.smhrd.entity.g_board;
 import kr.smhrd.entity.member;
 import kr.smhrd.entity.report;
 
@@ -45,6 +46,8 @@ public interface MemberMapper {
 	public List<member> goAdMember();
 
 	public void goOutMember(String email);
+
+	public void goupdateCnt(String email);
 
 
 
