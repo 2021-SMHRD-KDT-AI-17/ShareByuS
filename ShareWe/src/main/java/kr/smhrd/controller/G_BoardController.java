@@ -127,5 +127,13 @@ public class G_BoardController {
 		
 		return "redirect:/goGeneral";
 	}	
+	
+	// 게시글 삭제
+	@RequestMapping("/deleteGBoard")
+	public String deleteGBoard(@RequestParam("g_num") int g_num) {
+		g_boardMapper.deleteGBoard(g_num);
+		
+		return "redirect:/goGeneral";
+	}
 		
 }

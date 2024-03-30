@@ -83,14 +83,6 @@
 }
 
 
-
-
-
-
-
-
-
-
 </style>
 
 </head>
@@ -292,7 +284,7 @@
                                     <h6 style="display: inline;">${g.g_writer}</h6>
                                     <c:choose>
 	                                      <c:when test="${loginMember.type == 0}">
-	                                       	<a href="#" style="float: right;"
+	                                       	<a href="deleteGBoard?g_num=${g.g_num }" style="float: right;"
 	                                             class="btn border border-secondary rounded-pill px-3 text-primary">
 	                                             삭제 </a>
 	                                      </c:when>
@@ -311,6 +303,7 @@
 		<c:if test="${loginMember.type == 2 || loginMember.type == 3}">
 			<div class="row g-4 justify-content-center">
 				<button class="col-xl-1" id="write" type="button" onclick="location.href='gogBoard'">게시물작성</button>
+			</div>
 			</div>
 		</c:if>
 	</div>

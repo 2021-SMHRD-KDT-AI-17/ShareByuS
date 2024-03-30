@@ -23,6 +23,8 @@ public interface G_BoardMapper {
 	public List<g_board> getG_num(int g_num);
 	
 	public void gParticipate(int g_num);
+
+	public void deleteGBoard(int g_num);
 	
 		
 	

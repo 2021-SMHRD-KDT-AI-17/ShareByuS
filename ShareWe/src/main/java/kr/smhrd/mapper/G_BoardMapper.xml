@@ -28,4 +28,7 @@
 		update g_board set g_p_count=g_p_count+1 where g_num=#{g_num}
 	</update>
 
+	<delete id="deleteGBoard" parameterType="int">
+		delete from g_board where g_num=#{g_num}	
+	</delete>
 </mapper>
