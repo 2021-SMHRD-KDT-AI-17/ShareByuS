@@ -7,7 +7,7 @@
 
 <head>
 <meta charset="utf-8">
-<title>Fruitables - Vegetable Website Template</title>
+<title>Share WE?</title>
 <meta content="width=device-width, initial-scale=1.0" name="viewport">
 <meta content="" name="keywords">
 <meta content="" name="description">
@@ -155,7 +155,7 @@
 	<!-- Single Page Header start -->
 	<div class="container-fluid page-header py-5">
 		<h1 class="text-center text-white display-6"
-			style="margin-bottom: 20px">상품 등록</h1>
+			style="margin-bottom: 20px">상품 게시글 수정</h1>
 		<ol class="breadcrumb justify-content-center mb-0">
 		</ol>
 	</div>
@@ -171,13 +171,136 @@
 				
 				<div class="row g-5 justify-content-center" id="loginDiv">
 				
+				<div class="col-md-12 col-lg-6 col-xl-7" align="left">
+						<h4 class="form-label my-3">* 대표 이미지</h4>
+						<br>
+						<div class="form-item">
+
+							<label class="input-file-button" for="btnAtt"> 업로드 </label>
+							
+								<input  type="file" name="c_img1"  id="btnAtt"
+								 accept="image/jpg, image/jpeg, image/png" multiple="multiple" value="${c_board.c_img1}" style="display: none" onchange="readURL(this);">								
+				
+								<div id='image_preview'>
+									<div id='att_zone'
+									data-placeholder='파일을 첨부 하려면 파일 선택 버튼을 클릭하거나 파일을 드래그앤드롭 하세요'>
+									<img alt="" src="resources/g_Image/${c_board.c_img1}"></div>
+								</div>
+
+	<script>
+	( /* att_zone : 이미지들이 들어갈 위치 id, btn : file tag id */
+	  imageView = function imageView(att_zone, btn){
+	
+	    var attZone = document.getElementById(att_zone);
+	    var btnAtt = document.getElementById(btn)
+	    var sel_files = [];
+	    
+	    // 이미지와 체크 박스를 감싸고 있는 div 속성
+	    var div_style = 'display:inline-block;position:relative;'
+	                  + 'width:150px;height:120px;margin:5px;z-index:1';
+	    // 미리보기 이미지 속성
+	    var img_style = 'width:100%;height:100%;z-index:none';
+	    // 이미지안에 표시되는 체크박스의 속성
+	    var chk_style = 'width:30px;height:30px;position:absolute;font-size:24px;'
+	                  + 'right:0px;bottom:0px;z-index:999;background-color:rgba(255,255,255,0.1);color:green';
+	  
+	    btnAtt.onchange = function(e){
+	      var files = e.target.files;
+	      var fileArr = Array.prototype.slice.call(files)
+	      for(f of fileArr){
+	        imageLoader(f);
+	      }
+	    }  
+	    
+	  
+	    // 탐색기에서 드래그앤 드롭 사용
+	    attZone.addEventListener('dragenter', function(e){
+	      e.preventDefault();
+	      e.stopPropagation();
+	    }, false)
+	    
+	    attZone.addEventListener('dragover', function(e){
+	      e.preventDefault();
+	      e.stopPropagation();
+	      
+	    }, false)
+	  
+	    attZone.addEventListener('drop', function(e){
+	      var files = {};
+	      e.preventDefault();
+	      e.stopPropagation();
+	      var dt = e.dataTransfer;
+	      files = dt.files;
+	      for(f of files){
+	        imageLoader(f);
+	      }
+	      
+	    }, false)
+	    
+	
+	    
+	    /*첨부된 이미리즐을 배열에 넣고 미리보기 */
+	    imageLoader = function(file){
+	      sel_files.push(file);
+	      var reader = new FileReader();
+	      reader.onload = function(ee){
+	        let img = document.createElement('img')
+	        img.setAttribute('style', img_style)
+	        img.src = ee.target.result;
+	        attZone.appendChild(makeDiv(img, file));
+	      }
+	      
+	      reader.readAsDataURL(file);
+	    }
+	    
+	    /*첨부된 파일이 있는 경우 checkbox와 함께 attZone에 추가할 div를 만들어 반환 */
+	    makeDiv = function(img, file){
+	      var div = document.createElement('div')
+	      div.setAttribute('style', div_style)
+	      
+	      var btn = document.createElement('input')
+	      btn.setAttribute('type', 'button')
+	      btn.setAttribute('value', 'x')
+	      btn.setAttribute('delFile', file.name);
+	      btn.setAttribute('style', chk_style);
+	      btn.onclick = function(ev){
+	        var ele = ev.srcElement;
+	        var delFile = ele.getAttribute('delFile');
+	        for(var i=0 ;i<sel_files.length; i++){
+	          if(delFile== sel_files[i].name){
+	            sel_files.splice(i, 1);      
+	          }
+	        }
+	        
+	        dt = new DataTransfer();
+	        for(f in sel_files) {
+	          var file = sel_files[f];
+	          dt.items.add(file);
+	        }
+	        btnAtt.files = dt.files;
+	        var p = ele.parentNode;
+	        attZone.removeChild(p)
+	      }
+	      div.appendChild(img)
+	      div.appendChild(btn)
+	      return div
+	    }
+	  }
+)('att_zone', 'btnAtt')
+
+</script>
+
+						</div>
+						<hr>
+					</div>
+				
 					<div class="col-md-12 col-lg-6 col-xl-7" align="left">
 						<h4 class="form-label my-3">* 상품 명</h4>
 						<br>
 						<div class="form-item">
 							<input type="text" name="c_title" style="width: 600px"
 								class="border-0 border-bottom rounded me-5 py-3 mb-4"
-								placeholder="상품 명을 입력해주세요">
+								placeholder="상품 명을 입력해주세요" value="${c_board.c_title }">
 						</div>
 						
 					</div>
@@ -187,7 +310,7 @@
 						<br>
 						<div class="form-item">
 							<input type="date" name="c_f_date" style="width: 600px"
-								class="border-0 border-bottom rounded me-5 py-3 mb-4">
+								class="border-0 border-bottom rounded me-5 py-3 mb-4" value="${c_board.c_f_date}">
 						</div>
 					</div>
 					
@@ -198,6 +321,7 @@
 						<div class="form-item">
 							<div class="col-sm-8">
 								<select name="category" id="a4" class="form-control">
+									<option value="${c_board.category}">${c_board.category}</option>
 									<option value="채소">채소</option>
 									<option value="과일">과일</option>
 									<option value="식품">식품</option>
@@ -215,9 +339,9 @@
 
 							<input type="text" name="price" placeholder="숫자만 입력해주세요"
 							class="border-0 border-bottom rounded me-5 py-3 mb-4"
-								/>
-								<span>원</span>
-								<hr>
+							value="${c_board.price}">
+							<span>원</span>
+							<hr>
 								
 								<!-- oninput=" this.value = this.value.replace(/[^0-9.]/g, '').replace(/(\..*)\./g, '$1');" 
 								onkeyup="inputNumberFormat(this); -->
@@ -256,7 +380,7 @@
 						<div class="form-item">
 
 							<input type="number" name="c_ea" placeholder="숫자만 입력해주세요"
-							class="border-0 border-bottom rounded me-5 py-3 mb-4"/>
+							class="border-0 border-bottom rounded me-5 py-3 mb-4" value="${c_board.c_ea}">
 								<span>개</span>
 								<hr>
 								
@@ -268,134 +392,14 @@
 				
 					
 					
-					<div class="col-md-12 col-lg-6 col-xl-7" align="left">
-						<h4 class="form-label my-3">* 대표 이미지</h4>
-						<br>
-						<div class="form-item">
-
-							<label class="input-file-button" for="btnAtt"> 업로드 </label>
-							
-								<input  type="file" name="c_img1"  id="btnAtt"
-								 accept="image/jpg, image/jpeg, image/png" multiple="multiple" style="display: none" onchange="readURL(this);">								
-				
-							<div id='image_preview'>
-								<div id='att_zone'
-									data-placeholder='파일을 첨부 하려면 파일 선택 버튼을 클릭하거나 파일을 드래그앤드롭 하세요'></div>
-							</div>
-
-							<script>
-( /* att_zone : 이미지들이 들어갈 위치 id, btn : file tag id */
-  imageView = function imageView(att_zone, btn){
-
-    var attZone = document.getElementById(att_zone);
-    var btnAtt = document.getElementById(btn)
-    var sel_files = [];
-    
-    // 이미지와 체크 박스를 감싸고 있는 div 속성
-    var div_style = 'display:inline-block;position:relative;'
-                  + 'width:150px;height:120px;margin:5px;z-index:1';
-    // 미리보기 이미지 속성
-    var img_style = 'width:100%;height:100%;z-index:none';
-    // 이미지안에 표시되는 체크박스의 속성
-    var chk_style = 'width:30px;height:30px;position:absolute;font-size:24px;'
-                  + 'right:0px;bottom:0px;z-index:999;background-color:rgba(255,255,255,0.1);color:green';
-  
-    btnAtt.onchange = function(e){
-      var files = e.target.files;
-      var fileArr = Array.prototype.slice.call(files)
-      for(f of fileArr){
-        imageLoader(f);
-      }
-    }  
-    
-  
-    // 탐색기에서 드래그앤 드롭 사용
-    attZone.addEventListener('dragenter', function(e){
-      e.preventDefault();
-      e.stopPropagation();
-    }, false)
-    
-    attZone.addEventListener('dragover', function(e){
-      e.preventDefault();
-      e.stopPropagation();
-      
-    }, false)
-  
-    attZone.addEventListener('drop', function(e){
-      var files = {};
-      e.preventDefault();
-      e.stopPropagation();
-      var dt = e.dataTransfer;
-      files = dt.files;
-      for(f of files){
-        imageLoader(f);
-      }
-      
-    }, false)
-    
-
-    
-    /*첨부된 이미리즐을 배열에 넣고 미리보기 */
-    imageLoader = function(file){
-      sel_files.push(file);
-      var reader = new FileReader();
-      reader.onload = function(ee){
-        let img = document.createElement('img')
-        img.setAttribute('style', img_style)
-        img.src = ee.target.result;
-        attZone.appendChild(makeDiv(img, file));
-      }
-      
-      reader.readAsDataURL(file);
-    }
-    
-    /*첨부된 파일이 있는 경우 checkbox와 함께 attZone에 추가할 div를 만들어 반환 */
-    makeDiv = function(img, file){
-      var div = document.createElement('div')
-      div.setAttribute('style', div_style)
-      
-      var btn = document.createElement('input')
-      btn.setAttribute('type', 'button')
-      btn.setAttribute('value', 'x')
-      btn.setAttribute('delFile', file.name);
-      btn.setAttribute('style', chk_style);
-      btn.onclick = function(ev){
-        var ele = ev.srcElement;
-        var delFile = ele.getAttribute('delFile');
-        for(var i=0 ;i<sel_files.length; i++){
-          if(delFile== sel_files[i].name){
-            sel_files.splice(i, 1);      
-          }
-        }
-        
-        dt = new DataTransfer();
-        for(f in sel_files) {
-          var file = sel_files[f];
-          dt.items.add(file);
-        }
-        btnAtt.files = dt.files;
-        var p = ele.parentNode;
-        attZone.removeChild(p)
-      }
-      div.appendChild(img)
-      div.appendChild(btn)
-      return div
-    }
-  }
-)('att_zone', 'btnAtt')
-
-</script>
-
-						</div>
-						<hr>
-					</div>
+					
 
 					<div class="col-md-12 col-lg-6 col-xl-7" align="left">
-    <h4 class="form-label my-3">옵션</h4>
-    <br> <input type="text" id="opTitle" name="c_opt1" style="width: 300px"
-        class="border-0 border-bottom rounded me-5 py-3 mb-4"
-        placeholder="ex)제주 감귤 10 kg"> 
-        
+					    <h4 class="form-label my-3">옵션</h4>
+					    <br> <input type="text" id="opTitle" name="c_opt1" style="width: 300px"
+					        class="border-0 border-bottom rounded me-5 py-3 mb-4"
+					        placeholder="ex)제주 감귤 10 kg" value="${c_board.c_opt1 }"> 
+					        
        <!--  <input type="text" id="opPrice" name="optionPrice" style="width: 80px" 
         placeholder="가격 입력" class="border-0 border-bottom rounded me-5 py-3 mb-4"
         oninput=" this.value = this.value.replace(/[^0-9.]/g, '').replace(/(\..*)\./g, '$1');"
@@ -439,7 +443,7 @@
 						<br>
 						<div class="form-item">
 							<textarea name="c_content" rows="6" cols="80"
-								style="border-radius: 5px" placeholder="상품 가격 및 거래방법 등 작성"></textarea>
+								style="border-radius: 5px" placeholder="상품 가격 및 거래방법 등 작성">${c_board.c_content}</textarea>
 						</div>
 						<hr>
 						

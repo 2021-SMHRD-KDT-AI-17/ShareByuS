@@ -101,13 +101,7 @@ public class WebController {
 	@RequestMapping("/goAdmin")
 	public String goAdmin() {
 		return "AdminPage";
-	}
-	
-	@RequestMapping("/goAdReport")
-	public String goAdReport() {
-		return "AdReport";
-	}
-	
+	}	
 
 	
 	@RequestMapping("/goUpdateMember")
@@ -121,11 +115,6 @@ public class WebController {
 	}
 	
 	
-	// 임시) 신고하기
-	@RequestMapping("/goReport")
-	public String goReport() {
-		return "report";
-	}
 	@RequestMapping("/goGDetail")
 	public String goGDetail() {
 		return "gBoardDetail";
@@ -172,15 +161,6 @@ public class WebController {
 		}
 		
 	}
-
-//	@RequestMapping("/goMyPage")
-//	public String goMyPage() {
-//		return "MyPage";
-//	}
-	
-	
-
-
 
 	
 	@RequestMapping("/goChat")

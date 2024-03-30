@@ -79,6 +79,9 @@
 #categoryBox .filters_menu li:hover {
 	color: white;
 	background-color: #009223;
+	
+	
+
 }
 
 #buttonBar {
@@ -263,7 +266,7 @@
 			</ul>
 		</div>
 
-
+		<!-- 코드 시작-------------------------------- -->
 		<div class="col-lg-9" style="width:60% !important;  justify-content: center; align-items: center;">
 			<div class="row g-4 justify-content-center" id="boardDiv" >
                         <c:forEach items="${gboard_list}" var="g">

@@ -285,7 +285,7 @@
 			</a>
 
 			<a onclick="getReview()" id="clickVege">
-				<li class="list-group-item">리뷰관리</li>
+				<li class="list-group-item">My 리뷰</li>
 			</a>
 
 			<a onclick="getSub()" id="clickVege">

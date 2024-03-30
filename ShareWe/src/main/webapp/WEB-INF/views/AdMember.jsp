@@ -127,42 +127,64 @@
 
         <!-- Single Page Header start -->
         <div class="container-fluid page-header py-5">
-            <h1 class="text-center text-white display-6">신고 관리</h1>
+            <h1 class="text-center text-white display-6">회원 관리</h1>
             <ol class="breadcrumb justify-content-center mb-0">
-                <li class="breadcrumb-item active text-white">Report Administration</li>
+                <li class="breadcrumb-item active text-white">Member Administration</li>
             </ol>
         </div>
         <!-- Single Page Header End -->
+				
 
-
-        <!-- 사용자 신고관리 -->
+        <!-- 회원관리 -->
    <div class="container-fluid py-5">
+   	
       <div class="row g-4 justify-content-center">
          <div class="row g-4 justify-content-center" style="width: 1000px !important;" >
-
-
+			<a href="goAdReport"><div class="text-white bg-secondary px-3 py-1 rounded position-absolute"
+				 style="width:105px; text-align:center;">신고 관리</div></a>
 
 					<%int index = 0;%>
 					<table class="text-center">
 						<div class="featurs-content">
+							
+															
 							<tr style="font-size:20px; background-color: #bdc3c7; ">
 								<th>No.</th>
-								<th>신고 게시글/리뷰</th>
-								<th>작성자</th>
-								<th>신고사유</th>
+								<th>회원 유형</th>
+								<th>이메일</th>
+								<th>닉네임</th>
+								<th>신고 누적 횟수</th>
 								<th>관리</th>
 							</tr>
 
-							 <c:forEach var="rp" items="${adReport}">
+							 <c:forEach var="m" items="${adMember}">
 							 		<%index++;%>
 										<tr>
 											<td><%=index %></td>
-											<td><a href="G_BoardContent?g_num=${rp.b_num}">${rp.r_title}</td>
-											<td>${rp.email}</td>
-											<td>${rp.rp_content}</td>
-											<td><a href="deleteRep?b_num=${rp.b_num}&email=${rp.email}"><button>삭제</button></a>
-											<a href="passRep?b_num=${rp.b_num}&email=${rp.email}"><button>통과</button></a>
-											</td>
+											<c:choose>
+												<c:when test="${m.type == 1}">
+													<td>기업회원</td>
+												</c:when>
+												<c:when test="${m.type == 2 || m.type == 3 }">
+													<td>일반회원</td>
+												</c:when>
+												<c:otherwise>
+													<td>정지회원</td>
+												</c:otherwise>
+											</c:choose>										
+											<td>${m.email}</td>
+											<td>${m.nick}</td>
+											<c:choose>
+												<c:when test="${empty m.rp_cnt}">
+													<td>0</td>
+												</c:when>
+												<c:otherwise>
+													<td>${m.rp_cnt }</td>
+												</c:otherwise>
+											</c:choose>
+											<td><a href="deleteMember?email=${m.email}"><button>탈퇴</button></a>
+											<a href="susMember?email=${m.email}"><button>정지</button></a>
+											<a href="resMember?email=${m.email}"><button>해제</button></a></td>
 										</tr>
 						</div>
 							 
@@ -175,12 +197,6 @@
 		</div>
 	</div>
 	
-	
-	<!-- 사용자 신고관리 end -->
-                      <%-- <c:if test="${loginMember.email eq 'admin' }">
-                              <td><a href="deleteBoard?num=${b.num }">삭제</a></td>
-                       
-                        </c:if> --%>
                      
                      </tr>
                   
@@ -192,7 +208,7 @@
    </div>
    
    
-   <!-- 사용자 신고관리 end -->
+   <!-- 회원 관리 end -->
 
 
 

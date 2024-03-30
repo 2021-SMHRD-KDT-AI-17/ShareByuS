@@ -169,110 +169,23 @@
 
 	<div class="container-fluid py-5">
 		<div class="container py-5">
-			<form action="cBoardInsert" method="post"
-				enctype="multipart/form-data">
-				
+			<form action="cBoardInsert" method="post">
 				
 				<div class="row g-5 justify-content-center" id="loginDiv">
 				
-					<div class="col-md-12 col-lg-6 col-xl-7" align="left">
-						<h4 class="form-label my-3">* 상품 명</h4>
-						<br>
-						<div class="form-item">
-							<input type="text" name="c_title" style="width: 600px"
-								class="border-0 border-bottom rounded me-5 py-3 mb-4"
-								placeholder="상품 명을 입력해주세요">
-						</div>
-						
+				<div class="col-md-12 col-lg-6 col-xl-7" align="left">
+					<h4 class="form-label my-3">* 상품 명</h4>
+					<br>
+					<div class="form-item">
+						<input type="text" name="c_title" style="width: 600px;"
+							class="border-0 border-bottom rounded me-5 py-3 mb-4" placeholder="상품 명을 입력 해주세요">
 					</div>
-					
-					<div class="col-md-12 col-lg-6 col-xl-7" align="left">
-						<h4 class="form-label my-3">* 펀딩 종료 날짜</h4>
-						<br>
-						<div class="form-item">
-							<input type="date" name="c_f_date" style="width: 600px"
-								class="border-0 border-bottom rounded me-5 py-3 mb-4">
-						</div>
-					</div>
-					
-					
-					<div class="col-md-12 col-lg-6 col-xl-7" align="left">
-						<h4 class="form-label my-3">* 카테고리</h4>
-						<br>
-						<div class="form-item">
-							<div class="col-sm-8">
-								<select name="category" id="a4" class="form-control">
-									<option value="채소">채소</option>
-									<option value="과일">과일</option>
-									<option value="식품">식품</option>
-									<option value="생필품">생필품</option>
-								</select>
-							</div>
-							<hr>
-						</div>
-					</div>
+					<input type="hidden" value="${loginMember.nick }" name="c_writer">
+					<input type="hidden" value="${loginMember.email }" name="email">
+			
+				</div>
 				
 				<div class="col-md-12 col-lg-6 col-xl-7" align="left">
-						<h4 class="form-label my-3">* 상품 가격</h4>
-						<br>
-						<div class="form-item">
-
-							<input type="text" name="price" placeholder="숫자만 입력해주세요"
-							class="border-0 border-bottom rounded me-5 py-3 mb-4"
-								/>
-								<span>원</span>
-								<hr>
-								
-								<!-- oninput=" this.value = this.value.replace(/[^0-9.]/g, '').replace(/(\..*)\./g, '$1');" 
-								onkeyup="inputNumberFormat(this); -->
-								
-								<!-- <script type="text/javascript">
-								function comma(str) {
-							        str = String(str);
-							        return str.replace(/(\d)(?=(?:\d{3})+(?!\d))/g, '$1,');
-							    }
-
-							    function uncomma(str) {
-							        str = String(str);
-							        return str.replace(/[^\d]+/g, '');
-							    } 
-							    
-							    function inputNumberFormat(obj) {
-							        obj.value = comma(uncomma(obj.value));
-							    }
-							    
-							    function inputOnlyNumberFormat(obj) {
-							        obj.value = onlynumber(uncomma(obj.value));
-							    }
-							    
-							    function onlynumber(str) {
-								    str = String(str);
-								    return str.replace(/(\d)(?=(?:\d{3})+(?!\d))/g,'$1');
-								}
-								</script> -->
-						</div>
-						
-					</div>
-					
-					<div class="col-md-12 col-lg-6 col-xl-7" align="left">
-						<h4 class="form-label my-3">* 재고 수량</h4>
-						<br>
-						<div class="form-item">
-
-							<input type="number" name="c_ea" placeholder="숫자만 입력해주세요"
-							class="border-0 border-bottom rounded me-5 py-3 mb-4"/>
-								<span>개</span>
-								<hr>
-								
-						</div>
-						
-					</div>
-				
-				
-				
-					
-					
-					<div class="col-md-12 col-lg-6 col-xl-7" align="left">
 						<h4 class="form-label my-3">* 대표 이미지</h4>
 						<br>
 						<div class="form-item">
@@ -393,51 +306,7 @@
 						</div>
 						<hr>
 					</div>
-
-					<div class="col-md-12 col-lg-6 col-xl-7" align="left">
-    <h4 class="form-label my-3">옵션</h4>
-    <br> <input type="text" id="opTitle" name="c_opt1" style="width: 300px"
-        class="border-0 border-bottom rounded me-5 py-3 mb-4"
-        placeholder="ex)제주 감귤 10 kg"> 
-        
-       <!--  <input type="text" id="opPrice" name="optionPrice" style="width: 80px" 
-        placeholder="가격 입력" class="border-0 border-bottom rounded me-5 py-3 mb-4"
-        oninput=" this.value = this.value.replace(/[^0-9.]/g, '').replace(/(\..*)\./g, '$1');"
-        onkeyup="inputNumberFormat(this);" /> 
-        <span>원 </span> -->
-        
-        
-    <!-- button class="border-0 border-bottom rounded me-5 py-3 mb-4"
-        onclick="opAppend()" style="width: 100px; margin-left: 20px;"
-        type="button">옵션 추가</button>
-	
-<div class="form-item">
-        <div class="col-sm-8" id="option">-->
-        
-        <hr>
-    </div>
-
-<!--     </div>
-</div>  -->
-
-
-<!-- <script>
-
-    function opAppend(){
-        var opTitle = document.getElementById("opTitle");
-        var opPrice = document.getElementById("opPrice");
-        
-        console.log(opTitle.value,opPrice.value);
-
-        var p1 = document.createElement("p");
-        p1.innerHTML=`<p name='c_opt1' value='${opPrice.value}'>${opTitle.value}</p>`
-        option.appendChild(p1);
-    }
-						
-						    
-						</script> --> 
-
-
+				
 					<div class="col-md-12 col-lg-6 col-xl-7" align="left">
 						<h4 class="form-label my-3">* 상품설명</h4>
 						<br>
@@ -449,6 +318,69 @@
 						
 					</div>
 					
+					<div class="col-md-12 col-lg-6 col-xl-7" align="left">
+						<h4 class="form-label my-3">* 펀딩 종료 날짜</h4>
+						<br>
+						<div class="form-item">
+							<input type="date" name="c_f_date" style="width: 600px"
+								class="border-0 border-bottom rounded me-5 py-3 mb-4">
+						</div>
+					</div>
+					
+					
+					<div class="col-md-12 col-lg-6 col-xl-7" align="left">
+						<h4 class="form-label my-3">* 카테고리</h4>
+						<br>
+						<div class="form-item">
+							<div class="col-sm-8">
+								<select name="category" id="a4" class="form-control">
+									<option value="채소">채소</option>
+									<option value="과일">과일</option>
+									<option value="식품">식품</option>
+									<option value="생필품">생필품</option>
+								</select>
+							</div>
+							<hr>
+						</div>
+					</div>
+				
+				<div class="col-md-12 col-lg-6 col-xl-7" align="left">
+						<h4 class="form-label my-3">* 상품 가격</h4>
+						<br>
+						<div class="form-item">
+
+							<input type="text" name="price" placeholder="숫자만 입력해주세요"
+							class="border-0 border-bottom rounded me-5 py-3 mb-4"
+								/>
+								<span>원</span>
+								<hr>
+						</div>
+						
+					</div>
+					
+					<div class="col-md-12 col-lg-6 col-xl-7" align="left">
+					    <h4 class="form-label my-3">옵션</h4>
+					    <br> <input type="text" id="opTitle" name="c_opt1" style="width: 300px"
+					        class="border-0 border-bottom rounded me-5 py-3 mb-4"
+					        placeholder="ex)제주 감귤 10 kg"> 
+					        
+					        <hr>
+				    </div>
+					
+					<div class="col-md-12 col-lg-6 col-xl-7" align="left">
+						<h4 class="form-label my-3">* 재고 수량</h4>
+						<br>
+						<div class="form-item">
+
+							<input type="number" name="c_ea" placeholder="숫자만 입력해주세요"
+							class="border-0 border-bottom rounded me-5 py-3 mb-4"/>
+								<span>개</span>
+								<hr>
+								
+						</div>
+						
+					</div>
+				
 					
 
 					<div class="col-md-12 col-lg-6 col-xl-7" align="right"

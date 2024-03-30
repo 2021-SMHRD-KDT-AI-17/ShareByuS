@@ -158,7 +158,7 @@
 
    <%
    member loginMember = (member) session.getAttribute("loginMember");
-   %>
+   	%>
 
    <!-- Spinner Start -->
    <div id="spinner"
@@ -317,13 +317,14 @@
 
       <!-- 게시글 상세 -->
 
-      <div class="row g-4 justify-content-center" id="categoryBox">
-         <div class="row g-4 justify-content-center">
-            <button class="col-xl-1" id="write" type="button"
-               onclick="location.href='gogBoard'">게시물작성</button>
-         </div>
-      </div>
-      
+    <c:if test="${loginMember.type == 2 || loginMember.type == 3}">
+			<div class="row g-4 justify-content-center">
+				<button class="col-xl-1" id="write" type="button"
+					onclick="location.href='gogBoard'">게시물작성</button>
+			</div>
+			</div>
+		</c:if>
+		
       <div class="row g-4 justify-content-center hero-header" style="margin-left: 28%; margin-right: 28%; ">
             <script
             src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js"
@@ -486,34 +487,51 @@
       <!-- Template Javascript -->
       <script src="resources/asset/js/main.js"></script>
 
+		<!-- Template Javascript -->
+		<script src="resources/asset/js/main.js"></script>
+	
+		<script type="text/javascript">
+					function checkFavorite(){
+				var g_num=${g_board.g_num};
+				console.log(g_num);
+						
+						$.ajax(
+						{
+							url : "checkFavorite",
+							data : {'g_num' : g_num},
+							type :'get',
+							success : function(data){
+								if(data==1){
+									
+										$("#zzim").text('♥ 찜 완료')
+								}else{
+									$("#zzim").text('이미 찜한 상품 입니다')	
+								}
+							},
+							error : function(){
+								alert("Share: Σ(っ °Д °;)っ 다시 시도해주세요!")
+						}
+					)
+				}
+				</script>
+
+	
+
+      <!--    <!-- 카테고리:채소 비동기 --
+   <script type="text/javascript">
+      function getVege(){
+         $.ajax({
+            url :'',
+            data : '',
+            type : 'get',
+            
+            success : function(data){
+               
+            },
+            error : function() {
+               alert()
+=======
       <!-- Template Javascript -->
-      <script src="resources/asset/js/main.js"></script>
-   
-      <script type="text/javascript">
-               function checkFavorite(){
-            var g_num=${g_board.g_num};
-            console.log(g_num);
-                  
-                  $.ajax(
-                  {
-                     url : "checkFavorite",
-                     data : {'g_num' : g_num},
-                     type :'get',
-                     success : function(data){
-                        if(data==1){
-                           
-                              $("#zzim").text('♥ 찜 완료')
-                        }else{
-                           $("#zzim").text('이미 찜한 상품 입니다')   
-                        }
-                     },
-                     error : function(){
-                        alert("통신실패")
-                     }
-                  }
-               )
-            }
-            </script>
 
 
 </body>

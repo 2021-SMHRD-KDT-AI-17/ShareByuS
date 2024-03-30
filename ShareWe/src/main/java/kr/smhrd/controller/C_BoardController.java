@@ -62,29 +62,15 @@ public class C_BoardController {
 		String encoding = "UTF-8";
 		
 		DefaultFileRenamePolicy rename = new DefaultFileRenamePolicy();
-		member loginMember = (member)session.getAttribute("loginMember");
-		String email = loginMember.getEmail();
-		String c_writer = loginMember.getNick();
-		int price = c_board.getPrice();
-		int c_ea = c_board.getC_ea();
-		double c_opt1 = c_board.getC_opt1();
-		
 		try {
-			MultipartRequest multi= new MultipartRequest(request,path,size, encoding, rename);
-			String c_title = multi.getParameter("c_title");
-			String c_content = multi.getParameter("c_content");
-			String c_f_date = multi.getParameter("c_f_date");
-			String c_img1 = multi.getFilesystemName("c_img1");
-			String category = multi.getParameter("category");
-			
-			c_board = new c_board(c_title, c_writer, email, c_img1, c_content, c_f_date, category, price, c_opt1, c_ea);
-			
-			int cnt = c_boardMapper.insertCBoard(c_board);
+			MultipartRequest multi = new MultipartRequest(request, path, size, encoding, rename);
 		} catch (IOException e) {
 			e.printStackTrace();
 		}
 		
-			return "redirect:/goCompany";
+		c_boardMapper.cBoardInsert(c_board);
+		
+		return "redirect:/goCompany";
 		
 	}
 		

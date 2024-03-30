@@ -6,13 +6,10 @@
 		select * from c_board order by c_w_date desc
 	</select>
 	
-	<insert id="insertCBoard" parameterType="kr.smhrd.entity.c_board">
-		INSERT INTO c_board
-		(c_title, c_writer, email, c_img1, c_content, c_w_date, c_f_date, category,
-		place, price, c_opt1, c_opt2, c_opt3, c_opt4, c_ea, c_p_count)
-		
-		VALUES (#{c_title}, #{c_writer}, #{email}, #{c_img1}, #{c_content},
-		NOW(), #{c_f_date}, #{category}, '동구', #{price}, #{c_opt1}, 1, 1, 1, #{c_ea}, 1);
+	<insert id="cBoardInsert" parameterType="kr.smhrd.entity.c_board">
+		insert into c_board(c_title, c_writer, email, c_img1, c_content, c_f_date, category, place, price, c_opt1, c_ea)
+		values(#{c_title}, #{c_writer}, #{email}, #{c_img1}, #{c_content},
+		#{c_f_date}, #{category}, '광주 동구', #{price}, #{c_opt1}, #{c_ea})
 	</insert>
 	
 	<select id="getCEmail" parameterType="String" resultType="kr.smhrd.entity.c_board">
@@ -33,6 +30,10 @@
 	<update id="cParticipate" parameterType="int">
 		update c_board set c_p_count=c_p_count+1 where c_num=#{c_num}
 	</update>
+	
+	<delete id="deleteRep" parameterType="map">
+		delete from c_board where email=#{param1} and c_num=#{param2}
+	</delete>
 	
 	<delete id="deleteCBoard" parameterType="int">
 		delete from c_board where c_num=#{c_num}	
