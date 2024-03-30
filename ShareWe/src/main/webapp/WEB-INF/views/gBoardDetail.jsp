@@ -127,27 +127,6 @@
    padding-left: 20px;
 }
 
-#clickcontents{
-	float: right !important;
-	border-radius: 120px;
-	border-color: transparent !important;
-
-}
-
-.detailMenu{width: 100%;max-width: 100px;}
-.detailMenu ul{list-style: none;z-index: 2;}
-.detailMenu a{color:#000;text-decoration: none;}
-.detailMenu > ul{display: flex;width: 100%;justify-content: space-between;padding:10px;}
-.detailMenu > ul > li{position: relative; width: 100%}
-.detailMenu > ul > li > a{font-size: 20px;font-weight: bold;padding:10px 0;}
-.detailMenu > ul > li > a:hover{color:#999;}
-.detailMenu > ul > li > ul{ padding: 0; display: none; position: absolute; left:50%; transform: translateX(-50%);border:1px solid #ddd;border-radius: 6px;background: #fff;}
-.detailMenu > ul > li > ul > li{width: 120px !important; text-align: center;}
-.detailMenu > ul > li:hover ul{display:block; margin-top: 30px;}
-.detailMenu > ul > li  li a{display: block; padding:10px 15px;}
-.detailMenu > ul > li  li a:hover{background:#eee;}
-.detailMenu > ul > li > li + li{margin-top:5px;}
-
 </style>
 
 
@@ -214,12 +193,17 @@
             </button>
             <div class="collapse navbar-collapse bg-white" id="navbarCollapse">
                <div class="navbar-nav mx-auto">
-                  <a href="goGeneral" class="nav-item nav-link active">Share</a> 
-                  <a href="goCompany" class="nav-item nav-link">Shop</a> 
+                  <a href="goGeneral" class="nav-item nav-link active">일반</a> 
+                  <a href="goCompany" class="nav-item nav-link">기업</a> 
+
+                  <!-- 기업회원일때만 나오게 -->
+                  <c:if test="${loginMember.type == 1}">
+                     <a href="gocBoard" class="nav-item nav-link">상품등록</a>
+                  </c:if>
 
                   <div class="nav-item dropdown">
                      <a href="#" class="nav-link dropdown-toggle"
-                        data-bs-toggle="dropdown">Category</a>
+                        data-bs-toggle="dropdown">Pages</a>
 
                      <!-- 카테고리별 페이지 이동 -->
                      <div class="dropdown-menu m-0 bg-secondary rounded-0">
@@ -251,29 +235,33 @@
    <!-- Navbar End -->
 
 
-   <!-- Modal Search Start -->
+   <!-- Search Start -->
    <div class="modal fade" id="searchModal" tabindex="-1"
       aria-labelledby="exampleModalLabel" aria-hidden="true">
       <div class="modal-dialog modal-fullscreen">
+
          <div class="modal-content rounded-0">
             <div class="modal-header">
-               <h5 class="modal-title" id="exampleModalLabel">Search by
-                  keyword</h5>
+               <!-- <h5 class="modal-title" id="exampleModalLabel">Search by
+                  keyword</h5> -->
                <button type="button" class="btn-close" data-bs-dismiss="modal"
                   aria-label="Close"></button>
             </div>
-            <div class="modal-body d-flex align-items-center">
-               <div class="input-group w-75 mx-auto d-flex">
-                  <input type="search" class="form-control p-3"
-                     placeholder="keywords" aria-describedby="search-icon-1">
-                  <span id="search-icon-1" class="input-group-text p-3"><i
-                     class="fa fa-search"></i></span>
+            <form action="goSearch">
+               <div class="modal-body d-flex align-items-center">
+                  <div class="input-group w-75 mx-auto d-flex" 
+                     style="height: 800px; padding-bottom: 100px; width:50% !important;  justify-content: center; align-items: center;">
+                     <input type="text" class="form-control p-3" name="searchText" style="height: 58px;"
+                        placeholder="검색어를 입력해주세요." aria-describedby="search-icon-1">
+                     <input type="submit" value="검색" id="search-icon-1" style="border-top-right-radius: 10px; border-bottom-right-radius: 10px; height: 58px;"
+                        class="btn btn-primary border-2 border-secondary py-3 px-4">
+                  </div>
                </div>
-            </div>
+            </form>
          </div>
       </div>
    </div>
-   <!-- Modal Search End -->
+   <!-- Search End -->
 
 
    <!-- Modal Search Start -->
@@ -312,19 +300,19 @@
 
       <!-- 게시글 상세 -->
 
-		<div class="row g-4 justify-content-center" id="categoryBox">
-			<div class="row g-4 justify-content-center">
-				<button class="col-xl-1" id="write" type="button"
-					onclick="location.href='gogBoard'">게시물작성</button>
-			</div>
-		</div>
+      <div class="row g-4 justify-content-center" id="categoryBox">
+         <div class="row g-4 justify-content-center">
+            <button class="col-xl-1" id="write" type="button"
+               onclick="location.href='gogBoard'">게시물작성</button>
+         </div>
+      </div>
 
-		<div class="row g-4 justify-content-center hero-header"
-			style="margin-left: 28%; margin-right: 28%;">
-			<script
-				src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js"
-				integrity="sha384-ka7Sk0Gln4gmtz2MlQnikT1wXgYsOg+OMhuP+IlRH9sENBO0LRn5q+8nbTov4+1p"
-				crossorigin="anonymous"></script>
+      <div class="row g-4 justify-content-center hero-header"
+         style="margin-left: 28%; margin-right: 28%;">
+         <script
+            src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js"
+            integrity="sha384-ka7Sk0Gln4gmtz2MlQnikT1wXgYsOg+OMhuP+IlRH9sENBO0LRn5q+8nbTov4+1p"
+            crossorigin="anonymous"></script>
       <div class="row g-4 justify-content-center" id="categoryBox">
          <div class="row g-4 justify-content-center">
             <button class="col-xl-1" id="write" type="button"
@@ -337,69 +325,67 @@
             src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js"
             integrity="sha384-ka7Sk0Gln4gmtz2MlQnikT1wXgYsOg+OMhuP+IlRH9sENBO0LRn5q+8nbTov4+1p"
             crossorigin="anonymous"></script>
-            
-            
 
-			<div id="carouselExampleControls" class="carousel slide"
-				data-bs-ride="carousel" style="width: 40%; position: relative"
-				align="left">
-				<div class="carousel-inner" style="position: absoulte;">
-					<div class="carousel-item active">
-						<img class="d-block w-100"
-							style="object-fit: cover !important; height: 450px;"
-							src="resources/g_Image/${g_board.g_img1}" alt="..." />
-					</div>
-					<div class="carousel-item">
-						<img class="d-block w-100"
-							style="object-fit: cover !important; height: 450px;"
-							src="https://source.unsplash.com/collection/190727/1600x900"
-							alt="..." />
-					</div>
-					<div class="carousel-item">
-						<img class="d-block w-100"
-							style="object-fit: cover !important; height: 450px;"
-							src="https://source.unsplash.com/WLUHO9A_xik/1600x900" alt="..." />
-					</div>
-				</div>
-				<button class="carousel-control-prev" type="button"
-					data-bs-target="#carouselExampleControls" data-bs-slide="prev">
-					<span class="carousel-control-prev-icon" aria-hidden="true"></span>
-					<span class="visually-hidden">Previous</span>
-				</button>
-				<button class="carousel-control-next" type="button"
-					data-bs-target="#carouselExampleControls" data-bs-slide="next">
-					<span class="carousel-control-next-icon" aria-hidden="true"></span>
-					<span class="visually-hidden">Next</span>
-				</button>
+         <div id="carouselExampleControls" class="carousel slide"
+            data-bs-ride="carousel" style="width: 40%; position: relative;"
+            align="left">
+            <div class="carousel-inner" style="position: absoulte;">
+               <div class="carousel-item active">
+                  <img class="d-block w-100"
+                     style="object-fit: cover !important; height: 450px;"
+                     src="resources/g_Image/${g_board.g_img1}" alt="..." />
+               </div>
+               <div class="carousel-item">
+                  <img class="d-block w-100"
+                     style="object-fit: cover !important; height: 450px;"
+                     src="https://source.unsplash.com/collection/190727/1600x900"
+                     alt="..." />
+               </div>
+               <div class="carousel-item">
+                  <img class="d-block w-100"
+                     style="object-fit: cover !important; height: 450px;"
+                     src="https://source.unsplash.com/WLUHO9A_xik/1600x900" alt="..." />
+               </div>
+            </div>
+            <button class="carousel-control-prev" type="button"
+               data-bs-target="#carouselExampleControls" data-bs-slide="prev">
+               <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+               <span class="visually-hidden">Previous</span>
+            </button>
+            <button class="carousel-control-next" type="button"
+               data-bs-target="#carouselExampleControls" data-bs-slide="next">
+               <span class="carousel-control-next-icon" aria-hidden="true"></span>
+               <span class="visually-hidden">Next</span>
+            </button>
 
-			</div>
+         </div>
 
-		
+      
 
 
 
-		<div class="row g-4 justify-content-center" style="display: block;">
-					<div class="boardContent">
-						<button onclick="checkFavorite()" id="zzim" style="width: 10%;" type="button" class="btn btn-outline-success">❤ 찜</button>
-						
-						<button type="button" class="btn btn-outline-success"
-							onclick="location.href='gParticipate?g_num=${g_board.g_num}'" style="width: 20%; margin-left: 20px">참여하기</button><br>
-					</div>
-					<div class="boardContent">
-						참여인원 : ${g_board.g_p_count}
-					</div>
-					<div class="boardContent">
-						<span><h6 style="display: inline;">작성자 : ${g_board.g_writer}</h6></span>
-						<span style="float: right;">${g_board.category} / ${g_board.g_w_date}</span>
-					</div>
-					<div class="boardContent">
-						<h5>${g_board.g_title}</h5>	
-						<h6>종료 날짜 : ${g_board.g_b_date}</h6><br>
-						<div>${g_board.g_content}</div>	
-					</div>
-				</div>
-		</div>
-		</div>
+      <div class="row g-4 justify-content-center" style="display: block;">
+               <div class="boardContent">
+                  <button onclick="checkFavorite()" id="zzim" style="width: 10%;" type="button" class="btn btn-outline-success">❤ 찜</button>
+                  
+                  <button type="button" class="btn btn-outline-success"
+                     onclick="location.href='gParticipate?g_num=${g_board.g_num}'" style="width: 20%; margin-left: 20px">참여하기</button><br>
+               </div>
+               <div class="boardContent">
+                  참여인원 : ${g_board.g_p_count}
+               </div>
+               <div class="boardContent">
+                  <span><h6 style="display: inline;">작성자 : ${g_board.g_writer}</h6></span>
+                  <span style="float: right;">${g_board.category} / ${g_board.g_w_date}</span>
+               </div>
+               <div class="boardContent">
+                  <h5>${g_board.g_title}</h5>   
+                  <h6>종료 날짜 : ${g_board.g_b_date}</h6><br>
+                  <div>${g_board.g_content}</div>   
+               </div>
+            </div>
+      </div>
+      </div>
          <div id="carouselExampleControls" class="carousel slide"
             data-bs-ride="carousel" style="position: relative;" align="center">
             <div class="carousel-inner" style="position: absoulte;" >
@@ -432,22 +418,12 @@
             
             <div class="row g-4 justify-content-center" style="display: block;">
                <div class="boardContent">
-                  <button style="width: 10%;" type="button" class="btn btn-outline-success">❤ 찜</button>
+                  <button style="width: 10%;" type="button" class="btn btn-outline-success">❤</button>
                   <button type="button" class="btn btn-outline-success"
-                     onclick="location.href='gParticipate?g_num=${g_board.g_num}'" style="width: 20%; margin-left: 20px">참여하기</button>
+                                      onclick="location.href='gParticipate?g_num=${g_board.g_num}'" style="width: 20%; margin-left: 20px">참여하기</button>
                   <button type="button" class="btn btn-outline-success"
-                  	 onclick="location.href=''" style="width: 20%; float: ">끌어올리기</button>
-					<nav class="detailMenu" style="float: right;">
-						<ul>
-							<li><a href="#"> <strong style="float: right;">⁝</strong> </a>
-								<ul>
-									<li><a href="#">게시글 수정</a></li>
-									<li><a href="#">끌어올리기</a></li>
-									<li><a href="#">게시글 삭제</a></li>
-								</ul></li>
-						</ul>
-					</nav>
-				</div>
+                      onclick="location.href='goBoardUp?g_num=${g_board.g_num}&g_img1=${g_board.g_img1 }&g_content=${g_board.g_content}'" style="width: 20%; float: ">끌어올리기</button>
+               </div>
                <div class="boardContent">
                   참여인원 : ${g_board.g_p_count}
                </div>
@@ -464,16 +440,16 @@
       </div>
 
 
-			<div align="right">
-				<form action="sendReportInfo" method="post">
-				<input type="hidden" value="${g_board.g_num}" name="r_num">
-				<input type="hidden" value="${g_board.email}" name="email">
-				<input type="hidden" value="${g_board.g_title}" name="g_title">
-	 			<input type="hidden" value="${loginMember.email}" name="rp_email">
-					
-				<input type="submit" value="신고하기">
-				</form>
-			</div>
+         <div align="right">
+            <form action="sendReportInfo" method="post">
+            <input type="hidden" value="${g_board.g_num}" name="r_num">
+            <input type="hidden" value="${g_board.email}" name="email">
+            <input type="hidden" value="${g_board.g_title}" name="g_title">
+             <input type="hidden" value="${loginMember.email}" name="rp_email">
+               
+            <input type="submit" value="신고하기">
+            </form>
+         </div>
 
       <!-- 메인 페이지 하단 -->
       <div class="container-fluid bg-dark text-white-50 footer pt-5 mt-5">
@@ -516,56 +492,36 @@
       <!-- Template Javascript -->
       <script src="resources/asset/js/main.js"></script>
 
-		<!-- Template Javascript -->
-		<script src="resources/asset/js/main.js"></script>
-	
-		<script type="text/javascript">
-					function checkFavorite(){
-				var g_num=${g_board.g_num};
-				console.log(g_num);
-						
-						$.ajax(
-						{
-							url : "checkFavorite",
-							data : {'g_num' : g_num},
-							type :'get',
-							success : function(data){
-								if(data==1){
-									
-										$("#zzim").text('♥ 찜 완료')
-								}else{
-									$("#zzim").text('이미 찜한 상품 입니다')	
-								}
-							},
-							error : function(){
-								alert("통신실패")
-							}
-						}
-					)
-				}
-				</script>
-
-	
-
-      <!--    <!-- 카테고리:채소 비동기 --
-   <script type="text/javascript">
-      function getVege(){
-         $.ajax({
-            url :'',
-            data : '',
-            type : 'get',
-            
-            success : function(data){
-               
-            },
-            error : function() {
-               alert()
+      <!-- Template Javascript -->
+      <script src="resources/asset/js/main.js"></script>
+   
+      <script type="text/javascript">
+               function checkFavorite(){
+            var g_num=${g_board.g_num};
+            console.log(g_num);
+                  
+                  $.ajax(
+                  {
+                     url : "checkFavorite",
+                     data : {'g_num' : g_num},
+                     type :'get',
+                     success : function(data){
+                        if(data==1){
+                           
+                              $("#zzim").text('♥ 찜 완료')
+                        }else{
+                           $("#zzim").text('이미 찜한 상품 입니다')   
+                        }
+                     },
+                     error : function(){
+                        alert("통신실패")
+                     }
+                  }
+               )
             }
-            
-            
-         })
-      }
-   </script> -->
+            </script>
+
+
 </body>
 
 </html>
