@@ -127,6 +127,30 @@
    padding-left: 20px;
 }
 
+<<<<<<< HEAD
+=======
+#clickcontents{
+   float: right !important;
+   border-radius: 120px;
+   border-color: transparent !important;
+
+}
+
+.detailMenu{width: 100%;max-width: 100px;}
+.detailMenu ul{list-style: none;z-index: 2;}
+.detailMenu a{color:#000;text-decoration: none;}
+.detailMenu > ul{display: flex;width: 100%;justify-content: space-between;padding:10px;}
+.detailMenu > ul > li{position: relative; width: 100%}
+.detailMenu > ul > li > a{font-size: 20px;font-weight: bold;padding:10px 0;}
+.detailMenu > ul > li > a:hover{color:#999;}
+.detailMenu > ul > li > ul{ padding: 0; display: none; position: absolute; left:50%; transform: translateX(-50%);border:1px solid #ddd;border-radius: 6px;background: #fff;}
+.detailMenu > ul > li > ul > li{width: 140px !important; text-align: center;}
+.detailMenu > ul > li:hover ul{display:block; margin-top: 30px;}
+.detailMenu > ul > li  li a{display: block; padding:10px 15px;}
+.detailMenu > ul > li  li a:hover{background:#eee;}
+.detailMenu > ul > li > li + li{margin-top:5px;}
+
+>>>>>>> branch 'main' of https://github.com/2021-SMHRD-KDT-AI-17/ShareByuS.git
 </style>
 
 
@@ -193,17 +217,12 @@
             </button>
             <div class="collapse navbar-collapse bg-white" id="navbarCollapse">
                <div class="navbar-nav mx-auto">
-                  <a href="goGeneral" class="nav-item nav-link active">일반</a> 
-                  <a href="goCompany" class="nav-item nav-link">기업</a> 
-
-                  <!-- 기업회원일때만 나오게 -->
-                  <c:if test="${loginMember.type == 1}">
-                     <a href="gocBoard" class="nav-item nav-link">상품등록</a>
-                  </c:if>
+                  <a href="goGeneral" class="nav-item nav-link active">Share</a> 
+                  <a href="goCompany" class="nav-item nav-link">Shop</a> 
 
                   <div class="nav-item dropdown">
                      <a href="#" class="nav-link dropdown-toggle"
-                        data-bs-toggle="dropdown">Pages</a>
+                        data-bs-toggle="dropdown">Category</a>
 
                      <!-- 카테고리별 페이지 이동 -->
                      <div class="dropdown-menu m-0 bg-secondary rounded-0">
@@ -306,28 +325,17 @@
                onclick="location.href='gogBoard'">게시물작성</button>
          </div>
       </div>
-
-      <div class="row g-4 justify-content-center hero-header"
-         style="margin-left: 28%; margin-right: 28%;">
-         <script
-            src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js"
-            integrity="sha384-ka7Sk0Gln4gmtz2MlQnikT1wXgYsOg+OMhuP+IlRH9sENBO0LRn5q+8nbTov4+1p"
-            crossorigin="anonymous"></script>
-      <div class="row g-4 justify-content-center" id="categoryBox">
-         <div class="row g-4 justify-content-center">
-            <button class="col-xl-1" id="write" type="button"
-               onclick="location.href='gogBoard'">게시물작성</button>
-         </div>
-      </div>
       
       <div class="row g-4 justify-content-center hero-header" style="margin-left: 28%; margin-right: 28%; ">
             <script
             src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js"
             integrity="sha384-ka7Sk0Gln4gmtz2MlQnikT1wXgYsOg+OMhuP+IlRH9sENBO0LRn5q+8nbTov4+1p"
             crossorigin="anonymous"></script>
+            
+            
 
          <div id="carouselExampleControls" class="carousel slide"
-            data-bs-ride="carousel" style="width: 40%; position: relative;"
+            data-bs-ride="carousel" style="width: 40%; position: relative"
             align="left">
             <div class="carousel-inner" style="position: absoulte;">
                <div class="carousel-item active">
@@ -365,71 +373,59 @@
 
 
       <div class="row g-4 justify-content-center" style="display: block;">
+               
                <div class="boardContent">
                   <button onclick="checkFavorite()" id="zzim" style="width: 10%;" type="button" class="btn btn-outline-success">❤ 찜</button>
+					<c:choose >
+						<c:when test="${loginMember.email eq g_board.email}">
+							<nav class="detailMenu" style="float: right;">
+								<ul>
+									<li><a href="#"> <strong style="float: right;">⁝</strong>
+									</a>
+										<ul>
+											<li><a
+												href="goBoardUp?g_num=${g_board.g_num}&g_img1=${g_board.g_img1 }&g_content=${g_board.g_content}">끌어올리기</a></li>
+											<li><a href="#">공동구매 마감</a></li>
+											<li><a href="goUpdate?g_num=${g_board.g_num}">게시글 수정</a></li>
+											<li><a href="deleteGBoard?g_num=${g_board.g_num}">게시글 삭제</a></li>
+										</ul></li>
+								</ul>
+							</nav>
+						</c:when>
+						<c:when test="${not empty loginMember }">
+							<nav class="detailMenu" style="float: right;">
+								<ul>
+									<li><a href="#"> <strong style="float: right;">⁝</strong>
+									</a>
+										<ul>
+											<li><a href="#">게시물 신고</a></li>
+										</ul></li>
+								</ul>
+							</nav>
+						</c:when>
+						<c:when test="${ empty loginMember}">
+							<nav class="detailMenu" style="float: right;">
+								<ul>
+									<li><a href="#"> <strong style="float: right;"></strong></a>
+								</ul>
+							</nav>
+						</c:when>
+					</c:choose>
+					
+						
                   
                   <button type="button" class="btn btn-outline-success"
                      onclick="location.href='gParticipate?g_num=${g_board.g_num}'" style="width: 20%; margin-left: 20px">참여하기</button><br>
-               </div>
+					
+					
+				</div>
+				
                <div class="boardContent">
                   참여인원 : ${g_board.g_p_count}
                </div>
                <div class="boardContent">
                   <span><h6 style="display: inline;">작성자 : ${g_board.g_writer}</h6></span>
-                  <span style="float: right;">${g_board.category} / ${g_board.g_w_date}</span>
-               </div>
-               <div class="boardContent">
-                  <h5>${g_board.g_title}</h5>   
-                  <h6>종료 날짜 : ${g_board.g_b_date}</h6><br>
-                  <div>${g_board.g_content}</div>   
-               </div>
-            </div>
-      </div>
-      </div>
-         <div id="carouselExampleControls" class="carousel slide"
-            data-bs-ride="carousel" style="position: relative;" align="center">
-            <div class="carousel-inner" style="position: absoulte;" >
-               <div class="carousel-item active">
-                  <img class="d-block" style="object-fit: cover !important; height: 450px;"
-                     src="resources/g_Image/${g_board.g_img1}" alt="..." />
-               </div>
-               <div class="carousel-item">
-                  <img class="d-block" style="object-fit: cover !important; height: 450px;"
-                     src="https://source.unsplash.com/collection/190727/1600x900"
-                     alt="..." />
-               </div>
-               <div class="carousel-item" >
-                  <img class="d-block" style="object-fit: cover !important; height: 450px;"
-                     src="https://source.unsplash.com/WLUHO9A_xik/1600x900" alt="..." />
-               </div>
-            </div>
-            <button class="carousel-control-prev" type="button"
-               data-bs-target="#carouselExampleControls" data-bs-slide="prev">
-               <span class="carousel-control-prev-icon" aria-hidden="true" style="background-color: grey"></span>
-               <span class="visually-hidden">Previous</span>
-            </button>
-            <button class="carousel-control-next" type="button"
-               data-bs-target="#carouselExampleControls" data-bs-slide="next">
-               <span class="carousel-control-next-icon" aria-hidden="true" style="background-color: grey"></span>
-               <span class="visually-hidden">Next</span>
-            </button>
-         </div>   
-               
-            
-            <div class="row g-4 justify-content-center" style="display: block;">
-               <div class="boardContent">
-                  <button style="width: 10%;" type="button" class="btn btn-outline-success">❤</button>
-                  <button type="button" class="btn btn-outline-success"
-                                      onclick="location.href='gParticipate?g_num=${g_board.g_num}'" style="width: 20%; margin-left: 20px">참여하기</button>
-                  <button type="button" class="btn btn-outline-success"
-                      onclick="location.href='goBoardUp?g_num=${g_board.g_num}&g_img1=${g_board.g_img1 }&g_content=${g_board.g_content}'" style="width: 20%; float: ">끌어올리기</button>
-               </div>
-               <div class="boardContent">
-                  참여인원 : ${g_board.g_p_count}
-               </div>
-               <div class="boardContent">
-                  <span><h6 style="display: inline;">작성자 : ${g_board.g_writer}</h6></span>
-                  <span style="float: right;">${g_board.category} / ${g_board.g_w_date}</span>
+                  <span style="float: right;">카테고리 : ${g_board.category} / ${g_board.g_w_date}</span>
                </div>
                <div class="boardContent">
                   <h5>${g_board.g_title}</h5>   

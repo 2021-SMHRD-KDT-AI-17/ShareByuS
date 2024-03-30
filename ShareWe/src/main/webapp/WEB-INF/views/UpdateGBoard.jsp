@@ -7,7 +7,7 @@
 
 <head>
 <meta charset="utf-8">
-<title>Fruitables - Vegetable Website Template</title>
+<title>Share We?</title>
 <meta content="width=device-width, initial-scale=1.0" name="viewport">
 <meta content="" name="keywords">
 <meta content="" name="description">
@@ -42,8 +42,8 @@
 
 <body>
 
-<%
-		member loginMember = (member)session.getAttribute("loginMember");
+	<%
+	member loginMember = (member) session.getAttribute("loginMember");
 	%>
 
 	<!-- Spinner Start -->
@@ -57,26 +57,38 @@
 	<!-- Navbar start -->
 	<div class="container-fluid fixed-top">
 		<div class="container topbar bg-primary d-none d-lg-block">
-				<div class="d-flex justify-content-between">
-					<div class="top-info ps-2">
-                        <small class="me-3"></small>
-                        <small class="me-3"></small>
-                    </div>
-					<div class="top-link pe-2">
-						<%if (loginMember == null) {%>
-							<a href="goLogin" class="text-white"><small class="text-white mx-2">로그인</small>/</a>
-							<a href="goMemberType" class="text-white"><small class="text-white mx-2">회원가입</small></a>
-						<%}else {%>
-							<span><small class="text-white mx-2"><%=loginMember.getNick() %>님 환영합니다.</small></span>
-							<%if(loginMember.getEmail().equals("admin")) {%>
-								<a href="#" class="text-white"><small class="text-white ms-2">회원관리</small></a>
-							<%} %>
-							<a href="memberLogout" class="text-white"><small class="text-white mx-2">로그아웃</small></a>
-						<%} %>
-						
-					</div>
+			<div class="d-flex justify-content-between">
+				<div class="top-info ps-2">
+					<small class="me-3"></small> <small class="me-3"></small>
+				</div>
+				<div class="top-link pe-2">
+					<%
+					if (loginMember == null) {
+					%>
+					<a href="goLogin" class="text-white"><small
+						class="text-white mx-2">로그인</small>/</a> <a href="goMemberType"
+						class="text-white"><small class="text-white mx-2">회원가입</small></a>
+					<%
+					} else {
+					%>
+					<span><small class="text-white mx-2"><%=loginMember.getNick()%>님
+							환영합니다.</small></span>
+					<%
+					if (loginMember.getEmail().equals("admin")) {
+					%>
+					<a href="#" class="text-white"><small class="text-white ms-2">회원관리</small></a>
+					<%
+					}
+					%>
+					<a href="memberLogout" class="text-white"><small
+						class="text-white mx-2">로그아웃</small></a>
+					<%
+					}
+					%>
+
 				</div>
 			</div>
+		</div>
 		<div class="container px-0">
 			<nav class="navbar navbar-light bg-white navbar-expand-xl">
 				<a href="goMain" class="navbar-brand"><h1
@@ -104,17 +116,17 @@
 							style="color: black">Contact</a>
 					</div>
 					<div class="d-flex m-3 me-0">
-							<button
-								class="btn-search btn border border-secondary btn-md-square rounded-circle bg-white me-4"
-								data-bs-toggle="modal" data-bs-target="#searchModal">
-								<i class="fas fa-search text-primary"></i>
-							</button>
-							<a href="goCart" class="position-relative me-4 my-auto"> <i
-								class="fa fa-shopping-bag fa-2x"></i> <span
-								class="position-absolute bg-secondary rounded-circle d-flex align-items-center justify-content-center text-dark px-1"
-								style="top: -5px; left: 15px; height: 20px; min-width: 20px;">3</span>
-							</a> <a href="goMyPage" class="my-auto"> <i
-								class="fas fa-user fa-2x"></i></a>
+						<button
+							class="btn-search btn border border-secondary btn-md-square rounded-circle bg-white me-4"
+							data-bs-toggle="modal" data-bs-target="#searchModal">
+							<i class="fas fa-search text-primary"></i>
+						</button>
+						<a href="goCart" class="position-relative me-4 my-auto"> <i
+							class="fa fa-shopping-bag fa-2x"></i> <span
+							class="position-absolute bg-secondary rounded-circle d-flex align-items-center justify-content-center text-dark px-1"
+							style="top: -5px; left: 15px; height: 20px; min-width: 20px;">3</span>
+						</a> <a href="goMyPage" class="my-auto"> <i
+							class="fas fa-user fa-2x"></i></a>
 					</div>
 				</div>
 			</nav>
@@ -162,7 +174,7 @@
 
 	<div class="container-fluid py-5">
 		<div class="container py-5">
-			<form action="gBoardInsert" method="post"
+			<form action="gBoardUpdate" method="post"
 				enctype="multipart/form-data">
 				<div class="row g-5 justify-content-center" id="loginDiv">
 					<div class="col-md-12 col-lg-6 col-xl-7" align="left">
@@ -170,19 +182,19 @@
 						<br>
 						<div class="form-item">
 
-							<label class="input-file-button" for="btnAtt"> 업로드 </label> 
-							
-								<input  type="file" name="g_img1"  id="btnAtt" style="display: none">
-								<!-- multiple="multiple" style="display: none" onchange="readURL(this);" -->
+							<label class="input-file-button" for="btnAtt"> 업로드 </label> <input
+								type="file" name="g_img1" id="btnAtt" style="display: none"
+								value="${g_board.g_img1}">
+							<!-- multiple="multiple" style="display: none" onchange="readURL(this);" -->
 							<!-- 이미피자일 name = filename -->
 
 							<div id='image_preview'>
 								<div id='att_zone'
-									data-placeholder='파일을 첨부 하려면 파일 선택 버튼을 클릭하거나 파일을 드래그앤드롭 하세요'></div>
+									data-placeholder='파일을 첨부 하려면 파일 선택 버튼을 클릭하거나 파일을 드래그앤드롭 하세요'> <img alt="" src="resources/g_Image/${g_board.g_img1}"></div>
 							</div>
 
 							<script>
-( /* att_zone : 이미지들이 들어갈 위치 id, btn : file tag id */
+(  /* att_zone : 이미지들이 들어갈 위치 id, btn : file tag id */
   imageView = function imageView(att_zone, btn){
 
     var attZone = document.getElementById(att_zone);
@@ -296,11 +308,11 @@
 						<div class="form-item">
 							<input type="text" name="g_title" style="width: 600px"
 								class="border-0 border-bottom rounded me-5 py-3 mb-4"
-								placeholder="상품 명을 입력해주세요">
+								value="${g_board.g_title}">
 						</div>
 					</div>
-					
-					
+
+
 
 					<div class="col-md-12 col-lg-6 col-xl-7" align="left">
 						<h4 class="form-label my-3">* 카테고리</h4>
@@ -308,6 +320,7 @@
 						<div class="form-item">
 							<div class="col-sm-8">
 								<select name="category" id="a4" class="form-control">
+									<option value=${g_board.category }>${g_board.category }</option>
 									<option value="채소">채소</option>
 									<option value="과일">과일</option>
 									<option value="식품">식품</option>
@@ -319,19 +332,23 @@
 					</div>
 
 
-					<div class="col-md-12 col-lg-6 col-xl-7" align="left">
+					<!-- <div class="col-md-12 col-lg-6 col-xl-7" align="left">
 						<h4 class="form-label my-3">* 참여인원</h4>
 						<br>
 						<div class="form-item">
 							<div class="col-sm-8">
-							
-								<button type="button" class="border-0 border-bottom rounded me-5 py-3 mb-4" style="width: 50px; font-size: 20px;" onclick="increase()">+</button>
-							
-								<b style="margin-right: 40px; font-size: 30px;" id="num" >2</b>
-	
-								<button type="button" class="border-0 border-bottom rounded me-5 py-3 mb-4" style="width: 50px; font-size: 20px;" onclick="decrease()">-</button>
-							
-								<script >
+
+								<button type="button"
+									class="border-0 border-bottom rounded me-5 py-3 mb-4"
+									style="width: 50px; font-size: 20px;" onclick="increase()">+</button>
+
+								<b style="margin-right: 40px; font-size: 30px;" id="num">2</b>
+
+								<button type="button"
+									class="border-0 border-bottom rounded me-5 py-3 mb-4"
+									style="width: 50px; font-size: 20px;" onclick="decrease()">-</button>
+
+								<script>
 								
 								const join = document.getElementById('num');
 						        
@@ -345,20 +362,22 @@
 						            }
 						        }
 								</script>
-								<br>
-								<b style="margin-right: 40px; font-size: 15px;" >최소인원은 2명 입니다.</b>
+								<br> <b style="margin-right: 40px; font-size: 15px;">최소인원은
+									2명 입니다.</b>
 							</div>
 						</div>
 						<hr>
 
 
-					</div>
+					</div> -->
+					
+					
 					<div class="col-md-12 col-lg-6 col-xl-7" align="left">
 						<h4 class="form-label my-3">* 상품설명</h4>
 						<br>
 						<div class="form-item">
 							<textarea name="g_content" rows="6" cols="80"
-								style="border-radius: 5px" placeholder="상품 가격 및 거래방법 등 작성"></textarea>
+								style="border-radius: 5px" placeholder="상품 가격 및 거래방법 등 작성">${g_board.g_content }</textarea>
 						</div>
 						<hr>
 
@@ -408,7 +427,7 @@
 	<!-- JavaScript Libraries -->
 	<script
 		src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.4/jquery.min.js"></script>
-								<script
+	<script
 		src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0/dist/js/bootstrap.bundle.min.js"></script>
 	<script src="resources/asset/lib/easing/easing.min.js"></script>
 	<script src="resources/asset/lib/waypoints/waypoints.min.js"></script>
