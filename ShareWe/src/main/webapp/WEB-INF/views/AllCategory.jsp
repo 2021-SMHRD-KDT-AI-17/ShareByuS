@@ -174,9 +174,9 @@
 
 	<!-- Single Page Header start -->
 	<div class="container-fluid page-header py-5">
-		<h1 class="text-center text-white display-6">Search</h1>
+		<h1 class="text-center text-white display-6">카테고리</h1>
 		<ol class="breadcrumb justify-content-center mb-0">
-			<li class="breadcrumb-item active text-white">"${searchText }" 검색 결과</li>
+			<li class="breadcrumb-item active text-white">"${category}" 검색 결과</li>
 		</ol>
 	</div>
 	<!-- Single Page Header End -->
@@ -193,7 +193,7 @@
 	                  <ul class="nav nav-pills d-inline-flex text-center mb-5">
 	                     <li class="nav-item"><a
 	                        class="d-flex m-2 py-2 bg-light rounded-pill"
-	                         href="gSearch?searchText=${searchText}"> <span class="text-dark"
+	                         href="getgCategory?category=${category}"> <span class="text-dark"
 	                           style="width: 140px;">➕ 상품 더보기</span>
 	                     </a></li>
 	                  </ul>
@@ -269,7 +269,7 @@
 	                  <ul class="nav nav-pills d-inline-flex text-center mb-5">
 	                     <li class="nav-item"><a
 	                        class="d-flex m-2 py-2 bg-light rounded-pill"
-	                         href="gSearch?searchText=${searchText}"> <span class="text-dark"
+	                         href="getComCategory?category=${category}"> <span class="text-dark"
 	                           style="width: 140px;">➕ 상품 더보기</span>
 	                     </a></li>
 	                  </ul>

@@ -14,7 +14,7 @@ public interface G_BoardMapper {
 
 	public List<g_board> getGBoard();
 
-	public List<g_board> getCategory(String category);
+	public List<g_board> getgCategory(String category);
 
 	public List<g_board> getGEmail(String email);
 

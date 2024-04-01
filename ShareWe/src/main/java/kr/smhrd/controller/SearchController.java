@@ -10,6 +10,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestParam;
 
 import kr.smhrd.entity.c_board;
 import kr.smhrd.entity.g_board;
@@ -34,6 +35,22 @@ public class SearchController {
 	    model.addAttribute("cboard_list", cboard_list);
 
 	    return "Search";
+	}
+	
+	@RequestMapping("/gSearch")
+	public String gSearch(@RequestParam("searchText") String searchText, Model model) {
+		List<g_board> gboard_list = searchMapper.gSearch(searchText);
+	    model.addAttribute("gboard_list", gboard_list);
+
+	    return "Share";
+	}
+	
+	@RequestMapping("/cSearch")
+	public String cSearch(@RequestParam("searchText") String searchText, Model model) {
+		List<c_board> cboard_list = searchMapper.cSearch(searchText);
+		model.addAttribute("cboard_list", cboard_list);
+		
+		return "Shop";
 	}
 	
 }
