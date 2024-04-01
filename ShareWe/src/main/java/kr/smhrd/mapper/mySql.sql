@@ -15,6 +15,10 @@ select * from g_board;
 select * from c_board;
 select * from c_board;
 select * from review;
+select * from c_board;
+select * from payment;
+select * from subscribe;
+
 
 select * from member;
 select email from member;

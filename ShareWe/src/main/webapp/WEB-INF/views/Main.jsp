@@ -187,6 +187,7 @@
                <!-- 채팅 임시 버튼 
                <a href="goChat"><button>채팅</button></a>
                채팅 임시 버튼 -->
+               <a href="gopaySuccess"><button>결제완료</button></a>
 
 				<div class="position-relative mx-auto">
 					<form action="goSearch">
