@@ -396,7 +396,7 @@
 									<li><a href="#"> <strong style="float: right;">⁝</strong>
 									</a>
 										<ul>
-											<li><a href="#">게시물 신고</a></li>
+											<li><a href="sendReportInfo">게시물 신고</a></li>
 										</ul></li>
 								</ul>
 							</nav>
