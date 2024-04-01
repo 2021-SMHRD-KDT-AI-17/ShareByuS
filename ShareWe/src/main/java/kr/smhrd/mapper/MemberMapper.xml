@@ -42,6 +42,10 @@
 		update member set nick=#{nick} where email=#{email}
 	</update>
 	
+	<select id="C_BoardMap" parameterType="String" resultType="kr.smhrd.entity.member">
+		select * from member where nick=#{c_writer}
+	</select>
+	
 	<select id="goAdReport" resultType="kr.smhrd.entity.report">
 		select * from report
 	</select>

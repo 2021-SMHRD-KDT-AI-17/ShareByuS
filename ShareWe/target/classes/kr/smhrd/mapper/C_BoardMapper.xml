@@ -16,6 +16,9 @@
 		select * from c_board where email=#{email}
 	</select>
 	
+
+	
+	
 	<select id="getComCategory" parameterType="String" resultType="kr.smhrd.entity.c_board">
 		select * from c_board where category=#{category}
 	</select>

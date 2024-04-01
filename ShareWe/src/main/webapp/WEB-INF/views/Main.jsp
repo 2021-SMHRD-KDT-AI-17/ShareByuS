@@ -26,6 +26,9 @@
 <link
    href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.4.1/font/bootstrap-icons.css"
    rel="stylesheet">
+   
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.8.0/font/bootstrap-icons.css">
+
 
 <!-- Libraries Stylesheet -->
 <link href="resources/asset/lib/lightbox/css/lightbox.min.css"
@@ -116,9 +119,11 @@
 
                      <!-- 카테고리별 페이지 이동 -->
                      <div class="dropdown-menu m-0 bg-secondary rounded-0">
-                        <a href="cart.html" class="dropdown-item">식품</a> <a
-                           href="chackout.html" class="dropdown-item">과일</a> <a
-                           href="testimonial.html" class="dropdown-item">생필품</a>
+                        <a href="getCategory?category=식품" class="dropdown-item">식품</a> 
+                        <a href="getCategory?category=과일" class="dropdown-item">과일</a>
+                        <a href="getCategory?category=생필품" class="dropdown-item">생필품</a>
+                        <a href="getCategory?category=패션/뷰티" class="dropdown-item">패션/뷰티</a>
+                        <a href="getCategory?category=여행/도서" class="dropdown-item">여행/도서</a>
                      </div>
                   </div>
                   <a href="contact.html" class="nav-item nav-link">Contact</a>
@@ -130,12 +135,8 @@
                      data-bs-target="#searchModal">
                      <i class="fas fa-search text-primary"></i>
                   </button>
-                  <a href="goCart" class="position-relative me-4 my-auto"> <i
-                     class="fa fa-shopping-bag fa-2x"></i> <span
-                     class="position-absolute bg-secondary rounded-circle d-flex align-items-center justify-content-center text-dark px-1"
-                     style="top: -5px; left: 15px; height: 20px; min-width: 20px;">3</span>
-                  </a> <a href="goMyPage" class="my-auto"> <i
-                     class="fas fa-user fa-2x"></i></a>
+                  <a href="goCart" class="position-relative me-4 my-auto"> <i class="bi bi-bell-fill fa-2x"></i> </a>
+                  <a href="goMyPage" class="my-auto"> <i class="fas fa-user fa-2x"></i></a>
                </div>
             </div>
          </nav>
@@ -174,130 +175,49 @@
 
 
    <!-- 메인 이미지 슬라이드 div Start -->
-   <div class="container-fluid py-5 mb-5 hero-header">
+   <div class="container-fluid py-5 mb-5 hero-header" style="padding-top: 2rem !important; padding-bottom: 1rem !important;">
+   
       <div class="container py-5">
          <div class="row g-5 align-items-center">
             <div class="col-md-12 col-lg-7">
-               <h4 class="mb-3 text-secondary" style="color: black !important">100%
-                  Organic Foods</h4>
-               <h1 class="mb-5 display-3 text-primary">Organic Veggies &
-                  Fruits Foods</h1>
-
-			   <!-- 리뷰작성 임시 버튼 -->
-				
-			   <!-- 리뷰작성 임시 버튼 -->
+               <h3 class="mb-5 display-3 text-primary" style="margin-bottom: 1rem !important;">우리 동네의<br>공동구매 플랫폼</h3>
+               <h5 class="mb-3 text-secondary" style="color: grey !important; margin-bottom: 2rem !important;">  Share We를 통해 <br>  동네에서 공동구매를 진행해보세요.</h5>
 
 
-               <!-- 채팅 임시 버튼 -->
+               <!-- 채팅 임시 버튼 
                <a href="goChat"><button>채팅</button></a>
-               <!-- 채팅 임시 버튼 -->
+               채팅 임시 버튼 -->
 
-					<div class="position-relative mx-auto">
-						<form action="goSearch">
-							<input
-								class="form-control border-2 border-secondary w-75 py-3 px-4 rounded-pill"
-								type="text" placeholder="Search" name="searchText"
-								style="border-color: #009223 !important"> <input
-								type="submit" value="검색"
-								class="btn btn-primary border-2 border-secondary py-3 px-4 position-absolute rounded-pill text-white h-100"
-								style="top: 0; right: 25%; border-color: #009223 !important;"></input>
-						</form>
-					</div>
-				</div>
-				<div class="col-md-12 col-lg-5">
-					<div id="carouselId" class="carousel slide position-relative"
-						data-bs-ride="carousel">
-						<div class="carousel-inner" role="listbox">
-							<div class="carousel-item active rounded">
-								<img src="resources/img/hero-img-1.png"
-									class="img-fluid w-100 h-100 bg-secondary rounded"
-									alt="First slide"> <a href="#"
-									class="btn px-4 py-2 text-white rounded">슬라이드 사진1</a>
-							</div>
-							<div class="carousel-item rounded">
-								<img src="resources/img/hero-img-2.jpg"
-									class="img-fluid w-100 h-100 rounded" alt="Second slide">
-								<a href="#" class="btn px-4 py-2 text-white rounded">슬라이드
-									사진2</a>
-							</div>
-						</div>
-						<button class="carousel-control-prev" type="button"
-							data-bs-target="#carouselId" data-bs-slide="prev">
-							<span class="carousel-control-prev-icon" aria-hidden="true"></span>
-							<span class="visually-hidden">Previous</span>
-						</button>
-						<button class="carousel-control-next" type="button"
-							data-bs-target="#carouselId" data-bs-slide="next">
-							<span class="carousel-control-next-icon" aria-hidden="true"></span>
-							<span class="visually-hidden">Next</span>
-						</button>
-					</div>
+				<div class="position-relative mx-auto">
+					<form action="goSearch">
+						<input
+							class="form-control border-2 border-secondary w-75 py-3 px-4 rounded-pill"
+							type="text" placeholder="Search" name="searchText"
+							style="border-color: #009223 !important"> <input
+							type="submit" value="검색"
+							class="btn btn-primary border-2 border-secondary py-3 px-4 position-absolute rounded-pill text-white h-100"
+							style="top: 0; right: 25%; border-color: #009223 !important;"></input>
+					</form>
 				</div>
 			</div>
+			<div class="col-md-12 col-lg-5">
+                 <div id="carouselId" class="carousel slide position-relative" data-bs-ride="carousel">
+                      <div class="carousel-inner" role="listbox">
+                           <div class="carousel-item active rounded">
+                               <img src="resources/g_Image/MainImg.jpg" class="img-fluid w-100 h-100 bg-secondary rounded">
+                           </div>
+                     </div>
+                </div>
+           </div>
+				
+		</div>
 		</div>
 	</div>
 	<!-- 메인 이미지 슬라이드 div End -->
 
-   <!-- Share We 장점 Start 
-      <div class="container-fluid featurs py-5">
-         <div class="container py-5">
-            <div class="row g-4">
-               <div class="col-md-6 col-lg-3">
-                  <div class="featurs-item text-center rounded bg-light p-4">
-                     <div
-                        class="featurs-icon btn-square rounded-circle bg-secondary mb-5 mx-auto">
-                        <i class="fas fa-car-side fa-3x text-white"></i>
-                     </div>
-                     <div class="featurs-content text-center">
-                        <h5>Free Shipping</h5>
-                        <p class="mb-0">Free on order over $300</p>
-                     </div>
-                  </div>
-               </div>
-               <div class="col-md-6 col-lg-3">
-                  <div class="featurs-item text-center rounded bg-light p-4">
-                     <div
-                        class="featurs-icon btn-square rounded-circle bg-secondary mb-5 mx-auto">
-                        <i class="fas fa-user-shield fa-3x text-white"></i>
-                     </div>
-                     <div class="featurs-content text-center">
-                        <h5>Security Payment</h5>
-                        <p class="mb-0">100% security payment</p>
-                     </div>
-                  </div>
-               </div>
-               <div class="col-md-6 col-lg-3">
-                  <div class="featurs-item text-center rounded bg-light p-4">
-                     <div
-                        class="featurs-icon btn-square rounded-circle bg-secondary mb-5 mx-auto">
-                        <i class="fas fa-exchange-alt fa-3x text-white"></i>
-                     </div>
-                     <div class="featurs-content text-center">
-                        <h5>30 Day Return</h5>
-                        <p class="mb-0">30 day money guarantee</p>
-                     </div>
-                  </div>
-               </div>
-               <div class="col-md-6 col-lg-3">
-                  <div class="featurs-item text-center rounded bg-light p-4">
-                     <div
-                        class="featurs-icon btn-square rounded-circle bg-secondary mb-5 mx-auto">
-                        <i class="fa fa-phone-alt fa-3x text-white"></i>
-                     </div>
-                     <div class="featurs-content text-center">
-                        <h5>24/7 Support</h5>
-                        <p class="mb-0">Support every time fast</p>
-                     </div>
-                  </div>
-               </div>
-            </div>
-         </div>
-      </div>
-   ShareWe의 장점 End -->
-
 
    <!-- 판매 상품 Start-->
-   <div class="container-fluid fruite py-5">
+   <div class="container-fluid fruite py-5" style="padding-top: 2rem !important;">
       <div class="container py-5">
          <div class="tab-class text-center">
             <div class="row g-4">
@@ -325,8 +245,10 @@
                                  style="margin: auto; width: 25%; height: 10%; margin-bottom: 20px;">
                                  <div class="rounded position-relative fruite-item">
                                     <div class="fruite-img">
-                                       <img src="resources/g_Image/${g.g_img1}"
-                                          class="img-fluid w-100 rounded-top" alt="">
+                                       <a href="G_BoardContent?g_num=${g.g_num}">
+	                                       <img src="resources/g_Image/${g.g_img1}"
+	                                          class="img-fluid w-100 rounded-top" alt="">
+	                                   </a>
                                     </div>
                                     <div
                                        class="text-white bg-secondary px-3 py-1 rounded position-absolute"
@@ -335,7 +257,9 @@
                                        class="p-4 border border-secondary border-top-0 rounded-bottom"
                                        style="text-align: left;">
                                        <br>
-                                       <h5>${g.g_title }</h5>
+                                       <a href="G_BoardContent?g_num=${g.g_num}">
+                                      	 <h5>${g.g_title }</h5>
+                                       </a>
                                        <h6 style="display: inline;">${g.g_writer }</h6>
                                        <c:choose>
 	                                      <c:when test="${loginMember.type == 0}">

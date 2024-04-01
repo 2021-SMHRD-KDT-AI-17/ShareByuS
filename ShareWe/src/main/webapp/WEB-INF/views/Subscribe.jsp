@@ -304,170 +304,57 @@
 
 
 	<!-- Single Page Header start -->
-
-	<div id="carouselExample" class="carousel slide">
-
-
-		<!-- Single Page Header End -->
+	<div class="container-fluid page-header py-5">
+		<h1 class="text-center text-white display-6">유료결제</h1>
+		<ol class="breadcrumb justify-content-center mb-0">
+			<li class="breadcrumb-item active text-white">UP권 구매</li>
+		</ol>
+	</div>
+	<!-- Single Page Header End -->
 
 
 		<!-- 게시글 상세 -->
-
-		<div class="row g-4 justify-content-center" id="categoryBox">
-			<div class="row g-4 justify-content-center">
-				<button class="col-xl-1" id="write" type="button"
-					onclick="location.href='gogBoard'">게시물작성</button>
-			</div>
-		</div>
 		
-		<div class="row g-4 justify-content-center hero-header" style="margin-left: 28%; margin-right: 28%;">
-
-			<script
-				src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js"
-				integrity="sha384-ka7Sk0Gln4gmtz2MlQnikT1wXgYsOg+OMhuP+IlRH9sENBO0LRn5q+8nbTov4+1p"
-				crossorigin="anonymous"></script>
-
-			<div id="carouselExampleControls" class="carousel slide"
-				data-bs-ride="carousel" style="position: relative;" align="center">
-				<div class="carousel-inner" style="position: absoulte;" >
-					<div class="carousel-item active">
-						<img class="d-block" style="object-fit: cover !important; height: 450px;"
-							src="resources/g_Image/${c_board.c_img1}" alt="..." />
-					</div>
-					<div class="carousel-item">
-						<img class="d-block" style="object-fit: cover !important; height: 450px;"
-							src="https://source.unsplash.com/collection/190727/1600x900"
-							alt="..." />
-					</div>
-					<div class="carousel-item" >
-						<img class="d-block" style="object-fit: cover !important; height: 450px;"
-							src="https://source.unsplash.com/WLUHO9A_xik/1600x900" alt="..." />
-					</div>
-				</div>
-				<button class="carousel-control-prev" type="button"
-					data-bs-target="#carouselExampleControls" data-bs-slide="prev">
-					<span class="carousel-control-prev-icon" aria-hidden="true" style="background-color: grey"></span>
-					<span class="visually-hidden">Previous</span>
-				</button>
-				<button class="carousel-control-next" type="button"
-					data-bs-target="#carouselExampleControls" data-bs-slide="next">
-					<span class="carousel-control-next-icon" aria-hidden="true" style="background-color: grey"></span>
-					<span class="visually-hidden">Next</span>
-				</button>
+		<div class="row g-4 justify-content-center hero-header" style="margin-left: 28%; margin-right: 28%; margin-top: 80px !important;">
+			<div class="boardContent" style="width: 600px;">
+				<h5>UP 패스 결제</h5>
+			</div>
+			<div class="boardContent" style="width: 600px;">
+				<table style="width: 90%; text-align: center; border-radius: 20px;">
+					<tr style="border: 1px solid; background-color: #009223; color: white;">
+						<th style="border: 1px solid grey;">선택</th>
+						<th style="border: 1px solid grey;">분류</th>
+						<th style="border: 1px solid grey;">가격</th>
+						<th style="border: 1px solid grey;">결제</th>
+					</tr>
+					<tr>
+						<td><input type="checkbox" value=""></td>
+						<td>UP - 5회권</td>
+						<td>3,000 원</td>
+						<td><input type="submit" value="결제"></td>
+					</tr>
+					<tr>
+						<td><input type="checkbox" value=""></td>
+						<td>UP - 10회권</td>
+						<td>5,000 원</td>
+						<td><input type="submit" value="결제"></td>
+					</tr>
+					<tr>
+						<td><input type="checkbox" value=""></td>
+						<td>UP - 25회권</td>
+						<td>10,000 원</td>
+						<td><input type="submit" value="결제"></td>
+					</tr>
+					<tr>
+						<td><input type="checkbox" value=""></td>
+						<td>UP - 60회권</td>
+						<td>20,000 원</td>
+						<td><input type="submit" value="결제"></td>
+					</tr>
+				</table>
 			</div>
 			
-			<div class="row g-4 justify-content-center">
-				<div class="boardContent">
-					<button onclick="checkCFavorite()" id="zzim" style="width: 10%;" type="button" class="btn btn-outline-success">❤ 찜</button>
-					
-					<c:choose >
-						<c:when test="${loginMember.email eq c_board.email}">
-							<nav class="detailMenu" style="float: right;">
-								<ul>
-									<li><a href="#"> <strong style="float: right;">⁝</strong>
-									</a>
-										<ul>
-											<li><a href="#">펀딩 마감</a></li>
-											<li><a href="goCUpdate?c_num=${c_board.c_num}">게시글 수정</a></li>
-											<li><a href="deleteCBoard?c_num=${c_board.c_num}">게시글 삭제</a></li>
-										</ul></li>
-								</ul>
-							</nav>
-						</c:when>
-						<c:when test="${not empty loginMember }">
-							<nav class="detailMenu" style="float: right;">
-								<ul>
-									<li><a href="#"> <strong style="float: right;">⁝</strong>
-									</a>
-										<ul>
-											<li><a href="#">게시물 신고</a></li>
-										</ul></li>
-								</ul>
-							</nav>
-						</c:when>
-						<c:when test="${ empty loginMember}">
-							<nav class="detailMenu" style="float: right;">
-								<ul>
-									<li><a href="#"> <strong style="float: right;"></strong></a>
-								</ul>
-							</nav>
-						</c:when>
-					</c:choose>
-					
-					<button style="width: 20%; margin-left: 20px" type="button" class="btn btn-outline-success">참여하기</button><br>
-				</div>
-				<div class="boardContent">
-					참여인원:
-				</div>
-				<div class="boardContent">
-					<span><h6 style="display: inline;">작성자 : ${c_board.c_writer}</h6></span>
-					<span style="float: right;">${c_board.category} / ${c_board.c_w_date}</span>
-				</div>
-				<div class="boardContent">
-					<h5>${c_board.c_title}</h5>
-					<h6>종료 날짜 : ${c_board.c_f_date}</h6><br>
-					<div>${c_board.c_content}</div>
-				</div>
-			</div>
-		<strong  id="addr" style="display: none">${m_addr.address}</strong>
-				<h5>${c_board.place}</h5>
-				<div id="map" style="width:100%;height:350px;" class="row g-4 justify-content-center">
-					
-				</div>
-			
-						
 		</div>
-	
-		
-			<script type="text/javascript" src="//dapi.kakao.com/v2/maps/sdk.js?appkey=db0a7dd04d902c908bc5aaa345eaa55c&libraries=services"></script>
-		<script>
-		
-		var addr =  document.getElementById("addr").innerText;
-		
-			var mapContainer = document.getElementById('map'), // 지도를 표시할 div 
-			mapOption = {
-				center : new kakao.maps.LatLng(33.450701, 126.570667), // 지도의 중심좌표
-				level : 2
-			// 지도의 확대 레벨
-			};
-
-			// 지도를 생성합니다    
-			var map = new kakao.maps.Map(mapContainer, mapOption);
-
-			// 주소-좌표 변환 객체를 생성합니다
-			var geocoder = new kakao.maps.services.Geocoder();
-
-			// 주소로 좌표를 검색합니다
-			geocoder
-					.addressSearch(
-							addr,
-							function(result, status) {
-
-								// 정상적으로 검색이 완료됐으면 
-								if (status === kakao.maps.services.Status.OK) {
-
-									var coords = new kakao.maps.LatLng(
-											result[0].y, result[0].x);
-
-									// 결과값으로 받은 위치를 마커로 표시합니다
-									var marker = new kakao.maps.Marker({
-										map : map,
-										position : coords
-									});
-
-									// 인포윈도우로 장소에 대한 설명을 표시합니다
-									var infowindow = new kakao.maps.InfoWindow(
-											{
-												content : '<div style="width:150px;text-align:center;padding:6px 0;">픽업 장소</div>'
-											});
-									infowindow.open(map, marker);
-
-									// 지도의 중심을 결과값으로 받은 위치로 이동시킵니다
-									map.setCenter(coords);
-								}
-							});
-		</script>
-
 
 		<!-- 메인 페이지 하단 -->
 		<div class="container-fluid bg-dark text-white-50 footer pt-5 mt-5">
