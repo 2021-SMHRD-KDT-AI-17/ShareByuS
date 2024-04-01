@@ -1,5 +1,7 @@
 package kr.smhrd.entity;
 
+import java.io.File;
+
 import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
@@ -52,5 +54,6 @@ public class g_board {
     
     // 참여인원
     private int g_p_count;
+
 
 }

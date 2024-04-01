@@ -330,8 +330,7 @@
             src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js"
             integrity="sha384-ka7Sk0Gln4gmtz2MlQnikT1wXgYsOg+OMhuP+IlRH9sENBO0LRn5q+8nbTov4+1p"
             crossorigin="anonymous"></script>
-            
-            
+         
 
          <div id="carouselExampleControls" class="carousel slide"
             data-bs-ride="carousel" style="width: 40%; position: relative"
@@ -345,7 +344,7 @@
                <div class="carousel-item">
                   <img class="d-block w-100"
                      style="object-fit: cover !important; height: 450px;"
-                     src="https://source.unsplash.com/collection/190727/1600x900"
+                     src="resources/g_Image/${g_board.g_img1}"
                      alt="..." />
                </div>
                <div class="carousel-item">

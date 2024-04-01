@@ -13,6 +13,7 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.bind.annotation.RequestPart;
 
 import com.oreilly.servlet.MultipartRequest;
 import com.oreilly.servlet.multipart.DefaultFileRenamePolicy;
@@ -68,7 +69,8 @@ public class G_BoardController {
 	
 	//게시글작성
 	@RequestMapping("/gBoardInsert")
-		public String gBoardInsert(g_board g_board, HttpSession session, HttpServletRequest request) {
+		public String gBoardInsert( g_board g_board, HttpSession session, HttpServletRequest request) {
+		
 		
 		String path = request.getRealPath("resources/g_Image");
 		System.out.println(path);
@@ -80,7 +82,7 @@ public class G_BoardController {
 		member loginMember = (member)session.getAttribute("loginMember");
 		String email = loginMember.getEmail();
 		String g_writer = loginMember.getNick();
-		
+	
 		
 		
 		try {
@@ -89,7 +91,7 @@ public class G_BoardController {
 			String g_content = multi.getParameter("g_content");
 			String g_img1 = multi.getFilesystemName("g_img1");
 			String category = multi.getParameter("category");
-			
+//			
 			
 			
 			g_board = new g_board(g_title,g_writer, email, g_img1, g_content, category);
@@ -97,7 +99,7 @@ public class G_BoardController {
 		} catch (IOException e) {
 			e.printStackTrace();
 		}
-		
+		g_boardMapper.insertBoard(g_board);
 		
 			return "redirect:/goGeneral";
 		
