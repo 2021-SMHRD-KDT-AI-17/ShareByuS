@@ -44,7 +44,7 @@ public class RestController {
 		
 		g_favorite g_favorite_num = favoriteMapper.checkFavorite(g_num, email);
 		
-		if(g_favorite_num ==null) {
+		if(g_favorite_num == null) {
 			
 			member loginmember = (member)session.getAttribute("loginMember");
 			String lemail = loginmember.getEmail();

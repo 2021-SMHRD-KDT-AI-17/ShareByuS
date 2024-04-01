@@ -64,12 +64,14 @@ public class G_BoardController {
 	//게시글작성
 	@RequestMapping("/gBoardInsert")
 		public String gBoardInsert(g_board g_board, HttpSession session, HttpServletRequest request) {
+		
 		String path = request.getRealPath("resources/g_Image");
 		System.out.println(path);
 		int size = 1024*1024*10;
 		String encoding = "UTF-8";
 		
 		DefaultFileRenamePolicy rename = new DefaultFileRenamePolicy();
+		
 		member loginMember = (member)session.getAttribute("loginMember");
 		String email = loginMember.getEmail();
 		String g_writer = loginMember.getNick();
@@ -91,12 +93,6 @@ public class G_BoardController {
 			e.printStackTrace();
 		}
 		
-		int cnt = g_boardMapper.insertBoard(g_board);
-		if(cnt>0) {
-			System.out.println("업로드 성공~");
-		}else {
-			System.out.println("업로드 실패~");
-		}
 		
 			return "redirect:/goGeneral";
 		
@@ -109,11 +105,12 @@ public class G_BoardController {
 	public String G_BoardContent(@RequestParam("g_num") int g_num, Model model, HttpSession session) {
 		
 		member loginMember = (member)session.getAttribute("loginMember");
+		
 		g_board g_board = g_boardMapper.G_BoardContent(g_num); //num값에 해당하는 하나의 게시물 가져오기
 		model.addAttribute("g_board",g_board);
 		
 	
-		model.addAttribute("g_board", g_board);
+//		model.addAttribute("g_board", g_board);
 		 
 		return "gBoardDetail";
 	}

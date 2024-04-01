@@ -294,9 +294,11 @@
 	                                             삭제 </a>
 	                                      </c:when>
 	                                      <c:otherwise>
-	                                       	<a href="checkFavorite" style="float: right;"
+	                                      
+	                                      <a onclick="checkFavorite(${g.g_num})" id="${g.g_num }" style="float: right;"
 	                                             class="btn border border-secondary rounded-pill px-3 text-primary">
 	                                             ❤ 찜 </a>
+	                                       	
 	                                      </c:otherwise> 
                                       </c:choose>
                                  </div>
@@ -358,30 +360,30 @@
 	<script src="resources/asset/js/main.js"></script>
 	
 	<script type="text/javascript">
-	function checkFavorite(){
-		var g_num=${g_board.g_num};
-		console.log(g_num);
-				
-				$.ajax(
-				{
-					url : "checkFavorite",
-					data : {'g_num' : g_num},
-					type :'get',
-					success : function(data){
-						if(data==1){
-							
-								$("#zzim").text('♥ 찜 완료')
-						}else{
-							$("#zzim").text('이미 찜한 상품 입니다')	
+					function checkFavorite(g_num){
+						
+						var zzim = document.getElementById(g_num);
+						
+						$.ajax(
+						{
+							url : "checkFavorite",
+							data : {'g_num' : g_num},
+							type :'get',
+							success : function(data){
+								if(data==1){
+									zzim.innerText ='♥ 찜 완료'
+										
+								}else{
+									zzim.innerText ='이미 찜'
+								}
+							},
+							error : function(){
+								alert("통신실패")
+							}
 						}
-					},
-					error : function(){
-						alert("통신실패")
-					}
+					)
 				}
-			)
-		}
-	</script>
+				</script>
 
 </body>
 

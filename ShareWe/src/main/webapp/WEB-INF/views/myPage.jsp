@@ -399,7 +399,7 @@
 						style="width: 1500px;">
 						
 						
-							<c:forEach items="${cboard_list}" var="g">
+							<c:forEach items="${cboard_list}" var="c">
 							<div class="p-4 border border-secondary  rounded"
 								style="width: 300px; border: solid; border-width: 1px; margin: auto; border-color: #EEEEEE !important; display: inline-block;"
 								align="cenber;">
