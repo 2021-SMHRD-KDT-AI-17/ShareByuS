@@ -51,7 +51,7 @@ public class ReportController {
 		
 		// 신고 누적횟수 증가
 		memberMapper.goupdateCnt(report.getEmail());
-//		model.addAttribute("reportMember", report);
+
 		
 		return "reportSuccess";
 	}

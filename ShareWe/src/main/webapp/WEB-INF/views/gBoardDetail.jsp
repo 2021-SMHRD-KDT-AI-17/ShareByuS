@@ -401,7 +401,7 @@
 											<form action="sendReportInfo" method="post">
 									            <input type="hidden" value="${g_board.g_num}" name="r_num">
 									            <input type="hidden" value="${g_board.email}" name="email">
-									            <input type="hidden" value="${g_board.g_title}" name="g_title">
+									            <input type="hidden" value="${g_board.g_title}" name="r_title">
 									             <input type="hidden" value="${loginMember.email}" name="rp_email">
 									               
 									            <input type="submit" value="신고하기">

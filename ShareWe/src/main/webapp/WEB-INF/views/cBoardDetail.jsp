@@ -380,7 +380,17 @@
 									<li><a href="#"> <strong style="float: right;">⁝</strong>
 									</a>
 										<ul>
-											<li><a href="sendReportInfo">게시물 신고</a></li>
+											<li>
+											<form action="sendReportInfo" method="post">
+									            <input type="hidden" value="${c_board.c_num}" name="r_num">
+									            <input type="hidden" value="${c_board.email}" name="email">
+									            <input type="hidden" value="${c_board.c_title}" name="r_title">
+									             <input type="hidden" value="${loginMember.email}" name="rp_email">
+									               
+									            <input type="submit" value="신고하기">
+            								</form>
+											
+											</li>
 										</ul></li>
 								</ul>
 							</nav>

@@ -242,7 +242,7 @@
 				</tr>	
 			
 			
-				 	<input type="hidden" value="${reportMember.b_num }" name="b_num">
+				 	<input type="hidden" value="${reportMember.r_num }" name="b_num">
 					<input type="hidden" value="${reportMember.r_title }" name="r_title">
 					<input type="hidden" value="${reportMember.email}" name="email">
 					<input type="hidden" value="${loginMember.email}" name="rp_email">
