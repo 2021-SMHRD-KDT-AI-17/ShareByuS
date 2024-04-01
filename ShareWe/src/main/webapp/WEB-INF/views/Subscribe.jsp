@@ -314,7 +314,7 @@
 
 
 		<!-- 게시글 상세 -->
-		
+		<form action="" method="post">
 		<div class="row g-4 justify-content-center hero-header" style="margin-left: 28%; margin-right: 28%; margin-top: 80px !important;">
 			<div class="boardContent" style="width: 600px;">
 				<h5>UP 패스 결제</h5>
@@ -329,32 +329,103 @@
 					</tr>
 					<tr>
 						<td><input type="checkbox" value=""></td>
-						<td>UP - 5회권</td>
-						<td>3,000 원</td>
-						<td><input type="submit" value="결제"></td>
+						<td><input type="hidden"  id="up5Name" value="UP - 5회권">UP - 5회권</td>
+						<td><input type="hidden" id="up5Price" value="100">3,000 원</td>
+						<td><button type="button" onclick="pay()">결제</button></td>
 					</tr>
 					<tr>
 						<td><input type="checkbox" value=""></td>
 						<td>UP - 10회권</td>
 						<td>5,000 원</td>
-						<td><input type="submit" value="결제"></td>
+						<td><button type="button" onclick="pay()">결제</button></td>
 					</tr>
 					<tr>
 						<td><input type="checkbox" value=""></td>
 						<td>UP - 25회권</td>
 						<td>10,000 원</td>
-						<td><input type="submit" value="결제"></td>
+						<td><button type="button" onclick="pay()">결제</button></td>
 					</tr>
 					<tr>
 						<td><input type="checkbox" value=""></td>
 						<td>UP - 60회권</td>
 						<td>20,000 원</td>
-						<td><input type="submit" value="결제"></td>
+						<td><button type="button" onclick="pay()">결제</button></td>
 					</tr>
 				</table>
 			</div>
 			
+			<input type="hidden" value="${loginMember.email}" id="payEmail">
+			<input type="hidden" value="${loginMember.name}" id="payName">
+			<input type="hidden" value="${loginMember.tel}" id="payTel">
+			<input type="hidden" value="${loginMember.address}" id="payAddress">
+			
 		</div>
+		</form>
+		
+		<script type="text/javascript" src="https://code.jquery.com/jquery-1.12.4.min.js"></script>
+    	<script type="text/javascript" src="https://cdn.iamport.kr/js/iamport.payment-1.2.0.js"></script>
+   		<script>
+	        function pay() {
+	        	
+	        	var inputUp = document.getElementById("up5Name").value;
+	        	var inputPrice = document.getElementById("up5Price").value;
+	        	
+	        	var inputEmail = document.getElementById("payEmail").value;
+	        	var inputName = document.getElementById("payName").value;
+	        	var inputTel = document.getElementById("payTel").value;
+	        	var inputAddress = document.getElementById("payAddress").value;
+	        	
+	        	
+	        	
+	            var IMP = window.IMP;
+	            IMP.init("imp14502251");
+	            // 원포트 관리자 페이지 -> 내정보 -> 가맹점식별코드
+	            // ''안에 띄어쓰기 없이 가맹점 식별코드를 붙여넣어주세요. 안그러면 결제창이 안뜹니다.
+	            IMP.request_pay({
+	                pg: 'html5_inicis',  // 실제 계약 후에는 실제 상점아이디로 변경
+	                pay_method: 'card', // 'card'만 지원됩니다.
+	                merchant_uid: 'ShareWe_' + new Date().getTime(), // 상점에서 관리하는 주문 번호
+	                name: inputUp, // 상품 이름
+	                amount: inputPrice, // 결제창에 표시될 금액. 실제 승인이 이뤄지지는 않습니다.
+	                buyer_email: inputEmail,
+	                buyer_name: inputName,
+	                buyer_tel: inputTel,
+	                buyer_addr: inputAddress,
+	                buyer_postcode: '123-456',
+	                m_redirect_url: 'https://www.myservice.com/payments/complete/mobile'
+	            }, function (rsp) {
+	                if (rsp.success) {  // 결제가 성공했을 떄
+	                    // 결제가 완료되었을 떄 결제 정보를 뜨게 만듬
+	                    var msg = '결제가 완료되었습니다.';
+	                    msg += '고유ID : ' + rsp.imp_uid;
+	                    msg += '상점 거래ID : ' + rsp.merchant_uid;
+	                    msg += '결제 금액 : ' + rsp.paid_amount;
+	                    msg += '카드 승인번호 : ' + rsp.apply_num;
+	                    
+	                    let f = document.createElement('form');
+		                let obj;
+		        		    obj = document.createElement('input');
+		        		    obj.setAttribute('type', 'hidden');
+		        		    obj.setAttribute('name', 'cardNum');
+		        		    obj.setAttribute('value', rsp.apply_num);
+		        		    
+		        		    f.appendChild(obj);
+		        		    f.setAttribute('method', 'post');
+		        		    f.setAttribute('action', 'paySuccess');
+		        		    document.body.appendChild(f);
+		        		    f.submit();
+	                    
+	                    
+	                } else {    // 결제가 실패했을 때
+	                    // 결제에 실패했을떄 실패메세지와 실패사유를 출력
+	                    var msg = '결제에 실패하였습니다.';
+	                    msg += '실패 사유 : ' + rsp.error_msg;
+	                }
+	                alert(msg);
+	            });
+	        }
+
+   		</script>
 
 		<!-- 메인 페이지 하단 -->
 		<div class="container-fluid bg-dark text-white-50 footer pt-5 mt-5">
