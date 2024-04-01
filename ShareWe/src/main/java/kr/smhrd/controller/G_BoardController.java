@@ -21,9 +21,11 @@ import com.oreilly.servlet.multipart.DefaultFileRenamePolicy;
 import kr.smhrd.entity.g_board;
 import kr.smhrd.entity.g_favorite;
 import kr.smhrd.entity.member;
+import kr.smhrd.entity.subscribe;
 import kr.smhrd.mapper.FavoriteMapper;
 import kr.smhrd.mapper.G_BoardMapper;
 import kr.smhrd.mapper.MemberMapper;
+import kr.smhrd.mapper.SubscribeMapper;
 
 @Controller
 public class G_BoardController {
@@ -33,6 +35,9 @@ public class G_BoardController {
 	
 	@Autowired
 	private MemberMapper memberMapper;
+	
+	@Autowired
+	private SubscribeMapper subscribeMapper;
 
 	private int g_num;
 
@@ -53,9 +58,9 @@ public class G_BoardController {
 		return "Share";
 	}
 	
-	@RequestMapping("/getCategory")
-	public String getCategory(@RequestParam("category") String category, Model model) {
-		List<g_board> gboard_list = g_boardMapper.getCategory(category);
+	@RequestMapping("/getgCategory")
+	public String getgCategory(@RequestParam("category") String category, Model model) {
+		List<g_board> gboard_list = g_boardMapper.getgCategory(category);
 		model.addAttribute("gboard_list", gboard_list);
 		return "Share";
 	}
@@ -124,7 +129,12 @@ public class G_BoardController {
 	}	
 	
 	@RequestMapping("/goBoardUp")
-	public String goBoardUp(@RequestParam("g_num") int g_num, @RequestParam("g_img1") String g_img1, @RequestParam("g_content") String g_content, Model model) {
+	public String goBoardUp(@RequestParam("g_num") int g_num, @RequestParam("g_img1") String g_img1, @RequestParam("g_content") String g_content, Model model, HttpSession session) {
+		
+		member loginMember = (member)session.getAttribute("loginMember");
+		subscribe subscribeInfo = subscribeMapper.getSubscribe(loginMember.getEmail());
+		
+		model.addAttribute("subscribeInfo", subscribeInfo);
 		model.addAttribute("g_num", g_num);
 		model.addAttribute("g_content", g_content);
 		model.addAttribute("g_img1", g_img1);
@@ -133,8 +143,16 @@ public class G_BoardController {
 	}
 	
 	@RequestMapping("/gBoardUp")
-	public String gBoardUp(@RequestParam("g_num") int g_num, Model model) {
+	public String gBoardUp(@RequestParam("g_num") int g_num, @RequestParam("free_cnt") int free_cnt, @RequestParam("paid_cnt") int paid_cnt, Model model, HttpSession session) {
+		member loginMember = (member)session.getAttribute("loginMember");
+		
 		g_boardMapper.gBoardUp(g_num);
+		if(free_cnt > 0) {
+			subscribeMapper.useFreeCnt(loginMember.getEmail());
+		}else {
+			subscribeMapper.usePaidCnt(loginMember.getEmail());
+		}
+		
 		
 		return "redirect:/goGeneral";
 	}	

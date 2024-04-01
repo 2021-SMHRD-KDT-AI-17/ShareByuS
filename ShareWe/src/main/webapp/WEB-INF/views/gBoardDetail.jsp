@@ -498,7 +498,6 @@
 							type :'get',
 							success : function(data){
 								if(data==1){
-									
 										$("#zzim").text('♥ 찜 완료')
 								}else{
 									$("#zzim").text('이미 찜한 상품 입니다')	

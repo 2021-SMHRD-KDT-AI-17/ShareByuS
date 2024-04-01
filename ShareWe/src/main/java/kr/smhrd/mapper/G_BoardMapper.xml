@@ -12,7 +12,7 @@
 	</insert>
 
 	
-	<select id="getCategory" parameterType="String" resultType="kr.smhrd.entity.g_board">
+	<select id="getgCategory" parameterType="String" resultType="kr.smhrd.entity.g_board">
 		select * from g_board where category=#{category}
 	</select>
 	

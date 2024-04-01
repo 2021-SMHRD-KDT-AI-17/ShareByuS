@@ -256,9 +256,11 @@
 			<ul class="filters_menu">
 
 				<a href="goGeneral"><li>All</li></a>
-				<a href="getCategory?category=채소" id="clickVege"><li>채소</li></a>
-				<a href="getCategory?category=과일" id="clickFruit"><li>과일</li></a>
-				<a href="getCategory?category=생필품" id="ClickDaily"><li>생활용품</li></a>
+				<a href="getgCategory?category=식품" id="clickVege"><li>식품</li></a>
+				<a href="getgCategory?category=과일" id="clickFruit"><li>과일</li></a>
+				<a href="getgCategory?category=생필품" id="ClickDaily"><li>생필품</li></a>
+				<a href="getgCategory?category=패션/뷰티" id="ClickDaily"><li>패션/뷰티</li></a>
+				<a href="getgCategory?category=여행/도서" id="ClickDaily"><li>여행/도서</li></a>
 
 				<!-- <input id="inputSerch" class="serchBar"  type="search" placeholder="keywords">
 				<button  type="button" id="buttonBar" class="serchBar"><i class="fa fa-search"></i></button> -->

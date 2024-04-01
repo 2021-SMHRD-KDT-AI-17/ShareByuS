@@ -166,7 +166,23 @@ public class WebController {
 		}
 		
 	}
-
+	
+	@RequestMapping("/goSubscribe")
+	public String goSubscribe() {
+		return "Subscribe";
+	}
+	
+	@RequestMapping("/getCategory")
+	public String getCategory(@RequestParam("category") String category, Model model) {
+		List<g_board> gboard_list = g_boardMapper.getgCategory(category);
+		List<c_board> cboard_list = c_boardMapper.getComCategory(category);
+		
+		model.addAttribute("category", category);
+		model.addAttribute("gboard_list", gboard_list);
+		model.addAttribute("cboard_list", cboard_list);
+		
+		return "AllCategory";
+	}
 	
 	@RequestMapping("/goChat")
 	public String goChat() {
