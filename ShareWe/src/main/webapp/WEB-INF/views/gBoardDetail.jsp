@@ -396,7 +396,16 @@
 									<li><a href="#"> <strong style="float: right;">⁝</strong>
 									</a>
 										<ul>
-											<li><a href="sendReportInfo">게시물 신고</a></li>
+											<li>
+											<form action="sendReportInfo" method="post">
+									            <input type="hidden" value="${g_board.g_num}" name="r_num">
+									            <input type="hidden" value="${g_board.email}" name="email">
+									            <input type="hidden" value="${g_board.g_title}" name="g_title">
+									             <input type="hidden" value="${loginMember.email}" name="rp_email">
+									               
+									            <input type="submit" value="신고하기">
+            								</form>
+           									 </li>
 										</ul></li>
 								</ul>
 							</nav>
@@ -433,17 +442,7 @@
             </div>
       </div>
 
-
-         <div align="right">
-            <form action="sendReportInfo" method="post">
-            <input type="hidden" value="${g_board.g_num}" name="r_num">
-            <input type="hidden" value="${g_board.email}" name="email">
-            <input type="hidden" value="${g_board.g_title}" name="g_title">
-             <input type="hidden" value="${loginMember.email}" name="rp_email">
-               
-            <input type="submit" value="신고하기">
-            </form>
-         </div>
+        
 
       <!-- 메인 페이지 하단 -->
       <div class="container-fluid bg-dark text-white-50 footer pt-5 mt-5">
