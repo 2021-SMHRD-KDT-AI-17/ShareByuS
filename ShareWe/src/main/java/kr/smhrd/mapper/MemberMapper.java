@@ -59,5 +59,7 @@ public interface MemberMapper {
 	public void resMember(String email);
 
 
+
+
 	
 }

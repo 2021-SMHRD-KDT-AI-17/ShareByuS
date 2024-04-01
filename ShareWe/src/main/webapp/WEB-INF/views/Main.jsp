@@ -199,6 +199,7 @@
 					<!-- 채팅 임시 버튼 
                <a href="goChat"><button>채팅</button></a>
                채팅 임시 버튼 -->
+               <a href="gopaySuccess"><button>결제완료</button></a>
 
 					<div class="position-relative mx-auto">
 						<form action="goSearch">
@@ -230,29 +231,30 @@
 	<!-- 메인 이미지 슬라이드 div End -->
 
 
-	<!-- 판매 상품 Start-->
-	<div class="container-fluid fruite py-5"
-		style="padding-top: 2rem !important;">
-		<div class="container py-5">
-			<div class="tab-class text-center">
-				<div class="row g-4">
-					<div class="col-lg-4 text-start">
-						<h1>Share We 상품</h1>
-					</div>
-					<div class="col-lg-8 text-end">
-						<ul class="nav nav-pills d-inline-flex text-center mb-5">
-							<li class="nav-item"><a
-								class="d-flex m-2 py-2 bg-light rounded-pill" href="goGeneral">
-									<span class="text-dark" style="width: 140px;">➕ 상품 더보기</span>
-							</a></li>
-						</ul>
-					</div>
-				</div>
-				<div class="tab-content">
-					<div id="tab-1" class="tab-pane fade show p-0 active">
-						<div class="row g-4">
-							<div class="col-lg-12">
-								<div class="row g-4">
+	
+   <!-- 판매 상품 Start-->
+   <div class="container-fluid fruite py-5" style="padding-top: 2rem !important;">
+      <div class="container py-5">
+         <div class="tab-class text-center">
+            <div class="row g-4">
+               <div class="col-lg-4 text-start">
+                  <h1>Share We 상품</h1>
+               </div>
+               <div class="col-lg-8 text-end">
+                  <ul class="nav nav-pills d-inline-flex text-center mb-5">
+                     <li class="nav-item"><a
+                        class="d-flex m-2 py-2 bg-light rounded-pill"
+                         href="goGeneral"> <span class="text-dark"
+                           style="width: 140px;">➕ 상품 더보기</span>
+                     </a></li>
+                  </ul>
+               </div>
+            </div>
+            <div class="tab-content">
+               <div id="tab-1" class="tab-pane fade show p-0 active">
+                  <div class="row g-4">
+                     <div class="col-lg-12">
+                        <div class="row g-4">
 
 									<c:forEach items="${gboard_list }" var="g" end="7">
 										<div class="col-md-6 col-lg-4 col-xl-3"

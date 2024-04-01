@@ -20,6 +20,7 @@ import com.oreilly.servlet.multipart.DefaultFileRenamePolicy;
 import kr.smhrd.entity.c_board;
 import kr.smhrd.entity.g_board;
 import kr.smhrd.entity.member;
+import kr.smhrd.entity.review;
 import kr.smhrd.mapper.C_BoardMapper;
 import kr.smhrd.mapper.G_BoardMapper;
 import kr.smhrd.mapper.MemberMapper;
@@ -85,7 +86,20 @@ public class C_BoardController {
 		member m_addr = memberMapper.C_BoardMap(c_writer);
 		model.addAttribute("m_addr",m_addr);
 		
-//			g_boardMapper.G_BoardCount(g_num); // num값에 해당하는 게시물 조회수 1증가
+		List<review> review_list = c_boardMapper.getReview(c_num);
+		model.addAttribute("review_list", review_list);
+		
+		if(review_list.size() > 0) {
+			int sum = 0;
+			
+			for(int i = 0; i < review_list.size(); i++) {
+				sum += review_list.get(i).getR_score();
+			}
+			int scoreAvg = sum/review_list.size();
+			
+			model.addAttribute("scoreAvg", scoreAvg);
+		}
+		
 		return "cBoardDetail";
 	}
 	
@@ -119,6 +133,15 @@ public class C_BoardController {
 		c_boardMapper.cBoardUpdate(c_board);
 		
 		return "redirect:/C_BoardContent";
+	}
+	
+	// 리뷰 작성
+	@RequestMapping("/writeReview")
+	public String writeReview(int c_num, Model model) {
+		c_board c_board = c_boardMapper.C_BoardContent(c_num);
+		model.addAttribute("c_board", c_board);
+		
+		return "Review";
 	}
 	
 	

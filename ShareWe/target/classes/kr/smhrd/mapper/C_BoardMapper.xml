@@ -7,17 +7,14 @@
 	</select>
 	
 	<insert id="cBoardInsert" parameterType="kr.smhrd.entity.c_board">
-		insert into c_board(c_title, c_writer, email, c_img1, c_content, c_f_date, category, place, price, c_opt1, c_ea)
-		values(#{c_title}, #{c_writer}, #{email}, #{c_img1}, #{c_content},
+		insert into c_board(c_title, c_writer, email, c_img1, c_img2, c_img3, c_content, c_f_date, category, place, price, c_opt1, c_ea)
+		values(#{c_title}, #{c_writer}, #{email}, #{c_img1}, #{c_img2}, #{c_img3},#{c_content},
 		#{c_f_date}, #{category}, '광주 동구', #{price}, #{c_opt1}, #{c_ea})
 	</insert>
 	
 	<select id="getCEmail" parameterType="String" resultType="kr.smhrd.entity.c_board">
 		select * from c_board where email=#{email}
 	</select>
-	
-
-	
 	
 	<select id="getComCategory" parameterType="String" resultType="kr.smhrd.entity.c_board">
 		select * from c_board where category=#{category}
@@ -43,4 +40,9 @@
 		update c_board set c_title=#{c_title}, c_img1=#{c_img1}, c_content=#{c_content},
 		category={category}, price=#{price}, c_opt1=#{c_opt1}, c_ea=#{c_ea} where c_num=#{c_num}
 	</update>
+	
+	<select id="getReview" parameterType="int" resultType="kr.smhrd.entity.review">
+		select * from review where c_num=#{c_num}
+	</select>
+	
 </mapper>

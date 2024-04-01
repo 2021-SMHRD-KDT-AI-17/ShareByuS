@@ -38,6 +38,35 @@
 
 <!-- Template Stylesheet -->
 <link href="resources/asset/css/sw_style.css" rel="stylesheet">
+
+<style type="text/css">
+.cXWSLO {
+    width: 1.5rem;
+    height: 1.5rem;
+    background-position: center center;
+    background-repeat: no-repeat;
+    background-size: 12px 12px;
+    background-image: url(data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSIxMiIgaGVpZ2h0PSIxMiIgdmlld0JveD0iMCAwIDEyIDEyIj4KICAgIDxwYXRoIGZpbGw9IiNGRkYiIGZpbGwtcnVsZT0iZXZlbm9kZCIKICAgICAgICBkPSJNNi44NDggNmwzLjc3Ni0zLjc3NmEuNi42IDAgMSAwLS44NDgtLjg0OEw2IDUuMTUgMi4yMjQgMS4zNzZhLjYuNiAwIDAgMC0uODQ4Ljg0OEw1LjE1MiA2IDEuMzc2IDkuNzc1YS42LjYgMCAxIDAgLjg0OC44NDlMNiA2Ljg0OGwzLjc3NiAzLjc3NmEuNTk4LjU5OCAwIDAgMCAxLjAyNC0uNDI1LjYuNiAwIDAgMC0uMTc2LS40MjRMNi44NDggNnoiIC8+Cjwvc3ZnPg==);
+    background-color: rgb(25, 25, 25);
+    opacity: 0.3;
+    border-radius: 50%;
+    position: absolute;
+    top: 0.5rem;
+    right: 0.5rem;
+}
+
+input {
+  margin-top: 1rem;
+}
+
+input::file-selector-button {
+  font-weight: bold;
+  color: green;
+  padding: 0.5em;
+  border: thin solid grey;
+  border-radius: 3px;
+}
+</style>
 </head>
 
 <body>
@@ -189,18 +218,18 @@
 						<br>
 						<div class="form-item">
 
-							<label class="input-file-button" for="btnAtt"> 업로드 </label>
-							 <input type="file" name="g_img1" id="btnAtt" style="display: none;"
-								multiple="multiple">
-
-
-							<!-- multiple="multiple" style="display: none" onchange="readURL(this);" -->
-							<!-- 이미피자일 name = filename -->
+							 <label class="input-file-button" for="btnAtt"> 대표사진 </label>
+							
+							<input type="file" name="g_img1" id="btnAtt"  
+							style="display: none;" accept="image/jpg, image/jpeg, image/png">
+							
 
 							<div id='image_preview'>
-								<div id='att_zone'
+								<div id='att_zone' style="width: 100%; height: 100%; z-index: none;" 
 									data-placeholder='파일을 첨부 하려면 파일 선택 버튼을 클릭하거나 파일을 드래그앤드롭 하세요'></div>
 							</div>
+							<input type="file" name="g_img2"  id="btnAtt2" accept="image/jpg, image/jpeg, image/png" value="상세사진" >
+							 <input type="file" name="g_img3" id="btnAtt3" accept="image/jpg, image/jpeg, image/png" value="상세사진">
 
 							<script>
 ( /* att_zone : 이미지들이 들어갈 위치 id, btn : file tag id */
@@ -216,8 +245,20 @@
     // 미리보기 이미지 속성
     var img_style = 'width:100%;height:100%;z-index:none';
     // 이미지안에 표시되는 체크박스의 속성
-    var chk_style = 'width:30px;height:30px;position:absolute;font-size:24px;'
-                  + 'right:0px;bottom:0px;z-index:999;background-color:rgba(255,255,255,0.1);color:green';
+    var chk_style = 'width: 1.5rem;'+
+    'height: 1.5rem;'+
+    'background-position: center center;'+
+    'background-repeat: no-repeat;'+
+    'background-size: 12px 12px;'+
+    'background-image: url(data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSIxMiIgaGVpZ2h0PSIxMiIgdmlld0JveD0iMCAwIDEyIDEyIj4KICAgIDxwYXRoIGZpbGw9IiNGRkYiIGZpbGwtcnVsZT0iZXZlbm9kZCIKICAgICAgICBkPSJNNi44NDggNmwzLjc3Ni0zLjc3NmEuNi42IDAgMSAwLS44NDgtLjg0OEw2IDUuMTUgMi4yMjQgMS4zNzZhLjYuNiAwIDAgMC0uODQ4Ljg0OEw1LjE1MiA2IDEuMzc2IDkuNzc1YS42LjYgMCAxIDAgLjg0OC44NDlMNiA2Ljg0OGwzLjc3NiAzLjc3NmEuNTk4LjU5OCAwIDAgMCAxLjAyNC0uNDI1LjYuNiAwIDAgMC0uMTc2LS40MjRMNi44NDggNnoiIC8+Cjwvc3ZnPg==);'+
+    'background-color: rgb(25, 25, 25);'+
+    'opacity: 0.3;'+
+    'border-radius: 50%;'+
+    'position: absolute;'+
+    'top: 0.5rem;'+
+    'right: 0.5rem;';
+    
+    
   
     btnAtt.onchange = function(e){
       var files = e.target.files;
@@ -284,6 +325,7 @@
       btn.setAttribute('value', 'x')
       btn.setAttribute('delFile', file.name);
       btn.setAttribute('style', chk_style);
+ 
       btn.onclick = function(ev){
         var ele = ev.srcElement;
         var delFile = ele.getAttribute('delFile');
@@ -428,7 +470,6 @@
 						<p>Email: Example@gmail.com</p>
 						<p>Phone: +0123 4567 8910</p>
 						<p>Payment Accepted</p>
-						<img src="img/payment.png" class="img-fluid" alt="">
 					</div>
 				</div>
 			</div>

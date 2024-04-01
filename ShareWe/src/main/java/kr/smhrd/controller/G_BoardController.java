@@ -74,7 +74,7 @@ public class G_BoardController {
 		
 		String path = request.getRealPath("resources/g_Image");
 		System.out.println(path);
-		int size = 1024*1024*10;
+		int size = 720*720*10;
 		String encoding = "UTF-8";
 		
 		DefaultFileRenamePolicy rename = new DefaultFileRenamePolicy();
@@ -90,12 +90,14 @@ public class G_BoardController {
 			String g_title = multi.getParameter("g_title");
 			String g_content = multi.getParameter("g_content");
 			String g_img1 = multi.getFilesystemName("g_img1");
+			String g_img2 = multi.getFilesystemName("g_img2");
+			String g_img3 = multi.getFilesystemName("g_img3");
 			String category = multi.getParameter("category");
 //			
 			
 			
-			g_board = new g_board(g_title,g_writer, email, g_img1, g_content, category);
-			System.out.println(g_board.toString());
+			g_board = new g_board(g_title,g_writer, email, g_img1,g_img2,g_img3, g_content, category);
+			g_boardMapper.insertBoard(g_board);
 		} catch (IOException e) {
 			e.printStackTrace();
 		}

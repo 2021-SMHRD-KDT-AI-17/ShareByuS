@@ -39,6 +39,7 @@
 <!-- Template Stylesheet -->
 <link href="resources/asset/css/sw_style.css" rel="stylesheet">
 
+
 <style>
 #topMenu {
 	height: 30px;
@@ -140,6 +141,32 @@
 .detailMenu > ul > li  li a{display: block; padding:10px 15px;}
 .detailMenu > ul > li  li a:hover{background:#eee;}
 .detailMenu > ul > li > li + li{margin-top:5px;}
+
+#myform input[type=radio]{
+    display: none !important;
+}
+#myform fieldset{
+    display: inline-block;
+    direction: rtl;
+    border:0;
+}
+#myform fieldset legend{
+    text-align: right;
+}
+#myform label{
+    font-size: 2em;
+    color: transparent;
+    text-shadow: 0 0 0 #f0f0f0;
+}
+#myform label:hover{
+    text-shadow: 0 0 0 #009223;
+}
+#myform label:hover ~ label{
+    text-shadow: 0 0 0 #009223;
+}
+#myform input[type=radio]:checked ~ label{
+    text-shadow: 0 0 0 #009223;
+}
 </style>
 
 
@@ -304,173 +331,194 @@
 
 
 	<!-- Single Page Header start -->
-	<div class="container-fluid page-header py-5">
-		<h1 class="text-center text-white display-6">유료결제</h1>
-		<ol class="breadcrumb justify-content-center mb-0">
-			<li class="breadcrumb-item active text-white">UP권 구매</li>
-		</ol>
-	</div>
-	<!-- Single Page Header End -->
+
+	<div id="carouselExample" class="carousel slide">
+
+
+		<!-- Single Page Header End -->
 
 
 		<!-- 게시글 상세 -->
-		<form action="" method="post">
-		<div class="row g-4 justify-content-center hero-header" style="margin-left: 28%; margin-right: 28%; margin-top: 80px !important;">
-			<div class="boardContent" style="width: 600px;">
-				<h5>UP 패스 결제</h5>
-			</div>
-			<div class="boardContent" style="width: 600px;">
-				<table style="width: 90%; text-align: center; border-radius: 20px;">
-					<tr style="border: 1px solid; background-color: #009223; color: white;">
-						<th style="border: 1px solid grey;">분류</th>
-						<th style="border: 1px solid grey;">가격</th>
-						<th style="border: 1px solid grey;">결제</th>
-					</tr>
-					<tr>
-						<td><input type="hidden"  class="upName" value="UP - 5회권">UP - 5회권</td>
-						<td><input type="hidden" class="upPrice" value="100">3,000 원</td>
-							<input type="hidden" class="upCnt" value="5">
-						<td><button type="button" onclick="pay(0)">결제</button></td>
-					</tr>
-					<tr>
-						<td><input type="hidden"  class="upName" value="UP - 10회권">UP - 10회권</td>
-						<td><input type="hidden" class="upPrice" value="100">5,000 원</td>
-						<input type="hidden" class="upCnt" value="10">
-						<td><button type="button" onclick="pay(1)">결제</button></td>
-					</tr>
-					<tr>
-						<td><input type="hidden"  class="upName" value="UP - 25회권">UP - 25회권</td>
-						<td><input type="hidden" class="upPrice" value="100">10,000 원</td>
-						<input type="hidden" class="upCnt" value="25">
-						<td><button type="button" onclick="pay(2)">결제</button></td>
-					</tr>
-					<tr>
-						<td><input type="hidden"  class="upName" value="UP - 60회권">UP - 60회권</td>
-						<td><input type="hidden" class="upPrice" value="100">20,000 원</td>
-						<input type="hidden" class="upCnt" value="60">
-						<td><button type="button" onclick="pay(3)">결제</button></td>
-					</tr>
-				</table>
-			</div>
-			
-			<input type="hidden" value="${loginMember.email}" id="payEmail">
-			<input type="hidden" value="${loginMember.name}" id="payName">
-			<input type="hidden" value="${loginMember.tel}" id="payTel">
-			<input type="hidden" value="${loginMember.address}" id="payAddress">
-			
-		</div>
-		</form>
-		
-		<script type="text/javascript" src="https://code.jquery.com/jquery-1.12.4.min.js"></script>
-    	<script type="text/javascript" src="https://cdn.iamport.kr/js/iamport.payment-1.2.0.js"></script>
-   		<script>
-	        function pay(num) {
-	        	
-	        	var inputUp = document.getElementsByClassName("upName")[num].value;
-	        	var inputPrice = document.getElementsByClassName("upPrice")[num].value;
-	        	var inputCnt = document.getElementsByClassName("upCnt")[num].value;
-	        	
-	        	/*var selectedGoodsName = document.querySelector(".kg_pay_btn").getAttribute("data-name");*/
-	        	
-	        	
-	        	var inputEmail = document.getElementById("payEmail").value;
-	        	var inputName = document.getElementById("payName").value;
-	        	var inputTel = document.getElementById("payTel").value;
-	        	var inputAddress = document.getElementById("payAddress").value;
-	        	
-	        	
-	        	
-	            var IMP = window.IMP;
-	            IMP.init("imp14502251");
-	            // 원포트 관리자 페이지 -> 내정보 -> 가맹점식별코드
-	            // ''안에 띄어쓰기 없이 가맹점 식별코드를 붙여넣어주세요. 안그러면 결제창이 안뜹니다.
-	            IMP.request_pay({
-	                pg: 'html5_inicis',  // 실제 계약 후에는 실제 상점아이디로 변경
-	                pay_method: 'card', // 'card'만 지원됩니다.
-	                merchant_uid: 'ShareWe_' + new Date().getTime(), // 상점에서 관리하는 주문 번호
-	                name: inputUp, // 상품 이름
-	                amount: inputPrice, // 결제창에 표시될 금액. 실제 승인이 이뤄지지는 않습니다.
-	                buyer_email: inputEmail,
-	                buyer_name: inputName,
-	                buyer_tel: inputTel,
-	                buyer_addr: inputAddress,
-	                buyer_postcode: '123-456',
-	                m_redirect_url: 'https://www.myservice.com/payments/complete/mobile',
-	                p_cnt: inputCnt
-	                
-	            }, function (rsp) {
-	                if (rsp.success) {  // 결제가 성공했을 때
-	                    // 결제가 완료되었을 떄 결제 정보를 뜨게 만듬
-	                    var msg = '결제가 완료되었습니다.';
-	                    msg += '고유ID : ' + rsp.imp_uid;
-	                    msg += '상점 거래ID : ' + rsp.merchant_uid;
-	                    msg += '결제 금액 : ' + rsp.paid_amount;
-	                    msg += '카드 승인번호 : ' + rsp.apply_num;
-	                    
-	                    let f = document.createElement('form');
-		                /* let obj1;
-		        		    obj1 = document.createElement('input');
-		        		    obj1.setAttribute('type', 'hidden');
-		        		    obj1.setAttribute('name', 'p_num');
-		        		    obj1.setAttribute('value', p_num); */
-		        		
-		        		let obj2;
-		        		    obj2 = document.createElement('input');
-		        		    obj2.setAttribute('type', 'hidden');
-		        		    obj2.setAttribute('name', 'email');
-		        			var inputEmail = document.getElementById("payEmail").value;
-		        		    obj2.setAttribute('value', inputEmail);
-		        		
-		        		let obj3;
-		        		    obj3 = document.createElement('input');
-		        		    obj3.setAttribute('type', 'hidden');
-		        		    obj3.setAttribute('name', 'p_name');
-		        			var inputName = document.getElementById("payName").value;
-		        		    obj3.setAttribute('value', inputName);
-		        		
-		        		let obj4;
-		        		    obj4 = document.createElement('input');
-		        		    obj4.setAttribute('type', 'hidden');
-		        		    obj4.setAttribute('name', 'p_amount');
-		        			
-		        		    obj4.setAttribute('value', inputPrice);
-		        		    
-		        		
-		        		let obj5;
-		        		    obj5 = document.createElement('input');
-		        		    obj5.setAttribute('type', 'hidden');
-		        		    obj5.setAttribute('name', 'apply_num');
-		        		    obj5.setAttribute('value', rsp.apply_num);
-		        		
-		        		let obj6;
-		        		    obj6 = document.createElement('input');
-		        		    obj6.setAttribute('type', 'hidden');
-		        		    obj6.setAttribute('name', 'p_cnt');
-		        			
-		        		    obj6.setAttribute('value', inputCnt);
-		        		
-		        		
-		        		    f.appendChild(obj2);
-		        		    f.appendChild(obj3);
-		        		    f.appendChild(obj4);
-		        		    f.appendChild(obj5);
-		        		    f.appendChild(obj6);
-		        		    f.setAttribute('method', 'post');
-		        		    f.setAttribute('action', 'paySuccess');
-		        		    document.body.appendChild(f);
-		        		    f.submit();
-	                    
-	                    
-	                } else {    // 결제가 실패했을 때
-	                    // 결제에 실패했을떄 실패메세지와 실패사유를 출력
-	                    var msg = '결제에 실패하였습니다.';
-	                    msg += '실패 사유 : ' + rsp.error_msg;
-	                }
-	                alert(msg);
-	            });
-	        }
 
-   		</script>
+		<div class="row g-4 justify-content-center" id="categoryBox">
+			<div class="row g-4 justify-content-center">
+				<button class="col-xl-1" id="write" type="button"
+					onclick="location.href='gogBoard'">게시물작성</button>
+			</div>
+		</div>
+		
+		<div class="row g-4 justify-content-center hero-header" style="margin-left: 28%; margin-right: 28%;">
+
+			<script
+				src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js"
+				integrity="sha384-ka7Sk0Gln4gmtz2MlQnikT1wXgYsOg+OMhuP+IlRH9sENBO0LRn5q+8nbTov4+1p"
+				crossorigin="anonymous"></script>
+
+			<div id="carouselExampleControls" class="carousel slide"
+				data-bs-ride="carousel" style="position: relative;" align="center">
+				<div class="carousel-inner" style="position: absoulte;" >
+					<div class="carousel-item active">
+						<img class="d-block" style="object-fit: cover !important; height: 450px;"
+							src="resources/g_Image/${c_board.c_img1}" alt="..." />
+					</div>
+					<div class="carousel-item">
+						<img class="d-block" style="object-fit: cover !important; height: 450px;"
+							src="https://source.unsplash.com/collection/190727/1600x900"
+							alt="..." />
+					</div>
+					<div class="carousel-item" >
+						<img class="d-block" style="object-fit: cover !important; height: 450px;"
+							src="https://source.unsplash.com/WLUHO9A_xik/1600x900" alt="..." />
+					</div>
+				</div>
+				<button class="carousel-control-prev" type="button"
+					data-bs-target="#carouselExampleControls" data-bs-slide="prev">
+					<span class="carousel-control-prev-icon" aria-hidden="true" style="background-color: grey"></span>
+					<span class="visually-hidden">Previous</span>
+				</button>
+				<button class="carousel-control-next" type="button"
+					data-bs-target="#carouselExampleControls" data-bs-slide="next">
+					<span class="carousel-control-next-icon" aria-hidden="true" style="background-color: grey"></span>
+					<span class="visually-hidden">Next</span>
+				</button>
+			</div>
+			
+			<div class="row g-4 justify-content-center">
+				<div class="boardContent">
+					<span><h6 style="display: inline;">작성자 : ${c_board.c_writer}</h6></span>
+					<span style="float: right;">${c_board.category} / ${c_board.c_w_date}</span>
+				</div>
+				<div class="boardContent">
+					<h5>${c_board.c_title}</h5>
+					<h6>종료 날짜 : ${c_board.c_f_date}</h6><br>
+					<div>${c_board.c_content}</div>
+				</div>
+				<c:choose>
+					<c:when test="${empty review_list}">
+						<div class="boardContent">
+							<h5>리뷰</h5><br>
+							<div class="boardContent" style="width: 80% !important; text-align: center; margin-left: 65px !important;">
+								<h6>아직 등록된 리뷰가 없어요</h6>
+							</div>
+							<div class="boardContent" style="width: 80% !important; margin-left: 65px !important;">
+								<form action="insertReview" method="post" name="myform" id="myform">
+									<br>
+									<p style="margin-bottom: 0px;">작성자 : ${loginMember.email }</p> 
+									<input type="hidden" name="email" value="${loginMember.email }" readonly="readonly">
+									<span class="text-bold">평점 :</span>
+									<fieldset>
+										<input type="radio" name="r_score" value="5" id="rate1"><label
+											for="rate1">★</label>
+										<input type="radio" name="r_score" value="4" id="rate2"><label
+											for="rate2">★</label>
+										<input type="radio" name="r_score" value="3" id="rate3"><label
+											for="rate3">★</label>
+										<input type="radio" name="r_score" value="2" id="rate4"><label
+											for="rate4">★</label>
+										<input type="radio" name="r_score" value="1" id="rate5"><label
+											for="rate5">★</label>
+									</fieldset>
+									<textarea rows="3" cols="66" name="r_content" placeholder="리뷰를 작성해 주세요." style="margin-top: 10px; float: bottom;"></textarea>
+									<input type="hidden" value="${c_board.c_num}">
+									<input type="submit" value="작성" class="btn border-secondary px-4 text-primary" style="width: 580px !important;">
+								</form>
+								
+							</div>
+						</div>
+					</c:when>
+					<c:otherwise>
+						<div class="boardContent">
+							<table style="width: 90%; text-align: center;">
+								<tr>
+									<td>
+									<h4>${scoreAvg}</h4>
+									
+									<c:forEach begin="0" end="${scoreAvg}">
+										<span style="margin-right: 5px;">★</span>
+										<c:if test="${scoreAvg < 5}">
+											<c:forEach begin="0" end="${5 - scoreAvg}" step="1">
+												<span style="margin-right: 5px;">☆</span>
+											</c:forEach>
+										</c:if>
+									</c:forEach>
+									</td>
+								</tr>
+								<c:forEach items="${review_list}" var="r" end="3">
+									<tr><td>
+										<div style="font-size: 13px !important;">
+											<span>${r.email}</span>
+											<span>${r.r_date}</span>
+											<p><c:forEach begin="0" end="${r.r_score}" step="1">
+													<span style="margin-right: 5px;">★</span>
+												</c:forEach>
+												<c:if test="${r.r_score < 5}">
+													<c:forEach begin="0" end="${5 - r.r_score}" step="1">
+														<span style="margin-right: 5px;">☆</span>
+													</c:forEach>
+												</c:if></p>
+											<p>${c_board.c_title}</p>
+											<span>${r.content}</span>
+										</div>
+									</td></tr>
+								</c:forEach>
+								<tr><td></td></tr>
+							</table>
+						</div>
+					</c:otherwise>
+				</c:choose>
+			</div>
+		</div>
+	
+		
+		<script type="text/javascript" src="//dapi.kakao.com/v2/maps/sdk.js?appkey=db0a7dd04d902c908bc5aaa345eaa55c&libraries=services"></script>
+		<script>
+		
+		var addr =  document.getElementById("addr").innerText;
+		
+			var mapContainer = document.getElementById('map'), // 지도를 표시할 div 
+			mapOption = {
+				center : new kakao.maps.LatLng(33.450701, 126.570667), // 지도의 중심좌표
+				level : 2
+			// 지도의 확대 레벨
+			};
+
+			// 지도를 생성합니다    
+			var map = new kakao.maps.Map(mapContainer, mapOption);
+
+			// 주소-좌표 변환 객체를 생성합니다
+			var geocoder = new kakao.maps.services.Geocoder();
+
+			// 주소로 좌표를 검색합니다
+			geocoder
+					.addressSearch(
+							addr,
+							function(result, status) {
+
+								// 정상적으로 검색이 완료됐으면 
+								if (status === kakao.maps.services.Status.OK) {
+
+									var coords = new kakao.maps.LatLng(
+											result[0].y, result[0].x);
+
+									// 결과값으로 받은 위치를 마커로 표시합니다
+									var marker = new kakao.maps.Marker({
+										map : map,
+										position : coords
+									});
+
+									// 인포윈도우로 장소에 대한 설명을 표시합니다
+									var infowindow = new kakao.maps.InfoWindow(
+											{
+												content : '<div style="width:150px;text-align:center;padding:6px 0;">픽업 장소</div>'
+											});
+									infowindow.open(map, marker);
+
+									// 지도의 중심을 결과값으로 받은 위치로 이동시킵니다
+									map.setCenter(coords);
+								}
+							});
+		</script>
+
 
 		<!-- 메인 페이지 하단 -->
 		<div class="container-fluid bg-dark text-white-50 footer pt-5 mt-5">

@@ -336,12 +336,12 @@
 					</div>
 					<div class="carousel-item">
 						<img class="d-block" style="object-fit: cover !important; height: 450px;"
-							src="https://source.unsplash.com/collection/190727/1600x900"
+							src="resources/g_Image/${c_board.c_img2}"
 							alt="..." />
 					</div>
 					<div class="carousel-item" >
 						<img class="d-block" style="object-fit: cover !important; height: 450px;"
-							src="https://source.unsplash.com/WLUHO9A_xik/1600x900" alt="..." />
+							src="resources/g_Image/${c_board.c_img3}" alt="..." />
 					</div>
 				</div>
 				<button class="carousel-control-prev" type="button"
@@ -408,18 +408,70 @@
 					<h6>종료 날짜 : ${c_board.c_f_date}</h6><br>
 					<div>${c_board.c_content}</div>
 				</div>
-			</div>
-		<strong  id="addr" style="display: none">${m_addr.address}</strong>
-				<h5>${c_board.place}</h5>
-				<div id="map" style="width:100%;height:350px;" class="row g-4 justify-content-center">
-					
-				</div>
-			
+				<div class="boardContent">
+					<strong  id="addr" style="display: none">${m_addr.address}</strong>
+					<h5>${c_board.place}</h5>
+					<div id="map" style="width:100%;height:350px;" class="row g-4 justify-content-center">
 						
+					</div>
+				</div>
+				<c:choose>
+					<c:when test="${empty review_list}">
+						<div class="boardContent" style="align-content: center !important;">
+							<h5>리뷰</h5><br>
+							<table style="width: 80% !important; text-align: center; margin-left: 65px !important;">
+								<tr><td><h6>아직 등록된 리뷰가 없어요</h6></td></tr>
+								<tr><td><button style="width: 25%; margin-left: 20px" type="button" 
+									onclick="location.href='writeReview?c_num=${c_board.c_num}'" class="btn btn-outline-success">리뷰 작성하기</button></td></tr>
+							</table>
+						</div>
+					</c:when>
+					<c:otherwise>
+						<div class="boardContent">
+							<table style="width: 90%; text-align: center;">
+								<tr>
+									<td>
+									<h4>${scoreAvg}</h4>
+									
+									<c:forEach begin="0" end="${scoreAvg}" step="1">
+										<span style="margin-right: 5px;">★</span>
+										<c:if test="${scoreAvg < 5}">
+											<c:forEach begin="0" end="${5 - scoreAvg}" step="1">
+												<span style="margin-right: 5px;">☆</span>
+											</c:forEach>
+										</c:if>
+									</c:forEach>
+									</td>
+								</tr>
+								<c:forEach items="${review_list}" var="r" end="3">
+									<tr><td>
+										<div style="font-size: 13px !important;">
+											<span>${r.email}</span>
+											<span>${r.r_date}</span>
+											<p><c:forEach begin="0" end="${r.r_score}" step="1">
+													<span style="margin-right: 5px;">★</span>
+												</c:forEach>
+												<c:if test="${r.r_score < 5}">
+													<c:forEach begin="0" end="${5 - r.r_score}" step="1">
+														<span style="margin-right: 5px;">☆</span>
+													</c:forEach>
+												</c:if></p>
+											<p>${c_board.c_title}</p>
+											<span>${r.content}</span>
+										</div>
+									</td></tr>
+								</c:forEach>
+								<tr><td><button style="width: 20%; margin-left: 20px" type="button" class="btn btn-outline-success">리뷰 더 보기</button></td></tr>
+								<tr><td></td></tr>
+							</table>
+						</div>
+					</c:otherwise>
+				</c:choose>
+			</div>
 		</div>
 	
 		
-			<script type="text/javascript" src="//dapi.kakao.com/v2/maps/sdk.js?appkey=db0a7dd04d902c908bc5aaa345eaa55c&libraries=services"></script>
+		<script type="text/javascript" src="//dapi.kakao.com/v2/maps/sdk.js?appkey=db0a7dd04d902c908bc5aaa345eaa55c&libraries=services"></script>
 		<script>
 		
 		var addr =  document.getElementById("addr").innerText;

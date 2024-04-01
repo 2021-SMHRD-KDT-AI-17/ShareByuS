@@ -404,11 +404,11 @@
 								style="width: 300px; border: solid; border-width: 1px; margin: auto; border-color: #EEEEEE !important; display: inline-block;"
 								align="cenber;">
 
-									<a href="G_BoardContent?g_num=${c.c_num}"> <img alt=""
-											src="resources/g_Image/${c.c_img1}" align="left"
+									<a href="C_BoardContent?c_num=${c.c_num}&c_writer=${c.c_writer}"> <img alt=""
+											src="resources/c_Image/${c.c_img1}" align="left"
 											class='img-fluid w-100 rounded-top'
 											style="width: 150px; height: 150px; !important;"></a>
-									<a href="G_BoardContent?g_num=${c.c_num}">
+									<a href="C_BoardContent?c_num=${c.c_num}&&c_writer=${c.c_writer}">
 									<h3 style="text-align: center;">${c.c_title}</h3></a>
 									<br>
 										<strong style="color: #A4A4A4;">${c.category }</strong>
@@ -441,7 +441,7 @@
 				document.getElementById("gen").style.display = "block";
 				document.getElementById("com").style.display = "none";
 				document.getElementById("comText").style.color = "black";
-				document.getElementById("genText").style.display = "green";
+				document.getElementById("genText").style.color = "green";
 						
 			}
 			function getCom() {
@@ -509,11 +509,11 @@
 
 								<c:forEach items="${allC_list}" var="c">
 									<c:if test="${f.c_num eq c.c_num }">
-										<a href="C_BoardContent?c_num=${c.c_num}"> <img alt=""
+										<a href="C_BoardContent?c_num=${c.c_num}&c_writer=${c.c_writer}"> <img alt=""
 											src="resources/g_Image/${c.c_img1}" align="left"
 											class='img-fluid w-100 rounded-top'
 											style="width: 150px; height: 150px; !important;"></a>
-										<a href="C_BoardContent?c_num=${c.c_num}">
+										<a href="C_BoardContent?c_num=${c.c_num}&c_writer=${c.c_writer}">
 
 											<h3 style="text-align: center;">${c.c_title}</h3>
 										</a>

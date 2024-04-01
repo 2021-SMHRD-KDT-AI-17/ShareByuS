@@ -344,13 +344,13 @@
                <div class="carousel-item">
                   <img class="d-block w-100"
                      style="object-fit: cover !important; height: 450px;"
-                     src="resources/g_Image/${g_board.g_img1}"
+                     src="resources/g_Image/${g_board.g_img2}"
                      alt="..." />
                </div>
                <div class="carousel-item">
                   <img class="d-block w-100"
                      style="object-fit: cover !important; height: 450px;"
-                     src="https://source.unsplash.com/WLUHO9A_xik/1600x900" alt="..." />
+                     src="resources/g_Image/${g_board.g_img3}" alt="..." />
                </div>
             </div>
             <button class="carousel-control-prev" type="button"
@@ -373,7 +373,8 @@
       <div class="row g-4 justify-content-center" style="display: block;">
                
                <div class="boardContent">
-<button onclick="checkFavorite()" id="zzim" style="width: 10%;" type="button" class="btn btn-outline-success">❤ 찜</button>					<c:choose >
+				<button onclick="checkFavorite()" id="zzim" style="width: 10%;" type="button" class="btn btn-outline-success">❤ 찜</button>					
+					<c:choose >
 						<c:when test="${loginMember.email eq g_board.email}">
 							<nav class="detailMenu" style="float: right;">
 								<ul>
@@ -395,7 +396,7 @@
 									<li><a href="#"> <strong style="float: right;">⁝</strong>
 									</a>
 										<ul>
-											<li><a href="#">게시물 신고</a></li>
+											<li><a href="sendReportInfo">게시물 신고</a></li>
 										</ul></li>
 								</ul>
 							</nav>
