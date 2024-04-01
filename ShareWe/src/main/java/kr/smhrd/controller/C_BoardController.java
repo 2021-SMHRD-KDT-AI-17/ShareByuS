@@ -89,14 +89,16 @@ public class C_BoardController {
 		List<review> review_list = c_boardMapper.getReview(c_num);
 		model.addAttribute("review_list", review_list);
 		
-		int sum = 0;
-		
-		for(int i = 0; i < review_list.size(); i++) {
-			sum += review_list.get(i).getR_score();
+		if(review_list.size() > 0) {
+			int sum = 0;
+			
+			for(int i = 0; i < review_list.size(); i++) {
+				sum += review_list.get(i).getR_score();
+			}
+			int scoreAvg = sum/review_list.size();
+			
+			model.addAttribute("scoreAvg", scoreAvg);
 		}
-		int scoreAvg = sum/review_list.size();
-		
-		model.addAttribute("scoreAvg", scoreAvg);
 		
 		return "cBoardDetail";
 	}

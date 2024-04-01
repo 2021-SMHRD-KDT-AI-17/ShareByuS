@@ -27,5 +27,8 @@ public class review {
 
     // 게시글 고유번호 
     private int c_num;
+    
+    // 리뷰 작성 날짜
+    private String r_date;
 	
 }

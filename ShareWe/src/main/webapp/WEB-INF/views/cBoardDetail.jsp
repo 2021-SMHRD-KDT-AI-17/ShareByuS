@@ -426,21 +426,41 @@
 						<div class="boardContent">
 							<table style="width: 90%; text-align: center;">
 								<tr>
-									<td><h4>${scoreAvg}</h4></td>
 									<td>
-									<%for(int i = 0; i < ${scoreAvg}; i++) {%>
+									<h4>${scoreAvg}</h4>
+									
+									<c:forEach begin="0" end="${scoreAvg}" step="1">
 										<span style="margin-right: 5px;">★</span>
-									<%} %>
-									<%if(${scoreAvg} < 5){ %>
-										<%for(int i = 0; i < (5 - ${scoreAvg}); i++) {%>
-											<span style="margin-right: 5px;">☆</span>
-										<%} %>
-									<%} %>
+									
+										<c:if test="${scoreAvg < 5}">
+											<c:forEach begin="0" end="${5 - scoreAvg}" step="1">
+												<span style="margin-right: 5px;">☆</span>
+											</c:forEach>
+										</c:if>
+									</c:forEach>
 									</td>
 								</tr>
-								<tr><td colspan="2"></td></tr>
-								<tr><td colspan="2"></td></tr>
-								<tr><td colspan="2"></td></tr>
+								<c:forEach items="${review_list}" var="r" end="3">
+									<tr><td>
+										<div style="font-size: 13px !important;">
+											<span>${r.email}</span>
+											<span>${r.r_date}</span>
+											<p><%for(int i = 0; i < ${r.r_score}; i++) {%>
+												<span style="margin-right: 5px;">★</span>
+												<%} %>
+												<%if(${r.r_score} < 5){ %>
+													<%for(int i = 0; i < (5 - ${r.r_score}); i++) {%>
+													<span style="margin-right: 5px;">☆</span>
+													<%} %>
+												<%} %>
+											</p>
+											<p>${c_board.c_title}</p>
+											<span>${r.content}</span>
+										</div>
+									</td></tr>
+								</c:forEach>
+								<tr><td><button style="width: 20%; margin-left: 20px" type="button" class="btn btn-outline-success">리뷰 더 보기</button></td></tr>
+								<tr><td></td></tr>
 							</table>
 						</div>
 					</c:otherwise>
