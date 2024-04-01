@@ -18,4 +18,12 @@
 		update subscribe set paid_cnt=paid_cnt-1 where email=#{email}
 	</update>
 	
+	<update id="plusPaidCnt" parameterType="kr.smhrd.entity.payment">
+		update subscribe set paid_cnt=paid_cnt+#{p_cnt} where email=#{email}
+	</update>
+	
+	<insert id="paySuccess" parameterType="kr.smhrd.entity.payment">
+		insert into payment(email, p_name, p_amount,apply_num, p_cnt) value ( #{email}, #{p_name}, #{p_amount}, #{apply_num}, #{p_cnt})
+	</insert>
+	
 </mapper>

@@ -93,7 +93,7 @@ public class G_BoardController {
 			
 			
 			g_board = new g_board(g_title,g_writer, email, g_img1, g_content, category);
-			System.out.println(g_board.toString());
+			g_boardMapper.insertBoard(g_board);
 		} catch (IOException e) {
 			e.printStackTrace();
 		}
