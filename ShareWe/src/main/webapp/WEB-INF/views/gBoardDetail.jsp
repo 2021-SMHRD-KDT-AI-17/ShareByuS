@@ -374,8 +374,7 @@
       <div class="row g-4 justify-content-center" style="display: block;">
                
                <div class="boardContent">
-                  <button onclick="checkFavorite()" id="zzim" style="width: 10%;" type="button" class="btn btn-outline-success">❤ 찜</button>
-					<c:choose >
+<button onclick="checkFavorite()" id="zzim" style="width: 10%;" type="button" class="btn btn-outline-success">❤ 찜</button>					<c:choose >
 						<c:when test="${loginMember.email eq g_board.email}">
 							<nav class="detailMenu" style="float: right;">
 								<ul>
@@ -485,9 +484,6 @@
       <script src="resources/asset/lib/owlcarousel/owl.carousel.min.js"></script>
 
       <!-- Template Javascript -->
-      <script src="resources/asset/js/main.js"></script>
-
-		<!-- Template Javascript -->
 		<script src="resources/asset/js/main.js"></script>
 	
 		<script type="text/javascript">
@@ -510,27 +506,11 @@
 							error : function(){
 								alert("Share: Σ(っ °Д °;)っ 다시 시도해주세요!")
 						}
-					)
-				}
+				   }
+				)
+			}
 				</script>
 
-	
-
-      <!--    <!-- 카테고리:채소 비동기 --
-   <script type="text/javascript">
-      function getVege(){
-         $.ajax({
-            url :'',
-            data : '',
-            type : 'get',
-            
-            success : function(data){
-               
-            },
-            error : function() {
-               alert()
-=======
-      <!-- Template Javascript -->
 
 
 </body>

@@ -137,7 +137,6 @@ public class WebController {
 				List<g_favorite> Gfv_list = favoriteMapper.getGEmail(loginMember.getEmail());
 				model.addAttribute("Gfv_list", Gfv_list);
 				
-//				자신이한 c찜과 모든c리스트비교
 				List<c_board> allC_list = c_boardMapper.getCBoard();
 				model.addAttribute("allC_list", allC_list);
 				List<c_favorite> Cfv_list = favoriteMapper.getCEmail(loginMember.getEmail());
@@ -147,13 +146,19 @@ public class WebController {
 				
 				List<c_board> cboard_list = c_boardMapper.getCEmail(loginMember.getEmail());
 				model.addAttribute("cboard_list", cboard_list);
-				
+//				자신이한 c찜과 모든c리스트비교
+
 				List<c_board> allC_list = c_boardMapper.getCBoard();
 				model.addAttribute("allC_list", allC_list);
-				
-				
 				List<c_favorite> Cfv_list = favoriteMapper.getCEmail(loginMember.getEmail());
 				model.addAttribute("Cfv_list", Cfv_list);
+				
+//				자신이한 g찜과 모든g리스트비교
+				List<g_board> allG_list = g_boardMapper.getGBoard();
+				model.addAttribute("allG_list", allG_list);
+				List<g_favorite> Gfv_list = favoriteMapper.getGEmail(loginMember.getEmail());
+				model.addAttribute("Gfv_list", Gfv_list);
+				
 			}
 			return "myPage";
 		}else {
