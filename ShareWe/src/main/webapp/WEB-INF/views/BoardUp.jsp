@@ -308,17 +308,22 @@
             </div>
          </div>
          <div class="boardContent">
-         	<h6>무료 끌어올리기 횟수 : </h6>
+         	<h6>무료 UP 체험권 횟수 : ${subscribeInfo.free_cnt } / 5 회</h6>
+         </div>
+         <div class="boardContent">
+         	<h6>보유중인 UP 횟수 : ${subscribeInfo.paid_cnt } 회</h6>
          </div>
          <div class="boardContent">
          	<p>${loginMember.nick } 님의 게시글을 끌어 올리겠습니까?</p><br>
          	<h6>구독권을 구매하여 끌어올리기 기능을 사용해보세요!</h6>
          </div>
          <div class="row g-4 justify-content-center" style="padding-bottom: 20px; margin-top: 10px !important;">
+         	<c:if test="${subscribeInfo.free_cnt > 0 || subscribeInfo.paid_cnt > 0}">
+	            <button type="button" class="btn btn-outline-success"
+	                  	 onclick="location.href='gBoardUp?g_num=${g_num}&free_cnt=${subscribeInfo.free_cnt}&paid_cnt=${subscribeInfo.paid_cnt}'" style="width: 20%; margin-top: 10px !important;">끌어올리기</button>
+            </c:if>
             <button type="button" class="btn btn-outline-success"
-                  	 onclick="location.href='gBoardUp?g_num=${g_num} & g_img1=${g_img1}'" style="width: 20%; margin-top: 10px !important;">끌어올리기</button>
-            <button type="button" class="btn btn-outline-success"
-                     onclick="location.href='#'" style="width: 20%; margin-left: 20px; margin-top: 10px !important;">구독권 구매</button>
+                     onclick="location.href='goSubscribe'" style="width: 20%; margin-left: 20px; margin-top: 10px !important;">구독권 구매</button>
          </div>
       </div>
 

@@ -312,10 +312,11 @@
 						<div class="form-item">
 							<div class="col-sm-8">
 								<select name="category" id="a4" class="form-control">
-									<option value="채소">채소</option>
-									<option value="과일">과일</option>
 									<option value="식품">식품</option>
+									<option value="과일">과일</option>
 									<option value="생필품">생필품</option>
+									<option value="패션/뷰티">패션/뷰티</option>
+									<option value="여행/도서">여행/도서</option>
 								</select>
 							</div>
 							<hr>

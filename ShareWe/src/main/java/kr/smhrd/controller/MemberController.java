@@ -13,14 +13,12 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 
 import kr.smhrd.entity.approve;
-import kr.smhrd.entity.g_board;
 import kr.smhrd.entity.member;
 import kr.smhrd.entity.report;
-import kr.smhrd.mapper.C_BoardMapper;
-import kr.smhrd.mapper.G_BoardMapper;
 //import kr.smhrd.entity.Message;
 import kr.smhrd.mapper.MemberMapper;
 //import kr.smhrd.mapper.MessageMapper;
+import kr.smhrd.mapper.SubscribeMapper;
 
 // Handler Mapping이 Controller를 찾기위해 @(Annotation)으로 Controller라고 명시해야 함
 // servlet-context.xml 파일에 어떤 패키지에서 Controller를 찾을건지 명시
@@ -33,6 +31,9 @@ public class MemberController {
 	@Autowired
 	private MemberMapper memberMapper;
 	
+	@Autowired
+	private SubscribeMapper subscribeMapper;
+	
 	 // 회원가입하는 메소드 /memberInsert
 	@RequestMapping("/memberInsert")
 	public String memberInsert(member member, Model model) {
@@ -42,6 +43,8 @@ public class MemberController {
 		}else {
 			memberMapper.memberInsert(member);
 			model.addAttribute("joinMember", member);
+			// 구독 테이블에도 등록
+			subscribeMapper.insertSubscribe(member.getEmail());
 		}
 		
 		return "JoinSuccess";
