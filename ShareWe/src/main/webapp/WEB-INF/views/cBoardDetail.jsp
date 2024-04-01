@@ -408,18 +408,48 @@
 					<h6>종료 날짜 : ${c_board.c_f_date}</h6><br>
 					<div>${c_board.c_content}</div>
 				</div>
-			</div>
-		<strong  id="addr" style="display: none">${m_addr.address}</strong>
-				<h5>${c_board.place}</h5>
-				<div id="map" style="width:100%;height:350px;" class="row g-4 justify-content-center">
-					
-				</div>
-			
+				<div class="boardContent">
+					<strong  id="addr" style="display: none">${m_addr.address}</strong>
+					<h5>${c_board.place}</h5>
+					<div id="map" style="width:100%;height:350px;" class="row g-4 justify-content-center">
 						
+					</div>
+				</div>
+				<c:choose>
+					<c:when test="${empty review_list}">
+						<div class="boardContent">
+							<h5>아직 등록된 리뷰가 없어요</h5>
+							<button style="width: 20%; margin-left: 20px" type="button" class="btn btn-outline-success">리뷰 작성하기</button>
+						</div>
+					</c:when>
+					<c:otherwise>
+						<div class="boardContent">
+							<table style="width: 90%; text-align: center;">
+								<tr>
+									<td><h4>${scoreAvg}</h4></td>
+									<td>
+									<%for(int i = 0; i < ${scoreAvg}; i++) {%>
+										<span style="margin-right: 5px;">★</span>
+									<%} %>
+									<%if(${scoreAvg} < 5){ %>
+										<%for(int i = 0; i < (5 - ${scoreAvg}); i++) {%>
+											<span style="margin-right: 5px;">☆</span>
+										<%} %>
+									<%} %>
+									</td>
+								</tr>
+								<tr><td colspan="2"></td></tr>
+								<tr><td colspan="2"></td></tr>
+								<tr><td colspan="2"></td></tr>
+							</table>
+						</div>
+					</c:otherwise>
+				</c:choose>
+			</div>
 		</div>
 	
 		
-			<script type="text/javascript" src="//dapi.kakao.com/v2/maps/sdk.js?appkey=db0a7dd04d902c908bc5aaa345eaa55c&libraries=services"></script>
+		<script type="text/javascript" src="//dapi.kakao.com/v2/maps/sdk.js?appkey=db0a7dd04d902c908bc5aaa345eaa55c&libraries=services"></script>
 		<script>
 		
 		var addr =  document.getElementById("addr").innerText;

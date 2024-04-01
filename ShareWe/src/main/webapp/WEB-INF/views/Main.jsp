@@ -215,7 +215,7 @@
 	</div>
 	<!-- 메인 이미지 슬라이드 div End -->
 
-
+	
    <!-- 판매 상품 Start-->
    <div class="container-fluid fruite py-5" style="padding-top: 2rem !important;">
       <div class="container py-5">

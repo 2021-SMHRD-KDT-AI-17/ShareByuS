@@ -6,6 +6,7 @@ import org.apache.ibatis.annotations.Mapper;
 
 import kr.smhrd.entity.c_board;
 import kr.smhrd.entity.report;
+import kr.smhrd.entity.review;
 
 @Mapper
 public interface C_BoardMapper {
@@ -27,6 +28,8 @@ public interface C_BoardMapper {
 	public void deleteCBoard(int c_num);
 
 	public void cBoardUpdate(c_board c_board);
+
+	public List<review> getReview(int c_num);
 	
 	
 
