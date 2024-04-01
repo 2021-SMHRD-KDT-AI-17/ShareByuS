@@ -6,10 +6,9 @@ import org.apache.ibatis.annotations.Mapper;
 import org.apache.ibatis.annotations.Param;
 import org.apache.ibatis.annotations.Select;
 
-import kr.smhrd.entity.c_board;
 import kr.smhrd.entity.c_favorite;
+import kr.smhrd.entity.c_subscribe;
 import kr.smhrd.entity.g_favorite;
-import lombok.NonNull;
 
 @Mapper
 public interface FavoriteMapper {
@@ -25,10 +24,6 @@ public interface FavoriteMapper {
 	
 	public List<g_favorite> getFv_list();
 	
-//c
-	public void addCFavorite(c_favorite c_favorite);
-	
-	
 	public List<c_favorite> fvC_list(int c_num);
 
 	public List<c_favorite> getCEmail(String email);
@@ -40,6 +35,24 @@ public interface FavoriteMapper {
 
 	@Select("select * from c_favorite where c_num=#{c_num} and email=#{email}")
 	public c_favorite checkCFavorite( @Param("c_num")int c_num, @Param("email") String email);
+
+	public void insertSub(c_subscribe subscribeInfo);
+
+	public void delSub(c_subscribe subscribeInfo);
+
+	public List<c_subscribe> getSubList(String email);
+
+	public void insertFavorite(c_favorite favInfo);
+
+	public void delFavorite(c_favorite favInfo);
+
+	public List<c_favorite> getFavList(String email);
+
+	public void insertgFavorite(g_favorite favInfo);
+
+	public void delgFavorite(g_favorite favInfo);
+
+	public List<g_favorite> getgFavList(String email);
 
 	
 	

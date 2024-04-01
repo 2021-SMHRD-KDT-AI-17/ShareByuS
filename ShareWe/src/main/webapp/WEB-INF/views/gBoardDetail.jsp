@@ -148,7 +148,10 @@
 .detailMenu > ul > li  li a:hover{background:#eee;}
 .detailMenu > ul > li > li + li{margin-top:5px;}
 
-
+#favCancel{
+	color: white !important;
+	background-color: #009223;
+}
 </style>
 
 
@@ -374,7 +377,24 @@
       <div class="row g-4 justify-content-center" style="display: block;">
                
                <div class="boardContent">
-				<button onclick="checkFavorite()" id="zzim" style="width: 10%;" type="button" class="btn btn-outline-success">❤ 찜</button>					
+               		<input type="hidden" value="${g_board.g_num}" id="gNum">
+					<c:choose>
+						<c:when test="${empty loginMember}">
+							<button onclick="location.href='goLogin'" style="width: 10%;" type="button" class="btn btn-outline-success">❤ 찜</button>
+						</c:when>
+						<c:otherwise>
+							<c:choose>
+								<c:when test="${fav eq 'Yes'}">
+									<button onclick="checkGFavorite()" id="gFavorite" style="width: 10%; display: none;" type="button" class="btn btn-outline-success">❤ 찜</button>
+									<button onclick="delGFavorite()" id="favCancel" style="width: 10%;" type="button" class="btn btn-outline-success">❤ 찜</button>
+								</c:when>
+								<c:otherwise>
+									<button onclick="checkGFavorite()" id="gFavorite" style="width: 10%;" type="button" class="btn btn-outline-success">❤ 찜</button>
+									<button onclick="delGFavorite()" id="favCancel" style="width: 10%; display: none;" type="button" class="btn btn-outline-success">❤ 찜</button>
+								</c:otherwise>
+							</c:choose>
+						</c:otherwise>
+					</c:choose>				
 					<c:choose >
 						<c:when test="${loginMember.email eq g_board.email}">
 							<nav class="detailMenu" style="float: right;">
@@ -435,17 +455,6 @@
       </div>
 
 
-         <div align="right">
-            <form action="sendReportInfo" method="post">
-            <input type="hidden" value="${g_board.g_num}" name="r_num">
-            <input type="hidden" value="${g_board.email}" name="email">
-            <input type="hidden" value="${g_board.g_title}" name="g_title">
-             <input type="hidden" value="${loginMember.email}" name="rp_email">
-               
-            <input type="submit" value="신고하기">
-            </form>
-         </div>
-
       <!-- 메인 페이지 하단 -->
       <div class="container-fluid bg-dark text-white-50 footer pt-5 mt-5">
          <div class="container py-5">
@@ -488,29 +497,48 @@
 		<script src="resources/asset/js/main.js"></script>
 	
 		<script type="text/javascript">
-					function checkFavorite(){
-				var g_num=${g_board.g_num};
-				console.log(g_num);
-						
+			function checkGFavorite(){
+				var g_num = document.getElementById("gNum").value;
+				
+				document.getElementById("favCancel").style.display = "inline";
+				document.getElementById("gFavorite").style.display = "none";
 						$.ajax(
 						{
-							url : "checkFavorite",
+							url : "insertgFavorite",
 							data : {'g_num' : g_num},
 							type :'get',
-							success : function(data){
-								if(data==1){
-										$("#zzim").text('♥ 찜 완료')
-								}else{
-									$("#zzim").text('이미 찜한 상품 입니다')	
-								}
+							success : function(){
+								
 							},
 							error : function(){
-								alert("Share: Σ(っ °Д °;)っ 다시 시도해주세요!")
+								alert("통신실패")
+							}
 						}
-				   }
-				)
-			}
-				</script>
+					)
+				}
+		</script>
+		
+		<script type="text/javascript">
+			function delGFavorite(){
+				var g_num = document.getElementById("gNum").value;
+				
+				document.getElementById("gFavorite").style.display = "inline";
+				document.getElementById("favCancel").style.display = "none";
+						$.ajax(
+						{
+							url : "delgFavorite",
+							data : {'g_num' : g_num},
+							type :'get',
+							success : function(){
+								
+							},
+							error : function(){
+								alert("통신실패")
+							}
+						}
+					)
+				}
+		</script>
 
 
 

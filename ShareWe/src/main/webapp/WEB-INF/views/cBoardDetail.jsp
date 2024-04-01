@@ -144,6 +144,10 @@
 	font-size: 1.5em;
 	color: #009223;
 }
+#subCancel, #favCancel{
+	color: white !important;
+	background-color: #009223;
+}
 </style>
 
 
@@ -325,7 +329,7 @@
 		</div>
 		
 		<div class="row g-4 justify-content-center hero-header" style="margin-left: 28%; margin-right: 28%;">
-
+			<input type="hidden" value="${loginMember.email}" id="loginEmail">
 			<script
 				src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js"
 				integrity="sha384-ka7Sk0Gln4gmtz2MlQnikT1wXgYsOg+OMhuP+IlRH9sENBO0LRn5q+8nbTov4+1p"
@@ -362,8 +366,24 @@
 			
 			<div class="row g-4 justify-content-center">
 				<div class="boardContent">
-					<button onclick="checkCFavorite()" id="zzim" style="width: 10%;" type="button" class="btn btn-outline-success">❤ 찜</button>
-					
+					<input type="hidden" value="${c_board.c_num}" id="cNum">
+					<c:choose>
+						<c:when test="${empty loginMember}">
+							<button onclick="location.href='goLogin'" style="width: 10%;" type="button" class="btn btn-outline-success">❤ 찜</button>
+						</c:when>
+						<c:otherwise>
+							<c:choose>
+								<c:when test="${fav eq 'Yes'}">
+									<button onclick="checkCFavorite()" id="cFavorite" style="width: 10%; display: none;" type="button" class="btn btn-outline-success">❤ 찜</button>
+									<button onclick="delCFavorite()" id="favCancel" style="width: 10%;" type="button" class="btn btn-outline-success">❤ 찜</button>
+								</c:when>
+								<c:otherwise>
+									<button onclick="checkCFavorite()" id="cFavorite" style="width: 10%;" type="button" class="btn btn-outline-success">❤ 찜</button>
+									<button onclick="delCFavorite()" id="favCancel" style="width: 10%; display: none;" type="button" class="btn btn-outline-success">❤ 찜</button>
+								</c:otherwise>
+							</c:choose>
+						</c:otherwise>
+					</c:choose>
 					<c:choose >
 						<c:when test="${loginMember.email eq c_board.email}">
 							<nav class="detailMenu" style="float: right;">
@@ -404,7 +424,25 @@
 					참여인원:
 				</div>
 				<div class="boardContent">
-					<span><h6 style="display: inline;">작성자 : ${c_board.c_writer}</h6></span>
+					<span>가게명 : <h6 style="display: inline; margin-left: 10px;">${c_board.c_writer}</h6></span>
+					<input type="hidden" value="${c_board.c_writer}" id="comName">
+					<c:choose>
+					<c:when test="${empty loginMember}">
+						<button onclick="location.href='goLogin'" style="width: 15%; margin-left: 20px;" type="button" class="btn btn-outline-success">구독하기</button>
+					</c:when>
+					<c:otherwise>
+						<c:choose>
+							<c:when test="${sub eq 'Yes'}">
+								<button onclick="checkSubscribe()" id="cSubscribe" style="width: 15%; margin-left: 20px; display: none;" type="button" class="btn btn-outline-success">구독하기</button>
+								<button onclick="delSubscribe()" id="subCancel" style="width: 15%; margin-left: 20px;" type="button" class="btn btn-outline-success">구독중 ✓</button>
+							</c:when>
+							<c:otherwise>
+								<button onclick="checkSubscribe()" id="cSubscribe" style="width: 15%; margin-left: 20px;" type="button" class="btn btn-outline-success">구독하기</button>
+								<button onclick="delSubscribe()" id="subCancel" style="width: 15%; margin-left: 20px; display: none;" type="button" class="btn btn-outline-success">구독 취소</button>
+							</c:otherwise>
+						</c:choose>
+					</c:otherwise>
+					</c:choose>
 					<span style="float: right;">${c_board.category} / ${c_board.c_w_date}</span>
 				</div>
 				<div class="boardContent">
@@ -423,10 +461,18 @@
 					<c:when test="${empty review_list}">
 						<div class="boardContent" style="width: 80% !important; margin-left: 65px !important;">
 							<h4>리뷰</h4><br>
-							<div class="boardContent" style="width: 80% !important; margin-left: 65px !important;">
-								<h6>아직 등록된 리뷰가 없어요</h6>
-								<button style="width: 25%; margin-left: 20px" type="button" 
-									onclick="location.href='writeReview?c_num=${c_board.c_num}'" class="btn btn-outline-success">리뷰 작성하기</button>
+							<div style="margin-left: 200px;">
+								<h6>아직 등록된 리뷰가 없어요.</h6><br>
+								<c:choose>
+									<c:when test="${empty loginMember}">
+										<button style="width: 35%; margin-left: 20px;" type="button" 
+											onclick="location.href='goLogin'" class="btn btn-outline-success">리뷰 작성하기</button>
+									</c:when>
+									<c:otherwise>
+										<button style="width: 35%; margin-left: 20px;" type="button" 
+											onclick="location.href='writeReview?c_num=${c_board.c_num}'" class="btn btn-outline-success">리뷰 작성하기</button>
+									</c:otherwise>
+								</c:choose>
 							</div>
 						</div>
 					</c:when>
@@ -435,7 +481,7 @@
 							<h4>리뷰</h4><br>
 						</div>
 						<div class="boardContent">
-							<div class="boardContent" style="width: 80% !important; margin-left: 65px !important;">
+							<div class="boardContent" style="width: 80% !important; margin-left: 63px !important;">
 								<div style="padding-left: 230px;">
 									<h5 style="margin-left: 38px; padding-top: 20px;">평점 : ${scoreDAvg}</h5>
 										
@@ -571,22 +617,18 @@
 		<script src="resources/asset/js/main.js"></script>
 
 		<script type="text/javascript">
-					function checkCFavorite(){
-				var c_num=${c_board.c_num};
-				console.log(c_num);
-						
+			function checkCFavorite(){
+				var c_num = document.getElementById("cNum").value;
+				
+				document.getElementById("favCancel").style.display = "inline";
+				document.getElementById("cFavorite").style.display = "none";
 						$.ajax(
 						{
-							url : "checkCFavorite",
+							url : "insertFavorite",
 							data : {'c_num' : c_num},
 							type :'get',
-							success : function(data){
-								if(data==1){
-									
-										$("#zzim").text('♥ 찜 완료')
-								}else{
-									$("#zzim").text('이미 찜한 상품 입니다')	
-								}
+							success : function(){
+								
 							},
 							error : function(){
 								alert("통신실패")
@@ -594,7 +636,77 @@
 						}
 					)
 				}
-				</script>
+		</script>
+		
+		<script type="text/javascript">
+			function delCFavorite(){
+				var c_num = document.getElementById("cNum").value;
+				
+				document.getElementById("cFavorite").style.display = "inline";
+				document.getElementById("favCancel").style.display = "none";
+						$.ajax(
+						{
+							url : "delFavorite",
+							data : {'c_num' : c_num},
+							type :'get',
+							success : function(){
+								
+							},
+							error : function(){
+								alert("통신실패")
+							}
+						}
+					)
+				}
+		</script>
+		
+		<!-- 구독 버튼 -->
+		<script type="text/javascript">
+				function checkSubscribe(){
+					var c_name = document.getElementById("comName").value;
+
+				document.getElementById("subCancel").style.display = "inline";
+				document.getElementById("cSubscribe").style.display = "none";
+						
+						$.ajax(
+						{
+							url : "checkSub",
+							data : {'c_name' : c_name},
+							type :'get',
+							success : function(){
+								
+							},
+							error : function(){
+								alert("통신실패")
+							}
+						}
+					)
+				}
+		</script>
+		
+		<!-- 구독 취소 버튼 -->
+		<script type="text/javascript">
+				function delSubscribe(){
+					var c_name = document.getElementById("comName").value;
+
+				document.getElementById("cSubscribe").style.display = "inline";
+				document.getElementById("subCancel").style.display = "none";
+						
+						$.ajax(
+						{
+							url : "delSub",
+							data : {'c_name' : c_name},
+							type :'get',
+							success : function(){
+								
+							},
+							error : function(){
+								alert("통신실패")
+							}
+						}
+					)
+				}
+		</script>
 </body>
 
 </html>
