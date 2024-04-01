@@ -135,6 +135,15 @@ public class C_BoardController {
 		return "redirect:/C_BoardContent";
 	}
 	
+	// 리뷰 작성
+	@RequestMapping("/writeReview")
+	public String writeReview(int c_num, Model model) {
+		c_board c_board = c_boardMapper.C_BoardContent(c_num);
+		model.addAttribute("c_board", c_board);
+		
+		return "Review";
+	}
+	
 	
 	}
 	
