@@ -374,7 +374,8 @@
       <div class="row g-4 justify-content-center" style="display: block;">
                
                <div class="boardContent">
-<button onclick="checkFavorite()" id="zzim" style="width: 10%;" type="button" class="btn btn-outline-success">❤ 찜</button>					<c:choose >
+				<button onclick="checkFavorite()" id="zzim" style="width: 10%;" type="button" class="btn btn-outline-success">❤ 찜</button>					
+					<c:choose >
 						<c:when test="${loginMember.email eq g_board.email}">
 							<nav class="detailMenu" style="float: right;">
 								<ul>

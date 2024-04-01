@@ -39,6 +39,7 @@
 <!-- Template Stylesheet -->
 <link href="resources/asset/css/sw_style.css" rel="stylesheet">
 
+
 <style>
 #topMenu {
 	height: 30px;
@@ -140,6 +141,32 @@
 .detailMenu > ul > li  li a{display: block; padding:10px 15px;}
 .detailMenu > ul > li  li a:hover{background:#eee;}
 .detailMenu > ul > li > li + li{margin-top:5px;}
+
+#myform input[type=radio]{
+    display: none !important;
+}
+#myform fieldset{
+    display: inline-block;
+    direction: rtl;
+    border:0;
+}
+#myform fieldset legend{
+    text-align: right;
+}
+#myform label{
+    font-size: 2em;
+    color: transparent;
+    text-shadow: 0 0 0 #f0f0f0;
+}
+#myform label:hover{
+    text-shadow: 0 0 0 #009223;
+}
+#myform label:hover ~ label{
+    text-shadow: 0 0 0 #009223;
+}
+#myform input[type=radio]:checked ~ label{
+    text-shadow: 0 0 0 #009223;
+}
 </style>
 
 
@@ -358,48 +385,6 @@
 			
 			<div class="row g-4 justify-content-center">
 				<div class="boardContent">
-					<button onclick="checkCFavorite()" id="zzim" style="width: 10%;" type="button" class="btn btn-outline-success">❤ 찜</button>
-					
-					<c:choose >
-						<c:when test="${loginMember.email eq c_board.email}">
-							<nav class="detailMenu" style="float: right;">
-								<ul>
-									<li><a href="#"> <strong style="float: right;">⁝</strong>
-									</a>
-										<ul>
-											<li><a href="#">펀딩 마감</a></li>
-											<li><a href="goCUpdate?c_num=${c_board.c_num}">게시글 수정</a></li>
-											<li><a href="deleteCBoard?c_num=${c_board.c_num}">게시글 삭제</a></li>
-										</ul></li>
-								</ul>
-							</nav>
-						</c:when>
-						<c:when test="${not empty loginMember }">
-							<nav class="detailMenu" style="float: right;">
-								<ul>
-									<li><a href="#"> <strong style="float: right;">⁝</strong>
-									</a>
-										<ul>
-											<li><a href="#">게시물 신고</a></li>
-										</ul></li>
-								</ul>
-							</nav>
-						</c:when>
-						<c:when test="${ empty loginMember}">
-							<nav class="detailMenu" style="float: right;">
-								<ul>
-									<li><a href="#"> <strong style="float: right;"></strong></a>
-								</ul>
-							</nav>
-						</c:when>
-					</c:choose>
-					
-					<button style="width: 20%; margin-left: 20px" type="button" class="btn btn-outline-success">참여하기</button><br>
-				</div>
-				<div class="boardContent">
-					참여인원:
-				</div>
-				<div class="boardContent">
 					<span><h6 style="display: inline;">작성자 : ${c_board.c_writer}</h6></span>
 					<span style="float: right;">${c_board.category} / ${c_board.c_w_date}</span>
 				</div>
@@ -408,22 +393,37 @@
 					<h6>종료 날짜 : ${c_board.c_f_date}</h6><br>
 					<div>${c_board.c_content}</div>
 				</div>
-				<div class="boardContent">
-					<strong  id="addr" style="display: none">${m_addr.address}</strong>
-					<h5>${c_board.place}</h5>
-					<div id="map" style="width:100%;height:350px;" class="row g-4 justify-content-center">
-						
-					</div>
-				</div>
 				<c:choose>
 					<c:when test="${empty review_list}">
-						<div class="boardContent" style="align-content: center !important;">
+						<div class="boardContent">
 							<h5>리뷰</h5><br>
-							<table style="width: 80% !important; text-align: center; margin-left: 65px !important;">
-								<tr><td><h6>아직 등록된 리뷰가 없어요</h6></td></tr>
-								<tr><td><button style="width: 25%; margin-left: 20px" type="button" 
-									onclick="location.href='writeReview?c_num=${c_board.c_num}'" class="btn btn-outline-success">리뷰 작성하기</button></td></tr>
-							</table>
+							<div class="boardContent" style="width: 80% !important; text-align: center; margin-left: 65px !important;">
+								<h6>아직 등록된 리뷰가 없어요</h6>
+							</div>
+							<div class="boardContent" style="width: 80% !important; margin-left: 65px !important;">
+								<form action="insertReview" method="post" name="myform" id="myform">
+									<br>
+									<p style="margin-bottom: 0px;">작성자 : ${loginMember.email }</p> 
+									<input type="hidden" name="email" value="${loginMember.email }" readonly="readonly">
+									<span class="text-bold">평점 :</span>
+									<fieldset>
+										<input type="radio" name="r_score" value="5" id="rate1"><label
+											for="rate1">★</label>
+										<input type="radio" name="r_score" value="4" id="rate2"><label
+											for="rate2">★</label>
+										<input type="radio" name="r_score" value="3" id="rate3"><label
+											for="rate3">★</label>
+										<input type="radio" name="r_score" value="2" id="rate4"><label
+											for="rate4">★</label>
+										<input type="radio" name="r_score" value="1" id="rate5"><label
+											for="rate5">★</label>
+									</fieldset>
+									<textarea rows="3" cols="66" name="r_content" placeholder="리뷰를 작성해 주세요." style="margin-top: 10px; float: bottom;"></textarea>
+									<input type="hidden" value="${c_board.c_num}">
+									<input type="submit" value="작성" class="btn border-secondary px-4 text-primary" style="width: 580px !important;">
+								</form>
+								
+							</div>
 						</div>
 					</c:when>
 					<c:otherwise>
@@ -433,7 +433,7 @@
 									<td>
 									<h4>${scoreAvg}</h4>
 									
-									<c:forEach begin="0" end="${scoreAvg}" step="1">
+									<c:forEach begin="0" end="${scoreAvg}">
 										<span style="margin-right: 5px;">★</span>
 										<c:if test="${scoreAvg < 5}">
 											<c:forEach begin="0" end="${5 - scoreAvg}" step="1">
@@ -461,7 +461,6 @@
 										</div>
 									</td></tr>
 								</c:forEach>
-								<tr><td><button style="width: 20%; margin-left: 20px" type="button" class="btn btn-outline-success">리뷰 더 보기</button></td></tr>
 								<tr><td></td></tr>
 							</table>
 						</div>
