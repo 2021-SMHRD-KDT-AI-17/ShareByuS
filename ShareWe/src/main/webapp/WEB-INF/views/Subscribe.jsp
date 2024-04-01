@@ -322,34 +322,33 @@
 			<div class="boardContent" style="width: 600px;">
 				<table style="width: 90%; text-align: center; border-radius: 20px;">
 					<tr style="border: 1px solid; background-color: #009223; color: white;">
-						<th style="border: 1px solid grey;">선택</th>
 						<th style="border: 1px solid grey;">분류</th>
 						<th style="border: 1px solid grey;">가격</th>
 						<th style="border: 1px solid grey;">결제</th>
 					</tr>
 					<tr>
-						<td><input type="checkbox" value=""></td>
-						<td><input type="hidden"  id="up5Name" value="UP - 5회권">UP - 5회권</td>
-						<td><input type="hidden" id="up5Price" value="100">3,000 원</td>
-						<td><button type="button" onclick="pay()">결제</button></td>
+						<td><input type="hidden"  class="upName" value="UP - 5회권">UP - 5회권</td>
+						<td><input type="hidden" class="upPrice" value="100">3,000 원</td>
+							<input type="hidden" class="upCnt" value="5">
+						<td><button type="button" onclick="pay(0)">결제</button></td>
 					</tr>
 					<tr>
-						<td><input type="checkbox" value=""></td>
-						<td>UP - 10회권</td>
-						<td>5,000 원</td>
-						<td><button type="button" onclick="pay()">결제</button></td>
+						<td><input type="hidden"  class="upName" value="UP - 10회권">UP - 10회권</td>
+						<td><input type="hidden" class="upPrice" value="100">5,000 원</td>
+						<input type="hidden" class="upCnt" value="10">
+						<td><button type="button" onclick="pay(1)">결제</button></td>
 					</tr>
 					<tr>
-						<td><input type="checkbox" value=""></td>
-						<td>UP - 25회권</td>
-						<td>10,000 원</td>
-						<td><button type="button" onclick="pay()">결제</button></td>
+						<td><input type="hidden"  class="upName" value="UP - 25회권">UP - 25회권</td>
+						<td><input type="hidden" class="upPrice" value="100">10,000 원</td>
+						<input type="hidden" class="upCnt" value="25">
+						<td><button type="button" onclick="pay(2)">결제</button></td>
 					</tr>
 					<tr>
-						<td><input type="checkbox" value=""></td>
-						<td>UP - 60회권</td>
-						<td>20,000 원</td>
-						<td><button type="button" onclick="pay()">결제</button></td>
+						<td><input type="hidden"  class="upName" value="UP - 60회권">UP - 60회권</td>
+						<td><input type="hidden" class="upPrice" value="100">20,000 원</td>
+						<input type="hidden" class="upCnt" value="60">
+						<td><button type="button" onclick="pay(3)">결제</button></td>
 					</tr>
 				</table>
 			</div>
@@ -365,10 +364,14 @@
 		<script type="text/javascript" src="https://code.jquery.com/jquery-1.12.4.min.js"></script>
     	<script type="text/javascript" src="https://cdn.iamport.kr/js/iamport.payment-1.2.0.js"></script>
    		<script>
-	        function pay() {
+	        function pay(num) {
 	        	
-	        	var inputUp = document.getElementById("up5Name").value;
-	        	var inputPrice = document.getElementById("up5Price").value;
+	        	var inputUp = document.getElementsByClassName("upName")[num].value;
+	        	var inputPrice = document.getElementsByClassName("upPrice")[num].value;
+	        	var inputCnt = document.getElementsByClassName("upCnt")[num].value;
+	        	
+	        	/*var selectedGoodsName = document.querySelector(".kg_pay_btn").getAttribute("data-name");*/
+	        	
 	        	
 	        	var inputEmail = document.getElementById("payEmail").value;
 	        	var inputName = document.getElementById("payName").value;
@@ -392,9 +395,11 @@
 	                buyer_tel: inputTel,
 	                buyer_addr: inputAddress,
 	                buyer_postcode: '123-456',
-	                m_redirect_url: 'https://www.myservice.com/payments/complete/mobile'
+	                m_redirect_url: 'https://www.myservice.com/payments/complete/mobile',
+	                p_cnt: inputCnt
+	                
 	            }, function (rsp) {
-	                if (rsp.success) {  // 결제가 성공했을 떄
+	                if (rsp.success) {  // 결제가 성공했을 때
 	                    // 결제가 완료되었을 떄 결제 정보를 뜨게 만듬
 	                    var msg = '결제가 완료되었습니다.';
 	                    msg += '고유ID : ' + rsp.imp_uid;
@@ -403,13 +408,53 @@
 	                    msg += '카드 승인번호 : ' + rsp.apply_num;
 	                    
 	                    let f = document.createElement('form');
-		                let obj;
-		        		    obj = document.createElement('input');
-		        		    obj.setAttribute('type', 'hidden');
-		        		    obj.setAttribute('name', 'cardNum');
-		        		    obj.setAttribute('value', rsp.apply_num);
+		                /* let obj1;
+		        		    obj1 = document.createElement('input');
+		        		    obj1.setAttribute('type', 'hidden');
+		        		    obj1.setAttribute('name', 'p_num');
+		        		    obj1.setAttribute('value', p_num); */
+		        		
+		        		let obj2;
+		        		    obj2 = document.createElement('input');
+		        		    obj2.setAttribute('type', 'hidden');
+		        		    obj2.setAttribute('name', 'email');
+		        			var inputEmail = document.getElementById("payEmail").value;
+		        		    obj2.setAttribute('value', inputEmail);
+		        		
+		        		let obj3;
+		        		    obj3 = document.createElement('input');
+		        		    obj3.setAttribute('type', 'hidden');
+		        		    obj3.setAttribute('name', 'p_name');
+		        			var inputName = document.getElementById("payName").value;
+		        		    obj3.setAttribute('value', inputName);
+		        		
+		        		let obj4;
+		        		    obj4 = document.createElement('input');
+		        		    obj4.setAttribute('type', 'hidden');
+		        		    obj4.setAttribute('name', 'p_amount');
+		        			
+		        		    obj4.setAttribute('value', inputPrice);
 		        		    
-		        		    f.appendChild(obj);
+		        		
+		        		let obj5;
+		        		    obj5 = document.createElement('input');
+		        		    obj5.setAttribute('type', 'hidden');
+		        		    obj5.setAttribute('name', 'apply_num');
+		        		    obj5.setAttribute('value', rsp.apply_num);
+		        		
+		        		let obj6;
+		        		    obj6 = document.createElement('input');
+		        		    obj6.setAttribute('type', 'hidden');
+		        		    obj6.setAttribute('name', 'p_cnt');
+		        			
+		        		    obj6.setAttribute('value', inputCnt);
+		        		
+		        		
+		        		    f.appendChild(obj2);
+		        		    f.appendChild(obj3);
+		        		    f.appendChild(obj4);
+		        		    f.appendChild(obj5);
+		        		    f.appendChild(obj6);
 		        		    f.setAttribute('method', 'post');
 		        		    f.setAttribute('action', 'paySuccess');
 		        		    document.body.appendChild(f);

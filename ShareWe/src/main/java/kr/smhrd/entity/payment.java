@@ -3,6 +3,8 @@ package kr.smhrd.entity;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
+import lombok.NonNull;
+import lombok.RequiredArgsConstructor;
 import lombok.Setter;
 import lombok.ToString;
 
@@ -11,6 +13,7 @@ import lombok.ToString;
 @Setter
 @ToString
 @NoArgsConstructor
+@RequiredArgsConstructor
 // 결제 내역 
 public class payment {
 
@@ -18,14 +21,17 @@ public class payment {
 	private int p_num;
 
 	// 이메일
-	private String email;
+	@NonNull private String email;
 
 	// 결제 상품 이름
-	private String p_name;
+	@NonNull private String p_name;
 
 	// 결제 금액
-	private int p_amount;
+	@NonNull private int p_amount;
 
 	// 카드 승인번호
-	private int apply_num;
+	@NonNull private int apply_num;
+	
+	// 구독권 횟수
+	@NonNull private int p_cnt;
 }

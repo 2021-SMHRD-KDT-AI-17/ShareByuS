@@ -8,6 +8,7 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 
 import kr.smhrd.entity.member;
+import kr.smhrd.entity.payment;
 import kr.smhrd.mapper.SubscribeMapper;
 
 @Controller
@@ -15,20 +16,23 @@ public class SubscribeController {
 
 	@Autowired
 	private SubscribeMapper subscribeMapper;
-	
-	// 카카오로그인 메소드
+
+	// 결제완료 메소드
 	@RequestMapping("/paySuccess")
-	public String paySuccess(member member, HttpSession session, Model model) {
-
-		member loginMember = subscribeMapper.paySuccess(member);
-		if (loginMember == null) {
-			model.addAttribute("fail", "fail");
-
-			return "Login";
-		} else {
-			session.setAttribute("loginMember", loginMember);
-			return "redirect:/goMain";
-		}
+	public String paySuccess(payment payment, Model model) {
+		subscribeMapper.plusPaidCnt(payment);
+		subscribeMapper.paySuccess(payment);
+		model.addAttribute("successPay", payment);
+		
+		return "Payment";
 	}
 	
+	@RequestMapping("/gopaySuccess")
+	public String gopaySuccess() {
+		
+		return "Payment";
+	}
+	
+	
+
 }
