@@ -9,6 +9,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 
 import kr.smhrd.entity.c_favorite;
+import kr.smhrd.entity.c_subscribe;
 import kr.smhrd.entity.g_board;
 import kr.smhrd.entity.g_favorite;
 import kr.smhrd.entity.member;
@@ -36,55 +37,61 @@ public class RestController {
 		}
 	}
 
-	@RequestMapping("/checkFavorite")
-	public int checkFavorite(@RequestParam("g_num") int g_num, g_favorite g_favorite, HttpSession session) {
-		
-		member loginMember = (member)session.getAttribute("loginMember");
-		String email = loginMember.getEmail();
-		
-		g_favorite g_favorite_num = favoriteMapper.checkFavorite(g_num, email);
-		
-		if(g_favorite_num == null) {
-			
-			member loginmember = (member)session.getAttribute("loginMember");
-			String lemail = loginmember.getEmail();
-			
-			g_favorite = new g_favorite(lemail, g_num);
-			favoriteMapper.addFavorite(g_favorite);
-			
-			return 1;
-		}else {
-			
-			return 0;
-		}
-	}
-	@RequestMapping("/checkCFavorite")
-	public int checkCFavorite(@RequestParam("c_num") int c_num, c_favorite c_favorite, HttpSession session) {
-
+	@RequestMapping("/insertFavorite")
+	public void insertFavorite(@RequestParam("c_num") int c_num, HttpSession session) {
 		member loginMember = (member) session.getAttribute("loginMember");
 		String email = loginMember.getEmail();
+		c_favorite favInfo = new c_favorite(email, c_num);
 		
-		c_favorite c_favorite_num = favoriteMapper.checkCFavorite(c_num, email);
-		
-		if (c_favorite_num == null) {
-			
-			member loginmember = (member)session.getAttribute("loginMember");
-			String lemail = loginmember.getEmail();
-			
-			c_favorite = new c_favorite(lemail, c_num);
-			favoriteMapper.addCFavorite(c_favorite);
-
-			return 1;
-		} else {
-
-			return 0;
-		}
+		favoriteMapper.insertFavorite(favInfo);
 	}
+	
+	@RequestMapping("/delFavorite")
+	public void delFavorite(@RequestParam("c_num") int c_num, HttpSession session) {
+		member loginMember = (member) session.getAttribute("loginMember");
+		String email = loginMember.getEmail();
+		c_favorite favInfo = new c_favorite(email, c_num);
 		
+		favoriteMapper.delFavorite(favInfo);
+	}
+	
+	@RequestMapping("/insertgFavorite")
+	public void insertgFavorite(@RequestParam("g_num") int g_num, HttpSession session) {
+		member loginMember = (member) session.getAttribute("loginMember");
+		String email = loginMember.getEmail();
+		g_favorite favInfo = new g_favorite(email, g_num);
 		
-				
+		favoriteMapper.insertgFavorite(favInfo);
+	}
+	
+	@RequestMapping("/delgFavorite")
+	public void delgFavorite(@RequestParam("g_num") int g_num, HttpSession session) {
+		member loginMember = (member) session.getAttribute("loginMember");
+		String email = loginMember.getEmail();
+		g_favorite favInfo = new g_favorite(email, g_num);
+		
+		favoriteMapper.delgFavorite(favInfo);
 	}
 
+	@RequestMapping("/checkSub")
+	public void checkSub(@RequestParam("c_name") String c_name, HttpSession session) {
+		member loginMember = (member) session.getAttribute("loginMember");
+		String email = loginMember.getEmail();
+		c_subscribe subscribeInfo = new c_subscribe(email, c_name);
+		
+		favoriteMapper.insertSub(subscribeInfo);
+	}
+	
+	@RequestMapping("/delSub")
+	public void delSub(@RequestParam("c_name") String c_name, HttpSession session) {
+		member loginMember = (member) session.getAttribute("loginMember");
+		String email = loginMember.getEmail();
+		c_subscribe subscribeInfo = new c_subscribe(email, c_name);
+		
+		favoriteMapper.delSub(subscribeInfo);
+	}
+
+}
 
 //	// 일반 게시판 카테고리
 //	@RequestMapping("/goVege")
@@ -92,6 +99,3 @@ public class RestController {
 //		List<g_board> g_boardList = g_boardMapper.getVege(clickVege);
 //		
 //	}
-	
-	
-

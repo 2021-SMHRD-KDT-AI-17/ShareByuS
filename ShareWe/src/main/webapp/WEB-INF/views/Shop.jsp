@@ -336,8 +336,7 @@
 	                                       	<a onclick="checkCFavorite(${c.c_num})" id="${c.c_num }" style="float: right;"
 	                                             class="btn border border-secondary rounded-pill px-3 text-primary">
 	                                             ❤ 찜 </a>
-	                                             
-	                                             
+	                                        
 	                                             
 	                                             
 	                                      </c:otherwise> 
