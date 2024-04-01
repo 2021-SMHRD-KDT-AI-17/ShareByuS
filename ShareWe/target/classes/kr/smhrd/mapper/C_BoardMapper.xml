@@ -43,4 +43,9 @@
 		update c_board set c_title=#{c_title}, c_img1=#{c_img1}, c_content=#{c_content},
 		category={category}, price=#{price}, c_opt1=#{c_opt1}, c_ea=#{c_ea} where c_num=#{c_num}
 	</update>
+	
+	<select id="getReview" parameterType="int" resultType="kr.smhrd.entity.review">
+		select * from review where c_num=#{c_num}
+	</select>
+	
 </mapper>
