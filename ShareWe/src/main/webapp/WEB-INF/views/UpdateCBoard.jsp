@@ -171,7 +171,18 @@
 				
 				<div class="row g-5 justify-content-center" id="loginDiv">
 				
-				<div class="col-md-12 col-lg-6 col-xl-7" align="left">
+				
+				
+					<div class="col-md-12 col-lg-6 col-xl-7" align="left">
+						<h4 class="form-label my-3">* 상품 명</h4>
+						<br>
+						<div class="form-item">
+							<input type="text" name="c_title" style="width: 600px"
+								class="border-0 border-bottom rounded me-5 py-3 mb-4"
+								placeholder="상품 명을 입력해주세요" value="${c_board.c_title }">
+						</div>
+						
+						<div class="col-md-12 col-lg-6 col-xl-7" align="left">
 						<h4 class="form-label my-3">* 대표 이미지</h4>
 						<br>
 						<div class="form-item">
@@ -293,15 +304,6 @@
 						</div>
 						<hr>
 					</div>
-				
-					<div class="col-md-12 col-lg-6 col-xl-7" align="left">
-						<h4 class="form-label my-3">* 상품 명</h4>
-						<br>
-						<div class="form-item">
-							<input type="text" name="c_title" style="width: 600px"
-								class="border-0 border-bottom rounded me-5 py-3 mb-4"
-								placeholder="상품 명을 입력해주세요" value="${c_board.c_title }">
-						</div>
 						
 					</div>
 					
