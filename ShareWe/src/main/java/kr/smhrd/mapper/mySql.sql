@@ -14,6 +14,7 @@ create table gBoard(
 select * from g_board;
 select * from c_board;
 select * from c_board;
+select * from review;
 
 select * from member;
 select email from member;

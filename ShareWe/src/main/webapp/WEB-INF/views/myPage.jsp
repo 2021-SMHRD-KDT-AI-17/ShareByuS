@@ -542,7 +542,7 @@
 			<div class="row g-4 justify-content-center">
 				<div class="col-md-6 col-lg-6 col-xl-4" style="width: 1200px">
 					<div class="rounded position-relative fruite-item">
-						<h1>리뷰</h1>
+						<h3>리뷰</h3>
 					</div>
 				</div>
 			</div>
@@ -553,7 +553,7 @@
 			<div class="row g-4 justify-content-center">
 				<div class="col-md-6 col-lg-6 col-xl-4" style="width: 1200px">
 					<div class="rounded position-relative fruite-item">
-						<h1>구독</h1>
+						<h3>구독</h3>
 					</div>
 				</div>
 			</div>

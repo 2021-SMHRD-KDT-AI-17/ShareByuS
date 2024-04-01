@@ -90,13 +90,16 @@ public class C_BoardController {
 		model.addAttribute("review_list", review_list);
 		
 		if(review_list.size() > 0) {
-			int sum = 0;
+			double sum = 0;
 			
 			for(int i = 0; i < review_list.size(); i++) {
 				sum += review_list.get(i).getR_score();
 			}
-			int scoreAvg = sum/review_list.size();
+			double scoreDAvg = sum/review_list.size();
+			scoreDAvg = Math.round(scoreDAvg * 100) / 100.0;
+			model.addAttribute("scoreDAvg", scoreDAvg);
 			
+			int scoreAvg = (int) Math.round(scoreDAvg);
 			model.addAttribute("scoreAvg", scoreAvg);
 		}
 		
@@ -135,11 +138,57 @@ public class C_BoardController {
 		return "redirect:/C_BoardContent";
 	}
 	
-	// 리뷰 작성
+	// 리뷰 작성 페이지 이동
 	@RequestMapping("/writeReview")
 	public String writeReview(int c_num, Model model) {
 		c_board c_board = c_boardMapper.C_BoardContent(c_num);
+		List<review> review_list = c_boardMapper.getReview(c_num);
+		
+		model.addAttribute("review_list", review_list);
 		model.addAttribute("c_board", c_board);
+		
+		if(review_list.size() > 0) {
+			double sum = 0;
+			
+			for(int i = 0; i < review_list.size(); i++) {
+				sum += review_list.get(i).getR_score();
+			}
+			double scoreDAvg = sum/review_list.size();
+			scoreDAvg = Math.round(scoreDAvg * 100) / 100.0;
+			model.addAttribute("scoreDAvg", scoreDAvg);
+			
+			int scoreAvg = (int) Math.round(scoreDAvg);
+			model.addAttribute("scoreAvg", scoreAvg);
+		}
+		
+		return "Review";
+	}
+	
+	// 리뷰 작성
+	@RequestMapping("/insertReview")
+	public String insertReview(review review, Model model) {
+		c_boardMapper.insertReview(review);
+		
+		int c_num = review.getC_num();
+		c_board c_board = c_boardMapper.C_BoardContent(c_num);
+		List<review> review_list = c_boardMapper.getReview(c_num);
+		
+		model.addAttribute("review_list", review_list);
+		model.addAttribute("c_board", c_board);
+		
+		if(review_list.size() > 0) {
+			double sum = 0;
+			
+			for(int i = 0; i < review_list.size(); i++) {
+				sum += review_list.get(i).getR_score();
+			}
+			double scoreDAvg = sum/review_list.size();
+			scoreDAvg = Math.round(scoreDAvg * 100) / 100.0;
+			model.addAttribute("scoreDAvg", scoreDAvg);
+			
+			int scoreAvg = (int) Math.round(scoreDAvg);
+			model.addAttribute("scoreAvg", scoreAvg);
+		}
 		
 		return "Review";
 	}

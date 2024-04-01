@@ -140,6 +140,10 @@
 .detailMenu > ul > li  li a{display: block; padding:10px 15px;}
 .detailMenu > ul > li  li a:hover{background:#eee;}
 .detailMenu > ul > li > li + li{margin-top:5px;}
+.starScore{
+	font-size: 1.5em;
+	color: #009223;
+}
 </style>
 
 
@@ -417,53 +421,57 @@
 				</div>
 				<c:choose>
 					<c:when test="${empty review_list}">
-						<div class="boardContent" style="align-content: center !important;">
-							<h5>리뷰</h5><br>
-							<table style="width: 80% !important; text-align: center; margin-left: 65px !important;">
-								<tr><td><h6>아직 등록된 리뷰가 없어요</h6></td></tr>
-								<tr><td><button style="width: 25%; margin-left: 20px" type="button" 
-									onclick="location.href='writeReview?c_num=${c_board.c_num}'" class="btn btn-outline-success">리뷰 작성하기</button></td></tr>
-							</table>
+						<div class="boardContent" style="width: 80% !important; margin-left: 65px !important;">
+							<h4>리뷰</h4><br>
+							<div class="boardContent" style="width: 80% !important; margin-left: 65px !important;">
+								<h6>아직 등록된 리뷰가 없어요</h6>
+								<button style="width: 25%; margin-left: 20px" type="button" 
+									onclick="location.href='writeReview?c_num=${c_board.c_num}'" class="btn btn-outline-success">리뷰 작성하기</button>
+							</div>
 						</div>
 					</c:when>
 					<c:otherwise>
+						<div class="boardContent" style="padding-bottom: 0px;">
+							<h4>리뷰</h4><br>
+						</div>
 						<div class="boardContent">
-							<table style="width: 90%; text-align: center;">
-								<tr>
-									<td>
-									<h4>${scoreAvg}</h4>
-									
-									<c:forEach begin="0" end="${scoreAvg}" step="1">
-										<span style="margin-right: 5px;">★</span>
-										<c:if test="${scoreAvg < 5}">
-											<c:forEach begin="0" end="${5 - scoreAvg}" step="1">
-												<span style="margin-right: 5px;">☆</span>
-											</c:forEach>
-										</c:if>
+							<div class="boardContent" style="width: 80% !important; margin-left: 65px !important;">
+								<div style="padding-left: 230px;">
+									<h5 style="margin-left: 38px; padding-top: 20px;">평점 : ${scoreDAvg}</h5>
+										
+									<c:forEach begin="1" end="${scoreAvg}" step="1">
+										<span style="margin-right: 5px;" class="starScore">★</span>
 									</c:forEach>
-									</td>
-								</tr>
-								<c:forEach items="${review_list}" var="r" end="3">
-									<tr><td>
-										<div style="font-size: 13px !important;">
-											<span>${r.email}</span>
-											<span>${r.r_date}</span>
-											<p><c:forEach begin="0" end="${r.r_score}" step="1">
-													<span style="margin-right: 5px;">★</span>
+									<c:if test="${scoreAvg < 5}">
+										<c:forEach begin="1" end="${5 - scoreAvg*100/100}" step="1">
+											<span style="margin-right: 5px;" class="starScore">☆</span>
+										</c:forEach>
+									</c:if>
+								</div>
+							</div>
+							<c:forEach items="${review_list}" var="r" end="2">
+								<div class="boardContent" style="width: 80% !important; margin-left: 65px !important;">
+									<div style="font-size: 13px !important;">
+										<span style="margin-right: 10px; font-size: 18px;"><strong>${r.email}</strong></span>
+										<span>${r.r_date}</span>
+										<p><c:forEach begin="1" end="${r.r_score}" step="1">
+												<span style="margin-right: 5px;" class="starScore">★</span>
+											</c:forEach>
+											<c:if test="${r.r_score < 5}">
+												<c:forEach begin="1" end="${5 - r.r_score}" step="1">
+													<span style="margin-right: 5px;" class="starScore">☆</span>
 												</c:forEach>
-												<c:if test="${r.r_score < 5}">
-													<c:forEach begin="0" end="${5 - r.r_score}" step="1">
-														<span style="margin-right: 5px;">☆</span>
-													</c:forEach>
-												</c:if></p>
-											<p>${c_board.c_title}</p>
-											<span>${r.content}</span>
-										</div>
-									</td></tr>
-								</c:forEach>
-								<tr><td><button style="width: 20%; margin-left: 20px" type="button" class="btn btn-outline-success">리뷰 더 보기</button></td></tr>
-								<tr><td></td></tr>
-							</table>
+											</c:if></p>
+										<p>게시글 : ${c_board.c_title}</p>
+										<span>${r.r_content}</span>
+									</div>
+								</div>
+							</c:forEach>
+							<div class="boardContent" style="width: 80% !important; margin-left: 65px !important; padding-bottom: 10px !important; 
+								padding-top: 10px !important;">
+								<button style="width: 30%; margin-left: 20px; margin-left: 210px;" type="button" class="btn btn-outline-success"
+									onclick="location.href='writeReview?c_num=${c_board.c_num}'">리뷰 더 보기</button></td></tr>
+							</div>
 						</div>
 					</c:otherwise>
 				</c:choose>
