@@ -42,6 +42,8 @@ public interface MemberMapper {
 		
 	}
 
+	public member C_BoardMap(String c_writer);
+
 	public List<report> goAdReport();
 
 	public List<member> goAdMember();
