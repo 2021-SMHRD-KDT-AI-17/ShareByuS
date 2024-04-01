@@ -333,9 +333,13 @@
 	                                             삭제 </a>
 	                                      </c:when>
 	                                      <c:otherwise>
-	                                       	<a href="#" style="float: right;"
+	                                       	<a onclick="checkCFavorite(${c.c_num})" id="${c.c_num }" style="float: right;"
 	                                             class="btn border border-secondary rounded-pill px-3 text-primary">
 	                                             ❤ 찜 </a>
+	                                             
+	                                             
+	                                             
+	                                             
 	                                      </c:otherwise> 
                                       </c:choose>
                                  </div>
@@ -413,6 +417,32 @@
 			})
 		}
 	</script> -->
+	
+	<script type="text/javascript">
+					function checkCFavorite(c_num){
+						
+						var zzim = document.getElementById(c_num);
+						
+						$.ajax(
+						{
+							url : "checkCFavorite",
+							data : {'c_num' : c_num},
+							type :'get',
+							success : function(data){
+								if(data==1){
+									zzim.innerText ='♥ 찜 완료'
+										
+								}else{
+									zzim.innerText ='이미 찜'
+								}
+							},
+							error : function(){
+								alert("통신실패")
+							}
+						}
+					)
+				}
+				</script>
 	
 </body>
 

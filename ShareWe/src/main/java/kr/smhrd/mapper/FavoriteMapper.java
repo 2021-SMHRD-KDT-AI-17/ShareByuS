@@ -21,7 +21,7 @@ public interface FavoriteMapper {
 	public List<g_favorite> getGEmail(String email);
 
 	@Select("select * from g_favorite where g_num=#{g_num} and email=#{email}")
-	public g_favorite checkFavorite(@Param("g_num")int c_num, @Param("email") String email);
+	public g_favorite checkFavorite(@Param("g_num")int g_num, @Param("email") String email);
 	
 	public List<g_favorite> getFv_list();
 	
