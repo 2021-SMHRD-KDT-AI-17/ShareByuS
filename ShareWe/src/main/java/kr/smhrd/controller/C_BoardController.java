@@ -72,6 +72,8 @@ public class C_BoardController {
 			e.printStackTrace();
 		}
 		
+		String[] option = c_board.getC_opt1().split("\n"); 
+		String[] price = c_board.getPrice().split("\n");
 		c_boardMapper.cBoardInsert(c_board);
 		
 		return "redirect:/goCompany";

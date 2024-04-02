@@ -352,45 +352,7 @@
 				</button>
 			</div>
 			
-			<!-- <div class="boardContent" style="width: 600px;">
-				<h5>    </h5>
-				<h5 style="text-align: center;">UP 패스 결제</h5>
-			</div>
-			<div class="boardContent" style="width: 600px;">
-				<table style="width: 90%; text-align: center; border-radius: 20px;">
-					<tr style="border: 1px solid; background-color: #009223; color: white;">
-						<th style="border: 1px solid grey;">분류</th>
-						<th style="border: 1px solid grey;">가격</th>
-						<th style="border: 1px solid grey;">결제</th>
-					</tr>
-					<tr>
-						<td><input type="hidden"  class="upName" value="UP - 5회권">UP - 5회권</td>
-						<td><input type="hidden" class="upPrice" value="3000">3,000 원</td>
-							<input type="hidden" class="upCnt" value="5">
-						<td><button type="button" onclick="pay(0)">결제</button></td>
-					</tr>
-					<tr>
-						<td><input type="hidden"  class="upName" value="UP - 10회권">UP - 10회권</td>
-						<td><input type="hidden" class="upPrice" value="100">5,000 원</td>
-						<input type="hidden" class="upCnt" value="10">
-						<td><button type="button" onclick="pay(1)">결제</button></td>
-					</tr>
-					<tr>
-						<td><input type="hidden"  class="upName" value="UP - 25회권">UP - 25회권</td>
-						<td><input type="hidden" class="upPrice" value="100">10,000 원</td>
-						<input type="hidden" class="upCnt" value="25">
-						<td><button type="button" onclick="pay(2)">결제</button></td>
-					</tr>
-					<tr>
-						<td><input type="hidden"  class="upName" value="UP - 60회권">UP - 60회권</td>
-						<td><input type="hidden" class="upPrice" value="100">20,000 원</td>
-						<input type="hidden" class="upCnt" value="60">
-						<td><button type="button" onclick="pay(3)">결제</button></td>
-					</tr>
-				</table>
-				
-			</div>
-			<h5>    </h5> -->
+			
 			
 			<input type="hidden" value="${loginMember.email}" id="payEmail">
 			<input type="hidden" value="${loginMember.name}" id="payName">
