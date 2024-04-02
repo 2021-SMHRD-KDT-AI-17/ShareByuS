@@ -257,6 +257,10 @@
 						<div class="card-body" style="width: 200px">
 							<a href="goUpdateMember" align="left" class="btn btn-primary"
 								style="color: white">회원정보 수정</a>
+								<br>
+								<br>
+							<a href="goDeleteMember" align="left" class="btn btn-primary"
+								style="color: green; background-color:white;">회원 탈퇴</a>
 						</div>
 					</td>
 

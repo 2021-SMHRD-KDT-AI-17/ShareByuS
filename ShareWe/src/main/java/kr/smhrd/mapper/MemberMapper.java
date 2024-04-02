@@ -58,6 +58,12 @@ public interface MemberMapper {
 
 	public void resMember(String email);
 
+	public member goReallyDelete(member member);
+
+	public void goDeleteSuccess(String email);
+
+	public member goDeleteKakao(member member);
+
 
 	
 }
