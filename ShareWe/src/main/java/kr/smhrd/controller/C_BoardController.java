@@ -4,10 +4,8 @@ import java.io.IOException;
 import java.util.List;
 
 import javax.servlet.http.HttpServletRequest;
-import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
-import org.apache.ibatis.javassist.compiler.ast.Member;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -18,11 +16,12 @@ import com.oreilly.servlet.MultipartRequest;
 import com.oreilly.servlet.multipart.DefaultFileRenamePolicy;
 
 import kr.smhrd.entity.c_board;
-import kr.smhrd.entity.g_board;
+import kr.smhrd.entity.c_favorite;
+import kr.smhrd.entity.c_subscribe;
 import kr.smhrd.entity.member;
 import kr.smhrd.entity.review;
 import kr.smhrd.mapper.C_BoardMapper;
-import kr.smhrd.mapper.G_BoardMapper;
+import kr.smhrd.mapper.FavoriteMapper;
 import kr.smhrd.mapper.MemberMapper;
 
 @Controller
@@ -34,6 +33,9 @@ public class C_BoardController {
 	@Autowired
 	private MemberMapper memberMapper;
 	
+	@Autowired
+	private FavoriteMapper favoriteMapper;
+	
 	@RequestMapping("/goShop")
 	public String goShop() {
 		return "Shop";
@@ -41,9 +43,10 @@ public class C_BoardController {
 
 	
 	@RequestMapping("/goCompany")
-	public String goGeneral(Model model) {
+	public String goGeneral(Model model, HttpSession session) {
 		List<c_board> cboard_list = c_boardMapper.getCBoard();
 		model.addAttribute("cboard_list", cboard_list);
+		
 		return "Shop";
 	}
 	
@@ -77,8 +80,7 @@ public class C_BoardController {
 		
 	
 	@RequestMapping("/C_BoardContent")
-	public String C_BoardContent(@RequestParam("c_num") int c_num, @RequestParam("c_writer") String c_writer, Model model) {
-		
+	public String C_BoardContent(@RequestParam("c_num") int c_num, @RequestParam("c_writer") String c_writer, Model model, HttpSession session) {
 		
 		c_board c_board = c_boardMapper.C_BoardContent(c_num); //num값에 해당하는 하나의 게시물 가져오기
 		model.addAttribute("c_board",c_board);
@@ -88,6 +90,30 @@ public class C_BoardController {
 		
 		List<review> review_list = c_boardMapper.getReview(c_num);
 		model.addAttribute("review_list", review_list);
+		
+		member loginMember = (member) session.getAttribute("loginMember");
+		if(loginMember != null) {
+			String email = loginMember.getEmail();
+			
+			List<c_favorite> favorite_list = favoriteMapper.getFavList(email);
+			String fav = "No";
+			for(int i = 0; i < favorite_list.size(); i++) {
+				if(favorite_list.get(i).getC_num() == c_num) {
+					fav = "Yes";
+				}
+			}
+			model.addAttribute("fav", fav);
+			
+			List<c_subscribe> sub_list = favoriteMapper.getSubList(email);
+			String com = c_board.getC_writer();
+			String sub = "No";
+			for(int i = 0; i < sub_list.size(); i++) {
+				if(sub_list.get(i).getC_name().equals(com)) {
+					sub = "Yes";
+				}
+			}
+			model.addAttribute("sub", sub);
+		}
 		
 		if(review_list.size() > 0) {
 			double sum = 0;

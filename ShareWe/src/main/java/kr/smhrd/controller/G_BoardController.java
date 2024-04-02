@@ -3,11 +3,9 @@ package kr.smhrd.controller;
 import java.io.IOException;
 import java.util.List;
 
-import javax.servlet.ServletRequest;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
 
-import org.apache.ibatis.javassist.compiler.ast.Member;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -17,7 +15,6 @@ import org.springframework.web.bind.annotation.RequestPart;
 
 import com.oreilly.servlet.MultipartRequest;
 import com.oreilly.servlet.multipart.DefaultFileRenamePolicy;
-
 
 import kr.smhrd.entity.g_board;
 import kr.smhrd.entity.g_favorite;
@@ -39,9 +36,8 @@ public class G_BoardController {
 	
 	@Autowired
 	private SubscribeMapper subscribeMapper;
-
-	private int g_num;
-
+	
+	@Autowired
 	private FavoriteMapper favoriteMapper;
 	
 	@RequestMapping("/goShare")
@@ -113,13 +109,21 @@ public class G_BoardController {
 	@RequestMapping("/G_BoardContent")
 	public String G_BoardContent(@RequestParam("g_num") int g_num, Model model, HttpSession session) {
 		
-		member loginMember = (member)session.getAttribute("loginMember");
-		
 		g_board g_board = g_boardMapper.G_BoardContent(g_num); //num값에 해당하는 하나의 게시물 가져오기
 		model.addAttribute("g_board",g_board);
 		
-	
-//		model.addAttribute("g_board", g_board);
+		member loginMember = (member)session.getAttribute("loginMember");
+		if(loginMember != null) {
+			String email = loginMember.getEmail();
+			String fav = "No";
+			List<g_favorite> gfavorite_list = favoriteMapper.getgFavList(email);
+			for(int i = 0; i < gfavorite_list.size(); i++) {
+				if(gfavorite_list.get(i).getG_num() == g_num) {
+					fav = "Yes";
+				}
+			}
+			model.addAttribute("fav", fav);
+		}
 		 
 		return "gBoardDetail";
 	}

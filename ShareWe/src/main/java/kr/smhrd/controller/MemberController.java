@@ -144,6 +144,51 @@ public class MemberController {
 		return "myPage";
 	}
 	
+	// 회원 탈퇴(일반회원)
+	@RequestMapping("/goDeleteMember")
+	public String goDeleteMember() {
+		return "DeleteMember";
+	}
+	
+	// 회원 탈퇴(카카오 회원)
+	@RequestMapping("/goDeleteKakao")
+	public String goDeleteKakao(member member, HttpSession session, Model model) {
+				
+		member loginMember = memberMapper.goDeleteKakao(member);
+		if(loginMember == null) {
+			model.addAttribute("fail", "fail");
+					
+				return "DeleteMember";
+				}else {
+					session.setAttribute("loginMember", loginMember);
+					return "ReallyDelete";
+			}
+		}
+	
+	
+	// 회원 탈퇴 다시 물어봄
+	@RequestMapping("/goReallyDelete")
+	public String goReallyDelete(member member, HttpSession session, Model model) {
+			member loginMember = memberMapper.goReallyDelete(member);
+			if(loginMember == null) {
+				model.addAttribute("fail", "fail");
+				
+				return "DeleteMember";
+			}else {
+				session.setAttribute("loginMember", loginMember);
+				
+				return "ReallyDelete";
+			}
+		}
+	
+	
+	// 회원 탈퇴 성공
+	@RequestMapping("/goDeleteSuccess")
+	public String goDeleteSuccess(@RequestParam("email") String email, HttpSession session) {
+		memberMapper.goDeleteSuccess(email);
+		session.invalidate();
+		return "DeleteSuccess";
+	}
 	
 	// 회원 탈퇴(관리자)
 	@RequestMapping("/deleteMember")
@@ -152,6 +197,8 @@ public class MemberController {
 		
 		return "redirect:/goAdMember";
 	}
+	
+	
 	
 	// 회원 정지(관리자)
 	@RequestMapping("/susMember")
