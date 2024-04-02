@@ -309,161 +309,23 @@
    <!-- Modal Search End -->
 
 
-
-   <!-- Single Page Header start -->
-
-   <div id="carouselExample" class="carousel slide">
-
-
       <!-- Single Page Header End -->
 
 
-      <!-- 게시글 상세 -->
-		
-      <div class="row g-4 justify-content-center hero-header" style="margin-left: 28%; margin-right: 28%; ">
-            <script
-            src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js"
-            integrity="sha384-ka7Sk0Gln4gmtz2MlQnikT1wXgYsOg+OMhuP+IlRH9sENBO0LRn5q+8nbTov4+1p"
-            crossorigin="anonymous"></script>
-         
-
-         <div id="carouselExampleControls" class="carousel slide"
-            data-bs-ride="carousel" style="width: 40%; position: relative"
-            align="left">
-            <div class="carousel-inner" style="position: absoulte;">
-               <div class="carousel-item active">
-                  <img class="d-block w-100"
-                     style="object-fit: cover !important; height: 450px;"
-                     src="resources/g_Image/${g_board.g_img1}" alt="..." />
-               </div>
-               <div class="carousel-item">
-                  <img class="d-block w-100"
-                     style="object-fit: cover !important; height: 450px;"
-                     src="resources/g_Image/${g_board.g_img2}"
-                     alt="..." />
-               </div>
-               <div class="carousel-item">
-                  <img class="d-block w-100"
-                     style="object-fit: cover !important; height: 450px;"
-                     src="resources/g_Image/${g_board.g_img3}" alt="..." />
-               </div>
-            </div>
-            <button class="carousel-control-prev" type="button"
-               data-bs-target="#carouselExampleControls" data-bs-slide="prev">
-               <span class="carousel-control-prev-icon" aria-hidden="true"></span>
-               <span class="visually-hidden">Previous</span>
-            </button>
-            <button class="carousel-control-next" type="button"
-               data-bs-target="#carouselExampleControls" data-bs-slide="next">
-               <span class="carousel-control-next-icon" aria-hidden="true"></span>
-               <span class="visually-hidden">Next</span>
-            </button>
-
-         </div>
-
+      <!-- 채팅 -->
       
-
-
-
-      <div class="row g-4 justify-content-center" style="display: block;">
-               
-               <div class="boardContent" style="padding-bottom: 25px;">
-               		<input type="hidden" value="${g_board.g_num}" id="gNum">
-					<c:choose>
-						<c:when test="${empty loginMember}">
-							<button onclick="location.href='goLogin'" style="width: 10%;" type="button" class="btn btn-outline-success">❤ 찜</button>
-						</c:when>
-						<c:otherwise>
-							<c:choose>
-								<c:when test="${fav eq 'Yes'}">
-									<button onclick="checkGFavorite()" id="gFavorite" style="width: 10%; display: none;" type="button" class="btn btn-outline-success">❤ 찜</button>
-									<button onclick="delGFavorite()" id="favCancel" style="width: 10%;" type="button" class="btn btn-outline-success">❤ 찜</button>
-								</c:when>
-								<c:otherwise>
-									<button onclick="checkGFavorite()" id="gFavorite" style="width: 10%;" type="button" class="btn btn-outline-success">❤ 찜</button>
-									<button onclick="delGFavorite()" id="favCancel" style="width: 10%; display: none;" type="button" class="btn btn-outline-success">❤ 찜</button>
-								</c:otherwise>
-							</c:choose>
-						</c:otherwise>
-					</c:choose>				
-					<c:choose >
-						<c:when test="${loginMember.email eq g_board.email}">
-							<nav class="detailMenu" style="float: right;">
-								<ul>
-									<li><a href="#"> <strong style="float: right;">⁝</strong>
-									</a>
-										<ul>
-											<li><a
-												href="goBoardUp?g_num=${g_board.g_num}&g_img1=${g_board.g_img1 }&g_content=${g_board.g_content}">끌어올리기</a></li>
-											<li><a href="#">공동구매 마감</a></li>
-											<li><a href="goUpdate?g_num=${g_board.g_num}">게시글 수정</a></li>
-											<li><a href="deleteGBoard?g_num=${g_board.g_num}">게시글 삭제</a></li>
-										</ul></li>
-								</ul>
-							</nav>
-						</c:when>
-						<c:when test="${not empty loginMember }">
-							<nav class="detailMenu" style="float: right;">
-								<ul>
-									<li><a href="#"> <strong style="float: right;">⁝</strong>
-									</a>
-										<ul>
-											<li>
-											<form action="sendReportInfo" method="post">
-									            <input type="hidden" value="${g_board.g_num}" name="r_num">
-									            <input type="hidden" value="${g_board.email}" name="email">
-									            <input type="hidden" value="${g_board.g_title}" name="r_title">
-									             <input type="hidden" value="${loginMember.email}" name="rp_email">
-									               
-									            <input type="submit" class="btn btn-primary btn-link"
-									            style="background-color:white !important; color:grey !important; border-width:0px !important;"
-									            value="신고하기">
-            								</form>
-           									 </li>
-										</ul></li>
-								</ul>
-							</nav>
-						</c:when>
-						<c:when test="${ empty loginMember}">
-							<nav class="detailMenu" style="float: right;">
-								<ul>
-									<li><a href="#"> <strong style="float: right;"></strong></a>
-								</ul>
-							</nav>
-						</c:when>
-					</c:choose>
-					
-						
-                  <c:choose>
-					<c:when test="${empty loginMember}">
-						<button onclick="location.href='goLogin'" style="width: 20%; margin-left: 20px" 
-							type="button" class="btn btn-outline-success">참여하기</button>
-					</c:when>
-					<c:otherwise>
-	                  <button type="button" class="btn btn-outline-success"
-	                     onclick="location.href='gParticipate?g_num=${g_board.g_num}'" style="width: 20%; margin-left: 20px">참여하기</button><br>
-	                </c:otherwise>
-	             </c:choose>
-					
-					
-				</div>
-				
-               <div class="boardContent">
-                  참여인원 : ${g_board.g_p_count}
-               </div>
-               <div class="boardContent">
-                  <span><h6 style="display: inline;">작성자 : ${g_board.g_writer}</h6></span>
-                  <span style="float: right;">카테고리 : ${g_board.category} / ${g_board.g_w_date}</span>
-               </div>
-               <div class="boardContent">
-                  <h5>${g_board.g_title}</h5>   
-                  <h6>종료 날짜 : ${g_board.g_b_date}</h6><br>
-                  <div>${g_board.g_content}</div>   
-               </div>
-            </div>
-      </div>
-
-
+    <div class="row g-4 justify-content-center" style="width: 900px; display: inline-block; margin-left: 300px;">
+		<iframe src="chatBoardContent?g_num=${g_num}" width='700' height='1000'></iframe>
+	</div>
+	
+	<div class="row g-4 justify-content-center" style="width: 400px; display: inline-block; padding-top: 150px;">	
+	     <iframe src='https://www.vchatcloud.com/chat-demo/iframe/iframe_pc/v4/index.html?
+			channelKey=lqTBmpEWva-1fiFqnQAXm-20240327104645' frameborder='no' 
+			scrolling='no' marginwidth='0' marginheight='0' width='150' height='900'></iframe>
+		
+	</div>
+	
+	
       <!-- 메인 페이지 하단 -->
       <div class="container-fluid bg-dark text-white-50 footer pt-5 mt-5">
          <div class="container py-5">
@@ -504,52 +366,38 @@
 
       <!-- Template Javascript -->
 		<script src="resources/asset/js/main.js"></script>
+		<script src="resources/asset/js/app.js"></script>
 	
-		<script type="text/javascript">
-			function checkGFavorite(){
-				var g_num = document.getElementById("gNum").value;
-				
-				document.getElementById("favCancel").style.display = "inline";
-				document.getElementById("gFavorite").style.display = "none";
-						$.ajax(
-						{
-							url : "insertgFavorite",
-							data : {'g_num' : g_num},
-							type :'get',
-							success : function(){
-								
-							},
-							error : function(){
-								alert("통신실패")
-							}
-						}
-					)
-				}
-		</script>
-		
-		<script type="text/javascript">
-			function delGFavorite(){
-				var g_num = document.getElementById("gNum").value;
-				
-				document.getElementById("gFavorite").style.display = "inline";
-				document.getElementById("favCancel").style.display = "none";
-						$.ajax(
-						{
-							url : "delgFavorite",
-							data : {'g_num' : g_num},
-							type :'get',
-							success : function(){
-								
-							},
-							error : function(){
-								alert("통신실패")
-							}
-						}
-					)
-				}
-		</script>
-
-
+	<script type="text/javascript">
+	function joinRoom(roomId, clientKey, nickName, callback) {
+	    // vchatcloud 객체
+	    channel = vChatCloud.joinChannel({
+	        roomId: roomId,         // 채팅방ID(채널키)
+	        clientKey: clientKey,   // 클라이언트 고유키 (유저 식별값)
+	        nickName: nickName      // 채팅방에 입장한 유저 별명
+	    }, function(error, history) {
+	        $('div.entery, div.chatout, div.notice, div.whisper, div.content').remove();
+	        if (error) {
+	            if (callback) return callback(error, null);
+	            return error;
+	            /** error 정의
+	                0	    SYSTEM_ERROR	        시스템 에러 – 관리자에게 문의하세요.
+	                10101	USER_LIMIT_EXCEEDED	    접속 인원이 초과되었습니다.
+	                10102	CHANNEL_NOT_EXISTED	    존재하지 않는 채팅방입니다.
+	                10103	CHANNEL _BEFORE_OPENED	채팅방 개설시간 전입니다.
+	                10104	CHANNEL _AFTER_CLOSED	채팅방이 종료되었습니다.
+	                10105	ACTIVE_LIMIT_EXCEEDED	Active User 수를 초과했습니다.
+	                10106	CHANNEL_USER_BANED	    추방된 유저입니다.
+	                10107	USER_NOT_EXISTED	    접속하지 않은 유저입니다.
+	                10901	MISSING_REQURIED_PARAM	필수 파라미터 누락
+	            */
+	        }
+	        if (callback) callback(null, history);
+	        // 채팅영역에 글쓰기가 활성화될시 활성화
+	        if (typeof write == 'function') write("실시간 채팅에 오신 것을 환영합니다. 개인정보를 보호하고 커뮤니티 가이드를 준수하는 것을 잊지 마세요!", 'notice');
+	    })
+	}
+	</script>
 
 </body>
 
