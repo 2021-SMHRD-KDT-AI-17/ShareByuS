@@ -146,8 +146,15 @@
 								<th>승인여부</th>
 							</tr>
 							
+							<c:if test="${empty adApprove}">
+								<tr>
+									<td colspan="5">현재 승인 대상이 없습니다.</td>
+								</tr>
+							</c:if>
+							
 						<c:forEach items="${adApprove}" var="a" >
 							<tr>
+							
 								<td>${a.nick }</td>
 								<td>${a.name }</a></td>
 								<td>${a.email }</td>

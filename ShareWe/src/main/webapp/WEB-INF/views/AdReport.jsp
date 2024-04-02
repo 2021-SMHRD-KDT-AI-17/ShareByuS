@@ -152,6 +152,12 @@
 								<th>신고사유</th>
 								<th>관리</th>
 							</tr>
+							
+							<c:if test="${empty adReport}">
+								<tr>
+									<td colspan="5">현재 들어온 신고가 없습니다.</td>
+								</tr>
+							</c:if>
 
 							 <c:forEach var="rp" items="${adReport}">
 							 		<%index++;%>

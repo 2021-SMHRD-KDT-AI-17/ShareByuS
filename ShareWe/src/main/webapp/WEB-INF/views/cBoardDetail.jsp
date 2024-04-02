@@ -414,7 +414,9 @@
 									            <input type="hidden" value="${c_board.c_title}" name="r_title">
 									             <input type="hidden" value="${loginMember.email}" name="rp_email">
 									               
-									            <input type="submit" value="신고하기">
+									            <input type="submit" class="btn btn-primary btn-link"
+									            style="background-color:white !important; color:grey !important; border-width:0px !important;"
+									            value="신고하기">
             								</form>
 											
 											</li>
