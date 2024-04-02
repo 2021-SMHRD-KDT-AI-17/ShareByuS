@@ -30,6 +30,10 @@ public interface C_BoardMapper {
 	public void cBoardUpdate(c_board c_board);
 
 	public List<review> getReview(int c_num);
+
+	public void insertReview(review review);
+
+	public List<review> getMyReview(String email);
 	
 	
 

@@ -167,6 +167,14 @@
 #myform input[type=radio]:checked ~ label{
     text-shadow: 0 0 0 #009223;
 }
+#reviewBtn:hover{
+	background-color: #009223;
+	color: white !important;
+}
+.starScore{
+	font-size: 1.5em;
+	color: #009223;
+}
 </style>
 
 
@@ -401,6 +409,35 @@
 								<h6>아직 등록된 리뷰가 없어요</h6>
 							</div>
 							<div class="boardContent" style="width: 80% !important; margin-left: 65px !important;">
+								<form action="insertReview" method="post" id="myform">
+									<br>
+									<p style="margin-bottom: 0px;">작성자 : ${loginMember.email }</p> 
+									<input type="hidden" name="email" value="${loginMember.email }" readonly="readonly">
+									<span class="text-bold">평점 :</span>
+									<fieldset>
+										<input type="radio" name="r_score" value="5" id="rate1"><label
+											for="rate1">★</label>
+										<input type="radio" name="r_score" value="4" id="rate2"><label
+											for="rate2">★</label>
+										<input type="radio" name="r_score" value="3" id="rate3"><label
+											for="rate3">★</label>
+										<input type="radio" name="r_score" value="2" id="rate4"><label
+											for="rate4">★</label>
+										<input type="radio" name="r_score" value="1" id="rate5"><label
+											for="rate5">★</label>
+									</fieldset>
+									<textarea rows="3" cols="66" name="r_content" placeholder="리뷰를 작성해 주세요." style="margin-top: 10px; float: bottom;"></textarea>
+									<input type="hidden" value="${c_board.c_num}" name="c_num">
+									<input type="submit" value="작성" id="reviewBtn" class="btn border-secondary px-4 text-primary" style="width: 580px !important;">
+								</form>
+								
+							</div>
+						</div>
+					</c:when>
+					<c:otherwise>
+						<div class="boardContent">
+							<h4>리뷰</h4>
+							<div class="boardContent" style="width: 80% !important; margin-left: 65px !important;">
 								<form action="insertReview" method="post" name="myform" id="myform">
 									<br>
 									<p style="margin-bottom: 0px;">작성자 : ${loginMember.email }</p> 
@@ -420,49 +457,40 @@
 									</fieldset>
 									<textarea rows="3" cols="66" name="r_content" placeholder="리뷰를 작성해 주세요." style="margin-top: 10px; float: bottom;"></textarea>
 									<input type="hidden" value="${c_board.c_num}">
-									<input type="submit" value="작성" class="btn border-secondary px-4 text-primary" style="width: 580px !important;">
+									<input type="submit" value="작성" id="reviewBtn" class="btn border-secondary px-4 text-primary" style="width: 580px !important;">
 								</form>
-								
 							</div>
-						</div>
-					</c:when>
-					<c:otherwise>
-						<div class="boardContent">
-							<table style="width: 90%; text-align: center;">
-								<tr>
-									<td>
-									<h4>${scoreAvg}</h4>
-									
-									<c:forEach begin="0" end="${scoreAvg}">
-										<span style="margin-right: 5px;">★</span>
-										<c:if test="${scoreAvg < 5}">
-											<c:forEach begin="0" end="${5 - scoreAvg}" step="1">
-												<span style="margin-right: 5px;">☆</span>
-											</c:forEach>
-										</c:if>
+							<div class="boardContent" style="width: 80% !important; margin-left: 62px !important; margin-top: 60px;">
+								<div style="padding-left: 230px;">
+									<h5 style="margin-left: 38px; padding-top: 20px;">평점 : ${scoreDAvg}</h5>
+										
+									<c:forEach begin="1" end="${scoreAvg}">
+										<span style="margin-right: 5px;" class="starScore">★</span>
 									</c:forEach>
-									</td>
-								</tr>
-								<c:forEach items="${review_list}" var="r" end="3">
-									<tr><td>
-										<div style="font-size: 13px !important;">
-											<span>${r.email}</span>
-											<span>${r.r_date}</span>
-											<p><c:forEach begin="0" end="${r.r_score}" step="1">
-													<span style="margin-right: 5px;">★</span>
+									<c:if test="${scoreAvg < 5}">
+										<c:forEach begin="1" end="${5 - scoreAvg}" step="1">
+											<span style="margin-right: 5px;" class="starScore">☆</span>
+										</c:forEach>
+									</c:if>
+								</div>
+							</div>
+							<c:forEach items="${review_list}" var="r">
+								<div class="boardContent" style="width: 80% !important; margin-left: 65px !important; font-size: 13px !important;">
+									<span style="margin-right: 10px; font-size: 18px;"><strong>${r.email}</strong></span>
+									<span>${r.r_date}</span>
+										<p><c:forEach begin="1" end="${r.r_score}" step="1">
+												<span style="margin-right: 5px;" class="starScore">★</span>
+											</c:forEach>
+											<c:if test="${r.r_score < 5}">
+												<c:forEach begin="1" end="${5 - r.r_score}" step="1">
+													<span style="margin-right: 5px;" class="starScore">☆</span>
 												</c:forEach>
-												<c:if test="${r.r_score < 5}">
-													<c:forEach begin="0" end="${5 - r.r_score}" step="1">
-														<span style="margin-right: 5px;">☆</span>
-													</c:forEach>
-												</c:if></p>
-											<p>${c_board.c_title}</p>
-											<span>${r.content}</span>
-										</div>
-									</td></tr>
-								</c:forEach>
-								<tr><td></td></tr>
-							</table>
+											</c:if></p>
+											<p>게시글 : ${c_board.c_title}</p>
+											<span>${r.r_content}</span>
+								</div>
+							</c:forEach>
+							
 						</div>
 					</c:otherwise>
 				</c:choose>

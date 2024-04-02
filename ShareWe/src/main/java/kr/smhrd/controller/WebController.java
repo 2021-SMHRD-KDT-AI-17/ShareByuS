@@ -17,6 +17,7 @@ import kr.smhrd.entity.c_favorite;
 import kr.smhrd.entity.g_board;
 import kr.smhrd.entity.g_favorite;
 import kr.smhrd.entity.member;
+import kr.smhrd.entity.review;
 import kr.smhrd.mapper.C_BoardMapper;
 import kr.smhrd.mapper.FavoriteMapper;
 import kr.smhrd.mapper.G_BoardMapper;
@@ -141,6 +142,8 @@ public class WebController {
 				model.addAttribute("allC_list", allC_list);
 				List<c_favorite> Cfv_list = favoriteMapper.getCEmail(loginMember.getEmail());
 				model.addAttribute("Cfv_list", Cfv_list);
+				List<review> review_list = c_boardMapper.getMyReview(loginMember.getEmail());
+				model.addAttribute("review_list", review_list);
 			
 			}else if (loginMember.getType() == 1){
 				
