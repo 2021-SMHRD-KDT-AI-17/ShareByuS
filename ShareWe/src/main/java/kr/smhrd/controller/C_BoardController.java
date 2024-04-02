@@ -84,6 +84,11 @@ public class C_BoardController {
 		
 		c_board c_board = c_boardMapper.C_BoardContent(c_num); //num값에 해당하는 하나의 게시물 가져오기
 		model.addAttribute("c_board",c_board);
+		String[] option = c_board.getC_opt1().split("\n"); 
+		String[] price = c_board.getPrice().split("\n");
+		
+		model.addAttribute("option", option);
+		model.addAttribute("price", price);
 		
 		member m_addr = memberMapper.C_BoardMap(c_writer);
 		model.addAttribute("m_addr",m_addr);

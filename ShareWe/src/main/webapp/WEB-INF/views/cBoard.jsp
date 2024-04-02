@@ -38,6 +38,19 @@
 
 <!-- Template Stylesheet -->
 <link href="resources/asset/css/sw_style.css" rel="stylesheet">
+
+<style type="text/css">
+
+.notes {
+  background-attachment: local;
+  background-image:
+    linear-gradient(to right, white 10px, transparent 10px),
+    linear-gradient(to left, white 10px, transparent 10px),
+    repeating-linear-gradient(white, white 30px, #ccc 30px, #ccc 31px, white 31px);
+  line-height: 31px;
+  padding: 8px 10px;
+}
+</style>
 </head>
 
 <body>
@@ -65,19 +78,17 @@
 				<div class="top-link pe-2">
 				
 				<%if (loginMember == null) {%>
-							<a href="goLogin" class="text-white"><small class="text-white mx-2">로그인</small>/</a>
+							<a href="goLogin" class="text-white"><small class="text-white mx-2">로그인</small>|</a>
 							<a href="goMemberType" class="text-white"><small class="text-white mx-2">회원가입</small></a>
 						<%}else {%>
 							<span><small class="text-white mx-2"><%=loginMember.getNick() %>님 환영합니다.</small></span>
 							<%if(loginMember.getEmail().equals("admin")) {%>
 								<a href="#" class="text-white"><small class="text-white ms-2">회원관리</small></a>
 							<%} %>
+							<a href="goMain" class="text-white"><small class="text-white mx-2">홈</small>|</a>
 							<a href="memberLogout" class="text-white"><small class="text-white mx-2">로그아웃</small></a>
 						<%} %>
 						
-					<a href="goMain" class="text-white"><small
-						class="text-white mx-2">홈</small>|</a> <a href="goLogin"
-						class="text-white"><small class="text-white mx-2">로그인</small></a>
 				</div>
 			</div>
 		</div>
@@ -192,7 +203,7 @@
 
 							<label class="input-file-button" for="btnAtt"> 대표사진 </label>
 							
-								<input  type="file" name="c_img2"  id="btnAtt"
+								<input  type="file" name="c_img1"  id="btnAtt"
 								 accept="image/jpg, image/jpeg, image/png"style="display: none" >								
 				
 							<div id='image_preview'>
@@ -347,7 +358,7 @@
 						</div>
 					</div>
 				
-				<div class="col-md-12 col-lg-6 col-xl-7" align="left">
+<!-- 				<div class="col-md-12 col-lg-6 col-xl-7" align="left">
 						<h4 class="form-label my-3">* 상품 가격</h4>
 						<br>
 						<div class="form-item">
@@ -359,13 +370,19 @@
 								<hr>
 						</div>
 						
-					</div>
+					</div> -->
 					
 					<div class="col-md-12 col-lg-6 col-xl-7" align="left">
 					    <h4 class="form-label my-3">옵션</h4>
-					    <br> <input type="text" id="opTitle" name="c_opt1" style="width: 300px"
+					    <br> 
+					    <textarea class="notes" name="c_opt1" rows="6" cols="45"
+								style="border-radius: 5px" placeholder="양배추 1/2개&#13;양배추 1/4개"></textarea>
+					    <textarea class="notes" name="price" rows="6" cols="10"
+								style="border-radius: 5px" placeholder="1000&#13;500"></textarea>
+					    
+					    <!-- <input type="text" id="opTitle" name="c_opt1" style="width: 300px"
 					        class="border-0 border-bottom rounded me-5 py-3 mb-4"
-					        placeholder="ex)제주 감귤 10 kg"> 
+					        placeholder="ex)제주 감귤 10 kg"> --> 
 					        
 					        <hr>
 				    </div>
@@ -387,7 +404,7 @@
 					
 
 					<div class="col-md-12 col-lg-6 col-xl-7" align="right"
-							style="margin-left: 100px">
+							style="margin-right: 370px">
 							<input class="border-0 border-bottom rounded me-5 py-3 mb-4"
 								style="width: 100px" type="reset" value="초기화"> <input
 								class="border-0 border-bottom rounded me-5 py-3 mb-4"
