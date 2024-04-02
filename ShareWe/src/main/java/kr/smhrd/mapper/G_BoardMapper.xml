@@ -7,8 +7,8 @@
 	</select>
 
 	<insert id="insertBoard" parameterType="kr.smhrd.entity.g_board">
-		INSERT INTO g_board (g_title,g_writer,email,g_img1,g_content,g_w_date,g_b_date,category)
-		VALUES(#{g_title},#{g_writer},#{email},#{g_img1},#{g_content},NOW(),NOW(),#{category})
+		INSERT INTO g_board (g_title,g_writer,email,g_img1,g_img2,g_img3,g_content,g_w_date,g_b_date,category)
+		VALUES(#{g_title},#{g_writer},#{email},#{g_img1},#{g_img2},#{g_img3},#{g_content},NOW(),NOW(),#{category})
 	</insert>
 
 	

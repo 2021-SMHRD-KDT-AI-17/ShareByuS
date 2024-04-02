@@ -27,6 +27,8 @@
 		<beans:property name="prefix" value="/WEB-INF/views/" />
 		<beans:property name="suffix" value=".jsp" />
 	</beans:bean>
+	
+	
 
 	<!-- 해당되는 패키지에서 Controller(POJO)를 찾음 -->
 	<context:component-scan
@@ -45,5 +47,9 @@
 	</websocket:handlers>
 
 	<context:component-scan base-package="kr.smhrd.*" />
+	
+
+	
+	
 	
 </beans:beans>

@@ -70,4 +70,16 @@
 		update member set type=type-3 where email=#{email}
 	</update>
 	
+	<select id="goReallyDelete" parameterType="kr.smhrd.entity.member" resultType="kr.smhrd.entity.member">
+		select * from member where email=#{email} and pw=#{pw}
+	</select>
+	
+	<delete id="goDeleteSuccess" parameterType="String">
+		delete from member where email=#{email}
+	</delete>
+	
+	<select id="goDeleteKakao" parameterType="kr.smhrd.entity.member" resultType="kr.smhrd.entity.member">
+		select * from member where email=#{email} and pw is null
+	</select>
+	
 </mapper>

@@ -33,13 +33,13 @@
    // Back to top button
    $(window).scroll(function () {
     if ($(this).scrollTop() > 300) {
-        $('.back-to-top').fadeIn('smooth');
+        $('.back-to-top').fadeIn();
     } else {
-        $('.back-to-top').fadeOut('smooth');
+        $('.back-to-top').fadeOut();
     }
     });
     $('.back-to-top').click(function () {
-        $('html, body').animate({scrollTop: 0}, 1500, 'easeInOutExpo');
+        $('html, body').animate({scrollTop: 0}, 800);
         return false;
     });
 

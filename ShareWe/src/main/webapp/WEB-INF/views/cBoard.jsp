@@ -190,15 +190,17 @@
 						<br>
 						<div class="form-item">
 
-							<label class="input-file-button" for="btnAtt"> 업로드 </label>
+							<label class="input-file-button" for="btnAtt"> 대표사진 </label>
 							
-								<input  type="file" name="c_img1"  id="btnAtt"
-								 accept="image/jpg, image/jpeg, image/png" multiple="multiple" style="display: none" onchange="readURL(this);">								
+								<input  type="file" name="c_img2"  id="btnAtt"
+								 accept="image/jpg, image/jpeg, image/png"style="display: none" >								
 				
 							<div id='image_preview'>
 								<div id='att_zone'
 									data-placeholder='파일을 첨부 하려면 파일 선택 버튼을 클릭하거나 파일을 드래그앤드롭 하세요'></div>
 							</div>
+							<input type="file" name="c_img2"  id="btnAtt2" accept="image/jpg, image/jpeg, image/png" value="상세사진" >
+							 <input type="file" name="c_img3" id="btnAtt3" accept="image/jpg, image/jpeg, image/png" value="상세사진">
 
 							<script>
 ( /* att_zone : 이미지들이 들어갈 위치 id, btn : file tag id */

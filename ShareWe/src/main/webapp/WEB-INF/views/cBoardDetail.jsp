@@ -337,12 +337,12 @@
 					</div>
 					<div class="carousel-item">
 						<img class="d-block" style="object-fit: cover !important; height: 450px;"
-							src="https://source.unsplash.com/collection/190727/1600x900"
+							src="resources/g_Image/${c_board.c_img2}"
 							alt="..." />
 					</div>
 					<div class="carousel-item" >
 						<img class="d-block" style="object-fit: cover !important; height: 450px;"
-							src="https://source.unsplash.com/WLUHO9A_xik/1600x900" alt="..." />
+							src="resources/g_Image/${c_board.c_img3}" alt="..." />
 					</div>
 				</div>
 				<button class="carousel-control-prev" type="button"
@@ -397,7 +397,17 @@
 									<li><a href="#"> <strong style="float: right;">⁝</strong>
 									</a>
 										<ul>
-											<li><a href="#">게시물 신고</a></li>
+											<li>
+											<form action="sendReportInfo" method="post">
+									            <input type="hidden" value="${c_board.c_num}" name="r_num">
+									            <input type="hidden" value="${c_board.email}" name="email">
+									            <input type="hidden" value="${c_board.c_title}" name="r_title">
+									             <input type="hidden" value="${loginMember.email}" name="rp_email">
+									               
+									            <input type="submit" value="신고하기">
+            								</form>
+											
+											</li>
 										</ul></li>
 								</ul>
 							</nav>
@@ -589,14 +599,9 @@
 		<!-- 메인 페이지 하단 End -->
 
 		<!-- Back to Top -->
-	   <button
-	      class="btn btn-primary border-3 border-primary rounded-circle back-to-top" id="moveTopBtn"><i
-	      class="fa fa-arrow-up"></i></button>
-
-		<!-- Back to Top -->
-		<!-- 	<a href="#"
-		class="btn btn-primary border-3 border-primary rounded-circle back-to-top"><i
-		class="fa fa-arrow-up"></i></a> -->
+		<a href="#"
+			class="btn btn-primary border-3 border-primary rounded-circle back-to-top"><i
+			class="fa fa-arrow-up"></i></a>
 
 
 		<!-- JavaScript Libraries -->
@@ -612,15 +617,6 @@
 		<!-- Template Javascript -->
 		<script src="resources/asset/js/main.js"></script>
 	
-		<script type="text/javascript">
-			const topBtn = document.querySelector("#moveTopBtn");
-	
-			// 버튼 클릭 시 맨 위로 이동
-			topBtn.onclick = () => {
-			  window.scrollTo({ top: 0, behavior: "smooth" });  
-			}
-		</script>
-		
 		<script type="text/javascript">
 			function checkCFavorite(){
 				var c_num = document.getElementById("cNum").value;

@@ -1,5 +1,7 @@
 package kr.smhrd.entity;
 
+import java.io.File;
+
 import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
@@ -32,11 +34,11 @@ public class g_board {
     // 이미지1 
     @NonNull private String g_img1;
 
-//    // 이미지2 
-//    private String g_img2;
-//
-//    // 이미지3 
-    private String g_img3;
+//이미지2 
+    @NonNull private String g_img2;
+
+  // 이미지3 
+    @NonNull private String g_img3;
 
     // 내용 
     @NonNull private String g_content;
@@ -52,5 +54,6 @@ public class g_board {
     
     // 참여인원
     private int g_p_count;
+
 
 }

@@ -29,6 +29,7 @@ alter table c_board drop c_img3;
 select * from member;
 select * from g_board;
 select * from c_board;
+select * from review;
 
 select * from approve;
 
@@ -41,3 +42,6 @@ select *from g_favorite;
 delete from c_favorite where email = 'fuck'
 select *from c_favorite;
 insert into c_favorite(email, c_num, c_f_date) values('didtpwls8@naver.com', 1, NOW());
+
+ALTER TABLE c_board
+ADD COLUMN c_img3 VARCHAR(1200) AFTER c_img2;

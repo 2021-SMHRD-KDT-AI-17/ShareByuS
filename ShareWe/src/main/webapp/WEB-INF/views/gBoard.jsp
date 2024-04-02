@@ -38,12 +38,41 @@
 
 <!-- Template Stylesheet -->
 <link href="resources/asset/css/sw_style.css" rel="stylesheet">
+
+<style type="text/css">
+.cXWSLO {
+    width: 1.5rem;
+    height: 1.5rem;
+    background-position: center center;
+    background-repeat: no-repeat;
+    background-size: 12px 12px;
+    background-image: url(data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSIxMiIgaGVpZ2h0PSIxMiIgdmlld0JveD0iMCAwIDEyIDEyIj4KICAgIDxwYXRoIGZpbGw9IiNGRkYiIGZpbGwtcnVsZT0iZXZlbm9kZCIKICAgICAgICBkPSJNNi44NDggNmwzLjc3Ni0zLjc3NmEuNi42IDAgMSAwLS44NDgtLjg0OEw2IDUuMTUgMi4yMjQgMS4zNzZhLjYuNiAwIDAgMC0uODQ4Ljg0OEw1LjE1MiA2IDEuMzc2IDkuNzc1YS42LjYgMCAxIDAgLjg0OC44NDlMNiA2Ljg0OGwzLjc3NiAzLjc3NmEuNTk4LjU5OCAwIDAgMCAxLjAyNC0uNDI1LjYuNiAwIDAgMC0uMTc2LS40MjRMNi44NDggNnoiIC8+Cjwvc3ZnPg==);
+    background-color: rgb(25, 25, 25);
+    opacity: 0.3;
+    border-radius: 50%;
+    position: absolute;
+    top: 0.5rem;
+    right: 0.5rem;
+}
+
+input {
+  margin-top: 1rem;
+}
+
+input::file-selector-button {
+  font-weight: bold;
+  color: green;
+  padding: 0.5em;
+  border: thin solid grey;
+  border-radius: 3px;
+}
+</style>
 </head>
 
 <body>
 
-<%
-		member loginMember = (member)session.getAttribute("loginMember");
+	<%
+	member loginMember = (member) session.getAttribute("loginMember");
 	%>
 
 	<!-- Spinner Start -->
@@ -57,30 +86,43 @@
 	<!-- Navbar start -->
 	<div class="container-fluid fixed-top">
 		<div class="container topbar bg-primary d-none d-lg-block">
-				<div class="d-flex justify-content-between">
-					<div class="top-info ps-2">
-                        <small class="me-3"></small>
-                        <small class="me-3"></small>
-                    </div>
-					<div class="top-link pe-2">
-						<%if (loginMember == null) {%>
-							<a href="goLogin" class="text-white"><small class="text-white mx-2">로그인</small>/</a>
-							<a href="goMemberType" class="text-white"><small class="text-white mx-2">회원가입</small></a>
-						<%}else {%>
-							<span><small class="text-white mx-2"><%=loginMember.getNick() %>님 환영합니다.</small></span>
-							<%if(loginMember.getEmail().equals("admin")) {%>
-								<a href="#" class="text-white"><small class="text-white ms-2">회원관리</small></a>
-							<%} %>
-							<a href="memberLogout" class="text-white"><small class="text-white mx-2">로그아웃</small></a>
-						<%} %>
-						
-					</div>
+			<div class="d-flex justify-content-between">
+				<div class="top-info ps-2">
+					<small class="me-3"></small> <small class="me-3"></small>
+				</div>
+				<div class="top-link pe-2">
+					<%
+					if (loginMember == null) {
+					%>
+					<a href="goLogin" class="text-white"><small
+						class="text-white mx-2">로그인</small>/</a> <a href="goMemberType"
+						class="text-white"><small class="text-white mx-2">회원가입</small></a>
+					<%
+					} else {
+					%>
+					<span><small class="text-white mx-2"><%=loginMember.getNick()%>님
+							환영합니다.</small></span>
+					<%
+					if (loginMember.getEmail().equals("admin")) {
+					%>
+					<a href="#" class="text-white"><small class="text-white ms-2">회원관리</small></a>
+					<%
+					}
+					%>
+					<a href="memberLogout" class="text-white"><small
+						class="text-white mx-2">로그아웃</small></a>
+					<%
+					}
+					%>
+
 				</div>
 			</div>
+		</div>
 		<div class="container px-0">
 			<nav class="navbar navbar-light bg-white navbar-expand-xl">
-				<a href="goMain" class="navbar-brand"><h1
-						class="text-primary display-6">Share We?</h1></a>
+				<a href="goMain" class="navbar-brand">
+					<h1 class="text-primary display-6">Share We?</h1>
+				</a>
 				<button class="navbar-toggler py-2 px-3" type="button"
 					data-bs-toggle="collapse" data-bs-target="#navbarCollapse">
 					<span class="fa fa-bars text-primary"></span>
@@ -104,17 +146,17 @@
 							style="color: black">Contact</a>
 					</div>
 					<div class="d-flex m-3 me-0">
-							<button
-								class="btn-search btn border border-secondary btn-md-square rounded-circle bg-white me-4"
-								data-bs-toggle="modal" data-bs-target="#searchModal">
-								<i class="fas fa-search text-primary"></i>
-							</button>
-							<a href="goCart" class="position-relative me-4 my-auto"> <i
-								class="fa fa-shopping-bag fa-2x"></i> <span
-								class="position-absolute bg-secondary rounded-circle d-flex align-items-center justify-content-center text-dark px-1"
-								style="top: -5px; left: 15px; height: 20px; min-width: 20px;">3</span>
-							</a> <a href="goMyPage" class="my-auto"> <i
-								class="fas fa-user fa-2x"></i></a>
+						<button
+							class="btn-search btn border border-secondary btn-md-square rounded-circle bg-white me-4"
+							data-bs-toggle="modal" data-bs-target="#searchModal">
+							<i class="fas fa-search text-primary"></i>
+						</button>
+						<a href="goCart" class="position-relative me-4 my-auto"> <i
+							class="fa fa-shopping-bag fa-2x"></i> <span
+							class="position-absolute bg-secondary rounded-circle d-flex align-items-center justify-content-center text-dark px-1"
+							style="top: -5px; left: 15px; height: 20px; min-width: 20px;">3</span>
+						</a> <a href="goMyPage" class="my-auto"> <i
+							class="fas fa-user fa-2x"></i></a>
 					</div>
 				</div>
 			</nav>
@@ -124,9 +166,9 @@
 
 
 	<!-- Search Start -->
-   <div class="modal fade" id="searchModal" tabindex="-1"
-      aria-labelledby="exampleModalLabel" aria-hidden="true">
-      <div class="modal-dialog modal-fullscreen">
+	<div class="modal fade" id="searchModal" tabindex="-1"
+		aria-labelledby="exampleModalLabel" aria-hidden="true">
+		<div class="modal-dialog modal-fullscreen">
 
 			<div class="modal-content rounded-0">
 				<div class="modal-header">
@@ -137,11 +179,13 @@
 				</div>
 				<form action="goSearch">
 					<div class="modal-body d-flex align-items-center">
-						<div class="input-group w-75 mx-auto d-flex" 
-							style="height: 800px; padding-bottom: 100px; width:50% !important;  justify-content: center; align-items: center;">
-							<input type="text" class="form-control p-3" name="searchText" style="height: 58px;"
-								placeholder="검색어를 입력해주세요." aria-describedby="search-icon-1">
-							<input type="submit" value="검색" id="search-icon-1" style="border-top-right-radius: 10px; border-bottom-right-radius: 10px; height: 58px;"
+						<div class="input-group w-75 mx-auto d-flex"
+							style="height: 800px; padding-bottom: 100px; width: 50% !important; justify-content: center; align-items: center;">
+							<input type="text" class="form-control p-3" name="searchText"
+								style="height: 58px;" placeholder="검색어를 입력해주세요."
+								aria-describedby="search-icon-1"> <input type="submit"
+								value="검색" id="search-icon-1"
+								style="border-top-right-radius: 10px; border-bottom-right-radius: 10px; height: 58px;"
 								class="btn btn-primary border-2 border-secondary py-3 px-4">
 						</div>
 					</div>
@@ -162,7 +206,7 @@
 	</div>
 	<!-- Single Page Header End -->
 
-	 <!--  ----------------------- 코드 시작 -------------------------------------------->
+	<!--  ----------------------- 코드 시작 -------------------------------------------->
 
 	<div class="container-fluid py-5">
 		<div class="container py-5">
@@ -174,16 +218,18 @@
 						<br>
 						<div class="form-item">
 
-							<label class="input-file-button" for="btnAtt"> 업로드 </label> 
+							 <label class="input-file-button" for="btnAtt"> 대표사진 </label>
 							
-								<input  type="file" name="g_img1"  id="btnAtt" style="display: none">
-								<!-- multiple="multiple" style="display: none" onchange="readURL(this);" -->
-							<!-- 이미피자일 name = filename -->
+							<input type="file" name="g_img1" id="btnAtt"  
+							style="display: none;" accept="image/jpg, image/jpeg, image/png">
+							
 
 							<div id='image_preview'>
-								<div id='att_zone'
+								<div id='att_zone' style="width: 100%; height: 100%; z-index: none;" 
 									data-placeholder='파일을 첨부 하려면 파일 선택 버튼을 클릭하거나 파일을 드래그앤드롭 하세요'></div>
 							</div>
+							<input type="file" name="g_img2"  id="btnAtt2" accept="image/jpg, image/jpeg, image/png" value="상세사진" >
+							 <input type="file" name="g_img3" id="btnAtt3" accept="image/jpg, image/jpeg, image/png" value="상세사진">
 
 							<script>
 ( /* att_zone : 이미지들이 들어갈 위치 id, btn : file tag id */
@@ -199,8 +245,20 @@
     // 미리보기 이미지 속성
     var img_style = 'width:100%;height:100%;z-index:none';
     // 이미지안에 표시되는 체크박스의 속성
-    var chk_style = 'width:30px;height:30px;position:absolute;font-size:24px;'
-                  + 'right:0px;bottom:0px;z-index:999;background-color:rgba(255,255,255,0.1);color:green';
+    var chk_style = 'width: 1.5rem;'+
+    'height: 1.5rem;'+
+    'background-position: center center;'+
+    'background-repeat: no-repeat;'+
+    'background-size: 12px 12px;'+
+    'background-image: url(data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSIxMiIgaGVpZ2h0PSIxMiIgdmlld0JveD0iMCAwIDEyIDEyIj4KICAgIDxwYXRoIGZpbGw9IiNGRkYiIGZpbGwtcnVsZT0iZXZlbm9kZCIKICAgICAgICBkPSJNNi44NDggNmwzLjc3Ni0zLjc3NmEuNi42IDAgMSAwLS44NDgtLjg0OEw2IDUuMTUgMi4yMjQgMS4zNzZhLjYuNiAwIDAgMC0uODQ4Ljg0OEw1LjE1MiA2IDEuMzc2IDkuNzc1YS42LjYgMCAxIDAgLjg0OC44NDlMNiA2Ljg0OGwzLjc3NiAzLjc3NmEuNTk4LjU5OCAwIDAgMCAxLjAyNC0uNDI1LjYuNiAwIDAgMC0uMTc2LS40MjRMNi44NDggNnoiIC8+Cjwvc3ZnPg==);'+
+    'background-color: rgb(25, 25, 25);'+
+    'opacity: 0.3;'+
+    'border-radius: 50%;'+
+    'position: absolute;'+
+    'top: 0.5rem;'+
+    'right: 0.5rem;';
+    
+    
   
     btnAtt.onchange = function(e){
       var files = e.target.files;
@@ -242,10 +300,15 @@
       sel_files.push(file);
       var reader = new FileReader();
       reader.onload = function(ee){
+    	  
+    	
         let img = document.createElement('img')
+        
         img.setAttribute('style', img_style)
         img.src = ee.target.result;
         attZone.appendChild(makeDiv(img, file));
+        /* var g_img = 'g_img1';
+        img.setAttribute('name',g_img); */
       }
       
       reader.readAsDataURL(file);
@@ -253,6 +316,7 @@
     
     /*첨부된 파일이 있는 경우 checkbox와 함께 attZone에 추가할 div를 만들어 반환 */
     makeDiv = function(img, file){
+    	
       var div = document.createElement('div')
       div.setAttribute('style', div_style)
       
@@ -261,10 +325,12 @@
       btn.setAttribute('value', 'x')
       btn.setAttribute('delFile', file.name);
       btn.setAttribute('style', chk_style);
+ 
       btn.onclick = function(ev){
         var ele = ev.srcElement;
         var delFile = ele.getAttribute('delFile');
         for(var i=0 ;i<sel_files.length; i++){
+        	
           if(delFile== sel_files[i].name){
             sel_files.splice(i, 1);      
           }
@@ -272,6 +338,7 @@
         
         dt = new DataTransfer();
         for(f in sel_files) {
+        	
           var file = sel_files[f];
           dt.items.add(file);
         }
@@ -281,6 +348,7 @@
       }
       div.appendChild(img)
       div.appendChild(btn)
+     
       return div
     }
   }
@@ -294,6 +362,8 @@
 						</div>
 						<hr>
 					</div>
+					
+					
 					<div class="col-md-12 col-lg-6 col-xl-7" align="left">
 						<h4 class="form-label my-3">* 상품 명</h4>
 						<br>
@@ -303,8 +373,8 @@
 								placeholder="상품 명을 입력해주세요">
 						</div>
 					</div>
-					
-					
+
+
 
 					<div class="col-md-12 col-lg-6 col-xl-7" align="left">
 						<h4 class="form-label my-3">* 카테고리</h4>
@@ -329,14 +399,18 @@
 						<br>
 						<div class="form-item">
 							<div class="col-sm-8">
-							
-								<button type="button" class="border-0 border-bottom rounded me-5 py-3 mb-4" style="width: 50px; font-size: 20px;" onclick="increase()">+</button>
-							
-								<b style="margin-right: 40px; font-size: 30px;" id="num" >2</b>
-	
-								<button type="button" class="border-0 border-bottom rounded me-5 py-3 mb-4" style="width: 50px; font-size: 20px;" onclick="decrease()">-</button>
-							
-								<script >
+
+								<button type="button"
+									class="border-0 border-bottom rounded me-5 py-3 mb-4"
+									style="width: 50px; font-size: 20px;" onclick="increase()">+</button>
+
+								<b style="margin-right: 40px; font-size: 30px;" id="num">2</b>
+
+								<button type="button"
+									class="border-0 border-bottom rounded me-5 py-3 mb-4"
+									style="width: 50px; font-size: 20px;" onclick="decrease()">-</button>
+
+								<script>
 								
 								const join = document.getElementById('num');
 						        
@@ -350,8 +424,8 @@
 						            }
 						        }
 								</script>
-								<br>
-								<b style="margin-right: 40px; font-size: 15px;" >최소인원은 2명 입니다.</b>
+								<br> <b style="margin-right: 40px; font-size: 15px;">최소인원은
+									2명 입니다.</b>
 							</div>
 						</div>
 						<hr>
@@ -376,12 +450,14 @@
 						</div>
 
 					</div>
+
 				</div>
+			</form>
 		</div>
+
 	</div>
-	</form>
-	</div>
-	</div>
+
+
 
 	<!-- 메인 페이지 하단 -->
 	<div class="container-fluid bg-dark text-white-50 footer pt-5 mt-5">
@@ -412,7 +488,7 @@
 	<!-- JavaScript Libraries -->
 	<script
 		src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.4/jquery.min.js"></script>
-								<script
+	<script
 		src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0/dist/js/bootstrap.bundle.min.js"></script>
 	<script src="resources/asset/lib/easing/easing.min.js"></script>
 	<script src="resources/asset/lib/waypoints/waypoints.min.js"></script>
