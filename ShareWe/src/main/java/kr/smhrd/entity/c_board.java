@@ -53,16 +53,11 @@ public class c_board {
     private String place;
 
     // 상품가격 
-    @NonNull private int price;
+    @NonNull private String price;
 
     // 옵션1 
-    @NonNull private double c_opt1;
+    @NonNull private String c_opt1;
 
-     //옵션2 
-    private double c_opt2;
-
-    // 옵션3 
-    private double c_opt3;
   
     
  

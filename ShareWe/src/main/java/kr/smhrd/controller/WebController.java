@@ -42,57 +42,43 @@ public class WebController {
 	private static final Logger logger = LoggerFactory.getLogger(WebController.class);
 	
 	// Main.jsp로 이동하는 메소드
-	@RequestMapping("/")
-	public String main(Model model,HttpSession session) {
-		
-		List<g_board> gboard_list = g_boardMapper.getGBoard();
-	    model.addAttribute("gboard_list", gboard_list);
-	    List<c_board> cboard_list = c_boardMapper.getCBoard();
-	    model.addAttribute("cboard_list", cboard_list);
-	    
-	    member loginMember = (member)session.getAttribute("loginMember");
-		if(loginMember != null) {
-			String email = loginMember.getEmail();
-			String fav = "No";
-			List<g_favorite> gfavorite_list = favoriteMapper.getgFavList(email);
-			for(int i =0; i<gfavorite_list.size(); i++) {
-				if(gfavorite_list.get(i).getG_num()==gboard_list.get(i).getG_num()) {
-					fav="yes";
-				}
-			}
+		@RequestMapping("/")
+		public String main(Model model,HttpSession session) {
 			
-			model.addAttribute("fav", fav);
-			model.addAttribute("gfavorite_list",gfavorite_list);
+			List<g_board> gboard_list = g_boardMapper.getGBoard();
+		    model.addAttribute("gboard_list", gboard_list);
+		    List<c_board> cboard_list = c_boardMapper.getCBoard();
+		    model.addAttribute("cboard_list", cboard_list);
+		    
+		
+		    
+			return "Main";
 		}
-	    
-		return "Main";
-	}
 
-	@RequestMapping("/goMain")
-	public String goMain(Model model,HttpSession session) {
-		
-		List<g_board> gboard_list = g_boardMapper.getGBoard();
-	    model.addAttribute("gboard_list", gboard_list);
-	    List<c_board> cboard_list = c_boardMapper.getCBoard();
-	    model.addAttribute("cboard_list", cboard_list);
-	    
-	    member loginMember = (member)session.getAttribute("loginMember");
-		if(loginMember != null) {
-			String email = loginMember.getEmail();
-			String fav = "No";
-			List<g_favorite> gfavorite_list = favoriteMapper.getgFavList(email);
-			for(int i =0; i<gfavorite_list.size(); i++) {
-				if(gfavorite_list.get(i).getG_num()==gboard_list.get(i).getG_num()) {
-					fav="yes";
-				}
-			}
+		@RequestMapping("/goMain")
+		public String goMain(Model model,HttpSession session) {
 			
-			model.addAttribute("fav", fav);
-			model.addAttribute("gfavorite_list",gfavorite_list);
-		}
+			List<g_board> gboard_list = g_boardMapper.getGBoard();
+		    model.addAttribute("gboard_list", gboard_list);
+		    List<c_board> cboard_list = c_boardMapper.getCBoard();
+		    model.addAttribute("cboard_list", cboard_list);
+		   
+		    member loginMember = (member)session.getAttribute("loginMember");
+			
+		    if(loginMember != null) {
+				String email = loginMember.getEmail();
+				List<g_favorite> gfavorite_list = favoriteMapper.getGEmail(email);
+				List<c_favorite> cfavorite_list = favoriteMapper.getCEmail(email);
+				
+				
+				model.addAttribute("gfavorite_list",gfavorite_list);
+				model.addAttribute("cfavorite_list",cfavorite_list);
+			}
 		
-		return "Main";
-	}
+			
+			
+			return "Main";
+		}
 
 	@RequestMapping("/goLogin")
 	public String goLogin() {
