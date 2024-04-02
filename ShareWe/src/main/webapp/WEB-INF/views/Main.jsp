@@ -255,32 +255,30 @@
                      <div class="col-lg-12">
                         <div class="row g-4">
 
-									<c:forEach items="${gboard_list }" var="g" end="7">
-										<div class="col-md-6 col-lg-4 col-xl-3"
-											style="margin: auto; width: 25%; height: 10%; margin-bottom: 20px;">
-											<div class="rounded position-relative fruite-item">
-												<div class="fruite-img">
-													<a href="G_BoardContent?g_num=${g.g_num}"> <img
-														src="resources/g_Image/${g.g_img1}"
-														class="img-fluid w-100 rounded-top" alt="">
-													</a>
-												</div>
-												<div
-													class="text-white bg-secondary px-3 py-1 rounded position-absolute"
-													style="top: 10px; left: 10px;">${g.category}</div>
-												<div
-													class="p-4 border border-secondary border-top-0 rounded-bottom"
-													style="text-align: left;">
-													<br> <a href="G_BoardContent?g_num=${g.g_num}">
-														<h5>${g.g_title }</h5>
-													</a>
-													<h6 style="display: inline;">${g.g_writer }</h6>
-													<c:choose>
-														<c:when test="${loginMember.type == 0}">
-															<%-- <a href="deleteGBoard?g_num=${g.g_num }" style="float: right;"
-	                                             class="btn border border-secondary rounded-pill px-3 text-primary">
-	                                             삭제 </a> --%>
-														</c:when>
+                           <c:forEach items="${gboard_list }" var="g" end="7">
+                              <div class="col-md-6 col-lg-4 col-xl-3"
+                                 style="margin: auto; width: 22%; height: 10%; margin-bottom: 20px;">
+                                 <div class="rounded position-relative fruite-item">
+                                    <div class="fruite-img">
+                                       <a href="G_BoardContent?g_num=${g.g_num}">
+	                                       <img src="resources/g_Image/${g.g_img1}"
+	                                          class="img-fluid w-100 rounded-top" alt="">
+	                                   </a>
+                                    </div>
+                                    <div
+                                       class="text-white bg-secondary px-3 py-1 rounded position-absolute"
+                                       style="top: 10px; left: 10px;">${g.category}</div>
+                                    <div
+                                       class="p-4 border border-secondary border-top-0 rounded-bottom"
+                                       style="text-align: left;">
+                                       <br>
+                                       <a href="G_BoardContent?g_num=${g.g_num}">
+                                      	 <h5>${g.g_title }</h5>
+                                       </a>
+                                       <h6 style="display: inline;">${g.g_writer }</h6>
+                                       <c:choose>
+	                                      <c:when test="${loginMember.type == 0}">
+											</c:when>
 														<c:otherwise>
 															<a onclick="checkFavorite(${g.g_num})" id="${g.g_num }"
 																style="float: right;"
@@ -330,11 +328,13 @@
 
 									<c:forEach items="${cboard_list }" var="c" end="7">
 										<div class="col-md-6 col-lg-4 col-xl-3"
-											style="margin: auto; width: 25%; height: 10%; margin-bottom: 20px;">
+											style="margin: auto; width: 22%; height: 10%; margin-bottom: 20px;">
 											<div class="rounded position-relative fruite-item">
 												<div class="fruite-img">
-													<img src="resources/g_Image/${c.c_img1}"
-														class="img-fluid w-100 rounded-top" alt="">
+													<a href="C_BoardContent?c_num=${c.c_num}&c_writer=${c.c_writer}">
+														<img src="resources/g_Image/${c.c_img1}"
+															class="img-fluid w-100 rounded-top" alt="">
+													</a>
 												</div>
 												<div
 													class="text-white bg-secondary px-3 py-1 rounded position-absolute"
@@ -343,37 +343,13 @@
 													class="p-4 border border-secondary border-top-0 rounded-bottom"
 													style="text-align: left;">
 													<br>
-													<h5>${c.c_title }</h5>
+													<a href="C_BoardContent?c_num=${c.c_num}&c_writer=${c.c_writer}">
+														<h5>${c.c_title }</h5>
+													</a>
 													<h6 style="display: inline;">${c.c_writer }</h6>
 													<c:choose>
 														<c:when test="${loginMember.type == 0}">
-															<%-- <a href="deleteCBoard?c_num=${c.c_num }" style="float: right;"
-                           <c:forEach items="${cboard_list }" var="c" end="7">
-                              <div class="col-md-6 col-lg-4 col-xl-3"
-                                 style="margin: auto; width: 25%; height: 10%; margin-bottom: 20px;">
-                                 <div class="rounded position-relative fruite-item">
-                                    <div class="fruite-img">
-                                    	<a href="C_BoardContent?c_num=${c.c_num}">
-	                                       <img src="resources/g_Image/${c.c_img1}"
-	                                          class="img-fluid w-100 rounded-top" alt="">
-	                                    </a>
-                                    </div>
-                                    <div
-                                       class="text-white bg-secondary px-3 py-1 rounded position-absolute"
-                                       style="top: 10px; left: 10px;">${c.category}</div>
-                                    <div
-                                       class="p-4 border border-secondary border-top-0 rounded-bottom"
-                                       style="text-align: left;">
-                                       <br>
-                                       <a href="C_BoardContent?c_num=${c.c_num}">
-                                       		<h5>${c.c_title }</h5>
-                                       </a>
-                                       <h6 style="display: inline;">${c.c_writer }</h6>
-                                      <c:choose>
-	                                      <c:when test="${loginMember.type == 0}">
-	                                       	<%-- <a href="deleteCBoard?c_num=${c.c_num }" style="float: right;"
-	                                             class="btn border border-secondary rounded-pill px-3 text-primary">
-	                                             삭제 </a> --%>
+															
 														</c:when>
 														<c:otherwise>
 															<a onclick="checkCFavorite(${c.c_num})" id="${c.c_num }"

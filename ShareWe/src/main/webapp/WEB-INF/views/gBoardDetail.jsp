@@ -319,14 +319,6 @@
 
 
       <!-- 게시글 상세 -->
-
-    <c:if test="${loginMember.type == 2 || loginMember.type == 3}">
-			<div class="row g-4 justify-content-center">
-				<button class="col-xl-1" id="write" type="button"
-					onclick="location.href='gogBoard'">게시물작성</button>
-			</div>
-			</div>
-		</c:if>
 		
       <div class="row g-4 justify-content-center hero-header" style="margin-left: 28%; margin-right: 28%; ">
             <script
@@ -375,7 +367,7 @@
 
       <div class="row g-4 justify-content-center" style="display: block;">
                
-               <div class="boardContent">
+               <div class="boardContent" style="padding-bottom: 25px;">
                		<input type="hidden" value="${g_board.g_num}" id="gNum">
 					<c:choose>
 						<c:when test="${empty loginMember}">
@@ -486,9 +478,9 @@
 
 
       <!-- Back to Top -->
-      <!--    <a href="#"
-      class="btn btn-primary border-3 border-primary rounded-circle back-to-top"><i
-      class="fa fa-arrow-up"></i></a> -->
+	  <a href="#"
+			class="btn btn-primary border-3 border-primary rounded-circle back-to-top"><i
+			class="fa fa-arrow-up"></i></a>
 
 
       <!-- JavaScript Libraries -->

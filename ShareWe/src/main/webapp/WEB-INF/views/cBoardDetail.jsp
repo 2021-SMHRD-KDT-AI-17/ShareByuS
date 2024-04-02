@@ -321,13 +321,6 @@
 
 		<!-- 게시글 상세 -->
 
-		<div class="row g-4 justify-content-center" id="categoryBox">
-			<div class="row g-4 justify-content-center">
-				<button class="col-xl-1" id="write" type="button"
-					onclick="location.href='gogBoard'">게시물작성</button>
-			</div>
-		</div>
-		
 		<div class="row g-4 justify-content-center hero-header" style="margin-left: 28%; margin-right: 28%;">
 			<input type="hidden" value="${loginMember.email}" id="loginEmail">
 			<script
@@ -365,7 +358,7 @@
 			</div>
 			
 			<div class="row g-4 justify-content-center">
-				<div class="boardContent">
+				<div class="boardContent" style="padding-bottom: 0; height: 60px;">
 					<input type="hidden" value="${c_board.c_num}" id="cNum">
 					<c:choose>
 						<c:when test="${empty loginMember}">
@@ -605,12 +598,10 @@
 
 		<!-- 메인 페이지 하단 End -->
 
-
-
 		<!-- Back to Top -->
-		<!-- 	<a href="#"
-		class="btn btn-primary border-3 border-primary rounded-circle back-to-top"><i
-		class="fa fa-arrow-up"></i></a> -->
+		<a href="#"
+			class="btn btn-primary border-3 border-primary rounded-circle back-to-top"><i
+			class="fa fa-arrow-up"></i></a>
 
 
 		<!-- JavaScript Libraries -->
@@ -625,7 +616,7 @@
 
 		<!-- Template Javascript -->
 		<script src="resources/asset/js/main.js"></script>
-
+	
 		<script type="text/javascript">
 			function checkCFavorite(){
 				var c_num = document.getElementById("cNum").value;
