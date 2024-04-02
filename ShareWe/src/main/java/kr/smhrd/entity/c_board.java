@@ -58,10 +58,12 @@ public class c_board {
     // 옵션1 
     @NonNull private String c_opt1;
 
-  
+    // 상품등록갯수 
+    @NonNull private int c_ea;
     
- 
-
+    // 상품 구매 갯수
+    private int c_p_count;
+    
 //    public c_board(@NonNull String c_title, @NonNull String c_img1, @NonNull String c_content, @NonNull String c_f_date,
 //			@NonNull String category, String place, @NonNull int price, @NonNull double c_opt1, @NonNull int c_ea) {
 //		super();
@@ -74,15 +76,6 @@ public class c_board {
 //		this.c_opt1 = c_opt1;
 //		this.c_ea = c_ea;
 //	}
-
-	// 옵션4 
-    private double c_opt4;
-
-    // 상품등록갯수 
-    @NonNull private int c_ea;
-    
-    private int c_p_count;
-    
 
 }
 

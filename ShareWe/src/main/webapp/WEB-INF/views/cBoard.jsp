@@ -263,7 +263,6 @@
       
     }, false)
     
-
     
     /*첨부된 이미리즐을 배열에 넣고 미리보기 */
     imageLoader = function(file){

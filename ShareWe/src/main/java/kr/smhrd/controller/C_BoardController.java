@@ -224,6 +224,22 @@ public class C_BoardController {
 		return "Review";
 	}
 	
+	// 리뷰 작성
+	@RequestMapping("/buyProduct")
+	public String buyProduct(HttpServletRequest request, Model model) {
+		int index = (int) request.getAttribute("opIndex");
+		int c_num = (int) request.getAttribute("c_num");
+		
+		c_board c_board = c_boardMapper.C_BoardContent(c_num);
+		String[] optList = c_board.getC_opt1().split("\n");
+		String[] priceList = c_board.getPrice().split("\n");
+		
+		
+		return "Review";
+	}
+	
+	
+	
 	
 	}
 	
