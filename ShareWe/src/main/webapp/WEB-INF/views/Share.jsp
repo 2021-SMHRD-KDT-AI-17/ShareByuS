@@ -198,8 +198,7 @@
 							data-bs-toggle="modal" data-bs-target="#searchModal">
 							<i class="fas fa-search text-primary"></i>
 						</button>
-						<a href="goCart" class="position-relative me-4 my-auto"> <i
-							class="fa fa-shopping-bag fa-2x"></i> <span
+						<a href="goCart" class="position-relative me-4 my-auto"> <i class="bi bi-bell-fill fa-2x"></i> <span
 							class="position-absolute bg-secondary rounded-circle d-flex align-items-center justify-content-center text-dark px-1"
 							style="top: -5px; left: 15px; height: 20px; min-width: 20px;">3</span>
 						</a> <a href="goMyPage" class="my-auto"> <i
@@ -294,6 +293,7 @@
                                  	<div class="p-4 border border-secondary border-top-0 rounded-bottom" style=" border-color: #009223 !important;">
                                 
                                     <br>
+                                   
                                     <a href="G_BoardContent?g_num=${g.g_num}"><h5>${g.g_title}</h5></a>
                                     <h6 style="display: inline;">${g.g_writer}</h6>
                                     <c:choose>
@@ -309,8 +309,8 @@
 	                                             ❤ 찜 </a>
 	                                       	
 	                                      </c:otherwise> 
-                                      </c:choose>
-                                 </div>
+                                      </c:choose></div>
+                                 
                               </div>
                            </div>
                         </c:forEach>
