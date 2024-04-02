@@ -348,13 +348,6 @@
 
 		<!-- 게시글 상세 -->
 
-		<div class="row g-4 justify-content-center" id="categoryBox">
-			<div class="row g-4 justify-content-center">
-				<button class="col-xl-1" id="write" type="button"
-					onclick="location.href='gogBoard'">게시물작성</button>
-			</div>
-		</div>
-		
 		<div class="row g-4 justify-content-center hero-header" style="margin-left: 28%; margin-right: 28%;">
 
 			<script
@@ -571,9 +564,9 @@
 
 
 		<!-- Back to Top -->
-		<!-- 	<a href="#"
-		class="btn btn-primary border-3 border-primary rounded-circle back-to-top"><i
-		class="fa fa-arrow-up"></i></a> -->
+		<a href="#"
+			class="btn btn-primary border-3 border-primary rounded-circle back-to-top"><i
+			class="fa fa-arrow-up"></i></a>
 
 
 		<!-- JavaScript Libraries -->

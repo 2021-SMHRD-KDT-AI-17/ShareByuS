@@ -65,5 +65,7 @@ public interface MemberMapper {
 	public member goDeleteKakao(member member);
 
 
+
+
 	
 }
