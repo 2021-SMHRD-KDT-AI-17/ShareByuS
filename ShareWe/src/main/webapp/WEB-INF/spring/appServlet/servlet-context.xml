@@ -39,7 +39,7 @@
 
 	<websocket:handlers>
 		<websocket:mapping handler="replyEchochoHandler"
-			path="/goChat" />
+			path="/gParticipate" />
 		<websocket:handshake-interceptors>
 			<beans:bean
 				class="org.springframework.web.socket.server.support.HttpSessionHandshakeInterceptor" />

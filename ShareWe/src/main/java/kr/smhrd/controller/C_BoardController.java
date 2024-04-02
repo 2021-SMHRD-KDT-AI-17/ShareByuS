@@ -62,17 +62,22 @@ public class C_BoardController {
 		
 		String path = request.getRealPath("resources/g_Image");
 		System.out.println(path);
-		int size = 1024*1024*10;
+		int size = 720*720*10;
 		String encoding = "UTF-8";
 		
 		DefaultFileRenamePolicy rename = new DefaultFileRenamePolicy();
 		try {
+			
 			MultipartRequest multi = new MultipartRequest(request, path, size, encoding, rename);
+			multi.getFilesystemName("c_img1");
+			multi.getFilesystemName("c_img2");
+			multi.getFilesystemName("c_img3");
+			
 		} catch (IOException e) {
 			e.printStackTrace();
-		}
+		}c_boardMapper.cBoardInsert(c_board);
 		
-		c_boardMapper.cBoardInsert(c_board);
+		
 		
 		return "redirect:/goCompany";
 		

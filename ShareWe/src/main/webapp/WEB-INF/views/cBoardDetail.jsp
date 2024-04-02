@@ -688,6 +688,7 @@
 			function delCFavorite(){
 				var c_num = document.getElementById("cNum").value;
 				
+				
 				document.getElementById("cFavorite").style.display = "inline";
 				document.getElementById("favCancel").style.display = "none";
 						$.ajax(
