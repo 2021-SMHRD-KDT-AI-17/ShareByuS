@@ -420,7 +420,13 @@
 							</nav>
 						</c:when>
 					</c:choose>
-					
+					<form action="">
+						<select>
+							<c:forEach items="${option}" var="op" varStatus="i">
+								<option value="${i.index}">옵션 : ${op}, 가격 : ${price[i.index]}원</option>
+							</c:forEach>
+						</select>
+					</form>
 					<button style="width: 20%; margin-left: 20px" type="button" class="btn btn-outline-success">참여하기</button><br>
 				</div>
 				<div class="boardContent">

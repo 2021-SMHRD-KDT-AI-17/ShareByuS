@@ -203,7 +203,7 @@
 
 							<label class="input-file-button" for="btnAtt"> 대표사진 </label>
 							
-								<input  type="file" name="c_img2"  id="btnAtt"
+								<input  type="file" name="c_img1"  id="btnAtt"
 								 accept="image/jpg, image/jpeg, image/png"style="display: none" >								
 				
 							<div id='image_preview'>
