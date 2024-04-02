@@ -367,7 +367,7 @@
 
       <div class="row g-4 justify-content-center" style="display: block;">
                
-               <div class="boardContent">
+               <div class="boardContent" style="padding-bottom: 25px;">
                		<input type="hidden" value="${g_board.g_num}" id="gNum">
 					<c:choose>
 						<c:when test="${empty loginMember}">
