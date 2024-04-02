@@ -412,7 +412,7 @@
 															</c:if>
 															<c:if test="${num eq '0'}">
 																<a onclick="checkCFavorite(${c.c_num})"
-																			id="${g.g_num}" style="float: right;" 
+																			id="${c.c_num}" style="float: right;" 
 																			type="button" class="btn border border-secondary rounded-pill px-3 text-primary">❤
 																			찜</a>
 																		<a onclick="delCFavorite(${c.c_num})"

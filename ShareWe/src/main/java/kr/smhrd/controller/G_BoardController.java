@@ -128,12 +128,22 @@ public class G_BoardController {
 		return "gBoardDetail";
 	}
 	
+	@RequestMapping("/chatBoardContent")
+	public String chatBoardContent(@RequestParam("g_num") int g_num, Model model, HttpSession session) {
+		
+		g_board g_board = g_boardMapper.G_BoardContent(g_num); //num값에 해당하는 하나의 게시물 가져오기
+		model.addAttribute("g_board",g_board);
+		
+		return "ChatBoard";
+	}
+	
 	
 	@RequestMapping("/gParticipate")
-	public String gParticipate(@RequestParam("g_num") int g_num) {
+	public String gParticipate(@RequestParam("g_num") int g_num, Model model) {
 		g_boardMapper.gParticipate(g_num);
+		model.addAttribute("g_num", g_num);
 		
-		return "redirect:/goGeneral";
+		return "Chat";
 	}	
 	
 	@RequestMapping("/goBoardUp")
