@@ -321,13 +321,6 @@
 
 		<!-- 게시글 상세 -->
 
-		<div class="row g-4 justify-content-center" id="categoryBox">
-			<div class="row g-4 justify-content-center">
-				<button class="col-xl-1" id="write" type="button"
-					onclick="location.href='gogBoard'">게시물작성</button>
-			</div>
-		</div>
-		
 		<div class="row g-4 justify-content-center hero-header" style="margin-left: 28%; margin-right: 28%;">
 			<input type="hidden" value="${loginMember.email}" id="loginEmail">
 			<script
@@ -344,12 +337,12 @@
 					</div>
 					<div class="carousel-item">
 						<img class="d-block" style="object-fit: cover !important; height: 450px;"
-							src="https://source.unsplash.com/collection/190727/1600x900"
+							src="resources/g_Image/${c_board.c_img2}"
 							alt="..." />
 					</div>
 					<div class="carousel-item" >
 						<img class="d-block" style="object-fit: cover !important; height: 450px;"
-							src="https://source.unsplash.com/WLUHO9A_xik/1600x900" alt="..." />
+							src="resources/g_Image/${c_board.c_img3}" alt="..." />
 					</div>
 				</div>
 				<button class="carousel-control-prev" type="button"
@@ -404,7 +397,17 @@
 									<li><a href="#"> <strong style="float: right;">⁝</strong>
 									</a>
 										<ul>
-											<li><a href="#">게시물 신고</a></li>
+											<li>
+											<form action="sendReportInfo" method="post">
+									            <input type="hidden" value="${c_board.c_num}" name="r_num">
+									            <input type="hidden" value="${c_board.email}" name="email">
+									            <input type="hidden" value="${c_board.c_title}" name="r_title">
+									             <input type="hidden" value="${loginMember.email}" name="rp_email">
+									               
+									            <input type="submit" value="신고하기">
+            								</form>
+											
+											</li>
 										</ul></li>
 								</ul>
 							</nav>
@@ -595,12 +598,10 @@
 
 		<!-- 메인 페이지 하단 End -->
 
-
-
 		<!-- Back to Top -->
-		<!-- 	<a href="#"
-		class="btn btn-primary border-3 border-primary rounded-circle back-to-top"><i
-		class="fa fa-arrow-up"></i></a> -->
+		<a href="#"
+			class="btn btn-primary border-3 border-primary rounded-circle back-to-top"><i
+			class="fa fa-arrow-up"></i></a>
 
 
 		<!-- JavaScript Libraries -->
@@ -615,7 +616,7 @@
 
 		<!-- Template Javascript -->
 		<script src="resources/asset/js/main.js"></script>
-
+	
 		<script type="text/javascript">
 			function checkCFavorite(){
 				var c_num = document.getElementById("cNum").value;

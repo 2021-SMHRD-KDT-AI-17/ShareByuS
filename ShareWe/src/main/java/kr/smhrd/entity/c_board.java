@@ -32,10 +32,10 @@ public class c_board {
     @NonNull private String c_img1;
 
     // 이미지2 
-//    private String c_img2;
-//
-//    // 이미지3 
-//    private String c_img3;
+    @NonNull private String c_img2;
+
+    // 이미지3 
+    @NonNull private String c_img3;
 
     // 내용 
     @NonNull private String c_content;

@@ -11,6 +11,7 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.bind.annotation.RequestPart;
 
 import com.oreilly.servlet.MultipartRequest;
 import com.oreilly.servlet.multipart.DefaultFileRenamePolicy;
@@ -64,11 +65,12 @@ public class G_BoardController {
 	
 	//게시글작성
 	@RequestMapping("/gBoardInsert")
-		public String gBoardInsert(g_board g_board, HttpSession session, HttpServletRequest request) {
+		public String gBoardInsert( g_board g_board, HttpSession session, HttpServletRequest request) {
+		
 		
 		String path = request.getRealPath("resources/g_Image");
 		System.out.println(path);
-		int size = 1024*1024*10;
+		int size = 720*720*10;
 		String encoding = "UTF-8";
 		
 		DefaultFileRenamePolicy rename = new DefaultFileRenamePolicy();
@@ -76,7 +78,7 @@ public class G_BoardController {
 		member loginMember = (member)session.getAttribute("loginMember");
 		String email = loginMember.getEmail();
 		String g_writer = loginMember.getNick();
-		
+	
 		
 		
 		try {
@@ -84,16 +86,18 @@ public class G_BoardController {
 			String g_title = multi.getParameter("g_title");
 			String g_content = multi.getParameter("g_content");
 			String g_img1 = multi.getFilesystemName("g_img1");
+			String g_img2 = multi.getFilesystemName("g_img2");
+			String g_img3 = multi.getFilesystemName("g_img3");
 			String category = multi.getParameter("category");
+//			
 			
 			
-			
-			g_board = new g_board(g_title,g_writer, email, g_img1, g_content, category);
+			g_board = new g_board(g_title,g_writer, email, g_img1,g_img2,g_img3, g_content, category);
 			g_boardMapper.insertBoard(g_board);
 		} catch (IOException e) {
 			e.printStackTrace();
 		}
-		
+		g_boardMapper.insertBoard(g_board);
 		
 			return "redirect:/goGeneral";
 		
