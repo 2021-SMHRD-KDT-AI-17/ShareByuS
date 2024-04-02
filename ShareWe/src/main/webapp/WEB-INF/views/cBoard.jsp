@@ -43,8 +43,8 @@
 <body>
 
 
-<%
-		member loginMember = (member)session.getAttribute("loginMember");
+	<%
+	member loginMember = (member) session.getAttribute("loginMember");
 	%>
 
 	<!-- Spinner Start -->
@@ -63,18 +63,31 @@
 					<small class="me-3"></small> <small class="me-3"></small>
 				</div>
 				<div class="top-link pe-2">
-				
-				<%if (loginMember == null) {%>
-							<a href="goLogin" class="text-white"><small class="text-white mx-2">로그인</small>/</a>
-							<a href="goMemberType" class="text-white"><small class="text-white mx-2">회원가입</small></a>
-						<%}else {%>
-							<span><small class="text-white mx-2"><%=loginMember.getNick() %>님 환영합니다.</small></span>
-							<%if(loginMember.getEmail().equals("admin")) {%>
-								<a href="#" class="text-white"><small class="text-white ms-2">회원관리</small></a>
-							<%} %>
-							<a href="memberLogout" class="text-white"><small class="text-white mx-2">로그아웃</small></a>
-						<%} %>
-						
+
+					<%
+					if (loginMember == null) {
+					%>
+					<a href="goLogin" class="text-white"><small
+						class="text-white mx-2">로그인</small>/</a> <a href="goMemberType"
+						class="text-white"><small class="text-white mx-2">회원가입</small></a>
+					<%
+					} else {
+					%>
+					<span><small class="text-white mx-2"><%=loginMember.getNick()%>님
+							환영합니다.</small></span>
+					<%
+					if (loginMember.getEmail().equals("admin")) {
+					%>
+					<a href="#" class="text-white"><small class="text-white ms-2">회원관리</small></a>
+					<%
+					}
+					%>
+					<a href="memberLogout" class="text-white"><small
+						class="text-white mx-2">로그아웃</small></a>
+					<%
+					}
+					%>
+
 					<a href="goMain" class="text-white"><small
 						class="text-white mx-2">홈</small>|</a> <a href="goLogin"
 						class="text-white"><small class="text-white mx-2">로그인</small></a>
@@ -84,7 +97,8 @@
 		<div class="container px-0">
 			<nav class="navbar navbar-light bg-white navbar-expand-xl">
 				<a href="goMain" class="navbar-brand">
-						<h1 class="text-primary display-6">Share We?</h1></a>
+					<h1 class="text-primary display-6">Share We?</h1>
+				</a>
 				<button class="navbar-toggler py-2 px-3" type="button"
 					data-bs-toggle="collapse" data-bs-target="#navbarCollapse">
 					<span class="fa fa-bars text-primary"></span>
@@ -108,17 +122,17 @@
 							style="color: black">Contact</a>
 					</div>
 					<div class="d-flex m-3 me-0">
-							<button
-								class="btn-search btn border border-secondary btn-md-square rounded-circle bg-white me-4"
-								data-bs-toggle="modal" data-bs-target="#searchModal">
-								<i class="fas fa-search text-primary"></i>
-							</button>
-							<a href="goCart" class="position-relative me-4 my-auto"> <i
-								class="fa fa-shopping-bag fa-2x"></i> <span
-								class="position-absolute bg-secondary rounded-circle d-flex align-items-center justify-content-center text-dark px-1"
-								style="top: -5px; left: 15px; height: 20px; min-width: 20px;">3</span>
-							</a> <a href="goMyPage" class="my-auto"> <i
-								class="fas fa-user fa-2x"></i></a>
+						<button
+							class="btn-search btn border border-secondary btn-md-square rounded-circle bg-white me-4"
+							data-bs-toggle="modal" data-bs-target="#searchModal">
+							<i class="fas fa-search text-primary"></i>
+						</button>
+						<a href="goCart" class="position-relative me-4 my-auto"> <i
+							class="fa fa-shopping-bag fa-2x"></i> <span
+							class="position-absolute bg-secondary rounded-circle d-flex align-items-center justify-content-center text-dark px-1"
+							style="top: -5px; left: 15px; height: 20px; min-width: 20px;">3</span>
+						</a> <a href="goMyPage" class="my-auto"> <i
+							class="fas fa-user fa-2x"></i></a>
 					</div>
 				</div>
 			</nav>
@@ -128,9 +142,9 @@
 
 
 	<!-- Search Start -->
-   <div class="modal fade" id="searchModal" tabindex="-1"
-      aria-labelledby="exampleModalLabel" aria-hidden="true">
-      <div class="modal-dialog modal-fullscreen">
+	<div class="modal fade" id="searchModal" tabindex="-1"
+		aria-labelledby="exampleModalLabel" aria-hidden="true">
+		<div class="modal-dialog modal-fullscreen">
 
 			<div class="modal-content rounded-0">
 				<div class="modal-header">
@@ -141,11 +155,13 @@
 				</div>
 				<form action="goSearch">
 					<div class="modal-body d-flex align-items-center">
-						<div class="input-group w-75 mx-auto d-flex" 
-							style="height: 800px; padding-bottom: 100px; width:50% !important;  justify-content: center; align-items: center;">
-							<input type="text" class="form-control p-3" name="searchText" style="height: 58px;"
-								placeholder="검색어를 입력해주세요." aria-describedby="search-icon-1">
-							<input type="submit" value="검색" id="search-icon-1" style="border-top-right-radius: 10px; border-bottom-right-radius: 10px; height: 58px;"
+						<div class="input-group w-75 mx-auto d-flex"
+							style="height: 800px; padding-bottom: 100px; width: 50% !important; justify-content: center; align-items: center;">
+							<input type="text" class="form-control p-3" name="searchText"
+								style="height: 58px;" placeholder="검색어를 입력해주세요."
+								aria-describedby="search-icon-1"> <input type="submit"
+								value="검색" id="search-icon-1"
+								style="border-top-right-radius: 10px; border-bottom-right-radius: 10px; height: 58px;"
 								class="btn btn-primary border-2 border-secondary py-3 px-4">
 						</div>
 					</div>
@@ -170,44 +186,47 @@
 	<div class="container-fluid py-5">
 		<div class="container py-5">
 			<form action="cBoardInsert" method="post">
-				
+
 				<div class="row g-5 justify-content-center" id="loginDiv">
-				
-				<div class="col-md-12 col-lg-6 col-xl-7" align="left">
-					<h4 class="form-label my-3">* 상품 명</h4>
-					<br>
-					<div class="form-item">
-						<input type="text" name="c_title" style="width: 600px;"
-							class="border-0 border-bottom rounded me-5 py-3 mb-4" placeholder="상품 명을 입력 해주세요">
+
+					<div class="col-md-12 col-lg-6 col-xl-7" align="left">
+						<h4 class="form-label my-3">* 상품 명</h4>
+						<br>
+						<div class="form-item">
+							<input type="text" name="c_title" style="width: 600px;"
+								class="border-0 border-bottom rounded me-5 py-3 mb-4"
+								placeholder="상품 명을 입력 해주세요">
+						</div>
+						<input type="hidden" value="${loginMember.nick }" name="c_writer">
+						<input type="hidden" value="${loginMember.email }" name="email">
+
 					</div>
-					<input type="hidden" value="${loginMember.nick }" name="c_writer">
-					<input type="hidden" value="${loginMember.email }" name="email">
-			
-				</div>
-				
-				<div class="col-md-12 col-lg-6 col-xl-7" align="left">
-						<h4 class="form-label my-3">* 대표 이미지</h4>
+
+					<div class="col-md-12 col-lg-6 col-xl-7" align="left">
+						<h4 class="form-label my-3">* 상품 사진</h4>
 						<br>
 						<div class="form-item">
 
-							<label class="input-file-button" for="btnAtt"> 대표사진 </label>
-							
-								<input  type="file" name="c_img2"  id="btnAtt"
-								 accept="image/jpg, image/jpeg, image/png"style="display: none" >								
-				
+							<label class="input-file-button" for="btnAtt"> 대표 이미지 </label> <input
+								type="file" name="c_img1" id="btnAtt" class="btnAtt"
+								accept="image/jpg, image/jpeg, image/png" style="display: none">
+
 							<div id='image_preview'>
 								<div id='att_zone'
-									data-placeholder='파일을 첨부 하려면 파일 선택 버튼을 클릭하거나 파일을 드래그앤드롭 하세요'></div>
+									data-placeholder='파일을 첨부 하려면 파일 선택 버튼을 클릭하거나 파일을 드래그앤드롭 하세요(대표 사진 포함 최대 3개)'></div>
 							</div>
-							<input type="file" name="c_img2"  id="btnAtt2" accept="image/jpg, image/jpeg, image/png" value="상세사진" >
-							 <input type="file" name="c_img3" id="btnAtt3" accept="image/jpg, image/jpeg, image/png" value="상세사진">
+							<input type="file" name="c_img2" class="btnAtt"
+								accept="image/jpg, image/jpeg, image/png" value="상세사진">
+							<input type="file" name="c_img3" class="btnAtt"
+								accept="image/jpg, image/jpeg, image/png" value="상세사진">
 
 							<script>
 ( /* att_zone : 이미지들이 들어갈 위치 id, btn : file tag id */
   imageView = function imageView(att_zone, btn){
-
+	
     var attZone = document.getElementById(att_zone);
-    var btnAtt = document.getElementById(btn)
+    var btnAtt = document.getElementsByClassName(btn)
+        
     var sel_files = [];
     
     // 이미지와 체크 박스를 감싸고 있는 div 속성
@@ -216,16 +235,30 @@
     // 미리보기 이미지 속성
     var img_style = 'width:100%;height:100%;z-index:none';
     // 이미지안에 표시되는 체크박스의 속성
-    var chk_style = 'width:30px;height:30px;position:absolute;font-size:24px;'
-                  + 'right:0px;bottom:0px;z-index:999;background-color:rgba(255,255,255,0.1);color:green';
-  
-    btnAtt.onchange = function(e){
-      var files = e.target.files;
-      var fileArr = Array.prototype.slice.call(files)
-      for(f of fileArr){
-        imageLoader(f);
-      }
-    }  
+    var chk_style = 'width: 1.5rem;'+
+    'height: 1.5rem;'+
+    'background-position: center center;'+
+    'background-repeat: no-repeat;'+
+    'background-size: 12px 12px;'+
+    'background-image: url(data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSIxMiIgaGVpZ2h0PSIxMiIgdmlld0JveD0iMCAwIDEyIDEyIj4KICAgIDxwYXRoIGZpbGw9IiNGRkYiIGZpbGwtcnVsZT0iZXZlbm9kZCIKICAgICAgICBkPSJNNi44NDggNmwzLjc3Ni0zLjc3NmEuNi42IDAgMSAwLS44NDgtLjg0OEw2IDUuMTUgMi4yMjQgMS4zNzZhLjYuNiAwIDAgMC0uODQ4Ljg0OEw1LjE1MiA2IDEuMzc2IDkuNzc1YS42LjYgMCAxIDAgLjg0OC44NDlMNiA2Ljg0OGwzLjc3NiAzLjc3NmEuNTk4LjU5OCAwIDAgMCAxLjAyNC0uNDI1LjYuNiAwIDAgMC0uMTc2LS40MjRMNi44NDggNnoiIC8+Cjwvc3ZnPg==);'+
+    'background-color: rgb(25, 25, 25);'+
+    'opacity: 0.3;'+
+    'border-radius: 50%;'+
+    'position: absolute;'+
+    'top: 0.5rem;'+
+    'right: 0.5rem;';
+    
+    
+  	for(var i=0; i<btnAtt.length; i++){
+    	btnAtt[i].onchange = function(e){
+	      var files = e.target.files;
+	      var fileArr = Array.prototype.slice.call(files)
+	      for(f of fileArr){
+	    	
+	        imageLoader(f);
+	      }
+	    }  
+	}
     
   
     // 탐색기에서 드래그앤 드롭 사용
@@ -247,6 +280,7 @@
       var dt = e.dataTransfer;
       files = dt.files;
       for(f of files){
+    
         imageLoader(f);
       }
       
@@ -256,13 +290,21 @@
     
     /*첨부된 이미리즐을 배열에 넣고 미리보기 */
     imageLoader = function(file){
+    	
+      console.log('imageLoader: '+file);
+    	
       sel_files.push(file);
       var reader = new FileReader();
       reader.onload = function(ee){
+    	  
+    	
         let img = document.createElement('img')
+        
         img.setAttribute('style', img_style)
         img.src = ee.target.result;
         attZone.appendChild(makeDiv(img, file));
+        /* var g_img = 'g_img1';
+        img.setAttribute('name',g_img); */
       }
       
       reader.readAsDataURL(file);
@@ -270,6 +312,7 @@
     
     /*첨부된 파일이 있는 경우 checkbox와 함께 attZone에 추가할 div를 만들어 반환 */
     makeDiv = function(img, file){
+    	
       var div = document.createElement('div')
       div.setAttribute('style', div_style)
       
@@ -278,10 +321,12 @@
       btn.setAttribute('value', 'x')
       btn.setAttribute('delFile', file.name);
       btn.setAttribute('style', chk_style);
+ 
       btn.onclick = function(ev){
         var ele = ev.srcElement;
         var delFile = ele.getAttribute('delFile');
         for(var i=0 ;i<sel_files.length; i++){
+        	
           if(delFile== sel_files[i].name){
             sel_files.splice(i, 1);      
           }
@@ -289,6 +334,7 @@
         
         dt = new DataTransfer();
         for(f in sel_files) {
+        	
           var file = sel_files[f];
           dt.items.add(file);
         }
@@ -298,6 +344,7 @@
       }
       div.appendChild(img)
       div.appendChild(btn)
+     
       return div
     }
   }
@@ -308,7 +355,7 @@
 						</div>
 						<hr>
 					</div>
-				
+
 					<div class="col-md-12 col-lg-6 col-xl-7" align="left">
 						<h4 class="form-label my-3">* 상품설명</h4>
 						<br>
@@ -317,9 +364,9 @@
 								style="border-radius: 5px" placeholder="상품 가격 및 거래방법 등 작성"></textarea>
 						</div>
 						<hr>
-						
+
 					</div>
-					
+
 					<div class="col-md-12 col-lg-6 col-xl-7" align="left">
 						<h4 class="form-label my-3">* 펀딩 종료 날짜</h4>
 						<br>
@@ -328,8 +375,8 @@
 								class="border-0 border-bottom rounded me-5 py-3 mb-4">
 						</div>
 					</div>
-					
-					
+
+
 					<div class="col-md-12 col-lg-6 col-xl-7" align="left">
 						<h4 class="form-label my-3">* 카테고리</h4>
 						<br>
@@ -346,63 +393,62 @@
 							<hr>
 						</div>
 					</div>
-				
-				<div class="col-md-12 col-lg-6 col-xl-7" align="left">
+
+					<div class="col-md-12 col-lg-6 col-xl-7" align="left">
 						<h4 class="form-label my-3">* 상품 가격</h4>
 						<br>
 						<div class="form-item">
 
 							<input type="text" name="price" placeholder="숫자만 입력해주세요"
-							class="border-0 border-bottom rounded me-5 py-3 mb-4"
-								/>
-								<span>원</span>
-								<hr>
+								class="border-0 border-bottom rounded me-5 py-3 mb-4" />
+							<span>원</span>
+							<hr>
 						</div>
-						
+
 					</div>
-					
+
 					<div class="col-md-12 col-lg-6 col-xl-7" align="left">
-					    <h4 class="form-label my-3">옵션</h4>
-					    <br> <input type="text" id="opTitle" name="c_opt1" style="width: 300px"
-					        class="border-0 border-bottom rounded me-5 py-3 mb-4"
-					        placeholder="ex)제주 감귤 10 kg"> 
-					        
-					        <hr>
-				    </div>
-					
+						<h4 class="form-label my-3">옵션</h4>
+						<br> <input type="text" id="opTitle" name="c_opt1"
+							style="width: 300px"
+							class="border-0 border-bottom rounded me-5 py-3 mb-4"
+							placeholder="ex)제주 감귤 10 kg">
+
+						<hr>
+					</div>
+
 					<div class="col-md-12 col-lg-6 col-xl-7" align="left">
 						<h4 class="form-label my-3">* 재고 수량</h4>
 						<br>
 						<div class="form-item">
 
 							<input type="number" name="c_ea" placeholder="숫자만 입력해주세요"
-							class="border-0 border-bottom rounded me-5 py-3 mb-4"/>
-								<span>개</span>
-								<hr>
-								
+								class="border-0 border-bottom rounded me-5 py-3 mb-4" /> <span>개</span>
+							<hr>
+
 						</div>
-						
+
 					</div>
-				
-					
+
+
 
 					<div class="col-md-12 col-lg-6 col-xl-7" align="right"
-							style="margin-left: 100px">
-							<input class="border-0 border-bottom rounded me-5 py-3 mb-4"
-								style="width: 100px" type="reset" value="초기화"> <input
-								class="border-0 border-bottom rounded me-5 py-3 mb-4"
-								style="width: 100px" type="submit" value="등록하기">
-						</div>
-					
-					
+						style="margin-left: 100px">
+						<input class="border-0 border-bottom rounded me-5 py-3 mb-4"
+							style="width: 100px" type="reset" value="초기화"> <input
+							class="border-0 border-bottom rounded me-5 py-3 mb-4"
+							style="width: 100px" type="submit" value="등록하기">
+					</div>
+
+
 				</div>
-				</form>
+			</form>
 		</div>
-		
-		</div>
-	
-	
-	
+
+	</div>
+
+
+
 
 	<!-- 메인 페이지 하단 -->
 	<div class="container-fluid bg-dark text-white-50 footer pt-5 mt-5">
@@ -415,7 +461,7 @@
 						<p>Email: Example@gmail.com</p>
 						<p>Phone: +0123 4567 8910</p>
 						<p>Payment Accepted</p>
-					<!-- <img src="img/payment.png" class="img-fluid" alt=""> -->
+						<!-- <img src="img/payment.png" class="img-fluid" alt=""> -->
 					</div>
 				</div>
 			</div>
@@ -434,7 +480,7 @@
 	<!-- JavaScript Libraries -->
 	<script
 		src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.4/jquery.min.js"></script>
-								<script
+	<script
 		src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0/dist/js/bootstrap.bundle.min.js"></script>
 	<script src="resources/asset/lib/easing/easing.min.js"></script>
 	<script src="resources/asset/lib/waypoints/waypoints.min.js"></script>

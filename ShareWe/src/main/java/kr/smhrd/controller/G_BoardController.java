@@ -97,7 +97,6 @@ public class G_BoardController {
 		} catch (IOException e) {
 			e.printStackTrace();
 		}
-		g_boardMapper.insertBoard(g_board);
 		
 			return "redirect:/goGeneral";
 		

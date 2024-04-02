@@ -57,22 +57,27 @@ public class C_BoardController {
 		return "Shop";
 	}
 	
+	@SuppressWarnings("unused")
 	@RequestMapping("/cBoardInsert")
 	public String cBoardInsert(c_board c_board, HttpSession session, HttpServletRequest request) {
 		
 		String path = request.getRealPath("resources/g_Image");
 		System.out.println(path);
-		int size = 1024*1024*10;
+		int size = 720*720*10;
 		String encoding = "UTF-8";
 		
 		DefaultFileRenamePolicy rename = new DefaultFileRenamePolicy();
 		try {
+			
 			MultipartRequest multi = new MultipartRequest(request, path, size, encoding, rename);
+			
+			
+		
 		} catch (IOException e) {
 			e.printStackTrace();
 		}
-		
 		c_boardMapper.cBoardInsert(c_board);
+		
 		
 		return "redirect:/goCompany";
 		
