@@ -57,7 +57,6 @@ public class C_BoardController {
 		return "Shop";
 	}
 	
-	@SuppressWarnings("unused")
 	@RequestMapping("/cBoardInsert")
 	public String cBoardInsert(c_board c_board, HttpSession session, HttpServletRequest request) {
 		
@@ -70,13 +69,14 @@ public class C_BoardController {
 		try {
 			
 			MultipartRequest multi = new MultipartRequest(request, path, size, encoding, rename);
+			multi.getFilesystemName("c_img1");
+			multi.getFilesystemName("c_img2");
+			multi.getFilesystemName("c_img3");
 			
-			
-		
 		} catch (IOException e) {
 			e.printStackTrace();
-		}
-		c_boardMapper.cBoardInsert(c_board);
+		}c_boardMapper.cBoardInsert(c_board);
+		
 		
 		
 		return "redirect:/goCompany";

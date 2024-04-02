@@ -477,6 +477,43 @@
 					<div class="rounded position-relative fruite-item"
 						style="width: 1500px;">
 
+						<c:forEach items="${Cfv_list}" var="f">
+
+							<div class="p-4 border border-secondary  rounded"
+								style="width: 300px; border: solid; border-width: 1px; margin: auto; border-color: #EEEEEE !important; display: inline-block;"
+								align="cenber;">
+
+								<c:forEach items="${allC_list}" var="c">
+									<c:if test="${f.c_num eq c.c_num}">
+										<a href="G_BoardContent?g_num=${c.c_num}"> <img alt=""
+											src="resources/g_Image/${c.c_img1}" align="left"
+											class='img-fluid w-100 rounded-top'
+											style="width: 150px; height: 150px; !important;"></a>
+										<a href="G_BoardContent?g_num=${c.c_num}">
+
+											<h3 style="text-align: center;">${c.c_title}</h3>
+										</a>
+
+										<br>
+										<strong style="color: #A4A4A4;">${c.category }</strong>
+										<hr>
+										<strong style="color: #A4A4A4;">${c.c_w_date }</strong>
+									</c:if>
+								</c:forEach>
+
+
+							</div>
+						</c:forEach>
+
+					</div>
+				</div>
+				
+				
+				<div id="com" class="col-md-6 col-lg-6 col-xl-4"
+					style="width: 100%;">
+					<div class="rounded position-relative fruite-item"
+						style="width: 1500px;">
+
 						<c:forEach items="${Gfv_list}" var="f">
 
 							<div class="p-4 border border-secondary  rounded"
@@ -507,6 +544,7 @@
 
 					</div>
 				</div>
+				
 			</div>
 
 		</div>

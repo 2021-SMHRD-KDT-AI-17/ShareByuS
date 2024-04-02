@@ -232,6 +232,8 @@
 
 	
    <!-- 판매 상품 Start-->
+   
+   </script>
    <div class="container-fluid fruite py-5" style="padding-top: 2rem !important;">
       <div class="container py-5">
          <div class="tab-class text-center">
@@ -277,15 +279,23 @@
                                        </a>
                                        <h6 style="display: inline;">${g.g_writer }</h6>
                                        <c:choose>
-	                                      <c:when test="${loginMember.type == 0}">
+											<c:when test="${empty loginMember}">
+												<button onclick="location.href='goLogin'" style="width: 10%;" type="button" class="btn btn-outline-success">❤ 찜</button>
 											</c:when>
-														<c:otherwise>
-															<a onclick="checkFavorite(${g.g_num})" id="${g.g_num }"
-																style="float: right;"
-																class="btn border border-secondary rounded-pill px-3 text-primary">
-																❤ 찜 </a>
-														</c:otherwise>
-													</c:choose>
+						<c:otherwise>
+							<c:choose>
+							
+								<c:when test="${fav eq 'Yes'}">
+									<button onclick="checkGFavorite(${g.g_num})"  id="${g.g_num }" style="width: 10%; display: none;" type="button" class="btn btn-outline-success">❤ 찜</button>
+									<button onclick="delGFavorite(${g.g_num})" id="favCancel${g.g_num}" style="width: 10%;" type="button" class="btn btn-outline-success">❤ 찜</button>
+								</c:when>
+								<c:otherwise>
+									<button onclick="checkGFavorite(${g.g_num})" id="${g.g_num }" style="width: 10%;" type="button" class="btn btn-outline-success">❤ 찜</button>
+									<button onclick="delGFavorite(${g.g_num})" id="favCancel${g.g_num}" style="width: 10%; display: none;" type="button" class="btn btn-outline-success">❤ 찜</button>
+								</c:otherwise>
+							</c:choose>
+						</c:otherwise>
+					</c:choose>	
 												</div>
 											</div>
 										</div>
@@ -348,6 +358,28 @@
 													</a>
 													<h6 style="display: inline;">${c.c_writer }</h6>
 													<c:choose>
+						<c:when test="${empty loginMember}">
+							<button onclick="location.href='goLogin'" style="width: 10%;" type="button" class="btn btn-outline-success">❤ 찜</button>
+						</c:when>
+						<c:otherwise>
+						<input type="hidden" value="${c.c_num}" id="cNum">
+							<c:choose>
+								<c:when test="${fav eq 'Yes'}">
+									<button onclick="checkCFavorite(${c.c_num})" id="${c.c_num}" style="width: 10%; display: none;" type="button" class="btn btn-outline-success">❤ 찜</button>
+									<button onclick="delCFavorite(${c.c_num})" id="favCancel${c.c_num}" style="width: 10%;" type="button" class="btn btn-outline-success">❤ 찜</button>
+								</c:when>
+								<c:otherwise>
+									<button onclick="checkCFavorite(${c.c_num})" id="${c.c_num}" style="width: 10%;" type="button" class="btn btn-outline-success">❤ 찜</button>
+									<button onclick="delCFavorite(${c.c_num})" id="favCancel${c.c_num}" style="width: 10%; display: none;" type="button" class="btn btn-outline-success">❤ 찜</button>
+								</c:otherwise>
+							</c:choose>
+						</c:otherwise>
+					</c:choose>
+												</div>
+											</div>
+										</div>
+									</c:forEach>
+<%-- <c:choose>
 														<c:when test="${loginMember.type == 0}">
 															
 														</c:when>
@@ -357,12 +389,7 @@
 																class="btn border border-secondary rounded-pill px-3 text-primary">
 																❤ 찜 </a>
 														</c:otherwise>
-													</c:choose>
-												</div>
-											</div>
-										</div>
-									</c:forEach>
-
+													</c:choose> --%>
 								</div>
 							</div>
 						</div>
@@ -418,48 +445,22 @@
 	<script src="resources/asset/js/main.js"></script>
 
 	<script type="text/javascript">
-					function checkFavorite(g_num){
-						
-						var zzim = document.getElementById(g_num);
-						
-						$.ajax(
-						{
-							url : "checkFavorite",
-							data : {'g_num' : g_num},
-							type :'get',
-							success : function(data){
-								if(data==1){
-									zzim.innerText ='♥ 찜 완료'
-										
-								}else{
-									zzim.innerText ='이미 찜'
-								}
-							},
-							error : function(){
-								alert("통신실패")
-							}
-						}
-					)
-				}
-				</script>
-				<script type="text/javascript">
 
-				function checkCFavorite(c_num){
+				function checkGFavorite(g_num){
+					 var id = "favCancel" + g_num;
 				
-				var zzim = document.getElementById(c_num);
-				
+					console.log(g_num)
+					console.log(id)
+					document.getElementById(id).style.display = "inline";
+					document.getElementById(g_num).style.display = "none";
+					
 				$.ajax(
 				{
-					url : "checkCFavorite",
-					data : {'c_num' : c_num},
+					url : "insertgFavorite",
+					data : {'g_num' : g_num},
 					type :'get',
 					success : function(data){
-						if(data==1){
-							zzim.innerText ='♥ 찜 완료'
-								
-						}else{
-							zzim.innerText ='이미 찜'
-						}
+						
 					},
 					error : function(){
 						alert("로그인이 필요합니다")
@@ -468,6 +469,79 @@
 			)
 		}
 				</script>
+				<script type="text/javascript">
+			function delGFavorite(g_num){
+				var id = "favCancel" + g_num;
+				console.log(g_num)
+				console.log(id)
+				document.getElementById(g_num).style.display = "inline";
+				document.getElementById(id).style.display = "none";
+						$.ajax(
+						{
+							url : "delgFavorite",
+							data : {'g_num' : g_num},
+							type :'get',
+							success : function(){
+								
+							},
+							error : function(){
+								alert("통신실패")
+							}
+						}
+					)
+				}
+		</script>
+				
+				
+				
+				<script type="text/javascript">
+
+				function checkCFavorite(c_num){
+					 var id = "favCancel" + c_num;
+				
+					console.log(c_num)
+					console.log(id)
+					document.getElementById(id).style.display = "inline";
+					document.getElementById(c_num).style.display = "none";
+					
+				$.ajax(
+				{
+					url : "insertFavorite",
+					data : {'c_num' : c_num},
+					type :'get',
+					success : function(data){
+						
+					},
+					error : function(){
+						alert("로그인이 필요합니다")
+					}
+				}
+			)
+		}
+				</script>
+				<script type="text/javascript">
+			function delCFavorite(c_num){
+				var id = "favCancel" + c_num;
+				console.log(c_num)
+				console.log(id)
+				document.getElementById(c_num).style.display = "inline";
+				document.getElementById(id).style.display = "none";
+						$.ajax(
+						{
+							url : "delFavorite",
+							data : {'c_num' : c_num},
+							type :'get',
+							success : function(){
+								
+							},
+							error : function(){
+								alert("통신실패")
+							}
+						}
+					)
+				}
+		</script>
+				
 
 
 

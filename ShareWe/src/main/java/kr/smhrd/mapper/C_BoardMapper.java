@@ -34,6 +34,8 @@ public interface C_BoardMapper {
 	public void insertReview(review review);
 
 	public List<review> getMyReview(String email);
+
+	
 	
 	
 

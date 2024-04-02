@@ -122,6 +122,7 @@ public class G_BoardController {
 				}
 			}
 			model.addAttribute("fav", fav);
+			
 		}
 		 
 		return "gBoardDetail";
