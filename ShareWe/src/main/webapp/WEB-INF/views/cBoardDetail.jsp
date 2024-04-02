@@ -322,10 +322,12 @@
 		<!-- 게시글 상세 -->
 
 		<div class="row g-4 justify-content-center" id="categoryBox">
+			<c:if test="${loginMember.type == 1}">
 			<div class="row g-4 justify-content-center">
 				<button class="col-xl-1" id="write" type="button"
 					onclick="location.href='gogBoard'">게시물작성</button>
 			</div>
+			</c:if>
 		</div>
 		
 		<div class="row g-4 justify-content-center hero-header" style="margin-left: 28%; margin-right: 28%;">
