@@ -140,6 +140,7 @@
 .detailMenu > ul > li  li a{display: block; padding:10px 15px;}
 .detailMenu > ul > li  li a:hover{background:#eee;}
 .detailMenu > ul > li > li + li{margin-top:5px;}
+
 </style>
 
 
@@ -314,9 +315,44 @@
 
 
 		<!-- 게시글 상세 -->
-		<form action="" method="post">
-		<div class="row g-4 justify-content-center hero-header" style="margin-left: 28%; margin-right: 28%; margin-top: 80px !important;">
-			<div class="boardContent" style="width: 600px;">
+		<!-- <div class="row g-4 justify-content-center hero-header" style="margin-left: 28%; margin-right: 28%; margin-top: 80px !important;"> -->
+			
+			<div>
+				<img src="resources/asset/image/subscribe_top.png" 
+						style="margin-top: 50px; margin-left: 600px; " width: 900px; height:100%;>
+			</div>
+			
+			<div class="upImage" style="margin-top: 30px; margin-left: 300px; margin-bottom: 50px;">
+				<button type="button" onclick="pay(0)" style="border-color: transparent; background-color: transparent;">
+					<input type="hidden"  class="upName" value="UP - 5회권">
+					<input type="hidden" class="upPrice" value="3000">
+					<input type="hidden" class="upCnt" value="5">
+					<img src="resources/asset/image/up5.png" style="width: 300px !important; height:500px !important;">
+				</button>
+				
+				<button type="button" onclick="pay(1)" style="border-color: transparent; background-color: transparent;">
+					<input type="hidden"  class="upName" value="UP - 10회권">
+					<input type="hidden" class="upPrice" value="3000">
+					<input type="hidden" class="upCnt" value="10">
+					<img src="resources/asset/image/up10.png" style="width: 300px !important; height:500px !important;">
+				</button>
+				
+				<button type="button" onclick="pay(2)" style="border-color: transparent; background-color: transparent;">
+					<input type="hidden"  class="upName" value="UP - 25회권">
+					<input type="hidden" class="upPrice" value="100">
+					<input type="hidden" class="upCnt" value="25">
+					<img src="resources/asset/image/up25.png" style="width: 300px !important; height:500px !important;">
+				</button>
+				
+				<button type="button" onclick="pay(3)" style="border-color: transparent; background-color: transparent;">
+					<input type="hidden"  class="upName" value="UP - 60회권">
+					<input type="hidden" class="upPrice" value="100">
+					<input type="hidden" class="upCnt" value="60">
+					<img src="resources/asset/image/up60.png" style="width: 320px !important; height:500px !important;">
+				</button>
+			</div>
+			
+			<!-- <div class="boardContent" style="width: 600px;">
 				<h5>    </h5>
 				<h5 style="text-align: center;">UP 패스 결제</h5>
 			</div>
@@ -354,15 +390,14 @@
 				</table>
 				
 			</div>
-			<h5>    </h5>
+			<h5>    </h5> -->
 			
 			<input type="hidden" value="${loginMember.email}" id="payEmail">
 			<input type="hidden" value="${loginMember.name}" id="payName">
 			<input type="hidden" value="${loginMember.tel}" id="payTel">
 			<input type="hidden" value="${loginMember.address}" id="payAddress">
 			
-		</div>
-		</form>
+		<!-- </div> -->
 		
 		<script type="text/javascript" src="https://code.jquery.com/jquery-1.12.4.min.js"></script>
     	<script type="text/javascript" src="https://cdn.iamport.kr/js/iamport.payment-1.2.0.js"></script>
@@ -428,8 +463,7 @@
 		        		    obj3 = document.createElement('input');
 		        		    obj3.setAttribute('type', 'hidden');
 		        		    obj3.setAttribute('name', 'p_name');
-		        			var inputName = document.getElementById("payName").value;
-		        		    obj3.setAttribute('value', inputName);
+		        		    obj3.setAttribute('value', inputUp);
 		        		
 		        		let obj4;
 		        		    obj4 = document.createElement('input');
