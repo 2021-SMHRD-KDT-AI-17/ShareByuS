@@ -242,7 +242,7 @@
 
                            <c:forEach items="${gboard_list }" var="g" end="7">
                               <div class="col-md-6 col-lg-4 col-xl-3"
-                                 style="margin: auto; width: 25%; height: 10%; margin-bottom: 20px;">
+                                 style="margin: auto; width: 22%; height: 10%; margin-bottom: 20px;">
                                  <div class="rounded position-relative fruite-item">
                                     <div class="fruite-img">
                                        <a href="G_BoardContent?g_num=${g.g_num}">
@@ -316,10 +316,10 @@
 
                            <c:forEach items="${cboard_list }" var="c" end="7">
                               <div class="col-md-6 col-lg-4 col-xl-3"
-                                 style="margin: auto; width: 25%; height: 10%; margin-bottom: 20px;">
+                                 style="margin: auto; width: 22%; height: 10%; margin-bottom: 20px;">
                                  <div class="rounded position-relative fruite-item">
                                     <div class="fruite-img">
-                                    	<a href="C_BoardContent?c_num=${c.c_num}">
+                                    	<a href="C_BoardContent?c_num=${c.c_num}&c_writer=${c.c_writer}">
 	                                       <img src="resources/g_Image/${c.c_img1}"
 	                                          class="img-fluid w-100 rounded-top" alt="">
 	                                    </a>
@@ -331,7 +331,7 @@
                                        class="p-4 border border-secondary border-top-0 rounded-bottom"
                                        style="text-align: left;">
                                        <br>
-                                       <a href="C_BoardContent?c_num=${c.c_num}">
+                                       <a href="C_BoardContent?c_num=${c.c_num}&c_writer=${c.c_writer}">
                                        		<h5>${c.c_title }</h5>
                                        </a>
                                        <h6 style="display: inline;">${c.c_writer }</h6>

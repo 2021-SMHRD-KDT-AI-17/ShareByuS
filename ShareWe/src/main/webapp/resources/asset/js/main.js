@@ -33,9 +33,9 @@
    // Back to top button
    $(window).scroll(function () {
     if ($(this).scrollTop() > 300) {
-        $('.back-to-top').fadeIn('slow');
+        $('.back-to-top').fadeIn('smooth');
     } else {
-        $('.back-to-top').fadeOut('slow');
+        $('.back-to-top').fadeOut('smooth');
     }
     });
     $('.back-to-top').click(function () {

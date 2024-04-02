@@ -321,13 +321,6 @@
 
 		<!-- 게시글 상세 -->
 
-		<div class="row g-4 justify-content-center" id="categoryBox">
-			<div class="row g-4 justify-content-center">
-				<button class="col-xl-1" id="write" type="button"
-					onclick="location.href='gogBoard'">게시물작성</button>
-			</div>
-		</div>
-		
 		<div class="row g-4 justify-content-center hero-header" style="margin-left: 28%; margin-right: 28%;">
 			<input type="hidden" value="${loginMember.email}" id="loginEmail">
 			<script
@@ -595,7 +588,10 @@
 
 		<!-- 메인 페이지 하단 End -->
 
-
+		<!-- Back to Top -->
+	   <button
+	      class="btn btn-primary border-3 border-primary rounded-circle back-to-top" id="moveTopBtn"><i
+	      class="fa fa-arrow-up"></i></button>
 
 		<!-- Back to Top -->
 		<!-- 	<a href="#"
@@ -615,7 +611,16 @@
 
 		<!-- Template Javascript -->
 		<script src="resources/asset/js/main.js"></script>
-
+	
+		<script type="text/javascript">
+			const topBtn = document.querySelector("#moveTopBtn");
+	
+			// 버튼 클릭 시 맨 위로 이동
+			topBtn.onclick = () => {
+			  window.scrollTo({ top: 0, behavior: "smooth" });  
+			}
+		</script>
+		
 		<script type="text/javascript">
 			function checkCFavorite(){
 				var c_num = document.getElementById("cNum").value;
