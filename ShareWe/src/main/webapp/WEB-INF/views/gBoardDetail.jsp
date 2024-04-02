@@ -142,7 +142,7 @@
 .detailMenu > ul > li > a{font-size: 20px;font-weight: bold;padding:10px 0;}
 .detailMenu > ul > li > a:hover{color:#999;}
 .detailMenu > ul > li > ul{ padding: 0; display: none; position: absolute; left:50%; transform: translateX(-50%);border:1px solid #ddd;border-radius: 6px;background: #fff;}
-.detailMenu > ul > li > ul > li{width: 120px !important; text-align: center;}
+.detailMenu > ul > li > ul > li{width: 140px !important; text-align: center;}
 .detailMenu > ul > li:hover ul{display:block; margin-top: 30px;}
 .detailMenu > ul > li  li a{display: block; padding:10px 15px;}
 .detailMenu > ul > li  li a:hover{background:#eee;}

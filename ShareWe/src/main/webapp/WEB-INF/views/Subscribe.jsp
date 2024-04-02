@@ -317,7 +317,8 @@
 		<form action="" method="post">
 		<div class="row g-4 justify-content-center hero-header" style="margin-left: 28%; margin-right: 28%; margin-top: 80px !important;">
 			<div class="boardContent" style="width: 600px;">
-				<h5>UP 패스 결제</h5>
+				<h5>    </h5>
+				<h5 style="text-align: center;">UP 패스 결제</h5>
 			</div>
 			<div class="boardContent" style="width: 600px;">
 				<table style="width: 90%; text-align: center; border-radius: 20px;">
@@ -328,7 +329,7 @@
 					</tr>
 					<tr>
 						<td><input type="hidden"  class="upName" value="UP - 5회권">UP - 5회권</td>
-						<td><input type="hidden" class="upPrice" value="100">3,000 원</td>
+						<td><input type="hidden" class="upPrice" value="3000">3,000 원</td>
 							<input type="hidden" class="upCnt" value="5">
 						<td><button type="button" onclick="pay(0)">결제</button></td>
 					</tr>
@@ -351,7 +352,9 @@
 						<td><button type="button" onclick="pay(3)">결제</button></td>
 					</tr>
 				</table>
+				
 			</div>
+			<h5>    </h5>
 			
 			<input type="hidden" value="${loginMember.email}" id="payEmail">
 			<input type="hidden" value="${loginMember.name}" id="payName">

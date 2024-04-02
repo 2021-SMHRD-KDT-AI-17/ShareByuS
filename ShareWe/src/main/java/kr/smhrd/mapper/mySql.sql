@@ -14,6 +14,8 @@ create table gBoard(
 select * from g_board;
 select * from c_board;
 select * from c_board;
+select * from review;
+select * from c_board;
 select * from payment;
 select * from subscribe;
 
@@ -27,6 +29,7 @@ alter table c_board drop c_img3;
 select * from member;
 select * from g_board;
 select * from c_board;
+select * from review;
 
 select * from approve;
 

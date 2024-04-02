@@ -78,6 +78,16 @@
 	display: list-item;
 	text-align: -webkit-match-parent;
 	unicode-bidi: isolate;
+	
+	
+}
+.boardContent{
+	border-bottom: 1px solid grey;
+	padding-left: 20px;
+	padding-top: 20px;
+	padding-bottom: 20px;
+	margin: 0 auto;
+	
 }
 </style>
 
@@ -495,69 +505,108 @@
 				</div>
 			</div>
 
-
-			<div class="row g-4 justify-content-center">
-				<div id="com" class="col-md-6 col-lg-6 col-xl-4"
-					style="width: 100%; display: none">
-					<div class="rounded position-relative fruite-item"
-						style="width: 1500px;">
-						<c:forEach items="${Cfv_list}" var="f">
-
-							<div class="p-4 border border-secondary  rounded"
-								style="width: 300px; border: solid; border-width: 1px; margin: auto; border-color: #EEEEEE !important; display: inline-block;"
-								align="cenber;">
-
-								<c:forEach items="${allC_list}" var="c">
-									<c:if test="${f.c_num eq c.c_num }">
-										<a href="C_BoardContent?c_num=${c.c_num}&c_writer=${c.c_writer}"> <img alt=""
-											src="resources/g_Image/${c.c_img1}" align="left"
-											class='img-fluid w-100 rounded-top'
-											style="width: 150px; height: 150px; !important;"></a>
-										<a href="C_BoardContent?c_num=${c.c_num}&c_writer=${c.c_writer}">
-
-											<h3 style="text-align: center;">${c.c_title}</h3>
-										</a>
-
-										<br>
-										<strong style="color: #A4A4A4;">${c.category }</strong>
-										<hr>
-										<strong style="color: #A4A4A4;">${c.c_w_date }</strong>
-									</c:if>
-								</c:forEach>
-
-
-							</div>
-						</c:forEach>
-
-
-					</div>
-				</div>
-			</div>
-
-
 		</div>
 <!-- 리뷰관리  -->
 		<div class="col-lg-9" id="myReview" style="display: none">
 
 			<div class="row g-4 justify-content-center">
-				<div class="col-md-6 col-lg-6 col-xl-4" style="width: 1200px">
 					<div class="rounded position-relative fruite-item">
-						<h1>리뷰</h1>
+						<h3  align="center" >리뷰</h3>
+						<br>
+						<c:choose>
+						<c:when test="${empty review_list}">
+						
+							<h5>리뷰</h5><br>
+							<div class="boardContent" style="width: 80% !important; text-align: center;">
+								<h6>등록한 리뷰가 없습니다.</h6>
+							</div>
+						</c:when>
+						<c:otherwise>
+						<c:forEach items="${review_list}" var="r">
+							
+							
+							<div class="boardContent" style="width: 80% !important; height:180px; font-size: 13px !important;
+								border: solid; border-color: #A4A4A4; border-width: 0.1px;">
+									
+
+								<c:forEach items="${allC_list}" var="c">
+									<c:if test="${r.c_num eq c.c_num }">
+									
+										<a href="C_BoardContent?c_num=${c.c_num}&c_writer=${c.c_writer}"> <img alt=""
+											src="resources/g_Image/${c.c_img1}" align="left"
+											style="width: 140px; height: 140px; margin-right:35px !important;"></a>
+											
+											<a href="C_BoardContent?c_num=${c.c_num}&c_writer=${c.c_writer}">
+											<b style="text-align: left; font-size: x-large;">${c.c_title}</b>
+										</a>
+															
+											<span><c:forEach begin="1" end="${r.r_score}" step="1">
+												<span style="margin-right: 5px; margin-bottom: 30px; font-size: x-large;" class="starScore">★</span>
+											</c:forEach>
+											<c:if test="${r.r_score < 5}">
+												<c:forEach begin="1" end="${5 - r.r_score}" step="1">
+													<span style="margin-right: 5px; margin-bottom: 15px; font-size: large;" class="starScore">☆</span>
+												</c:forEach>
+											</c:if></span>
+											<br> <br>
+											
+											<strong style="text-align: left; font-size: large;">${r.r_content}</strong>
+										<br>
+										<hr>
+										<p style="color: #A4A4A4; margin: 0px;" align="left" >작성일 ${r.r_date}</p>
+									</c:if>
+									
+								</c:forEach>
+
+
+							</div>
+							<br>
+						</c:forEach>
+						
+						</c:otherwise>
+						</c:choose>
+					
+						
 					</div>
-				</div>
 			</div>
 		</div>
-
+<!-- 구독권 -->
+		
+		
 		<div class="col-lg-9" id="mySub" style="display: none">
 
 			<div class="row g-4 justify-content-center">
 				<div class="col-md-6 col-lg-6 col-xl-4" style="width: 1200px">
 					<div class="rounded position-relative fruite-item">
-						<h1>구독</h1>
+						<h3>구독권</h3>
+						<%-- <div class="boardContent">
+         	<h6>무료 UP 체험권 횟수 : ${subscribeInfo.free_cnt } / 5 회</h6>
+         </div>
+         <div class="boardContent">
+         	<h6>보유중인 UP 횟수 : ${subscribeInfo.paid_cnt } 회</h6>
+         </div>
+         <div class="boardContent">
+         	<p>${loginMember.nick } 님의 게시글을 끌어 올리겠습니까?</p><br>
+         	<h6>구독권을 구매하여 끌어올리기 기능을 사용해보세요!</h6>
+         </div>
+         <div class="row g-4 justify-content-center" style="padding-bottom: 20px; margin-top: 10px !important;">
+         	<c:if test="${subscribeInfo.free_cnt > 0 || subscribeInfo.paid_cnt > 0}">
+	            <button type="button" class="btn btn-outline-success"
+	                  	 onclick="location.href='gBoardUp?g_num=${g_num}&free_cnt=${subscribeInfo.free_cnt}&paid_cnt=${subscribeInfo.paid_cnt}'" style="width: 20%; margin-top: 10px !important;">끌어올리기</button>
+            </c:if>
+            <button type="button" class="btn btn-outline-success"
+                     onclick="location.href='goSubscribe'" style="width: 20%; margin-left: 20px; margin-top: 10px !important;">구독권 구매</button>
+         </div> --%>
+						
+						
 					</div>
 				</div>
 			</div>
 		</div>
+		
+		
+		
+		<!-- 참여내역 -->
 		<div class="col-lg-9" id="myJoin" style="display: none">
 
 			<div class="row g-4 justify-content-center">

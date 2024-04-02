@@ -273,7 +273,7 @@
 			<div class="row g-4 justify-content-center" id="boardDiv" >
                         <c:forEach items="${gboard_list}" var="g">
                            <div class="col-md-1 col-lg-2 col-xl-3"
-                           		style="margin-right: 10px; margin-left: 10px; width: 20%; height: 10%; margin-bottom: 20px;">
+                           		style="margin-right: 10px; margin-left: 10px; width: 21%; height: 10%; margin-bottom: 20px;">
                               <div class="rounded position-relative fruite-item">
                                  <div class="fruite-img">
                                     <a href="G_BoardContent?g_num=${g.g_num}">

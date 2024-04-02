@@ -45,4 +45,12 @@
 		select * from review where c_num=#{c_num}
 	</select>
 	
+	<select id="getMyReview" parameterType="String" resultType="kr.smhrd.entity.review">
+		select * from review where email=#{email}
+	</select>
+	
+	<insert id="insertReview" parameterType="kr.smhrd.entity.review">
+		insert into review(email, r_score, r_content, c_num) values(#{email}, #{r_score}, #{r_content}, #{c_num})
+	</insert>
+	
 </mapper>
