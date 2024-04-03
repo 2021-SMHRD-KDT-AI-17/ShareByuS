@@ -210,7 +210,7 @@ public class G_BoardController {
 	public String gBoardUpdate(g_board g_board, Model model) {
 		g_boardMapper.gBoardUpdate(g_board);
 		
-		return "redirect:/G_BoardContent";
+		return "redirect:/goGeneral";
 	}
 	
 	// 게시글 삭제
