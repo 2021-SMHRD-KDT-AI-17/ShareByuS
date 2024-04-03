@@ -177,18 +177,26 @@
 
 
 
-				<table class="text-center">
-					<div class="featurs-content">
-						<tr style="font-size: 20px; background-color: #bdc3c7;">
-							<th>기업명</th>
-							<th>대표자</th>
-							<th>이메일</th>
-							<th>주소</th>
-							<th>승인여부</th>
-						</tr>
-
-						<c:forEach items="${adApprove}" var="a">
+			
+					<table class="text-center">
+						<div class="featurs-content">
+							<tr style="font-size:20px; background-color: #bdc3c7; ">
+								<th>기업명</th>
+								<th>대표자</th>
+								<th>이메일</th>
+								<th>주소</th>
+								<th>승인여부</th>
+							</tr>
+							
+							<c:if test="${empty adApprove}">
+								<tr>
+									<td colspan="5">현재 승인 대상이 없습니다.</td>
+								</tr>
+							</c:if>
+							
+						<c:forEach items="${adApprove}" var="a" >
 							<tr>
+							
 								<td>${a.nick }</td>
 								<td>${a.name }</a></td>
 								<td>${a.email }</td>

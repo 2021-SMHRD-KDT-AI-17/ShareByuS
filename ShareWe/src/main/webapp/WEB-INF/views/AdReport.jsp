@@ -131,25 +131,79 @@
 	<!-- Navbar End -->
 
 
-	<!-- Modal Search Start -->
-	<div class="modal fade" id="searchModal" tabindex="-1"
-		aria-labelledby="exampleModalLabel" aria-hidden="true">
-		<div class="modal-dialog modal-fullscreen">
-			<div class="modal-content rounded-0">
-				<div class="modal-header">
-					<h5 class="modal-title" id="exampleModalLabel">Search by
-						keyword</h5>
-					<button type="button" class="btn-close" data-bs-dismiss="modal"
-						aria-label="Close"></button>
-				</div>
-				<div class="modal-body d-flex align-items-center">
-					<div class="input-group w-75 mx-auto d-flex">
-						<input type="search" class="form-control p-3"
-							placeholder="keywords" aria-describedby="search-icon-1">
-						<span id="search-icon-1" class="input-group-text p-3"><i
-							class="fa fa-search"></i></span>
-					</div>
-				</div>
+
+        <!-- Modal Search Start -->
+        <div class="modal fade" id="searchModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+            <div class="modal-dialog modal-fullscreen">
+                <div class="modal-content rounded-0">
+                    <div class="modal-header">
+                        <h5 class="modal-title" id="exampleModalLabel">Search by keyword</h5>
+                        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                    </div>
+                    <div class="modal-body d-flex align-items-center">
+                        <div class="input-group w-75 mx-auto d-flex">
+                            <input type="search" class="form-control p-3" placeholder="keywords" aria-describedby="search-icon-1">
+                            <span id="search-icon-1" class="input-group-text p-3"><i class="fa fa-search"></i></span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!-- Modal Search End -->
+
+
+        <!-- Single Page Header start -->
+        <div class="container-fluid page-header py-5">
+            <h1 class="text-center text-white display-6">신고 관리</h1>
+            <ol class="breadcrumb justify-content-center mb-0">
+                <li class="breadcrumb-item active text-white">Report Administration</li>
+            </ol>
+        </div>
+        <!-- Single Page Header End -->
+
+
+        <!-- 사용자 신고관리 -->
+   <div class="container-fluid py-5">
+      <div class="row g-4 justify-content-center">
+         <div class="row g-4 justify-content-center" style="width: 1000px !important;" >
+
+
+
+					<%int index = 0;%>
+					<table class="text-center">
+						<div class="featurs-content">
+							<tr style="font-size:20px; background-color: #bdc3c7; ">
+								<th>No.</th>
+								<th>신고 게시글/리뷰</th>
+								<th>작성자</th>
+								<th>신고사유</th>
+								<th>관리</th>
+							</tr>
+							
+							<c:if test="${empty adReport}">
+								<tr>
+									<td colspan="5">현재 들어온 신고가 없습니다.</td>
+								</tr>
+							</c:if>
+
+							 <c:forEach var="rp" items="${adReport}">
+							 		<%index++;%>
+										<tr>
+											<td><%=index %></td>
+											<td><a href="G_BoardContent?g_num=${rp.b_num}">${rp.r_title}</td>
+											<td>${rp.email}</td>
+											<td>${rp.rp_content}</td>
+											<td><a href="deleteRep?b_num=${rp.b_num}&email=${rp.email}"><button>삭제</button></a>
+											<a href="passRep?b_num=${rp.b_num}&email=${rp.email}"><button>통과</button></a>
+											</td>
+										</tr>
+						</div>
+							 
+							 
+							 </c:forEach>
+								
+					</table>
+			
 			</div>
 		</div>
 	</div>
@@ -175,9 +229,9 @@
 
 
 
-				<%
-				int index = 0;
-				%>
+				
+				<% int index =0;%>
+				
 				<table class="text-center">
 					<div class="featurs-content">
 						<tr style="font-size: 20px; background-color: #bdc3c7;">
@@ -201,10 +255,10 @@
 									<a href="passRep?b_num=${rp.b_num}&email=${rp.email}"><button>통과</button></a>
 								</td>
 							</tr>
+							</c:forEach>
+							
 					</div>
 
-
-					</c:forEach>
 
 				</table>
 

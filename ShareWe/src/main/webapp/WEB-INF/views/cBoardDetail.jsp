@@ -310,17 +310,17 @@
 						%>
 					</div>
 					<div class="d-flex m-3 me-0">
-						<button
-							class="btn-search btn border border-secondary btn-md-square rounded-circle bg-white me-4"
-							data-bs-toggle="modal" data-bs-target="#searchModal">
-							<i class="fas fa-search text-primary"></i>
-						</button>
-						<a href="goCart" class="position-relative me-4 my-auto"> <i
-							class="fa fa-shopping-bag fa-2x"></i> <span
-							class="position-absolute bg-secondary rounded-circle d-flex align-items-center justify-content-center text-dark px-1"
-							style="top: -5px; left: 15px; height: 20px; min-width: 20px;">3</span>
-						</a> <a href="goMyPage" class="my-auto"> <i
-							class="fas fa-user fa-2x"></i></a>
+
+							<button
+								class="btn-search btn border border-secondary btn-md-square rounded-circle bg-white me-4"
+								data-bs-toggle="modal" data-bs-target="#searchModal">
+								<i class="fas fa-search text-primary"></i>
+							</button>
+							<a href="goCart" class="position-relative me-4 my-auto"> <i class="bi bi-bell-fill fa-2x"></i> <span
+								class="position-absolute bg-secondary rounded-circle d-flex align-items-center justify-content-center text-dark px-1"
+								style="top: -5px; left: 15px; height: 20px; min-width: 20px;">3</span>
+							</a> <a href="goMyPage" class="my-auto"> <i
+								class="fas fa-user fa-2x"></i></a>
 					</div>
 				</div>
 			</nav>
@@ -396,8 +396,19 @@
 
 		<!-- 게시글 상세 -->
 
-		<div class="row g-4 justify-content-center hero-header"
-			style="margin-left: 28%; margin-right: 28%;">
+
+
+		<div class="row g-4 justify-content-center" id="categoryBox">
+			<c:if test="${loginMember.type == 1}">
+			<div class="row g-4 justify-content-center">
+				<button class="col-xl-1" id="write" type="button"
+					onclick="location.href='gogBoard'">게시물작성</button>
+			</div>
+			</c:if>
+		</div>
+		
+
+		<div class="row g-4 justify-content-center hero-header" style="margin-left: 28%; margin-right: 28%;">
 			<input type="hidden" value="${loginMember.email}" id="loginEmail">
 			<script
 				src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js"
@@ -502,15 +513,18 @@
 									</a>
 										<ul>
 											<li>
-												<form action="sendReportInfo" method="post">
-													<input type="hidden" value="${c_board.c_num}" name="r_num">
-													<input type="hidden" value="${c_board.email}" name="email">
-													<input type="hidden" value="${c_board.c_title}"
-														name="r_title"> <input type="hidden"
-														value="${loginMember.email}" name="rp_email"> <input
-														type="submit" value="신고하기">
-												</form>
 
+											<form action="sendReportInfo" method="post">
+									            <input type="hidden" value="${c_board.c_num}" name="r_num">
+									            <input type="hidden" value="${c_board.email}" name="email">
+									            <input type="hidden" value="${c_board.c_title}" name="r_title">
+									             <input type="hidden" value="${loginMember.email}" name="rp_email">
+									               
+									            <input type="submit" class="btn btn-primary btn-link"
+									            style="background-color:white !important; color:grey !important; border-width:0px !important;"
+									            value="신고하기">
+            								</form>
+											
 											</li>
 										</ul></li>
 								</ul>
@@ -519,7 +533,7 @@
 						<c:when test="${ empty loginMember}">
 							<nav class="detailMenu" style="float: right;">
 								<ul>
-									<li><a href="#"> <strong style="float: right;"></strong></a>
+									<li><a href="#"> <strong style="float: right;"></strong></a></li>
 								</ul>
 							</nav>
 						</c:when>
@@ -571,49 +585,42 @@
 					<br>
 
 					<form action="buyProduct">
-						<select class="option" name="opIndex">
+						<select class="option" id="" name="opIndex" onchange="optSelect(this.value);" >
+							<option>옵션을 선택해주세요.</option>
 							<c:forEach items="${option}" var="op" varStatus="i">
-								<option value="${price[i.index]}">옵션 : ${op}, 가격 :
-									${price[i.index]}원</option>
+								<option value="'옵션 : ${op}, 가격 : ${price[i.index]}원'">옵션 : ${op}, 가격 : ${price[i.index]}원</option>
 							</c:forEach>
-						</select> <input type="hidden" value="${c_board.c_num }" name="c_num">
-						<button style="width: 5%; margin-left: 20px;" type="button"
-							onclick="count('plus')" value="+" class="btn btn-outline-success">+</button>
-						<span style="width: 5%; margin-left: 5px" type="text"
-							class="btn btn-outline-success" id="result">0</span>
-						<button style="width: 5%; margin-left: 5px" type="button"
-							onclick="count('minus')" value="-"
-							class="btn btn-outline-success">-</button>
-						<input style="float: right; width: 15%; margin-top: 5px"
-							type="submit" value="구매하기" class="btn btn-outline-success"><br>
+
+						</select>
+						<input type="hidden" value="${c_board.c_num }" name="c_num">
+						
+						
 					</form>
 				</div>
 
+				<div class="boardContent" id="opDiv" style="display: none;">
+					<span id="optSel" style="width: 500px; float: left;"></span>
+					<button style="width: 5%; margin-left: 20px; margin-right: 12px;" type="button" onclick="decrease()" value="-" class="btn btn-outline-success">-</button>
+					<span style="width: 5%; margin-left: 5px; margin-right: 12px;"  id="num">0</span>
+					<button style="width: 5%;  margin-left: 5px; " type="button" onclick="increase()" value="+" class="btn btn-outline-success">+</button>
+					<input style="float: right; width: 15%; margin-left: 0px;" type="submit" value="구매하기" class="btn btn-outline-success"><br>
+				</div>
+				
 				<script type="text/javascript">
-				function count(type)  {
-				    // 결과를 표시할 element
-				    const resultElement = document.getElementById('result');
-				    
-				    // 현재 화면에 표시된 값
-				    let number = resultElement.innerText;
-				    
-				    // 더하기/빼기
-				    if(type === 'plus') {
-				      number = parseInt(number) + 1;
-				    }else if(type === 'minus')  {
-				        if(number > 0){
-				            number = parseInt(number) - 1;
-				        }
-				     
-				    
-				    // 결과 출력
-				    resultElement.innerText = number;
-				  }
+					const increase = () => {
+			            const pTag = document.getElementById('num');
+	
+			            pTag.innerText = (parseInt(pTag.innerText) + 1);
+			        }
+	
+			        const decrease = () => {
+			            const pTag = document.getElementById('num');
+	
+			            if(parseInt(pTag.innerText) > 0){
+			                pTag.innerText = (parseInt(pTag.innerText) - 1);
+			            }
+			        }
 				</script>
-
-				<div class="boardContent">참여인원:</div>
-
-
 				<div class="boardContent">
 					<strong id="addr" style="display: none">${m_addr.address}</strong>
 					<h5>${c_board.place}</h5>
@@ -887,11 +894,35 @@
 				}
 		</script>
 
-		<script type="text/javascript"
-			src="https://code.jquery.com/jquery-1.12.4.min.js"></script>
-		<script type="text/javascript"
-			src="https://cdn.iamport.kr/js/iamport.payment-1.2.0.js"></script>
-		<script>
+		
+		<!-- 옵션선택 비동기 -->
+		<script type="text/javascript">
+			function optSelect(value){
+				/* var opt = document.getElementById("optSelect").value;
+	 */
+				document.getElementById("opDiv").style.display = "block";
+				document.getElementById("optSel").innerText = value;
+				
+				
+					/* $.ajax(
+					{
+						url : "checkOpt",
+						data : {'c_name' : c_name},
+						type :'get',
+						success : function(){
+							
+						},
+						error : function(){
+							alert("통신실패")
+						}
+					}
+				) */
+			}
+		</script>
+		
+		<script type="text/javascript" src="https://code.jquery.com/jquery-1.12.4.min.js"></script>
+    	<script type="text/javascript" src="https://cdn.iamport.kr/js/iamport.payment-1.2.0.js"></script>
+   		<script>
 	        function pay(num) {
 	        	
 	        	var inputUp = document.getElementsByClassName("upName")[num].value;

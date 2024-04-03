@@ -74,6 +74,7 @@
 						class="text-white"><small class="text-white mx-2">회원가입</small></a>
 				</div>
 			</div>
+
 		</div>
 		<div class="container px-0">
 			<nav class="navbar navbar-light bg-white navbar-expand-xl">

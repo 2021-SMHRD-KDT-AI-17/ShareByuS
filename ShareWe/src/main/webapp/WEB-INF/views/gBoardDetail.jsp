@@ -490,15 +490,18 @@
 									</a>
 										<ul>
 											<li>
-												<form action="sendReportInfo" method="post">
-													<input type="hidden" value="${g_board.g_num}" name="r_num">
-													<input type="hidden" value="${g_board.email}" name="email">
-													<input type="hidden" value="${g_board.g_title}"
-														name="r_title"> <input type="hidden"
-														value="${loginMember.email}" name="rp_email"> <input
-														type="submit" value="신고하기">
-												</form>
-											</li>
+											<form action="sendReportInfo" method="post">
+									            <input type="hidden" value="${g_board.g_num}" name="r_num">
+									            <input type="hidden" value="${g_board.email}" name="email">
+									            <input type="hidden" value="${g_board.g_title}" name="r_title">
+									             <input type="hidden" value="${loginMember.email}" name="rp_email">
+									               
+									            <input type="submit" class="btn btn-primary btn-link"
+									            style="background-color:white !important; color:grey !important; border-width:0px !important;"
+									            value="신고하기">
+            								</form>
+           									 </li>
+
 										</ul></li>
 								</ul>
 							</nav>
