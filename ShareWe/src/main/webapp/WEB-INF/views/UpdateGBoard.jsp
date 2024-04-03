@@ -113,7 +113,7 @@
 									<a href="getCategory?category=여행/도서" class="dropdown-item">여행/도서</a>
 								</div>
 							</div>
-							<a href="contact.html" class="nav-item nav-link" style="color: black; font-size: 18px;">동네보기</a>
+							<a href="contact.html" class="nav-item nav-link" style="color: black; font-size: 18px;"><strong>동네보기</strong></a>
 					</div>
 					<div class="d-flex m-3 me-0">
 						<button
@@ -176,6 +176,7 @@
 		<div class="container py-5">
 			<form action="gBoardUpdate" method="post"
 				enctype="multipart/form-data">
+				<input type="hidden" name="g_num" value="${g_board.g_num}">
 				<div class="row g-5 justify-content-center" id="loginDiv">
 					<div class="col-md-12 col-lg-6 col-xl-7" align="left">
 						<h4 class="form-label my-3">* 상품 사진</h4>
@@ -332,46 +333,6 @@
 					</div>
 
 
-					<!-- <div class="col-md-12 col-lg-6 col-xl-7" align="left">
-						<h4 class="form-label my-3">* 참여인원</h4>
-						<br>
-						<div class="form-item">
-							<div class="col-sm-8">
-
-								<button type="button"
-									class="border-0 border-bottom rounded me-5 py-3 mb-4"
-									style="width: 50px; font-size: 20px;" onclick="increase()">+</button>
-
-								<b style="margin-right: 40px; font-size: 30px;" id="num">2</b>
-
-								<button type="button"
-									class="border-0 border-bottom rounded me-5 py-3 mb-4"
-									style="width: 50px; font-size: 20px;" onclick="decrease()">-</button>
-
-								<script>
-								
-								const join = document.getElementById('num');
-						        
-						        const increase =()=>{
-						            num.innerText= parseInt(join.innerText)+1
-						        }
-						        const decrease =()=>{
-						            if(parseInt(join.innerText)!=2){
-						                num.innerText= parseInt(join.innerText)-1
-						
-						            }
-						        }
-								</script>
-								<br> <b style="margin-right: 40px; font-size: 15px;">최소인원은
-									2명 입니다.</b>
-							</div>
-						</div>
-						<hr>
-
-
-					</div> -->
-					
-					
 					<div class="col-md-12 col-lg-6 col-xl-7" align="left">
 						<h4 class="form-label my-3">* 상품설명</h4>
 						<br>

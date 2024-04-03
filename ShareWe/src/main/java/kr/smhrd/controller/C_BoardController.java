@@ -18,6 +18,7 @@ import com.oreilly.servlet.multipart.DefaultFileRenamePolicy;
 import kr.smhrd.entity.c_board;
 import kr.smhrd.entity.c_favorite;
 import kr.smhrd.entity.c_subscribe;
+import kr.smhrd.entity.g_favorite;
 import kr.smhrd.entity.member;
 import kr.smhrd.entity.review;
 import kr.smhrd.mapper.C_BoardMapper;
@@ -47,6 +48,16 @@ public class C_BoardController {
 		List<c_board> cboard_list = c_boardMapper.getCBoard();
 		model.addAttribute("cboard_list", cboard_list);
 		
+		member loginMember = (member)session.getAttribute("loginMember");
+		
+	    if(loginMember != null) {
+			String email = loginMember.getEmail();
+			List<c_favorite> cfavorite_list = favoriteMapper.getCEmail(email);
+			
+			
+			model.addAttribute("cfavorite_list",cfavorite_list);
+		}
+		
 		return "Shop";
 	}
 	
@@ -54,6 +65,8 @@ public class C_BoardController {
 	public String getComCategory(@RequestParam("category") String category, Model model) {
 		List<c_board> cboard_list = c_boardMapper.getComCategory(category);
 		model.addAttribute("cboard_list", cboard_list);
+		
+		
 		return "Shop";
 	}
 	
@@ -228,6 +241,22 @@ public class C_BoardController {
 		
 		return "Review";
 	}
+	
+	// 리뷰 작성
+	@RequestMapping("/buyProduct")
+	public String buyProduct(HttpServletRequest request, Model model) {
+		int index = (int) request.getAttribute("opIndex");
+		int c_num = (int) request.getAttribute("c_num");
+		
+		c_board c_board = c_boardMapper.C_BoardContent(c_num);
+		String[] optList = c_board.getC_opt1().split("\n");
+		String[] priceList = c_board.getPrice().split("\n");
+		
+		
+		return "Review";
+	}
+	
+	
 	
 	
 	}

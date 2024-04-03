@@ -222,8 +222,13 @@
 					<div class="navbar-nav mx-auto">
 							<a href="goGeneral" class="nav-item nav-link" style="color: black; font-size: 18px;"><strong>공구함</strong></a>
 							<a href="goCompany" class="nav-item nav-link" style="color: black; font-size: 18px;"><strong>우리동네</strong></a>
-							<!-- <a href="shop-detail.html" class="nav-item nav-link">Shop Detail</a> -->
-							<div class="nav-item dropdown">
+
+						<!-- 기업회원일때만 나오게 -->
+						<c:if test="${type eq 'company'}">
+							<a href="gocBoard" class="nav-item nav-link">상품등록</a>
+						</c:if>
+
+						<div class="nav-item dropdown">
 								<a href="#" class="nav-link dropdown-toggle active"
 									data-bs-toggle="dropdown" style="color: black; font-size: 18px;"><strong>카테고리</strong></a>
 								<div class="dropdown-menu m-0 bg-secondary rounded-0">
@@ -358,16 +363,6 @@
 			</div>
 			
 			<div class="row g-4 justify-content-center">
-				<div class="boardContent">
-					<form action="" style="display: inline;">
-						<select>
-							<c:forEach items="${option}" var="op" varStatus="i">
-								<option value="${i.index}">옵션 : ${op}, 가격 : ${price[i.index]}원</option>
-							</c:forEach>
-						</select>
-					</form>
-					<button style="width: 20%; margin-left: 20px" type="button" class="btn btn-outline-success">구매하기</button><br>
-				</div>
 				<div class="boardContent" style="padding-bottom: 0; height: 60px;">
 					<input type="hidden" value="${c_board.c_num}" id="cNum">
 					<c:choose>
@@ -425,16 +420,13 @@
 						<c:when test="${ empty loginMember}">
 							<nav class="detailMenu" style="float: right;">
 								<ul>
-									<li><a href="#"> <strong style="float: right;"></strong></a>
+									<li><strong><a href="#"> <strong style="float: right;"></strong></a>
 								</ul>
 							</nav>
 						</c:when>
 					</c:choose>
 					
 					
-				</div>
-				<div class="boardContent">
-					참여인원:
 				</div>
 				<div class="boardContent">
 					<span>가게명 : <h6 style="display: inline; margin-left: 10px;">${c_board.c_writer}</h6></span>
@@ -459,123 +451,41 @@
 					<span style="float: right;">${c_board.category} / ${c_board.c_w_date}</span>
 				</div>
 				
+				<!-- 주문자 -->
 				<div class="boardContent">
-					<h5>${c_board.c_title}</h5>
-					<h6>펀딩 종료 날짜 : ${c_board.c_f_date}</h6><br>
-					<div>${c_board.c_content}</div><br>
+					<h6>${c_board.c_title}</h6>
+					<h6><small>주문자명</small> </h6><br>
+					<input placeholder="주문자명 입력" value="${loginMember.name }" style="border-color: transparent;" >
+					<h6><small>휴대폰 번호</small> </h6><br>
+					<input placeholder="휴대폰번호 입력" value="${loginMember.tel }" style="border-color: transparent;" >
+				</div>
 					
-					<form action="buyProduct">
-						<select class="option" name="opIndex">
-							<c:forEach items="${option}" var="op" varStatus="i">
-								<option value="${price[i.index]}">옵션 : ${op}, 가격 : ${price[i.index]}원</option>
-							</c:forEach>
-						</select>
-						<input type="hidden" value="${c_board.c_num }" name="c_num">
-						<button style="width: 5%;  margin-left: 20px; " type="button" onclick="count('plus')" value="+" class="btn btn-outline-success">+</button>
-						<span style="width: 5%; margin-left: 5px" type="text" class="btn btn-outline-success" id="result">0</span>
-						<button style="width: 5%; margin-left: 5px" type="button" onclick="count('minus')" value="-" class="btn btn-outline-success">-</button>
-						<input style="float: right; width: 15%; margin-top: 5px" type="submit" value="구매하기" class="btn btn-outline-success"><br>
-					</form>
-				</div>
-				
-				<script type="text/javascript">
-				function count(type)  {
-				    // 결과를 표시할 element
-				    const resultElement = document.getElementById('result');
-				    
-				    // 현재 화면에 표시된 값
-				    let number = resultElement.innerText;
-				    
-				    // 더하기/빼기
-				    if(type === 'plus') {
-				      number = parseInt(number) + 1;
-				    }else if(type === 'minus')  {
-				        if(number > 0){
-				            number = parseInt(number) - 1;
-				        }
-				     
-				    
-				    // 결과 출력
-				    resultElement.innerText = number;
-				  }
-				</script>
-				
-				<div class="boardContent">
-					참여인원:
+				<div class="boardContent">	
+					<strong>픽업</strong>
+					<div>
+						<p>${c_board.c_title }</p>
+						<ul>
+							<li>
+								<p>${c_board.c_opt1 }</p>
+								<p>
+									<span>${c_board.price }</span>
+									<span>개수</span>
+									<span><button>결제하기</button></span>
+								</p>
+							</li>
+						</ul>
+					</div>
 				</div>
 				
 				
 				<div class="boardContent">
+					<strong>픽업장소</strong>
 					<strong  id="addr" style="display: none">${m_addr.address}</strong>
 					<h5>${c_board.place}</h5>
 					<div id="map" style="width:100%;height:350px;" class="row g-4 justify-content-center">
 						
 					</div>
 				</div>
-				<c:choose>
-					<c:when test="${empty review_list}">
-						<div class="boardContent" style="width: 80% !important; margin-left: 65px !important;">
-							<h4>리뷰</h4><br>
-							<div style="margin-left: 200px;">
-								<h6>아직 등록된 리뷰가 없어요.</h6><br>
-								<c:choose>
-									<c:when test="${empty loginMember}">
-										<button style="width: 35%; margin-left: 20px;" type="button" 
-											onclick="location.href='goLogin'" class="btn btn-outline-success">리뷰 작성하기</button>
-									</c:when>
-									<c:otherwise>
-										<button style="width: 35%; margin-left: 20px;" type="button" 
-											onclick="location.href='writeReview?c_num=${c_board.c_num}'" class="btn btn-outline-success">리뷰 작성하기</button>
-									</c:otherwise>
-								</c:choose>
-							</div>
-						</div>
-					</c:when>
-					<c:otherwise>
-						<div class="boardContent" style="padding-bottom: 0px;">
-							<h4>리뷰</h4><br>
-						</div>
-						<div class="boardContent">
-							<div class="boardContent" style="width: 80% !important; margin-left: 63px !important;">
-								<div style="padding-left: 230px;">
-									<h5 style="margin-left: 38px; padding-top: 20px;">평점 : ${scoreDAvg}</h5>
-										
-									<c:forEach begin="1" end="${scoreAvg}" step="1">
-										<span style="margin-right: 5px;" class="starScore">★</span>
-									</c:forEach>
-									<c:if test="${scoreAvg < 5}">
-										<c:forEach begin="1" end="${5 - scoreAvg*100/100}" step="1">
-											<span style="margin-right: 5px;" class="starScore">☆</span>
-										</c:forEach>
-									</c:if>
-								</div>
-							</div>
-							<c:forEach items="${review_list}" var="r" end="2">
-								<div class="boardContent" style="width: 80% !important; margin-left: 65px !important;">
-									<div style="font-size: 13px !important;">
-										<span style="margin-right: 10px; font-size: 18px;"><strong>${r.email}</strong></span>
-										<span>${r.r_date}</span>
-										<p><c:forEach begin="1" end="${r.r_score}" step="1">
-												<span style="margin-right: 5px;" class="starScore">★</span>
-											</c:forEach>
-											<c:if test="${r.r_score < 5}">
-												<c:forEach begin="1" end="${5 - r.r_score}" step="1">
-													<span style="margin-right: 5px;" class="starScore">☆</span>
-												</c:forEach>
-											</c:if></p>
-										<p>게시글 : ${c_board.c_title}</p>
-										<span>${r.r_content}</span>
-									</div>
-								</div>
-							</c:forEach>
-							<div class="boardContent" style="width: 80% !important; margin-left: 65px !important; padding-bottom: 10px !important; 
-								padding-top: 10px !important;">
-								<button style="width: 30%; margin-left: 20px; margin-left: 210px;" type="button" class="btn btn-outline-success"
-									onclick="location.href='writeReview?c_num=${c_board.c_num}'">리뷰 더 보기</button></td></tr>
-							</div>
-						</div>
-					</c:otherwise>
-				</c:choose>
 			</div>
 		</div>
 	
@@ -694,7 +604,6 @@
 		<script type="text/javascript">
 			function delCFavorite(){
 				var c_num = document.getElementById("cNum").value;
-				
 				
 				document.getElementById("cFavorite").style.display = "inline";
 				document.getElementById("favCancel").style.display = "none";

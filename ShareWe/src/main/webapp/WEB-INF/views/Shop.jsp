@@ -63,7 +63,6 @@
 	font-size: 12px;
 	font-weight: bold;
 	font-family: "Trebuchet MS", Dotum, Arial;
-	
 }
 
 #topMenu .menuLink:hover {
@@ -72,9 +71,9 @@
 }
 
 .filters_menu {
-    display: list-item;
-    text-align: -webkit-match-parent;
-    unicode-bidi: isolate;
+	display: list-item;
+	text-align: -webkit-match-parent;
+	unicode-bidi: isolate;
 }
 
 #categoryBox .filters_menu li:hover {
@@ -89,49 +88,38 @@
 	width: 120px;
 	height: 50px;
 	box-shadow: 2px 2px 3px #999;
-	border-color : transparent;
+	border-color: transparent;
 	position: fixed;
-	right:160px;
+	right: 160px;
 	bottom: 50px;
-	
-	  
 }
 
 #inputSerch {
-	border-top-color : #bdc3c7;
-	border-bottom-color : #bdc3c7;
-	border-left-color :#bdc3c7;
-	border-right-color : #bdc3c7;
-	
+	border-top-color: #bdc3c7;
+	border-bottom-color: #bdc3c7;
+	border-left-color: #bdc3c7;
+	border-right-color: #bdc3c7;
 	border-bottom-left-radius: 10px;
 	border-top-left-radius: 10px;
-	
 	height: 40px;
-	
 }
-
 
 #buttonBar {
- 	border-bottom-right-radius: 10px;
- 	border-top-right-radius: 10px;
-	width : 40px;
+	border-bottom-right-radius: 10px;
+	border-top-right-radius: 10px;
+	width: 40px;
 	height: 40px;
 	background-color: #009223;
-	border-color : transparent;
-	
+	border-color: transparent;
 }
 
-#searchBar{
+#searchBar {
 	float: right 50px;
 }
 
 #buttonBar i {
-	color : white;
+	color: white;
 }
-
-
-
-
 </style>
 
 </head>
@@ -139,7 +127,7 @@
 <body>
 
 	<%
-		member loginMember = (member)session.getAttribute("loginMember");
+	member loginMember = (member) session.getAttribute("loginMember");
 	%>
 
 	<!-- Spinner Start -->
@@ -158,18 +146,30 @@
 					<small class="me-3"></small> <small class="me-3"></small>
 				</div>
 				<div class="top-link pe-2">
-					<%if (loginMember == null) {%>
-						<a href="goLogin" class="text-white"><small class="text-white mx-2">로그인</small>/</a>
-						<a href="goMemberType" class="text-white"><small class="text-white mx-2">회원가입</small></a>
-					<%} else {%>
+					<%
+					if (loginMember == null) {
+					%>
+					<a href="goLogin" class="text-white"><small
+						class="text-white mx-2">로그인</small>/</a> <a href="goMemberType"
+						class="text-white"><small class="text-white mx-2">회원가입</small></a>
+					<%
+					} else {
+					%>
 					<span><small class="text-white mx-2"><%=loginMember.getNick()%>님
 							환영합니다.</small></span>
-						<%if (loginMember.getEmail().equals("admin")) {%>
-							<a href="goAdmin" class="text-white"><small class="text-white ms-2">회원관리</small></a>
-						<%}%>
-						<a href="memberLogout" class="text-white"><small
+					<%
+					if (loginMember.getEmail().equals("admin")) {
+					%>
+					<a href="goAdmin" class="text-white"><small
+						class="text-white ms-2">회원관리</small></a>
+					<%
+					}
+					%>
+					<a href="memberLogout" class="text-white"><small
 						class="text-white mx-2">로그아웃</small></a>
-					<%} %>
+					<%
+					}
+					%>
 				</div>
 			</div>
 		</div>
@@ -197,7 +197,7 @@
 									<a href="getCategory?category=여행/도서" class="dropdown-item">여행/도서</a>
 								</div>
 							</div>
-							<a href="contact.html" class="nav-item nav-link" style="color: black; font-size: 18px;">동네보기</a>
+							<a href="contact.html" class="nav-item nav-link" style="color: black; font-size: 18px;"><strong>동네보기</strong></a>
 					</div>
 					<div class="d-flex m-3 me-0">
 						<button
@@ -209,7 +209,8 @@
 							class="fa fa-shopping-bag fa-2x"></i> <span
 							class="position-absolute bg-secondary rounded-circle d-flex align-items-center justify-content-center text-dark px-1"
 							style="top: -5px; left: 15px; height: 20px; min-width: 20px;">3</span>
-						</a> <a href="goMyPage" class="my-auto"> <i class="fas fa-user fa-2x"></i>
+						</a> <a href="goMyPage" class="my-auto"> <i
+							class="fas fa-user fa-2x"></i>
 						</a>
 					</div>
 				</div>
@@ -220,9 +221,9 @@
 
 
 	<!-- Search Start -->
-   <div class="modal fade" id="searchModal" tabindex="-1"
-      aria-labelledby="exampleModalLabel" aria-hidden="true">
-      <div class="modal-dialog modal-fullscreen">
+	<div class="modal fade" id="searchModal" tabindex="-1"
+		aria-labelledby="exampleModalLabel" aria-hidden="true">
+		<div class="modal-dialog modal-fullscreen">
 
 			<div class="modal-content rounded-0">
 				<div class="modal-header">
@@ -233,11 +234,13 @@
 				</div>
 				<form action="goSearch">
 					<div class="modal-body d-flex align-items-center">
-						<div class="input-group w-75 mx-auto d-flex" 
-							style="height: 800px; padding-bottom: 100px; width:50% !important;  justify-content: center; align-items: center;">
-							<input type="text" class="form-control p-3" name="searchText" style="height: 58px;"
-								placeholder="검색어를 입력해주세요." aria-describedby="search-icon-1">
-							<input type="submit" value="검색" id="search-icon-1" style="border-top-right-radius: 10px; border-bottom-right-radius: 10px; height: 58px;"
+						<div class="input-group w-75 mx-auto d-flex"
+							style="height: 800px; padding-bottom: 100px; width: 50% !important; justify-content: center; align-items: center;">
+							<input type="text" class="form-control p-3" name="searchText"
+								style="height: 58px;" placeholder="검색어를 입력해주세요."
+								aria-describedby="search-icon-1"> <input type="submit"
+								value="검색" id="search-icon-1"
+								style="border-top-right-radius: 10px; border-bottom-right-radius: 10px; height: 58px;"
 								class="btn btn-primary border-2 border-secondary py-3 px-4">
 						</div>
 					</div>
@@ -287,69 +290,105 @@
 	<!-- food section -->
 
 	<div class="row g-4 justify-content-center" id="categoryBox">
-	
+
 		<!-- 카테고리 -->
-		<div class="col-lg-9" style="margin-top : 90px;">
-			<ul class="filters_menu" style="margin-top:20px !important;">
-			
-				<a href="goCompany" ><li>All</li></a>
+		<div class="col-lg-9" style="margin-top: 90px;">
+			<ul class="filters_menu" style="margin-top: 20px !important;">
+
+				<a href="goCompany"><li>All</li></a>
 				<a href="getComCategory?category=식품" id="clickVege"><li>식품</li></a>
 				<a href="getComCategory?category=과일" id="clickFruit"><li>과일</li></a>
 				<a href="getComCategory?category=생필품" id="ClickDaily"><li>생필품</li></a>
 				<a href="getComCategory?category=패션/뷰티" id="ClickDaily"><li>패션/뷰티</li></a>
 				<a href="getComCategory?category=여행/도서" id="ClickDaily"><li>여행/도서</li></a>
-	
+
 				<!-- <input id="inputSerch" class="serchBar"  type="search" placeholder="keywords">
 				<button  type="button" id="buttonBar" class="serchBar"><i class="fa fa-search"></i></button> -->
-			
+
 			</ul>
 		</div>
-		
 
 
-		<div class="col-lg-9" style="width:60% !important;  justify-content: center; align-items: center;">
-			<div class="row g-4 justify-content-center" id="boardDiv" >
-                        <c:forEach items="${cboard_list}" var="c">
-                           <div class="col-md-1 col-lg-2 col-xl-3" 
-                           		style="margin-right: 10px; margin-left: 10px; width: 22%; height: 10%; margin-bottom: 20px;">
-                              <div class="rounded position-relative fruite-item">
-                                 <div class="fruite-img">
-                                    <a href="C_BoardContent?c_num=${c.c_num}&c_writer=${c.c_writer}">
-                                    	<img src="resources/g_Image/${c.c_img1}" class="img-fluid w-100 rounded-top" alt="">
-                                	</a>
-                                 </div>
-                                 <div
-                                    class="text-white bg-secondary px-3 py-1 rounded position-absolute"
-                                    style="top: 10px; left: 10px; background-color: #009223 !important;">${c.category}</div>
-                                 <div
-                                    class="p-4 border border-secondary border-top-0 rounded-bottom" style="border-color: #009223 !important;">
-                                    <br>
-                                     <a href="C_BoardContent?c_num=${c.c_num}&c_writer=${c.c_writer}"><h5>${c.c_title}</h5></a>
-                                     <h6 style="display: inline;">${c.c_writer }</h6>
-                                     <c:choose>
-	                                      <c:when test="${loginMember.type == 0}">
-	                                       	<a href="deleteCBoard?c_num=${c.c_num }" style="float: right;"
-	                                             class="btn border border-secondary rounded-pill px-3 text-primary">
-	                                             삭제 </a>
-	                                      </c:when>
-	                                      <c:otherwise>
-	                                       	<a onclick="checkCFavorite(${c.c_num})" id="${c.c_num }" style="float: right;"
-	                                             class="btn border border-secondary rounded-pill px-3 text-primary">
-	                                             ❤ 찜 </a>
-	                                        
-	                                             
-	                                             
-	                                      </c:otherwise> 
-                                      </c:choose>
-                                 </div>
-                              </div>
-                           </div>
-                        </c:forEach>
-                     </div>
+
+		<div class="col-lg-9"
+			style="width: 60% !important; justify-content: center; align-items: center;">
+			<div class="row g-4 justify-content-center" id="boardDiv">
+				<c:forEach items="${cboard_list}" var="c">
+					<div class="col-md-1 col-lg-2 col-xl-3"
+						style="margin-right: 10px; margin-left: 10px; width: 23%; height: 10%; margin-bottom: 20px;">
+						<div class="rounded position-relative fruite-item">
+							<div class="fruite-img">
+								<a href="C_BoardContent?c_num=${c.c_num}&c_writer=${c.c_writer}">
+									<img src="resources/g_Image/${c.c_img1}"
+									class="img-fluid w-100 rounded-top" alt="">
+								</a>
+							</div>
+							<div
+								class="text-white bg-secondary px-3 py-1 rounded position-absolute"
+								style="top: 10px; left: 10px; background-color: #009223 !important;">${c.category}</div>
+							<div
+								class="p-4 border border-secondary border-top-0 rounded-bottom"
+								style="border-color: #009223 !important;">
+								<br> <a
+									href="C_BoardContent?c_num=${c.c_num}&c_writer=${c.c_writer}"><h5>${c.c_title}</h5></a>
+								<h6 style="display: inline;">${c.c_writer }</h6>
+								<c:choose>
+									<c:when test="${empty loginMember}">
+										<a onclick="location.href='goLogin'" style="float: right;"
+											type="button"
+											class="btn border border-secondary rounded-pill px-3 text-primary">❤
+											찜</a>
+									</c:when>
+									<c:otherwise>
+
+										<c:set var="num" value="0" />
+										<c:forEach items="${cfavorite_list}" var="f">
+											<c:if test="${f.c_num eq c.c_num}">
+												<c:set var="num" value="1" />
+											</c:if>
+
+
+										</c:forEach>
+										<c:if test="${num eq '1'}">
+
+											<a onclick="checkCFavorite(${c.c_num})" id="${c.c_num}"
+												style="float: right; display: none;" type="button"
+												class="btn border border-secondary rounded-pill px-3 text-primary">❤
+												찜</a>
+											<a onclick="delCFavorite(${c.c_num})"
+												id="favCancel${c.c_num}"
+												style="float: right; background-color: green; color: white !important;"
+												type="button"
+												class="btn border border-secondary rounded-pill px-3 text-primary">❤
+												찜</a>
+										</c:if>
+										<c:if test="${num eq '0'}">
+											<a onclick="checkCFavorite(${c.c_num})" id="${c.c_num}"
+												style="float: right;" type="button"
+												class="btn border border-secondary rounded-pill px-3 text-primary">❤
+												찜</a>
+											<a onclick="delCFavorite(${c.c_num})"
+												id="favCancel${c.c_num}"
+												style="float: right; display: none; background-color: green; color: white !important;"
+												type="button"
+												class="btn border border-secondary rounded-pill px-3 text-primary">❤
+												찜</a>
+										</c:if>
+
+
+
+									</c:otherwise>
+								</c:choose>
+							</div>
+						</div>
+					</div>
+				</c:forEach>
+			</div>
 		</div>
 		<c:if test="${loginMember.type == 1}">
 			<div class="row g-4 justify-content-center">
-				<button class="col-xl-1" id="write" type="button" onclick="location.href='gocBoard'">게시물작성</button>
+				<button class="col-xl-1" id="write" type="button"
+					onclick="location.href='gocBoard'">게시물작성</button>
 			</div>
 		</c:if>
 	</div>
@@ -379,7 +418,7 @@
 
 
 	<!-- Back to Top -->
-<!-- 	<a href="#"
+	<!-- 	<a href="#"
 		class="btn btn-primary border-3 border-primary rounded-circle back-to-top"><i
 		class="fa fa-arrow-up"></i></a> -->
 
@@ -396,8 +435,8 @@
 
 	<!-- Template Javascript -->
 	<script src="resources/asset/js/main.js"></script>
-	
-<!-- 	<!-- 카테고리:채소 비동기 --
+
+	<!-- 	<!-- 카테고리:채소 비동기 --
 	<script type="text/javascript">
 		function getVege(){
 			$.ajax({
@@ -416,24 +455,46 @@
 			})
 		}
 	</script> -->
-	
+
 	<script type="text/javascript">
-					function checkCFavorite(c_num){
+
+				function checkCFavorite(c_num){
+					 var id = "favCancel" + c_num;
+				
+					console.log(c_num)
+					console.log(id)
+					document.getElementById(id).style.display = "inline";
+					document.getElementById(c_num).style.display = "none";
+					
+				$.ajax(
+				{
+					url : "insertFavorite",
+					data : {'c_num' : c_num},
+					type :'get',
+					success : function(){
 						
-						var zzim = document.getElementById(c_num);
-						
+					},
+					error : function(){
+						alert("로그인이 필요합니다")
+					}
+				}
+			)
+		}
+				</script>
+	<script type="text/javascript">
+			function delCFavorite(c_num){
+				var id = "favCancel" + c_num;
+				console.log(c_num)
+				console.log(id)
+				document.getElementById(c_num).style.display = "inline";
+				document.getElementById(id).style.display = "none";
 						$.ajax(
 						{
-							url : "checkCFavorite",
+							url : "delFavorite",
 							data : {'c_num' : c_num},
 							type :'get',
-							success : function(data){
-								if(data==1){
-									zzim.innerText ='♥ 찜 완료'
-										
-								}else{
-									zzim.innerText ='이미 찜'
-								}
+							success : function(){
+								
 							},
 							error : function(){
 								alert("통신실패")
@@ -441,8 +502,7 @@
 						}
 					)
 				}
-				</script>
-	
+		</script>
 </body>
 
 </html>

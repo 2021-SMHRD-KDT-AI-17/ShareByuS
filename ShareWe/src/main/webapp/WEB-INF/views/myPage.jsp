@@ -156,7 +156,7 @@
 									<a href="getCategory?category=여행/도서" class="dropdown-item">여행/도서</a>
 								</div>
 							</div>
-							<a href="contact.html" class="nav-item nav-link" style="color: black; font-size: 18px;">동네보기</a>
+							<a href="contact.html" class="nav-item nav-link" style="color: black; font-size: 18px;"><strong>동네보기</strong></a>
 					</div>
 					<div class="d-flex m-3 me-0">
 						<button
@@ -472,8 +472,8 @@
 
 			<div class="row g-4 justify-content-center">
 
-				<div id="gen" class="col-md-6 col-lg-6 col-xl-4"
-					style="width: 100%;">
+				<div id="com" class="col-md-6 col-lg-6 col-xl-4"
+					style="width: 100%;  display: none;">
 					<div class="rounded position-relative fruite-item"
 						style="width: 1500px;">
 
@@ -485,11 +485,11 @@
 
 								<c:forEach items="${allC_list}" var="c">
 									<c:if test="${f.c_num eq c.c_num}">
-										<a href="G_BoardContent?g_num=${c.c_num}"> <img alt=""
+										<a href="C_BoardContent?c_num=${c.c_num}&c_writer=${c.c_writer}"> <img alt=""
 											src="resources/g_Image/${c.c_img1}" align="left"
 											class='img-fluid w-100 rounded-top'
 											style="width: 150px; height: 150px; !important;"></a>
-										<a href="G_BoardContent?g_num=${c.c_num}">
+										<a href="C_BoardContent?c_num=${c.c_num}&c_writer=${c.c_writer}">
 
 											<h3 style="text-align: center;">${c.c_title}</h3>
 										</a>
@@ -509,7 +509,7 @@
 				</div>
 				
 				
-				<div id="com" class="col-md-6 col-lg-6 col-xl-4"
+				<div id="gen" class="col-md-6 col-lg-6 col-xl-4"
 					style="width: 100%;">
 					<div class="rounded position-relative fruite-item"
 						style="width: 1500px;">

@@ -290,21 +290,21 @@
 															<c:if test="${num eq '1'}">
 														
 																<a onclick="checkGFavorite(${g.g_num})"
-																			id="${g.g_num}" style="float: right; display: none;"
+																			id="G${g.g_num}" style="float: right; display: none;"
 																			class="btn border border-secondary rounded-pill px-3 text-primary">❤
 																			찜</a>
 																		<a onclick="delGFavorite(${g.g_num})"
-																			id="favCancel${g.g_num}" style="float: right; background-color: green; color: white !important;"
+																			id="favGCancel${g.g_num}" style="float: right; background-color: green; color: white !important;"
 																			 class="btn border border-secondary rounded-pill px-3 text-primary">❤
 																			찜</a>
 															</c:if>
 															<c:if test="${num eq '0'}">
 																<a onclick="checkGFavorite(${g.g_num})"
-																			id="${g.g_num}" style="float: right;" 
+																			id="G${g.g_num}" style="float: right;" 
 																			type="button" class="btn border border-secondary rounded-pill px-3 text-primary">❤
 																			찜</a>
 																		<a onclick="delGFavorite(${g.g_num})"
-																			id="favCancel${g.g_num}" style="float: right; display: none; background-color: green; color: white !important;"
+																			id="favGCancel${g.g_num}" style="float: right; display: none; background-color: green; color: white !important;"
 																			 class="btn border border-secondary rounded-pill px-3 text-primary">❤
 																			찜</a>
 															</c:if>
@@ -480,19 +480,20 @@
 	<script type="text/javascript">
 
 				function checkGFavorite(g_num){
-					 var id = "favCancel" + g_num;
+					 var Did = "favGCancel" + g_num;
+					 var Cid = "G" + g_num;
 				
 					console.log(g_num)
 					console.log(id)
-					document.getElementById(id).style.display = "inline";
-					document.getElementById(g_num).style.display = "none";
+					document.getElementById(id).style.display = "none";
+					document.getElementById(Cid).style.display = "inline";
 					
 				$.ajax(
 				{
 					url : "insertgFavorite",
 					data : {'g_num' : g_num},
 					type :'get',
-					success : function(data){
+					success : function(){
 						
 					},
 					error : function(){
@@ -504,11 +505,12 @@
 				</script>
 	<script type="text/javascript">
 			function delGFavorite(g_num){
-				var id = "favCancel" + g_num;
+				var id = "favGCancel" + g_num;
+				var Cid = "G" + g_num;
 				console.log(g_num)
 				console.log(id)
-				document.getElementById(g_num).style.display = "inline";
-				document.getElementById(id).style.display = "none";
+				document.getElementById(Cid).style.display = "none";
+				document.getElementById(id).style.display = "inline";
 						$.ajax(
 						{
 							url : "delgFavorite",

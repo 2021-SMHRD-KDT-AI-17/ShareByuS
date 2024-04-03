@@ -132,7 +132,7 @@
 							</div>
 						</div>
 						<a href="contact.html" class="nav-item nav-link"
-							style="color: black; font-size: 18px;">동네보기</a>
+							style="color: black; font-size: 18px;"><strong>동네보기</strong></a>
 					</div>
 					<div class="d-flex m-3 me-0">
 						<button
@@ -283,7 +283,6 @@
       
     }, false)
     
-
     
     /*첨부된 이미리즐을 배열에 넣고 미리보기 */
     imageLoader = function(file){

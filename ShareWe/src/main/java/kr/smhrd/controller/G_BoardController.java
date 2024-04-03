@@ -16,6 +16,7 @@ import org.springframework.web.bind.annotation.RequestPart;
 import com.oreilly.servlet.MultipartRequest;
 import com.oreilly.servlet.multipart.DefaultFileRenamePolicy;
 
+import kr.smhrd.entity.c_favorite;
 import kr.smhrd.entity.g_board;
 import kr.smhrd.entity.g_favorite;
 import kr.smhrd.entity.member;
@@ -47,18 +48,38 @@ public class G_BoardController {
 	
 	//shop.jsp로 이동
 	@RequestMapping("/goGeneral")
-	public String goGeneral(Model model) {
+	public String goGeneral(Model model,HttpSession session) {
 		List<g_board> gboard_list = g_boardMapper.getGBoard();
 		model.addAttribute("gboard_list", gboard_list);
+		
+		 member loginMember = (member)session.getAttribute("loginMember");
+			
+		    if(loginMember != null) {
+				String email = loginMember.getEmail();
+				List<g_favorite> gfavorite_list = favoriteMapper.getGEmail(email);
+				
+				
+				model.addAttribute("gfavorite_list",gfavorite_list);
+			}
 		
 		
 		return "Share";
 	}
 	
 	@RequestMapping("/getgCategory")
-	public String getgCategory(@RequestParam("category") String category, Model model) {
+	public String getgCategory(@RequestParam("category") String category, Model model, HttpSession session) {
 		List<g_board> gboard_list = g_boardMapper.getgCategory(category);
 		model.addAttribute("gboard_list", gboard_list);
+		
+		 member loginMember = (member)session.getAttribute("loginMember");
+			
+		    if(loginMember != null) {
+				String email = loginMember.getEmail();
+				List<g_favorite> gfavorite_list = favoriteMapper.getGEmail(email);
+				
+				
+				model.addAttribute("gfavorite_list",gfavorite_list);
+			}
 		return "Share";
 	}
 	
