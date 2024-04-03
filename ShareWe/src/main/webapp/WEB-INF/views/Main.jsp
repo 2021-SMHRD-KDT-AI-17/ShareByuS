@@ -106,28 +106,21 @@
 				</button>
 				<div class="collapse navbar-collapse bg-white" id="navbarCollapse">
 					<div class="navbar-nav mx-auto">
-						<a href="goGeneral" class="nav-item nav-link active">Share</a> <a
-							href="goCompany" class="nav-item nav-link">Shop</a>
-
-						<!-- 기업회원일때만 나오게 
-                           <c:if test="${type eq 'company'}">
-                              <a href="gocBoard" class="nav-item nav-link">상품등록</a>
-                           </c:if>-->
-
-						<div class="nav-item dropdown">
-							<a href="#" class="nav-link dropdown-toggle"
-								data-bs-toggle="dropdown">Category</a>
-
-							<!-- 카테고리별 페이지 이동 -->
-							<div class="dropdown-menu m-0 bg-secondary rounded-0">
-								<a href="getCategory?category=식품" class="dropdown-item">식품</a> <a
-									href="getCategory?category=과일" class="dropdown-item">과일</a> <a
-									href="getCategory?category=생필품" class="dropdown-item">생필품</a> <a
-									href="getCategory?category=패션/뷰티" class="dropdown-item">패션/뷰티</a>
-								<a href="getCategory?category=여행/도서" class="dropdown-item">여행/도서</a>
+							<a href="goGeneral" class="nav-item nav-link" style="color: black; font-size: 18px;"><strong>공구함</strong></a>
+							<a href="goCompany" class="nav-item nav-link" style="color: black; font-size: 18px;"><strong>우리동네</strong></a>
+							<!-- <a href="shop-detail.html" class="nav-item nav-link">Shop Detail</a> -->
+							<div class="nav-item dropdown">
+								<a href="#" class="nav-link dropdown-toggle active"
+									data-bs-toggle="dropdown" style="color: black; font-size: 18px;"><strong>카테고리</strong></a>
+								<div class="dropdown-menu m-0 bg-secondary rounded-0">
+									<a href="getCategory?category=식품" class="dropdown-item">식품</a> <a
+										href="getCategory?category=과일" class="dropdown-item">과일</a> <a
+										href="getCategory?category=생필품" class="dropdown-item">생필품</a> <a
+										href="getCategory?category=패션/뷰티" class="dropdown-item">패션/뷰티</a>
+									<a href="getCategory?category=여행/도서" class="dropdown-item">여행/도서</a>
+								</div>
 							</div>
-						</div>
-						<a href="contact.html" class="nav-item nav-link">Contact</a>
+							<a href="contact.html" class="nav-item nav-link" style="color: black; font-size: 18px;"><strong>동네보기</strong></a>
 					</div>
 					<div class="d-flex m-3 me-0">
 						<button
@@ -297,21 +290,21 @@
 															<c:if test="${num eq '1'}">
 														
 																<a onclick="checkGFavorite(${g.g_num})"
-																			id="${g.g_num}" style="float: right; display: none;"
+																			id="G${g.g_num}" style="float: right; display: none;"
 																			class="btn border border-secondary rounded-pill px-3 text-primary">❤
 																			찜</a>
 																		<a onclick="delGFavorite(${g.g_num})"
-																			id="favCancel${g.g_num}" style="float: right; background-color: green; color: white !important;"
+																			id="favGCancel${g.g_num}" style="float: right; background-color: green; color: white !important;"
 																			 class="btn border border-secondary rounded-pill px-3 text-primary">❤
 																			찜</a>
 															</c:if>
 															<c:if test="${num eq '0'}">
 																<a onclick="checkGFavorite(${g.g_num})"
-																			id="${g.g_num}" style="float: right;" 
+																			id="G${g.g_num}" style="float: right;" 
 																			type="button" class="btn border border-secondary rounded-pill px-3 text-primary">❤
 																			찜</a>
 																		<a onclick="delGFavorite(${g.g_num})"
-																			id="favCancel${g.g_num}" style="float: right; display: none; background-color: green; color: white !important;"
+																			id="favGCancel${g.g_num}" style="float: right; display: none; background-color: green; color: white !important;"
 																			 class="btn border border-secondary rounded-pill px-3 text-primary">❤
 																			찜</a>
 															</c:if>
@@ -487,19 +480,20 @@
 	<script type="text/javascript">
 
 				function checkGFavorite(g_num){
-					 var id = "favCancel" + g_num;
+					 var Did = "favGCancel" + g_num;
+					 var Cid = "G" + g_num;
 				
 					console.log(g_num)
 					console.log(id)
-					document.getElementById(id).style.display = "inline";
-					document.getElementById(g_num).style.display = "none";
+					document.getElementById(id).style.display = "none";
+					document.getElementById(Cid).style.display = "inline";
 					
 				$.ajax(
 				{
 					url : "insertgFavorite",
 					data : {'g_num' : g_num},
 					type :'get',
-					success : function(data){
+					success : function(){
 						
 					},
 					error : function(){
@@ -511,11 +505,12 @@
 				</script>
 	<script type="text/javascript">
 			function delGFavorite(g_num){
-				var id = "favCancel" + g_num;
+				var id = "favGCancel" + g_num;
+				var Cid = "G" + g_num;
 				console.log(g_num)
 				console.log(id)
-				document.getElementById(g_num).style.display = "inline";
-				document.getElementById(id).style.display = "none";
+				document.getElementById(Cid).style.display = "none";
+				document.getElementById(id).style.display = "inline";
 						$.ajax(
 						{
 							url : "delgFavorite",

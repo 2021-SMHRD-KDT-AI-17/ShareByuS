@@ -220,27 +220,21 @@
 				</button>
 				<div class="collapse navbar-collapse bg-white" id="navbarCollapse">
 					<div class="navbar-nav mx-auto">
-						<a href="goGeneral" class="nav-item nav-link active">일반</a> 
-						<a href="goCompany" class="nav-item nav-link">기업</a> 
-
-						<!-- 기업회원일때만 나오게 -->
-						<c:if test="${type eq 'company'}">
-							<a href="gocBoard" class="nav-item nav-link">상품등록</a>
-						</c:if>
-
-						<div class="nav-item dropdown">
-							<a href="#" class="nav-link dropdown-toggle"
-								data-bs-toggle="dropdown">Pages</a>
-
-							<!-- 카테고리별 페이지 이동 -->
-							<div class="dropdown-menu m-0 bg-secondary rounded-0">
-								<a href="cart.html" class="dropdown-item">식품</a> <a
-									href="chackout.html" class="dropdown-item">생필품</a> <a
-									href="testimonial.html" class="dropdown-item">항목3</a> <a
-									href="404.html" class="dropdown-item active">항목4</a>
+							<a href="goGeneral" class="nav-item nav-link" style="color: black; font-size: 18px;"><strong>공구함</strong></a>
+							<a href="goCompany" class="nav-item nav-link" style="color: black; font-size: 18px;"><strong>우리동네</strong></a>
+							<!-- <a href="shop-detail.html" class="nav-item nav-link">Shop Detail</a> -->
+							<div class="nav-item dropdown">
+								<a href="#" class="nav-link dropdown-toggle active"
+									data-bs-toggle="dropdown" style="color: black; font-size: 18px;"><strong>카테고리</strong></a>
+								<div class="dropdown-menu m-0 bg-secondary rounded-0">
+									<a href="getCategory?category=식품" class="dropdown-item">식품</a> <a
+										href="getCategory?category=과일" class="dropdown-item">과일</a> <a
+										href="getCategory?category=생필품" class="dropdown-item">생필품</a> <a
+										href="getCategory?category=패션/뷰티" class="dropdown-item">패션/뷰티</a>
+									<a href="getCategory?category=여행/도서" class="dropdown-item">여행/도서</a>
+								</div>
 							</div>
-						</div>
-						<a href="contact.html" class="nav-item nav-link">Contact</a>
+							<a href="contact.html" class="nav-item nav-link" style="color: black; font-size: 18px;"><strong>동네보기</strong></a>
 					</div>
 					<div class="d-flex m-3 me-0">
 							<button
@@ -374,6 +368,16 @@
 			</div>
 			
 			<div class="row g-4 justify-content-center">
+				<div class="boardContent">
+					<form action="" style="display: inline;">
+						<select>
+							<c:forEach items="${option}" var="op" varStatus="i">
+								<option value="${i.index}">옵션 : ${op}, 가격 : ${price[i.index]}원</option>
+							</c:forEach>
+						</select>
+					</form>
+					<button style="width: 20%; margin-left: 20px" type="button" class="btn btn-outline-success">구매하기</button><br>
+				</div>
 				<div class="boardContent" style="padding-bottom: 0; height: 60px;">
 					<input type="hidden" value="${c_board.c_num}" id="cNum">
 					<c:choose>
@@ -440,6 +444,9 @@
 					</c:choose>
 					
 					
+				</div>
+				<div class="boardContent">
+					참여인원:
 				</div>
 				<div class="boardContent">
 					<span>가게명 : <h6 style="display: inline; margin-left: 10px;">${c_board.c_writer}</h6></span>
