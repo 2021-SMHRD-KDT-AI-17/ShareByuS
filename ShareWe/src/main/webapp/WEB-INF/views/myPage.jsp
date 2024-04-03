@@ -229,7 +229,7 @@
 		<div class="card" style="width: 1000px" align="center">
 			<table width="1000px">
 				<tr>
-					<td><img src="resources/img/avatar.jpg" class="card-img-top"
+					<td><img src="resources/g_Image/avatar.jpg" class="card-img-top"
 						style="width: 200px; height: 200px; margin: 50px;" align="left">
 					</td>
 					<td width="600px" border-top="0px">

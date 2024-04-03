@@ -220,5 +220,6 @@ public class G_BoardController {
 		
 		return "redirect:/goGeneral";
 	}
+	
 		
 }

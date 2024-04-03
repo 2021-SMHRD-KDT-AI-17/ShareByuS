@@ -31,5 +31,9 @@ public interface G_BoardMapper {
 	public void deleteGBoard(int g_num);
 
 	public void gBoardUpdate(g_board g_board);
+
+	public void endGBoard(int g_num);
+
+	public void restartGBoard(int g_num);
 	
 }

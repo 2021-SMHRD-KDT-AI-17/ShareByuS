@@ -44,4 +44,12 @@
 	<delete id="deleteGBoard" parameterType="int">
 		delete from g_board where g_num=#{g_num}	
 	</delete>
+	
+	<update id="endGBoard" parameterType="int">
+			update g_board set g_end=1 where g_num=#{g_num}
+	</update>
+	
+	<update id="restartGBoard" parameterType="int">
+			update g_board set g_end=0 where g_num=#{g_num}
+	</update>
 </mapper>

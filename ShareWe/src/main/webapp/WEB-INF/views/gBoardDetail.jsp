@@ -426,101 +426,244 @@
 
 
 			<div class="row g-4 justify-content-center" style="display: block;">
-
-				<div class="boardContent" style="padding-bottom: 25px;">
-					<input type="hidden" value="${g_board.g_num}" id="gNum">
-					<c:choose>
-						<c:when test="${empty loginMember}">
-							<button onclick="location.href='goLogin'" style="width: 10%;"
-								type="button" class="btn btn-outline-success">❤ 찜</button>
-						</c:when>
-						<c:otherwise>
+				<c:choose>
+					<c:when test="${g_board.g_end == 0}">
+						<div class="boardContent" style="padding-bottom: 25px;"
+							id="selectBtn">
+							<input type="hidden" value="${g_board.g_num}" id="gNum">
 							<c:choose>
-								<c:when test="${fav eq 'Yes'}">
-									<button onclick="checkGFavorite()" id="gFavorite"
-										style="width: 10%; display: none;" type="button"
-										class="btn btn-outline-success">❤ 찜</button>
-									<button onclick="delGFavorite()" id="favCancel"
-										style="width: 10%;" type="button"
-										class="btn btn-outline-success">❤ 찜</button>
+								<c:when test="${empty loginMember}">
+									<button onclick="location.href='goLogin'" style="width: 10%;"
+										type="button" class="btn btn-outline-success">❤ 찜</button>
 								</c:when>
 								<c:otherwise>
-									<button onclick="checkGFavorite()" id="gFavorite"
-										style="width: 10%;" type="button"
-										class="btn btn-outline-success">❤ 찜</button>
-									<button onclick="delGFavorite()" id="favCancel"
-										style="width: 10%; display: none;" type="button"
-										class="btn btn-outline-success">❤ 찜</button>
+									<c:choose>
+										<c:when test="${fav eq 'Yes'}">
+											<button onclick="checkGFavorite()" id="gFavorite"
+												style="width: 10%; display: none;" type="button"
+												class="btn btn-outline-success">❤ 찜</button>
+											<button onclick="delGFavorite()" id="favCancel"
+												style="width: 10%;" type="button"
+												class="btn btn-outline-success">❤ 찜</button>
+										</c:when>
+										<c:otherwise>
+											<button onclick="checkGFavorite()" id="gFavorite"
+												style="width: 10%;" type="button"
+												class="btn btn-outline-success">❤ 찜</button>
+											<button onclick="delGFavorite()" id="favCancel"
+												style="width: 10%; display: none;" type="button"
+												class="btn btn-outline-success">❤ 찜</button>
+										</c:otherwise>
+									</c:choose>
 								</c:otherwise>
 							</c:choose>
-						</c:otherwise>
-					</c:choose>
-					<c:choose>
-						<c:when test="${loginMember.email eq g_board.email}">
-							<nav class="detailMenu" style="float: right;">
-								<ul>
-									<li><a href="#"> <strong style="float: right;">⁝</strong>
-									</a>
+							<c:choose>
+								<c:when test="${loginMember.email eq g_board.email}">
+									<nav class="detailMenu" style="float: right;">
 										<ul>
-											<li><a
-												href="goBoardUp?g_num=${g_board.g_num}&g_img1=${g_board.g_img1 }&g_content=${g_board.g_content}">끌어올리기</a></li>
-											<li><a href="#">공동구매 마감</a></li>
-											<li><a href="goUpdate?g_num=${g_board.g_num}">게시글 수정</a></li>
-											<li><a href="deleteGBoard?g_num=${g_board.g_num}">게시글
-													삭제</a></li>
-										</ul></li>
-								</ul>
-							</nav>
-						</c:when>
-						<c:when test="${not empty loginMember }">
-							<nav class="detailMenu" style="float: right;">
-								<ul>
-									<li><a href="#"> <strong style="float: right;">⁝</strong>
-									</a>
+											<li><a href="#"> <strong style="float: right;">⁝</strong>
+											</a>
+												<ul>
+													<li><a
+														href="goBoardUp?g_num=${g_board.g_num}&g_img1=${g_board.g_img1 }&g_content=${g_board.g_content}">끌어올리기</a></li>
+													<li><a href="#" onclick="boardEnd()">공동구매 마감</a></li>
+													<li><a href="goUpdate?g_num=${g_board.g_num}">게시글
+															수정</a></li>
+													<li><a href="deleteGBoard?g_num=${g_board.g_num}">게시글
+															삭제</a></li>
+												</ul></li>
+										</ul>
+									</nav>
+								</c:when>
+								<c:when test="${not empty loginMember }">
+									<nav class="detailMenu" style="float: right;">
 										<ul>
-											<li>
-											<form action="sendReportInfo" method="post">
-									            <input type="hidden" value="${g_board.g_num}" name="r_num">
-									            <input type="hidden" value="${g_board.email}" name="email">
-									            <input type="hidden" value="${g_board.g_title}" name="r_title">
-									             <input type="hidden" value="${loginMember.email}" name="rp_email">
-									               
-									            <input type="submit" class="btn btn-primary btn-link"
-									            style="background-color:white !important; color:grey !important; border-width:0px !important;"
-									            value="신고하기">
-            								</form>
-           									 </li>
+											<li><a href="#"> <strong style="float: right;">⁝</strong>
+											</a>
+												<ul>
+													<li>
+														<form action="sendReportInfo" method="post">
+															<input type="hidden" value="${g_board.g_num}"
+																name="r_num"> <input type="hidden"
+																value="${g_board.email}" name="email"> <input
+																type="hidden" value="${g_board.g_title}" name="r_title">
+															<input type="hidden" value="${loginMember.email}"
+																name="rp_email"> <input type="submit"
+																class="btn btn-primary btn-link"
+																style="background-color: white !important; color: grey !important; border-width: 0px !important;"
+																value="신고하기">
+														</form>
+													</li>
 
-										</ul></li>
-								</ul>
-							</nav>
-						</c:when>
-						<c:when test="${ empty loginMember}">
-							<nav class="detailMenu" style="float: right;">
-								<ul>
-									<li><a href="#"> <strong style="float: right;"></strong></a>
-								</ul>
-							</nav>
-						</c:when>
-					</c:choose>
-
-
-					<c:choose>
-						<c:when test="${empty loginMember}">
-							<button onclick="location.href='goLogin'"
-								style="width: 20%; margin-left: 20px" type="button"
-								class="btn btn-outline-success">참여하기</button>
-						</c:when>
-						<c:otherwise>
-							<button type="button" class="btn btn-outline-success"
-								onclick="location.href='gParticipate?g_num=${g_board.g_num}'"
-								style="width: 20%; margin-left: 20px">참여하기</button>
-							<br>
-						</c:otherwise>
-					</c:choose>
+												</ul></li>
+										</ul>
+									</nav>
+								</c:when>
+								<c:when test="${ empty loginMember}">
+									<nav class="detailMenu" style="float: right;">
+										<ul>
+											<li><a href="#"> <strong style="float: right;"></strong></a>
+										</ul>
+									</nav>
+								</c:when>
+							</c:choose>
 
 
-				</div>
+							<c:choose>
+								<c:when test="${empty loginMember}">
+									<button onclick="location.href='goLogin'"
+										style="width: 20%; margin-left: 20px" type="button"
+										class="btn btn-outline-success">참여하기</button>
+								</c:when>
+								<c:otherwise>
+									<button type="button" class="btn btn-outline-success"
+										onclick="location.href='gParticipate?g_num=${g_board.g_num}'"
+										style="width: 20%; margin-left: 20px">참여하기</button>
+									<br>
+								</c:otherwise>
+							</c:choose>
+						</div>
+
+						<div class="boardContent" id="endBtn" style="display: none;">
+							<span class="btn-outline-success"
+									style="width: 20%; margin-left: 20px">마감된 게시물입니다.</span>
+							<c:if test="${loginMember.email eq g_board.email}">
+								<nav class="detailMenu" style="float: right;">
+									<ul>
+										<li><a href="#"> <strong style="float: right;">⁝</strong>
+										</a>
+											<ul>
+												<li><a href="#" onclick="boardRestart()">마감취소</a></li>
+												<li><a href="goUpdate?g_num=${g_board.g_num}">게시글 수정</a></li>
+												<li><a href="deleteGBoard?g_num=${g_board.g_num}">게시글
+														삭제</a></li>
+											</ul></li>
+									</ul>
+								</nav>
+							</c:if>
+						</div>
+				
+			  	</c:when>
+			  	
+			  	
+			  	<c:otherwise>
+			  		<div class="boardContent" style="padding-bottom: 25px; display: none;" id="selectBtn">
+							<input type="hidden" value="${g_board.g_num}" id="gNum">
+							<c:choose>
+								<c:when test="${empty loginMember}">
+									<button onclick="location.href='goLogin'" style="width: 10%;"
+										type="button" class="btn btn-outline-success">❤ 찜</button>
+								</c:when>
+								<c:otherwise>
+									<c:choose>
+										<c:when test="${fav eq 'Yes'}">
+											<button onclick="checkGFavorite()" id="gFavorite"
+												style="width: 10%; display: none;" type="button"
+												class="btn btn-outline-success">❤ 찜</button>
+											<button onclick="delGFavorite()" id="favCancel"
+												style="width: 10%;" type="button"
+												class="btn btn-outline-success">❤ 찜</button>
+										</c:when>
+										<c:otherwise>
+											<button onclick="checkGFavorite()" id="gFavorite"
+												style="width: 10%;" type="button"
+												class="btn btn-outline-success">❤ 찜</button>
+											<button onclick="delGFavorite()" id="favCancel"
+												style="width: 10%; display: none;" type="button"
+												class="btn btn-outline-success">❤ 찜</button>
+										</c:otherwise>
+									</c:choose>
+								</c:otherwise>
+							</c:choose>
+							<c:choose>
+								<c:when test="${loginMember.email eq g_board.email}">
+									<nav class="detailMenu" style="float: right;">
+										<ul>
+											<li><a href=""> <strong style="float: right;">⁝</strong>
+											</a>
+												<ul>
+													<li><a
+														href="goBoardUp?g_num=${g_board.g_num}&g_img1=${g_board.g_img1 }&g_content=${g_board.g_content}">끌어올리기</a></li>
+													<li><a href="#" onclick="boardEnd()">공동구매 마감</a></li>
+													<li><a href="goUpdate?g_num=${g_board.g_num}">게시글
+															수정</a></li>
+													<li><a href="deleteGBoard?g_num=${g_board.g_num}">게시글
+															삭제</a></li>
+												</ul></li>
+										</ul>
+									</nav>
+								</c:when>
+								<c:when test="${not empty loginMember }">
+									<nav class="detailMenu" style="float: right;">
+										<ul>
+											<li><a href="#"> <strong style="float: right;">⁝</strong>
+											</a>
+												<ul>
+													<li>
+														<form action="sendReportInfo" method="post">
+															<input type="hidden" value="${g_board.g_num}"
+																name="r_num"> <input type="hidden"
+																value="${g_board.email}" name="email"> <input
+																type="hidden" value="${g_board.g_title}" name="r_title">
+															<input type="hidden" value="${loginMember.email}"
+																name="rp_email"> <input type="submit"
+																class="btn btn-primary btn-link"
+																style="background-color: white !important; color: grey !important; border-width: 0px !important;"
+																value="신고하기">
+														</form>
+													</li>
+
+												</ul></li>
+										</ul>
+									</nav>
+								</c:when>
+								<c:when test="${ empty loginMember}">
+									<nav class="detailMenu" style="float: right;">
+										<ul>
+											<li><a href="#"> <strong style="float: right;"></strong></a>
+										</ul>
+									</nav>
+								</c:when>
+							</c:choose>
+
+
+							<c:choose>
+								<c:when test="${empty loginMember}">
+									<button onclick="location.href='goLogin'"
+										style="width: 20%; margin-left: 20px" type="button"
+										class="btn btn-outline-success">참여하기</button>
+								</c:when>
+								<c:otherwise>
+									<button type="button" class="btn btn-outline-success"
+										onclick="location.href='gParticipate?g_num=${g_board.g_num}'"
+										style="width: 20%; margin-left: 20px">참여하기</button>
+									<br>
+								</c:otherwise>
+							</c:choose>
+						</div>
+						<div class="boardContent" id="endBtn">
+							<span class="btn-outline-success"
+									style="width: 20%; margin-left: 20px">마감된 게시물입니다.</span>
+							<c:if test="${loginMember.email eq g_board.email}">
+								<nav class="detailMenu" style="float: right;">
+									<ul>
+										<li><a href=""> <strong style="float: right;">⁝</strong>
+										</a>
+											<ul>
+												<li><a href="" onclick="boardRestart()">마감취소</a></li>
+												<li><a href="goUpdate?g_num=${g_board.g_num}">게시글 수정</a></li>
+												<li><a href="deleteGBoard?g_num=${g_board.g_num}">게시글
+														삭제</a></li>
+											</ul></li>
+									</ul>
+								</nav>
+							</c:if>
+						</div>
+			  	</c:otherwise>
+			  	
+			  </c:choose>	
+				
+				
 
 				<div class="boardContent">참여인원 : ${g_board.g_p_count}</div>
 				<div class="boardContent">
@@ -581,20 +724,25 @@
 
 		<script type="text/javascript">
 			function checkGFavorite() {
-				var g_num = document.getElementById("gNum").value;
+				var g_num = document.getElementById("
+							gNum").value;
 
-				document.getElementById("favCancel").style.display = "inline";
-				document.getElementById("gFavorite").style.display = "none";
+				document.getElementById("favCancel").style.display="inline"
+							;
+				document.getElementById("gFavorite").style.display="none"
+							;
 				$.ajax({
 					url : "insertgFavorite",
-					data : {
+					data
+							: {
 						'g_num' : g_num
 					},
-					type : 'get',
+					type
+							: 'get',
 					success : function() {
 
 					},
-					error : function() {
+					error:function() {
 						alert("통신실패")
 					}
 				})
@@ -609,6 +757,48 @@
 				document.getElementById("favCancel").style.display = "none";
 				$.ajax({
 					url : "delgFavorite",
+					data : {
+						'g_num' : g_num
+					},
+					type : 'get',
+					success : function() {
+
+					},
+					error : function() {
+						alert("통신실패")
+					}
+				})
+			}
+		</script>
+		<script type="text/javascript">
+			function boardEnd() {
+				var g_num = document.getElementById("gNum").value;
+
+				document.getElementById("endBtn").style.display = "block";
+				document.getElementById("selectBtn").style.display = "none";
+				$.ajax({
+					url : "endGBoard",
+					data : {
+						'g_num' : g_num
+					},
+					type : 'get',
+					success : function() {
+
+					},
+					error : function() {
+						alert("통신실패")
+					}
+				})
+			}
+		</script>
+		<script type="text/javascript">
+			function boardRestart() {
+				var g_num = document.getElementById("gNum").value;
+
+				document.getElementById("endBtn").style.display = "none";
+				document.getElementById("selectBtn").style.display = "block";
+				$.ajax({
+					url : "restartGBoard",
 					data : {
 						'g_num' : g_num
 					},

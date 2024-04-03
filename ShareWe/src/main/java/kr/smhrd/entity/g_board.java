@@ -54,6 +54,8 @@ public class g_board {
     
     // 참여인원
     private int g_p_count;
-
+    
+    // 마감 여부
+    private int g_end;
 
 }

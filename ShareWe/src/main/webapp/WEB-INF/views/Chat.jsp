@@ -381,7 +381,7 @@
 	</div>
 
 	<c:choose>
-		<c:when test="${g_num == 60}">
+		<c:when test="${g_num == 1}">
 			<div class="row g-4 justify-content-center"
 				style="width: 400px; display: inline-block; padding-top: 150px;">
 				<iframe

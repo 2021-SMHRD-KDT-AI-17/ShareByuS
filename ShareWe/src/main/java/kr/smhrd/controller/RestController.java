@@ -24,6 +24,9 @@ public class RestController {
 	private MemberMapper memberMapper;
 
 	@Autowired
+	private G_BoardMapper g_boardMapper;
+	
+	@Autowired
 	private FavoriteMapper favoriteMapper;
 
 	// Email 중복체크 ->비동기방식
@@ -42,34 +45,34 @@ public class RestController {
 		member loginMember = (member) session.getAttribute("loginMember");
 		String email = loginMember.getEmail();
 		c_favorite favInfo = new c_favorite(email, c_num);
-		
+
 		favoriteMapper.insertFavorite(favInfo);
 	}
-	
+
 	@RequestMapping("/delFavorite")
 	public void delFavorite(@RequestParam("c_num") int c_num, HttpSession session) {
 		member loginMember = (member) session.getAttribute("loginMember");
 		String email = loginMember.getEmail();
 		c_favorite favInfo = new c_favorite(email, c_num);
-		
+
 		favoriteMapper.delFavorite(favInfo);
 	}
-	
+
 	@RequestMapping("/insertgFavorite")
 	public void insertgFavorite(@RequestParam("g_num") int g_num, HttpSession session) {
 		member loginMember = (member) session.getAttribute("loginMember");
 		String email = loginMember.getEmail();
 		g_favorite favInfo = new g_favorite(email, g_num);
-		
+
 		favoriteMapper.insertgFavorite(favInfo);
 	}
-	
+
 	@RequestMapping("/delgFavorite")
 	public void delgFavorite(@RequestParam("g_num") int g_num, HttpSession session) {
 		member loginMember = (member) session.getAttribute("loginMember");
 		String email = loginMember.getEmail();
 		g_favorite favInfo = new g_favorite(email, g_num);
-		
+
 		favoriteMapper.delgFavorite(favInfo);
 	}
 
@@ -78,17 +81,33 @@ public class RestController {
 		member loginMember = (member) session.getAttribute("loginMember");
 		String email = loginMember.getEmail();
 		c_subscribe subscribeInfo = new c_subscribe(email, c_name);
-		
+
 		favoriteMapper.insertSub(subscribeInfo);
 	}
-	
+
 	@RequestMapping("/delSub")
 	public void delSub(@RequestParam("c_name") String c_name, HttpSession session) {
 		member loginMember = (member) session.getAttribute("loginMember");
 		String email = loginMember.getEmail();
 		c_subscribe subscribeInfo = new c_subscribe(email, c_name);
-		
+
 		favoriteMapper.delSub(subscribeInfo);
+	}
+
+	// 게시글 마감
+	@RequestMapping("/endGBoard")
+	public void endGBoard(@RequestParam("g_num") int g_num) {
+		
+		g_boardMapper.endGBoard(g_num);
+
+	}
+	
+	// 게시글 마감 취소
+	@RequestMapping("/restartGBoard")
+	public void restartGBoard(@RequestParam("g_num") int g_num) {
+		
+		g_boardMapper.restartGBoard(g_num);
+		
 	}
 
 }
