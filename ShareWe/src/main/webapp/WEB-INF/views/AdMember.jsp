@@ -1,3 +1,4 @@
+<%@page import="kr.smhrd.entity.member"%>
 <%@page import="kr.smhrd.entity.report"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
@@ -43,7 +44,9 @@
 </head>
 
 <body>
-
+	<%
+	member loginMember = (member) session.getAttribute("loginMember");
+	%>
 
 	<!-- Spinner Start -->
 	<div id="spinner"
@@ -64,9 +67,10 @@
 					<c:if test="${loginMember.email eq 'admin'}">
 						<a href="goMain" class="text-white"><small
 							class="text-white mx-2">홈</small>|</a>
-						<a href="goAdApprove" class="text-white"><small class="text-white ms-2">기업회원승인</small>|</a>
-						<a href="memberLogout"
-							class="text-white"><small class="text-white mx-2">로그아웃</small></a>
+						<a href="goAdApprove" class="text-white"><small
+							class="text-white ms-2">기업회원승인</small>|</a>
+						<a href="memberLogout" class="text-white"><small
+							class="text-white mx-2">로그아웃</small></a>
 					</c:if>
 				</div>
 			</div>
@@ -81,21 +85,35 @@
 				</button>
 				<div class="collapse navbar-collapse bg-white" id="navbarCollapse">
 					<div class="navbar-nav mx-auto">
-							<a href="goGeneral" class="nav-item nav-link" style="color: black; font-size: 18px;"><strong>공구함</strong></a>
-							<a href="goCompany" class="nav-item nav-link" style="color: black; font-size: 18px;"><strong>우리동네</strong></a>
-							<!-- <a href="shop-detail.html" class="nav-item nav-link">Shop Detail</a> -->
-							<div class="nav-item dropdown">
-								<a href="#" class="nav-link dropdown-toggle active"
-									data-bs-toggle="dropdown" style="color: black; font-size: 18px;"><strong>카테고리</strong></a>
-								<div class="dropdown-menu m-0 bg-secondary rounded-0">
-									<a href="getCategory?category=식품" class="dropdown-item">식품</a> <a
-										href="getCategory?category=과일" class="dropdown-item">과일</a> <a
-										href="getCategory?category=생필품" class="dropdown-item">생필품</a> <a
-										href="getCategory?category=패션/뷰티" class="dropdown-item">패션/뷰티</a>
-									<a href="getCategory?category=여행/도서" class="dropdown-item">여행/도서</a>
-								</div>
+						<a href="goGeneral" class="nav-item nav-link"
+							style="color: black; font-size: 18px;"><strong>공구함</strong></a> <a
+							href="goCompany" class="nav-item nav-link"
+							style="color: black; font-size: 18px;"><strong>우리동네</strong></a>
+						<!-- <a href="shop-detail.html" class="nav-item nav-link">Shop Detail</a> -->
+						<div class="nav-item dropdown">
+							<a href="#" class="nav-link dropdown-toggle active"
+								data-bs-toggle="dropdown" style="color: black; font-size: 18px;"><strong>카테고리</strong></a>
+							<div class="dropdown-menu m-0 bg-secondary rounded-0">
+								<a href="getCategory?category=식품" class="dropdown-item">식품</a> <a
+									href="getCategory?category=과일" class="dropdown-item">과일</a> <a
+									href="getCategory?category=생필품" class="dropdown-item">생필품</a> <a
+									href="getCategory?category=패션/뷰티" class="dropdown-item">패션/뷰티</a>
+								<a href="getCategory?category=여행/도서" class="dropdown-item">여행/도서</a>
 							</div>
-							<a href="contact.html" class="nav-item nav-link" style="color: black; font-size: 18px;"><strong>동네보기</strong></a>
+						</div>
+						<%
+						if (loginMember == null) {
+						%>
+						<a href="goLogin" class="nav-item nav-link"
+							style="color: black; font-size: 18px;"><strong>동네보기</strong></a>
+						<%
+						} else {
+						%>
+						<a href="goHood" class="nav-item nav-link"
+							style="color: black; font-size: 18px;"><strong>동네보기</strong></a>
+						<%
+						}
+						%>
 					</div>
 					<div class="d-flex m-3 me-0">
 						<button
@@ -207,22 +225,23 @@
 									</c:otherwise>
 								</c:choose>
 								<td>
-									<button onclick="location.href='deleteMember?email=${m.email}'" type="button"
-										class="btn btn-outline-success">탈퇴</button> <c:choose>
+									<button onclick="location.href='deleteMember?email=${m.email}'"
+										type="button" class="btn btn-outline-success">탈퇴</button> <c:choose>
 										<c:when test="${m.type < 4}">
-											<button onclick="location.href='susMember?email=${m.email}'" type="button"
-												class="btn btn-outline-success">정지</button>
+											<button onclick="location.href='susMember?email=${m.email}'"
+												type="button" class="btn btn-outline-success">정지</button>
 										</c:when>
 										<c:otherwise>
-											<button onclick="location.href='resMember?email=${m.email}'" type="button"
-												class="btn btn-outline-success">해제</button>
+											<button onclick="location.href='resMember?email=${m.email}'"
+												type="button" class="btn btn-outline-success">해제</button>
 										</c:otherwise>
 									</c:choose>
 							</tr>
+						</c:forEach>
 					</div>
 
 
-					</c:forEach>
+
 
 				</table>
 

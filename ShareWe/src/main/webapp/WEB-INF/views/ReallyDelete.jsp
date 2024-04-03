@@ -84,7 +84,7 @@
 </head>
 <body>
 	<%
-		member loginMember = (member)session.getAttribute("loginMember");
+	member loginMember = (member) session.getAttribute("loginMember");
 	%>
 
 
@@ -105,19 +105,29 @@
 					<small class="me-3"></small> <small class="me-3"></small>
 				</div>
 				<div class="top-link pe-2">
-					<%if (loginMember == null) {%>
+					<%
+					if (loginMember == null) {
+					%>
 					<a href="goLogin" class="text-white"><small
 						class="text-white mx-2">로그인</small>/</a> <a href="goMemberType"
 						class="text-white"><small class="text-white mx-2">회원가입</small></a>
-					<%}else {%>
-					<span><small class="text-white mx-2"><%=loginMember.getNick() %>님
+					<%
+					} else {
+					%>
+					<span><small class="text-white mx-2"><%=loginMember.getNick()%>님
 							환영합니다.</small></span>
-					<%if(loginMember.getEmail().equals("admin")) {%>
+					<%
+					if (loginMember.getEmail().equals("admin")) {
+					%>
 					<a href="#" class="text-white"><small class="text-white ms-2">회원관리</small></a>
-					<%} %>
+					<%
+					}
+					%>
 					<a href="memberLogout" class="text-white"><small
 						class="text-white mx-2">로그아웃</small></a>
-					<%} %>
+					<%
+					}
+					%>
 				</div>
 			</div>
 		</div>
@@ -131,21 +141,35 @@
 				</button>
 				<div class="collapse navbar-collapse bg-white" id="navbarCollapse">
 					<div class="navbar-nav mx-auto">
-							<a href="goGeneral" class="nav-item nav-link" style="color: black; font-size: 18px;"><strong>공구함</strong></a>
-							<a href="goCompany" class="nav-item nav-link" style="color: black; font-size: 18px;"><strong>우리동네</strong></a>
-							<!-- <a href="shop-detail.html" class="nav-item nav-link">Shop Detail</a> -->
-							<div class="nav-item dropdown">
-								<a href="#" class="nav-link dropdown-toggle active"
-									data-bs-toggle="dropdown" style="color: black; font-size: 18px;"><strong>카테고리</strong></a>
-								<div class="dropdown-menu m-0 bg-secondary rounded-0">
-									<a href="getCategory?category=식품" class="dropdown-item">식품</a> <a
-										href="getCategory?category=과일" class="dropdown-item">과일</a> <a
-										href="getCategory?category=생필품" class="dropdown-item">생필품</a> <a
-										href="getCategory?category=패션/뷰티" class="dropdown-item">패션/뷰티</a>
-									<a href="getCategory?category=여행/도서" class="dropdown-item">여행/도서</a>
-								</div>
+						<a href="goGeneral" class="nav-item nav-link"
+							style="color: black; font-size: 18px;"><strong>공구함</strong></a> <a
+							href="goCompany" class="nav-item nav-link"
+							style="color: black; font-size: 18px;"><strong>우리동네</strong></a>
+						<!-- <a href="shop-detail.html" class="nav-item nav-link">Shop Detail</a> -->
+						<div class="nav-item dropdown">
+							<a href="#" class="nav-link dropdown-toggle active"
+								data-bs-toggle="dropdown" style="color: black; font-size: 18px;"><strong>카테고리</strong></a>
+							<div class="dropdown-menu m-0 bg-secondary rounded-0">
+								<a href="getCategory?category=식품" class="dropdown-item">식품</a> <a
+									href="getCategory?category=과일" class="dropdown-item">과일</a> <a
+									href="getCategory?category=생필품" class="dropdown-item">생필품</a> <a
+									href="getCategory?category=패션/뷰티" class="dropdown-item">패션/뷰티</a>
+								<a href="getCategory?category=여행/도서" class="dropdown-item">여행/도서</a>
 							</div>
-							<a href="contact.html" class="nav-item nav-link" style="color: black; font-size: 18px;"><strong>동네보기</strong></a>
+						</div>
+						<%
+						if (loginMember == null) {
+						%>
+						<a href="goLogin" class="nav-item nav-link"
+							style="color: black; font-size: 18px;"><strong>동네보기</strong></a>
+						<%
+						} else {
+						%>
+						<a href="goHood" class="nav-item nav-link"
+							style="color: black; font-size: 18px;"><strong>동네보기</strong></a>
+						<%
+						}
+						%>
 					</div>
 					<div class="d-flex m-3 me-0">
 						<button
@@ -168,9 +192,9 @@
 
 
 	<!-- Search Start -->
-   <div class="modal fade" id="searchModal" tabindex="-1"
-      aria-labelledby="exampleModalLabel" aria-hidden="true">
-      <div class="modal-dialog modal-fullscreen">
+	<div class="modal fade" id="searchModal" tabindex="-1"
+		aria-labelledby="exampleModalLabel" aria-hidden="true">
+		<div class="modal-dialog modal-fullscreen">
 
 			<div class="modal-content rounded-0">
 				<div class="modal-header">
@@ -181,11 +205,13 @@
 				</div>
 				<form action="goSearch">
 					<div class="modal-body d-flex align-items-center">
-						<div class="input-group w-75 mx-auto d-flex" 
-							style="height: 800px; padding-bottom: 100px; width:50% !important;  justify-content: center; align-items: center;">
-							<input type="text" class="form-control p-3" name="searchText" style="height: 58px;"
-								placeholder="검색어를 입력해주세요." aria-describedby="search-icon-1">
-							<input type="submit" value="검색" id="search-icon-1" style="border-top-right-radius: 10px; border-bottom-right-radius: 10px; height: 58px;"
+						<div class="input-group w-75 mx-auto d-flex"
+							style="height: 800px; padding-bottom: 100px; width: 50% !important; justify-content: center; align-items: center;">
+							<input type="text" class="form-control p-3" name="searchText"
+								style="height: 58px;" placeholder="검색어를 입력해주세요."
+								aria-describedby="search-icon-1"> <input type="submit"
+								value="검색" id="search-icon-1"
+								style="border-top-right-radius: 10px; border-bottom-right-radius: 10px; height: 58px;"
 								class="btn btn-primary border-2 border-secondary py-3 px-4">
 						</div>
 					</div>
@@ -204,7 +230,8 @@
 	<div class="container-fluid page-header py-5">
 		<h1 class="text-center text-white display-6">회원 탈퇴</h1>
 		<ol class="breadcrumb justify-content-center mb-0">
-			<li class="breadcrumb-item active text-white">Membership Withdraw</li>
+			<li class="breadcrumb-item active text-white">Membership
+				Withdraw</li>
 		</ol>
 	</div>
 	<!-- Single Page Header End -->
@@ -213,57 +240,62 @@
 	<!-- 회원탈퇴 Start -->
 	<div class="container-fluid py-5">
 		<div class="container py-5">
-			<form action="goDeleteSuccess?email=${loginMember.email }" method="post">
+			<form action="goDeleteSuccess?email=${loginMember.email }"
+				method="post">
 				<div class="row g-5 justify-content-center">
 					<div class="col-md-12 col-lg-6 col-xl-7">
 
-					
-					<div align="center">
-					<table>
-						
-						<th colspan="2" style="text-align:center !important">아래 회원 정보를 확인해주세요!</th>
-							
-						<tr>
-							<td style="text-align: right;">가입한 이메일: </td>
-							<td style="text-align: left;">${loginMember.email }</td>
-						</tr>
-						<tr>
-							<td style="text-align: right;">이름: </td>
-							<td style="text-align: left;">${loginMember.name }</td>
-						</tr>
-						<tr>
-							<td style="text-align: right;">닉네임: </td>
-							<td style="text-align: left;">${loginMember.nick }</td>
-						</tr>
-						<tr>
-							<td style="text-align: right;">전화번호: </td>
-							<td style="text-align: left;">${loginMember.tel }</td>
-						</tr>
-						<tr>
-							<td style="text-align: right;">주소: </td>
-							<td style="text-align: left;">${loginMember.address }</td>
-						</tr>
-							
-					</table>
-				</div>
-					
-					<br>
-					
-					
-					<h5 class="text-center text-white display-7" style="color: grey !important;">
-					탈퇴 시, 해당 계정 정보가 삭제되며 복구가 불가능합니다.</h5>
-					<h5 class="text-center text-white display-7" style="color: grey !important;">
-					정말로 탈퇴하시겠습니까?</h5>
-					
-					<br>	
 
-						<div class="row g-4 text-center align-items-center justify-content-center pt-4">
+						<div align="center">
+							<table>
+
+								<th colspan="2" style="text-align: center !important">아래 회원
+									정보를 확인해주세요!</th>
+
+								<tr>
+									<td style="text-align: right;">가입한 이메일:</td>
+									<td style="text-align: left;">${loginMember.email }</td>
+								</tr>
+								<tr>
+									<td style="text-align: right;">이름:</td>
+									<td style="text-align: left;">${loginMember.name }</td>
+								</tr>
+								<tr>
+									<td style="text-align: right;">닉네임:</td>
+									<td style="text-align: left;">${loginMember.nick }</td>
+								</tr>
+								<tr>
+									<td style="text-align: right;">전화번호:</td>
+									<td style="text-align: left;">${loginMember.tel }</td>
+								</tr>
+								<tr>
+									<td style="text-align: right;">주소:</td>
+									<td style="text-align: left;">${loginMember.address }</td>
+								</tr>
+
+							</table>
+						</div>
+
+						<br>
+
+
+						<h5 class="text-center text-white display-7"
+							style="color: grey !important;">탈퇴 시, 해당 계정 정보가 삭제되며 복구가
+							불가능합니다.</h5>
+						<h5 class="text-center text-white display-7"
+							style="color: grey !important;">정말로 탈퇴하시겠습니까?</h5>
+
+						<br>
+
+						<div
+							class="row g-4 text-center align-items-center justify-content-center pt-4">
 							<input type="submit" value="예"
 								class="btn border-secondary py-3 px-4 text-uppercase w-50 text-primary"
-								style="width:200px !important">
-							<button type="button" onclick="location.href='goMyPage'" 
-									class="btn border-secondary py-3 px-4 text-uppercase w-50 text-primary"
-									style="width: 200px !important; display: inline-block !important;">아니오</button></a>
+								style="width: 200px !important">
+							<button type="button" onclick="location.href='goMyPage'"
+								class="btn border-secondary py-3 px-4 text-uppercase w-50 text-primary"
+								style="width: 200px !important; display: inline-block !important;">아니오</button>
+							</a>
 						</div>
 					</div>
 				</div>

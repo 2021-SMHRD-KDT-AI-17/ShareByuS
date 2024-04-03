@@ -90,7 +90,7 @@
 	box-shadow: 2px 2px 3px #999;
 	border-color: transparent;
 	position: fixed;
-	right: 30px;
+	right: 160px;
 	bottom: 50px;
 }
 
@@ -120,85 +120,7 @@
 #buttonBar i {
 	color: white;
 }
-
-.boardContent {
-	border-bottom: 1px solid grey;
-	padding-bottom: 20px;
-	padding-left: 20px;
-}
-
-.detailMenu {
-	width: 100%;
-	max-width: 100px;
-}
-
-.detailMenu ul {
-	list-style: none;
-	z-index: 2;
-}
-
-.detailMenu a {
-	color: #000;
-	text-decoration: none;
-}
-
-.detailMenu>ul {
-	display: flex;
-	width: 100%;
-	justify-content: space-between;
-	padding: 10px;
-}
-
-.detailMenu>ul>li {
-	position: relative;
-	width: 100%
-}
-
-.detailMenu>ul>li>a {
-	font-size: 20px;
-	font-weight: bold;
-	padding: 10px 0;
-}
-
-.detailMenu>ul>li>a:hover {
-	color: #999;
-}
-
-.detailMenu>ul>li>ul {
-	padding: 0;
-	display: none;
-	position: absolute;
-	left: 50%;
-	transform: translateX(-50%);
-	border: 1px solid #ddd;
-	border-radius: 6px;
-	background: #fff;
-}
-
-.detailMenu>ul>li>ul>li {
-	width: 140px !important;
-	text-align: center;
-}
-
-.detailMenu>ul>li:hover ul {
-	display: block;
-	margin-top: 30px;
-}
-
-.detailMenu>ul>li  li a {
-	display: block;
-	padding: 10px 15px;
-}
-
-.detailMenu>ul>li  li a:hover {
-	background: #eee;
-}
-
-.detailMenu>ul>li>li+li {
-	margin-top: 5px;
-}
 </style>
-
 
 </head>
 
@@ -248,15 +170,13 @@
 					<%
 					}
 					%>
-
 				</div>
 			</div>
 		</div>
 		<div class="container px-0">
 			<nav class="navbar navbar-light bg-white navbar-expand-xl">
 				<a href="goMain" class="navbar-brand"><h1
-						class="text-primary display-6" style="color: #009223 !important;">Share
-						We?</h1></a>
+						class="text-primary display-6">Share We?</h1></a>
 				<button class="navbar-toggler py-2 px-3" type="button"
 					data-bs-toggle="collapse" data-bs-target="#navbarCollapse">
 					<span class="fa fa-bars text-primary"></span>
@@ -299,12 +219,13 @@
 							data-bs-toggle="modal" data-bs-target="#searchModal">
 							<i class="fas fa-search text-primary"></i>
 						</button>
-						<a href="goCart" class="position-relative me-4 my-auto"> <i
+						<a href="#" class="position-relative me-4 my-auto"> <i
 							class="fa fa-shopping-bag fa-2x"></i> <span
 							class="position-absolute bg-secondary rounded-circle d-flex align-items-center justify-content-center text-dark px-1"
 							style="top: -5px; left: 15px; height: 20px; min-width: 20px;">3</span>
 						</a> <a href="goMyPage" class="my-auto"> <i
-							class="fas fa-user fa-2x"></i></a>
+							class="fas fa-user fa-2x"></i>
+						</a>
 					</div>
 				</div>
 			</nav>
@@ -344,7 +265,7 @@
 	<!-- Search End -->
 
 
-	<!-- Modal Search Start -->
+	<!-- Modal Search Start 
 	<div class="modal fade" id="searchModal" tabindex="-1"
 		aria-labelledby="exampleModalLabel" aria-hidden="true">
 		<div class="modal-dialog modal-fullscreen">
@@ -356,7 +277,7 @@
 						aria-label="Close"></button>
 				</div>
 				<div class="modal-body d-flex align-items-center">
-					<div class="input-group w-75 mx-auto d-flex">
+					<div class="input-group w-75 mx-auto d-flex" >
 						<input type="search" class="form-control p-3"
 							placeholder="keywords" aria-describedby="search-icon-1">
 						<span id="search-icon-1" class="input-group-text p-3"><i
@@ -366,184 +287,135 @@
 			</div>
 		</div>
 	</div>
-	<!-- Modal Search End -->
+	 Modal Search End -->
 
 
 
 	<!-- Single Page Header start -->
 	<div class="container-fluid page-header py-5">
-		<h1 class="text-center text-white display-6">유료결제</h1>
+		<h1 class="text-center text-white display-6">우리 동네 Shop</h1>
 		<ol class="breadcrumb justify-content-center mb-0">
-			<li class="breadcrumb-item active text-white">UP권 구매</li>
+			<li class="breadcrumb-item active text-white">${m_address}</li>
 		</ol>
 	</div>
 	<!-- Single Page Header End -->
 
 
-	<!-- 게시글 상세 -->
-	<!-- <div class="row g-4 justify-content-center hero-header" style="margin-left: 28%; margin-right: 28%; margin-top: 80px !important;"> -->
+	<!-- food section -->
 
-	<div>
-		<img src="resources/asset/image/subscribe_top.png"
-			style="margin-top: 50px; margin-left: 600px;"width: 900px; height:100%;>
+	<div class="row g-4 justify-content-center" id="categoryBox">
+
+		<!-- 카테고리 -->
+		<div class="col-lg-9" style="margin-top: 90px;">
+			<ul class="filters_menu" style="margin-top: 20px !important;">
+
+				<a href="goCompany"><li>All</li></a>
+				<a href="getComCategory?category=식품" id="clickVege"><li>식품</li></a>
+				<a href="getComCategory?category=과일" id="clickFruit"><li>과일</li></a>
+				<a href="getComCategory?category=생필품" id="ClickDaily"><li>생필품</li></a>
+				<a href="getComCategory?category=패션/뷰티" id="ClickDaily"><li>패션/뷰티</li></a>
+				<a href="getComCategory?category=여행/도서" id="ClickDaily"><li>여행/도서</li></a>
+
+				<!-- <input id="inputSerch" class="serchBar"  type="search" placeholder="keywords">
+				<button  type="button" id="buttonBar" class="serchBar"><i class="fa fa-search"></i></button> -->
+
+			</ul>
+		</div>
+
+
+
+		<div class="col-lg-9"
+			style="width: 60% !important; justify-content: center; align-items: center;">
+			<div class="row g-4 justify-content-center" id="boardDiv">
+				<c:forEach items="${cboard_list}" var="c">
+					<c:forEach items="${add_email}" var="e">
+						<c:if test="${e.email eq c.email}">
+							<div class="col-md-1 col-lg-2 col-xl-3"
+								style="margin-right: 10px; margin-left: 10px; width: 23%; height: 10%; margin-bottom: 20px;">
+								<div class="rounded position-relative fruite-item">
+									<div class="fruite-img">
+										<a
+											href="C_BoardContent?c_num=${c.c_num}&c_writer=${c.c_writer}">
+											<img src="resources/g_Image/${c.c_img1}"
+											class="img-fluid w-100 rounded-top" alt="">
+										</a>
+									</div>
+									<div
+										class="text-white bg-secondary px-3 py-1 rounded position-absolute"
+										style="top: 10px; left: 10px; background-color: #009223 !important;">${c.category}</div>
+									<div
+										class="p-4 border border-secondary border-top-0 rounded-bottom"
+										style="border-color: #009223 !important; text-align: left;">
+										<br> <a
+											href="C_BoardContent?c_num=${c.c_num}&c_writer=${c.c_writer}"><h5>${c.c_title}</h5></a>
+										<h6 style="display: inline;">${c.c_writer }</h6>
+										<c:choose>
+											<c:when test="${empty loginMember}">
+												<a onclick="location.href='goLogin'" style="float: right;"
+													type="button"
+													class="btn border border-secondary rounded-pill px-3 text-primary">❤
+													찜</a>
+											</c:when>
+											<c:otherwise>
+
+												<c:set var="num" value="0" />
+												<c:forEach items="${cfavorite_list}" var="f">
+													<c:if test="${f.c_num eq c.c_num}">
+														<c:set var="num" value="1" />
+													</c:if>
+
+
+												</c:forEach>
+												<c:if test="${num eq '1'}">
+
+													<a onclick="checkCFavorite(${c.c_num})" id="${c.c_num}"
+														style="float: right; display: none;" type="button"
+														class="btn border border-secondary rounded-pill px-3 text-primary">❤
+														찜</a>
+													<a onclick="delCFavorite(${c.c_num})"
+														id="favCancel${c.c_num}"
+														style="float: right; background-color: green; color: white !important;"
+														type="button"
+														class="btn border border-secondary rounded-pill px-3 text-primary">❤
+														찜</a>
+												</c:if>
+												<c:if test="${num eq '0'}">
+													<a onclick="checkCFavorite(${c.c_num})" id="${c.c_num}"
+														style="float: right;" type="button"
+														class="btn border border-secondary rounded-pill px-3 text-primary">❤
+														찜</a>
+													<a onclick="delCFavorite(${c.c_num})"
+														id="favCancel${c.c_num}"
+														style="float: right; display: none; background-color: green; color: white !important;"
+														type="button"
+														class="btn border border-secondary rounded-pill px-3 text-primary">❤
+														찜</a>
+												</c:if>
+
+
+
+											</c:otherwise>
+										</c:choose>
+									</div>
+								</div>
+							</div>
+						</c:if>
+
+					</c:forEach>
+				</c:forEach>
+			</div>
+		</div>
+		<c:if test="${loginMember.type == 1}">
+			<div class="row g-4 justify-content-center">
+				<button class="col-xl-1" id="write" type="button"
+					onclick="location.href='gocBoard'">게시물작성</button>
+			</div>
+		</c:if>
 	</div>
+	<!-- end food section -->
 
-	<div class="upImage"
-		style="margin-top: 30px; margin-left: 300px; margin-bottom: 50px;">
-		<button type="button" onclick="pay(0)"
-			style="border-color: transparent; background-color: transparent;">
-			<input type="hidden" class="upName" value="UP - 5회권"> <input
-				type="hidden" class="upPrice" value="3000"> <input
-				type="hidden" class="upCnt" value="5"> <img
-				src="resources/asset/image/up5.png"
-				style="width: 300px !important; height: 500px !important;">
-		</button>
+	<!-- Fruits Shop End-->
 
-		<button type="button" onclick="pay(1)"
-			style="border-color: transparent; background-color: transparent;">
-			<input type="hidden" class="upName" value="UP - 10회권"> <input
-				type="hidden" class="upPrice" value="3000"> <input
-				type="hidden" class="upCnt" value="10"> <img
-				src="resources/asset/image/up10.png"
-				style="width: 300px !important; height: 500px !important;">
-		</button>
-
-		<button type="button" onclick="pay(2)"
-			style="border-color: transparent; background-color: transparent;">
-			<input type="hidden" class="upName" value="UP - 25회권"> <input
-				type="hidden" class="upPrice" value="100"> <input
-				type="hidden" class="upCnt" value="25"> <img
-				src="resources/asset/image/up25.png"
-				style="width: 300px !important; height: 500px !important;">
-		</button>
-
-		<button type="button" onclick="pay(3)"
-			style="border-color: transparent; background-color: transparent;">
-			<input type="hidden" class="upName" value="UP - 60회권"> <input
-				type="hidden" class="upPrice" value="100"> <input
-				type="hidden" class="upCnt" value="60"> <img
-				src="resources/asset/image/up60.png"
-				style="width: 320px !important; height: 500px !important;">
-		</button>
-	</div>
-
-
-
-	<input type="hidden" value="${loginMember.email}" id="payEmail">
-	<input type="hidden" value="${loginMember.name}" id="payName">
-	<input type="hidden" value="${loginMember.tel}" id="payTel">
-	<input type="hidden" value="${loginMember.address}" id="payAddress">
-
-	<!-- </div> -->
-
-	<script type="text/javascript"
-		src="https://code.jquery.com/jquery-1.12.4.min.js"></script>
-	<script type="text/javascript"
-		src="https://cdn.iamport.kr/js/iamport.payment-1.2.0.js"></script>
-	<script>
-		function pay(num) {
-
-			var inputUp = document.getElementsByClassName("upName")[num].value;
-			var inputPrice = document.getElementsByClassName("upPrice")[num].value;
-			var inputCnt = document.getElementsByClassName("upCnt")[num].value;
-
-			/*var selectedGoodsName = document.querySelector(".kg_pay_btn").getAttribute("data-name");*/
-
-			var inputEmail = document.getElementById("payEmail").value;
-			var inputName = document.getElementById("payName").value;
-			var inputTel = document.getElementById("payTel").value;
-			var inputAddress = document.getElementById("payAddress").value;
-
-			var IMP = window.IMP;
-			IMP.init("imp14502251");
-			// 원포트 관리자 페이지 -> 내정보 -> 가맹점식별코드
-			// ''안에 띄어쓰기 없이 가맹점 식별코드를 붙여넣어주세요. 안그러면 결제창이 안뜹니다.
-			IMP
-					.request_pay(
-							{
-								pg : 'html5_inicis', // 실제 계약 후에는 실제 상점아이디로 변경
-								pay_method : 'card', // 'card'만 지원됩니다.
-								merchant_uid : 'ShareWe_'
-										+ new Date().getTime(), // 상점에서 관리하는 주문 번호
-								name : inputUp, // 상품 이름
-								amount : inputPrice, // 결제창에 표시될 금액. 실제 승인이 이뤄지지는 않습니다.
-								buyer_email : inputEmail,
-								buyer_name : inputName,
-								buyer_tel : inputTel,
-								buyer_addr : inputAddress,
-								buyer_postcode : '123-456',
-								m_redirect_url : 'https://www.myservice.com/payments/complete/mobile',
-								p_cnt : inputCnt
-
-							}, function(rsp) {
-								if (rsp.success) { // 결제가 성공했을 때
-									// 결제가 완료되었을 떄 결제 정보를 뜨게 만듬
-									var msg = '결제가 완료되었습니다.';
-									msg += '고유ID : ' + rsp.imp_uid;
-									msg += '상점 거래ID : ' + rsp.merchant_uid;
-									msg += '결제 금액 : ' + rsp.paid_amount;
-									msg += '카드 승인번호 : ' + rsp.apply_num;
-
-									let f = document.createElement('form');
-									/* let obj1;
-									    obj1 = document.createElement('input');
-									    obj1.setAttribute('type', 'hidden');
-									    obj1.setAttribute('name', 'p_num');
-									    obj1.setAttribute('value', p_num); */
-
-									let obj2;
-									obj2 = document.createElement('input');
-									obj2.setAttribute('type', 'hidden');
-									obj2.setAttribute('name', 'email');
-									var inputEmail = document
-											.getElementById("payEmail").value;
-									obj2.setAttribute('value', inputEmail);
-
-									let obj3;
-									obj3 = document.createElement('input');
-									obj3.setAttribute('type', 'hidden');
-									obj3.setAttribute('name', 'p_name');
-									obj3.setAttribute('value', inputUp);
-
-									let obj4;
-									obj4 = document.createElement('input');
-									obj4.setAttribute('type', 'hidden');
-									obj4.setAttribute('name', 'p_amount');
-
-									obj4.setAttribute('value', inputPrice);
-
-									let obj5;
-									obj5 = document.createElement('input');
-									obj5.setAttribute('type', 'hidden');
-									obj5.setAttribute('name', 'apply_num');
-									obj5.setAttribute('value', rsp.apply_num);
-
-									let obj6;
-									obj6 = document.createElement('input');
-									obj6.setAttribute('type', 'hidden');
-									obj6.setAttribute('name', 'p_cnt');
-
-									obj6.setAttribute('value', inputCnt);
-
-									f.appendChild(obj2);
-									f.appendChild(obj3);
-									f.appendChild(obj4);
-									f.appendChild(obj5);
-									f.appendChild(obj6);
-									f.setAttribute('method', 'post');
-									f.setAttribute('action', 'paySuccess');
-									document.body.appendChild(f);
-									f.submit();
-
-								} else { // 결제가 실패했을 때
-									// 결제에 실패했을떄 실패메세지와 실패사유를 출력
-									var msg = '결제에 실패하였습니다.';
-									msg += '실패 사유 : ' + rsp.error_msg;
-								}
-								alert(msg);
-							});
-		}
-	</script>
 
 	<!-- 메인 페이지 하단 -->
 	<div class="container-fluid bg-dark text-white-50 footer pt-5 mt-5">
@@ -561,8 +433,6 @@
 			</div>
 		</div>
 	</div>
-
-
 	<!-- 메인 페이지 하단 End -->
 
 
@@ -586,35 +456,73 @@
 	<!-- Template Javascript -->
 	<script src="resources/asset/js/main.js"></script>
 
+	<!-- 	<!-- 카테고리:채소 비동기 --
 	<script type="text/javascript">
-		function checkCFavorite() {
-			var c_num = $
-			{
-				c_board.c_num
-			}
-			;
-			console.log(c_num);
-
+		function getVege(){
 			$.ajax({
-				url : "checkCFavorite",
-				data : {
-					'c_num' : c_num
-				},
+				url :'',
+				data : '',
 				type : 'get',
-				success : function(data) {
-					if (data == 1) {
-
-						$("#zzim").text('♥ 찜 완료')
-					} else {
-						$("#zzim").text('이미 찜한 상품 입니다')
-					}
+				
+				success : function(data){
+					
 				},
 				error : function() {
-					alert("통신실패")
+					alert()
 				}
+				
+				
 			})
 		}
-	</script>
+	</script> -->
+
+	<script type="text/javascript">
+
+				function checkCFavorite(c_num){
+					 var id = "favCancel" + c_num;
+				
+					console.log(c_num)
+					console.log(id)
+					document.getElementById(id).style.display = "inline";
+					document.getElementById(c_num).style.display = "none";
+					
+				$.ajax(
+				{
+					url : "insertFavorite",
+					data : {'c_num' : c_num},
+					type :'get',
+					success : function(){
+						
+					},
+					error : function(){
+						alert("로그인이 필요합니다")
+					}
+				}
+			)
+		}
+				</script>
+	<script type="text/javascript">
+			function delCFavorite(c_num){
+				var id = "favCancel" + c_num;
+				console.log(c_num)
+				console.log(id)
+				document.getElementById(c_num).style.display = "inline";
+				document.getElementById(id).style.display = "none";
+						$.ajax(
+						{
+							url : "delFavorite",
+							data : {'c_num' : c_num},
+							type :'get',
+							success : function(){
+								
+							},
+							error : function(){
+								alert("통신실패")
+							}
+						}
+					)
+				}
+		</script>
 </body>
 
 </html>

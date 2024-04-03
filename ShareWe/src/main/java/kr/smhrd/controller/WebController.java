@@ -17,7 +17,9 @@ import kr.smhrd.entity.c_favorite;
 import kr.smhrd.entity.g_board;
 import kr.smhrd.entity.g_favorite;
 import kr.smhrd.entity.member;
+import kr.smhrd.entity.payment;
 import kr.smhrd.entity.review;
+import kr.smhrd.entity.subscribe;
 import kr.smhrd.mapper.C_BoardMapper;
 import kr.smhrd.mapper.FavoriteMapper;
 import kr.smhrd.mapper.G_BoardMapper;
@@ -160,6 +162,12 @@ public class WebController {
 				model.addAttribute("Cfv_list", Cfv_list);
 				List<review> review_list = c_boardMapper.getMyReview(loginMember.getEmail());
 				model.addAttribute("review_list", review_list);
+				
+				List<payment> payment_list = memberMapper.getPayment(loginMember.getEmail());
+				model.addAttribute("payment_list", payment_list);
+				
+				subscribe sub_list = memberMapper.getSub(loginMember.getEmail());
+				model.addAttribute("sub_list", sub_list);
 			
 			}else if (loginMember.getType() == 1){
 				
@@ -192,13 +200,25 @@ public class WebController {
 	}
 	
 	@RequestMapping("/getCategory")
-	public String getCategory(@RequestParam("category") String category, Model model) {
+	public String getCategory(@RequestParam("category") String category, Model model,HttpSession session) {
 		List<g_board> gboard_list = g_boardMapper.getgCategory(category);
 		List<c_board> cboard_list = c_boardMapper.getComCategory(category);
 		
 		model.addAttribute("category", category);
 		model.addAttribute("gboard_list", gboard_list);
 		model.addAttribute("cboard_list", cboard_list);
+		
+		 member loginMember = (member)session.getAttribute("loginMember");
+			
+		    if(loginMember != null) {
+				String email = loginMember.getEmail();
+				List<g_favorite> gfavorite_list = favoriteMapper.getGEmail(email);
+				List<c_favorite> cfavorite_list = favoriteMapper.getCEmail(email);
+				
+				
+				model.addAttribute("gfavorite_list",gfavorite_list);
+				model.addAttribute("cfavorite_list",cfavorite_list);
+			}
 		
 		return "AllCategory";
 	}

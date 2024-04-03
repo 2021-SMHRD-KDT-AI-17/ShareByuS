@@ -82,4 +82,16 @@
 		select * from member where email=#{email} and pw is null
 	</select>
 	
+	<select id="addrEQemail" parameterType="String" resultType="kr.smhrd.entity.member">
+		select email from member where instr(address,#{address})=1
+	</select>
+	
+	<select id="getPayment" parameterType="String" resultType="kr.smhrd.entity.payment">
+		select * from payment where email=#{email}
+	</select>
+	
+	<select id="getSub" parameterType="String" resultType="kr.smhrd.entity.subscribe">
+		select * from subscribe where email=#{email}
+	</select>
+	
 </mapper>
