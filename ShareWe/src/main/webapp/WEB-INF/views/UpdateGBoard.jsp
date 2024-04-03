@@ -100,7 +100,20 @@
 				<div class="collapse navbar-collapse bg-white" id="navbarCollapse">
 					<div class="navbar-nav mx-auto">
 							<a href="goGeneral" class="nav-item nav-link" style="color: black; font-size: 18px;"><strong>공구함</strong></a>
-							<a href="goCompany" class="nav-item nav-link" style="color: black; font-size: 18px;"><strong>우리동네</strong></a>
+							<a href="goCompany" class="nav-item nav-link" style="color: black; font-size: 18px;"><strong>동네구경</strong></a>
+							<%
+						if (loginMember == null) {
+						%>
+						<a href="goLogin" class="nav-item nav-link"
+							style="color: black; font-size: 18px;"><strong>우리동네</strong></a>
+						<%
+						} else {
+						%>
+						<a href="goHood" class="nav-item nav-link"
+							style="color: black; font-size: 18px;"><strong>우리동네</strong></a>
+						<%
+						}
+						%>
 							<!-- <a href="shop-detail.html" class="nav-item nav-link">Shop Detail</a> -->
 							<div class="nav-item dropdown">
 								<a href="#" class="nav-link dropdown-toggle active"
@@ -114,7 +127,6 @@
 								</div>
 							</div>
 							<a href="goSubscribe" class="nav-item nav-link" style="color: black; font-size: 18px;"><strong>POP 결제권</strong></a>
-							<a href="contact.html" class="nav-item nav-link" style="color: black; font-size: 18px;"><strong>동네보기</strong></a>
 					</div>
 					<div class="d-flex m-3 me-0">
 						<button
@@ -122,12 +134,7 @@
 							data-bs-toggle="modal" data-bs-target="#searchModal">
 							<i class="fas fa-search text-primary"></i>
 						</button>
-						<a href="goCart" class="position-relative me-4 my-auto"> <i
-							class="fa fa-shopping-bag fa-2x"></i> <span
-							class="position-absolute bg-secondary rounded-circle d-flex align-items-center justify-content-center text-dark px-1"
-							style="top: -5px; left: 15px; height: 20px; min-width: 20px;">3</span>
-						</a> <a href="goMyPage" class="my-auto"> <i
-							class="fas fa-user fa-2x"></i></a>
+						<a href="goMyPage" class="my-auto"> <i class="fas fa-user fa-2x"></i></a>
 					</div>
 				</div>
 			</nav>

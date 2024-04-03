@@ -1,3 +1,4 @@
+<%@page import="kr.smhrd.entity.member"%>
 <%@page import="java.util.List"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
@@ -51,7 +52,9 @@
 
 
 <body>
-
+	<%
+	member loginMember = (member) session.getAttribute("loginMember");
+	%>
 	<!-- Spinner Start -->
 	<div id="spinner"
 		class="show w-100 vh-100 bg-white position-fixed translate-middle top-50 start-50  d-flex align-items-center justify-content-center">
@@ -84,22 +87,36 @@
 				</button>
 				<div class="collapse navbar-collapse bg-white" id="navbarCollapse">
 					<div class="navbar-nav mx-auto">
-							<a href="goGeneral" class="nav-item nav-link" style="color: black; font-size: 18px;"><strong>공구함</strong></a>
-							<a href="goCompany" class="nav-item nav-link" style="color: black; font-size: 18px;"><strong>우리동네</strong></a>
-							<!-- <a href="shop-detail.html" class="nav-item nav-link">Shop Detail</a> -->
-							<div class="nav-item dropdown">
-								<a href="#" class="nav-link dropdown-toggle active"
-									data-bs-toggle="dropdown" style="color: black; font-size: 18px;"><strong>카테고리</strong></a>
-								<div class="dropdown-menu m-0 bg-secondary rounded-0">
-									<a href="getCategory?category=식품" class="dropdown-item">식품</a> <a
-										href="getCategory?category=과일" class="dropdown-item">과일</a> <a
-										href="getCategory?category=생필품" class="dropdown-item">생필품</a> <a
-										href="getCategory?category=패션/뷰티" class="dropdown-item">패션/뷰티</a>
-									<a href="getCategory?category=여행/도서" class="dropdown-item">여행/도서</a>
-								</div>
+						<a href="goGeneral" class="nav-item nav-link"
+							style="color: black; font-size: 18px;"><strong>공구함</strong></a> <a
+							href="goCompany" class="nav-item nav-link"
+							style="color: black; font-size: 18px;"><strong>동네구경</strong></a>
+							<%
+							if (loginMember == null) {
+							%>
+							<a href="goLogin" class="nav-item nav-link"
+								style="color: black; font-size: 18px;"><strong>우리동네</strong></a>
+							<%
+							} else {
+							%>
+							<a href="goHood" class="nav-item nav-link"
+								style="color: black; font-size: 18px;"><strong>우리동네</strong></a>
+							<%
+							}
+							%>
+						<!-- <a href="shop-detail.html" class="nav-item nav-link">Shop Detail</a> -->
+						<div class="nav-item dropdown">
+							<a href="#" class="nav-link dropdown-toggle active"
+								data-bs-toggle="dropdown" style="color: black; font-size: 18px;"><strong>카테고리</strong></a>
+							<div class="dropdown-menu m-0 bg-secondary rounded-0">
+								<a href="getCategory?category=식품" class="dropdown-item">식품</a> <a
+									href="getCategory?category=과일" class="dropdown-item">과일</a> <a
+									href="getCategory?category=생필품" class="dropdown-item">생필품</a> <a
+									href="getCategory?category=패션/뷰티" class="dropdown-item">패션/뷰티</a>
+								<a href="getCategory?category=여행/도서" class="dropdown-item">여행/도서</a>
 							</div>
+						</div>
 							<a href="goSubscribe" class="nav-item nav-link" style="color: black; font-size: 18px;"><strong>POP 결제권</strong></a>
-							<a href="contact.html" class="nav-item nav-link" style="color: black; font-size: 18px;"><strong>동네보기</strong></a>
 					</div>
 					<div class="d-flex m-3 me-0">
 						<button
@@ -107,12 +124,7 @@
 							data-bs-toggle="modal" data-bs-target="#searchModal">
 							<i class="fas fa-search text-primary"></i>
 						</button>
-						<a href="goCart" class="position-relative me-4 my-auto"> <i
-							class="fa fa-shopping-bag fa-2x"></i> <span
-							class="position-absolute bg-secondary rounded-circle d-flex align-items-center justify-content-center text-dark px-1"
-							style="top: -5px; left: 15px; height: 20px; min-width: 20px;">3</span>
-						</a> <a href="goMyPage" class="my-auto"> <i
-							class="fas fa-user fa-2x"></i></a>
+						<a href="goMyPage" class="my-auto"> <i class="fas fa-user fa-2x"></i></a>
 					</div>
 				</div>
 			</nav>
@@ -122,9 +134,9 @@
 
 
 	<!-- Search Start -->
-   <div class="modal fade" id="searchModal" tabindex="-1"
-      aria-labelledby="exampleModalLabel" aria-hidden="true">
-      <div class="modal-dialog modal-fullscreen">
+	<div class="modal fade" id="searchModal" tabindex="-1"
+		aria-labelledby="exampleModalLabel" aria-hidden="true">
+		<div class="modal-dialog modal-fullscreen">
 
 			<div class="modal-content rounded-0">
 				<div class="modal-header">
@@ -135,11 +147,13 @@
 				</div>
 				<form action="goSearch">
 					<div class="modal-body d-flex align-items-center">
-						<div class="input-group w-75 mx-auto d-flex" 
-							style="height: 800px; padding-bottom: 100px; width:50% !important;  justify-content: center; align-items: center;">
-							<input type="text" class="form-control p-3" name="searchText" style="height: 58px;"
-								placeholder="검색어를 입력해주세요." aria-describedby="search-icon-1">
-							<input type="submit" value="검색" id="search-icon-1" style="border-top-right-radius: 10px; border-bottom-right-radius: 10px; height: 58px;"
+						<div class="input-group w-75 mx-auto d-flex"
+							style="height: 800px; padding-bottom: 100px; width: 50% !important; justify-content: center; align-items: center;">
+							<input type="text" class="form-control p-3" name="searchText"
+								style="height: 58px;" placeholder="검색어를 입력해주세요."
+								aria-describedby="search-icon-1"> <input type="submit"
+								value="검색" id="search-icon-1"
+								style="border-top-right-radius: 10px; border-bottom-right-radius: 10px; height: 58px;"
 								class="btn btn-primary border-2 border-secondary py-3 px-4">
 						</div>
 					</div>
@@ -273,41 +287,43 @@
 									value="${account_email}">
 							</div>
 						</c:if>
-					
+
 
 						<div class="form-item">
-							<label class="form-label my-3">도로명 주소 <sup>*</sup></label>
-							<br>
-							<input type="text" id="sample6_postcode" placeholder="우편번호" class="form-control" style="width: 300px; display: inline !important;"">
-							<input type="button" onclick="sample6_execDaumPostcode()" 
-								value="우편번호 찾기"  class="btn border-secondary py-2 px-2  text-primary"
+							<label class="form-label my-3">도로명 주소 <sup>*</sup></label> <br>
+							<input type="text" id="sample6_postcode" placeholder="우편번호"
+								class="form-control"
+								style="width: 300px; display: inline !important;""> <input
+								type="button" onclick="sample6_execDaumPostcode()"
+								value="우편번호 찾기"
+								class="btn border-secondary py-2 px-2  text-primary"
 								style="width: 150px !important; height: 36px !important; display: inline !important; padding: 4px !important;">
-							<br> <br> <input type="text" name="address"  
-								id="sample6_address" placeholder="주소" class="form-control"><br> <input
-								type="text" id="sample6_detailAddress" placeholder="상세주소" class="form-control"> <br>
-							<input type="text" id="sample6_extraAddress" placeholder="참고항목" class="form-control">
+							<br> <br> <input type="text" name="address"
+								id="sample6_address" placeholder="주소" class="form-control"><br>
+							<input type="text" id="sample6_detailAddress" placeholder="상세주소"
+								class="form-control"> <br> <input type="text"
+								id="sample6_extraAddress" placeholder="참고항목"
+								class="form-control">
 
 
 
 						</div>
-						
+
 						<script type="text/javascript">
 							function sample6_execDaumPostcode() {
 								new daum.Postcode(
 										{
 											oncomplete : function(data) {
-												
-												var addr = ''; 
-												var extraAddr = ''; 
 
-											
-												if (data.userSelectedType === 'R') { 
+												var addr = '';
+												var extraAddr = '';
+
+												if (data.userSelectedType === 'R') {
 													addr = data.roadAddress;
-												} else { 
+												} else {
 													addr = data.jibunAddress;
 												}
 
-												
 												if (data.userSelectedType === 'R') {
 													if (data.bname !== ''
 															&& /[동|로|가]$/g
@@ -445,20 +461,21 @@
 
 
 </body>
-							<script
-							src="//t1.daumcdn.net/mapjsapi/bundle/postcode/prod/postcode.v2.js">
-							</script>
-							<style>
-							.wrong_text {
-								font-size: 1rem;
-								color: #f44e38;
-								letter-spacing: -.2px;
-								font-weight: 300;
-								margin: 8px 0 2px;
-								line-height: 1em;
-								display: none
-							}
-							</style>
+<script
+	src="//t1.daumcdn.net/mapjsapi/bundle/postcode/prod/postcode.v2.js">
+	
+</script>
+<style>
+.wrong_text {
+	font-size: 1rem;
+	color: #f44e38;
+	letter-spacing: -.2px;
+	font-weight: 300;
+	margin: 8px 0 2px;
+	line-height: 1em;
+	display: none
+}
+</style>
 
 
 </html>

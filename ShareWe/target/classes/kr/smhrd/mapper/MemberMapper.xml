@@ -82,4 +82,8 @@
 		select * from member where email=#{email} and pw is null
 	</select>
 	
+	<select id="addrEQemail" parameterType="String" resultType="kr.smhrd.entity.member">
+		select email from member where instr(address,#{address})=1
+	</select>
+	
 </mapper>

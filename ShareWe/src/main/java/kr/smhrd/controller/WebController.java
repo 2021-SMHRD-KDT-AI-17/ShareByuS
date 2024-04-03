@@ -192,13 +192,25 @@ public class WebController {
 	}
 	
 	@RequestMapping("/getCategory")
-	public String getCategory(@RequestParam("category") String category, Model model) {
+	public String getCategory(@RequestParam("category") String category, Model model,HttpSession session) {
 		List<g_board> gboard_list = g_boardMapper.getgCategory(category);
 		List<c_board> cboard_list = c_boardMapper.getComCategory(category);
 		
 		model.addAttribute("category", category);
 		model.addAttribute("gboard_list", gboard_list);
 		model.addAttribute("cboard_list", cboard_list);
+		
+		 member loginMember = (member)session.getAttribute("loginMember");
+			
+		    if(loginMember != null) {
+				String email = loginMember.getEmail();
+				List<g_favorite> gfavorite_list = favoriteMapper.getGEmail(email);
+				List<c_favorite> cfavorite_list = favoriteMapper.getCEmail(email);
+				
+				
+				model.addAttribute("gfavorite_list",gfavorite_list);
+				model.addAttribute("cfavorite_list",cfavorite_list);
+			}
 		
 		return "AllCategory";
 	}

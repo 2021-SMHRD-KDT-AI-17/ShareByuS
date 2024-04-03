@@ -122,56 +122,121 @@
 	color: white;
 }
 
-.boardContent{
+.boardContent {
 	border-bottom: 1px solid grey;
 	padding-bottom: 20px;
 	padding-left: 20px;
 }
 
-.detailMenu{width: 100%;max-width: 100px;}
-.detailMenu ul{list-style: none;z-index: 2;}
-.detailMenu a{color:#000;text-decoration: none;}
-.detailMenu > ul{display: flex;width: 100%;justify-content: space-between;padding:10px;}
-.detailMenu > ul > li{position: relative; width: 100%}
-.detailMenu > ul > li > a{font-size: 20px;font-weight: bold;padding:10px 0;}
-.detailMenu > ul > li > a:hover{color:#999;}
-.detailMenu > ul > li > ul{ padding: 0; display: none; position: absolute; left:50%; transform: translateX(-50%);border:1px solid #ddd;border-radius: 6px;background: #fff;}
-.detailMenu > ul > li > ul > li{width: 140px !important; text-align: center;}
-.detailMenu > ul > li:hover ul{display:block; margin-top: 30px;}
-.detailMenu > ul > li  li a{display: block; padding:10px 15px;}
-.detailMenu > ul > li  li a:hover{background:#eee;}
-.detailMenu > ul > li > li + li{margin-top:5px;}
+.detailMenu {
+	width: 100%;
+	max-width: 100px;
+}
 
-#myform input[type=radio]{
-    display: none !important;
+.detailMenu ul {
+	list-style: none;
+	z-index: 2;
 }
-#myform fieldset{
-    display: inline-block;
-    direction: rtl;
-    border:0;
+
+.detailMenu a {
+	color: #000;
+	text-decoration: none;
 }
-#myform fieldset legend{
-    text-align: right;
+
+.detailMenu>ul {
+	display: flex;
+	width: 100%;
+	justify-content: space-between;
+	padding: 10px;
 }
-#myform label{
-    font-size: 2em;
-    color: transparent;
-    text-shadow: 0 0 0 #f0f0f0;
+
+.detailMenu>ul>li {
+	position: relative;
+	width: 100%
 }
-#myform label:hover{
-    text-shadow: 0 0 0 #009223;
+
+.detailMenu>ul>li>a {
+	font-size: 20px;
+	font-weight: bold;
+	padding: 10px 0;
 }
-#myform label:hover ~ label{
-    text-shadow: 0 0 0 #009223;
+
+.detailMenu>ul>li>a:hover {
+	color: #999;
 }
-#myform input[type=radio]:checked ~ label{
-    text-shadow: 0 0 0 #009223;
+
+.detailMenu>ul>li>ul {
+	padding: 0;
+	display: none;
+	position: absolute;
+	left: 50%;
+	transform: translateX(-50%);
+	border: 1px solid #ddd;
+	border-radius: 6px;
+	background: #fff;
 }
-#reviewBtn:hover{
+
+.detailMenu>ul>li>ul>li {
+	width: 140px !important;
+	text-align: center;
+}
+
+.detailMenu>ul>li:hover ul {
+	display: block;
+	margin-top: 30px;
+}
+
+.detailMenu>ul>li  li a {
+	display: block;
+	padding: 10px 15px;
+}
+
+.detailMenu>ul>li  li a:hover {
+	background: #eee;
+}
+
+.detailMenu>ul>li>li+li {
+	margin-top: 5px;
+}
+
+#myform input[type=radio] {
+	display: none !important;
+}
+
+#myform fieldset {
+	display: inline-block;
+	direction: rtl;
+	border: 0;
+}
+
+#myform fieldset legend {
+	text-align: right;
+}
+
+#myform label {
+	font-size: 2em;
+	color: transparent;
+	text-shadow: 0 0 0 #f0f0f0;
+}
+
+#myform label:hover {
+	text-shadow: 0 0 0 #009223;
+}
+
+#myform label:hover ~ label {
+	text-shadow: 0 0 0 #009223;
+}
+
+#myform input[type=radio]:checked ~ label {
+	text-shadow: 0 0 0 #009223;
+}
+
+#reviewBtn:hover {
 	background-color: #009223;
 	color: white !important;
 }
-.starScore{
+
+.starScore {
 	font-size: 1.5em;
 	color: #009223;
 }
@@ -241,35 +306,44 @@
 				</button>
 				<div class="collapse navbar-collapse bg-white" id="navbarCollapse">
 					<div class="navbar-nav mx-auto">
-							<a href="goGeneral" class="nav-item nav-link" style="color: black; font-size: 18px;"><strong>공구함</strong></a>
-							<a href="goCompany" class="nav-item nav-link" style="color: black; font-size: 18px;"><strong>우리동네</strong></a>
-							<!-- <a href="shop-detail.html" class="nav-item nav-link">Shop Detail</a> -->
-							<div class="nav-item dropdown">
-								<a href="#" class="nav-link dropdown-toggle active"
-									data-bs-toggle="dropdown" style="color: black; font-size: 18px;"><strong>카테고리</strong></a>
-								<div class="dropdown-menu m-0 bg-secondary rounded-0">
-									<a href="getCategory?category=식품" class="dropdown-item">식품</a> <a
-										href="getCategory?category=과일" class="dropdown-item">과일</a> <a
-										href="getCategory?category=생필품" class="dropdown-item">생필품</a> <a
-										href="getCategory?category=패션/뷰티" class="dropdown-item">패션/뷰티</a>
-									<a href="getCategory?category=여행/도서" class="dropdown-item">여행/도서</a>
-								</div>
+						<a href="goGeneral" class="nav-item nav-link"
+							style="color: black; font-size: 18px;"><strong>공구함</strong></a> <a
+							href="goCompany" class="nav-item nav-link"
+							style="color: black; font-size: 18px;"><strong>동네구경</strong></a>
+							<%
+						if (loginMember == null) {
+						%>
+						<a href="goLogin" class="nav-item nav-link"
+							style="color: black; font-size: 18px;"><strong>우리동네</strong></a>
+						<%
+						} else {
+						%>
+						<a href="goHood" class="nav-item nav-link"
+							style="color: black; font-size: 18px;"><strong>우리동네</strong></a>
+						<%
+						}
+						%>
+						<!-- <a href="shop-detail.html" class="nav-item nav-link">Shop Detail</a> -->
+						<div class="nav-item dropdown">
+							<a href="#" class="nav-link dropdown-toggle active"
+								data-bs-toggle="dropdown" style="color: black; font-size: 18px;"><strong>카테고리</strong></a>
+							<div class="dropdown-menu m-0 bg-secondary rounded-0">
+								<a href="getCategory?category=식품" class="dropdown-item">식품</a> <a
+									href="getCategory?category=과일" class="dropdown-item">과일</a> <a
+									href="getCategory?category=생필품" class="dropdown-item">생필품</a> <a
+									href="getCategory?category=패션/뷰티" class="dropdown-item">패션/뷰티</a>
+								<a href="getCategory?category=여행/도서" class="dropdown-item">여행/도서</a>
 							</div>
+						</div>
 							<a href="goSubscribe" class="nav-item nav-link" style="color: black; font-size: 18px;"><strong>POP 결제권</strong></a>
-							<a href="contact.html" class="nav-item nav-link" style="color: black; font-size: 18px;"><strong>동네보기</strong></a>
 					</div>
 					<div class="d-flex m-3 me-0">
-							<button
-								class="btn-search btn border border-secondary btn-md-square rounded-circle bg-white me-4"
-								data-bs-toggle="modal" data-bs-target="#searchModal">
-								<i class="fas fa-search text-primary"></i>
-							</button>
-							<a href="goCart" class="position-relative me-4 my-auto"> <i
-								class="fa fa-shopping-bag fa-2x"></i> <span
-								class="position-absolute bg-secondary rounded-circle d-flex align-items-center justify-content-center text-dark px-1"
-								style="top: -5px; left: 15px; height: 20px; min-width: 20px;">3</span>
-							</a> <a href="goMyPage" class="my-auto"> <i
-								class="fas fa-user fa-2x"></i></a>
+						<button
+							class="btn-search btn border border-secondary btn-md-square rounded-circle bg-white me-4"
+							data-bs-toggle="modal" data-bs-target="#searchModal">
+							<i class="fas fa-search text-primary"></i>
+						</button>
+						<a href="goMyPage" class="my-auto"> <i class="fas fa-user fa-2x"></i></a>
 					</div>
 				</div>
 			</nav>
@@ -279,9 +353,9 @@
 
 
 	<!-- Search Start -->
-   <div class="modal fade" id="searchModal" tabindex="-1"
-      aria-labelledby="exampleModalLabel" aria-hidden="true">
-      <div class="modal-dialog modal-fullscreen">
+	<div class="modal fade" id="searchModal" tabindex="-1"
+		aria-labelledby="exampleModalLabel" aria-hidden="true">
+		<div class="modal-dialog modal-fullscreen">
 
 			<div class="modal-content rounded-0">
 				<div class="modal-header">
@@ -292,11 +366,13 @@
 				</div>
 				<form action="goSearch">
 					<div class="modal-body d-flex align-items-center">
-						<div class="input-group w-75 mx-auto d-flex" 
-							style="height: 800px; padding-bottom: 100px; width:50% !important;  justify-content: center; align-items: center;">
-							<input type="text" class="form-control p-3" name="searchText" style="height: 58px;"
-								placeholder="검색어를 입력해주세요." aria-describedby="search-icon-1">
-							<input type="submit" value="검색" id="search-icon-1" style="border-top-right-radius: 10px; border-bottom-right-radius: 10px; height: 58px;"
+						<div class="input-group w-75 mx-auto d-flex"
+							style="height: 800px; padding-bottom: 100px; width: 50% !important; justify-content: center; align-items: center;">
+							<input type="text" class="form-control p-3" name="searchText"
+								style="height: 58px;" placeholder="검색어를 입력해주세요."
+								aria-describedby="search-icon-1"> <input type="submit"
+								value="검색" id="search-icon-1"
+								style="border-top-right-radius: 10px; border-bottom-right-radius: 10px; height: 58px;"
 								class="btn btn-primary border-2 border-secondary py-3 px-4">
 						</div>
 					</div>
@@ -343,7 +419,8 @@
 
 		<!-- 게시글 상세 -->
 
-		<div class="row g-4 justify-content-center hero-header" style="margin-left: 28%; margin-right: 28%;">
+		<div class="row g-4 justify-content-center hero-header"
+			style="margin-left: 28%; margin-right: 28%;">
 
 			<script
 				src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js"
@@ -352,106 +429,126 @@
 
 			<div id="carouselExampleControls" class="carousel slide"
 				data-bs-ride="carousel" style="position: relative;" align="center">
-				<div class="carousel-inner" style="position: absoulte;" >
+				<div class="carousel-inner" style="position: absoulte;">
 					<div class="carousel-item active">
-						<img class="d-block" style="object-fit: cover !important; height: 450px;"
+						<img class="d-block"
+							style="object-fit: cover !important; height: 450px;"
 							src="resources/g_Image/${c_board.c_img1}" alt="..." />
 					</div>
 					<div class="carousel-item">
-						<img class="d-block" style="object-fit: cover !important; height: 450px;"
+						<img class="d-block"
+							style="object-fit: cover !important; height: 450px;"
 							src="https://source.unsplash.com/collection/190727/1600x900"
 							alt="..." />
 					</div>
-					<div class="carousel-item" >
-						<img class="d-block" style="object-fit: cover !important; height: 450px;"
+					<div class="carousel-item">
+						<img class="d-block"
+							style="object-fit: cover !important; height: 450px;"
 							src="https://source.unsplash.com/WLUHO9A_xik/1600x900" alt="..." />
 					</div>
 				</div>
 				<button class="carousel-control-prev" type="button"
 					data-bs-target="#carouselExampleControls" data-bs-slide="prev">
-					<span class="carousel-control-prev-icon" aria-hidden="true" style="background-color: grey"></span>
-					<span class="visually-hidden">Previous</span>
+					<span class="carousel-control-prev-icon" aria-hidden="true"
+						style="background-color: grey"></span> <span
+						class="visually-hidden">Previous</span>
 				</button>
 				<button class="carousel-control-next" type="button"
 					data-bs-target="#carouselExampleControls" data-bs-slide="next">
-					<span class="carousel-control-next-icon" aria-hidden="true" style="background-color: grey"></span>
-					<span class="visually-hidden">Next</span>
+					<span class="carousel-control-next-icon" aria-hidden="true"
+						style="background-color: grey"></span> <span
+						class="visually-hidden">Next</span>
 				</button>
 			</div>
-			
+
 			<div class="row g-4 justify-content-center">
 				<div class="boardContent">
-					<span><h6 style="display: inline;">작성자 : ${c_board.c_writer}</h6></span>
-					<span style="float: right;">${c_board.category} / ${c_board.c_w_date}</span>
+					<span><h6 style="display: inline;">작성자 :
+							${c_board.c_writer}</h6></span> <span style="float: right;">${c_board.category}
+						/ ${c_board.c_w_date}</span>
 				</div>
 				<div class="boardContent">
 					<h5>${c_board.c_title}</h5>
-					<h6>종료 날짜 : ${c_board.c_f_date}</h6><br>
+					<h6>종료 날짜 : ${c_board.c_f_date}</h6>
+					<br>
 					<div>${c_board.c_content}</div>
 				</div>
 				<c:choose>
 					<c:when test="${empty review_list}">
 						<div class="boardContent">
-							<h5>리뷰</h5><br>
-							<div class="boardContent" style="width: 80% !important; text-align: center; margin-left: 65px !important;">
+							<h5>리뷰</h5>
+							<br>
+							<div class="boardContent"
+								style="width: 80% !important; text-align: center; margin-left: 65px !important;">
 								<h6>아직 등록된 리뷰가 없어요</h6>
 							</div>
-							<div class="boardContent" style="width: 80% !important; margin-left: 65px !important;">
+							<div class="boardContent"
+								style="width: 80% !important; margin-left: 65px !important;">
 								<form action="insertReview" method="post" id="myform">
 									<br>
-									<p style="margin-bottom: 0px;">작성자 : ${loginMember.email }</p> 
-									<input type="hidden" name="email" value="${loginMember.email }" readonly="readonly">
-									<span class="text-bold">평점 :</span>
+									<p style="margin-bottom: 0px;">작성자 : ${loginMember.email }</p>
+									<input type="hidden" name="email" value="${loginMember.email }"
+										readonly="readonly"> <span class="text-bold">평점
+										:</span>
 									<fieldset>
 										<input type="radio" name="r_score" value="5" id="rate1"><label
-											for="rate1">★</label>
-										<input type="radio" name="r_score" value="4" id="rate2"><label
-											for="rate2">★</label>
-										<input type="radio" name="r_score" value="3" id="rate3"><label
-											for="rate3">★</label>
-										<input type="radio" name="r_score" value="2" id="rate4"><label
-											for="rate4">★</label>
-										<input type="radio" name="r_score" value="1" id="rate5"><label
+											for="rate1">★</label> <input type="radio" name="r_score"
+											value="4" id="rate2"><label for="rate2">★</label> <input
+											type="radio" name="r_score" value="3" id="rate3"><label
+											for="rate3">★</label> <input type="radio" name="r_score"
+											value="2" id="rate4"><label for="rate4">★</label> <input
+											type="radio" name="r_score" value="1" id="rate5"><label
 											for="rate5">★</label>
 									</fieldset>
-									<textarea rows="3" cols="66" name="r_content" placeholder="리뷰를 작성해 주세요." style="margin-top: 10px; float: bottom;"></textarea>
+									<textarea rows="3" cols="66" name="r_content"
+										placeholder="리뷰를 작성해 주세요."
+										style="margin-top: 10px; float: bottom;"></textarea>
 									<input type="hidden" value="${c_board.c_num}" name="c_num">
-									<input type="submit" value="작성" id="reviewBtn" class="btn border-secondary px-4 text-primary" style="width: 580px !important;">
+									<input type="submit" value="작성" id="reviewBtn"
+										class="btn border-secondary px-4 text-primary"
+										style="width: 580px !important;">
 								</form>
-								
+
 							</div>
 						</div>
 					</c:when>
 					<c:otherwise>
 						<div class="boardContent">
 							<h4>리뷰</h4>
-							<div class="boardContent" style="width: 80% !important; margin-left: 65px !important;">
-								<form action="insertReview" method="post" name="myform" id="myform">
+							<div class="boardContent"
+								style="width: 80% !important; margin-left: 65px !important;">
+								<form action="insertReview" method="post" name="myform"
+									id="myform">
 									<br>
-									<p style="margin-bottom: 0px;">작성자 : ${loginMember.email }</p> 
-									<input type="hidden" name="email" value="${loginMember.email }" readonly="readonly">
-									<span class="text-bold">평점 :</span>
+									<p style="margin-bottom: 0px;">작성자 : ${loginMember.email }</p>
+									<input type="hidden" name="email" value="${loginMember.email }"
+										readonly="readonly"> <span class="text-bold">평점
+										:</span>
 									<fieldset>
 										<input type="radio" name="r_score" value="5" id="rate1"><label
-											for="rate1">★</label>
-										<input type="radio" name="r_score" value="4" id="rate2"><label
-											for="rate2">★</label>
-										<input type="radio" name="r_score" value="3" id="rate3"><label
-											for="rate3">★</label>
-										<input type="radio" name="r_score" value="2" id="rate4"><label
-											for="rate4">★</label>
-										<input type="radio" name="r_score" value="1" id="rate5"><label
+											for="rate1">★</label> <input type="radio" name="r_score"
+											value="4" id="rate2"><label for="rate2">★</label> <input
+											type="radio" name="r_score" value="3" id="rate3"><label
+											for="rate3">★</label> <input type="radio" name="r_score"
+											value="2" id="rate4"><label for="rate4">★</label> <input
+											type="radio" name="r_score" value="1" id="rate5"><label
 											for="rate5">★</label>
 									</fieldset>
-									<textarea rows="3" cols="66" name="r_content" placeholder="리뷰를 작성해 주세요." style="margin-top: 10px; float: bottom;"></textarea>
-									<input type="hidden" value="${c_board.c_num}">
-									<input type="submit" value="작성" id="reviewBtn" class="btn border-secondary px-4 text-primary" style="width: 580px !important;">
+									<textarea rows="3" cols="66" name="r_content"
+										placeholder="리뷰를 작성해 주세요."
+										style="margin-top: 10px; float: bottom;"></textarea>
+									<input type="hidden" value="${c_board.c_num}"> <input
+										type="submit" value="작성" id="reviewBtn"
+										class="btn border-secondary px-4 text-primary"
+										style="width: 580px !important;">
 								</form>
 							</div>
-							<div class="boardContent" style="width: 80% !important; margin-left: 62px !important; margin-top: 60px;">
+							<div class="boardContent"
+								style="width: 80% !important; margin-left: 62px !important; margin-top: 60px;">
 								<div style="padding-left: 230px;">
-									<h5 style="margin-left: 38px; padding-top: 20px;">평점 : ${scoreDAvg}</h5>
-										
+									<h5 style="margin-left: 38px; padding-top: 20px;">평점 :
+										${scoreDAvg}</h5>
+
 									<c:forEach begin="1" end="${scoreAvg}">
 										<span style="margin-right: 5px;" class="starScore">★</span>
 									</c:forEach>
@@ -463,34 +560,37 @@
 								</div>
 							</div>
 							<c:forEach items="${review_list}" var="r">
-								<div class="boardContent" style="width: 80% !important; margin-left: 65px !important; font-size: 13px !important;">
+								<div class="boardContent"
+									style="width: 80% !important; margin-left: 65px !important; font-size: 13px !important;">
 									<span style="margin-right: 10px; font-size: 18px;"><strong>${r.email}</strong></span>
 									<span>${r.r_date}</span>
-										<p><c:forEach begin="1" end="${r.r_score}" step="1">
-												<span style="margin-right: 5px;" class="starScore">★</span>
+									<p>
+										<c:forEach begin="1" end="${r.r_score}" step="1">
+											<span style="margin-right: 5px;" class="starScore">★</span>
+										</c:forEach>
+										<c:if test="${r.r_score < 5}">
+											<c:forEach begin="1" end="${5 - r.r_score}" step="1">
+												<span style="margin-right: 5px;" class="starScore">☆</span>
 											</c:forEach>
-											<c:if test="${r.r_score < 5}">
-												<c:forEach begin="1" end="${5 - r.r_score}" step="1">
-													<span style="margin-right: 5px;" class="starScore">☆</span>
-												</c:forEach>
-											</c:if></p>
-											<p>게시글 : ${c_board.c_title}</p>
-											<span>${r.r_content}</span>
+										</c:if>
+									</p>
+									<p>게시글 : ${c_board.c_title}</p>
+									<span>${r.r_content}</span>
 								</div>
 							</c:forEach>
-							
+
 						</div>
 					</c:otherwise>
 				</c:choose>
 			</div>
 		</div>
-	
-		
-		<script type="text/javascript" src="//dapi.kakao.com/v2/maps/sdk.js?appkey=db0a7dd04d902c908bc5aaa345eaa55c&libraries=services"></script>
+
+
+		<script type="text/javascript"
+			src="//dapi.kakao.com/v2/maps/sdk.js?appkey=db0a7dd04d902c908bc5aaa345eaa55c&libraries=services"></script>
 		<script>
-		
-		var addr =  document.getElementById("addr").innerText;
-		
+			var addr = document.getElementById("addr").innerText;
+
 			var mapContainer = document.getElementById('map'), // 지도를 표시할 div 
 			mapOption = {
 				center : new kakao.maps.LatLng(33.450701, 126.570667), // 지도의 중심좌표
@@ -552,7 +652,7 @@
 				</div>
 			</div>
 		</div>
-		
+
 
 		<!-- 메인 페이지 하단 End -->
 
@@ -578,30 +678,34 @@
 		<script src="resources/asset/js/main.js"></script>
 
 		<script type="text/javascript">
-					function checkCFavorite(){
-				var c_num=${c_board.c_num};
-				console.log(c_num);
-						
-						$.ajax(
-						{
-							url : "checkCFavorite",
-							data : {'c_num' : c_num},
-							type :'get',
-							success : function(data){
-								if(data==1){
-									
-										$("#zzim").text('♥ 찜 완료')
-								}else{
-									$("#zzim").text('이미 찜한 상품 입니다')	
-								}
-							},
-							error : function(){
-								alert("통신실패")
-							}
-						}
-					)
+			function checkCFavorite() {
+				var c_num = $
+				{
+					c_board.c_num
 				}
-				</script>
+				;
+				console.log(c_num);
+
+				$.ajax({
+					url : "checkCFavorite",
+					data : {
+						'c_num' : c_num
+					},
+					type : 'get',
+					success : function(data) {
+						if (data == 1) {
+
+							$("#zzim").text('♥ 찜 완료')
+						} else {
+							$("#zzim").text('이미 찜한 상품 입니다')
+						}
+					},
+					error : function() {
+						alert("통신실패")
+					}
+				})
+			}
+		</script>
 </body>
 
 </html>

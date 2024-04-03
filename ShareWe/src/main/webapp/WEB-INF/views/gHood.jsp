@@ -81,6 +81,15 @@
 	background-color: #009223;
 }
 
+#buttonBar {
+	border-bottom-right-radius: 10px;
+	border-top-right-radius: 10px;
+	width: 40px;
+	height: 40px;
+	background-color: #009223;
+	border-color: transparent;
+}
+
 #write {
 	color: white;
 	background-color: #009223;
@@ -93,123 +102,7 @@
 	right: 30px;
 	bottom: 50px;
 }
-
-#inputSerch {
-	border-top-color: #bdc3c7;
-	border-bottom-color: #bdc3c7;
-	border-left-color: #bdc3c7;
-	border-right-color: #bdc3c7;
-	border-bottom-left-radius: 10px;
-	border-top-left-radius: 10px;
-	height: 40px;
-}
-
-#buttonBar {
-	border-bottom-right-radius: 10px;
-	border-top-right-radius: 10px;
-	width: 40px;
-	height: 40px;
-	background-color: #009223;
-	border-color: transparent;
-}
-
-#searchBar {
-	float: right 50px;
-}
-
-#buttonBar i {
-	color: white;
-}
-
-.boardContent {
-	border-bottom: 1px solid grey;
-	padding-bottom: 20px;
-	padding-left: 20px;
-}
-
-#clickcontents {
-	float: right !important;
-	border-radius: 120px;
-	border-color: transparent !important;
-}
-
-.detailMenu {
-	width: 100%;
-	max-width: 100px;
-}
-
-.detailMenu ul {
-	list-style: none;
-	z-index: 2;
-}
-
-.detailMenu a {
-	color: #000;
-	text-decoration: none;
-}
-
-.detailMenu>ul {
-	display: flex;
-	width: 100%;
-	justify-content: space-between;
-	padding: 10px;
-}
-
-.detailMenu>ul>li {
-	position: relative;
-	width: 100%
-}
-
-.detailMenu>ul>li>a {
-	font-size: 20px;
-	font-weight: bold;
-	padding: 10px 0;
-}
-
-.detailMenu>ul>li>a:hover {
-	color: #999;
-}
-
-.detailMenu>ul>li>ul {
-	padding: 0;
-	display: none;
-	position: absolute;
-	left: 50%;
-	transform: translateX(-50%);
-	border: 1px solid #ddd;
-	border-radius: 6px;
-	background: #fff;
-}
-
-.detailMenu>ul>li>ul>li {
-	width: 140px !important;
-	text-align: center;
-}
-
-.detailMenu>ul>li:hover ul {
-	display: block;
-	margin-top: 30px;
-}
-
-.detailMenu>ul>li  li a {
-	display: block;
-	padding: 10px 15px;
-}
-
-.detailMenu>ul>li  li a:hover {
-	background: #eee;
-}
-
-.detailMenu>ul>li>li+li {
-	margin-top: 5px;
-}
-
-#favCancel {
-	color: white !important;
-	background-color: #009223;
-}
 </style>
-
 
 </head>
 
@@ -259,15 +152,13 @@
 					<%
 					}
 					%>
-
 				</div>
 			</div>
 		</div>
 		<div class="container px-0">
 			<nav class="navbar navbar-light bg-white navbar-expand-xl">
 				<a href="goMain" class="navbar-brand"><h1
-						class="text-primary display-6" style="color: #009223 !important;">Share
-						We?</h1></a>
+						class="text-primary display-6">Share We?</h1></a>
 				<button class="navbar-toggler py-2 px-3" type="button"
 					data-bs-toggle="collapse" data-bs-target="#navbarCollapse">
 					<span class="fa fa-bars text-primary"></span>
@@ -278,19 +169,19 @@
 							style="color: black; font-size: 18px;"><strong>공구함</strong></a> <a
 							href="goCompany" class="nav-item nav-link"
 							style="color: black; font-size: 18px;"><strong>동네구경</strong></a>
-						<%
-								if (loginMember == null) {
-								%>
-								<a href="goLogin" class="nav-item nav-link"
-									style="color: black; font-size: 18px;"><strong>우리동네</strong></a>
-								<%
-								} else {
-								%>
-								<a href="goHood" class="nav-item nav-link"
-									style="color: black; font-size: 18px;"><strong>우리동네</strong></a>
-								<%
-								}
-								%>	
+							<%
+							if (loginMember == null) {
+							%>
+							<a href="goLogin" class="nav-item nav-link"
+								style="color: black; font-size: 18px;"><strong>우리동네</strong></a>
+							<%
+							} else {
+							%>
+							<a href="goHood" class="nav-item nav-link"
+								style="color: black; font-size: 18px;"><strong>우리동네</strong></a>
+							<%
+							}
+							%>
 						<!-- <a href="shop-detail.html" class="nav-item nav-link">Shop Detail</a> -->
 						<div class="nav-item dropdown">
 							<a href="#" class="nav-link dropdown-toggle active"
@@ -303,8 +194,7 @@
 								<a href="getCategory?category=여행/도서" class="dropdown-item">여행/도서</a>
 							</div>
 						</div>
-								<a href="goSubscribe" class="nav-item nav-link" style="color: black; font-size: 18px;"><strong>POP 결제권</strong></a>
-								
+						<a href="goSubscribe" class="nav-item nav-link" style="color: black; font-size: 18px;"><strong>POP 결제권</strong></a>
 					</div>
 					<div class="d-flex m-3 me-0">
 						<button
@@ -329,7 +219,7 @@
 			<div class="modal-content rounded-0">
 				<div class="modal-header">
 					<!-- <h5 class="modal-title" id="exampleModalLabel">Search by
-                  keyword</h5> -->
+						keyword</h5> -->
 					<button type="button" class="btn-close" data-bs-dismiss="modal"
 						aria-label="Close"></button>
 				</div>
@@ -349,69 +239,135 @@
 			</div>
 		</div>
 	</div>
-	<!-- Search End -->
 
 
-	<!-- Modal Search Start -->
-	<div class="modal fade" id="searchModal" tabindex="-1"
-		aria-labelledby="exampleModalLabel" aria-hidden="true">
-		<div class="modal-dialog modal-fullscreen">
-			<div class="modal-content rounded-0">
-				<div class="modal-header">
-					<h5 class="modal-title" id="exampleModalLabel">Search by
-						keyword</h5>
-					<button type="button" class="btn-close" data-bs-dismiss="modal"
-						aria-label="Close"></button>
-				</div>
-				<div class="modal-body d-flex align-items-center">
-					<div class="input-group w-75 mx-auto d-flex">
-						<input type="search" class="form-control p-3"
-							placeholder="keywords" aria-describedby="search-icon-1">
-						<span id="search-icon-1" class="input-group-text p-3"><i
-							class="fa fa-search"></i></span>
-					</div>
-				</div>
-			</div>
-		</div>
+	<!-- Single Page Header start -->
+	<div class="container-fluid page-header py-5">
+		<h1 class="text-center text-white display-6">우리 동네 공구</h1>
+		<ol class="breadcrumb justify-content-center mb-0">
+			<li class="breadcrumb-item active text-white">${m_address}</li>
+		</ol>
 	</div>
-	<!-- Modal Search End -->
-
-
 	<!-- Single Page Header End -->
 
 
-	<!-- 채팅 -->
+	<!-- food section -->
 
-	<div class="row g-4 justify-content-center"
-		style="width: 900px; display: inline-block; margin-left: 300px;">
-		<iframe src="chatBoardContent?g_num=${g_num}" width='700'
-			height='1000'></iframe>
+
+	<div class="row g-4 justify-content-center" id="categoryBox">
+
+
+		<!-- 카테고리 -->
+		<div class="col-lg-9" style="margin-top: 90px;">
+			<ul class="filters_menu">
+
+				<a href="goGeneral"><li>All</li></a>
+				<a href="getgCategory?category=식품" id="clickVege"><li>식품</li></a>
+				<a href="getgCategory?category=과일" id="clickFruit"><li>과일</li></a>
+				<a href="getgCategory?category=생필품" id="ClickDaily"><li>생필품</li></a>
+				<a href="getgCategory?category=패션/뷰티" id="ClickDaily"><li>패션/뷰티</li></a>
+				<a href="getgCategory?category=여행/도서" id="ClickDaily"><li>여행/도서</li></a>
+
+				<!-- <input id="inputSerch" class="serchBar"  type="search" placeholder="keywords">
+				<button  type="button" id="buttonBar" class="serchBar"><i class="fa fa-search"></i></button> -->
+
+			</ul>
+		</div>
+
+		<!-- 코드 시작-------------------------------- -->
+		<div class="col-lg-9"
+			style="width: 60% !important; justify-content: center; align-items: center;">
+			<div class="row g-4 justify-content-center" id="boardDiv">
+				<c:forEach items="${gboard_list}" var="g">
+					<c:forEach items="${add_email}" var="e">
+						<c:if test="${e.email eq g.email}">
+							<div class="col-md-1 col-lg-2 col-xl-3"
+								style="margin-right: 10px; margin-left: 10px; width: 23%; height: 10%; margin-bottom: 20px;">
+								<div class="rounded position-relative fruite-item">
+									<div class="fruite-img">
+										<a href="G_BoardContent?g_num=${g.g_num}"> <img
+											src="resources/g_Image/${g.g_img1}"
+											class="img-fluid w-100 rounded-top" alt="">
+										</a>
+									</div>
+									<div
+										class="text-white bg-secondary px-3 py-1 rounded position-absolute"
+										style="top: 10px; left: 10px; background-color: #009223 !important;">${g.category}</div>
+
+									<div
+										class="p-4 border border-secondary border-top-0 rounded-bottom"
+										style="border-color: #009223 !important;">
+
+										<br> <a href="G_BoardContent?g_num=${g.g_num}"><h5>${g.g_title}</h5></a>
+										<h6 style="display: inline;">${g.g_writer}</h6>
+										<c:choose>
+											<c:when test="${empty loginMember}">
+												<a onclick="location.href='goLogin'" style="float: right;"
+													type="button"
+													class="btn border border-secondary rounded-pill px-3 text-primary">❤
+													찜</a>
+											</c:when>
+
+											<c:otherwise>
+
+												<c:set var="num" value="0" />
+												<c:forEach items="${gfavorite_list}" var="f">
+													<c:if test="${f.g_num eq g.g_num}">
+														<c:set var="num" value="1" />
+													</c:if>
+
+
+												</c:forEach>
+												<c:if test="${num eq '1'}">
+
+													<a onclick="checkGFavorite(${g.g_num})" id="${g.g_num}"
+														style="float: right; display: none;"
+														class="btn border border-secondary rounded-pill px-3 text-primary">❤
+														찜</a>
+													<a onclick="delGFavorite(${g.g_num})"
+														id="favCancel${g.g_num}"
+														style="float: right; background-color: green; color: white !important;"
+														class="btn border border-secondary rounded-pill px-3 text-primary">❤
+														찜</a>
+												</c:if>
+												<c:if test="${num eq '0'}">
+													<a onclick="checkGFavorite(${g.g_num})" id="${g.g_num}"
+														style="float: right;" type="button"
+														class="btn border border-secondary rounded-pill px-3 text-primary">❤
+														찜</a>
+													<a onclick="delGFavorite(${g.g_num})"
+														id="favCancel${g.g_num}"
+														style="float: right; display: none; background-color: green; color: white !important;"
+														class="btn border border-secondary rounded-pill px-3 text-primary">❤
+														찜</a>
+												</c:if>
+
+
+
+											</c:otherwise>
+
+										</c:choose>
+									</div>
+								</div>
+							</div>
+						</c:if>
+
+					</c:forEach>
+				</c:forEach>
+			</div>
+		</div>
+		<c:if test="${loginMember.type == 2 || loginMember.type == 3}">
+			<div class="row g-4 justify-content-center">
+				<button class="col-xl-1" id="write" type="button"
+					onclick="location.href='gogBoard'">게시물작성</button>
+			</div>
 	</div>
+	</c:if>
+	</div>
+	<!-- end food section -->
 
-	<c:choose>
-		<c:when test="${g_num == 60}">
-			<div class="row g-4 justify-content-center"
-				style="width: 400px; display: inline-block; padding-top: 150px;">
-				<iframe
-					src='https://www.vchatcloud.com/chat-demo/iframe/iframe_pc/v4/index.html?
-					channelKey=XOaECowsXk-POU1y2Gnfe-20240403001826'
-					frameborder='no' scrolling='no' marginwidth='0' marginheight='0'
-					width='150' height='900'></iframe>
+	<!-- Fruits Shop End-->
 
-			</div>
-		</c:when>
-		<c:otherwise>
-			<div class="row g-4 justify-content-center"
-				style="width: 400px; display: inline-block; padding-top: 150px;">
-				<iframe
-					src='https://www.vchatcloud.com/chat-demo/iframe/iframe_pc/v4/index.html?
-					channelKey=lqTBmpEWva-1fiFqnQAXm-20240327104645'
-					frameborder='no' scrolling='no' marginwidth='0' marginheight='0'
-					width='150' height='900'></iframe>
-
-			</div>
-		</c:otherwise>
-	</c:choose>
 
 	<!-- 메인 페이지 하단 -->
 	<div class="container-fluid bg-dark text-white-50 footer pt-5 mt-5">
@@ -429,16 +385,14 @@
 			</div>
 		</div>
 	</div>
-
-
 	<!-- 메인 페이지 하단 End -->
 
 
 
 	<!-- Back to Top -->
-	<a href="#"
+	<!-- 	<a href="#"
 		class="btn btn-primary border-3 border-primary rounded-circle back-to-top"><i
-		class="fa fa-arrow-up"></i></a>
+		class="fa fa-arrow-up"></i></a> -->
 
 
 	<!-- JavaScript Libraries -->
@@ -453,49 +407,54 @@
 
 	<!-- Template Javascript -->
 	<script src="resources/asset/js/main.js"></script>
-	<script src="resources/asset/js/app.js"></script>
 
 	<script type="text/javascript">
-		function joinRoom(roomId, clientKey, nickName, callback) {
-			// vchatcloud 객체
-			channel = vChatCloud
-					.joinChannel(
-							{
-								roomId : roomId, // 채팅방ID(채널키)
-								clientKey : clientKey, // 클라이언트 고유키 (유저 식별값)
-								nickName : nickName
-							// 채팅방에 입장한 유저 별명
-							},
-							function(error, history) {
-								$(
-										'div.entery, div.chatout, div.notice, div.whisper, div.content')
-										.remove();
-								if (error) {
-									if (callback)
-										return callback(error, null);
-									return error;
-									/** error 정의
-									    0	    SYSTEM_ERROR	        시스템 에러 – 관리자에게 문의하세요.
-									    10101	USER_LIMIT_EXCEEDED	    접속 인원이 초과되었습니다.
-									    10102	CHANNEL_NOT_EXISTED	    존재하지 않는 채팅방입니다.
-									    10103	CHANNEL _BEFORE_OPENED	채팅방 개설시간 전입니다.
-									    10104	CHANNEL _AFTER_CLOSED	채팅방이 종료되었습니다.
-									    10105	ACTIVE_LIMIT_EXCEEDED	Active User 수를 초과했습니다.
-									    10106	CHANNEL_USER_BANED	    추방된 유저입니다.
-									    10107	USER_NOT_EXISTED	    접속하지 않은 유저입니다.
-									    10901	MISSING_REQURIED_PARAM	필수 파라미터 누락
-									 */
-								}
-								if (callback)
-									callback(null, history);
-								// 채팅영역에 글쓰기가 활성화될시 활성화
-								if (typeof write == 'function')
-									write(
-											"실시간 채팅에 오신 것을 환영합니다. 개인정보를 보호하고 커뮤니티 가이드를 준수하는 것을 잊지 마세요!",
-											'notice');
-							})
+
+				function checkGFavorite(g_num){
+					 var id = "favCancel" + g_num;
+				
+					console.log(g_num)
+					console.log(id)
+					document.getElementById(id).style.display = "inline";
+					document.getElementById(g_num).style.display = "none";
+					
+				$.ajax(
+				{
+					url : "insertgFavorite",
+					data : {'g_num' : g_num},
+					type :'get',
+					success : function(data){
+						
+					},
+					error : function(){
+						alert("로그인이 필요합니다")
+					}
+				}
+			)
 		}
-	</script>
+				</script>
+	<script type="text/javascript">
+			function delGFavorite(g_num){
+				var id = "favCancel" + g_num;
+				console.log(g_num)
+				console.log(id)
+				document.getElementById(g_num).style.display = "inline";
+				document.getElementById(id).style.display = "none";
+						$.ajax(
+						{
+							url : "delgFavorite",
+							data : {'g_num' : g_num},
+							type :'get',
+							success : function(){
+								
+							},
+							error : function(){
+								alert("통신실패")
+							}
+						}
+					)
+				}
+		</script>
 
 </body>
 

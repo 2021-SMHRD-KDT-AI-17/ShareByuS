@@ -94,7 +94,8 @@
 		<div class="container px-0">
 			<nav class="navbar navbar-light bg-white navbar-expand-xl">
 				<a href="goMain" class="navbar-brand">
-					<h1 class="text-primary display-6" style="color: #009223 !important;">ShareWe?</h1>
+					<h1 class="text-primary display-6"
+						style="color: #009223 !important;">ShareWe?</h1>
 				</a>
 				<button class="navbar-toggler py-2 px-3" type="button"
 					data-bs-toggle="collapse" data-bs-target="#navbarCollapse">
@@ -102,22 +103,37 @@
 				</button>
 				<div class="collapse navbar-collapse bg-white" id="navbarCollapse">
 					<div class="navbar-nav mx-auto">
-							<a href="goGeneral" class="nav-item nav-link" style="color: black; font-size: 18px;"><strong>공구함</strong></a>
-							<a href="goCompany" class="nav-item nav-link" style="color: black; font-size: 18px;"><strong>우리동네</strong></a>
-							<!-- <a href="shop-detail.html" class="nav-item nav-link">Shop Detail</a> -->
-							<div class="nav-item dropdown">
-								<a href="#" class="nav-link dropdown-toggle active"
-									data-bs-toggle="dropdown" style="color: black; font-size: 18px;"><strong>카테고리</strong></a>
-								<div class="dropdown-menu m-0 bg-secondary rounded-0">
-									<a href="getCategory?category=식품" class="dropdown-item">식품</a> <a
-										href="getCategory?category=과일" class="dropdown-item">과일</a> <a
-										href="getCategory?category=생필품" class="dropdown-item">생필품</a> <a
-										href="getCategory?category=패션/뷰티" class="dropdown-item">패션/뷰티</a>
-									<a href="getCategory?category=여행/도서" class="dropdown-item">여행/도서</a>
-								</div>
+						<a href="goGeneral" class="nav-item nav-link"
+							style="color: black; font-size: 18px;"><strong>공구함</strong></a> <a
+							href="goCompany" class="nav-item nav-link"
+							style="color: black; font-size: 18px;"><strong>동네구경</strong></a>
+							<%
+								if (loginMember == null) {
+								%>
+								<a href="goLogin" class="nav-item nav-link"
+									style="color: black; font-size: 18px;"><strong>우리동네</strong></a>
+								<%
+								} else {
+								%>
+								<a href="goHood" class="nav-item nav-link"
+									style="color: black; font-size: 18px;"><strong>우리동네</strong></a>
+								<%
+								}
+								%>
+						<!-- <a href="shop-detail.html" class="nav-item nav-link">Shop Detail</a> -->
+						<div class="nav-item dropdown">
+							<a href="#" class="nav-link dropdown-toggle active"
+								data-bs-toggle="dropdown" style="color: black; font-size: 18px;"><strong>카테고리</strong></a>
+							<div class="dropdown-menu m-0 bg-secondary rounded-0">
+								<a href="getCategory?category=식품" class="dropdown-item">식품</a> <a
+									href="getCategory?category=과일" class="dropdown-item">과일</a> <a
+									href="getCategory?category=생필품" class="dropdown-item">생필품</a> <a
+									href="getCategory?category=패션/뷰티" class="dropdown-item">패션/뷰티</a>
+								<a href="getCategory?category=여행/도서" class="dropdown-item">여행/도서</a>
 							</div>
-							<a href="goSubscribe" class="nav-item nav-link" style="color: black; font-size: 18px;"><strong>POP 결제권</strong></a>
-							<a href="contact.html" class="nav-item nav-link" style="color: black; font-size: 18px;"><strong>동네보기</strong></a>
+						</div>
+								<a href="goSubscribe" class="nav-item nav-link" style="color: black; font-size: 18px;"><strong>POP 결제권</strong></a>
+								
 					</div>
 					<div class="d-flex m-3 me-0">
 						<button
@@ -126,12 +142,7 @@
 							data-bs-target="#searchModal">
 							<i class="fas fa-search text-primary"></i>
 						</button>
-						<a href="goCart" class="position-relative me-4 my-auto"> <i
-							class="fa fa-shopping-bag fa-2x"></i> <span
-							class="position-absolute bg-secondary rounded-circle d-flex align-items-center justify-content-center text-dark px-1"
-							style="top: -5px; left: 15px; height: 20px; min-width: 20px;">3</span>
-						</a> <a href="goMyPage" class="my-auto"> <i
-							class="fas fa-user fa-2x"></i></a>
+						 <a href="goMyPage" class="my-auto"> <i class="fas fa-user fa-2x"></i></a>
 					</div>
 				</div>
 			</nav>
@@ -141,9 +152,9 @@
 
 
 	<!-- Search Start -->
-   <div class="modal fade" id="searchModal" tabindex="-1"
-      aria-labelledby="exampleModalLabel" aria-hidden="true">
-      <div class="modal-dialog modal-fullscreen">
+	<div class="modal fade" id="searchModal" tabindex="-1"
+		aria-labelledby="exampleModalLabel" aria-hidden="true">
+		<div class="modal-dialog modal-fullscreen">
 
 			<div class="modal-content rounded-0">
 				<div class="modal-header">
@@ -154,11 +165,13 @@
 				</div>
 				<form action="goSearch">
 					<div class="modal-body d-flex align-items-center">
-						<div class="input-group w-75 mx-auto d-flex" 
-							style="height: 800px; padding-bottom: 100px; width:50% !important;  justify-content: center; align-items: center;">
-							<input type="text" class="form-control p-3" name="searchText" style="height: 58px;"
-								placeholder="검색어를 입력해주세요." aria-describedby="search-icon-1">
-							<input type="submit" value="검색" id="search-icon-1" style="border-top-right-radius: 10px; border-bottom-right-radius: 10px; height: 58px;"
+						<div class="input-group w-75 mx-auto d-flex"
+							style="height: 800px; padding-bottom: 100px; width: 50% !important; justify-content: center; align-items: center;">
+							<input type="text" class="form-control p-3" name="searchText"
+								style="height: 58px;" placeholder="검색어를 입력해주세요."
+								aria-describedby="search-icon-1"> <input type="submit"
+								value="검색" id="search-icon-1"
+								style="border-top-right-radius: 10px; border-bottom-right-radius: 10px; height: 58px;"
 								class="btn btn-primary border-2 border-secondary py-3 px-4">
 						</div>
 					</div>
@@ -172,13 +185,15 @@
 	<div class="container-fluid page-header py-5">
 		<h1 class="text-center text-white display-6">카테고리</h1>
 		<ol class="breadcrumb justify-content-center mb-0">
-			<li class="breadcrumb-item active text-white">"${category}" 검색 결과</li>
+			<li class="breadcrumb-item active text-white">"${category}" 검색
+				결과</li>
 		</ol>
 	</div>
 	<!-- Single Page Header End -->
 
 	<!-- 검색 상품 Start-->
-	<div class="container-fluid fruite py-5" style="width:60% !important;  justify-content: center; align-items: center;">
+	<div class="container-fluid fruite py-5"
+		style="width: 60% !important; justify-content: center; align-items: center;">
 		<div class="container py-5">
 			<div class="tab-class text-center">
 				<div class="row g-4">
@@ -186,14 +201,14 @@
 						<h1>Share 게시글</h1>
 					</div>
 					<div class="col-lg-8 text-end">
-	                  <ul class="nav nav-pills d-inline-flex text-center mb-5">
-	                     <li class="nav-item"><a
-	                        class="d-flex m-2 py-2 bg-light rounded-pill"
-	                         href="getgCategory?category=${category}"> <span class="text-dark"
-	                           style="width: 140px;">➕ 상품 더보기</span>
-	                     </a></li>
-	                  </ul>
-	               </div>
+						<ul class="nav nav-pills d-inline-flex text-center mb-5">
+							<li class="nav-item"><a
+								class="d-flex m-2 py-2 bg-light rounded-pill"
+								href="getgCategory?category=${category}"> <span
+									class="text-dark" style="width: 140px;">➕ 상품 더보기</span>
+							</a></li>
+						</ul>
+					</div>
 				</div>
 				<div class="tab-content" style="margin-top: 50px;">
 					<div id="tab-1" class="tab-pane fade show p-0 active">
@@ -207,9 +222,9 @@
 													style="margin: auto; width: 25%; height: 10%; margin-bottom: 20px;">
 													<div class="rounded position-relative fruite-item">
 														<div class="fruite-img">
-															<a href="G_BoardContent?g_num=${g.g_num}">
-																<img src="resources/g_Image/${g.g_img1}"
-																	class="img-fluid w-100 rounded-top" alt="">
+															<a href="G_BoardContent?g_num=${g.g_num}"> <img
+																src="resources/g_Image/${g.g_img1}"
+																class="img-fluid w-100 rounded-top" alt="">
 															</a>
 														</div>
 														<div
@@ -218,16 +233,59 @@
 														<div
 															class="p-4 border border-secondary border-top-0 rounded-bottom"
 															style="text-align: left;">
-															<br>
-															<a href="G_BoardContent?g_num=${g.g_num}">
+															<br> <a href="G_BoardContent?g_num=${g.g_num}">
 																<h5>${g.g_title }</h5>
 															</a>
-															<h6>${g.g_writer }</h6>
-															<div class="d-flex justify-content-between flex-lg-wrap">
-																<a href="#" style="float: right"
-																	class="btn border border-secondary rounded-pill px-3 text-primary">
-																	❤ 찜 </a>
-															</div>
+															<h6 style="display: inline;">${g.g_writer }</h6>
+
+															<c:choose>
+																<c:when test="${empty loginMember}">
+																	<a onclick="location.href='goLogin'"
+																		style="float: right;" type="button"
+																		class="btn border border-secondary rounded-pill px-3 text-primary">❤
+																		찜</a>
+																</c:when>
+
+																<c:otherwise>
+
+																	<c:set var="num" value="0" />
+																	<c:forEach items="${gfavorite_list}" var="f">
+																		<c:if test="${f.g_num eq g.g_num}">
+																			<c:set var="num" value="1" />
+																		</c:if>
+
+
+																	</c:forEach>
+																	<c:if test="${num eq '1'}">
+
+																		<a onclick="checkGFavorite(${g.g_num})"
+																			id="${g.g_num}" style="float: right; display: none;"
+																			class="btn border border-secondary rounded-pill px-3 text-primary">❤
+																			찜</a>
+																		<a onclick="delGFavorite(${g.g_num})"
+																			id="favCancel${g.g_num}"
+																			style="float: right; background-color: green; color: white !important;"
+																			class="btn border border-secondary rounded-pill px-3 text-primary">❤
+																			찜</a>
+																	</c:if>
+																	<c:if test="${num eq '0'}">
+																		<a onclick="checkGFavorite(${g.g_num})"
+																			id="${g.g_num}" style="float: right;" type="button"
+																			class="btn border border-secondary rounded-pill px-3 text-primary">❤
+																			찜</a>
+																		<a onclick="delGFavorite(${g.g_num})"
+																			id="favCancel${g.g_num}"
+																			style="float: right; display: none; background-color: green; color: white !important;"
+																			class="btn border border-secondary rounded-pill px-3 text-primary">❤
+																			찜</a>
+																	</c:if>
+
+
+
+																</c:otherwise>
+
+															</c:choose>
+
 														</div>
 													</div>
 												</div>
@@ -253,8 +311,9 @@
 			</div>
 		</div>
 	</div>
-	
-	<div class="container-fluid fruite py-5" style="width:60% !important;  justify-content: center; align-items: center;">
+
+	<div class="container-fluid fruite py-5"
+		style="width: 60% !important; justify-content: center; align-items: center;">
 		<div class="container py-5">
 			<div class="tab-class text-center">
 				<div class="row g-4">
@@ -262,14 +321,14 @@
 						<h1>Shop 게시글</h1>
 					</div>
 					<div class="col-lg-8 text-end">
-	                  <ul class="nav nav-pills d-inline-flex text-center mb-5">
-	                     <li class="nav-item"><a
-	                        class="d-flex m-2 py-2 bg-light rounded-pill"
-	                         href="getComCategory?category=${category}"> <span class="text-dark"
-	                           style="width: 140px;">➕ 상품 더보기</span>
-	                     </a></li>
-	                  </ul>
-	               </div>
+						<ul class="nav nav-pills d-inline-flex text-center mb-5">
+							<li class="nav-item"><a
+								class="d-flex m-2 py-2 bg-light rounded-pill"
+								href="getComCategory?category=${category}"> <span
+									class="text-dark" style="width: 140px;">➕ 상품 더보기</span>
+							</a></li>
+						</ul>
+					</div>
 				</div>
 				<div class="tab-content" style="margin-top: 50px;">
 					<div id="tab-1" class="tab-pane fade show p-0 active">
@@ -283,25 +342,73 @@
 													style="margin: auto; width: 25%; height: 10%; margin-bottom: 20px;">
 													<div class="rounded position-relative fruite-item">
 														<div class="fruite-img">
-															<img src="resources/g_Image/${c.c_img1}"
+															<a
+																href="C_BoardContent?c_num=${c.c_num}&c_writer=${c.c_writer}">
+																<img src="resources/g_Image/${c.c_img1}"
 																class="img-fluid w-100 rounded-top" alt="">
+															</a>
 														</div>
 														<div
 															class="text-white bg-secondary px-3 py-1 rounded position-absolute"
-															style="top: 10px; left: 10px;">${c.category}</div>
+															style="top: 10px; left: 10px; background-color: #009223 !important;">${c.category}</div>
 														<div
 															class="p-4 border border-secondary border-top-0 rounded-bottom"
-															style="text-align: left;">
-															<br>
-															<h5>${c.c_title }</h5>
-															<h6>${c.c_writer }</h6>
-															<div class="d-flex justify-content-between flex-lg-wrap">
-																<a href="#" style="float: right"
-																	class="btn border border-secondary rounded-pill px-3 text-primary">
-																	❤ 찜 </a>
-															</div>
+															style="border-color: #009223 !important;">
+															<br> <a
+																href="C_BoardContent?c_num=${c.c_num}&c_writer=${c.c_writer}"><h5>${c.c_title}</h5></a>
+															<h6 style="display: inline;">${c.c_writer }</h6>
+
+															<c:choose>
+																<c:when test="${empty loginMember}">
+																	<a onclick="location.href='goLogin'"
+																		style="float: right;" type="button"
+																		class="btn border border-secondary rounded-pill px-3 text-primary">❤
+																		찜</a>
+																</c:when>
+																<c:otherwise>
+
+																	<c:set var="num" value="0" />
+																	<c:forEach items="${cfavorite_list}" var="f">
+																		<c:if test="${f.c_num eq c.c_num}">
+																			<c:set var="num" value="1" />
+																		</c:if>
+
+
+																	</c:forEach>
+																	<c:if test="${num eq '1'}">
+
+																		<a onclick="checkCFavorite(${c.c_num})"
+																			id="${c.c_num}" style="float: right; display: none;"
+																			type="button"
+																			class="btn border border-secondary rounded-pill px-3 text-primary">❤
+																			찜</a>
+																		<a onclick="delCFavorite(${c.c_num})"
+																			id="favCancel${c.c_num}"
+																			style="float: right; background-color: green; color: white !important;"
+																			type="button"
+																			class="btn border border-secondary rounded-pill px-3 text-primary">❤
+																			찜</a>
+																	</c:if>
+																	<c:if test="${num eq '0'}">
+																		<a onclick="checkCFavorite(${c.c_num})"
+																			id="${c.c_num}" style="float: right;" type="button"
+																			class="btn border border-secondary rounded-pill px-3 text-primary">❤
+																			찜</a>
+																		<a onclick="delCFavorite(${c.c_num})"
+																			id="favCancel${c.c_num}"
+																			style="float: right; display: none; background-color: green; color: white !important;"
+																			type="button"
+																			class="btn border border-secondary rounded-pill px-3 text-primary">❤
+																			찜</a>
+																	</c:if>
+
+
+
+																</c:otherwise>
+															</c:choose>
 														</div>
 													</div>
+
 												</div>
 											</c:forEach>
 										</c:when>
@@ -365,6 +472,102 @@
 
 	<!-- Template Javascript -->
 	<script src="resources/asset/js/main.js"></script>
+
+	<script type="text/javascript">
+
+				function checkGFavorite(g_num){
+					 var id = "favCancel" + g_num;
+				
+					console.log(g_num)
+					console.log(id)
+					document.getElementById(id).style.display = "inline";
+					document.getElementById(g_num).style.display = "none";
+					
+				$.ajax(
+				{
+					url : "insertgFavorite",
+					data : {'g_num' : g_num},
+					type :'get',
+					success : function(data){
+						
+					},
+					error : function(){
+						alert("로그인이 필요합니다")
+					}
+				}
+			)
+		}
+				</script>
+	<script type="text/javascript">
+			function delGFavorite(g_num){
+				var id = "favCancel" + g_num;
+				console.log(g_num)
+				console.log(id)
+				document.getElementById(g_num).style.display = "inline";
+				document.getElementById(id).style.display = "none";
+						$.ajax(
+						{
+							url : "delgFavorite",
+							data : {'g_num' : g_num},
+							type :'get',
+							success : function(){
+								
+							},
+							error : function(){
+								alert("통신실패")
+							}
+						}
+					)
+				}
+		</script>
+
+	<script type="text/javascript">
+
+				function checkCFavorite(c_num){
+					 var id = "favCancel" + c_num;
+				
+					console.log(c_num)
+					console.log(id)
+					document.getElementById(id).style.display = "inline";
+					document.getElementById(c_num).style.display = "none";
+					
+				$.ajax(
+				{
+					url : "insertFavorite",
+					data : {'c_num' : c_num},
+					type :'get',
+					success : function(){
+						
+					},
+					error : function(){
+						alert("로그인이 필요합니다")
+					}
+				}
+			)
+		}
+				</script>
+	<script type="text/javascript">
+			function delCFavorite(c_num){
+				var id = "favCancel" + c_num;
+				console.log(c_num)
+				console.log(id)
+				document.getElementById(c_num).style.display = "inline";
+				document.getElementById(id).style.display = "none";
+						$.ajax(
+						{
+							url : "delFavorite",
+							data : {'c_num' : c_num},
+							type :'get',
+							success : function(){
+								
+							},
+							error : function(){
+								alert("통신실패")
+							}
+						}
+					)
+				}
+		</script>
 </body>
 
 </html>

@@ -41,30 +41,31 @@
 
 <style type="text/css">
 .cXWSLO {
-    width: 1.5rem;
-    height: 1.5rem;
-    background-position: center center;
-    background-repeat: no-repeat;
-    background-size: 12px 12px;
-    background-image: url(data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSIxMiIgaGVpZ2h0PSIxMiIgdmlld0JveD0iMCAwIDEyIDEyIj4KICAgIDxwYXRoIGZpbGw9IiNGRkYiIGZpbGwtcnVsZT0iZXZlbm9kZCIKICAgICAgICBkPSJNNi44NDggNmwzLjc3Ni0zLjc3NmEuNi42IDAgMSAwLS44NDgtLjg0OEw2IDUuMTUgMi4yMjQgMS4zNzZhLjYuNiAwIDAgMC0uODQ4Ljg0OEw1LjE1MiA2IDEuMzc2IDkuNzc1YS42LjYgMCAxIDAgLjg0OC44NDlMNiA2Ljg0OGwzLjc3NiAzLjc3NmEuNTk4LjU5OCAwIDAgMCAxLjAyNC0uNDI1LjYuNiAwIDAgMC0uMTc2LS40MjRMNi44NDggNnoiIC8+Cjwvc3ZnPg==);
-    background-color: rgb(25, 25, 25);
-    opacity: 0.3;
-    border-radius: 50%;
-    position: absolute;
-    top: 0.5rem;
-    right: 0.5rem;
+	width: 1.5rem;
+	height: 1.5rem;
+	background-position: center center;
+	background-repeat: no-repeat;
+	background-size: 12px 12px;
+	background-image:
+		url(data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSIxMiIgaGVpZ2h0PSIxMiIgdmlld0JveD0iMCAwIDEyIDEyIj4KICAgIDxwYXRoIGZpbGw9IiNGRkYiIGZpbGwtcnVsZT0iZXZlbm9kZCIKICAgICAgICBkPSJNNi44NDggNmwzLjc3Ni0zLjc3NmEuNi42IDAgMSAwLS44NDgtLjg0OEw2IDUuMTUgMi4yMjQgMS4zNzZhLjYuNiAwIDAgMC0uODQ4Ljg0OEw1LjE1MiA2IDEuMzc2IDkuNzc1YS42LjYgMCAxIDAgLjg0OC44NDlMNiA2Ljg0OGwzLjc3NiAzLjc3NmEuNTk4LjU5OCAwIDAgMCAxLjAyNC0uNDI1LjYuNiAwIDAgMC0uMTc2LS40MjRMNi44NDggNnoiIC8+Cjwvc3ZnPg==);
+	background-color: rgb(25, 25, 25);
+	opacity: 0.3;
+	border-radius: 50%;
+	position: absolute;
+	top: 0.5rem;
+	right: 0.5rem;
 }
 
 input {
-  margin-top: 1rem;
+	margin-top: 1rem;
 }
 
 input::file-selector-button {
-  font-weight: bold;
-  color: green;
-  padding: 0.5em;
-  border: thin solid grey;
-  border-radius: 3px;
+	font-weight: bold;
+	color: green;
+	padding: 0.5em;
+	border: thin solid grey;
+	border-radius: 3px;
 }
 </style>
 </head>
@@ -129,22 +130,36 @@ input::file-selector-button {
 				</button>
 				<div class="collapse navbar-collapse bg-white" id="navbarCollapse">
 					<div class="navbar-nav mx-auto">
-							<a href="goGeneral" class="nav-item nav-link" style="color: black; font-size: 18px;"><strong>공구함</strong></a>
-							<a href="goCompany" class="nav-item nav-link" style="color: black; font-size: 18px;"><strong>우리동네</strong></a>
-							<!-- <a href="shop-detail.html" class="nav-item nav-link">Shop Detail</a> -->
-							<div class="nav-item dropdown">
-								<a href="#" class="nav-link dropdown-toggle active"
-									data-bs-toggle="dropdown" style="color: black; font-size: 18px;"><strong>카테고리</strong></a>
-								<div class="dropdown-menu m-0 bg-secondary rounded-0">
-									<a href="getCategory?category=식품" class="dropdown-item">식품</a> <a
-										href="getCategory?category=과일" class="dropdown-item">과일</a> <a
-										href="getCategory?category=생필품" class="dropdown-item">생필품</a> <a
-										href="getCategory?category=패션/뷰티" class="dropdown-item">패션/뷰티</a>
-									<a href="getCategory?category=여행/도서" class="dropdown-item">여행/도서</a>
-								</div>
+						<a href="goGeneral" class="nav-item nav-link"
+							style="color: black; font-size: 18px;"><strong>공구함</strong></a> <a
+							href="goCompany" class="nav-item nav-link"
+							style="color: black; font-size: 18px;"><strong>동네구경</strong></a>
+							<%
+							if (loginMember == null) {
+							%>
+							<a href="goLogin" class="nav-item nav-link"
+								style="color: black; font-size: 18px;"><strong>우리동네</strong></a>
+							<%
+							} else {
+							%>
+							<a href="goHood" class="nav-item nav-link"
+								style="color: black; font-size: 18px;"><strong>우리동네</strong></a>
+							<%
+							}
+							%>
+						<!-- <a href="shop-detail.html" class="nav-item nav-link">Shop Detail</a> -->
+						<div class="nav-item dropdown">
+							<a href="#" class="nav-link dropdown-toggle active"
+								data-bs-toggle="dropdown" style="color: black; font-size: 18px;"><strong>카테고리</strong></a>
+							<div class="dropdown-menu m-0 bg-secondary rounded-0">
+								<a href="getCategory?category=식품" class="dropdown-item">식품</a> <a
+									href="getCategory?category=과일" class="dropdown-item">과일</a> <a
+									href="getCategory?category=생필품" class="dropdown-item">생필품</a> <a
+									href="getCategory?category=패션/뷰티" class="dropdown-item">패션/뷰티</a>
+								<a href="getCategory?category=여행/도서" class="dropdown-item">여행/도서</a>
 							</div>
+						</div>
 							<a href="goSubscribe" class="nav-item nav-link" style="color: black; font-size: 18px;"><strong>POP 결제권</strong></a>
-							<a href="contact.html" class="nav-item nav-link" style="color: black; font-size: 18px;"><strong>동네보기</strong></a>
 					</div>
 					<div class="d-flex m-3 me-0">
 						<button
@@ -152,12 +167,7 @@ input::file-selector-button {
 							data-bs-toggle="modal" data-bs-target="#searchModal">
 							<i class="fas fa-search text-primary"></i>
 						</button>
-						<a href="goCart" class="position-relative me-4 my-auto"> <i
-							class="fa fa-shopping-bag fa-2x"></i> <span
-							class="position-absolute bg-secondary rounded-circle d-flex align-items-center justify-content-center text-dark px-1"
-							style="top: -5px; left: 15px; height: 20px; min-width: 20px;">3</span>
-						</a> <a href="goMyPage" class="my-auto"> <i
-							class="fas fa-user fa-2x"></i></a>
+						<a href="goMyPage" class="my-auto"> <i class="fas fa-user fa-2x"></i></a>
 					</div>
 				</div>
 			</nav>
@@ -219,18 +229,20 @@ input::file-selector-button {
 						<br>
 						<div class="form-item">
 
-							 <label class="input-file-button" for="btnAtt"> 대표 이미지 </label>
-							
-							<input type="file" name="g_img1" id="btnAtt" class="btnAtt" 
-							style="display: none;" accept="image/jpg, image/jpeg, image/png">
-							
+							<label class="input-file-button" for="btnAtt"> 대표 이미지 </label> <input
+								type="file" name="g_img1" id="btnAtt" class="btnAtt"
+								style="display: none;" accept="image/jpg, image/jpeg, image/png">
+
 
 							<div id='image_preview'>
-								<div id='att_zone' style="width: 100%; height: 100%; z-index: none;" 
+								<div id='att_zone'
+									style="width: 100%; height: 100%; z-index: none;"
 									data-placeholder='파일을 첨부 하려면 파일 선택 버튼을 클릭하거나 파일을 드래그앤드롭 하세요 (대표 사진 포함 최대 3개)'></div>
 							</div>
-							<input type="file" name="g_img2"  class="btnAtt" accept="image/jpg, image/jpeg, image/png" value="상세사진" >
-							 <input type="file" name="g_img3" class="btnAtt" accept="image/jpg, image/jpeg, image/png" value="상세사진">
+							<input type="file" name="g_img2" class="btnAtt"
+								accept="image/jpg, image/jpeg, image/png" value="상세사진">
+							<input type="file" name="g_img3" class="btnAtt"
+								accept="image/jpg, image/jpeg, image/png" value="상세사진">
 
 							<script>
 ( /* att_zone : 이미지들이 들어갈 위치 id, btn : file tag id */
@@ -370,8 +382,8 @@ input::file-selector-button {
 						</div>
 						<hr>
 					</div>
-					
-					
+
+
 					<div class="col-md-12 col-lg-6 col-xl-7" align="left">
 						<h4 class="form-label my-3">* 상품 명</h4>
 						<br>

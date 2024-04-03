@@ -121,30 +121,89 @@
 	color: white;
 }
 
-.boardContent{
+.boardContent {
 	border-bottom: 1px solid grey;
 	padding-bottom: 20px;
 	padding-left: 20px;
 }
 
-.detailMenu{width: 100%;max-width: 100px;}
-.detailMenu ul{list-style: none;z-index: 2;}
-.detailMenu a{color:#000;text-decoration: none;}
-.detailMenu > ul{display: flex;width: 100%;justify-content: space-between;padding:10px;}
-.detailMenu > ul > li{position: relative; width: 100%}
-.detailMenu > ul > li > a{font-size: 20px;font-weight: bold;padding:10px 0;}
-.detailMenu > ul > li > a:hover{color:#999;}
-.detailMenu > ul > li > ul{ padding: 0; display: none; position: absolute; left:50%; transform: translateX(-50%);border:1px solid #ddd;border-radius: 6px;background: #fff;}
-.detailMenu > ul > li > ul > li{width: 140px !important; text-align: center;}
-.detailMenu > ul > li:hover ul{display:block; margin-top: 30px;}
-.detailMenu > ul > li  li a{display: block; padding:10px 15px;}
-.detailMenu > ul > li  li a:hover{background:#eee;}
-.detailMenu > ul > li > li + li{margin-top:5px;}
-.starScore{
+.detailMenu {
+	width: 100%;
+	max-width: 100px;
+}
+
+.detailMenu ul {
+	list-style: none;
+	z-index: 2;
+}
+
+.detailMenu a {
+	color: #000;
+	text-decoration: none;
+}
+
+.detailMenu>ul {
+	display: flex;
+	width: 100%;
+	justify-content: space-between;
+	padding: 10px;
+}
+
+.detailMenu>ul>li {
+	position: relative;
+	width: 100%
+}
+
+.detailMenu>ul>li>a {
+	font-size: 20px;
+	font-weight: bold;
+	padding: 10px 0;
+}
+
+.detailMenu>ul>li>a:hover {
+	color: #999;
+}
+
+.detailMenu>ul>li>ul {
+	padding: 0;
+	display: none;
+	position: absolute;
+	left: 50%;
+	transform: translateX(-50%);
+	border: 1px solid #ddd;
+	border-radius: 6px;
+	background: #fff;
+}
+
+.detailMenu>ul>li>ul>li {
+	width: 140px !important;
+	text-align: center;
+}
+
+.detailMenu>ul>li:hover ul {
+	display: block;
+	margin-top: 30px;
+}
+
+.detailMenu>ul>li  li a {
+	display: block;
+	padding: 10px 15px;
+}
+
+.detailMenu>ul>li  li a:hover {
+	background: #eee;
+}
+
+.detailMenu>ul>li>li+li {
+	margin-top: 5px;
+}
+
+.starScore {
 	font-size: 1.5em;
 	color: #009223;
 }
-#subCancel, #favCancel{
+
+#subCancel, #favCancel {
 	color: white !important;
 	background-color: #009223;
 }
@@ -220,40 +279,48 @@
 				</button>
 				<div class="collapse navbar-collapse bg-white" id="navbarCollapse">
 					<div class="navbar-nav mx-auto">
-							<a href="goGeneral" class="nav-item nav-link" style="color: black; font-size: 18px;"><strong>공구함</strong></a>
-							<a href="goCompany" class="nav-item nav-link" style="color: black; font-size: 18px;"><strong>우리동네</strong></a>
-
+						<a href="goGeneral" class="nav-item nav-link"
+							style="color: black; font-size: 18px;"><strong>공구함</strong></a> <a
+							href="goCompany" class="nav-item nav-link"
+							style="color: black; font-size: 18px;"><strong>동네구경</strong></a>
+						<%
+						if (loginMember == null) {
+						%>
+						<a href="goLogin" class="nav-item nav-link"
+							style="color: black; font-size: 18px;"><strong>우리동네</strong></a>
+						<%
+						} else {
+						%>
+						<a href="goHood" class="nav-item nav-link"
+							style="color: black; font-size: 18px;"><strong>우리동네</strong></a>
+						<%
+						}
+						%>
 						<!-- 기업회원일때만 나오게 -->
 						<c:if test="${type eq 'company'}">
 							<a href="gocBoard" class="nav-item nav-link">상품등록</a>
 						</c:if>
 
 						<div class="nav-item dropdown">
-								<a href="#" class="nav-link dropdown-toggle active"
-									data-bs-toggle="dropdown" style="color: black; font-size: 18px;"><strong>카테고리</strong></a>
-								<div class="dropdown-menu m-0 bg-secondary rounded-0">
-									<a href="getCategory?category=식품" class="dropdown-item">식품</a> <a
-										href="getCategory?category=과일" class="dropdown-item">과일</a> <a
-										href="getCategory?category=생필품" class="dropdown-item">생필품</a> <a
-										href="getCategory?category=패션/뷰티" class="dropdown-item">패션/뷰티</a>
-									<a href="getCategory?category=여행/도서" class="dropdown-item">여행/도서</a>
-								</div>
+							<a href="#" class="nav-link dropdown-toggle active"
+								data-bs-toggle="dropdown" style="color: black; font-size: 18px;"><strong>카테고리</strong></a>
+							<div class="dropdown-menu m-0 bg-secondary rounded-0">
+								<a href="getCategory?category=식품" class="dropdown-item">식품</a> <a
+									href="getCategory?category=과일" class="dropdown-item">과일</a> <a
+									href="getCategory?category=생필품" class="dropdown-item">생필품</a> <a
+									href="getCategory?category=패션/뷰티" class="dropdown-item">패션/뷰티</a>
+								<a href="getCategory?category=여행/도서" class="dropdown-item">여행/도서</a>
 							</div>
+						</div>
 							<a href="goSubscribe" class="nav-item nav-link" style="color: black; font-size: 18px;"><strong>POP 결제권</strong></a>
-							<a href="contact.html" class="nav-item nav-link" style="color: black; font-size: 18px;"><strong>동네보기</strong></a>
 					</div>
 					<div class="d-flex m-3 me-0">
-							<button
-								class="btn-search btn border border-secondary btn-md-square rounded-circle bg-white me-4"
-								data-bs-toggle="modal" data-bs-target="#searchModal">
-								<i class="fas fa-search text-primary"></i>
-							</button>
-							<a href="goCart" class="position-relative me-4 my-auto"> <i
-								class="fa fa-shopping-bag fa-2x"></i> <span
-								class="position-absolute bg-secondary rounded-circle d-flex align-items-center justify-content-center text-dark px-1"
-								style="top: -5px; left: 15px; height: 20px; min-width: 20px;">3</span>
-							</a> <a href="goMyPage" class="my-auto"> <i
-								class="fas fa-user fa-2x"></i></a>
+						<button
+							class="btn-search btn border border-secondary btn-md-square rounded-circle bg-white me-4"
+							data-bs-toggle="modal" data-bs-target="#searchModal">
+							<i class="fas fa-search text-primary"></i>
+						</button>
+						<a href="goMyPage" class="my-auto"> <i class="fas fa-user fa-2x"></i></a>
 					</div>
 				</div>
 			</nav>
@@ -263,9 +330,9 @@
 
 
 	<!-- Search Start -->
-   <div class="modal fade" id="searchModal" tabindex="-1"
-      aria-labelledby="exampleModalLabel" aria-hidden="true">
-      <div class="modal-dialog modal-fullscreen">
+	<div class="modal fade" id="searchModal" tabindex="-1"
+		aria-labelledby="exampleModalLabel" aria-hidden="true">
+		<div class="modal-dialog modal-fullscreen">
 
 			<div class="modal-content rounded-0">
 				<div class="modal-header">
@@ -276,11 +343,13 @@
 				</div>
 				<form action="goSearch">
 					<div class="modal-body d-flex align-items-center">
-						<div class="input-group w-75 mx-auto d-flex" 
-							style="height: 800px; padding-bottom: 100px; width:50% !important;  justify-content: center; align-items: center;">
-							<input type="text" class="form-control p-3" name="searchText" style="height: 58px;"
-								placeholder="검색어를 입력해주세요." aria-describedby="search-icon-1">
-							<input type="submit" value="검색" id="search-icon-1" style="border-top-right-radius: 10px; border-bottom-right-radius: 10px; height: 58px;"
+						<div class="input-group w-75 mx-auto d-flex"
+							style="height: 800px; padding-bottom: 100px; width: 50% !important; justify-content: center; align-items: center;">
+							<input type="text" class="form-control p-3" name="searchText"
+								style="height: 58px;" placeholder="검색어를 입력해주세요."
+								aria-describedby="search-icon-1"> <input type="submit"
+								value="검색" id="search-icon-1"
+								style="border-top-right-radius: 10px; border-bottom-right-radius: 10px; height: 58px;"
 								class="btn btn-primary border-2 border-secondary py-3 px-4">
 						</div>
 					</div>
@@ -327,7 +396,8 @@
 
 		<!-- 게시글 상세 -->
 
-		<div class="row g-4 justify-content-center hero-header" style="margin-left: 28%; margin-right: 28%;">
+		<div class="row g-4 justify-content-center hero-header"
+			style="margin-left: 28%; margin-right: 28%;">
 			<input type="hidden" value="${loginMember.email}" id="loginEmail">
 			<script
 				src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js"
@@ -336,54 +406,67 @@
 
 			<div id="carouselExampleControls" class="carousel slide"
 				data-bs-ride="carousel" style="position: relative;" align="center">
-				<div class="carousel-inner" style="position: absoulte;" >
+				<div class="carousel-inner" style="position: absoulte;">
 					<div class="carousel-item active">
-						<img class="d-block" style="object-fit: cover !important; height: 450px;"
+						<img class="d-block"
+							style="object-fit: cover !important; height: 450px;"
 							src="resources/g_Image/${c_board.c_img1}" alt="..." />
 					</div>
 					<div class="carousel-item">
-						<img class="d-block" style="object-fit: cover !important; height: 450px;"
-							src="resources/g_Image/${c_board.c_img2}"
-							alt="..." />
+						<img class="d-block"
+							style="object-fit: cover !important; height: 450px;"
+							src="resources/g_Image/${c_board.c_img2}" alt="..." />
 					</div>
-					<div class="carousel-item" >
-						<img class="d-block" style="object-fit: cover !important; height: 450px;"
+					<div class="carousel-item">
+						<img class="d-block"
+							style="object-fit: cover !important; height: 450px;"
 							src="resources/g_Image/${c_board.c_img3}" alt="..." />
 					</div>
 				</div>
 				<button class="carousel-control-prev" type="button"
 					data-bs-target="#carouselExampleControls" data-bs-slide="prev">
-					<span class="carousel-control-prev-icon" aria-hidden="true" style="background-color: grey"></span>
-					<span class="visually-hidden">Previous</span>
+					<span class="carousel-control-prev-icon" aria-hidden="true"
+						style="background-color: grey"></span> <span
+						class="visually-hidden">Previous</span>
 				</button>
 				<button class="carousel-control-next" type="button"
 					data-bs-target="#carouselExampleControls" data-bs-slide="next">
-					<span class="carousel-control-next-icon" aria-hidden="true" style="background-color: grey"></span>
-					<span class="visually-hidden">Next</span>
+					<span class="carousel-control-next-icon" aria-hidden="true"
+						style="background-color: grey"></span> <span
+						class="visually-hidden">Next</span>
 				</button>
 			</div>
-			
+
 			<div class="row g-4 justify-content-center">
 				<div class="boardContent" style="padding-bottom: 0; height: 60px;">
 					<input type="hidden" value="${c_board.c_num}" id="cNum">
 					<c:choose>
 						<c:when test="${empty loginMember}">
-							<button onclick="location.href='goLogin'" style="width: 10%;" type="button" class="btn btn-outline-success">❤ 찜</button>
+							<button onclick="location.href='goLogin'" style="width: 10%;"
+								type="button" class="btn btn-outline-success">❤ 찜</button>
 						</c:when>
 						<c:otherwise>
 							<c:choose>
 								<c:when test="${fav eq 'Yes'}">
-									<button onclick="checkCFavorite()" id="cFavorite" style="width: 10%; display: none;" type="button" class="btn btn-outline-success">❤ 찜</button>
-									<button onclick="delCFavorite()" id="favCancel" style="width: 10%;" type="button" class="btn btn-outline-success">❤ 찜</button>
+									<button onclick="checkCFavorite()" id="cFavorite"
+										style="width: 10%; display: none;" type="button"
+										class="btn btn-outline-success">❤ 찜</button>
+									<button onclick="delCFavorite()" id="favCancel"
+										style="width: 10%;" type="button"
+										class="btn btn-outline-success">❤ 찜</button>
 								</c:when>
 								<c:otherwise>
-									<button onclick="checkCFavorite()" id="cFavorite" style="width: 10%;" type="button" class="btn btn-outline-success">❤ 찜</button>
-									<button onclick="delCFavorite()" id="favCancel" style="width: 10%; display: none;" type="button" class="btn btn-outline-success">❤ 찜</button>
+									<button onclick="checkCFavorite()" id="cFavorite"
+										style="width: 10%;" type="button"
+										class="btn btn-outline-success">❤ 찜</button>
+									<button onclick="delCFavorite()" id="favCancel"
+										style="width: 10%; display: none;" type="button"
+										class="btn btn-outline-success">❤ 찜</button>
 								</c:otherwise>
 							</c:choose>
 						</c:otherwise>
 					</c:choose>
-					<c:choose >
+					<c:choose>
 						<c:when test="${loginMember.email eq c_board.email}">
 							<nav class="detailMenu" style="float: right;">
 								<ul>
@@ -391,8 +474,10 @@
 									</a>
 										<ul>
 											<li><a href="#">펀딩 마감</a></li>
-											<li><a href="goCUpdate?c_num=${c_board.c_num}">게시글 수정</a></li>
-											<li><a href="deleteCBoard?c_num=${c_board.c_num}">게시글 삭제</a></li>
+											<li><a href="goCUpdate?c_num=${c_board.c_num}">게시글
+													수정</a></li>
+											<li><a href="deleteCBoard?c_num=${c_board.c_num}">게시글
+													삭제</a></li>
 										</ul></li>
 								</ul>
 							</nav>
@@ -404,15 +489,15 @@
 									</a>
 										<ul>
 											<li>
-											<form action="sendReportInfo" method="post">
-									            <input type="hidden" value="${c_board.c_num}" name="r_num">
-									            <input type="hidden" value="${c_board.email}" name="email">
-									            <input type="hidden" value="${c_board.c_title}" name="r_title">
-									             <input type="hidden" value="${loginMember.email}" name="rp_email">
-									               
-									            <input type="submit" value="신고하기">
-            								</form>
-											
+												<form action="sendReportInfo" method="post">
+													<input type="hidden" value="${c_board.c_num}" name="r_num">
+													<input type="hidden" value="${c_board.email}" name="email">
+													<input type="hidden" value="${c_board.c_title}"
+														name="r_title"> <input type="hidden"
+														value="${loginMember.email}" name="rp_email"> <input
+														type="submit" value="신고하기">
+												</form>
+
 											</li>
 										</ul></li>
 								</ul>
@@ -421,47 +506,66 @@
 						<c:when test="${ empty loginMember}">
 							<nav class="detailMenu" style="float: right;">
 								<ul>
-									<li><strong><a href="#"> <strong style="float: right;"></strong></a>
+									<li><strong><a href="#"> <strong
+												style="float: right;"></strong></a>
 								</ul>
 							</nav>
 						</c:when>
 					</c:choose>
-					
-					
+
+
 				</div>
 				<div class="boardContent">
-					<span>가게명 : <h6 style="display: inline; margin-left: 10px;">${c_board.c_writer}</h6></span>
-					<input type="hidden" value="${c_board.c_writer}" id="comName">
+					<span>가게명 :
+						<h6 style="display: inline; margin-left: 10px;">${c_board.c_writer}</h6>
+					</span> <input type="hidden" value="${c_board.c_writer}" id="comName">
 					<c:choose>
-					<c:when test="${empty loginMember}">
-						<button onclick="location.href='goLogin'" style="width: 15%; margin-left: 20px;" type="button" class="btn btn-outline-success">구독하기</button>
-					</c:when>
-					<c:otherwise>
-						<c:choose>
-							<c:when test="${sub eq 'Yes'}">
-								<button onclick="checkSubscribe()" id="cSubscribe" style="width: 15%; margin-left: 20px; display: none;" type="button" class="btn btn-outline-success">구독하기</button>
-								<button onclick="delSubscribe()" id="subCancel" style="width: 15%; margin-left: 20px;" type="button" class="btn btn-outline-success">구독중 ✓</button>
-							</c:when>
-							<c:otherwise>
-								<button onclick="checkSubscribe()" id="cSubscribe" style="width: 15%; margin-left: 20px;" type="button" class="btn btn-outline-success">구독하기</button>
-								<button onclick="delSubscribe()" id="subCancel" style="width: 15%; margin-left: 20px; display: none;" type="button" class="btn btn-outline-success">구독 취소</button>
-							</c:otherwise>
-						</c:choose>
-					</c:otherwise>
+						<c:when test="${empty loginMember}">
+							<button onclick="location.href='goLogin'"
+								style="width: 15%; margin-left: 20px;" type="button"
+								class="btn btn-outline-success">구독하기</button>
+						</c:when>
+						<c:otherwise>
+							<c:choose>
+								<c:when test="${sub eq 'Yes'}">
+									<button onclick="checkSubscribe()" id="cSubscribe"
+										style="width: 15%; margin-left: 20px; display: none;"
+										type="button" class="btn btn-outline-success">구독하기</button>
+									<button onclick="delSubscribe()" id="subCancel"
+										style="width: 15%; margin-left: 20px;" type="button"
+										class="btn btn-outline-success">구독중 ✓</button>
+								</c:when>
+								<c:otherwise>
+									<button onclick="checkSubscribe()" id="cSubscribe"
+										style="width: 15%; margin-left: 20px;" type="button"
+										class="btn btn-outline-success">구독하기</button>
+									<button onclick="delSubscribe()" id="subCancel"
+										style="width: 15%; margin-left: 20px; display: none;"
+										type="button" class="btn btn-outline-success">구독 취소</button>
+								</c:otherwise>
+							</c:choose>
+						</c:otherwise>
 					</c:choose>
-					<span style="float: right;">${c_board.category} / ${c_board.c_w_date}</span>
+					<span style="float: right;">${c_board.category} /
+						${c_board.c_w_date}</span>
 				</div>
-				
+
 				<!-- 주문자 -->
 				<div class="boardContent">
 					<h6>${c_board.c_title}</h6>
-					<h6><small>주문자명</small> </h6><br>
-					<input placeholder="주문자명 입력" value="${loginMember.name }" style="border-color: transparent;" >
-					<h6><small>휴대폰 번호</small> </h6><br>
-					<input placeholder="휴대폰번호 입력" value="${loginMember.tel }" style="border-color: transparent;" >
+					<h6>
+						<small>주문자명</small>
+					</h6>
+					<br> <input placeholder="주문자명 입력" value="${loginMember.name }"
+						style="border-color: transparent;">
+					<h6>
+						<small>휴대폰 번호</small>
+					</h6>
+					<br> <input placeholder="휴대폰번호 입력" value="${loginMember.tel }"
+						style="border-color: transparent;">
 				</div>
-					
-				<div class="boardContent">	
+
+				<div class="boardContent">
 					<strong>픽업</strong>
 					<div>
 						<p>${c_board.c_title }</p>
@@ -469,33 +573,29 @@
 							<li>
 								<p>${c_board.c_opt1 }</p>
 								<p>
-									<span>${c_board.price }</span>
-									<span>개수</span>
-									<span><button>결제하기</button></span>
+									<span>${c_board.price }</span> <span>개수</span> <span><button>결제하기</button></span>
 								</p>
 							</li>
 						</ul>
 					</div>
 				</div>
-				
-				
+
+
 				<div class="boardContent">
-					<strong>픽업장소</strong>
-					<strong  id="addr" style="display: none">${m_addr.address}</strong>
+					<strong>픽업장소</strong> <strong id="addr" style="display: none">${m_addr.address}</strong>
 					<h5>${c_board.place}</h5>
-					<div id="map" style="width:100%;height:350px;" class="row g-4 justify-content-center">
-						
-					</div>
+					<div id="map" style="width: 100%; height: 350px;"
+						class="row g-4 justify-content-center"></div>
 				</div>
 			</div>
 		</div>
-	
-		
-		<script type="text/javascript" src="//dapi.kakao.com/v2/maps/sdk.js?appkey=db0a7dd04d902c908bc5aaa345eaa55c&libraries=services"></script>
+
+
+		<script type="text/javascript"
+			src="//dapi.kakao.com/v2/maps/sdk.js?appkey=db0a7dd04d902c908bc5aaa345eaa55c&libraries=services"></script>
 		<script>
-		
-		var addr =  document.getElementById("addr").innerText;
-		
+			var addr = document.getElementById("addr").innerText;
+
 			var mapContainer = document.getElementById('map'), // 지도를 표시할 div 
 			mapOption = {
 				center : new kakao.maps.LatLng(33.450701, 126.570667), // 지도의 중심좌표
@@ -557,7 +657,7 @@
 				</div>
 			</div>
 		</div>
-		
+
 
 		<!-- 메인 페이지 하단 End -->
 
@@ -579,209 +679,209 @@
 
 		<!-- Template Javascript -->
 		<script src="resources/asset/js/main.js"></script>
-	
+
 		<script type="text/javascript">
-			function checkCFavorite(){
+			function checkCFavorite() {
 				var c_num = document.getElementById("cNum").value;
-				
+
 				document.getElementById("favCancel").style.display = "inline";
 				document.getElementById("cFavorite").style.display = "none";
-						$.ajax(
-						{
-							url : "insertFavorite",
-							data : {'c_num' : c_num},
-							type :'get',
-							success : function(){
-								
-							},
-							error : function(){
-								alert("통신실패")
-							}
-						}
-					)
-				}
+				$.ajax({
+					url : "insertFavorite",
+					data : {
+						'c_num' : c_num
+					},
+					type : 'get',
+					success : function() {
+
+					},
+					error : function() {
+						alert("통신실패")
+					}
+				})
+			}
 		</script>
-		
+
 		<script type="text/javascript">
-			function delCFavorite(){
+			function delCFavorite() {
 				var c_num = document.getElementById("cNum").value;
-				
+
 				document.getElementById("cFavorite").style.display = "inline";
 				document.getElementById("favCancel").style.display = "none";
-						$.ajax(
-						{
-							url : "delFavorite",
-							data : {'c_num' : c_num},
-							type :'get',
-							success : function(){
-								
-							},
-							error : function(){
-								alert("통신실패")
-							}
-						}
-					)
-				}
+				$.ajax({
+					url : "delFavorite",
+					data : {
+						'c_num' : c_num
+					},
+					type : 'get',
+					success : function() {
+
+					},
+					error : function() {
+						alert("통신실패")
+					}
+				})
+			}
 		</script>
-		
+
 		<!-- 구독 버튼 -->
 		<script type="text/javascript">
-				function checkSubscribe(){
-					var c_name = document.getElementById("comName").value;
+			function checkSubscribe() {
+				var c_name = document.getElementById("comName").value;
 
 				document.getElementById("subCancel").style.display = "inline";
 				document.getElementById("cSubscribe").style.display = "none";
-						
-						$.ajax(
-						{
-							url : "checkSub",
-							data : {'c_name' : c_name},
-							type :'get',
-							success : function(){
-								
-							},
-							error : function(){
-								alert("통신실패")
-							}
-						}
-					)
-				}
+
+				$.ajax({
+					url : "checkSub",
+					data : {
+						'c_name' : c_name
+					},
+					type : 'get',
+					success : function() {
+
+					},
+					error : function() {
+						alert("통신실패")
+					}
+				})
+			}
 		</script>
-		
+
 		<!-- 구독 취소 버튼 -->
 		<script type="text/javascript">
-				function delSubscribe(){
-					var c_name = document.getElementById("comName").value;
+			function delSubscribe() {
+				var c_name = document.getElementById("comName").value;
 
 				document.getElementById("cSubscribe").style.display = "inline";
 				document.getElementById("subCancel").style.display = "none";
-						
-						$.ajax(
-						{
-							url : "delSub",
-							data : {'c_name' : c_name},
-							type :'get',
-							success : function(){
-								
-							},
-							error : function(){
-								alert("통신실패")
-							}
-						}
-					)
-				}
-		</script>
-		
-		<script type="text/javascript" src="https://code.jquery.com/jquery-1.12.4.min.js"></script>
-    	<script type="text/javascript" src="https://cdn.iamport.kr/js/iamport.payment-1.2.0.js"></script>
-   		<script>
-	        function pay(num) {
-	        	
-	        	var inputUp = document.getElementsByClassName("upName")[num].value;
-	        	var inputPrice = document.getElementsByClassName("upPrice")[num].value;
-	        	var inputCnt = document.getElementsByClassName("upCnt")[num].value;
-	        	
-	        	/*var selectedGoodsName = document.querySelector(".kg_pay_btn").getAttribute("data-name");*/
-	        	
-	        	
-	        	var inputEmail = document.getElementById("payEmail").value;
-	        	var inputName = document.getElementById("payName").value;
-	        	var inputTel = document.getElementById("payTel").value;
-	        	var inputAddress = document.getElementById("payAddress").value;
-	        	
-	        	
-	        	
-	            var IMP = window.IMP;
-	            IMP.init("imp14502251");
-	            // 원포트 관리자 페이지 -> 내정보 -> 가맹점식별코드
-	            // ''안에 띄어쓰기 없이 가맹점 식별코드를 붙여넣어주세요. 안그러면 결제창이 안뜹니다.
-	            IMP.request_pay({
-	                pg: 'html5_inicis',  // 실제 계약 후에는 실제 상점아이디로 변경
-	                pay_method: 'card', // 'card'만 지원됩니다.
-	                merchant_uid: 'ShareWe_' + new Date().getTime(), // 상점에서 관리하는 주문 번호
-	                name: inputUp, // 상품 이름
-	                amount: inputPrice, // 결제창에 표시될 금액. 실제 승인이 이뤄지지는 않습니다.
-	                buyer_email: inputEmail,
-	                buyer_name: inputName,
-	                buyer_tel: inputTel,
-	                buyer_addr: inputAddress,
-	                buyer_postcode: '123-456',
-	                m_redirect_url: 'https://www.myservice.com/payments/complete/mobile',
-	                p_cnt: inputCnt
-	                
-	            }, function (rsp) {
-	                if (rsp.success) {  // 결제가 성공했을 때
-	                    // 결제가 완료되었을 떄 결제 정보를 뜨게 만듬
-	                    var msg = '결제가 완료되었습니다.';
-	                    msg += '고유ID : ' + rsp.imp_uid;
-	                    msg += '상점 거래ID : ' + rsp.merchant_uid;
-	                    msg += '결제 금액 : ' + rsp.paid_amount;
-	                    msg += '카드 승인번호 : ' + rsp.apply_num;
-	                    
-	                    let f = document.createElement('form');
-		                /* let obj1;
-		        		    obj1 = document.createElement('input');
-		        		    obj1.setAttribute('type', 'hidden');
-		        		    obj1.setAttribute('name', 'p_num');
-		        		    obj1.setAttribute('value', p_num); */
-		        		
-		        		let obj2;
-		        		    obj2 = document.createElement('input');
-		        		    obj2.setAttribute('type', 'hidden');
-		        		    obj2.setAttribute('name', 'email');
-		        			var inputEmail = document.getElementById("payEmail").value;
-		        		    obj2.setAttribute('value', inputEmail);
-		        		
-		        		let obj3;
-		        		    obj3 = document.createElement('input');
-		        		    obj3.setAttribute('type', 'hidden');
-		        		    obj3.setAttribute('name', 'p_name');
-		        		    obj3.setAttribute('value', inputUp);
-		        		
-		        		let obj4;
-		        		    obj4 = document.createElement('input');
-		        		    obj4.setAttribute('type', 'hidden');
-		        		    obj4.setAttribute('name', 'p_amount');
-		        			
-		        		    obj4.setAttribute('value', inputPrice);
-		        		    
-		        		
-		        		let obj5;
-		        		    obj5 = document.createElement('input');
-		        		    obj5.setAttribute('type', 'hidden');
-		        		    obj5.setAttribute('name', 'apply_num');
-		        		    obj5.setAttribute('value', rsp.apply_num);
-		        		
-		        		let obj6;
-		        		    obj6 = document.createElement('input');
-		        		    obj6.setAttribute('type', 'hidden');
-		        		    obj6.setAttribute('name', 'p_cnt');
-		        			
-		        		    obj6.setAttribute('value', inputCnt);
-		        		
-		        		
-		        		    f.appendChild(obj2);
-		        		    f.appendChild(obj3);
-		        		    f.appendChild(obj4);
-		        		    f.appendChild(obj5);
-		        		    f.appendChild(obj6);
-		        		    f.setAttribute('method', 'post');
-		        		    f.setAttribute('action', 'paySuccess');
-		        		    document.body.appendChild(f);
-		        		    f.submit();
-	                    
-	                    
-	                } else {    // 결제가 실패했을 때
-	                    // 결제에 실패했을떄 실패메세지와 실패사유를 출력
-	                    var msg = '결제에 실패하였습니다.';
-	                    msg += '실패 사유 : ' + rsp.error_msg;
-	                }
-	                alert(msg);
-	            });
-	        }
 
-   		</script>
-		
+				$.ajax({
+					url : "delSub",
+					data : {
+						'c_name' : c_name
+					},
+					type : 'get',
+					success : function() {
+
+					},
+					error : function() {
+						alert("통신실패")
+					}
+				})
+			}
+		</script>
+
+		<script type="text/javascript"
+			src="https://code.jquery.com/jquery-1.12.4.min.js"></script>
+		<script type="text/javascript"
+			src="https://cdn.iamport.kr/js/iamport.payment-1.2.0.js"></script>
+		<script>
+			function pay(num) {
+
+				var inputUp = document.getElementsByClassName("upName")[num].value;
+				var inputPrice = document.getElementsByClassName("upPrice")[num].value;
+				var inputCnt = document.getElementsByClassName("upCnt")[num].value;
+
+				/*var selectedGoodsName = document.querySelector(".kg_pay_btn").getAttribute("data-name");*/
+
+				var inputEmail = document.getElementById("payEmail").value;
+				var inputName = document.getElementById("payName").value;
+				var inputTel = document.getElementById("payTel").value;
+				var inputAddress = document.getElementById("payAddress").value;
+
+				var IMP = window.IMP;
+				IMP.init("imp14502251");
+				// 원포트 관리자 페이지 -> 내정보 -> 가맹점식별코드
+				// ''안에 띄어쓰기 없이 가맹점 식별코드를 붙여넣어주세요. 안그러면 결제창이 안뜹니다.
+				IMP
+						.request_pay(
+								{
+									pg : 'html5_inicis', // 실제 계약 후에는 실제 상점아이디로 변경
+									pay_method : 'card', // 'card'만 지원됩니다.
+									merchant_uid : 'ShareWe_'
+											+ new Date().getTime(), // 상점에서 관리하는 주문 번호
+									name : inputUp, // 상품 이름
+									amount : inputPrice, // 결제창에 표시될 금액. 실제 승인이 이뤄지지는 않습니다.
+									buyer_email : inputEmail,
+									buyer_name : inputName,
+									buyer_tel : inputTel,
+									buyer_addr : inputAddress,
+									buyer_postcode : '123-456',
+									m_redirect_url : 'https://www.myservice.com/payments/complete/mobile',
+									p_cnt : inputCnt
+
+								},
+								function(rsp) {
+									if (rsp.success) { // 결제가 성공했을 때
+										// 결제가 완료되었을 떄 결제 정보를 뜨게 만듬
+										var msg = '결제가 완료되었습니다.';
+										msg += '고유ID : ' + rsp.imp_uid;
+										msg += '상점 거래ID : ' + rsp.merchant_uid;
+										msg += '결제 금액 : ' + rsp.paid_amount;
+										msg += '카드 승인번호 : ' + rsp.apply_num;
+
+										let f = document.createElement('form');
+										/* let obj1;
+										    obj1 = document.createElement('input');
+										    obj1.setAttribute('type', 'hidden');
+										    obj1.setAttribute('name', 'p_num');
+										    obj1.setAttribute('value', p_num); */
+
+										let obj2;
+										obj2 = document.createElement('input');
+										obj2.setAttribute('type', 'hidden');
+										obj2.setAttribute('name', 'email');
+										var inputEmail = document
+												.getElementById("payEmail").value;
+										obj2.setAttribute('value', inputEmail);
+
+										let obj3;
+										obj3 = document.createElement('input');
+										obj3.setAttribute('type', 'hidden');
+										obj3.setAttribute('name', 'p_name');
+										obj3.setAttribute('value', inputUp);
+
+										let obj4;
+										obj4 = document.createElement('input');
+										obj4.setAttribute('type', 'hidden');
+										obj4.setAttribute('name', 'p_amount');
+
+										obj4.setAttribute('value', inputPrice);
+
+										let obj5;
+										obj5 = document.createElement('input');
+										obj5.setAttribute('type', 'hidden');
+										obj5.setAttribute('name', 'apply_num');
+										obj5.setAttribute('value',
+												rsp.apply_num);
+
+										let obj6;
+										obj6 = document.createElement('input');
+										obj6.setAttribute('type', 'hidden');
+										obj6.setAttribute('name', 'p_cnt');
+
+										obj6.setAttribute('value', inputCnt);
+
+										f.appendChild(obj2);
+										f.appendChild(obj3);
+										f.appendChild(obj4);
+										f.appendChild(obj5);
+										f.appendChild(obj6);
+										f.setAttribute('method', 'post');
+										f.setAttribute('action', 'paySuccess');
+										document.body.appendChild(f);
+										f.submit();
+
+									} else { // 결제가 실패했을 때
+										// 결제에 실패했을떄 실패메세지와 실패사유를 출력
+										var msg = '결제에 실패하였습니다.';
+										msg += '실패 사유 : ' + rsp.error_msg;
+									}
+									alert(msg);
+								});
+			}
+		</script>
 </body>
 
 </html>
