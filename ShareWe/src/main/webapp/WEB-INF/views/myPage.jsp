@@ -459,7 +459,7 @@
 										style="width: 150px; height: 150px; !important;">
 									</a> <a
 										href="C_BoardContent?c_num=${c.c_num}&&c_writer=${c.c_writer}">
-										<h3 style="text-align: center;">${c.c_title}</h3>
+										<h3 style="text-align: center; height: 130px;">${c.c_title}</h3>
 									</a> <br> <strong style="color: #A4A4A4;">${c.category }</strong>
 									<hr>
 									<strong style="color: #A4A4A4;">${c.c_w_date }</strong>
