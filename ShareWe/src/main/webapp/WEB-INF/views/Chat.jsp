@@ -318,13 +318,24 @@
 		<iframe src="chatBoardContent?g_num=${g_num}" width='700' height='1000'></iframe>
 	</div>
 	
-	<div class="row g-4 justify-content-center" style="width: 400px; display: inline-block; padding-top: 150px;">	
-	     <iframe src='https://www.vchatcloud.com/chat-demo/iframe/iframe_pc/v4/index.html?
-			channelKey=lqTBmpEWva-1fiFqnQAXm-20240327104645' frameborder='no' 
-			scrolling='no' marginwidth='0' marginheight='0' width='150' height='900'></iframe>
-		
-	</div>
-	
+	<c:choose>
+		<c:when test="${g_num == 60}">
+			<div class="row g-4 justify-content-center" style="width: 400px; display: inline-block; padding-top: 150px;">	
+			     <iframe src='https://www.vchatcloud.com/chat-demo/iframe/iframe_pc/v4/index.html?
+					channelKey=XOaECowsXk-POU1y2Gnfe-20240403001826' frameborder='no' 
+					scrolling='no' marginwidth='0' marginheight='0' width='150' height='900'></iframe>
+				
+			</div>
+		</c:when>
+		<c:otherwise>
+			<div class="row g-4 justify-content-center" style="width: 400px; display: inline-block; padding-top: 150px;">	
+			     <iframe src='https://www.vchatcloud.com/chat-demo/iframe/iframe_pc/v4/index.html?
+					channelKey=lqTBmpEWva-1fiFqnQAXm-20240327104645' frameborder='no' 
+					scrolling='no' marginwidth='0' marginheight='0' width='150' height='900'></iframe>
+				
+			</div>
+		</c:otherwise>
+	</c:choose>
 	
       <!-- 메인 페이지 하단 -->
       <div class="container-fluid bg-dark text-white-50 footer pt-5 mt-5">
