@@ -592,14 +592,12 @@
 						</c:when>
 						<c:otherwise>
 							<c:forEach items="${review_list}" var="r">
-
-
 								<div class="boardContent"
 									style="width: 80% !important; height: 180px; font-size: 13px !important; border: solid; border-color: #A4A4A4; border-width: 0.1px;">
 
 
 									<c:forEach items="${allC_list}" var="c">
-										<c:if test="${r.c_num eq c.c_num }">
+										<c:if test="${r.c_num == c.c_num }">
 
 											<a
 												href="C_BoardContent?c_num=${c.c_num}&c_writer=${c.c_writer}">
@@ -655,18 +653,24 @@
 			<div class="row g-4 justify-content-center">
 				<div class="col-md-6 col-lg-6 col-xl-4" style="width: 1200px">
 					<div class="rounded position-relative fruite-item">
-						<div class="boardContent" style="width: 80% !important; text-align: center;">
+						<div class="boardContent" style="width: 80% !important; text-align: center; border-left: 0;">
 							<h3>구독권</h3>
 							<table>
-							    <tr style="border-bottom: solid 1px;">
+							    <tr style="border-bottom: solid 2px;">
 							      <th>email</th>
 							      <th>POP 체험기회</th>
 							      <th>보유중인 POP권</th>
 							    </tr>
-							    <tr style="border-bottom: solid 1px;">
-							      <th>${loginMember.email}</th>
-							      <td>${sub_list.free_cnt } 회</td>
-							      <td>${sub_list.paid_cnt } 회</td>
+							    <tr style="">
+							      <td style="border-right: 0; border-left: 0; border-bottom: solid 2px;">
+							      	${loginMember.email}
+							      </td>
+							      <td style="border-right: 0; border-left: 0; border-bottom: solid 2px;">
+							      	${sub_list.free_cnt } 회
+							      </td>
+							      <td style="border-right: 0; border-left: 0; border-bottom: solid 2px;">
+							     	${sub_list.paid_cnt } 회
+							      </td>
 							    </tr>
 							</table>
 						</div>
@@ -686,7 +690,7 @@
 			<div class="row g-4 justify-content-center">
 				<div class="col-md-6 col-lg-6 col-xl-4" style="width: 1200px">
 					<div class="boardContent" style="width: 80% !important; font-size: 16px !important;">
-						<table style="width: 80% !important; text-align: center; margin-left: 50px;">
+						<table style="width: 80% !important; text-align: center; margin-left: 70px;">
 								<tr>
 									<th style="background-color: #009223 !important;"><strong>번호</strong></th>
 									<th style="background-color: #009223 !important;"><strong>상품명</strong></th>
