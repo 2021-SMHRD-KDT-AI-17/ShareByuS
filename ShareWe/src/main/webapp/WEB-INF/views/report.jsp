@@ -51,20 +51,21 @@
 
 <body>
 
-<%
-		member loginMember = (member)session.getAttribute("loginMember");
+	<%
+	member loginMember = (member) session.getAttribute("loginMember");
 	%>
 
 
 
-<!-- Spinner Start -->
-        <div id="spinner" class="show w-100 vh-100 bg-white position-fixed translate-middle top-50 start-50  d-flex align-items-center justify-content-center">
-            <div class="spinner-grow text-primary" role="status"></div>
-        </div>
-	    <!-- Spinner End -->
-	
-	
-		<!-- Navbar start -->
+	<!-- Spinner Start -->
+	<div id="spinner"
+		class="show w-100 vh-100 bg-white position-fixed translate-middle top-50 start-50  d-flex align-items-center justify-content-center">
+		<div class="spinner-grow text-primary" role="status"></div>
+	</div>
+	<!-- Spinner End -->
+
+
+	<!-- Navbar start -->
 	<div class="container-fluid fixed-top">
 		<div class="container topbar bg-primary d-none d-lg-block">
 			<div class="d-flex justify-content-between">
@@ -72,77 +73,87 @@
 					<small class="me-3"></small> <small class="me-3"></small>
 				</div>
 				<div class="top-link pe-2">
-					<%if (loginMember == null) {%>
-							<a href="goLogin" class="text-white"><small class="text-white mx-2">로그인</small>/</a>
-							<a href="goMemberType" class="text-white"><small class="text-white mx-2">회원가입</small></a>
-						<%}else {%>
-							<span><small class="text-white mx-2"><%=loginMember.getNick() %>님 환영합니다.</small></span>
-							<%if(loginMember.getEmail().equals("admin")) {%>
-								<a href="#" class="text-white"><small class="text-white ms-2">회원관리</small></a>
-							<%} %>
-							<a href="memberLogout" class="text-white"><small class="text-white mx-2">로그아웃</small></a>
-						<%} %>
+					<%
+					if (loginMember == null) {
+					%>
+					<a href="goLogin" class="text-white"><small
+						class="text-white mx-2">로그인</small>/</a> <a href="goMemberType"
+						class="text-white"><small class="text-white mx-2">회원가입</small></a>
+					<%
+					} else {
+					%>
+					<span><small class="text-white mx-2"><%=loginMember.getNick()%>님
+							환영합니다.</small></span>
+					<%
+					if (loginMember.getEmail().equals("admin")) {
+					%>
+					<a href="#" class="text-white"><small class="text-white ms-2">회원관리</small></a>
+					<%
+					}
+					%>
+					<a href="memberLogout" class="text-white"><small
+						class="text-white mx-2">로그아웃</small></a>
+					<%
+					}
+					%>
 				</div>
 			</div>
 		</div>
-			<div class="container px-0">
-         <nav class="navbar navbar-light bg-white navbar-expand-xl">
-            <a href="goMain" class="navbar-brand"><h1
-                  class="text-primary display-6" style="color: #009223 !important;">Share
-                  We?</h1></a>
-            <button class="navbar-toggler py-2 px-3" type="button"
-               data-bs-toggle="collapse" data-bs-target="#navbarCollapse">
-               <span class="fa fa-bars text-primary"></span>
-            </button>
-            <div class="collapse navbar-collapse bg-white" id="navbarCollapse">
-               <div class="navbar-nav mx-auto">
-                  <a href="goGeneral" class="nav-item nav-link active">Share</a> <a
-                     href="goCompany" class="nav-item nav-link">Shop</a>
-							
-							
-							<!-- <a href="shop-detail.html" class="nav-item nav-link">Shop Detail</a> -->
-							
-							
-							
-							
-							<div class="nav-item dropdown">
-                     <a href="#" class="nav-link dropdown-toggle"
-                        data-bs-toggle="dropdown">Category</a>
-
-                     <!-- 카테고리별 페이지 이동 -->
-                     <div class="dropdown-menu m-0 bg-secondary rounded-0">
-                        <a href="cart.html" class="dropdown-item">식품</a> <a
-                           href="chackout.html" class="dropdown-item">과일</a> <a
-                           href="testimonial.html" class="dropdown-item">생필품</a>
-                     </div>
-                  </div>
-                  <a href="contact.html" class="nav-item nav-link">Contact</a>
-               </div>
-               <div class="d-flex m-3 me-0">
-                  <button
-                     class="btn-search btn border border-secondary btn-md-square rounded-circle bg-white me-4"
-                     style="border-color: #009223 !important" data-bs-toggle="modal"
-                     data-bs-target="#searchModal">
-                     <i class="fas fa-search text-primary"></i>
-                  </button>
-                  <a href="goCart" class="position-relative me-4 my-auto"> <i
-                     class="fa fa-shopping-bag fa-2x"></i> <span
-                     class="position-absolute bg-secondary rounded-circle d-flex align-items-center justify-content-center text-dark px-1"
-                     style="top: -5px; left: 15px; height: 20px; min-width: 20px;">3</span>
-                  </a> <a href="goMyPage" class="my-auto"> <i
-                     class="fas fa-user fa-2x"></i></a>
-               </div>
-            </div>
-         </nav>
-      </div>
-   </div>
-		<!-- Navbar End -->
+		<div class="container px-0">
+			<nav class="navbar navbar-light bg-white navbar-expand-xl">
+				<a href="goMain" class="navbar-brand"><h1
+						class="text-primary display-6" style="color: #009223 !important;">Share
+						We?</h1></a>
+				<button class="navbar-toggler py-2 px-3" type="button"
+					data-bs-toggle="collapse" data-bs-target="#navbarCollapse">
+					<span class="fa fa-bars text-primary"></span>
+				</button>
+				<div class="collapse navbar-collapse bg-white" id="navbarCollapse">
+					<div class="navbar-nav mx-auto">
+						<a href="goGeneral" class="nav-item nav-link"
+							style="color: black; font-size: 18px;"><strong>공구함</strong></a> <a
+							href="goCompany" class="nav-item nav-link"
+							style="color: black; font-size: 18px;"><strong>우리동네</strong></a>
+						<!-- <a href="shop-detail.html" class="nav-item nav-link">Shop Detail</a> -->
+						<div class="nav-item dropdown">
+							<a href="#" class="nav-link dropdown-toggle active"
+								data-bs-toggle="dropdown" style="color: black; font-size: 18px;"><strong>카테고리</strong></a>
+							<div class="dropdown-menu m-0 bg-secondary rounded-0">
+								<a href="getCategory?category=식품" class="dropdown-item">식품</a> <a
+									href="getCategory?category=과일" class="dropdown-item">과일</a> <a
+									href="getCategory?category=생필품" class="dropdown-item">생필품</a> <a
+									href="getCategory?category=패션/뷰티" class="dropdown-item">패션/뷰티</a>
+								<a href="getCategory?category=여행/도서" class="dropdown-item">여행/도서</a>
+							</div>
+						</div>
+						<a href="contact.html" class="nav-item nav-link"
+							style="color: black; font-size: 18px;">동네보기</a>
+					</div>
+					<div class="d-flex m-3 me-0">
+						<button
+							class="btn-search btn border border-secondary btn-md-square rounded-circle bg-white me-4"
+							style="border-color: #009223 !important" data-bs-toggle="modal"
+							data-bs-target="#searchModal">
+							<i class="fas fa-search text-primary"></i>
+						</button>
+						<a href="goCart" class="position-relative me-4 my-auto"> <i
+							class="fa fa-shopping-bag fa-2x"></i> <span
+							class="position-absolute bg-secondary rounded-circle d-flex align-items-center justify-content-center text-dark px-1"
+							style="top: -5px; left: 15px; height: 20px; min-width: 20px;">3</span>
+						</a> <a href="goMyPage" class="my-auto"> <i
+							class="fas fa-user fa-2x"></i></a>
+					</div>
+				</div>
+			</nav>
+		</div>
+	</div>
+	<!-- Navbar End -->
 
 
 	<!-- Search Start -->
-   <div class="modal fade" id="searchModal" tabindex="-1"
-      aria-labelledby="exampleModalLabel" aria-hidden="true">
-      <div class="modal-dialog modal-fullscreen">
+	<div class="modal fade" id="searchModal" tabindex="-1"
+		aria-labelledby="exampleModalLabel" aria-hidden="true">
+		<div class="modal-dialog modal-fullscreen">
 
 			<div class="modal-content rounded-0">
 				<div class="modal-header">
@@ -153,11 +164,13 @@
 				</div>
 				<form action="goSearch">
 					<div class="modal-body d-flex align-items-center">
-						<div class="input-group w-75 mx-auto d-flex" 
-							style="height: 800px; padding-bottom: 100px; width:50% !important;  justify-content: center; align-items: center;">
-							<input type="text" class="form-control p-3" name="searchText" style="height: 58px;"
-								placeholder="검색어를 입력해주세요." aria-describedby="search-icon-1">
-							<input type="submit" value="검색" id="search-icon-1" style="border-top-right-radius: 10px; border-bottom-right-radius: 10px; height: 58px;"
+						<div class="input-group w-75 mx-auto d-flex"
+							style="height: 800px; padding-bottom: 100px; width: 50% !important; justify-content: center; align-items: center;">
+							<input type="text" class="form-control p-3" name="searchText"
+								style="height: 58px;" placeholder="검색어를 입력해주세요."
+								aria-describedby="search-icon-1"> <input type="submit"
+								value="검색" id="search-icon-1"
+								style="border-top-right-radius: 10px; border-bottom-right-radius: 10px; height: 58px;"
 								class="btn btn-primary border-2 border-secondary py-3 px-4">
 						</div>
 					</div>
@@ -182,83 +195,82 @@
 	<div class="container-fluid py-5">
 		<div class="container py-5">
 			<!-- <h1 class="mb-4 text-center">신고</h1> -->
-				<div class="row g-5 justify-content-center" id="loginDiv">
-					<div class="col-md-12 col-lg-6 col-xl-7" align="center">
+			<div class="row g-5 justify-content-center" id="loginDiv">
+				<div class="col-md-12 col-lg-6 col-xl-7" align="center">
 
-						<img src="resources/img/report_icon.png" width="50px" height="50px">
+					<img src="resources/img/report_icon.png" width="50px" height="50px">
+					<br> <br>
+
+
+					<form action="reportInsert" method="post">
+						<fieldset>
+							<legend>
+								${reportMember.r_title } <br> 해당 게시글을 신고하려는 사유를 선택해 주세요
+							</legend>
+
+							<table id="report_re" width="500">
+								<tr>
+									<td colspan="2"></td>
+								</tr>
+
+								<tr height="60px">
+
+									<td align="right"><input type="checkbox" name="rp_content"
+										value="부적절한 게시글"></td>
+
+									<td>부적절한 게시글/리뷰에요.</td>
+								</tr>
+
+								<tr height="60px">
+									<td align="right"><input type="checkbox" name="rp_content"
+										value="거래금지 품목"></td>
+									<td>거래금지/위험한 물품을 나누고 있어요.</td>
+								</tr>
+
+								<tr height="60px">
+									<td align="right"><input type="checkbox" name="rp_content"
+										value="거래중 분쟁발생"></td>
+									<td>거래 중 분쟁이 발생했어요.</td>
+								</tr>
+
+								<tr height="60px">
+									<td align="right"><input type="checkbox" name="rp_content"
+										value="사기의심"></td>
+									<td>사기인 것 같아요.</td>
+								</tr>
+
+								<tr height="120px">
+									<td align="right"><input type="checkbox" id="checkon"
+										name="rp_content" value="기타사유"></td>
+									<td>다른 문제가 있어요. <br> <textarea name="rp_content"
+											cols="50" rows="3"></textarea>
+									</td>
+								</tr>
+
+								<tr>
+									<td colspan="2"></td>
+								</tr>
+
+
+								<input type="hidden" value="${reportMember.r_num }" name="b_num">
+								<input type="hidden" value="${reportMember.r_title }"
+									name="r_title">
+								<input type="hidden" value="${reportMember.email}" name="email">
+								<input type="hidden" value="${loginMember.email}"
+									name="rp_email">
+
+							</table>
+							<input type="submit" value="신고하기">
+						</fieldset>
 						<br>
-						<br>
-			
-					
-		<form action="reportInsert" method="post">
-		<fieldset>
-			<legend>
-			${reportMember.r_title }
-			<br>
-			해당 게시글을 신고하려는 사유를 선택해 주세요
-			</legend>
-			
-			<table id="report_re" width="500">
-				<tr>
-				<td colspan="2">
-				
-				</td>
-				</tr>
-					
-				<tr height="60px">
-				
-					<td align="right"><input type="checkbox" name="rp_content" value="부적절한 게시글"></td>
-					
-					<td>부적절한 게시글/리뷰에요.</td>
-				</tr>
 
-				<tr height="60px">
-					<td align="right"><input type="checkbox" name="rp_content" value="거래금지 품목"></td>
-					<td>거래금지/위험한 물품을 나누고 있어요. </td>
-				</tr>
+					</form>
+				</div>
+			</div>
+		</div>
+	</div>
 
-				<tr height="60px">
-					<td align="right"><input type="checkbox" name="rp_content" value="거래중 분쟁발생"></td>
-					<td> 거래 중 분쟁이 발생했어요.</td>
-					</tr>
-				
-				<tr height="60px">
-					<td align="right"><input type="checkbox" name="rp_content" value="사기의심"></td>
-					<td> 사기인 것 같아요.</td>
-				</tr>
-				
-				<tr height="120px">
-					<td align="right"><input type="checkbox" id="checkon" name="rp_content" value="기타사유"></td>
-					<td> 다른 문제가 있어요.
-					<br>
-					<textarea name="rp_content" cols="50" rows="3"></textarea>				
-					</td>
-				</tr>
-				
-				<tr>
-				<td colspan="2">
-				
-				</td>
-				</tr>	
-			
-			
-				 	<input type="hidden" value="${reportMember.r_num }" name="b_num">
-					<input type="hidden" value="${reportMember.r_title }" name="r_title">
-					<input type="hidden" value="${reportMember.email}" name="email">
-					<input type="hidden" value="${loginMember.email}" name="rp_email">
-									
-			</table>
-				<input type="submit" value="신고하기">
-		</fieldset>
-		<br>
-		
-	</form>
-	</div>
-	</div>
-	</div>
-	</div>
-	
-			
+
 	<!-- 신고 End -->
 
 

@@ -84,21 +84,21 @@
 				</button>
 				<div class="collapse navbar-collapse bg-white" id="navbarCollapse">
 					<div class="navbar-nav mx-auto">
-						<a href="goGeneral" class="nav-item nav-link" style="color: black">일반</a>
-						<a href="goCompany" class="nav-item nav-link" style="color: black">기업</a>
-						<!-- <a href="shop-detail.html" class="nav-item nav-link">Shop Detail</a> -->
-						<div class="nav-item dropdown">
-							<a href="#" class="nav-link dropdown-toggle active"
-								data-bs-toggle="dropdown">카테고리</a>
-							<div class="dropdown-menu m-0 bg-secondary rounded-0">
-								<a href="cart.html" class="dropdown-item">채소</a> <a
-									href="chackout.html" class="dropdown-item">과일</a> <a
-									href="testimonial.html" class="dropdown-item">생필품</a>
-								<!--<a href="404.html" class="dropdown-item active">404 Page</a> -->
+							<a href="goGeneral" class="nav-item nav-link" style="color: black; font-size: 18px;"><strong>공구함</strong></a>
+							<a href="goCompany" class="nav-item nav-link" style="color: black; font-size: 18px;"><strong>우리동네</strong></a>
+							<!-- <a href="shop-detail.html" class="nav-item nav-link">Shop Detail</a> -->
+							<div class="nav-item dropdown">
+								<a href="#" class="nav-link dropdown-toggle active"
+									data-bs-toggle="dropdown" style="color: black; font-size: 18px;"><strong>카테고리</strong></a>
+								<div class="dropdown-menu m-0 bg-secondary rounded-0">
+									<a href="getCategory?category=식품" class="dropdown-item">식품</a> <a
+										href="getCategory?category=과일" class="dropdown-item">과일</a> <a
+										href="getCategory?category=생필품" class="dropdown-item">생필품</a> <a
+										href="getCategory?category=패션/뷰티" class="dropdown-item">패션/뷰티</a>
+									<a href="getCategory?category=여행/도서" class="dropdown-item">여행/도서</a>
+								</div>
 							</div>
-						</div>
-						<a href="contact.html" class="nav-item nav-link"
-							style="color: black">Contact</a>
+							<a href="contact.html" class="nav-item nav-link" style="color: black; font-size: 18px;">동네보기</a>
 					</div>
 					<div class="d-flex m-3 me-0">
 						<button
