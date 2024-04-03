@@ -245,7 +245,7 @@
 			<div class="tab-class text-center">
 				<div class="row g-4">
 					<div class="col-lg-4 text-start">
-						<h1>우리 동네 상품</h1>
+						<h1>공구함 상품</h1>
 					</div>
 					<div class="col-lg-8 text-end">
 						<ul class="nav nav-pills d-inline-flex text-center mb-5">
@@ -354,7 +354,7 @@
 			<div class="tab-class text-center">
 				<div class="row g-4">
 					<div class="col-lg-4 text-start">
-						<h1>공구함 상품</h1>
+						<h1>우리 동네 상품</h1>
 					</div>
 					<div class="col-lg-8 text-end">
 						<ul class="nav nav-pills d-inline-flex text-center mb-5">

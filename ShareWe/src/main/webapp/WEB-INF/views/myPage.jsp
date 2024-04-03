@@ -423,10 +423,11 @@
 									<a href="G_BoardContent?g_num=${g.g_num}"> <img alt=""
 										src="resources/g_Image/${g.g_img1}" align="left"
 										class='img-fluid w-100 rounded-top'
-										style="width: 150px; height: 150px; !important;"></a> <a
-										href="G_BoardContent?g_num=${g.g_num}">
-										<h3 style="text-align: center;">${g.g_title}</h3>
-									</a> <br> <strong style="color: #A4A4A4;">${g.category }</strong>
+										style="width: 150px; height: 150px; !important;">
+									</a> <br> 
+									<a href="G_BoardContent?g_num=${g.g_num}"></a>
+									<h3 style="text-align: center;">${g.g_title}</h3>
+									<strong style="color: #A4A4A4;">${g.category }</strong>
 									<hr>
 									<strong style="color: #A4A4A4;">${g.g_w_date }</strong>
 								</div>
