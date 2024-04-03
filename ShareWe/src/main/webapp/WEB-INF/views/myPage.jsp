@@ -419,15 +419,15 @@
 								<div class="p-4 border border-secondary  rounded"
 									style="width: 300px; border: solid; border-width: 1px; margin: auto; border-color: #EEEEEE !important; display: inline-block;"
 									align="cenber;">
-
-									<a href="G_BoardContent?g_num=${g.g_num}"> <img alt=""
-										src="resources/g_Image/${g.g_img1}" align="left"
-										class='img-fluid w-100 rounded-top'
-										style="width: 150px; height: 150px; !important;">
-									</a> <br> 
-									<a href="G_BoardContent?g_num=${g.g_num}"></a>
-									<h3 style="text-align: center;">${g.g_title}</h3>
-									<strong style="color: #A4A4A4;">${g.category }</strong>
+									<div>
+										<a href="G_BoardContent?g_num=${g.g_num}"> <img alt=""
+											src="resources/g_Image/${g.g_img1}" align="left"
+											class='img-fluid w-100 rounded-top'
+											style="width: 150px; height: 150px; !important;"></a> 
+									</div>
+										<a href="G_BoardContent?g_num=${g.g_num}">
+											<h4 style="text-align: center; height: 130px;">${g.g_title}</h4></a>
+									 <br><br> <strong style="color: #A4A4A4;">${g.category }</strong>
 									<hr>
 									<strong style="color: #A4A4A4;">${g.g_w_date }</strong>
 								</div>
