@@ -165,21 +165,35 @@
 				</button>
 				<div class="collapse navbar-collapse bg-white" id="navbarCollapse">
 					<div class="navbar-nav mx-auto">
-							<a href="goGeneral" class="nav-item nav-link" style="color: black; font-size: 18px;"><strong>공구함</strong></a>
-							<a href="goCompany" class="nav-item nav-link" style="color: black; font-size: 18px;"><strong>우리동네</strong></a>
-							<!-- <a href="shop-detail.html" class="nav-item nav-link">Shop Detail</a> -->
-							<div class="nav-item dropdown">
-								<a href="#" class="nav-link dropdown-toggle active"
-									data-bs-toggle="dropdown" style="color: black; font-size: 18px;"><strong>카테고리</strong></a>
-								<div class="dropdown-menu m-0 bg-secondary rounded-0">
-									<a href="getCategory?category=식품" class="dropdown-item">식품</a> <a
-										href="getCategory?category=과일" class="dropdown-item">과일</a> <a
-										href="getCategory?category=생필품" class="dropdown-item">생필품</a> <a
-										href="getCategory?category=패션/뷰티" class="dropdown-item">패션/뷰티</a>
-									<a href="getCategory?category=여행/도서" class="dropdown-item">여행/도서</a>
-								</div>
+						<a href="goGeneral" class="nav-item nav-link"
+							style="color: black; font-size: 18px;"><strong>공구함</strong></a> <a
+							href="goCompany" class="nav-item nav-link"
+							style="color: black; font-size: 18px;"><strong>우리동네</strong></a>
+						<!-- <a href="shop-detail.html" class="nav-item nav-link">Shop Detail</a> -->
+						<div class="nav-item dropdown">
+							<a href="#" class="nav-link dropdown-toggle active"
+								data-bs-toggle="dropdown" style="color: black; font-size: 18px;"><strong>카테고리</strong></a>
+							<div class="dropdown-menu m-0 bg-secondary rounded-0">
+								<a href="getCategory?category=식품" class="dropdown-item">식품</a> <a
+									href="getCategory?category=과일" class="dropdown-item">과일</a> <a
+									href="getCategory?category=생필품" class="dropdown-item">생필품</a> <a
+									href="getCategory?category=패션/뷰티" class="dropdown-item">패션/뷰티</a>
+								<a href="getCategory?category=여행/도서" class="dropdown-item">여행/도서</a>
 							</div>
-							<a href="contact.html" class="nav-item nav-link" style="color: black; font-size: 18px;"><strong>동네보기</strong></a>
+						</div>
+						<%
+						if (loginMember == null) {
+						%>
+						<a href="goLogin" class="nav-item nav-link"
+							style="color: black; font-size: 18px;"><strong>동네보기</strong></a>
+						<%
+						} else {
+						%>
+						<a href="goHood" class="nav-item nav-link"
+							style="color: black; font-size: 18px;"><strong>동네보기</strong></a>
+						<%
+						}
+						%>
 					</div>
 					<div class="d-flex m-3 me-0">
 						<button

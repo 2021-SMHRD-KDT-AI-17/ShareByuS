@@ -293,9 +293,9 @@
 
 	<!-- Single Page Header start -->
 	<div class="container-fluid page-header py-5">
-		<h1 class="text-center text-white display-6">Shop</h1>
+		<h1 class="text-center text-white display-6">우리 동네 Shop</h1>
 		<ol class="breadcrumb justify-content-center mb-0">
-			<li class="breadcrumb-item active text-white">company</li>
+			<li class="breadcrumb-item active text-white">${m_address}</li>
 		</ol>
 	</div>
 	<!-- Single Page Header End -->
@@ -328,74 +328,80 @@
 			style="width: 60% !important; justify-content: center; align-items: center;">
 			<div class="row g-4 justify-content-center" id="boardDiv">
 				<c:forEach items="${cboard_list}" var="c">
-					<div class="col-md-1 col-lg-2 col-xl-3"
-						style="margin-right: 10px; margin-left: 10px; width: 23%; height: 10%; margin-bottom: 20px;">
-						<div class="rounded position-relative fruite-item">
-							<div class="fruite-img">
-								<a href="C_BoardContent?c_num=${c.c_num}&c_writer=${c.c_writer}">
-									<img src="resources/g_Image/${c.c_img1}"
-									class="img-fluid w-100 rounded-top" alt="">
-								</a>
+					<c:forEach items="${add_email}" var="e">
+						<c:if test="${e.email eq c.email}">
+							<div class="col-md-1 col-lg-2 col-xl-3"
+								style="margin-right: 10px; margin-left: 10px; width: 23%; height: 10%; margin-bottom: 20px;">
+								<div class="rounded position-relative fruite-item">
+									<div class="fruite-img">
+										<a
+											href="C_BoardContent?c_num=${c.c_num}&c_writer=${c.c_writer}">
+											<img src="resources/g_Image/${c.c_img1}"
+											class="img-fluid w-100 rounded-top" alt="">
+										</a>
+									</div>
+									<div
+										class="text-white bg-secondary px-3 py-1 rounded position-absolute"
+										style="top: 10px; left: 10px; background-color: #009223 !important;">${c.category}</div>
+									<div
+										class="p-4 border border-secondary border-top-0 rounded-bottom"
+										style="border-color: #009223 !important; text-align: left;">
+										<br> <a
+											href="C_BoardContent?c_num=${c.c_num}&c_writer=${c.c_writer}"><h5>${c.c_title}</h5></a>
+										<h6 style="display: inline;">${c.c_writer }</h6>
+										<c:choose>
+											<c:when test="${empty loginMember}">
+												<a onclick="location.href='goLogin'" style="float: right;"
+													type="button"
+													class="btn border border-secondary rounded-pill px-3 text-primary">❤
+													찜</a>
+											</c:when>
+											<c:otherwise>
+
+												<c:set var="num" value="0" />
+												<c:forEach items="${cfavorite_list}" var="f">
+													<c:if test="${f.c_num eq c.c_num}">
+														<c:set var="num" value="1" />
+													</c:if>
+
+
+												</c:forEach>
+												<c:if test="${num eq '1'}">
+
+													<a onclick="checkCFavorite(${c.c_num})" id="${c.c_num}"
+														style="float: right; display: none;" type="button"
+														class="btn border border-secondary rounded-pill px-3 text-primary">❤
+														찜</a>
+													<a onclick="delCFavorite(${c.c_num})"
+														id="favCancel${c.c_num}"
+														style="float: right; background-color: green; color: white !important;"
+														type="button"
+														class="btn border border-secondary rounded-pill px-3 text-primary">❤
+														찜</a>
+												</c:if>
+												<c:if test="${num eq '0'}">
+													<a onclick="checkCFavorite(${c.c_num})" id="${c.c_num}"
+														style="float: right;" type="button"
+														class="btn border border-secondary rounded-pill px-3 text-primary">❤
+														찜</a>
+													<a onclick="delCFavorite(${c.c_num})"
+														id="favCancel${c.c_num}"
+														style="float: right; display: none; background-color: green; color: white !important;"
+														type="button"
+														class="btn border border-secondary rounded-pill px-3 text-primary">❤
+														찜</a>
+												</c:if>
+
+
+
+											</c:otherwise>
+										</c:choose>
+									</div>
+								</div>
 							</div>
-							<div
-								class="text-white bg-secondary px-3 py-1 rounded position-absolute"
-								style="top: 10px; left: 10px; background-color: #009223 !important;">${c.category}</div>
-							<div
-								class="p-4 border border-secondary border-top-0 rounded-bottom"
-								style="border-color: #009223 !important;">
-								<br> <a
-									href="C_BoardContent?c_num=${c.c_num}&c_writer=${c.c_writer}"><h5>${c.c_title}</h5></a>
-								<h6 style="display: inline;">${c.c_writer }</h6>
-								<c:choose>
-									<c:when test="${empty loginMember}">
-										<a onclick="location.href='goLogin'" style="float: right;"
-											type="button"
-											class="btn border border-secondary rounded-pill px-3 text-primary">❤
-											찜</a>
-									</c:when>
-									<c:otherwise>
+						</c:if>
 
-										<c:set var="num" value="0" />
-										<c:forEach items="${cfavorite_list}" var="f">
-											<c:if test="${f.c_num eq c.c_num}">
-												<c:set var="num" value="1" />
-											</c:if>
-
-
-										</c:forEach>
-										<c:if test="${num eq '1'}">
-
-											<a onclick="checkCFavorite(${c.c_num})" id="${c.c_num}"
-												style="float: right; display: none;" type="button"
-												class="btn border border-secondary rounded-pill px-3 text-primary">❤
-												찜</a>
-											<a onclick="delCFavorite(${c.c_num})"
-												id="favCancel${c.c_num}"
-												style="float: right; background-color: green; color: white !important;"
-												type="button"
-												class="btn border border-secondary rounded-pill px-3 text-primary">❤
-												찜</a>
-										</c:if>
-										<c:if test="${num eq '0'}">
-											<a onclick="checkCFavorite(${c.c_num})" id="${c.c_num}"
-												style="float: right;" type="button"
-												class="btn border border-secondary rounded-pill px-3 text-primary">❤
-												찜</a>
-											<a onclick="delCFavorite(${c.c_num})"
-												id="favCancel${c.c_num}"
-												style="float: right; display: none; background-color: green; color: white !important;"
-												type="button"
-												class="btn border border-secondary rounded-pill px-3 text-primary">❤
-												찜</a>
-										</c:if>
-
-
-
-									</c:otherwise>
-								</c:choose>
-							</div>
-						</div>
-					</div>
+					</c:forEach>
 				</c:forEach>
 			</div>
 		</div>

@@ -65,6 +65,9 @@ public interface MemberMapper {
 	public member goDeleteKakao(member member);
 
 
+	public List<member> addrEQemail(String address);
+
+
 
 
 	

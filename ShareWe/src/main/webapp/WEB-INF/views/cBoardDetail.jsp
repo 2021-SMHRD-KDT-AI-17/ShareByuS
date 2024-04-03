@@ -121,30 +121,89 @@
 	color: white;
 }
 
-.boardContent{
+.boardContent {
 	border-bottom: 1px solid grey;
 	padding-bottom: 20px;
 	padding-left: 20px;
 }
 
-.detailMenu{width: 100%;max-width: 100px;}
-.detailMenu ul{list-style: none;z-index: 2;}
-.detailMenu a{color:#000;text-decoration: none;}
-.detailMenu > ul{display: flex;width: 100%;justify-content: space-between;padding:10px;}
-.detailMenu > ul > li{position: relative; width: 100%}
-.detailMenu > ul > li > a{font-size: 20px;font-weight: bold;padding:10px 0;}
-.detailMenu > ul > li > a:hover{color:#999;}
-.detailMenu > ul > li > ul{ padding: 0; display: none; position: absolute; left:50%; transform: translateX(-50%);border:1px solid #ddd;border-radius: 6px;background: #fff;}
-.detailMenu > ul > li > ul > li{width: 140px !important; text-align: center;}
-.detailMenu > ul > li:hover ul{display:block; margin-top: 30px;}
-.detailMenu > ul > li  li a{display: block; padding:10px 15px;}
-.detailMenu > ul > li  li a:hover{background:#eee;}
-.detailMenu > ul > li > li + li{margin-top:5px;}
-.starScore{
+.detailMenu {
+	width: 100%;
+	max-width: 100px;
+}
+
+.detailMenu ul {
+	list-style: none;
+	z-index: 2;
+}
+
+.detailMenu a {
+	color: #000;
+	text-decoration: none;
+}
+
+.detailMenu>ul {
+	display: flex;
+	width: 100%;
+	justify-content: space-between;
+	padding: 10px;
+}
+
+.detailMenu>ul>li {
+	position: relative;
+	width: 100%
+}
+
+.detailMenu>ul>li>a {
+	font-size: 20px;
+	font-weight: bold;
+	padding: 10px 0;
+}
+
+.detailMenu>ul>li>a:hover {
+	color: #999;
+}
+
+.detailMenu>ul>li>ul {
+	padding: 0;
+	display: none;
+	position: absolute;
+	left: 50%;
+	transform: translateX(-50%);
+	border: 1px solid #ddd;
+	border-radius: 6px;
+	background: #fff;
+}
+
+.detailMenu>ul>li>ul>li {
+	width: 140px !important;
+	text-align: center;
+}
+
+.detailMenu>ul>li:hover ul {
+	display: block;
+	margin-top: 30px;
+}
+
+.detailMenu>ul>li  li a {
+	display: block;
+	padding: 10px 15px;
+}
+
+.detailMenu>ul>li  li a:hover {
+	background: #eee;
+}
+
+.detailMenu>ul>li>li+li {
+	margin-top: 5px;
+}
+
+.starScore {
 	font-size: 1.5em;
 	color: #009223;
 }
-#subCancel, #favCancel{
+
+#subCancel, #favCancel {
 	color: white !important;
 	background-color: #009223;
 }
@@ -220,34 +279,48 @@
 				</button>
 				<div class="collapse navbar-collapse bg-white" id="navbarCollapse">
 					<div class="navbar-nav mx-auto">
-							<a href="goGeneral" class="nav-item nav-link" style="color: black; font-size: 18px;"><strong>공구함</strong></a>
-							<a href="goCompany" class="nav-item nav-link" style="color: black; font-size: 18px;"><strong>우리동네</strong></a>
-							<!-- <a href="shop-detail.html" class="nav-item nav-link">Shop Detail</a> -->
-							<div class="nav-item dropdown">
-								<a href="#" class="nav-link dropdown-toggle active"
-									data-bs-toggle="dropdown" style="color: black; font-size: 18px;"><strong>카테고리</strong></a>
-								<div class="dropdown-menu m-0 bg-secondary rounded-0">
-									<a href="getCategory?category=식품" class="dropdown-item">식품</a> <a
-										href="getCategory?category=과일" class="dropdown-item">과일</a> <a
-										href="getCategory?category=생필품" class="dropdown-item">생필품</a> <a
-										href="getCategory?category=패션/뷰티" class="dropdown-item">패션/뷰티</a>
-									<a href="getCategory?category=여행/도서" class="dropdown-item">여행/도서</a>
-								</div>
+						<a href="goGeneral" class="nav-item nav-link"
+							style="color: black; font-size: 18px;"><strong>공구함</strong></a> <a
+							href="goCompany" class="nav-item nav-link"
+							style="color: black; font-size: 18px;"><strong>우리동네</strong></a>
+						<!-- <a href="shop-detail.html" class="nav-item nav-link">Shop Detail</a> -->
+						<div class="nav-item dropdown">
+							<a href="#" class="nav-link dropdown-toggle active"
+								data-bs-toggle="dropdown" style="color: black; font-size: 18px;"><strong>카테고리</strong></a>
+							<div class="dropdown-menu m-0 bg-secondary rounded-0">
+								<a href="getCategory?category=식품" class="dropdown-item">식품</a> <a
+									href="getCategory?category=과일" class="dropdown-item">과일</a> <a
+									href="getCategory?category=생필품" class="dropdown-item">생필품</a> <a
+									href="getCategory?category=패션/뷰티" class="dropdown-item">패션/뷰티</a>
+								<a href="getCategory?category=여행/도서" class="dropdown-item">여행/도서</a>
 							</div>
-							<a href="contact.html" class="nav-item nav-link" style="color: black; font-size: 18px;"><strong>동네보기</strong></a>
+						</div>
+						<%
+						if (loginMember == null) {
+						%>
+						<a href="goLogin" class="nav-item nav-link"
+							style="color: black; font-size: 18px;"><strong>동네보기</strong></a>
+						<%
+						} else {
+						%>
+						<a href="goHood" class="nav-item nav-link"
+							style="color: black; font-size: 18px;"><strong>동네보기</strong></a>
+						<%
+						}
+						%>
 					</div>
 					<div class="d-flex m-3 me-0">
-							<button
-								class="btn-search btn border border-secondary btn-md-square rounded-circle bg-white me-4"
-								data-bs-toggle="modal" data-bs-target="#searchModal">
-								<i class="fas fa-search text-primary"></i>
-							</button>
-							<a href="goCart" class="position-relative me-4 my-auto"> <i
-								class="fa fa-shopping-bag fa-2x"></i> <span
-								class="position-absolute bg-secondary rounded-circle d-flex align-items-center justify-content-center text-dark px-1"
-								style="top: -5px; left: 15px; height: 20px; min-width: 20px;">3</span>
-							</a> <a href="goMyPage" class="my-auto"> <i
-								class="fas fa-user fa-2x"></i></a>
+						<button
+							class="btn-search btn border border-secondary btn-md-square rounded-circle bg-white me-4"
+							data-bs-toggle="modal" data-bs-target="#searchModal">
+							<i class="fas fa-search text-primary"></i>
+						</button>
+						<a href="goCart" class="position-relative me-4 my-auto"> <i
+							class="fa fa-shopping-bag fa-2x"></i> <span
+							class="position-absolute bg-secondary rounded-circle d-flex align-items-center justify-content-center text-dark px-1"
+							style="top: -5px; left: 15px; height: 20px; min-width: 20px;">3</span>
+						</a> <a href="goMyPage" class="my-auto"> <i
+							class="fas fa-user fa-2x"></i></a>
 					</div>
 				</div>
 			</nav>
@@ -257,9 +330,9 @@
 
 
 	<!-- Search Start -->
-   <div class="modal fade" id="searchModal" tabindex="-1"
-      aria-labelledby="exampleModalLabel" aria-hidden="true">
-      <div class="modal-dialog modal-fullscreen">
+	<div class="modal fade" id="searchModal" tabindex="-1"
+		aria-labelledby="exampleModalLabel" aria-hidden="true">
+		<div class="modal-dialog modal-fullscreen">
 
 			<div class="modal-content rounded-0">
 				<div class="modal-header">
@@ -270,11 +343,13 @@
 				</div>
 				<form action="goSearch">
 					<div class="modal-body d-flex align-items-center">
-						<div class="input-group w-75 mx-auto d-flex" 
-							style="height: 800px; padding-bottom: 100px; width:50% !important;  justify-content: center; align-items: center;">
-							<input type="text" class="form-control p-3" name="searchText" style="height: 58px;"
-								placeholder="검색어를 입력해주세요." aria-describedby="search-icon-1">
-							<input type="submit" value="검색" id="search-icon-1" style="border-top-right-radius: 10px; border-bottom-right-radius: 10px; height: 58px;"
+						<div class="input-group w-75 mx-auto d-flex"
+							style="height: 800px; padding-bottom: 100px; width: 50% !important; justify-content: center; align-items: center;">
+							<input type="text" class="form-control p-3" name="searchText"
+								style="height: 58px;" placeholder="검색어를 입력해주세요."
+								aria-describedby="search-icon-1"> <input type="submit"
+								value="검색" id="search-icon-1"
+								style="border-top-right-radius: 10px; border-bottom-right-radius: 10px; height: 58px;"
 								class="btn btn-primary border-2 border-secondary py-3 px-4">
 						</div>
 					</div>
@@ -321,7 +396,8 @@
 
 		<!-- 게시글 상세 -->
 
-		<div class="row g-4 justify-content-center hero-header" style="margin-left: 28%; margin-right: 28%;">
+		<div class="row g-4 justify-content-center hero-header"
+			style="margin-left: 28%; margin-right: 28%;">
 			<input type="hidden" value="${loginMember.email}" id="loginEmail">
 			<script
 				src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js"
@@ -330,64 +406,80 @@
 
 			<div id="carouselExampleControls" class="carousel slide"
 				data-bs-ride="carousel" style="position: relative;" align="center">
-				<div class="carousel-inner" style="position: absoulte;" >
+				<div class="carousel-inner" style="position: absoulte;">
 					<div class="carousel-item active">
-						<img class="d-block" style="object-fit: cover !important; height: 450px;"
+						<img class="d-block"
+							style="object-fit: cover !important; height: 450px;"
 							src="resources/g_Image/${c_board.c_img1}" alt="..." />
 					</div>
 					<div class="carousel-item">
-						<img class="d-block" style="object-fit: cover !important; height: 450px;"
-							src="resources/g_Image/${c_board.c_img2}"
-							alt="..." />
+						<img class="d-block"
+							style="object-fit: cover !important; height: 450px;"
+							src="resources/g_Image/${c_board.c_img2}" alt="..." />
 					</div>
-					<div class="carousel-item" >
-						<img class="d-block" style="object-fit: cover !important; height: 450px;"
+					<div class="carousel-item">
+						<img class="d-block"
+							style="object-fit: cover !important; height: 450px;"
 							src="resources/g_Image/${c_board.c_img3}" alt="..." />
 					</div>
 				</div>
 				<button class="carousel-control-prev" type="button"
 					data-bs-target="#carouselExampleControls" data-bs-slide="prev">
-					<span class="carousel-control-prev-icon" aria-hidden="true" style="background-color: grey"></span>
-					<span class="visually-hidden">Previous</span>
+					<span class="carousel-control-prev-icon" aria-hidden="true"
+						style="background-color: grey"></span> <span
+						class="visually-hidden">Previous</span>
 				</button>
 				<button class="carousel-control-next" type="button"
 					data-bs-target="#carouselExampleControls" data-bs-slide="next">
-					<span class="carousel-control-next-icon" aria-hidden="true" style="background-color: grey"></span>
-					<span class="visually-hidden">Next</span>
+					<span class="carousel-control-next-icon" aria-hidden="true"
+						style="background-color: grey"></span> <span
+						class="visually-hidden">Next</span>
 				</button>
 			</div>
-			
+
 			<div class="row g-4 justify-content-center">
 				<div class="boardContent">
 					<form action="" style="display: inline;">
 						<select>
 							<c:forEach items="${option}" var="op" varStatus="i">
-								<option value="${i.index}">옵션 : ${op}, 가격 : ${price[i.index]}원</option>
+								<option value="${i.index}">옵션 : ${op}, 가격 :
+									${price[i.index]}원</option>
 							</c:forEach>
 						</select>
 					</form>
-					<button style="width: 20%; margin-left: 20px" type="button" class="btn btn-outline-success">구매하기</button><br>
+					<button style="width: 20%; margin-left: 20px" type="button"
+						class="btn btn-outline-success">구매하기</button>
+					<br>
 				</div>
 				<div class="boardContent" style="padding-bottom: 0; height: 60px;">
 					<input type="hidden" value="${c_board.c_num}" id="cNum">
 					<c:choose>
 						<c:when test="${empty loginMember}">
-							<button onclick="location.href='goLogin'" style="width: 10%;" type="button" class="btn btn-outline-success">❤ 찜</button>
+							<button onclick="location.href='goLogin'" style="width: 10%;"
+								type="button" class="btn btn-outline-success">❤ 찜</button>
 						</c:when>
 						<c:otherwise>
 							<c:choose>
 								<c:when test="${fav eq 'Yes'}">
-									<button onclick="checkCFavorite()" id="cFavorite" style="width: 10%; display: none;" type="button" class="btn btn-outline-success">❤ 찜</button>
-									<button onclick="delCFavorite()" id="favCancel" style="width: 10%;" type="button" class="btn btn-outline-success">❤ 찜</button>
+									<button onclick="checkCFavorite()" id="cFavorite"
+										style="width: 10%; display: none;" type="button"
+										class="btn btn-outline-success">❤ 찜</button>
+									<button onclick="delCFavorite()" id="favCancel"
+										style="width: 10%;" type="button"
+										class="btn btn-outline-success">❤ 찜</button>
 								</c:when>
 								<c:otherwise>
-									<button onclick="checkCFavorite()" id="cFavorite" style="width: 10%;" type="button" class="btn btn-outline-success">❤ 찜</button>
-									<button onclick="delCFavorite()" id="favCancel" style="width: 10%; display: none;" type="button" class="btn btn-outline-success">❤ 찜</button>
+									<button onclick="checkCFavorite()" id="cFavorite"
+										style="width: 10%;" type="button"
+										class="btn btn-outline-success">❤ 찜</button>
+									<button onclick="delCFavorite()" id="favCancel"
+										style="width: 10%; display: none;" type="button"
+										class="btn btn-outline-success">❤ 찜</button>
 								</c:otherwise>
 							</c:choose>
 						</c:otherwise>
 					</c:choose>
-					<c:choose >
+					<c:choose>
 						<c:when test="${loginMember.email eq c_board.email}">
 							<nav class="detailMenu" style="float: right;">
 								<ul>
@@ -395,8 +487,10 @@
 									</a>
 										<ul>
 											<li><a href="#">펀딩 마감</a></li>
-											<li><a href="goCUpdate?c_num=${c_board.c_num}">게시글 수정</a></li>
-											<li><a href="deleteCBoard?c_num=${c_board.c_num}">게시글 삭제</a></li>
+											<li><a href="goCUpdate?c_num=${c_board.c_num}">게시글
+													수정</a></li>
+											<li><a href="deleteCBoard?c_num=${c_board.c_num}">게시글
+													삭제</a></li>
 										</ul></li>
 								</ul>
 							</nav>
@@ -408,15 +502,15 @@
 									</a>
 										<ul>
 											<li>
-											<form action="sendReportInfo" method="post">
-									            <input type="hidden" value="${c_board.c_num}" name="r_num">
-									            <input type="hidden" value="${c_board.email}" name="email">
-									            <input type="hidden" value="${c_board.c_title}" name="r_title">
-									             <input type="hidden" value="${loginMember.email}" name="rp_email">
-									               
-									            <input type="submit" value="신고하기">
-            								</form>
-											
+												<form action="sendReportInfo" method="post">
+													<input type="hidden" value="${c_board.c_num}" name="r_num">
+													<input type="hidden" value="${c_board.email}" name="email">
+													<input type="hidden" value="${c_board.c_title}"
+														name="r_title"> <input type="hidden"
+														value="${loginMember.email}" name="rp_email"> <input
+														type="submit" value="신고하기">
+												</form>
+
 											</li>
 										</ul></li>
 								</ul>
@@ -430,54 +524,71 @@
 							</nav>
 						</c:when>
 					</c:choose>
-					
-					
+
+
 				</div>
+				<div class="boardContent">참여인원:</div>
 				<div class="boardContent">
-					참여인원:
-				</div>
-				<div class="boardContent">
-					<span>가게명 : <h6 style="display: inline; margin-left: 10px;">${c_board.c_writer}</h6></span>
-					<input type="hidden" value="${c_board.c_writer}" id="comName">
+					<span>가게명 :
+						<h6 style="display: inline; margin-left: 10px;">${c_board.c_writer}</h6>
+					</span> <input type="hidden" value="${c_board.c_writer}" id="comName">
 					<c:choose>
-					<c:when test="${empty loginMember}">
-						<button onclick="location.href='goLogin'" style="width: 15%; margin-left: 20px;" type="button" class="btn btn-outline-success">구독하기</button>
-					</c:when>
-					<c:otherwise>
-						<c:choose>
-							<c:when test="${sub eq 'Yes'}">
-								<button onclick="checkSubscribe()" id="cSubscribe" style="width: 15%; margin-left: 20px; display: none;" type="button" class="btn btn-outline-success">구독하기</button>
-								<button onclick="delSubscribe()" id="subCancel" style="width: 15%; margin-left: 20px;" type="button" class="btn btn-outline-success">구독중 ✓</button>
-							</c:when>
-							<c:otherwise>
-								<button onclick="checkSubscribe()" id="cSubscribe" style="width: 15%; margin-left: 20px;" type="button" class="btn btn-outline-success">구독하기</button>
-								<button onclick="delSubscribe()" id="subCancel" style="width: 15%; margin-left: 20px; display: none;" type="button" class="btn btn-outline-success">구독 취소</button>
-							</c:otherwise>
-						</c:choose>
-					</c:otherwise>
+						<c:when test="${empty loginMember}">
+							<button onclick="location.href='goLogin'"
+								style="width: 15%; margin-left: 20px;" type="button"
+								class="btn btn-outline-success">구독하기</button>
+						</c:when>
+						<c:otherwise>
+							<c:choose>
+								<c:when test="${sub eq 'Yes'}">
+									<button onclick="checkSubscribe()" id="cSubscribe"
+										style="width: 15%; margin-left: 20px; display: none;"
+										type="button" class="btn btn-outline-success">구독하기</button>
+									<button onclick="delSubscribe()" id="subCancel"
+										style="width: 15%; margin-left: 20px;" type="button"
+										class="btn btn-outline-success">구독중 ✓</button>
+								</c:when>
+								<c:otherwise>
+									<button onclick="checkSubscribe()" id="cSubscribe"
+										style="width: 15%; margin-left: 20px;" type="button"
+										class="btn btn-outline-success">구독하기</button>
+									<button onclick="delSubscribe()" id="subCancel"
+										style="width: 15%; margin-left: 20px; display: none;"
+										type="button" class="btn btn-outline-success">구독 취소</button>
+								</c:otherwise>
+							</c:choose>
+						</c:otherwise>
 					</c:choose>
-					<span style="float: right;">${c_board.category} / ${c_board.c_w_date}</span>
+					<span style="float: right;">${c_board.category} /
+						${c_board.c_w_date}</span>
 				</div>
-				
+
 				<div class="boardContent">
 					<h5>${c_board.c_title}</h5>
-					<h6>펀딩 종료 날짜 : ${c_board.c_f_date}</h6><br>
-					<div>${c_board.c_content}</div><br>
-					
+					<h6>펀딩 종료 날짜 : ${c_board.c_f_date}</h6>
+					<br>
+					<div>${c_board.c_content}</div>
+					<br>
+
 					<form action="buyProduct">
 						<select class="option" name="opIndex">
 							<c:forEach items="${option}" var="op" varStatus="i">
-								<option value="${price[i.index]}">옵션 : ${op}, 가격 : ${price[i.index]}원</option>
+								<option value="${price[i.index]}">옵션 : ${op}, 가격 :
+									${price[i.index]}원</option>
 							</c:forEach>
-						</select>
-						<input type="hidden" value="${c_board.c_num }" name="c_num">
-						<button style="width: 5%;  margin-left: 20px; " type="button" onclick="count('plus')" value="+" class="btn btn-outline-success">+</button>
-						<span style="width: 5%; margin-left: 5px" type="text" class="btn btn-outline-success" id="result">0</span>
-						<button style="width: 5%; margin-left: 5px" type="button" onclick="count('minus')" value="-" class="btn btn-outline-success">-</button>
-						<input style="float: right; width: 15%; margin-top: 5px" type="submit" value="구매하기" class="btn btn-outline-success"><br>
+						</select> <input type="hidden" value="${c_board.c_num }" name="c_num">
+						<button style="width: 5%; margin-left: 20px;" type="button"
+							onclick="count('plus')" value="+" class="btn btn-outline-success">+</button>
+						<span style="width: 5%; margin-left: 5px" type="text"
+							class="btn btn-outline-success" id="result">0</span>
+						<button style="width: 5%; margin-left: 5px" type="button"
+							onclick="count('minus')" value="-"
+							class="btn btn-outline-success">-</button>
+						<input style="float: right; width: 15%; margin-top: 5px"
+							type="submit" value="구매하기" class="btn btn-outline-success"><br>
 					</form>
 				</div>
-				
+
 				<script type="text/javascript">
 				function count(type)  {
 				    // 결과를 표시할 element
@@ -499,33 +610,35 @@
 				    resultElement.innerText = number;
 				  }
 				</script>
-				
+
+				<div class="boardContent">참여인원:</div>
+
+
 				<div class="boardContent">
-					참여인원:
-				</div>
-				
-				
-				<div class="boardContent">
-					<strong  id="addr" style="display: none">${m_addr.address}</strong>
+					<strong id="addr" style="display: none">${m_addr.address}</strong>
 					<h5>${c_board.place}</h5>
-					<div id="map" style="width:100%;height:350px;" class="row g-4 justify-content-center">
-						
-					</div>
+					<div id="map" style="width: 100%; height: 350px;"
+						class="row g-4 justify-content-center"></div>
 				</div>
 				<c:choose>
 					<c:when test="${empty review_list}">
-						<div class="boardContent" style="width: 80% !important; margin-left: 65px !important;">
-							<h4>리뷰</h4><br>
+						<div class="boardContent"
+							style="width: 80% !important; margin-left: 65px !important;">
+							<h4>리뷰</h4>
+							<br>
 							<div style="margin-left: 200px;">
-								<h6>아직 등록된 리뷰가 없어요.</h6><br>
+								<h6>아직 등록된 리뷰가 없어요.</h6>
+								<br>
 								<c:choose>
 									<c:when test="${empty loginMember}">
-										<button style="width: 35%; margin-left: 20px;" type="button" 
-											onclick="location.href='goLogin'" class="btn btn-outline-success">리뷰 작성하기</button>
+										<button style="width: 35%; margin-left: 20px;" type="button"
+											onclick="location.href='goLogin'"
+											class="btn btn-outline-success">리뷰 작성하기</button>
 									</c:when>
 									<c:otherwise>
-										<button style="width: 35%; margin-left: 20px;" type="button" 
-											onclick="location.href='writeReview?c_num=${c_board.c_num}'" class="btn btn-outline-success">리뷰 작성하기</button>
+										<button style="width: 35%; margin-left: 20px;" type="button"
+											onclick="location.href='writeReview?c_num=${c_board.c_num}'"
+											class="btn btn-outline-success">리뷰 작성하기</button>
 									</c:otherwise>
 								</c:choose>
 							</div>
@@ -533,13 +646,16 @@
 					</c:when>
 					<c:otherwise>
 						<div class="boardContent" style="padding-bottom: 0px;">
-							<h4>리뷰</h4><br>
+							<h4>리뷰</h4>
+							<br>
 						</div>
 						<div class="boardContent">
-							<div class="boardContent" style="width: 80% !important; margin-left: 63px !important;">
+							<div class="boardContent"
+								style="width: 80% !important; margin-left: 63px !important;">
 								<div style="padding-left: 230px;">
-									<h5 style="margin-left: 38px; padding-top: 20px;">평점 : ${scoreDAvg}</h5>
-										
+									<h5 style="margin-left: 38px; padding-top: 20px;">평점 :
+										${scoreDAvg}</h5>
+
 									<c:forEach begin="1" end="${scoreAvg}" step="1">
 										<span style="margin-right: 5px;" class="starScore">★</span>
 									</c:forEach>
@@ -551,36 +667,45 @@
 								</div>
 							</div>
 							<c:forEach items="${review_list}" var="r" end="2">
-								<div class="boardContent" style="width: 80% !important; margin-left: 65px !important;">
+								<div class="boardContent"
+									style="width: 80% !important; margin-left: 65px !important;">
 									<div style="font-size: 13px !important;">
 										<span style="margin-right: 10px; font-size: 18px;"><strong>${r.email}</strong></span>
 										<span>${r.r_date}</span>
-										<p><c:forEach begin="1" end="${r.r_score}" step="1">
+										<p>
+											<c:forEach begin="1" end="${r.r_score}" step="1">
 												<span style="margin-right: 5px;" class="starScore">★</span>
 											</c:forEach>
 											<c:if test="${r.r_score < 5}">
 												<c:forEach begin="1" end="${5 - r.r_score}" step="1">
 													<span style="margin-right: 5px;" class="starScore">☆</span>
 												</c:forEach>
-											</c:if></p>
+											</c:if>
+										</p>
 										<p>게시글 : ${c_board.c_title}</p>
 										<span>${r.r_content}</span>
 									</div>
 								</div>
 							</c:forEach>
-							<div class="boardContent" style="width: 80% !important; margin-left: 65px !important; padding-bottom: 10px !important; 
-								padding-top: 10px !important;">
-								<button style="width: 30%; margin-left: 20px; margin-left: 210px;" type="button" class="btn btn-outline-success"
-									onclick="location.href='writeReview?c_num=${c_board.c_num}'">리뷰 더 보기</button></td></tr>
+							<div class="boardContent"
+								style="width: 80% !important; margin-left: 65px !important; padding-bottom: 10px !important; padding-top: 10px !important;">
+								<button
+									style="width: 30%; margin-left: 20px; margin-left: 210px;"
+									type="button" class="btn btn-outline-success"
+									onclick="location.href='writeReview?c_num=${c_board.c_num}'">리뷰
+									더 보기</button>
+								</td>
+								</tr>
 							</div>
 						</div>
 					</c:otherwise>
 				</c:choose>
 			</div>
 		</div>
-	
-		
-		<script type="text/javascript" src="//dapi.kakao.com/v2/maps/sdk.js?appkey=db0a7dd04d902c908bc5aaa345eaa55c&libraries=services"></script>
+
+
+		<script type="text/javascript"
+			src="//dapi.kakao.com/v2/maps/sdk.js?appkey=db0a7dd04d902c908bc5aaa345eaa55c&libraries=services"></script>
 		<script>
 		
 		var addr =  document.getElementById("addr").innerText;
@@ -646,7 +771,7 @@
 				</div>
 			</div>
 		</div>
-		
+
 
 		<!-- 메인 페이지 하단 End -->
 
@@ -668,7 +793,7 @@
 
 		<!-- Template Javascript -->
 		<script src="resources/asset/js/main.js"></script>
-	
+
 		<script type="text/javascript">
 			function checkCFavorite(){
 				var c_num = document.getElementById("cNum").value;
@@ -690,7 +815,7 @@
 					)
 				}
 		</script>
-		
+
 		<script type="text/javascript">
 			function delCFavorite(){
 				var c_num = document.getElementById("cNum").value;
@@ -713,7 +838,7 @@
 					)
 				}
 		</script>
-		
+
 		<!-- 구독 버튼 -->
 		<script type="text/javascript">
 				function checkSubscribe(){
@@ -737,7 +862,7 @@
 					)
 				}
 		</script>
-		
+
 		<!-- 구독 취소 버튼 -->
 		<script type="text/javascript">
 				function delSubscribe(){
@@ -761,10 +886,12 @@
 					)
 				}
 		</script>
-		
-		<script type="text/javascript" src="https://code.jquery.com/jquery-1.12.4.min.js"></script>
-    	<script type="text/javascript" src="https://cdn.iamport.kr/js/iamport.payment-1.2.0.js"></script>
-   		<script>
+
+		<script type="text/javascript"
+			src="https://code.jquery.com/jquery-1.12.4.min.js"></script>
+		<script type="text/javascript"
+			src="https://cdn.iamport.kr/js/iamport.payment-1.2.0.js"></script>
+		<script>
 	        function pay(num) {
 	        	
 	        	var inputUp = document.getElementsByClassName("upName")[num].value;
@@ -871,7 +998,6 @@
 	        }
 
    		</script>
-		
 </body>
 
 </html>
