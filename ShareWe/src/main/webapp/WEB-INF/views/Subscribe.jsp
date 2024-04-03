@@ -380,11 +380,11 @@
 
 	<div>
 		<img src="resources/asset/image/subscribe_top.png"
-			style="margin-top: 50px; margin-left: 600px;"width: 900px; height:100%;>
+			style="margin-top: 50px; margin-left: 680px;"width: 900px; height:100%;>
 	</div>
 
 	<div class="upImage"
-		style="margin-top: 30px; margin-left: 300px; margin-bottom: 50px;">
+		style="margin-top: 30px; margin-left: 400px; margin-bottom: 50px;">
 		<button type="button" onclick="pay(0)"
 			style="border-color: transparent; background-color: transparent;">
 			<input type="hidden" class="upName" value="POP - 5회권"> <input
