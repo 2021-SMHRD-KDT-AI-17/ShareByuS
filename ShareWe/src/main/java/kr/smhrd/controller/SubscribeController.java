@@ -27,6 +27,15 @@ public class SubscribeController {
 		return "Payment";
 	}
 	
+	// 기업 상품 결제완료 메소드
+	@RequestMapping("/payObjectSuccess")
+	public String payObjectSuccess(payment payment, Model model) {
+		subscribeMapper.paySuccess(payment);
+		model.addAttribute("successPay", payment);
+		
+		return "CPayment";
+	}
+	
 	@RequestMapping("/gopaySuccess")
 	public String gopaySuccess() {
 		

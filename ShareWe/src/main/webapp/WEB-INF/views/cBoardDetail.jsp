@@ -234,6 +234,7 @@
 									<a href="getCategory?category=여행/도서" class="dropdown-item">여행/도서</a>
 								</div>
 							</div>
+							<a href="goSubscribe" class="nav-item nav-link" style="color: black; font-size: 18px;"><strong>POP 결제권</strong></a>
 							<a href="contact.html" class="nav-item nav-link" style="color: black; font-size: 18px;"><strong>동네보기</strong></a>
 					</div>
 					<div class="d-flex m-3 me-0">
@@ -329,7 +330,11 @@
 			</div>
 			</c:if>
 		</div>
-		
+		   
+		<input type="hidden" id="payEmail" value="${loginMember.email }">
+		<input type="hidden" id="payName" value="${loginMember.name }">
+		<input type="hidden" id="payTel" value="${loginMember.tel }">
+		<input type="hidden" id="payAddress" value="${loginMember.address }">
 
 		<div class="row g-4 justify-content-center hero-header" style="margin-left: 28%; margin-right: 28%;">
 			<input type="hidden" value="${loginMember.email}" id="loginEmail">
@@ -467,10 +472,10 @@
 					<div>${c_board.c_content}</div><br>
 					
 					<form action="buyProduct">
-						<select class="option" id="" name="opIndex" onchange="optSelect(this.value);" >
+						<select class="option" id="selectVal" name="opIndex" onchange="optSelect(this.value);" >
 							<option>옵션을 선택해주세요.</option>
 							<c:forEach items="${option}" var="op" varStatus="i">
-								<option value="'옵션 : ${op}, 가격 : ${price[i.index]}원'">옵션 : ${op}, 가격 : ${price[i.index]}원</option>
+								<option value="옵션 : ${op}, 가격 : ${price[i.index]} 원">옵션 : ${op}, 가격 : ${price[i.index]}원</option>
 							</c:forEach>
 						</select>
 						<input type="hidden" value="${c_board.c_num }" name="c_num">
@@ -479,11 +484,12 @@
 					</form>
 				</div>
 				<div class="boardContent" id="opDiv" style="display: none;">
-					<span id="optSel" style="width: 500px; float: left;"></span>
+					<span id="optSel" style="width: 500px; float: left; margin-top: 5px;"></span>
 					<button style="width: 5%; margin-left: 20px; margin-right: 12px;" type="button" onclick="decrease()" value="-" class="btn btn-outline-success">-</button>
 					<span style="width: 5%; margin-left: 5px; margin-right: 12px;"  id="num">0</span>
 					<button style="width: 5%;  margin-left: 5px; " type="button" onclick="increase()" value="+" class="btn btn-outline-success">+</button>
-					<input style="float: right; width: 15%; margin-left: 0px;" type="submit" value="구매하기" class="btn btn-outline-success"><br>
+					<button style="float: right; width: 15%; margin-left: 0px;" type="button" 
+						onclick="pay()" class="btn btn-outline-success">구매하기</button><br>
 				</div>
 				
 				<script type="text/javascript">
@@ -502,17 +508,9 @@
 			        }
 				</script>
 				
-				
-				
-				
-				<div class="boardContent">
-					참여인원:
-				</div>
-				
-				
 				<div class="boardContent">
 					<strong  id="addr" style="display: none">${m_addr.address}</strong>
-					<h5>${c_board.place}</h5>
+					<h5>${c_board.place}</h5><br>
 					<div id="map" style="width:100%;height:350px;" class="row g-4 justify-content-center">
 						
 					</div>
@@ -772,8 +770,9 @@
 			function optSelect(value){
 				/* var opt = document.getElementById("optSelect").value;
 	 */
+	 			var opt = value.replace(/\n/g, '');
 				document.getElementById("opDiv").style.display = "block";
-				document.getElementById("optSel").innerText = value;
+				document.getElementById("optSel").innerText = opt;
 				
 				
 					/* $.ajax(
@@ -795,14 +794,19 @@
 		<script type="text/javascript" src="https://code.jquery.com/jquery-1.12.4.min.js"></script>
     	<script type="text/javascript" src="https://cdn.iamport.kr/js/iamport.payment-1.2.0.js"></script>
    		<script>
-	        function pay(num) {
+	        function pay() {
 	        	
-	        	var inputUp = document.getElementsByClassName("upName")[num].value;
-	        	var inputPrice = document.getElementsByClassName("upPrice")[num].value;
-	        	var inputCnt = document.getElementsByClassName("upCnt")[num].value;
+	        	var optVal = document.getElementById("optSel").innerText;
+	        	console.log(optVal)
+	        	var word = optVal.split(',');
+	        	var word1 = word[0].split(':')[1]
+	        	var inputUp = word[0].split(':')[1];
+	        	var price = parseInt(word[1].split(' ')[3]);
 	        	
+	        	var cnt = parseInt(document.getElementById("num").innerText);
+	        	console.log(price, cnt)
+	        	var inputPrice = price*cnt;
 	        	/*var selectedGoodsName = document.querySelector(".kg_pay_btn").getAttribute("data-name");*/
-	        	
 	        	
 	        	var inputEmail = document.getElementById("payEmail").value;
 	        	var inputName = document.getElementById("payName").value;
@@ -827,7 +831,7 @@
 	                buyer_addr: inputAddress,
 	                buyer_postcode: '123-456',
 	                m_redirect_url: 'https://www.myservice.com/payments/complete/mobile',
-	                p_cnt: inputCnt
+	                p_cnt: cnt
 	                
 	            }, function (rsp) {
 	                if (rsp.success) {  // 결제가 성공했을 때
@@ -849,7 +853,6 @@
 		        		    obj2 = document.createElement('input');
 		        		    obj2.setAttribute('type', 'hidden');
 		        		    obj2.setAttribute('name', 'email');
-		        			var inputEmail = document.getElementById("payEmail").value;
 		        		    obj2.setAttribute('value', inputEmail);
 		        		
 		        		let obj3;
@@ -862,7 +865,6 @@
 		        		    obj4 = document.createElement('input');
 		        		    obj4.setAttribute('type', 'hidden');
 		        		    obj4.setAttribute('name', 'p_amount');
-		        			
 		        		    obj4.setAttribute('value', inputPrice);
 		        		    
 		        		
@@ -877,7 +879,7 @@
 		        		    obj6.setAttribute('type', 'hidden');
 		        		    obj6.setAttribute('name', 'p_cnt');
 		        			
-		        		    obj6.setAttribute('value', inputCnt);
+		        		    obj6.setAttribute('value', cnt);
 		        		
 		        		
 		        		    f.appendChild(obj2);
@@ -886,7 +888,7 @@
 		        		    f.appendChild(obj5);
 		        		    f.appendChild(obj6);
 		        		    f.setAttribute('method', 'post');
-		        		    f.setAttribute('action', 'paySuccess');
+		        		    f.setAttribute('action', 'payObjectSuccess');
 		        		    document.body.appendChild(f);
 		        		    f.submit();
 	                    

@@ -159,7 +159,7 @@
 	<!-- 버튼 -->
 	<div class="row g-4 justify-content-center hero-header" style="margin-left: 28%; margin-right: 28%; margin-top: 80px !important;">
 				
-				<h4 style="text-align: center;" >결제된 상품은 게시물에서 바로 사용 가능합니다.</h4>
+				<h4 style="text-align: center;" >상품이 결제되었습니다.</h4>
 				
 				<table style="width: 70%; text-align: center; border-radius: 20px;">
 					<tr style="border: 1px solid; background-color: #009223; color: white;">

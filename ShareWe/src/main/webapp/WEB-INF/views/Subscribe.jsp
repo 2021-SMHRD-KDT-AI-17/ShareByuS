@@ -221,6 +221,7 @@
 									<a href="getCategory?category=여행/도서" class="dropdown-item">여행/도서</a>
 								</div>
 							</div>
+							<a href="goSubscribe" class="nav-item nav-link" style="color: black; font-size: 18px;"><strong>POP 결제권</strong></a>
 							<a href="contact.html" class="nav-item nav-link" style="color: black; font-size: 18px;"><strong>동네보기</strong></a>
 					</div>
 					<div class="d-flex m-3 me-0">
@@ -326,21 +327,21 @@
 				
 				<button type="button" onclick="pay(1)" style="border-color: transparent; background-color: transparent;">
 					<input type="hidden"  class="upName" value="UP - 10회권">
-					<input type="hidden" class="upPrice" value="3000">
+					<input type="hidden" class="upPrice" value="5000">
 					<input type="hidden" class="upCnt" value="10">
 					<img src="resources/asset/image/up10.png" style="width: 300px !important; height:500px !important;">
 				</button>
 				
 				<button type="button" onclick="pay(2)" style="border-color: transparent; background-color: transparent;">
 					<input type="hidden"  class="upName" value="UP - 25회권">
-					<input type="hidden" class="upPrice" value="100">
+					<input type="hidden" class="upPrice" value="10000">
 					<input type="hidden" class="upCnt" value="25">
 					<img src="resources/asset/image/up25.png" style="width: 300px !important; height:500px !important;">
 				</button>
 				
 				<button type="button" onclick="pay(3)" style="border-color: transparent; background-color: transparent;">
 					<input type="hidden"  class="upName" value="UP - 60회권">
-					<input type="hidden" class="upPrice" value="100">
+					<input type="hidden" class="upPrice" value="25000">
 					<input type="hidden" class="upCnt" value="60">
 					<img src="resources/asset/image/up60.png" style="width: 320px !important; height:500px !important;">
 				</button>
