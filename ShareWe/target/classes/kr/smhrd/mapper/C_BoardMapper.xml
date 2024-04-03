@@ -9,7 +9,7 @@
 	<insert id="cBoardInsert" parameterType="kr.smhrd.entity.c_board">
 		insert into c_board(c_title, c_writer, email, c_img1, c_img2, c_img3, c_content, c_f_date, category, place, price, c_opt1, c_ea)
 		values(#{c_title}, #{c_writer}, #{email}, #{c_img1}, #{c_img2}, #{c_img3},#{c_content},
-		#{c_f_date}, #{category}, '광주 동구', #{price}, #{c_opt1}, #{c_ea})
+		#{c_f_date}, #{category},"픽업 장소", #{price}, #{c_opt1}, #{c_ea})
 	</insert>
 	
 	<select id="getCEmail" parameterType="String" resultType="kr.smhrd.entity.c_board">

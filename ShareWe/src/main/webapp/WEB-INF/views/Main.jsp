@@ -230,61 +230,96 @@
 	<!-- 메인 이미지 슬라이드 div End -->
 
 
-	
-   <!-- 판매 상품 Start-->
-   <div class="container-fluid fruite py-5" style="padding-top: 2rem !important;">
-      <div class="container py-5">
-         <div class="tab-class text-center">
-            <div class="row g-4">
-               <div class="col-lg-4 text-start">
-                  <h1>Share We 상품</h1>
-               </div>
-               <div class="col-lg-8 text-end">
-                  <ul class="nav nav-pills d-inline-flex text-center mb-5">
-                     <li class="nav-item"><a
-                        class="d-flex m-2 py-2 bg-light rounded-pill"
-                         href="goGeneral"> <span class="text-dark"
-                           style="width: 140px;">➕ 상품 더보기</span>
-                     </a></li>
-                  </ul>
-               </div>
-            </div>
-            <div class="tab-content">
-               <div id="tab-1" class="tab-pane fade show p-0 active">
-                  <div class="row g-4">
-                     <div class="col-lg-12">
-                        <div class="row g-4">
 
-                           <c:forEach items="${gboard_list }" var="g" end="7">
-                              <div class="col-md-6 col-lg-4 col-xl-3"
-                                 style="margin: auto; width: 22%; height: 10%; margin-bottom: 20px;">
-                                 <div class="rounded position-relative fruite-item">
-                                    <div class="fruite-img">
-                                       <a href="G_BoardContent?g_num=${g.g_num}">
-	                                       <img src="resources/g_Image/${g.g_img1}"
-	                                          class="img-fluid w-100 rounded-top" alt="">
-	                                   </a>
-                                    </div>
-                                    <div
-                                       class="text-white bg-secondary px-3 py-1 rounded position-absolute"
-                                       style="top: 10px; left: 10px;">${g.category}</div>
-                                    <div
-                                       class="p-4 border border-secondary border-top-0 rounded-bottom"
-                                       style="text-align: left;">
-                                       <br>
-                                       <a href="G_BoardContent?g_num=${g.g_num}">
-                                      	 <h5>${g.g_title }</h5>
-                                       </a>
-                                       <h6 style="display: inline;">${g.g_writer }</h6>
-                                       <c:choose>
-	                                      <c:when test="${loginMember.type == 0}">
-											</c:when>
+	<!-- 판매 상품 Start-->
+
+	</script>
+	<div class="container-fluid fruite py-5"
+		style="padding-top: 2rem !important;">
+		<div class="container py-5">
+			<div class="tab-class text-center">
+				<div class="row g-4">
+					<div class="col-lg-4 text-start">
+						<h1>Share We 상품</h1>
+					</div>
+					<div class="col-lg-8 text-end">
+						<ul class="nav nav-pills d-inline-flex text-center mb-5">
+							<li class="nav-item"><a
+								class="d-flex m-2 py-2 bg-light rounded-pill" href="goGeneral">
+									<span class="text-dark" style="width: 140px;">➕ 상품 더보기</span>
+							</a></li>
+						</ul>
+					</div>
+				</div>
+				<div class="tab-content">
+					<div id="tab-1" class="tab-pane fade show p-0 active">
+						<div class="row g-4">
+							<div class="col-lg-12">
+								<div class="row g-4">
+
+									<c:forEach items="${gboard_list }" var="g" end="7">
+										<div class="col-md-6 col-lg-4 col-xl-3"
+											style="margin: auto; width: 22%; height: 10%; margin-bottom: 20px;">
+											<div class="rounded position-relative fruite-item">
+												<div class="fruite-img">
+													<a href="G_BoardContent?g_num=${g.g_num}"> <img
+														src="resources/g_Image/${g.g_img1}"
+														class="img-fluid w-100 rounded-top" alt="">
+													</a>
+												</div>
+												<div
+													class="text-white bg-secondary px-3 py-1 rounded position-absolute"
+													style="top: 10px; left: 10px; background-color: #009223 !important;">${g.category}</div>
+												<div
+													class="p-4 border border-secondary border-top-0 rounded-bottom"
+													style=" border-color: #009223 !important; text-align: left">
+													<br> <a href="G_BoardContent?g_num=${g.g_num}">
+														<h5>${g.g_title }</h5>
+													</a>
+													<h6 style="display: inline;">${g.g_writer }</h6>
+													<c:choose>
+														<c:when test="${empty loginMember}">
+															<a onclick="location.href='goLogin'"
+																style= "float: right;" type="button"
+																class="btn border border-secondary rounded-pill px-3 text-primary">❤ 찜</a>
+														</c:when>
+														
 														<c:otherwise>
-															<a onclick="checkFavorite(${g.g_num})" id="${g.g_num }"
-																style="float: right;"
-																class="btn border border-secondary rounded-pill px-3 text-primary">
-																❤ 찜 </a>
+													
+															<c:set var="num" value="0"/>
+															<c:forEach items="${gfavorite_list}" var="f">
+																	<c:if test="${f.g_num eq g.g_num}">
+																	<c:set var="num" value="1"/>
+																	</c:if>
+																	
+																
+															</c:forEach>
+															<c:if test="${num eq '1'}">
+														
+																<a onclick="checkGFavorite(${g.g_num})"
+																			id="${g.g_num}" style="float: right; display: none;"
+																			class="btn border border-secondary rounded-pill px-3 text-primary">❤
+																			찜</a>
+																		<a onclick="delGFavorite(${g.g_num})"
+																			id="favCancel${g.g_num}" style="float: right; background-color: green; color: white !important;"
+																			 class="btn border border-secondary rounded-pill px-3 text-primary">❤
+																			찜</a>
+															</c:if>
+															<c:if test="${num eq '0'}">
+																<a onclick="checkGFavorite(${g.g_num})"
+																			id="${g.g_num}" style="float: right;" 
+																			type="button" class="btn border border-secondary rounded-pill px-3 text-primary">❤
+																			찜</a>
+																		<a onclick="delGFavorite(${g.g_num})"
+																			id="favCancel${g.g_num}" style="float: right; display: none; background-color: green; color: white !important;"
+																			 class="btn border border-secondary rounded-pill px-3 text-primary">❤
+																			찜</a>
+															</c:if>
+															
+																
+
 														</c:otherwise>
+
 													</c:choose>
 												</div>
 											</div>
@@ -331,9 +366,10 @@
 											style="margin: auto; width: 22%; height: 10%; margin-bottom: 20px;">
 											<div class="rounded position-relative fruite-item">
 												<div class="fruite-img">
-													<a href="C_BoardContent?c_num=${c.c_num}&c_writer=${c.c_writer}">
+													<a
+														href="C_BoardContent?c_num=${c.c_num}&c_writer=${c.c_writer}">
 														<img src="resources/g_Image/${c.c_img1}"
-															class="img-fluid w-100 rounded-top" alt="">
+														class="img-fluid w-100 rounded-top" alt="">
 													</a>
 												</div>
 												<div
@@ -342,27 +378,58 @@
 												<div
 													class="p-4 border border-secondary border-top-0 rounded-bottom"
 													style="text-align: left;">
-													<br>
-													<a href="C_BoardContent?c_num=${c.c_num}&c_writer=${c.c_writer}">
+													<br> <a
+														href="C_BoardContent?c_num=${c.c_num}&c_writer=${c.c_writer}">
 														<h5>${c.c_title }</h5>
 													</a>
 													<h6 style="display: inline;">${c.c_writer }</h6>
 													<c:choose>
-														<c:when test="${loginMember.type == 0}">
-															
+														<c:when test="${empty loginMember}">
+															<a onclick="location.href='goLogin'"
+																style= "float: right;" type="button"
+																class="btn border border-secondary rounded-pill px-3 text-primary">❤ 찜</a>
 														</c:when>
 														<c:otherwise>
-															<a onclick="checkCFavorite(${c.c_num})" id="${c.c_num }"
-																style="float: right;"
-																class="btn border border-secondary rounded-pill px-3 text-primary">
-																❤ 찜 </a>
+													
+															<c:set var="num" value="0"/>
+															<c:forEach items="${cfavorite_list}" var="f">
+																	<c:if test="${f.c_num eq c.c_num}">
+																	<c:set var="num" value="1"/>
+																	</c:if>
+																	
+																
+															</c:forEach>
+															<c:if test="${num eq '1'}">
+														
+																<a onclick="checkCFavorite(${c.c_num})"
+																			id="${c.c_num}" style="float: right; display: none;"
+																			type="button" class="btn border border-secondary rounded-pill px-3 text-primary">❤
+																			찜</a>
+																		<a onclick="delCFavorite(${c.c_num})"
+																			id="favCancel${c.c_num}" style="float: right; background-color: green; color: white !important;"
+																			type="button" class="btn border border-secondary rounded-pill px-3 text-primary">❤
+																			찜</a>
+															</c:if>
+															<c:if test="${num eq '0'}">
+																<a onclick="checkCFavorite(${c.c_num})"
+																			id="${c.c_num}" style="float: right;" 
+																			type="button" class="btn border border-secondary rounded-pill px-3 text-primary">❤
+																			찜</a>
+																		<a onclick="delCFavorite(${c.c_num})"
+																			id="favCancel${c.c_num}" style="float: right; display: none; background-color: green; color: white !important;"
+																			type="button" class="btn border border-secondary rounded-pill px-3 text-primary">❤
+																			찜</a>
+															</c:if>
+															
+																
+
 														</c:otherwise>
 													</c:choose>
 												</div>
 											</div>
 										</div>
 									</c:forEach>
-
+									
 								</div>
 							</div>
 						</div>
@@ -418,48 +485,22 @@
 	<script src="resources/asset/js/main.js"></script>
 
 	<script type="text/javascript">
-					function checkFavorite(g_num){
-						
-						var zzim = document.getElementById(g_num);
-						
-						$.ajax(
-						{
-							url : "checkFavorite",
-							data : {'g_num' : g_num},
-							type :'get',
-							success : function(data){
-								if(data==1){
-									zzim.innerText ='♥ 찜 완료'
-										
-								}else{
-									zzim.innerText ='이미 찜'
-								}
-							},
-							error : function(){
-								alert("통신실패")
-							}
-						}
-					)
-				}
-				</script>
-				<script type="text/javascript">
 
-				function checkCFavorite(c_num){
+				function checkGFavorite(g_num){
+					 var id = "favCancel" + g_num;
 				
-				var zzim = document.getElementById(c_num);
-				
+					console.log(g_num)
+					console.log(id)
+					document.getElementById(id).style.display = "inline";
+					document.getElementById(g_num).style.display = "none";
+					
 				$.ajax(
 				{
-					url : "checkCFavorite",
-					data : {'c_num' : c_num},
+					url : "insertgFavorite",
+					data : {'g_num' : g_num},
 					type :'get',
 					success : function(data){
-						if(data==1){
-							zzim.innerText ='♥ 찜 완료'
-								
-						}else{
-							zzim.innerText ='이미 찜'
-						}
+						
 					},
 					error : function(){
 						alert("로그인이 필요합니다")
@@ -468,6 +509,81 @@
 			)
 		}
 				</script>
+	<script type="text/javascript">
+			function delGFavorite(g_num){
+				var id = "favCancel" + g_num;
+				console.log(g_num)
+				console.log(id)
+				document.getElementById(g_num).style.display = "inline";
+				document.getElementById(id).style.display = "none";
+						$.ajax(
+						{
+							url : "delgFavorite",
+							data : {'g_num' : g_num},
+							type :'get',
+							success : function(){
+								
+							},
+							error : function(){
+								alert("통신실패")
+							}
+						}
+					)
+				}
+		</script>
+		
+		<script type="text/javascript">
+
+				function checkCFavorite(c_num){
+					 var id = "favCancel" + c_num;
+				
+					console.log(c_num)
+					console.log(id)
+					document.getElementById(id).style.display = "inline";
+					document.getElementById(c_num).style.display = "none";
+					
+				$.ajax(
+				{
+					url : "insertFavorite",
+					data : {'c_num' : c_num},
+					type :'get',
+					success : function(){
+						
+					},
+					error : function(){
+						alert("로그인이 필요합니다")
+					}
+				}
+			)
+		}
+				</script>
+	<script type="text/javascript">
+			function delCFavorite(c_num){
+				var id = "favCancel" + c_num;
+				console.log(c_num)
+				console.log(id)
+				document.getElementById(c_num).style.display = "inline";
+				document.getElementById(id).style.display = "none";
+						$.ajax(
+						{
+							url : "delFavorite",
+							data : {'c_num' : c_num},
+							type :'get',
+							success : function(){
+								
+							},
+							error : function(){
+								alert("통신실패")
+							}
+						}
+					)
+				}
+		</script>
+
+
+
+	
+
 
 
 

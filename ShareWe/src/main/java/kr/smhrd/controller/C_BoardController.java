@@ -62,17 +62,22 @@ public class C_BoardController {
 		
 		String path = request.getRealPath("resources/g_Image");
 		System.out.println(path);
-		int size = 1024*1024*10;
+		int size = 720*720*10;
 		String encoding = "UTF-8";
 		
 		DefaultFileRenamePolicy rename = new DefaultFileRenamePolicy();
 		try {
+			
 			MultipartRequest multi = new MultipartRequest(request, path, size, encoding, rename);
+			multi.getFilesystemName("c_img1");
+			multi.getFilesystemName("c_img2");
+			multi.getFilesystemName("c_img3");
+			
 		} catch (IOException e) {
 			e.printStackTrace();
-		}
+		}c_boardMapper.cBoardInsert(c_board);
 		
-		c_boardMapper.cBoardInsert(c_board);
+		
 		
 		return "redirect:/goCompany";
 		
@@ -223,6 +228,22 @@ public class C_BoardController {
 		
 		return "Review";
 	}
+	
+	// 리뷰 작성
+	@RequestMapping("/buyProduct")
+	public String buyProduct(HttpServletRequest request, Model model) {
+		int index = (int) request.getAttribute("opIndex");
+		int c_num = (int) request.getAttribute("c_num");
+		
+		c_board c_board = c_boardMapper.C_BoardContent(c_num);
+		String[] optList = c_board.getC_opt1().split("\n");
+		String[] priceList = c_board.getPrice().split("\n");
+		
+		
+		return "Review";
+	}
+	
+	
 	
 	
 	}

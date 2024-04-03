@@ -218,25 +218,26 @@ input::file-selector-button {
 						<br>
 						<div class="form-item">
 
-							 <label class="input-file-button" for="btnAtt"> 대표사진 </label>
+							 <label class="input-file-button" for="btnAtt"> 대표 이미지 </label>
 							
-							<input type="file" name="g_img1" id="btnAtt"  
+							<input type="file" name="g_img1" id="btnAtt" class="btnAtt" 
 							style="display: none;" accept="image/jpg, image/jpeg, image/png">
 							
 
 							<div id='image_preview'>
 								<div id='att_zone' style="width: 100%; height: 100%; z-index: none;" 
-									data-placeholder='파일을 첨부 하려면 파일 선택 버튼을 클릭하거나 파일을 드래그앤드롭 하세요'></div>
+									data-placeholder='파일을 첨부 하려면 파일 선택 버튼을 클릭하거나 파일을 드래그앤드롭 하세요 (대표 사진 포함 최대 3개)'></div>
 							</div>
-							<input type="file" name="g_img2"  id="btnAtt2" accept="image/jpg, image/jpeg, image/png" value="상세사진" >
-							 <input type="file" name="g_img3" id="btnAtt3" accept="image/jpg, image/jpeg, image/png" value="상세사진">
+							<input type="file" name="g_img2"  class="btnAtt" accept="image/jpg, image/jpeg, image/png" value="상세사진" >
+							 <input type="file" name="g_img3" class="btnAtt" accept="image/jpg, image/jpeg, image/png" value="상세사진">
 
 							<script>
 ( /* att_zone : 이미지들이 들어갈 위치 id, btn : file tag id */
   imageView = function imageView(att_zone, btn){
-
+	
     var attZone = document.getElementById(att_zone);
-    var btnAtt = document.getElementById(btn)
+    var btnAtt = document.getElementsByClassName(btn)
+        
     var sel_files = [];
     
     // 이미지와 체크 박스를 감싸고 있는 div 속성
@@ -259,14 +260,16 @@ input::file-selector-button {
     'right: 0.5rem;';
     
     
-  
-    btnAtt.onchange = function(e){
-      var files = e.target.files;
-      var fileArr = Array.prototype.slice.call(files)
-      for(f of fileArr){
-        imageLoader(f);
-      }
-    }  
+  	for(var i=0; i<btnAtt.length; i++){
+    	btnAtt[i].onchange = function(e){
+	      var files = e.target.files;
+	      var fileArr = Array.prototype.slice.call(files)
+	      for(f of fileArr){
+	    	
+	        imageLoader(f);
+	      }
+	    }  
+	}
     
   
     // 탐색기에서 드래그앤 드롭 사용
@@ -288,6 +291,7 @@ input::file-selector-button {
       var dt = e.dataTransfer;
       files = dt.files;
       for(f of files){
+    
         imageLoader(f);
       }
       
@@ -297,6 +301,9 @@ input::file-selector-button {
     
     /*첨부된 이미리즐을 배열에 넣고 미리보기 */
     imageLoader = function(file){
+    	
+      console.log('imageLoader: '+file);
+    	
       sel_files.push(file);
       var reader = new FileReader();
       reader.onload = function(ee){
