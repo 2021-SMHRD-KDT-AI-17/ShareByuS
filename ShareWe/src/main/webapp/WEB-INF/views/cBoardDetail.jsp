@@ -427,7 +427,7 @@
 						<c:when test="${ empty loginMember}">
 							<nav class="detailMenu" style="float: right;">
 								<ul>
-									<li><a href="#"> <strong style="float: right;"></strong></a>
+									<li><a href="#"> <strong style="float: right;"></strong></a></li>
 								</ul>
 							</nav>
 						</c:when>
@@ -467,40 +467,43 @@
 					<div>${c_board.c_content}</div><br>
 					
 					<form action="buyProduct">
-						<select class="option" name="opIndex">
+						<select class="option" id="" name="opIndex" onchange="optSelect(this.value);" >
+							<option>옵션을 선택해주세요.</option>
 							<c:forEach items="${option}" var="op" varStatus="i">
-								<option value="${price[i.index]}">옵션 : ${op}, 가격 : ${price[i.index]}원</option>
+								<option value="'옵션 : ${op}, 가격 : ${price[i.index]}원'">옵션 : ${op}, 가격 : ${price[i.index]}원</option>
 							</c:forEach>
 						</select>
 						<input type="hidden" value="${c_board.c_num }" name="c_num">
-						<button style="width: 5%;  margin-left: 20px; " type="button" onclick="count('plus')" value="+" class="btn btn-outline-success">+</button>
-						<span style="width: 5%; margin-left: 5px" type="text" class="btn btn-outline-success" id="result">0</span>
-						<button style="width: 5%; margin-left: 5px" type="button" onclick="count('minus')" value="-" class="btn btn-outline-success">-</button>
-						<input style="float: right; width: 15%; margin-top: 5px" type="submit" value="구매하기" class="btn btn-outline-success"><br>
+						
+						
 					</form>
+				</div>
+				<div class="boardContent" id="opDiv" style="display: none;">
+					<span id="optSel" style="width: 500px; float: left;"></span>
+					<button style="width: 5%; margin-left: 20px; margin-right: 12px;" type="button" onclick="decrease()" value="-" class="btn btn-outline-success">-</button>
+					<span style="width: 5%; margin-left: 5px; margin-right: 12px;"  id="num">0</span>
+					<button style="width: 5%;  margin-left: 5px; " type="button" onclick="increase()" value="+" class="btn btn-outline-success">+</button>
+					<input style="float: right; width: 15%; margin-left: 0px;" type="submit" value="구매하기" class="btn btn-outline-success"><br>
 				</div>
 				
 				<script type="text/javascript">
-				function count(type)  {
-				    // 결과를 표시할 element
-				    const resultElement = document.getElementById('result');
-				    
-				    // 현재 화면에 표시된 값
-				    let number = resultElement.innerText;
-				    
-				    // 더하기/빼기
-				    if(type === 'plus') {
-				      number = parseInt(number) + 1;
-				    }else if(type === 'minus')  {
-				        if(number > 0){
-				            number = parseInt(number) - 1;
-				        }
-				     
-				    
-				    // 결과 출력
-				    resultElement.innerText = number;
-				  }
+					const increase = () => {
+			            const pTag = document.getElementById('num');
+	
+			            pTag.innerText = (parseInt(pTag.innerText) + 1);
+			        }
+	
+			        const decrease = () => {
+			            const pTag = document.getElementById('num');
+	
+			            if(parseInt(pTag.innerText) > 0){
+			                pTag.innerText = (parseInt(pTag.innerText) - 1);
+			            }
+			        }
 				</script>
+				
+				
+				
 				
 				<div class="boardContent">
 					참여인원:
@@ -762,6 +765,31 @@
 						}
 					)
 				}
+		</script>
+		
+		<!-- 옵션선택 비동기 -->
+		<script type="text/javascript">
+			function optSelect(value){
+				/* var opt = document.getElementById("optSelect").value;
+	 */
+				document.getElementById("opDiv").style.display = "block";
+				document.getElementById("optSel").innerText = value;
+				
+				
+					/* $.ajax(
+					{
+						url : "checkOpt",
+						data : {'c_name' : c_name},
+						type :'get',
+						success : function(){
+							
+						},
+						error : function(){
+							alert("통신실패")
+						}
+					}
+				) */
+			}
 		</script>
 		
 		<script type="text/javascript" src="https://code.jquery.com/jquery-1.12.4.min.js"></script>
