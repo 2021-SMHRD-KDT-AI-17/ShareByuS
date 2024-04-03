@@ -266,7 +266,20 @@
 						<a href="goGeneral" class="nav-item nav-link"
 							style="color: black; font-size: 18px;"><strong>공구함</strong></a> <a
 							href="goCompany" class="nav-item nav-link"
+							style="color: black; font-size: 18px;"><strong>동네구경</strong></a>
+							<%
+						if (loginMember == null) {
+						%>
+						<a href="goLogin" class="nav-item nav-link"
 							style="color: black; font-size: 18px;"><strong>우리동네</strong></a>
+						<%
+						} else {
+						%>
+						<a href="goHood" class="nav-item nav-link"
+							style="color: black; font-size: 18px;"><strong>우리동네</strong></a>
+						<%
+						}
+						%>
 						<!-- <a href="shop-detail.html" class="nav-item nav-link">Shop Detail</a> -->
 						<div class="nav-item dropdown">
 							<a href="#" class="nav-link dropdown-toggle active"
@@ -279,19 +292,7 @@
 								<a href="getCategory?category=여행/도서" class="dropdown-item">여행/도서</a>
 							</div>
 						</div>
-						<%
-						if (loginMember == null) {
-						%>
-						<a href="goLogin" class="nav-item nav-link"
-							style="color: black; font-size: 18px;"><strong>동네보기</strong></a>
-						<%
-						} else {
-						%>
-						<a href="goHood" class="nav-item nav-link"
-							style="color: black; font-size: 18px;"><strong>동네보기</strong></a>
-						<%
-						}
-						%>
+							<a href="goSubscribe" class="nav-item nav-link" style="color: black; font-size: 18px;"><strong>POP 결제권</strong></a>
 					</div>
 					<div class="d-flex m-3 me-0">
 						<button
@@ -299,12 +300,7 @@
 							data-bs-toggle="modal" data-bs-target="#searchModal">
 							<i class="fas fa-search text-primary"></i>
 						</button>
-						<a href="goCart" class="position-relative me-4 my-auto"> <i
-							class="fa fa-shopping-bag fa-2x"></i> <span
-							class="position-absolute bg-secondary rounded-circle d-flex align-items-center justify-content-center text-dark px-1"
-							style="top: -5px; left: 15px; height: 20px; min-width: 20px;">3</span>
-						</a> <a href="goMyPage" class="my-auto"> <i
-							class="fas fa-user fa-2x"></i></a>
+						<a href="goMyPage" class="my-auto"> <i class="fas fa-user fa-2x"></i></a>
 					</div>
 				</div>
 			</nav>
@@ -380,8 +376,165 @@
 	<!-- Single Page Header End -->
 
 
+<<<<<<< HEAD
+		<!-- 게시글 상세 -->
+		<!-- <div class="row g-4 justify-content-center hero-header" style="margin-left: 28%; margin-right: 28%; margin-top: 80px !important;"> -->
+			
+			<div>
+				<img src="resources/asset/image/subscribe_top.png" 
+						style="margin-top: 50px; margin-left: 600px; " width: 900px; height:100%;>
+			</div>
+			
+			<div class="upImage" style="margin-top: 30px; margin-left: 300px; margin-bottom: 50px;">
+				<button type="button" onclick="pay(0)" style="border-color: transparent; background-color: transparent;">
+					<input type="hidden"  class="upName" value="UP - 5회권">
+					<input type="hidden" class="upPrice" value="3000">
+					<input type="hidden" class="upCnt" value="5">
+					<img src="resources/asset/image/up5.png" style="width: 300px !important; height:500px !important;">
+				</button>
+				
+				<button type="button" onclick="pay(1)" style="border-color: transparent; background-color: transparent;">
+					<input type="hidden"  class="upName" value="UP - 10회권">
+					<input type="hidden" class="upPrice" value="5000">
+					<input type="hidden" class="upCnt" value="10">
+					<img src="resources/asset/image/up10.png" style="width: 300px !important; height:500px !important;">
+				</button>
+				
+				<button type="button" onclick="pay(2)" style="border-color: transparent; background-color: transparent;">
+					<input type="hidden"  class="upName" value="UP - 25회권">
+					<input type="hidden" class="upPrice" value="10000">
+					<input type="hidden" class="upCnt" value="25">
+					<img src="resources/asset/image/up25.png" style="width: 300px !important; height:500px !important;">
+				</button>
+				
+				<button type="button" onclick="pay(3)" style="border-color: transparent; background-color: transparent;">
+					<input type="hidden"  class="upName" value="UP - 60회권">
+					<input type="hidden" class="upPrice" value="25000">
+					<input type="hidden" class="upCnt" value="60">
+					<img src="resources/asset/image/up60.png" style="width: 320px !important; height:500px !important;">
+				</button>
+			</div>
+			
+			
+			
+			<input type="hidden" value="${loginMember.email}" id="payEmail">
+			<input type="hidden" value="${loginMember.name}" id="payName">
+			<input type="hidden" value="${loginMember.tel}" id="payTel">
+			<input type="hidden" value="${loginMember.address}" id="payAddress">
+			
+		<!-- </div> -->
+		
+		<script type="text/javascript" src="https://code.jquery.com/jquery-1.12.4.min.js"></script>
+    	<script type="text/javascript" src="https://cdn.iamport.kr/js/iamport.payment-1.2.0.js"></script>
+   		<script>
+	        function pay(num) {
+	        	
+	        	var inputUp = document.getElementsByClassName("upName")[num].value;
+	        	var inputPrice = document.getElementsByClassName("upPrice")[num].value;
+	        	var inputCnt = document.getElementsByClassName("upCnt")[num].value;
+	        	
+	        	/*var selectedGoodsName = document.querySelector(".kg_pay_btn").getAttribute("data-name");*/
+	        	
+	        	
+	        	var inputEmail = document.getElementById("payEmail").value;
+	        	var inputName = document.getElementById("payName").value;
+	        	var inputTel = document.getElementById("payTel").value;
+	        	var inputAddress = document.getElementById("payAddress").value;
+	        	
+	        	
+	        	
+	            var IMP = window.IMP;
+	            IMP.init("imp14502251");
+	            // 원포트 관리자 페이지 -> 내정보 -> 가맹점식별코드
+	            // ''안에 띄어쓰기 없이 가맹점 식별코드를 붙여넣어주세요. 안그러면 결제창이 안뜹니다.
+	            IMP.request_pay({
+	                pg: 'html5_inicis',  // 실제 계약 후에는 실제 상점아이디로 변경
+	                pay_method: 'card', // 'card'만 지원됩니다.
+	                merchant_uid: 'ShareWe_' + new Date().getTime(), // 상점에서 관리하는 주문 번호
+	                name: inputUp, // 상품 이름
+	                amount: inputPrice, // 결제창에 표시될 금액. 실제 승인이 이뤄지지는 않습니다.
+	                buyer_email: inputEmail,
+	                buyer_name: inputName,
+	                buyer_tel: inputTel,
+	                buyer_addr: inputAddress,
+	                buyer_postcode: '123-456',
+	                m_redirect_url: 'https://www.myservice.com/payments/complete/mobile',
+	                p_cnt: inputCnt
+	                
+	            }, function (rsp) {
+	                if (rsp.success) {  // 결제가 성공했을 때
+	                    // 결제가 완료되었을 떄 결제 정보를 뜨게 만듬
+	                    var msg = '결제가 완료되었습니다.';
+	                    msg += '고유ID : ' + rsp.imp_uid;
+	                    msg += '상점 거래ID : ' + rsp.merchant_uid;
+	                    msg += '결제 금액 : ' + rsp.paid_amount;
+	                    msg += '카드 승인번호 : ' + rsp.apply_num;
+	                    
+	                    let f = document.createElement('form');
+		                /* let obj1;
+		        		    obj1 = document.createElement('input');
+		        		    obj1.setAttribute('type', 'hidden');
+		        		    obj1.setAttribute('name', 'p_num');
+		        		    obj1.setAttribute('value', p_num); */
+		        		
+		        		let obj2;
+		        		    obj2 = document.createElement('input');
+		        		    obj2.setAttribute('type', 'hidden');
+		        		    obj2.setAttribute('name', 'email');
+		        			var inputEmail = document.getElementById("payEmail").value;
+		        		    obj2.setAttribute('value', inputEmail);
+		        		
+		        		let obj3;
+		        		    obj3 = document.createElement('input');
+		        		    obj3.setAttribute('type', 'hidden');
+		        		    obj3.setAttribute('name', 'p_name');
+		        		    obj3.setAttribute('value', inputUp);
+		        		
+		        		let obj4;
+		        		    obj4 = document.createElement('input');
+		        		    obj4.setAttribute('type', 'hidden');
+		        		    obj4.setAttribute('name', 'p_amount');
+		        			
+		        		    obj4.setAttribute('value', inputPrice);
+		        		    
+		        		
+		        		let obj5;
+		        		    obj5 = document.createElement('input');
+		        		    obj5.setAttribute('type', 'hidden');
+		        		    obj5.setAttribute('name', 'apply_num');
+		        		    obj5.setAttribute('value', rsp.apply_num);
+		        		
+		        		let obj6;
+		        		    obj6 = document.createElement('input');
+		        		    obj6.setAttribute('type', 'hidden');
+		        		    obj6.setAttribute('name', 'p_cnt');
+		        			
+		        		    obj6.setAttribute('value', inputCnt);
+		        		
+		        		
+		        		    f.appendChild(obj2);
+		        		    f.appendChild(obj3);
+		        		    f.appendChild(obj4);
+		        		    f.appendChild(obj5);
+		        		    f.appendChild(obj6);
+		        		    f.setAttribute('method', 'post');
+		        		    f.setAttribute('action', 'paySuccess');
+		        		    document.body.appendChild(f);
+		        		    f.submit();
+	                    
+	                    
+	                } else {    // 결제가 실패했을 때
+	                    // 결제에 실패했을떄 실패메세지와 실패사유를 출력
+	                    var msg = '결제에 실패하였습니다.';
+	                    msg += '실패 사유 : ' + rsp.error_msg;
+	                }
+	                alert(msg);
+	            });
+	        }
+=======
 	<!-- 게시글 상세 -->
 	<!-- <div class="row g-4 justify-content-center hero-header" style="margin-left: 28%; margin-right: 28%; margin-top: 80px !important;"> -->
+>>>>>>> branch 'main' of https://github.com/2021-SMHRD-KDT-AI-17/ShareByuS.git
 
 	<div>
 		<img src="resources/asset/image/subscribe_top.png"

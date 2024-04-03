@@ -109,7 +109,20 @@
 						<a href="goGeneral" class="nav-item nav-link"
 							style="color: black; font-size: 18px;"><strong>공구함</strong></a> <a
 							href="goCompany" class="nav-item nav-link"
-							style="color: black; font-size: 18px;"><strong>우리동네</strong></a>
+							style="color: black; font-size: 18px;"><strong>동네구경</strong></a>
+							<%
+							if (loginMember == null) {
+							%>
+							<a href="goLogin" class="nav-item nav-link"
+								style="color: black; font-size: 18px;"><strong>우리동네</strong></a>
+							<%
+							} else {
+							%>
+							<a href="goHood" class="nav-item nav-link"
+								style="color: black; font-size: 18px;"><strong>우리동네</strong></a>
+							<%
+							}
+							%>
 						<!-- <a href="shop-detail.html" class="nav-item nav-link">Shop Detail</a> -->
 						<div class="nav-item dropdown">
 							<a href="#" class="nav-link dropdown-toggle active"
@@ -122,19 +135,7 @@
 								<a href="getCategory?category=여행/도서" class="dropdown-item">여행/도서</a>
 							</div>
 						</div>
-						<%
-						if (loginMember == null) {
-						%>
-						<a href="goLogin" class="nav-item nav-link"
-							style="color: black; font-size: 18px;"><strong>동네보기</strong></a>
-						<%
-						} else {
-						%>
-						<a href="goHood" class="nav-item nav-link"
-							style="color: black; font-size: 18px;"><strong>동네보기</strong></a>
-						<%
-						}
-						%>
+							<a href="goSubscribe" class="nav-item nav-link" style="color: black; font-size: 18px;"><strong>POP 결제권</strong></a>
 					</div>
 					<div class="d-flex m-3 me-0">
 						<button
@@ -143,10 +144,7 @@
 							data-bs-target="#searchModal">
 							<i class="fas fa-search text-primary"></i>
 						</button>
-						<a href="goCart" class="position-relative me-4 my-auto"> <i
-							class="bi bi-bell-fill fa-2x"></i>
-						</a> <a href="goMyPage" class="my-auto"> <i
-							class="fas fa-user fa-2x"></i></a>
+						<a href="goMyPage" class="my-auto"> <i class="fas fa-user fa-2x"></i></a>
 					</div>
 				</div>
 			</nav>
@@ -247,7 +245,7 @@
 			<div class="tab-class text-center">
 				<div class="row g-4">
 					<div class="col-lg-4 text-start">
-						<h1>Share We 상품</h1>
+						<h1>우리 동네 상품</h1>
 					</div>
 					<div class="col-lg-8 text-end">
 						<ul class="nav nav-pills d-inline-flex text-center mb-5">
@@ -356,7 +354,7 @@
 			<div class="tab-class text-center">
 				<div class="row g-4">
 					<div class="col-lg-4 text-start">
-						<h1>Share We 상품</h1>
+						<h1>공구함 상품</h1>
 					</div>
 					<div class="col-lg-8 text-end">
 						<ul class="nav nav-pills d-inline-flex text-center mb-5">
@@ -463,21 +461,20 @@
 
 	<!-- 메인 페이지 하단 -->
 	<div class="container-fluid bg-dark text-white-50 footer pt-5 mt-5">
-		<div class="container py-5">
-			<div class="row g-5">
-				<div class="col-lg-3 col-md-6">
-					<div class="footer-item">
-						<h4 class="text-light mb-3">Contact</h4>
-						<p>Address: 1429 Netus Rd, NY 48247</p>
-						<p>Email: Example@gmail.com</p>
-						<p>Phone: +0123 4567 8910</p>
-						<p>Payment Accepted</p>
-						<img src="img/payment.png" class="img-fluid" alt="">
+			<div class="container py-5">
+				<div class="row g-5">
+					<div class="col-lg-3 col-md-6">
+						<div class="footer-item">
+							<h4 class="text-light mb-3">Contact</h4>
+							<p>Address: Gwangju, Republic of Korea</p>
+							<p>Email: ShareByuS@gmail.com</p>
+							<p>Do you want to share it with us?</p>
+							<img src="img/payment.png" class="img-fluid" alt="">
+						</div>
 					</div>
 				</div>
 			</div>
 		</div>
-	</div>
 	<!-- 메인 페이지 하단 End -->
 
 
