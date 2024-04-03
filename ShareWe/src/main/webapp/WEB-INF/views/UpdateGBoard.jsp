@@ -99,21 +99,21 @@
 				</button>
 				<div class="collapse navbar-collapse bg-white" id="navbarCollapse">
 					<div class="navbar-nav mx-auto">
-						<a href="goGeneral" class="nav-item nav-link" style="color: black">Share</a>
-						<a href="goCompany" class="nav-item nav-link" style="color: black">Shop</a>
-						<!-- <a href="shop-detail.html" class="nav-item nav-link">Shop Detail</a> -->
-						<div class="nav-item dropdown">
-							<a href="#" class="nav-link dropdown-toggle active"
-								data-bs-toggle="dropdown">카테고리</a>
-							<div class="dropdown-menu m-0 bg-secondary rounded-0">
-								<a href="cart.html" class="dropdown-item">채소</a> <a
-									href="chackout.html" class="dropdown-item">과일</a> <a
-									href="testimonial.html" class="dropdown-item">생필품</a>
-								<!--<a href="404.html" class="dropdown-item active">404 Page</a> -->
+							<a href="goGeneral" class="nav-item nav-link" style="color: black; font-size: 18px;"><strong>공구함</strong></a>
+							<a href="goCompany" class="nav-item nav-link" style="color: black; font-size: 18px;"><strong>우리동네</strong></a>
+							<!-- <a href="shop-detail.html" class="nav-item nav-link">Shop Detail</a> -->
+							<div class="nav-item dropdown">
+								<a href="#" class="nav-link dropdown-toggle active"
+									data-bs-toggle="dropdown" style="color: black; font-size: 18px;"><strong>카테고리</strong></a>
+								<div class="dropdown-menu m-0 bg-secondary rounded-0">
+									<a href="getCategory?category=식품" class="dropdown-item">식품</a> <a
+										href="getCategory?category=과일" class="dropdown-item">과일</a> <a
+										href="getCategory?category=생필품" class="dropdown-item">생필품</a> <a
+										href="getCategory?category=패션/뷰티" class="dropdown-item">패션/뷰티</a>
+									<a href="getCategory?category=여행/도서" class="dropdown-item">여행/도서</a>
+								</div>
 							</div>
-						</div>
-						<a href="contact.html" class="nav-item nav-link"
-							style="color: black">Contact</a>
+							<a href="contact.html" class="nav-item nav-link" style="color: black; font-size: 18px;"><strong>동네보기</strong></a>
 					</div>
 					<div class="d-flex m-3 me-0">
 						<button
@@ -176,6 +176,7 @@
 		<div class="container py-5">
 			<form action="gBoardUpdate" method="post"
 				enctype="multipart/form-data">
+				<input type="hidden" name="g_num" value="${g_board.g_num}">
 				<div class="row g-5 justify-content-center" id="loginDiv">
 					<div class="col-md-12 col-lg-6 col-xl-7" align="left">
 						<h4 class="form-label my-3">* 상품 사진</h4>
@@ -332,46 +333,6 @@
 					</div>
 
 
-					<!-- <div class="col-md-12 col-lg-6 col-xl-7" align="left">
-						<h4 class="form-label my-3">* 참여인원</h4>
-						<br>
-						<div class="form-item">
-							<div class="col-sm-8">
-
-								<button type="button"
-									class="border-0 border-bottom rounded me-5 py-3 mb-4"
-									style="width: 50px; font-size: 20px;" onclick="increase()">+</button>
-
-								<b style="margin-right: 40px; font-size: 30px;" id="num">2</b>
-
-								<button type="button"
-									class="border-0 border-bottom rounded me-5 py-3 mb-4"
-									style="width: 50px; font-size: 20px;" onclick="decrease()">-</button>
-
-								<script>
-								
-								const join = document.getElementById('num');
-						        
-						        const increase =()=>{
-						            num.innerText= parseInt(join.innerText)+1
-						        }
-						        const decrease =()=>{
-						            if(parseInt(join.innerText)!=2){
-						                num.innerText= parseInt(join.innerText)-1
-						
-						            }
-						        }
-								</script>
-								<br> <b style="margin-right: 40px; font-size: 15px;">최소인원은
-									2명 입니다.</b>
-							</div>
-						</div>
-						<hr>
-
-
-					</div> -->
-					
-					
 					<div class="col-md-12 col-lg-6 col-xl-7" align="left">
 						<h4 class="form-label my-3">* 상품설명</h4>
 						<br>

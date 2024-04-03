@@ -18,6 +18,7 @@ import com.oreilly.servlet.multipart.DefaultFileRenamePolicy;
 import kr.smhrd.entity.c_board;
 import kr.smhrd.entity.c_favorite;
 import kr.smhrd.entity.c_subscribe;
+import kr.smhrd.entity.g_favorite;
 import kr.smhrd.entity.member;
 import kr.smhrd.entity.review;
 import kr.smhrd.mapper.C_BoardMapper;
@@ -47,6 +48,16 @@ public class C_BoardController {
 		List<c_board> cboard_list = c_boardMapper.getCBoard();
 		model.addAttribute("cboard_list", cboard_list);
 		
+		member loginMember = (member)session.getAttribute("loginMember");
+		
+	    if(loginMember != null) {
+			String email = loginMember.getEmail();
+			List<c_favorite> cfavorite_list = favoriteMapper.getCEmail(email);
+			
+			
+			model.addAttribute("cfavorite_list",cfavorite_list);
+		}
+		
 		return "Shop";
 	}
 	
@@ -54,6 +65,8 @@ public class C_BoardController {
 	public String getComCategory(@RequestParam("category") String category, Model model) {
 		List<c_board> cboard_list = c_boardMapper.getComCategory(category);
 		model.addAttribute("cboard_list", cboard_list);
+		
+		
 		return "Shop";
 	}
 	

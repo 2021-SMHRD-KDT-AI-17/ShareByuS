@@ -124,7 +124,7 @@
 					<span><small class="text-white mx-2"><%=loginMember.getNick() %>님
 							환영합니다.</small></span>
 					<%if(loginMember.getEmail().equals("admin")) {%>
-					<a href="#" class="text-white"><small class="text-white ms-2">회원관리</small></a>
+					<a href="goAdmin" class="text-white"><small class="text-white ms-2">회원관리</small></a>
 					<%} %>
 					<a href="memberLogout" class="text-white"><small
 						class="text-white mx-2">로그아웃</small></a>
@@ -142,21 +142,22 @@
 				</button>
 				<div class="collapse navbar-collapse bg-white" id="navbarCollapse">
 					<div class="navbar-nav mx-auto">
-						<a href="goGeneral" class="nav-item nav-link" style="color: black">일반</a>
-						<a href="goCompany" class="nav-item nav-link" style="color: black">기업</a>
-						<!-- <a href="shop-detail.html" class="nav-item nav-link">Shop Detail</a> -->
-						<div class="nav-item dropdown">
-							<a href="#" class="nav-link dropdown-toggle active"
-								data-bs-toggle="dropdown">카테고리</a>
-							<div class="dropdown-menu m-0 bg-secondary rounded-0">
-								<a href="cart.html" class="dropdown-item">채소</a> <a
-									href="chackout.html" class="dropdown-item">과일</a> <a
-									href="testimonial.html" class="dropdown-item">생필품</a>
-								<!--<a href="404.html" class="dropdown-item active">404 Page</a> -->
+
+							<a href="goGeneral" class="nav-item nav-link" style="color: black; font-size: 18px;"><strong>공구함</strong></a>
+							<a href="goCompany" class="nav-item nav-link" style="color: black; font-size: 18px;"><strong>우리동네</strong></a>
+							<!-- <a href="shop-detail.html" class="nav-item nav-link">Shop Detail</a> -->
+							<div class="nav-item dropdown">
+								<a href="#" class="nav-link dropdown-toggle active"
+									data-bs-toggle="dropdown" style="color: black; font-size: 18px;"><strong>카테고리</strong></a>
+								<div class="dropdown-menu m-0 bg-secondary rounded-0">
+									<a href="getCategory?category=식품" class="dropdown-item">식품</a> <a
+										href="getCategory?category=과일" class="dropdown-item">과일</a> <a
+										href="getCategory?category=생필품" class="dropdown-item">생필품</a> <a
+										href="getCategory?category=패션/뷰티" class="dropdown-item">패션/뷰티</a>
+									<a href="getCategory?category=여행/도서" class="dropdown-item">여행/도서</a>
+								</div>
 							</div>
-						</div>
-						<a href="contact.html" class="nav-item nav-link"
-							style="color: black">Contact</a>
+							<a href="contact.html" class="nav-item nav-link" style="color: black; font-size: 18px;"><strong>동네보기</strong></a>
 					</div>
 					<div class="d-flex m-3 me-0">
 						<button
@@ -164,8 +165,7 @@
 							data-bs-toggle="modal" data-bs-target="#searchModal">
 							<i class="fas fa-search text-primary"></i>
 						</button>
-						<a href="goCart" class="position-relative me-4 my-auto"> <i
-							class="fa fa-shopping-bag fa-2x"></i> <span
+						<a href="goCart" class="position-relative me-4 my-auto"> <i class="bi bi-bell-fill fa-2x"></i> <span
 							class="position-absolute bg-secondary rounded-circle d-flex align-items-center justify-content-center text-dark px-1"
 							style="top: -5px; left: 15px; height: 20px; min-width: 20px;">3</span>
 						</a> <a href="goMyPage" class="my-auto"> <i
@@ -472,8 +472,8 @@
 
 			<div class="row g-4 justify-content-center">
 
-				<div id="gen" class="col-md-6 col-lg-6 col-xl-4"
-					style="width: 100%;">
+				<div id="com" class="col-md-6 col-lg-6 col-xl-4"
+					style="width: 100%;  display: none;">
 					<div class="rounded position-relative fruite-item"
 						style="width: 1500px;">
 
@@ -485,11 +485,11 @@
 
 								<c:forEach items="${allC_list}" var="c">
 									<c:if test="${f.c_num eq c.c_num}">
-										<a href="G_BoardContent?g_num=${c.c_num}"> <img alt=""
+										<a href="C_BoardContent?c_num=${c.c_num}&c_writer=${c.c_writer}"> <img alt=""
 											src="resources/g_Image/${c.c_img1}" align="left"
 											class='img-fluid w-100 rounded-top'
 											style="width: 150px; height: 150px; !important;"></a>
-										<a href="G_BoardContent?g_num=${c.c_num}">
+										<a href="C_BoardContent?c_num=${c.c_num}&c_writer=${c.c_writer}">
 
 											<h3 style="text-align: center;">${c.c_title}</h3>
 										</a>
@@ -509,7 +509,7 @@
 				</div>
 				
 				
-				<div id="com" class="col-md-6 col-lg-6 col-xl-4"
+				<div id="gen" class="col-md-6 col-lg-6 col-xl-4"
 					style="width: 100%;">
 					<div class="rounded position-relative fruite-item"
 						style="width: 1500px;">
