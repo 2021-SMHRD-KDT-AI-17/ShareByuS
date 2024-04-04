@@ -404,7 +404,7 @@
 			</div>
 			</c:if>
 		</div>
-		   
+		<input type="hidden" id="cNum" value="${c_board.c_num}">   
 		<input type="hidden" id="payEmail" value="${loginMember.email }">
 		<input type="hidden" id="payName" value="${loginMember.name }">
 		<input type="hidden" id="payTel" value="${loginMember.tel }">
@@ -425,16 +425,20 @@
 							style="object-fit: cover !important; height: 450px;"
 							src="resources/g_Image/${c_board.c_img1}" alt="..." />
 					</div>
-					<div class="carousel-item">
-						<img class="d-block"
-							style="object-fit: cover !important; height: 450px;"
-							src="resources/g_Image/${c_board.c_img2}" alt="..." />
-					</div>
-					<div class="carousel-item">
-						<img class="d-block"
-							style="object-fit: cover !important; height: 450px;"
-							src="resources/g_Image/${c_board.c_img3}" alt="..." />
-					</div>
+					<c:if test="${not empty c_board.c_img2}">
+						<div class="carousel-item">
+							<img class="d-block"
+								style="object-fit: cover !important; height: 450px;"
+								src="resources/g_Image/${c_board.c_img2}" alt="..." />
+						</div>
+					</c:if>
+					<c:if test="${not empty c_board.c_img3}">
+						<div class="carousel-item">
+							<img class="d-block"
+								style="object-fit: cover !important; height: 450px;"
+								src="resources/g_Image/${c_board.c_img3}" alt="..." />
+						</div>
+					</c:if>
 				</div>
 				<button class="carousel-control-prev" type="button"
 					data-bs-target="#carouselExampleControls" data-bs-slide="prev">
@@ -486,7 +490,6 @@
 									<li><a href="#"> <strong style="float: right;">⁝</strong>
 									</a>
 										<ul>
-											<li><a href="#">펀딩 마감</a></li>
 											<li><a href="goCUpdate?c_num=${c_board.c_num}">게시글
 													수정</a></li>
 											<li><a href="deleteCBoard?c_num=${c_board.c_num}">게시글
@@ -581,7 +584,8 @@
 							</c:forEach>
 
 						</select>
-						<input type="hidden" value="${c_board.c_num }" name="c_num">
+						<input type="hidden" value="${c_board.c_num }" name="c_num" id="cNum">
+						<input type="hidden" value="${c_board.email }" name="cp_email" id="cEmail">
 						
 						
 					</form>
@@ -932,6 +936,8 @@
 	        	var inputName = document.getElementById("payName").value;
 	        	var inputTel = document.getElementById("payTel").value;
 	        	var inputAddress = document.getElementById("payAddress").value;
+	        	var c_num = document.getElementById("cNum").value;
+	        	var cp_email = document.getElementById("cEmail").value;
 	        	
 	        	
 	        	
@@ -963,11 +969,12 @@
 	                    msg += '카드 승인번호 : ' + rsp.apply_num;
 	                    
 	                    let f = document.createElement('form');
-		                /* let obj1;
+		                
+	                    let obj1;
 		        		    obj1 = document.createElement('input');
 		        		    obj1.setAttribute('type', 'hidden');
-		        		    obj1.setAttribute('name', 'p_num');
-		        		    obj1.setAttribute('value', p_num); */
+		        		    obj1.setAttribute('name', 'c_num');
+		        		    obj1.setAttribute('value', c_num);
 		        		
 		        		let obj2;
 		        		    obj2 = document.createElement('input');
@@ -978,13 +985,13 @@
 		        		let obj3;
 		        		    obj3 = document.createElement('input');
 		        		    obj3.setAttribute('type', 'hidden');
-		        		    obj3.setAttribute('name', 'p_name');
+		        		    obj3.setAttribute('name', 'pc_name');
 		        		    obj3.setAttribute('value', inputUp);
 		        		
 		        		let obj4;
 		        		    obj4 = document.createElement('input');
 		        		    obj4.setAttribute('type', 'hidden');
-		        		    obj4.setAttribute('name', 'p_amount');
+		        		    obj4.setAttribute('name', 'pc_price');
 		        		    obj4.setAttribute('value', inputPrice);
 		        		    
 		        		
@@ -997,16 +1004,23 @@
 		        		let obj6;
 		        		    obj6 = document.createElement('input');
 		        		    obj6.setAttribute('type', 'hidden');
-		        		    obj6.setAttribute('name', 'p_cnt');
-		        			
+		        		    obj6.setAttribute('name', 'pc_cnt');
 		        		    obj6.setAttribute('value', cnt);
 		        		
+		        		let obj7;
+		        		    obj2 = document.createElement('input');
+		        		    obj2.setAttribute('type', 'hidden');
+		        		    obj2.setAttribute('name', 'cp_email');
+		        		    obj2.setAttribute('value', cp_email);
 		        		
+		        		
+		        		    f.appendChild(obj1);
 		        		    f.appendChild(obj2);
 		        		    f.appendChild(obj3);
 		        		    f.appendChild(obj4);
 		        		    f.appendChild(obj5);
 		        		    f.appendChild(obj6);
+		        		    f.appendChild(obj7);
 		        		    f.setAttribute('method', 'post');
 		        		    f.setAttribute('action', 'payObjectSuccess');
 		        		    document.body.appendChild(f);

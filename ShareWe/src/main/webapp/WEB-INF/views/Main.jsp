@@ -200,8 +200,9 @@
 						Share We를 통해 <br> 동네에서 공동구매를 진행해보세요.
 					</h5>
 
-
+					
 					<!-- 채팅 임시 버튼 
+					<a href="plus"><button>구독권</button></a>
                <a href="goChat"><button>채팅</button></a>
                채팅 임시 버튼 -->
 

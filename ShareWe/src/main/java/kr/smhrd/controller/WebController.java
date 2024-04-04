@@ -18,6 +18,7 @@ import kr.smhrd.entity.g_board;
 import kr.smhrd.entity.g_favorite;
 import kr.smhrd.entity.member;
 import kr.smhrd.entity.payment;
+import kr.smhrd.entity.purchase;
 import kr.smhrd.entity.review;
 import kr.smhrd.entity.subscribe;
 import kr.smhrd.mapper.C_BoardMapper;
@@ -163,8 +164,8 @@ public class WebController {
 				List<review> review_list = c_boardMapper.getMyReview(loginMember.getEmail());
 				model.addAttribute("review_list", review_list);
 				
-				List<payment> payment_list = memberMapper.getPayment(loginMember.getEmail());
-				model.addAttribute("payment_list", payment_list);
+				List<purchase> purchase_list = memberMapper.getPurchase(loginMember.getEmail());
+				model.addAttribute("purchase_list", purchase_list);
 				
 				subscribe sub_list = memberMapper.getSub(loginMember.getEmail());
 				model.addAttribute("sub_list", sub_list);
@@ -185,6 +186,9 @@ public class WebController {
 				model.addAttribute("allG_list", allG_list);
 				List<g_favorite> Gfv_list = favoriteMapper.getGEmail(loginMember.getEmail());
 				model.addAttribute("Gfv_list", Gfv_list);
+				
+				List<purchase> sell_list = memberMapper.getSel(loginMember.getEmail());
+				model.addAttribute("purchase_list", sell_list);
 				
 			}
 			return "myPage";

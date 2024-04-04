@@ -6,9 +6,8 @@ import org.apache.ibatis.annotations.Mapper;
 import org.apache.ibatis.annotations.Select;
 
 import kr.smhrd.entity.approve;
-import kr.smhrd.entity.g_board;
 import kr.smhrd.entity.member;
-import kr.smhrd.entity.payment;
+import kr.smhrd.entity.purchase;
 import kr.smhrd.entity.report;
 import kr.smhrd.entity.subscribe;
 import lombok.NonNull;
@@ -69,9 +68,13 @@ public interface MemberMapper {
 
 	public List<member> addrEQemail(String address);
 
-	public List<payment> getPayment(String email);
+	public List<purchase> getPurchase(String email);
 
 	public subscribe getSub(String email);
+
+	public void updatePC_State(purchase purchase);
+
+	public List<purchase> getSel(String email);
 
 
 

@@ -63,20 +63,41 @@ public class c_board {
     
     // 상품 구매 갯수
     private int c_p_count;
-    
-//    public c_board(@NonNull String c_title, @NonNull String c_img1, @NonNull String c_content, @NonNull String c_f_date,
-//			@NonNull String category, String place, @NonNull int price, @NonNull double c_opt1, @NonNull int c_ea) {
-//		super();
-//		this.c_title = c_title;
-//		this.c_img1 = c_img1;
-//		this.c_content = c_content;
-//		this.c_f_date = c_f_date;
-//		this.category = category;
-//		this.price = price;
-//		this.c_opt1 = c_opt1;
-//		this.c_ea = c_ea;
-//	}
 
+	public c_board(@NonNull String c_title, @NonNull String c_writer, @NonNull String email, @NonNull String c_img1,
+			@NonNull String c_content, @NonNull String c_f_date, @NonNull String category, @NonNull String price,
+			@NonNull String c_opt1, @NonNull int c_ea) {
+		super();
+		this.c_title = c_title;
+		this.c_writer = c_writer;
+		this.email = email;
+		this.c_img1 = c_img1;
+		this.c_content = c_content;
+		this.c_f_date = c_f_date;
+		this.category = category;
+		this.price = price;
+		this.c_opt1 = c_opt1;
+		this.c_ea = c_ea;
+	}
+	
+	public c_board(@NonNull String c_title, @NonNull String c_writer, @NonNull String email, @NonNull String c_img1, @NonNull String c_img2,
+			@NonNull String c_content, @NonNull String c_f_date, @NonNull String category, @NonNull String price,
+			@NonNull String c_opt1, @NonNull int c_ea) {
+		super();
+		this.c_title = c_title;
+		this.c_writer = c_writer;
+		this.email = email;
+		this.c_img1 = c_img1;
+		this.c_img2 = c_img2;
+		this.c_content = c_content;
+		this.c_f_date = c_f_date;
+		this.category = category;
+		this.price = price;
+		this.c_opt1 = c_opt1;
+		this.c_ea = c_ea;
+	}
+    
+    
 }
 
 

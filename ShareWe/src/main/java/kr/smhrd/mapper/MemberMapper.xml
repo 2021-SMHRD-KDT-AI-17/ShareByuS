@@ -86,12 +86,20 @@
 		select email from member where instr(address,#{address})=1
 	</select>
 	
-	<select id="getPayment" parameterType="String" resultType="kr.smhrd.entity.payment">
-		select * from payment where email=#{email}
+	<select id="getPurchase" parameterType="String" resultType="kr.smhrd.entity.purchase">
+		select * from purchase where email=#{email} order by pc_time DESC
 	</select>
 	
 	<select id="getSub" parameterType="String" resultType="kr.smhrd.entity.subscribe">
 		select * from subscribe where email=#{email}
+	</select>
+	
+	<update id="updatePC_State" parameterType="kr.smhrd.entity.purchase">
+		update purchase set pc_state = #{pc_state} where email=#{email}
+	</update>
+	
+	<select id="getSel" parameterType="String" resultType="kr.smhrd.entity.purchase">
+		select * from purchase where pc_email=#{email} order by pc_time DESC
 	</select>
 	
 </mapper>

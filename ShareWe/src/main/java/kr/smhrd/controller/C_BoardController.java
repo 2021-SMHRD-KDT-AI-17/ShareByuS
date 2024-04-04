@@ -21,6 +21,7 @@ import kr.smhrd.entity.c_subscribe;
 import kr.smhrd.entity.g_favorite;
 import kr.smhrd.entity.member;
 import kr.smhrd.entity.review;
+import kr.smhrd.entity.subscribe;
 import kr.smhrd.mapper.C_BoardMapper;
 import kr.smhrd.mapper.FavoriteMapper;
 import kr.smhrd.mapper.MemberMapper;
@@ -255,8 +256,6 @@ public class C_BoardController {
 		
 		return "Review";
 	}
-	
-	
 	
 	
 	}

@@ -9,6 +9,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 
 import kr.smhrd.entity.member;
 import kr.smhrd.entity.payment;
+import kr.smhrd.entity.purchase;
 import kr.smhrd.mapper.SubscribeMapper;
 
 @Controller
@@ -29,9 +30,9 @@ public class SubscribeController {
 	
 	// 기업 상품 결제완료 메소드
 	@RequestMapping("/payObjectSuccess")
-	public String payObjectSuccess(payment payment, Model model) {
-		subscribeMapper.paySuccess(payment);
-		model.addAttribute("successPay", payment);
+	public String payObjectSuccess(purchase purchase, Model model) {
+		subscribeMapper.purchaseSuccess(purchase);
+		model.addAttribute("successPay", purchase);
 		
 		return "CPayment";
 	}
@@ -40,6 +41,12 @@ public class SubscribeController {
 	public String gopaySuccess() {
 		
 		return "Payment";
+	}
+	
+	@RequestMapping("/plus")
+	public String plus() {
+		subscribeMapper.plusCnt();
+		return "redirect:/goMain";
 	}
 	
 	

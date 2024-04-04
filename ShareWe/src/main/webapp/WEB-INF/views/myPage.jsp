@@ -271,8 +271,6 @@
 							<div>
 								 
 								<h5>${loginMember.nick}</h5>
-								<input style="color: white" id="none" type="button"
-									class="btn btn-primary" onclick="div_show();" value="닉네임 수정">
 
 								<div id="ReNick" style="display: none">
 									<form action="UpdateNick">
@@ -308,34 +306,41 @@
 		style="width: auto;">
 
 
-
-		<ul class="filters_menu">
-
-
-			<a onclick="getCategory()" id="clickVege">
-				<li class="list-group-item">찜 목록</li>
-			</a>
-
-			<a onclick="getBoard()" id="clickVege">
-				<li class="list-group-item">My 게시글</li>
-			</a>
-
-			<a onclick="getReview()" id="clickVege">
-				<li class="list-group-item">My 리뷰</li>
-			</a>
-
-			<a onclick="getSub()" id="clickVege">
-				<li class="list-group-item">구독권</li>
-			</a>
-
-			<a onclick="getJoin()" id="clickVege">
-				<li class="list-group-item">결제 내역</li>
-			</a>
-
-
-
-
-		</ul>
+	<c:choose>
+		<c:when test="${loginMember.type == 2 || loginMember.type == 3}">
+			<ul class="filters_menu">
+				<a onclick="getCategory()" id="clickVege">
+					<li class="list-group-item">찜 목록</li>
+				</a>
+	
+				<a onclick="getBoard()" id="clickVege">
+					<li class="list-group-item">My 게시글</li>
+				</a>
+	
+				<a onclick="getReview()" id="clickVege">
+					<li class="list-group-item">My 리뷰</li>
+				</a>
+	
+				<a onclick="getSub()" id="clickVege">
+					<li class="list-group-item">구독권</li>
+				</a>
+	
+				<a onclick="getJoin()" id="clickVege">
+					<li class="list-group-item">결제 내역</li>
+				</a>
+			</ul>
+		</c:when>
+		<c:otherwise>
+			<ul class="filters_menu">
+				<a onclick="getBoard()" id="clickVege">
+					<li class="list-group-item">My 게시글</li>
+				</a>
+				<a onclick="getJoin()" id="clickVege">
+					<li class="list-group-item">주문 내역</li>
+				</a>
+			</ul>
+		</c:otherwise>
+	</c:choose>
 
 
 
@@ -441,14 +446,14 @@
 									style="width: 300px; border: solid; border-width: 1px; margin: auto; border-color: #EEEEEE !important; display: inline-block;"
 									align="cenber;">
 
-									<a
-										href="C_BoardContent?c_num=${c.c_num}&c_writer=${c.c_writer}">
-										<img alt="" src="resources/c_Image/${c.c_img1}" align="left"
+								
+									<a href="C_BoardContent?c_num=${c.c_num}&c_writer=${c.c_writer}">
+										<img alt="" src="resources/g_Image/${c.c_img1}" align="left"
 										class='img-fluid w-100 rounded-top'
 										style="width: 150px; height: 150px; !important;">
 									</a> <a
 										href="C_BoardContent?c_num=${c.c_num}&&c_writer=${c.c_writer}">
-										<h3 style="text-align: center; height: 130px;">${c.c_title}</h3>
+										<h4 style="text-align: center;">${c.c_title}</h4>
 									</a> <br> <strong style="color: #A4A4A4;">${c.category }</strong>
 									<hr>
 									<strong style="color: #A4A4A4;">${c.c_w_date }</strong>
@@ -690,31 +695,119 @@
 
 			<div class="row g-4 justify-content-center">
 				<div class="col-md-6 col-lg-6 col-xl-4" style="width: 1200px">
-					<div class="boardContent" style="width: 80% !important; font-size: 16px !important;">
-						<table style="width: 80% !important; text-align: center; margin-left: 70px;">
-								<tr>
-									<th style="background-color: #009223 !important;"><strong>번호</strong></th>
-									<th style="background-color: #009223 !important;"><strong>상품명</strong></th>
-									<th style="background-color: #009223 !important;"><strong>가격</strong></th>
-									<th style="background-color: #009223 !important;"><strong>수량</strong></th>
-									<th style="background-color: #009223 !important;"><strong>승인번호</strong></th>
-								</tr>
-						<c:forEach items="${payment_list}" var="p" varStatus="i">
-							<tr>
-								<td style="margin-right: 20px;">${i.count}</td>
-								<td style="margin-right: 20px;">${p.p_name }</td>
-								<td style="margin-right: 20px;">${p.p_amount }</td>
-								<td style="margin-right: 20px;">${p.p_cnt }</td>
-								<td style="margin-right: 20px;">${p.apply_num }</td>
-							</tr>
-						</c:forEach>
-						</table>
+					<div class="boardContent" style="width: 80% !important; font-size: 16px !important; text-align: center;">
+						<h3 style="margin-bottom: 10px;">주문내역</h3>
+						<c:choose>
+							<c:when test="${loginMember.type == 2 || loginMember.type == 3}">
+								<table style="width: 80% !important; text-align: center; margin-left: 70px;">
+										<tr>
+											<th style="background-color: #009223 !important;"><strong>번호</strong></th>
+											<th style="background-color: #009223 !important;"><strong>상품명</strong></th>
+											<th style="background-color: #009223 !important;"><strong>가격</strong></th>
+											<th style="background-color: #009223 !important;"><strong>수량</strong></th>
+											<th style="background-color: #009223 !important;"><strong>승인번호</strong></th>
+											<th style="background-color: #009223 !important;"><strong>주문상태</strong></th>
+										</tr>
+								<c:forEach items="${purchase_list}" var="p" varStatus="i">
+									<tr>
+										<td style="margin-right: 20px;">${i.count}</td>
+										<td style="margin-right: 20px;">${p.pc_name }</td>
+										<td style="margin-right: 20px;">${p.pc_price }</td>
+										<td style="margin-right: 20px;">${p.pc_cnt }</td>
+										<td style="margin-right: 20px;">${p.apply_num }</td>
+										<c:choose>
+											<c:when test="${p.pc_state == 0}">
+												<td style="margin-right: 20px;">주문대기</td>
+											</c:when>
+											<c:when test="${p.pc_state == 1}">
+												<td style="margin-right: 20px;">상품준비중</td>
+											</c:when>
+											<c:when test="${p.pc_state == 2}">
+												<td style="margin-right: 20px;">픽업가능</td>
+											</c:when>
+											<c:otherwise>
+												<td style="margin-right: 20px;">픽업완료</td>
+											</c:otherwise>
+										</c:choose>
+									</tr>
+								</c:forEach>
+								</table>
+							</c:when>
+							<c:otherwise>
+								<table style="width: 90% !important; text-align: center; margin-left: 25px;">
+										<tr>
+											<th style="background-color: #009223 !important;"><strong>주문자 이메일</strong></th>
+											<th style="background-color: #009223 !important;"><strong>상품명</strong></th>
+											<th style="background-color: #009223 !important;"><strong>가격</strong></th>
+											<th style="background-color: #009223 !important;"><strong>수량</strong></th>
+											<th style="background-color: #009223 !important;"><strong>승인번호</strong></th>
+											<th style="background-color: #009223 !important;"><strong>주문상태</strong></th>
+											<th style="background-color: #009223 !important;"><strong>주문상태 변경</strong></th>
+										</tr>
+									<c:forEach items="${purchase_list}" var="p" varStatus="i">
+										<tr>
+											<td style="margin-right: 20px;">${p.email}</td>
+											<td style="margin-right: 20px;">${p.pc_name }</td>
+											<td style="margin-right: 20px;">${p.pc_price }</td>
+											<td style="margin-right: 20px;">${p.pc_cnt }</td>
+											<td style="margin-right: 20px;">${p.apply_num }</td>
+											<c:choose>
+												<c:when test="${p.pc_state == 0}">
+													<td style="margin-right: 20px;">주문대기</td>
+												</c:when>
+												<c:when test="${p.pc_state == 1}">
+													<td style="margin-right: 20px;">상품준비중</td>
+												</c:when>
+												<c:when test="${p.pc_state == 2}">
+													<td style="margin-right: 20px;">픽업가능</td>
+												</c:when>
+												<c:otherwise>
+													<td style="margin-right: 20px;">픽업완료</td>
+												</c:otherwise>
+											</c:choose>
+											<td style="margin-right: 20px;">
+												<form action="updatePC_State">
+													<input type="hidden" value="${p.email}" name="email">
+													<select id="pc_state" name="pc_state">
+														<option value="0">주문대기</option>
+														<option value="1">상품준비중</option>
+														<option value="2">픽업가능</option>
+														<option value="3">픽업완료</option>
+													</select>
+													<input type="submit" value="변경">
+												</form>
+											</td>
+										</tr>
+									</c:forEach>
+									</table>
+							</c:otherwise>
+						</c:choose>
 					</div>
 				</div>
 			</div>
 		</div>
 
-
+		<!-- <script type="text/javascript">
+			function updateState(){
+				var pc_state = document.getElementById("pc_state").value;
+				var pc_email = document.getElementById("pc_email").value;
+	
+						$.ajax(
+						{
+							url : "updatePC_State",
+							data : {'pc_state' : pc_state,
+									'email' : email},
+							type :'get',
+							success : function(){
+								
+							},
+							error : function(){
+								alert("통신실패")
+							}
+						}
+					)
+			}
+		</script> -->
 
 
 

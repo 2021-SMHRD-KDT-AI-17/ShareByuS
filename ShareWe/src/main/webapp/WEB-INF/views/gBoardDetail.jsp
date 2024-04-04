@@ -402,19 +402,23 @@
 				<div class="carousel-inner" style="position: absoulte;">
 					<div class="carousel-item active">
 						<img class="d-block w-100"
-							style="object-fit: cover !important; height: 450px;"
+							style="object-fit: scale-down !important; height: 450px;"
 							src="resources/g_Image/${g_board.g_img1}" alt="..." />
 					</div>
-					<div class="carousel-item">
-						<img class="d-block w-100"
-							style="object-fit: cover !important; height: 450px;"
-							src="resources/g_Image/${g_board.g_img2}" alt="..." />
-					</div>
-					<div class="carousel-item">
-						<img class="d-block w-100"
-							style="object-fit: cover !important; height: 450px;"
-							src="resources/g_Image/${g_board.g_img3}" alt="..." />
-					</div>
+					<c:if test="${not empty g_board.g_img2}">
+						<div class="carousel-item">
+							<img class="d-block w-100"
+								style="object-fit: scale-down !important; height: 450px;"
+								src="resources/g_Image/${g_board.g_img2}" alt="..." />
+						</div>
+					</c:if>
+					<c:if test="${not empty g_board.g_img3}">
+						<div class="carousel-item">
+							<img class="d-block w-100"
+								style="object-fit: scale-down !important; height: 450px;"
+								src="resources/g_Image/${g_board.g_img3}" alt="..." />
+						</div>
+					</c:if>
 				</div>
 				<button class="carousel-control-prev" type="button"
 					data-bs-target="#carouselExampleControls" data-bs-slide="prev">

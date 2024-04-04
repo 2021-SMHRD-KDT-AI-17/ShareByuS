@@ -2,6 +2,7 @@ package kr.smhrd.controller;
 
 import java.util.List;
 
+import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
 
 import org.slf4j.Logger;
@@ -14,6 +15,7 @@ import org.springframework.web.bind.annotation.RequestParam;
 
 import kr.smhrd.entity.approve;
 import kr.smhrd.entity.member;
+import kr.smhrd.entity.purchase;
 import kr.smhrd.entity.report;
 //import kr.smhrd.entity.Message;
 import kr.smhrd.mapper.MemberMapper;
@@ -30,69 +32,65 @@ public class MemberController {
 //	// 인터페이스 불러오기 - Spring
 	@Autowired
 	private MemberMapper memberMapper;
-	
+
 	@Autowired
 	private SubscribeMapper subscribeMapper;
-	
-	 // 회원가입하는 메소드 /memberInsert
+
+	// 회원가입하는 메소드 /memberInsert
 	@RequestMapping("/memberInsert")
 	public String memberInsert(member member, Model model) {
 		System.out.println(member.toString());
-		if(member.getType() == 1) {
+		if (member.getType() == 1) {
 			memberMapper.approveInsert(member);
 			model.addAttribute("joinMember", member);
-		}else {
+		} else {
 			memberMapper.memberInsert(member);
 			model.addAttribute("joinMember", member);
 			// 구독 테이블에도 등록
 			subscribeMapper.insertSubscribe(member.getEmail());
 		}
-		
+
 		return "JoinSuccess";
 	}
 
-	
 	// 로그인 메소드
 	@RequestMapping("/memberCheck")
 	public String memberSelect(member member, HttpSession session, Model model) {
-		
+
 		member loginMember = memberMapper.memberCheck(member);
-		if(loginMember == null) {
+		if (loginMember == null) {
 			model.addAttribute("fail", "fail");
-			
+
 			return "Login";
-		}else {
+		} else {
 			session.setAttribute("loginMember", loginMember);
-			
+
 			return "redirect:/goMain";
 		}
 	}
-	
-	
+
 	// 카카오로그인 메소드
-		@RequestMapping("/memberCheck2")
-		public String memberSelect2(member member, HttpSession session, Model model) {
-			
-			member loginMember = memberMapper.memberCheck2(member);
-			if(loginMember == null) {
-				model.addAttribute("fail", "fail");
-				
-				return "Login";
-			}else {
-				session.setAttribute("loginMember", loginMember);
-				return "redirect:/goMain";
+	@RequestMapping("/memberCheck2")
+	public String memberSelect2(member member, HttpSession session, Model model) {
+
+		member loginMember = memberMapper.memberCheck2(member);
+		if (loginMember == null) {
+			model.addAttribute("fail", "fail");
+
+			return "Login";
+		} else {
+			session.setAttribute("loginMember", loginMember);
+			return "redirect:/goMain";
 		}
 	}
 
-		
 	// 로그아웃 메소드
 	@RequestMapping("/memberLogout")
 	public String memberLogout(HttpSession session) {
 		session.invalidate();
 		return "redirect:/goMain";
 	}
-	
-	
+
 	// 기업회원 승인페이지 불러오는 메소드
 	@RequestMapping("/goAdApprove")
 	public String goAdApprove(Model model) {
@@ -100,16 +98,16 @@ public class MemberController {
 		model.addAttribute("adApprove", adApprove);
 		return "AdApprove";
 	}
-	
+
 	@RequestMapping("/approveComplete")
 	public String approveComplete(@RequestParam("email") String email) {
 		approve approveMem = memberMapper.getApprove(email);
 		memberMapper.approveMemInsert(approveMem);
 		memberMapper.delApprove(email);
-		
+
 		return "redirect:/goAdApprove";
 	}
-	
+
 	// 회원 관리 페이지로 이동, 모든 회원정보를 불러오는 메소드
 	@RequestMapping("/goAdMember")
 	public String goAdMember(Model model) {
@@ -117,8 +115,7 @@ public class MemberController {
 		model.addAttribute("adMember", adMember);
 		return "AdMember";
 	}
-	
-	
+
 	// 신고회원 관리 페이지로 이동
 	@RequestMapping("/goAdReport")
 	public String goAdReport(Model model) {
@@ -126,8 +123,7 @@ public class MemberController {
 		model.addAttribute("adReport", adReport);
 		return "AdReport";
 	}
-	
-		
+
 	// 회원정보 수정 메소드 /memberUpdate
 	@RequestMapping("/memberUpdate")
 	public String memberUpdate(member member, HttpSession session) {
@@ -136,7 +132,7 @@ public class MemberController {
 		session.setAttribute("loginMember", member);
 		return "myPage";
 	}
-	
+
 	// 닉네임 수정 메소드
 	@RequestMapping("/UpdateNick")
 	public String updateNick(member member, HttpSession session) {
@@ -144,45 +140,43 @@ public class MemberController {
 		session.setAttribute("loginMember", member);
 		return "myPage";
 	}
-	
+
 	// 회원 탈퇴(일반회원)
 	@RequestMapping("/goDeleteMember")
 	public String goDeleteMember() {
 		return "DeleteMember";
 	}
-	
+
 	// 회원 탈퇴(카카오 회원)
 	@RequestMapping("/goDeleteKakao")
 	public String goDeleteKakao(member member, HttpSession session, Model model) {
-				
+
 		member loginMember = memberMapper.goDeleteKakao(member);
-		if(loginMember == null) {
+		if (loginMember == null) {
 			model.addAttribute("fail", "fail");
-					
-				return "DeleteMember";
-				}else {
-					session.setAttribute("loginMember", loginMember);
-					return "ReallyDelete";
-			}
+
+			return "DeleteMember";
+		} else {
+			session.setAttribute("loginMember", loginMember);
+			return "ReallyDelete";
 		}
-	
-	
+	}
+
 	// 회원 탈퇴 다시 물어봄
 	@RequestMapping("/goReallyDelete")
 	public String goReallyDelete(member member, HttpSession session, Model model) {
-			member loginMember = memberMapper.goReallyDelete(member);
-			if(loginMember == null) {
-				model.addAttribute("fail", "fail");
-				
-				return "DeleteMember";
-			}else {
-				session.setAttribute("loginMember", loginMember);
-				
-				return "ReallyDelete";
-			}
+		member loginMember = memberMapper.goReallyDelete(member);
+		if (loginMember == null) {
+			model.addAttribute("fail", "fail");
+
+			return "DeleteMember";
+		} else {
+			session.setAttribute("loginMember", loginMember);
+
+			return "ReallyDelete";
 		}
-	
-	
+	}
+
 	// 회원 탈퇴 성공
 	@RequestMapping("/goDeleteSuccess")
 	public String goDeleteSuccess(@RequestParam("email") String email, HttpSession session) {
@@ -190,35 +184,40 @@ public class MemberController {
 		session.invalidate();
 		return "DeleteSuccess";
 	}
-	
+
 	// 회원 탈퇴(관리자)
 	@RequestMapping("/deleteMember")
 	public String deleteMember(@RequestParam("email") String email, Model model) {
 		memberMapper.deleteMember(email);
-		
+
 		return "redirect:/goAdMember";
 	}
-	
-	
-	
+
 	// 회원 정지(관리자)
 	@RequestMapping("/susMember")
 	public String susMember(@RequestParam("email") String email) {
 		memberMapper.susMember(email);
-		
+
 		return "redirect:/goAdMember";
 	}
-	
+
 	// 회원 정지 해제(관리자)
 	@RequestMapping("/resMember")
-	public String resMember( @RequestParam("email") String email) {
+	public String resMember(@RequestParam("email") String email) {
 		memberMapper.resMember(email);
-		
+
 		return "redirect:/goAdMember";
 	}
-	
-	
-	
+
+	// 주문상태 변경
+	@RequestMapping("/updatePC_State")
+	public String updatePC_State(purchase purchase) {
+		
+		memberMapper.updatePC_State(purchase);
+		
+		return "redirect:/goMyPage";
+	}
+
 //	// 로그인 메소드
 //	@RequestMapping("/memberSelect")
 //	public String memberSelect(Member member, HttpSession session) {

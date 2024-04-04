@@ -49,6 +49,106 @@
 	line-height: 31px;
 	padding: 8px 10px;
 }
+
+#root {
+	width: 100%;
+	margin: 0 auto;
+	max-width: 800px;
+}
+
+.title {
+	text-align: center;
+}
+
+.contents {
+	display: flex;
+	flex-direction: row;
+	margin-top: 30px;
+}
+
+.contents .upload-box {
+	width: 100%;
+	margin-right: 30px;
+	display: flex;
+	flex-direction: column;
+	justify-content: center;
+	align-items: center;
+}
+
+.contents .upload-box .drag-file {
+	position: relative;
+	width: 100%;
+	height: 360px;
+	display: flex;
+	flex-direction: column;
+	justify-content: center;
+	align-items: center;
+	border: 3px dashed #dbdbdb;
+}
+
+.contents .upload-box .drag-file.highlight {
+	border: 3px dashed red;
+}
+
+.contents .upload-box .drag-file .image {
+	width: 40px;
+}
+
+.contents .upload-box .drag-file .message {
+	margin-bottom: 0;
+}
+
+.contents .upload-box .drag-file .preview {
+	display: none;
+	position: absolute;
+	left: 0;
+	height: 0;
+	width: 100%;
+	height: 100%;
+}
+
+.contents .upload-box .file-label {
+	margin-top: 30px;
+	background-color: #5b975b;
+	color: #fff;
+	text-align: center;
+	padding: 10px 0;
+	width: 65%;
+	border-radius: 6px;
+	cursor: pointer;
+}
+
+.contents .upload-box .file {
+	display: none;
+}
+
+@media ( max-width : 700px) {
+	.contents {
+		display: flex;
+		flex-direction: column;
+		margin-top: 30px;
+	}
+	.contents .upload-box {
+		width: 100%;
+		box-sizing: border-box;
+		margin-right: 0;
+	}
+	.contents .upload-box .drag-file {
+		height: 150px;
+	}
+	.contents .files {
+		width: 100%;
+		box-sizing: border-box;
+		margin-right: 0;
+		overflow: initial;
+	}
+}
+
+.contents1 {
+	display: flex;
+	flex-direction: row;
+	margin-top: 30px;
+}
 </style>
 </head>
 
@@ -68,7 +168,8 @@
 
 
 	<!-- Navbar start -->
-	<div class="container-fluid fixed-top" style="background-color: white !important;">
+	<div class="container-fluid fixed-top"
+		style="background-color: white !important;">
 		<div class="container topbar bg-primary d-none d-lg-block">
 			<div class="d-flex justify-content-between">
 				<div class="top-info ps-2">
@@ -119,19 +220,19 @@
 							style="color: black; font-size: 18px;"><strong>공구함</strong></a> <a
 							href="goCompany" class="nav-item nav-link"
 							style="color: black; font-size: 18px;"><strong>동네구경</strong></a>
-							<%
-								if (loginMember == null) {
-								%>
-								<a href="goLogin" class="nav-item nav-link"
-									style="color: black; font-size: 18px;"><strong>우리동네</strong></a>
-								<%
-								} else {
-								%>
-								<a href="goHood" class="nav-item nav-link"
-									style="color: black; font-size: 18px;"><strong>우리동네</strong></a>
-								<%
-								}
-								%>
+						<%
+						if (loginMember == null) {
+						%>
+						<a href="goLogin" class="nav-item nav-link"
+							style="color: black; font-size: 18px;"><strong>우리동네</strong></a>
+						<%
+						} else {
+						%>
+						<a href="goHood" class="nav-item nav-link"
+							style="color: black; font-size: 18px;"><strong>우리동네</strong></a>
+						<%
+						}
+						%>
 						<!-- <a href="shop-detail.html" class="nav-item nav-link">Shop Detail</a> -->
 						<div class="nav-item dropdown">
 							<a href="#" class="nav-link dropdown-toggle active"
@@ -144,8 +245,10 @@
 								<a href="getCategory?category=여행/도서" class="dropdown-item">여행/도서</a>
 							</div>
 						</div>
-								<a href="goSubscribe" class="nav-item nav-link" style="color: black; font-size: 18px;"><strong>POP 결제권</strong></a>
-								
+						<a href="goSubscribe" class="nav-item nav-link"
+							style="color: black; font-size: 18px;"><strong>POP
+								결제권</strong></a>
+
 					</div>
 					<div class="d-flex m-3 me-0">
 						<button
@@ -153,7 +256,8 @@
 							data-bs-toggle="modal" data-bs-target="#searchModal">
 							<i class="fas fa-search text-primary"></i>
 						</button>
-						<a href="goMyPage" class="my-auto"> <i class="fas fa-user fa-2x"></i></a>
+						<a href="goMyPage" class="my-auto"> <i
+							class="fas fa-user fa-2x"></i></a>
 					</div>
 				</div>
 			</nav>
@@ -224,128 +328,94 @@
 					</div>
 
 					<div class="col-md-12 col-lg-6 col-xl-7" align="left">
-						<h4 class="form-label my-3">* 대표 이미지</h4>
+						<h4 class="form-label my-3">* 상품 사진</h4>
 						<br>
-						<div class="form-item">
+						<div id="root"
+							style="width: 850px; display: flex; justify-content: space-between;">
 
-							<label class="input-file-button" for="btnAtt"> 대표사진 </label> <input
-								type="file" name="c_img1" id="btnAtt"
-								accept="image/jpg, image/jpeg, image/png" style="display: none">
-
-							<div id='image_preview'>
-								<div id='att_zone'
-									data-placeholder='파일을 첨부 하려면 파일 선택 버튼을 클릭하거나 파일을 드래그앤드롭 하세요'></div>
+							<div class="contents" style="width: 220px; height: 225px;">
+								<div class="upload-box" style="margin-right: 30px !important;">
+									<div id="drop-file1" class="drag-file">
+										<img
+											src="https://img.icons8.com/pastel-glyph/2x/image-file.png"
+											alt="파일 아이콘" class="image">
+										<p class="message">Drag files to upload</p>
+										<img src="" alt="미리보기 이미지" class="preview">
+									</div>
+									<label class="file-label" for="chooseFile1"
+										style="background-color: green !important">대표 사진</label> <input
+										class="file" id="chooseFile1" type="file" name="c_img1"
+										onchange="handleFiles(this.files, 'drop-file1')"
+										accept="image/png, image/jpeg, image/gif">
+								</div>
 							</div>
-							<input type="file" name="c_img2" id="btnAtt2"
-								accept="image/jpg, image/jpeg, image/png" value="상세사진">
-							<input type="file" name="c_img3" id="btnAtt3"
-								accept="image/jpg, image/jpeg, image/png" value="상세사진">
 
-							<script>
-( /* att_zone : 이미지들이 들어갈 위치 id, btn : file tag id */
-  imageView = function imageView(att_zone, btn){
+							<div class="contents" style="width: 220px; height: 225px;">
+								<div class="upload-box" style="margin-right: 30px !important;">
+									<div id="drop-file2" class="drag-file">
+										<img
+											src="https://img.icons8.com/pastel-glyph/2x/image-file.png"
+											alt="파일 아이콘" class="image">
+										<p class="message">Drag files to upload</p>
+										<img src="" alt="미리보기 이미지" class="preview">
+									</div>
+									<label class="file-label" for="chooseFile2"
+										style="background-color: green !important">상세 사진 1</label> <input
+										class="file" id="chooseFile2" type="file" name="c_img2"
+										onchange="handleFiles(this.files, 'drop-file2')"
+										accept="image/png, image/jpeg, image/gif">
+								</div>
+							</div>
 
-    var attZone = document.getElementById(att_zone);
-    var btnAtt = document.getElementById(btn)
-    var sel_files = [];
-    
-    // 이미지와 체크 박스를 감싸고 있는 div 속성
-    var div_style = 'display:inline-block;position:relative;'
-                  + 'width:150px;height:120px;margin:5px;z-index:1';
-    // 미리보기 이미지 속성
-    var img_style = 'width:100%;height:100%;z-index:none';
-    // 이미지안에 표시되는 체크박스의 속성
-    var chk_style = 'width:30px;height:30px;position:absolute;font-size:24px;'
-                  + 'right:0px;bottom:0px;z-index:999;background-color:rgba(255,255,255,0.1);color:green';
-  
-    btnAtt.onchange = function(e){
-      var files = e.target.files;
-      var fileArr = Array.prototype.slice.call(files)
-      for(f of fileArr){
-        imageLoader(f);
-      }
-    }  
-    
-  
-    // 탐색기에서 드래그앤 드롭 사용
-    attZone.addEventListener('dragenter', function(e){
-      e.preventDefault();
-      e.stopPropagation();
-    }, false)
-    
-    attZone.addEventListener('dragover', function(e){
-      e.preventDefault();
-      e.stopPropagation();
-      
-    }, false)
-  
-    attZone.addEventListener('drop', function(e){
-      var files = {};
-      e.preventDefault();
-      e.stopPropagation();
-      var dt = e.dataTransfer;
-      files = dt.files;
-      for(f of files){
-        imageLoader(f);
-      }
-      
-    }, false)
-    
-    
-    /*첨부된 이미리즐을 배열에 넣고 미리보기 */
-    imageLoader = function(file){
-      sel_files.push(file);
-      var reader = new FileReader();
-      reader.onload = function(ee){
-        let img = document.createElement('img')
-        img.setAttribute('style', img_style)
-        img.src = ee.target.result;
-        attZone.appendChild(makeDiv(img, file));
-      }
-      
-      reader.readAsDataURL(file);
-    }
-    
-    /*첨부된 파일이 있는 경우 checkbox와 함께 attZone에 추가할 div를 만들어 반환 */
-    makeDiv = function(img, file){
-      var div = document.createElement('div')
-      div.setAttribute('style', div_style)
-      
-      var btn = document.createElement('input')
-      btn.setAttribute('type', 'button')
-      btn.setAttribute('value', 'x')
-      btn.setAttribute('delFile', file.name);
-      btn.setAttribute('style', chk_style);
-      btn.onclick = function(ev){
-        var ele = ev.srcElement;
-        var delFile = ele.getAttribute('delFile');
-        for(var i=0 ;i<sel_files.length; i++){
-          if(delFile== sel_files[i].name){
-            sel_files.splice(i, 1);      
-          }
-        }
-        
-        dt = new DataTransfer();
-        for(f in sel_files) {
-          var file = sel_files[f];
-          dt.items.add(file);
-        }
-        btnAtt.files = dt.files;
-        var p = ele.parentNode;
-        attZone.removeChild(p)
-      }
-      div.appendChild(img)
-      div.appendChild(btn)
-      return div
-    }
-  }
-)('att_zone', 'btnAtt')
-
-</script>
+							<div class="contents" style="width: 220px; height: 225px;">
+								<div class="upload-box" style="margin-right: 30px !important;">
+									<div id="drop-file3" class="drag-file">
+										<img
+											src="https://img.icons8.com/pastel-glyph/2x/image-file.png"
+											alt="파일 아이콘" class="image">
+										<p class="message">Drag files to upload</p>
+										<img src="" alt="미리보기 이미지" class="preview">
+									</div>
+									<label class="file-label" for="chooseFile3"
+										style="background-color: green !important">상세 사진 2</label> <input
+										class="file" id="chooseFile3" type="file" name="c_img3"
+										onchange="handleFiles(this.files, 'drop-file3')"
+										accept="image/png, image/jpeg, image/gif">
+								</div>
+							</div>
 
 						</div>
 						<hr>
 					</div>
+
+					<script type="text/javascript">
+    function handleFiles(files, dropAreaId) {
+        let dropArea = document.getElementById(dropAreaId);
+        let fileList = dropArea.nextElementSibling;
+
+        files = [...files];
+        files.forEach(previewFile);
+
+        function previewFile(file) {
+            console.log(file);
+            renderFile(file);
+        }
+
+        function renderFile(file) {
+            let reader = new FileReader();
+            reader.readAsDataURL(file);
+            reader.onloadend = function () {
+                let img = dropArea.querySelector(".preview");
+                img.src = reader.result;
+                img.style.display = "block";
+            };
+        }
+
+        if (fileList) {
+            fileList.scrollTo({ top: fileList.scrollHeight });
+        }
+    }
+</script>
 
 					<div class="col-md-12 col-lg-6 col-xl-7" align="left">
 						<h4 class="form-label my-3">* 상품설명</h4>
@@ -448,21 +518,21 @@
 
 
 	<!-- 메인 페이지 하단 -->
-<div class="container-fluid bg-dark text-white-50 footer pt-5 mt-5">
-			<div class="container py-5">
-				<div class="row g-5">
-					<div class="col-lg-3 col-md-6">
-						<div class="footer-item">
-							<h4 class="text-light mb-3">Contact</h4>
-							<p>Address: Gwangju, Republic of Korea</p>
-							<p>Email: ShareByuS@gmail.com</p>
-							<p>Do you want to share it with us?</p>
-							<img src="img/payment.png" class="img-fluid" alt="">
-						</div>
+	<div class="container-fluid bg-dark text-white-50 footer pt-5 mt-5">
+		<div class="container py-5">
+			<div class="row g-5">
+				<div class="col-lg-3 col-md-6">
+					<div class="footer-item">
+						<h4 class="text-light mb-3">Contact</h4>
+						<p>Address: Gwangju, Republic of Korea</p>
+						<p>Email: ShareByuS@gmail.com</p>
+						<p>Do you want to share it with us?</p>
+						<img src="img/payment.png" class="img-fluid" alt="">
 					</div>
 				</div>
 			</div>
 		</div>
+	</div>
 	<!-- 메인 페이지 하단 End -->
 
 

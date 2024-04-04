@@ -1,7 +1,5 @@
 package kr.smhrd.controller;
 
-import java.util.List;
-
 import javax.servlet.http.HttpSession;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -10,9 +8,9 @@ import org.springframework.web.bind.annotation.RequestParam;
 
 import kr.smhrd.entity.c_favorite;
 import kr.smhrd.entity.c_subscribe;
-import kr.smhrd.entity.g_board;
 import kr.smhrd.entity.g_favorite;
 import kr.smhrd.entity.member;
+import kr.smhrd.entity.purchase;
 import kr.smhrd.mapper.FavoriteMapper;
 import kr.smhrd.mapper.G_BoardMapper;
 import kr.smhrd.mapper.MemberMapper;
@@ -25,7 +23,7 @@ public class RestController {
 
 	@Autowired
 	private G_BoardMapper g_boardMapper;
-	
+
 	@Autowired
 	private FavoriteMapper favoriteMapper;
 
@@ -97,18 +95,19 @@ public class RestController {
 	// 게시글 마감
 	@RequestMapping("/endGBoard")
 	public void endGBoard(@RequestParam("g_num") int g_num) {
-		
+
 		g_boardMapper.endGBoard(g_num);
 
 	}
-	
+
 	// 게시글 마감 취소
 	@RequestMapping("/restartGBoard")
 	public void restartGBoard(@RequestParam("g_num") int g_num) {
-		
+
 		g_boardMapper.restartGBoard(g_num);
-		
+
 	}
+
 
 }
 

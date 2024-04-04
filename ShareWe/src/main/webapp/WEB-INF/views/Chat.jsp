@@ -400,6 +400,28 @@
 
 			</div>
 		</c:when>
+		<c:when test="${g_num == 65}">
+			<div class="row g-4 justify-content-center"
+				style="width: 400px; display: inline-block; padding-top: 150px;">
+				<iframe
+					src='https://www.vchatcloud.com/chat-demo/iframe/iframe_pc/v4/index.html?
+					channelKey=ytiAPVFPhT-E1H8hKCCIe-20240404163216'
+					frameborder='no' scrolling='no' marginwidth='0' marginheight='0'
+					width='150' height='900'></iframe>
+
+			</div>
+		</c:when>
+		<c:when test="${g_num == 63}">
+			<div class="row g-4 justify-content-center"
+				style="width: 400px; display: inline-block; padding-top: 150px;">
+				<iframe
+					src='https://www.vchatcloud.com/chat-demo/iframe/iframe_pc/v4/index.html?
+					channelKey=hYizoNHPnB-vZ7BUqab7A-20240404163207'
+					frameborder='no' scrolling='no' marginwidth='0' marginheight='0'
+					width='150' height='900'></iframe>
+
+			</div>
+		</c:when>
 		<c:otherwise>
 			<div class="row g-4 justify-content-center"
 				style="width: 400px; display: inline-block; padding-top: 150px;">

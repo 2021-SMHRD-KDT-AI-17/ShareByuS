@@ -65,9 +65,14 @@
 					<small class="me-3"></small> <small class="me-3"></small>
 				</div>
 				<div class="top-link pe-2">
-					<!--                   <a href="goMain" class="text-white"><small
-                     class="text-white mx-2">홈</small>|</a> <a href="goLogin"
-                     class="text-white"><small class="text-white mx-2">로그인</small></a> -->
+					<c:if test="${loginMember.email eq 'admin'}">
+						<a href="goMain" class="text-white"><small
+							class="text-white mx-2">홈</small>|</a>
+						<a href="goAdMember" class="text-white"><small
+							class="text-white ms-2">회원관리</small>|</a>
+						<a href="memberLogout" class="text-white"><small
+							class="text-white mx-2">로그아웃</small></a>
+					</c:if>
 				</div>
 			</div>
 		</div>
@@ -227,7 +232,6 @@
 
 
 				
-				<% int index =0;%>
 				
 				<table class="text-center">
 					<div class="featurs-content">
@@ -239,12 +243,10 @@
 							<th>관리</th>
 						</tr>
 
-						<c:forEach var="rp" items="${adReport}">
-							<%
-							index++;
-							%>
+						<c:forEach var="rp" items="${adReport}" varStatus="i">
+							
 							<tr>
-								<td><%=index%></td>
+								<td>${i.count}</td>
 								<td><a href="G_BoardContent?g_num=${rp.b_num}">${rp.r_title}</td>
 								<td>${rp.email}</td>
 								<td>${rp.rp_content}</td>

@@ -435,17 +435,20 @@
 							style="object-fit: cover !important; height: 450px;"
 							src="resources/g_Image/${c_board.c_img1}" alt="..." />
 					</div>
-					<div class="carousel-item">
-						<img class="d-block"
-							style="object-fit: cover !important; height: 450px;"
-							src="https://source.unsplash.com/collection/190727/1600x900"
-							alt="..." />
-					</div>
-					<div class="carousel-item">
-						<img class="d-block"
-							style="object-fit: cover !important; height: 450px;"
-							src="https://source.unsplash.com/WLUHO9A_xik/1600x900" alt="..." />
-					</div>
+					<c:if test="${not empty c_board.c_img2}">
+						<div class="carousel-item">
+							<img class="d-block"
+								style="object-fit: cover !important; height: 450px;"
+								src="resources/g_Image/${c_board.c_img2}" alt="..." />
+						</div>
+					</c:if>
+					<c:if test="${not empty c_board.c_img3}">
+						<div class="carousel-item">
+							<img class="d-block"
+								style="object-fit: cover !important; height: 450px;"
+								src="resources/g_Image/${c_board.c_img3}" alt="..." />
+						</div>
+					</c:if>
 				</div>
 				<button class="carousel-control-prev" type="button"
 					data-bs-target="#carouselExampleControls" data-bs-slide="prev">
