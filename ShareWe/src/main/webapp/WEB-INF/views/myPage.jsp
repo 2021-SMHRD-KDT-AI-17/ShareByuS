@@ -177,31 +177,20 @@
 									<a href="getCategory?category=여행/도서" class="dropdown-item">여행/도서</a>
 								</div>
 							</div>
-							<%
-						if (loginMember == null) {
-						%>
-						<a href="goLogin" class="nav-item nav-link"
-							style="color: black; font-size: 18px;"><strong>동네보기</strong></a>
-						<%
-						} else {
-						%>
-						<a href="goHood" class="nav-item nav-link"
-							style="color: black; font-size: 18px;"><strong>동네보기</strong></a>
-						<%
-						}
-						%>
-						</div>
-						</div>
 							<a href="goSubscribe" class="nav-item nav-link" style="color: black; font-size: 18px;"><strong>POP 결제권</strong></a>
-					</div>
-					<div class="d-flex m-3 me-0">
+						</div>
+						<div class="d-flex m-3 me-0">
 						<button
 							class="btn-search btn border border-secondary btn-md-square rounded-circle bg-white me-4"
 							data-bs-toggle="modal" data-bs-target="#searchModal">
 							<i class="fas fa-search text-primary"></i>
 						</button>
 						<a href="goMyPage" class="my-auto"> <i class="fas fa-user fa-2x"></i></a>
+						</div>
 					</div>
+							
+					</div>
+					
 				</div>
 			</nav>
 		</div>

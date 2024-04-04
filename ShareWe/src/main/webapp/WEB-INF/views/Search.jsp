@@ -421,7 +421,7 @@
 										<c:when test="${not empty cboard_list }">
 											<c:forEach items="${cboard_list }" var="c" end="7">
 												<div class="col-md-6 col-lg-4 col-xl-3"
-													style="margin: auto; width: 25%; height: 10%; margin-bottom: 20px;">
+													style="margin: auto; width: 23%; height: 10%; margin-bottom: 20px;">
 													<div class="rounded position-relative fruite-item">
 														<div class="fruite-img">
 															<a

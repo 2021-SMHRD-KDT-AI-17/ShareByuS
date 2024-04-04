@@ -451,19 +451,6 @@
 			</div>
 
 			<div class="row g-4 justify-content-center">
-				<div class="boardContent">
-					<form action="" style="display: inline;">
-						<select>
-							<c:forEach items="${option}" var="op" varStatus="i">
-								<option value="${i.index}">옵션 : ${op}, 가격 :
-									${price[i.index]}원</option>
-							</c:forEach>
-						</select>
-					</form>
-					<button style="width: 20%; margin-left: 20px" type="button"
-						class="btn btn-outline-success">구매하기</button>
-					<br>
-				</div>
 				<div class="boardContent" style="padding-bottom: 0; height: 60px;">
 					<input type="hidden" value="${c_board.c_num}" id="cNum">
 					<c:choose>
@@ -624,21 +611,11 @@
 			            }
 			        }
 				</script>
-<<<<<<< HEAD
-				
-				<div class="boardContent">
-					<strong  id="addr" style="display: none">${m_addr.address}</strong>
-					<h5>${c_board.place}</h5><br>
-					<div id="map" style="width:100%;height:350px;" class="row g-4 justify-content-center">
-						
-					</div>
-=======
 				<div class="boardContent">
 					<strong id="addr" style="display: none">${m_addr.address}</strong>
 					<h5>${c_board.place}</h5>
 					<div id="map" style="width: 100%; height: 350px;"
 						class="row g-4 justify-content-center"></div>
->>>>>>> branch 'main' of https://github.com/2021-SMHRD-KDT-AI-17/ShareByuS.git
 				</div>
 				<c:choose>
 					<c:when test="${empty review_list}">

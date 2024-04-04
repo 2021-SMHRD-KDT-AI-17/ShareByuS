@@ -732,21 +732,18 @@
 
 		<script type="text/javascript">
 			function checkGFavorite() {
-				var g_num = document.getElementById("
-							gNum").value;
+				var g_num = document.getElementById("gNum").value;
 
-				document.getElementById("favCancel").style.display="inline"
-							;
-				document.getElementById("gFavorite").style.display="none"
-							;
+				document.getElementById("favCancel").style.display="inline";
+							
+				document.getElementById("gFavorite").style.display="none";
+							
 				$.ajax({
 					url : "insertgFavorite",
-					data
-							: {
+					data: {
 						'g_num' : g_num
 					},
-					type
-							: 'get',
+					type: 'get',
 					success : function() {
 
 					},

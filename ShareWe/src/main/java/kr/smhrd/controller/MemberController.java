@@ -40,6 +40,7 @@ public class MemberController {
 		System.out.println(member.toString());
 		if(member.getType() == 1) {
 			memberMapper.approveInsert(member);
+			model.addAttribute("joinMember", member);
 		}else {
 			memberMapper.memberInsert(member);
 			model.addAttribute("joinMember", member);
