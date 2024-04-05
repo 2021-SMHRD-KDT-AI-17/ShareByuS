@@ -533,7 +533,6 @@
 
 
 				</div>
-				<div class="boardContent">참여인원:</div>
 				<div class="boardContent">
 					<span>가게명 :
 						<h6 style="display: inline; margin-left: 10px;">${c_board.c_writer}</h6>
@@ -617,7 +616,7 @@
 				</script>
 				<div class="boardContent">
 					<strong id="addr" style="display: none">${m_addr.address}</strong>
-					<h5>${c_board.place}</h5>
+					<h5>픽업장소 : ${m_addr.address}</h5>
 					<div id="map" style="width: 100%; height: 350px; margin-top: 30px;"
 						class="row g-4 justify-content-center"></div>
 				</div>

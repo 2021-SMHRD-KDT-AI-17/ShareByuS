@@ -406,7 +406,7 @@
 						<ul class="nav nav-pills d-inline-flex text-center mb-5">
 							<li class="nav-item"><a
 								class="d-flex m-2 py-2 bg-light rounded-pill"
-								href="gSearch?searchText=${searchText}"> <span
+								href="cSearch?searchText=${searchText}"> <span
 									class="text-dark" style="width: 140px;">➕ 상품 더보기</span>
 							</a></li>
 						</ul>

@@ -135,7 +135,15 @@
 								<a href="getCategory?category=여행/도서" class="dropdown-item">여행/도서</a>
 							</div>
 						</div>
-							<a href="goSubscribe" class="nav-item nav-link" style="color: black; font-size: 18px;"><strong>POP 결제권</strong></a>
+							<c:choose>
+								<c:when test="${empty loginMember}">
+									<a href="goLogin" class="nav-item nav-link" style="color: black; font-size: 18px;"><strong>POP 결제권</strong></a>
+								</c:when>
+								<c:otherwise>
+									<a href="goSubscribe" class="nav-item nav-link" style="color: black; font-size: 18px;"><strong>POP 결제권</strong></a>
+								</c:otherwise>
+							</c:choose>
+							
 					</div>
 					<div class="d-flex m-3 me-0">
 						<button

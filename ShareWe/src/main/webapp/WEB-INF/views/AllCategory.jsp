@@ -219,7 +219,7 @@
 										<c:when test="${not empty gboard_list}">
 											<c:forEach items="${gboard_list }" var="g" end="7">
 												<div class="col-md-6 col-lg-4 col-xl-3"
-													style="margin: auto; width: 25%; height: 10%; margin-bottom: 20px;">
+													style="margin: 10px; width: 23%; height: 10%; margin-bottom: 20px;">
 													<div class="rounded position-relative fruite-item">
 														<div class="fruite-img">
 															<a href="G_BoardContent?g_num=${g.g_num}"> <img
@@ -339,7 +339,7 @@
 										<c:when test="${not empty cboard_list }">
 											<c:forEach items="${cboard_list }" var="c" end="7">
 												<div class="col-md-6 col-lg-4 col-xl-3"
-													style="margin: auto; width: 25%; height: 10%; margin-bottom: 20px;">
+													style="margin: 10px; width: 23%; height: 10%; margin-bottom: 20px;">
 													<div class="rounded position-relative fruite-item">
 														<div class="fruite-img">
 															<a

@@ -383,7 +383,7 @@
 	<!-- 채팅 -->
 
 	<div class="row g-4 justify-content-center"
-		style="width: 900px; display: inline-block; margin-left: 300px;">
+		style="width: 900px; display: inline-block; margin-left: 400px;">
 		<iframe src="chatBoardContent?g_num=${g_num}" width='700'
 			height='1000'></iframe>
 	</div>
