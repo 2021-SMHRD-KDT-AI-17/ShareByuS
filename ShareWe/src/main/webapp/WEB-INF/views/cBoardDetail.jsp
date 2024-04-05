@@ -618,7 +618,7 @@
 				<div class="boardContent">
 					<strong id="addr" style="display: none">${m_addr.address}</strong>
 					<h5>${c_board.place}</h5>
-					<div id="map" style="width: 100%; height: 350px;"
+					<div id="map" style="width: 100%; height: 350px; margin-top: 30px;"
 						class="row g-4 justify-content-center"></div>
 				</div>
 				<c:choose>

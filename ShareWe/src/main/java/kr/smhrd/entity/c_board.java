@@ -52,11 +52,11 @@ public class c_board {
     // 픽업장소 
     private String place;
 
-    // 상품가격 
-    @NonNull private String price;
-
     // 옵션1 
     @NonNull private String c_opt1;
+    
+ // 상품가격 
+    @NonNull private String price;
 
     // 상품등록갯수 
     @NonNull private int c_ea;
@@ -94,6 +94,26 @@ public class c_board {
 		this.category = category;
 		this.price = price;
 		this.c_opt1 = c_opt1;
+		this.c_ea = c_ea;
+	}
+
+	public c_board(int c_num, @NonNull String c_title, @NonNull String c_writer, @NonNull String email,
+			@NonNull String c_img1, @NonNull String c_img2, @NonNull String c_img3, @NonNull String c_content,
+			@NonNull String c_f_date, @NonNull String category, @NonNull String c_opt1, @NonNull String price,
+			@NonNull int c_ea) {
+		super();
+		this.c_num = c_num;
+		this.c_title = c_title;
+		this.c_writer = c_writer;
+		this.email = email;
+		this.c_img1 = c_img1;
+		this.c_img2 = c_img2;
+		this.c_img3 = c_img3;
+		this.c_content = c_content;
+		this.c_f_date = c_f_date;
+		this.category = category;
+		this.c_opt1 = c_opt1;
+		this.price = price;
 		this.c_ea = c_ea;
 	}
     

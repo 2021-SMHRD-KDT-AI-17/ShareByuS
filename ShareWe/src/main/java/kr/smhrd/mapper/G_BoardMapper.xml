@@ -37,8 +37,8 @@
 	</update>
 	
 	<update id="gBoardUpdate" parameterType="kr.smhrd.entity.g_board">
-			update g_board set g_title=#{g_title}, g_img1=#{g_img1}, g_content=#{g_content},
-			 category=#{category} where g_num=#{g_num}
+		update g_board set g_title=#{g_title}, g_writer=#{g_writer}, email=#{email}, g_img1 = #{g_img1}, g_img2 = #{g_img2}, g_img3 = #{g_img3}, 
+			g_content=#{g_content}, category=#{category} where g_num=#{g_num}
 	</update>
 
 	<delete id="deleteGBoard" parameterType="int">
@@ -46,7 +46,7 @@
 	</delete>
 	
 	<update id="endGBoard" parameterType="int">
-			update g_board set g_end=1 where g_num=#{g_num}
+		update g_board set g_end=1 where g_num=#{g_num}
 	</update>
 	
 	<update id="restartGBoard" parameterType="int">

@@ -370,7 +370,7 @@
 	<div class="container-fluid page-header py-5">
 		<h1 class="text-center text-white display-6">유료결제</h1>
 		<ol class="breadcrumb justify-content-center mb-0">
-			<li class="breadcrumb-item active text-white">UP권 구매</li>
+			<li class="breadcrumb-item active text-white">POP 구매</li>
 		</ol>
 	</div>
 	<!-- Single Page Header End -->
@@ -397,7 +397,7 @@
 		<button type="button" onclick="pay(1)"
 			style="border-color: transparent; background-color: transparent;">
 			<input type="hidden" class="upName" value="POP - 10회권"> <input
-				type="hidden" class="upPrice" value="3000"> <input
+				type="hidden" class="upPrice" value="5000"> <input
 				type="hidden" class="upCnt" value="10"> <img
 				src="resources/asset/image/up10.png"
 				style="width: 300px !important; height: 500px !important;">
@@ -406,7 +406,7 @@
 		<button type="button" onclick="pay(2)"
 			style="border-color: transparent; background-color: transparent;">
 			<input type="hidden" class="upName" value="POP - 25회권"> <input
-				type="hidden" class="upPrice" value="100"> <input
+				type="hidden" class="upPrice" value="10000"> <input
 				type="hidden" class="upCnt" value="25"> <img
 				src="resources/asset/image/up25.png"
 				style="width: 300px !important; height: 500px !important;">
@@ -415,7 +415,7 @@
 		<button type="button" onclick="pay(3)"
 			style="border-color: transparent; background-color: transparent;">
 			<input type="hidden" class="upName" value="POP - 60회권"> <input
-				type="hidden" class="upPrice" value="100"> <input
+				type="hidden" class="upPrice" value="20000"> <input
 				type="hidden" class="upCnt" value="60"> <img
 				src="resources/asset/image/up60.png"
 				style="width: 320px !important; height: 500px !important;">

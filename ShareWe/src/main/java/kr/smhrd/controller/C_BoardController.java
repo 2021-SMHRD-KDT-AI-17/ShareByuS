@@ -87,6 +87,8 @@ public class C_BoardController {
 			multi.getFilesystemName("c_img2");
 			multi.getFilesystemName("c_img3");
 			
+			System.out.println("[/cBoardInsert]: "+c_board);
+			
 		} catch (IOException e) {
 			e.printStackTrace();
 		}c_boardMapper.cBoardInsert(c_board);
@@ -182,10 +184,41 @@ public class C_BoardController {
 	
 	// 게시글 수정
 	@RequestMapping("/cBoardUpdate")
-	public String cBoardUpdate(c_board c_board, Model model) {
-		c_boardMapper.cBoardUpdate(c_board);
+	public String cBoardUpdate(c_board c_board, Model model, HttpServletRequest request) {
 		
-		return "redirect:/C_BoardContent";
+		System.out.println("[/cBoardUpdate]: "+c_board);
+		
+		String path = request.getRealPath("resources/g_Image");
+		System.out.println(path);
+		int size = 720*720*10;
+		String encoding = "UTF-8";
+		
+		DefaultFileRenamePolicy rename = new DefaultFileRenamePolicy();
+		try {
+			
+			MultipartRequest multi = new MultipartRequest(request, path, size, encoding, rename);
+			String c_img1 = multi.getFilesystemName("c_img1");
+			String c_img2 = multi.getFilesystemName("c_img2");
+			String c_img3 = multi.getFilesystemName("c_img3");
+			
+			
+			System.out.println("[/cBoardUpdate]: "+c_img1+" | "+c_img2+ " | "+ c_img3);
+			
+			
+		} catch (IOException e) {
+			e.printStackTrace();
+			
+			
+		}
+		if(c_board.getC_img1().equals("") || c_board.getC_img2().equals("") || c_board.getC_img3().equals("") ) {
+			c_boardMapper.cBoardUpdate2(c_board);
+		}else {
+			c_boardMapper.cBoardUpdate(c_board);
+		}
+		
+		
+		
+		return "redirect:/goCompany";
 	}
 	
 	// 리뷰 작성 페이지 이동

@@ -5,7 +5,6 @@ import java.util.List;
 import org.apache.ibatis.annotations.Mapper;
 
 import kr.smhrd.entity.c_board;
-import kr.smhrd.entity.report;
 import kr.smhrd.entity.review;
 
 @Mapper
@@ -34,6 +33,8 @@ public interface C_BoardMapper {
 	public void insertReview(review review);
 
 	public List<review> getMyReview(String email);
+
+	public void cBoardUpdate2(c_board c_board);
 
 	
 	

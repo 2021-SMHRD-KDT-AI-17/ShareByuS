@@ -81,4 +81,21 @@ public class g_board {
 		this.category = category;
 	}
 
+	public g_board(int g_num, @NonNull String g_title, @NonNull String g_writer, @NonNull String email,
+			@NonNull String g_img1, @NonNull String g_img2, @NonNull String g_img3, @NonNull String g_content,
+			@NonNull String category) {
+		super();
+		this.g_num = g_num;
+		this.g_title = g_title;
+		this.g_writer = g_writer;
+		this.email = email;
+		this.g_img1 = g_img1;
+		this.g_img2 = g_img2;
+		this.g_img3 = g_img3;
+		this.g_content = g_content;
+		this.category = category;
+	}
+	
+	
+
 }

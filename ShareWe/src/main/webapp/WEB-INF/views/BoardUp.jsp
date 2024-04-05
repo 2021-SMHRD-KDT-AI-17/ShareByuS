@@ -317,10 +317,10 @@
 				</div>
 			</div>
 			<div class="boardContent">
-				<h6>무료 UP 체험권 횟수 : ${subscribeInfo.free_cnt } / 5 회</h6>
+				<h6>무료 POP 체험권 횟수 : ${subscribeInfo.free_cnt } / 5 회</h6>
 			</div>
 			<div class="boardContent">
-				<h6>보유중인 UP 횟수 : ${subscribeInfo.paid_cnt } 회</h6>
+				<h6>보유중인 POP 횟수 : ${subscribeInfo.paid_cnt } 회</h6>
 			</div>
 			<div class="boardContent">
 				<p>${loginMember.nick }님의 게시글을 끌어 올리겠습니까?</p>

@@ -171,9 +171,9 @@
 
 	<!-- 기업회원 승인 table -->
 	<div class="container-fluid py-5">
-		<div class="row g-4 justify-content-center">
+		<div class="row g-4 justify-content-center" style="height: 500px !important;">
 			<div class="row g-4 justify-content-center"
-				style="width: 1000px !important;">
+				style="width: 1000px !important; padding-bottom: 250px;">
 
 
 
