@@ -49,8 +49,6 @@
     <tr>
         <td>Back-end 프레임워크</td>
         <td>
-           <img src="https://img.shields.io/badge/Jwt-000000?style=for-the-badge&logo=JSONWebTokens&logoColor=white">
-           <img src="https://img.shields.io/badge/Flask-000000?style=for-the-badge&logo=Flask&logoColor=white"/>
            <img src="https://img.shields.io/badge/Spring-6DB33F?style=for-the-badge&logo=Spring&logoColor=white"/> 
     </tr> 
     <tr>
