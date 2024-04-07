@@ -103,7 +103,8 @@
 <br>
 
 ## 〰 서비스 흐름도
-![서비스흐름도](https://github.com/2021-SMHRD-KDT-AI-17/ShareByuS/assets/157354010/19df4ce4-e907-4181-a5aa-f9da98131d65)
+![서비스흐름도1](https://github.com/2021-SMHRD-KDT-AI-17/ShareByuS/assets/157354010/6816517c-ddc4-43e9-a59b-753c25ee06f3)
+
 
 <br>
 
