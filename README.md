@@ -113,8 +113,9 @@
 
 ### 🖥 메인 화면
 <br>
-![메인](https://github.com/2021-SMHRD-KDT-AI-17/ShareByuS/assets/157354010/acd65f3a-ef3d-4ae3-8ad6-ff75cf5039c0)
-![메인 상세](https://github.com/2021-SMHRD-KDT-AI-17/ShareByuS/assets/157354010/2a6f4f0b-b52b-4488-b9f9-88d5800042c5)
+
+![메인 상세](https://github.com/2021-SMHRD-KDT-AI-17/ShareByuS/assets/157354010/eacc2d46-576a-4f10-9dff-acd79957dd2f)
+![메인](https://github.com/2021-SMHRD-KDT-AI-17/ShareByuS/assets/157354010/e6671698-f374-4b17-80bc-3b1468c346b8)
 
 <br>
 
@@ -123,6 +124,7 @@
 
 ### 🖥 공구함 게시판 화면 
 <br>
+
 ![일반 게시판](https://github.com/2021-SMHRD-KDT-AI-17/ShareByuS/assets/157354010/e9c6795c-aad0-4b3c-9346-7d91b028e81e)
 
 <br>
@@ -148,12 +150,14 @@
 ### 🖥 우리동네 게시판 화면
 <br>
 <br>
+
 ![기업 게시판](https://github.com/2021-SMHRD-KDT-AI-17/ShareByuS/assets/157354010/b28b158e-0c2c-4436-a575-d0020dcbc53d)
 <br>
 
 
 #### 🖱 우리동네 게시글 상세
 <br>
+
 ![기업 게시글 상세](https://github.com/2021-SMHRD-KDT-AI-17/ShareByuS/assets/157354010/ddbaf2a5-341f-417d-b586-c18a382ef98f)
 ![기업 게시글-리뷰 및 지도](https://github.com/2021-SMHRD-KDT-AI-17/ShareByuS/assets/157354010/028d0b54-1bf7-46b0-9259-4fa919fee156)
 <br>
@@ -161,12 +165,14 @@
 
 #### 🖱 게시글 리뷰 작성
 <br>
+
 ![리뷰 작성 페이지](https://github.com/2021-SMHRD-KDT-AI-17/ShareByuS/assets/157354010/5e246f8b-407e-4d56-af2e-2a1e7cc551a9)
 <br>
 
 
 #### 🖱 우리동네 상품 결제
 <br>
+
 ![기업 게시물 결제](https://github.com/2021-SMHRD-KDT-AI-17/ShareByuS/assets/157354010/0419578e-79ca-43e5-954f-7abd5b82a43a)
   
 
@@ -231,22 +237,27 @@
 
 #### 🖱 마이페이지 찜 목록 
 <br>
+
 ![마이페이지 - 찜 목록](https://github.com/2021-SMHRD-KDT-AI-17/ShareByuS/assets/157354010/9028bea5-9d65-4511-a37c-06d2b0b40ad4)
 
 #### 🖱 마이페이지 MY게시글 목록 
 <br>
+
 ![마이페이지 - MY게시글](https://github.com/2021-SMHRD-KDT-AI-17/ShareByuS/assets/157354010/13461e50-30e7-4bc5-9abc-39cdd3ccf753)
 
 #### 🖱 마이페이지 리뷰 목록 
 <br>
+
 ![마이페이지 - 리뷰](https://github.com/2021-SMHRD-KDT-AI-17/ShareByuS/assets/157354010/ea5f4568-33df-428f-95ff-dab2c77d0983)
 
 #### 🖱 마이페이지 끌어올리기 구매 목록 
 <br>
+
 ![마이페이지 - 구독권](https://github.com/2021-SMHRD-KDT-AI-17/ShareByuS/assets/157354010/282124eb-d7b1-4f48-a1ed-0d7d6214af47)
 
 #### 🖱 마이페이지 상품결제 목록 
 <br>
+
 ![마이페이지 - 주문내역](https://github.com/2021-SMHRD-KDT-AI-17/ShareByuS/assets/157354010/de5630df-ea91-4b30-9bf4-e2ebd743f9a9)
 
 
@@ -258,6 +269,7 @@
 ### 🖥 마이페이지 - 동네업체 사용자 
 <br>
 <br>
+
 ![기업 마이페이지 - 주문상태 변경](https://github.com/2021-SMHRD-KDT-AI-17/ShareByuS/assets/157354010/4265df08-8ffc-42af-8c35-f3864b0f2e24)
 
 <br>
@@ -270,18 +282,22 @@
 
 #### 🖱 관리자 페이지 
 <br>
+
 ![관리자 페이지](https://github.com/2021-SMHRD-KDT-AI-17/ShareByuS/assets/157354010/5e210596-ea9d-4730-93ad-d85aad2f3cd1)
 
 #### 🖱 관리자 회원관리 
 <br>
+
 ![관리자 회원관리](https://github.com/2021-SMHRD-KDT-AI-17/ShareByuS/assets/157354010/98544469-3c3d-4181-9475-68fc7788743d)
 
 #### 🖱 관리자 신고관리 
 <br>
+
 ![관리자 신고 관리](https://github.com/2021-SMHRD-KDT-AI-17/ShareByuS/assets/157354010/202f80d3-8170-4190-ba4a-6f793305a645)
 
 #### 🖱 관리자 기업승인 
 <br>
+
 ![관리자 기업 승인](https://github.com/2021-SMHRD-KDT-AI-17/ShareByuS/assets/157354010/b4fc53c5-ea9d-4d7e-b397-6da4c614b363)
 
 
