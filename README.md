@@ -113,8 +113,8 @@
 ### 🖥 메인 화면
 <br>
 
-![메인 상세](https://github.com/2021-SMHRD-KDT-AI-17/ShareByuS/assets/157354010/eacc2d46-576a-4f10-9dff-acd79957dd2f)
 ![메인](https://github.com/2021-SMHRD-KDT-AI-17/ShareByuS/assets/157354010/e6671698-f374-4b17-80bc-3b1468c346b8)
+![메인 상세](https://github.com/2021-SMHRD-KDT-AI-17/ShareByuS/assets/157354010/eacc2d46-576a-4f10-9dff-acd79957dd2f)
 
 <br>
 
