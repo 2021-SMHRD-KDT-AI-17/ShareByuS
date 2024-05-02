@@ -14,6 +14,7 @@
 <br>
 <br>
 ## 🛠 주요기능
+* SNS 로그인(카카오 로그인 API)
 * 게시글 등록 및 관리 기능
 * 상품 검색 기능
 * 상품 찜 기능
@@ -80,6 +81,7 @@
       <tr>
         <td>라이브러리</td>
         <td>
+            <img src="https://img.shields.io/badge/Kakao Login Api-FEE500?style=for-the-badge&logo=KaKao Login Api&logoColor=black">
             <img src="https://img.shields.io/badge/Kakao Map Api-007CE2?style=for-the-badge&logo=KaKao Map Api&logoColor=white">
             <img src="https://img.shields.io/badge/BootStrap-7952B3?style=for-the-badge&logo=BootStrap&logoColor=white"/> 
         </td>
